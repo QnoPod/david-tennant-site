@@ -15,6 +15,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "David Tennant 作品データベース",
   description: "デヴィッド・テナントの出演作品をまとめたサイトです",
+  // ↓ ここからOGPの設定を追加！
+  openGraph: {
+    title: "David Tennant 作品データベース",
+    description: "デヴィッド・テナントの出演作品をまとめたサイトです",
+    url: "https://david-tennant-site.vercel.app",
+    siteName: "David Tennant 作品データベース",
+    images: [
+      {
+        url: "David-Tennant.webp", // サイトのトップページの画像ファイル名
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "ja_JP",
+    type: "website",
+  },
   verification: {
     google: "j5TwLvhKIVK51iHawcqyg__byU-AxUzXlKIfrXumvqg",
   },

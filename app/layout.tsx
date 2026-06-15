@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "David Tennant 作品データベース",
     images: [
       {
-        url: "https://david-tennant-site.vercel.app/David-Tennant.png", // サイトのトップページの画像ファイル名
+        url: "David-Tennant.png", // サイトのトップページの画像ファイル名
         width: 1200,
         height: 630,
       },
@@ -31,15 +31,6 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     type: "website",
   },
-
-  // 👇 ここを追加
-  twitter: {
-    card: "summary_large_image",
-    title: "David Tennant 作品データベース",
-    description: "デヴィッド・テナントの出演作品をまとめたサイトです",
-    images: ["https://david-tennant-site.vercel.app/David-Tennant.png"],
-  },
-
   verification: {
     google: "j5TwLvhKIVK51iHawcqyg__byU-AxUzXlKIfrXumvqg",
   },

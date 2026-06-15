@@ -76,7 +76,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
 
     <p style={{ fontSize: '14px', color: '#888', marginBottom: '20px' }}>
-  ※テスト運用中です
+  ※テスト運用中です 何かあれば@QnoPodまで
     </p>
     {/* 検索窓 */}
         <input 
@@ -160,7 +160,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
                         <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} style={{ width: '32px', height: '32px', borderRadius: '6px' }} />
                       ))
                     ) : (
-                      <span style={{ color: '#aaa', fontSize: '12px' }}>見放題配信なし😢</span>
+                      <span style={{ color: '#aaa', fontSize: '12px' }}>日本での配信なし😢</span>
                     )}
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
               {/* 1. まずあらすじを表示 */}
               <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 8px 0' }}>作品あらすじ</h3>
               <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', margin: '0 0 25px 0', whiteSpace: 'pre-wrap' }}>
-                {customOverviews[selectedWork.title || selectedWork.name] || selectedWork.overview || '残念ながら、この作品の日本語のあらすじはまだ映画辞典に登録されていません。'}
+                {customOverviews[selectedWork.title || selectedWork.name] || selectedWork.overview || '残念ながら、この作品の日本語のあらすじはまだ登録されていません。'}
               </p>
 
               {/* 2. その下にキャラクター情報と画像を表示 */}
@@ -247,7 +247,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
                     <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} title={provider.provider_name} style={{ width: '40px', height: '40px', borderRadius: '8px' }} />
                   ))
                 ) : (
-                  <span style={{ color: '#aaa', fontSize: '14px', backgroundColor: '#2a2a2a', padding: '6px 12px', borderRadius: '6px' }}>見放題配信はありません😢</span>
+                  <span style={{ color: '#aaa', fontSize: '14px', backgroundColor: '#2a2a2a', padding: '6px 12px', borderRadius: '6px' }}>日本での配信はありません😢</span>
                 )}
               </div>
             </div>

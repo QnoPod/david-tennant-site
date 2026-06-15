@@ -76,7 +76,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
 
     <p style={{ fontSize: '14px', color: '#888', marginBottom: '20px' }}>
-  このサイトの情報はTMDBから取得し、取得できなかった情報については手入力で随時更新しています。※テスト運用中です
+  ※テスト運用中です
     </p>
     {/* 検索窓 */}
         <input 

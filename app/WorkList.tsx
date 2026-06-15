@@ -231,7 +231,9 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
                 )}
                 <div>
                   <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
-                    {selectedWork.character || '情報なし'}
+                   {(selectedWork.title || selectedWork.name) === '木曜殺人クラブ' 
+                     ? 'Ian Vensam' 
+                     : (selectedWork.character || '情報なし')}
                   </div>
                   <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
                     {customCharacterInfo[selectedWork.title || selectedWork.name] || '詳細なキャラクター情報はありません。'}

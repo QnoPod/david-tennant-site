@@ -1,29 +1,12 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { customOverviews } from './data/overviews';
+import { customCharacterImages } from './data/characters';
+import { customCharacterInfo } from './data/details';
 
-// あらすじ辞書
-const customOverviews: Record<string, string> = {
-  "Staged ステージド": "コロナ禍のロックダウンで舞台が延期になった俳優デヴィッドとマイケル。暇を持て余した二人はオンラインでリハーサルを試みるが、くだらない口論ばかりで一向に進まず…。",
-  "ブロードチャーチ〜殺意の町〜": "イギリス・ドーセット州の平和な海辺の町で起きた少年の不審死事件。過去の事件で強い罪悪感を抱えるスコットランド出身のアレック・ハーディ警部補が、自らを削りながらも不器用に真実へと迫っていく。感情を極端に抑え込みがちで真面目すぎる彼の、疲れ切った無精ひげの奥にある鋭い眼光から目が離せない傑作ミステリー。",
-  "Good Omens": "地球の滅亡を防ぐため、天使アジラフェルと悪魔クロウリーが奔走するファンタジーコメディ。",
-  "Des": "1980年代初頭のロンドンで逮捕された連続殺人犯デニス・ニルセン。彼が語るあまりに凄惨な犯行の内容と、それを追う刑事たちの葛藤を描いた実話ベースのドラマ。",
-};
 
-// キャラクター画像辞書
-const customCharacterImages: Record<string, string> = {
-  "ブロードチャーチ〜殺意の町〜": "/characters/alec.jpg",
-  "Staged ステージド": "/characters/michael.jpg",
-  "80日間世界一周": "/characters/fogg.jpg",
-  "The Good Fight／ザ・グッド・ファイト": "/characters/blum.jpg",
-  "Des": "/characters/Des.jpg",
-};
 
-// キャラクター詳細説明辞書
-const customCharacterInfo: Record<string, string> = {
-  "Des": "デニス・ニルセン：孤独な元公務員。死体を自宅に隠し続け、殺害した人々に執着する異常性を持ちながら、逮捕後は驚くほど冷静に犯行を語る。",
-  "ブロードチャーチ〜殺意の町〜": "アレック・ハーディ：過去の事件の責任から逃れられず、心臓に持病を抱えながらドーセットへ来た警部補。不器用で、感情表現が苦手だが、正義感は誰よりも強い。",
-};
 
 export default function WorkList({ works, davidId }: { works: any[], davidId: number }) {
     // 🌟 重複排除して「作品名」でまとめる
@@ -91,7 +74,10 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
-    
+
+    <p style={{ fontSize: '14px', color: '#888', marginBottom: '20px' }}>
+  このサイトの情報はTMDBから取得し、取得できなかった情報については手入力で随時更新しています。※テスト運用中
+    </p>
     {/* 検索窓 */}
         <input 
           type="text"
@@ -111,7 +97,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
                 backgroundColor: availabilityFilter === val ? '#4dabf7' : '#333', color: '#fff'
               }}
             >
-              {val === 'ALL' ? 'すべて' : val === 'AVAILABLE' ? '配信ありのみ' : '配信なしのみ'}
+              {val === 'ALL' ? 'すべて' : val === 'AVAILABLE' ? '配信あり' : '配信なし'}
             </button>
           ))}
         </div>
@@ -239,7 +225,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
               <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
               <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '25px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
                 {customCharacterImages[selectedWork.title || selectedWork.name] ? (
-                  <img src={customCharacterImages[selectedWork.title || selectedWork.name]} alt="Character" style={{ width: '200px', height: '300px', borderRadius: '8px', objectFit: 'cover' }} />
+                  <img src={customCharacterImages[selectedWork.title || selectedWork.name]} alt="Character" style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} />
                 ) : (
                   <div style={{ width: '100px', height: '100px', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>🎭</div>
                 )}

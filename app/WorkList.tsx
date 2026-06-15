@@ -77,7 +77,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
            <div style={{ marginBottom: '20px' }}>
               <Link href="/characters" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#4dabf7', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
-                 👥 キャラクターのリストを見る
+                 👥 キャラクターリストを見る
                  </Link>
              </div>
     <p style={{ fontSize: '14px', color: '#888', marginBottom: '20px' }}>

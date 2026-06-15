@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { customOverviews } from './data/overviews';
 import { customCharacterImages } from './data/characters';
 import { customCharacterInfo } from './data/details';
@@ -74,7 +75,11 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
-
+           <div style={{ marginBottom: '20px' }}>
+              <Link href="/characters" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#4dabf7', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+                 👥 キャラクターのリストを見る
+                 </Link>
+             </div>
     <p style={{ fontSize: '14px', color: '#888', marginBottom: '20px' }}>
   ※テスト運用中です 何かあれば@QnoPodまで
     </p>
@@ -227,18 +232,18 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
                 {customCharacterImages[selectedWork.title || selectedWork.name] ? (
                   <img src={customCharacterImages[selectedWork.title || selectedWork.name]} alt="Character" style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} />
                 ) : (
-                  <div style={{ width: '100px', height: '100px', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>🎭</div>
+                <div style={{ width: '100px', height: '100px', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>🎭</div>
                 )}
                 <div>
-                  <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
-                   {(selectedWork.title || selectedWork.name) === '木曜殺人クラブ' 
-                     ? 'Ian Vensam' 
+                    <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
+                     {(selectedWork.title || selectedWork.name) === '木曜殺人クラブ' 
+                     ? 'Ian Ventham' 
                      : (selectedWork.character || '情報なし')}
-                  </div>
-                  <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
-                    {customCharacterInfo[selectedWork.title || selectedWork.name] || '詳細なキャラクター情報はありません。'}
-                  </p>
-                </div>
+                    </div>
+                     <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
+                        {customCharacterInfo[selectedWork.title || selectedWork.name] || '詳細なキャラクター情報はありません。'}
+                     </p>
+                 </div>
               </div>
 
               {/* 3. 最後に配信状況を表示 */}

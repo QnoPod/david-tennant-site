@@ -85,6 +85,15 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
               <span style={{ color: '#aaa', fontSize: '14px', backgroundColor: '#2a2a2a', padding: '6px 12px', borderRadius: '6px' }}>日本での配信はありません😢</span>
             )}
           </div>
+
+          {/* 🌟 ここから追加：「グッド・オーメンズ」シーズン3の場合のみ注意書きを表示 */}
+          {workTitle === 'Good Omens - Season 3: An Ineffable Goodbye' && (
+            <p style={{ margin: '10px 0 0 0', fontSize: '13px', color: '#ff8787' }}>
+              ※日本語字幕なし
+            </p>
+          )}
+          {/* 🌟 ここまで追加 */}
+
         </div>
       </div>
     </div>

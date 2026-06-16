@@ -36,7 +36,28 @@ export default async function Home() {
         // ① 配信情報を聞きに行く
         const provRes = await fetch(`https://api.themoviedb.org/3/${work.media_type}/${work.id}/watch/providers`, options);
         const provData = await provRes.json();
-        const jpProviders = provData.results?.JP?.flatrate || [];
+        let jpProviders = provData.results?.JP?.flatrate || [];
+
+        // 🌟 --- ここから追加：特定作品の配信状況を手動で上書き・追加する ---
+        const currentTitle = work.title || work.name;
+        if (currentTitle === 'Good Omens - Season 3: An Ineffable Goodbye') {
+          // Amazon Prime Video のデータを手動で追加
+          jpProviders = [
+            ...jpProviders,
+            {
+              provider_id: 119, // TMDBにおける Amazon Prime Video の共通ID
+              provider_name: 'Amazon Prime Video',
+              logo_path: '/pvske1MyAoymrs5bguRfVqYiM9a.jpg'
+            },
+            {
+              provider_id: 2100, 
+              provider_name: 'Amazon Prime Video with Ads',
+              logo_path: '/8aBqoNeGGr0oSA85iopgNZUOTOc.jpg'
+            }
+          ];
+        }
+        // 🌟 --- ここまで追加 ---
+
         
         // 🌟 ② 作品の詳細情報（時間やジャンルなど）を聞きに行く
         const detailRes = await fetch(`https://api.themoviedb.org/3/${work.media_type}/${work.id}?language=ja-JP`, options);

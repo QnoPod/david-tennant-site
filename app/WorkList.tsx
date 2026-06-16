@@ -20,8 +20,10 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [availabilityFilter, setAvailabilityFilter] = useState('ALL');
+  
   // ジャンル管理用ステート
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [genreSearchMode, setGenreSearchMode] = useState<'include' | 'exclude'>('include'); // 追加
   const [isExpanded, setIsExpanded] = useState(false);
 
   const allProviders = useMemo(() => {
@@ -54,13 +56,16 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         availabilityFilter === 'ALL' ? true :
         availabilityFilter === 'AVAILABLE' ? hasProviders : !hasProviders;
       
-      // ジャンルフィルタリングロジック
+      // ジャンルフィルタリングロジック（含める / 除外するの切り替え）
       const matchesGenre = selectedGenres.length === 0 || 
-        work.genres?.some((g: any) => selectedGenres.includes(g.name));
+        (genreSearchMode === 'include' 
+          ? work.genres?.some((g: any) => selectedGenres.includes(g.name))
+          : !work.genres?.some((g: any) => selectedGenres.includes(g.name))
+        );
       
       return matchesSearch && matchesProvider && matchesAvailability && matchesGenre;
     });
-  }, [uniqueWorks, searchTerm, selectedProviders, availabilityFilter, selectedGenres]);
+  }, [uniqueWorks, searchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode]);
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
@@ -84,6 +89,8 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           allGenres={allGenres}
           selectedGenres={selectedGenres}
           setSelectedGenres={setSelectedGenres}
+          genreSearchMode={genreSearchMode}
+          setGenreSearchMode={setGenreSearchMode}
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
         />

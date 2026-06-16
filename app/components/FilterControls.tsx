@@ -13,6 +13,8 @@ type Props = {
   allGenres: string[];
   selectedGenres: string[];
   setSelectedGenres: Dispatch<SetStateAction<string[]>>;
+  genreSearchMode: 'include' | 'exclude'; // 追加
+  setGenreSearchMode: (mode: 'include' | 'exclude') => void; // 追加
   isExpanded: boolean;
   setIsExpanded: (val: boolean) => void;
 };
@@ -20,11 +22,11 @@ type Props = {
 export default function FilterControls({
   searchTerm, setSearchTerm, availabilityFilter, setAvailabilityFilter,
   allProviders, selectedProviders, toggleProvider, setSelectedProviders,
-  allGenres, selectedGenres, setSelectedGenres, isExpanded, setIsExpanded
+  allGenres, selectedGenres, setSelectedGenres, genreSearchMode, setGenreSearchMode,
+  isExpanded, setIsExpanded
 }: Props) {
   return (
     <div style={{ marginBottom: '30px', padding: '20px', backgroundColor: '#222', borderRadius: '12px' }}>
-      {/* 1. 常に表示するエリア：検索窓と配信状況 */}
       <input 
         type="text"
         placeholder="作品名で検索..."
@@ -48,37 +50,37 @@ export default function FilterControls({
         ))}
       </div>
 
-      {/* 2. 常に表示するエリア：配信サービス絞り込み */}
       <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '20px' }}>
         {allProviders.map(name => (
           <label key={name} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '14px', color: '#ccc' }}>
-            <input 
-              type="checkbox" 
-              checked={selectedProviders.includes(name)}
-              onChange={() => toggleProvider(name)}
-              style={{ width: '16px', height: '16px' }}
-            />
+            <input type="checkbox" checked={selectedProviders.includes(name)} onChange={() => toggleProvider(name)} style={{ width: '16px', height: '16px' }} />
             {name}
           </label>
         ))}
         {selectedProviders.length > 0 && (
-          <button onClick={() => setSelectedProviders([])} style={{ background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>
-            全解除
-          </button>
+          <button onClick={() => setSelectedProviders([])} style={{ background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>全解除</button>
         )}
       </div>
 
-      {/* 3. アコーディオン切り替えボタン */}
       <button 
         onClick={() => setIsExpanded(!isExpanded)} 
         style={{ marginBottom: '15px', background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' }}
       >
-        {isExpanded ? '▲ ジャンル絞り込みを閉じる' : '▼ ジャンルで絞り込む'}
+        {isExpanded ? '▲ ジャンル設定を閉じる' : '▼ ジャンルで絞り込む'}
       </button>
       
-      {/* 4. アコーディオンで開閉するエリア（ジャンルのみ＋全解除ボタン） */}
       {isExpanded && (
-        <div style={{ marginBottom: '10px', padding: '10px', borderLeft: '2px solid #4dabf7', backgroundColor: '#1a1a1a', borderRadius: '4px' }}>
+        <div style={{ marginBottom: '10px', padding: '15px', borderLeft: '2px solid #4dabf7', backgroundColor: '#1a1a1a', borderRadius: '4px' }}>
+          {/* モード切り替え */}
+          <div style={{ marginBottom: '15px', display: 'flex', gap: '20px' }}>
+            <label style={{ color: '#ccc', cursor: 'pointer' }}>
+              <input type="radio" checked={genreSearchMode === 'include'} onChange={() => setGenreSearchMode('include')} /> 含める
+            </label>
+            <label style={{ color: '#ccc', cursor: 'pointer' }}>
+              <input type="radio" checked={genreSearchMode === 'exclude'} onChange={() => setGenreSearchMode('exclude')} /> 除外する
+            </label>
+          </div>
+
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '10px' }}>
             {allGenres.map(genre => (
               <label key={genre} style={{ cursor: 'pointer', fontSize: '14px', color: '#ccc', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -96,13 +98,9 @@ export default function FilterControls({
             ))}
           </div>
 
-          {/* ジャンルの全解除ボタン */}
           {selectedGenres.length > 0 && (
-            <button 
-              onClick={() => setSelectedGenres([])} 
-              style={{ background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}
-            >
-              全解除
+            <button onClick={() => setSelectedGenres([])} style={{ background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>
+              選択を全解除
             </button>
           )}
         </div>

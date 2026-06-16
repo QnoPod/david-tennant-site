@@ -67,7 +67,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                          ? '/characters/self-icon.png' 
                        : work.character?.toLowerCase().startsWith('narrator')
                          ? '/characters/narrator-icon.jpg'
-                       : (customCharacterImages[workTitle] || '/default-character.png')
+                       : (customCharacterImages[workTitle] || '/default-character.jpg')
                    } 
                       alt="Character" 
                       style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 

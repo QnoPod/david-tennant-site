@@ -60,11 +60,18 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
           <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '25px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-            {customCharacterImages[workTitle] ? (
-              <img src={customCharacterImages[workTitle]} alt="Character" style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} />
-            ) : (
-            <div style={{ width: '100px', height: '100px', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>🎭</div>
-            )}
+              {/* 🌟 修正：キャラクター名によって表示する画像を切り替える */}
+               <img 
+                 src={
+                       work.character?.toLowerCase().startsWith('self') 
+                         ? '/characters/self-icon.png' 
+                       : work.character?.toLowerCase().startsWith('narrator')
+                         ? '/characters/narrator-icon.jpg'
+                       : (customCharacterImages[workTitle] || '/default-character.png')
+                   } 
+                      alt="Character" 
+                      style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 
+                 />
             <div>
               <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
                 {

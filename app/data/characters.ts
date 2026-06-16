@@ -1,4 +1,5 @@
 export const customCharacterImages: Record<string, string> = {
+
   "木曜殺人クラブ": "/characters/Ian Ventham.png",
   "Rivals": "/characters/Tony Baddingham.webp",
   "Macbeth": "/characters/Macbeth.png",
@@ -52,3 +53,4 @@ export const customCharacterImages: Record<string, string> = {
 
   //"": "/characters/",
 };
+

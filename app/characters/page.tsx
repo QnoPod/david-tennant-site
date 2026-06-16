@@ -1,9 +1,14 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { customCharacterInfo } from '../data/details';
 import { customCharacterImages } from '../data/characters';
 
 export default function CharactersPage() {
+  // モーダルで表示するキャラクターを管理する状態を追加
+  const [selectedCharacter, setSelectedCharacter] = useState<any | null>(null);
+
   // customCharacterInfo からデータを抽出し、配列に変換する
   const characters = Object.keys(customCharacterInfo).map((workTitle) => {
     const rawInfo = customCharacterInfo[workTitle] || '';
@@ -25,6 +30,7 @@ export default function CharactersPage() {
       workTitle,
       charName,
       charImage,
+      fullDescription: rawInfo, // 🌟 詳細表示用に全テキストを追加
     };
   });
 
@@ -43,7 +49,11 @@ export default function CharactersPage() {
         {/* キャラクター一覧のグリッド */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '25px' }}>
           {characters.map((char, index) => (
-            <div key={index} style={{ backgroundColor: '#222', borderRadius: '12px', padding: '20px', textAlign: 'center', transition: 'transform 0.2s' }}>
+            <div 
+              key={index} 
+              onClick={() => setSelectedCharacter(char)} // 🌟 クリックしたキャラクターをセットする
+              style={{ backgroundColor: '#222', borderRadius: '12px', padding: '20px', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }} // 🌟 カーソルを指マークに
+            >
               
               {/* アイコン画像 */}
               <div style={{ 
@@ -66,6 +76,50 @@ export default function CharactersPage() {
         </div>
 
       </div>
+
+      {/* 🌟 キャラクター詳細モーダル（クリックされた時に表示） */}
+      {selectedCharacter && (
+        <div 
+          onClick={() => setSelectedCharacter(null)} 
+          style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ backgroundColor: '#1a1a1a', padding: '30px', borderRadius: '16px', maxWidth: '500px', width: '100%', position: 'relative' }}
+          >
+            {/* 閉じるボタン（×マーク） */}
+            <button 
+              onClick={() => setSelectedCharacter(null)} 
+              style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: '#888', fontSize: '20px', cursor: 'pointer' }}
+            >
+              ✕
+            </button>
+
+            {/* キャラクター画像と名前 */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
+              <div style={{ width: '80px', height: '80px', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {selectedCharacter.charImage ? (
+                  <img src={selectedCharacter.charImage} alt={selectedCharacter.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <span style={{ fontSize: '30px' }}>🎭</span>
+                )}
+              </div>
+              <div>
+                <h2 style={{ color: '#4dabf7', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
+                <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>作品: {selectedCharacter.workTitle}</p>
+              </div>
+            </div>
+
+            {/* 詳細テキスト */}
+            <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', maxHeight: '50vh', overflowY: 'auto' }}>
+              <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', whiteSpace: 'pre-wrap', margin: 0 }}>
+                {selectedCharacter.fullDescription}
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      )}
     </main>
   );
 }

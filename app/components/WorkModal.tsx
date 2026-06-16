@@ -67,7 +67,15 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             )}
             <div>
               <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
-                {workTitle === '木曜殺人クラブ' ? 'Ian Ventham' : (work.character || '情報なし')}
+                {
+                    workTitle === '木曜殺人クラブ' 
+                      ? 'Ian Ventham' 
+                       : work.character?.toLowerCase().startsWith('self') 
+                        ? '本人' 
+                       : work.character?.toLowerCase().startsWith('narrator')
+                        ? 'ナレーター'
+                       : (work.character || '情報なし')
+                 }
               </div>
               <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
                 {customCharacterInfo[workTitle] || '詳細なキャラクター情報はありません。'}

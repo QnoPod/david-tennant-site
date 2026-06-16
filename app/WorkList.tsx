@@ -5,6 +5,7 @@ import Link from 'next/link';
 import FilterControls from './components/FilterControls';
 import WorkCard from './components/WorkCard';
 import WorkModal from './components/WorkModal';
+import ScrollToTopButton from './components/ScrollToTopButton'; 
 
 export default function WorkList({ works, davidId }: { works: any[], davidId: number }) {
   const uniqueWorks = useMemo(() => {
@@ -106,6 +107,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         </div>
       </div>
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
+      <ScrollToTopButton />
     </main>
   );
 }

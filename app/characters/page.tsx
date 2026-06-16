@@ -4,24 +4,21 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { customCharacterInfo } from '../data/details';
 import { customCharacterImages } from '../data/characters';
+import ScrollButtons from '../components/ScrollButtons';
 
 export default function CharactersPage() {
-  // モーダルで表示するキャラクターを管理する状態を追加
   const [selectedCharacter, setSelectedCharacter] = useState<any | null>(null);
 
-  // customCharacterInfo からデータを抽出し、配列に変換する
   const characters = Object.keys(customCharacterInfo).map((workTitle) => {
     const rawInfo = customCharacterInfo[workTitle] || '';
     
-    // 「名前：\n説明」の形式から名前だけを切り出す
-    // コロン（：）または改行（\n）で分割して最初の部分を取得
     let charName = "情報なし";
     if (rawInfo.includes('：')) {
       charName = rawInfo.split('：')[0];
     } else if (rawInfo.includes('\n')) {
       charName = rawInfo.split('\n')[0];
     } else {
-      charName = rawInfo; // 区切り文字がない場合はそのまま
+      charName = rawInfo;
     }
 
     const charImage = customCharacterImages[workTitle] || null;
@@ -30,7 +27,7 @@ export default function CharactersPage() {
       workTitle,
       charName,
       charImage,
-      fullDescription: rawInfo, // 🌟 詳細表示用に全テキストを追加
+      fullDescription: rawInfo,
     };
   });
 
@@ -38,7 +35,6 @@ export default function CharactersPage() {
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        {/* ヘッダー部分 */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
           <Link href="/" style={{ color: '#4dabf7', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
@@ -46,23 +42,20 @@ export default function CharactersPage() {
           </Link>
         </div>
 
-        {/* 🌟 案内文を追加 */}
         <p style={{ color: '#aaa', marginBottom: '30px', fontSize: '15px' }}>
           カードをクリックすると詳細が表示されます
         </p>
 
-        {/* キャラクター一覧のグリッド */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '25px' }}>
           {characters.map((char, index) => (
             <div 
               key={index} 
-              onClick={() => setSelectedCharacter(char)} // 🌟 クリックしたキャラクターをセットする
-              style={{ backgroundColor: '#222', borderRadius: '12px', padding: '20px', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }} // 🌟 カーソルを指マークに
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'} // 🌟 ホバー時の少し拡大するアニメーション
+              onClick={() => setSelectedCharacter(char)}
+              style={{ backgroundColor: '#222', borderRadius: '12px', padding: '20px', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               
-              {/* アイコン画像 */}
               <div style={{ 
                 width: '120px', height: '120px', margin: '0 auto 15px auto', borderRadius: '50%', 
                 overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -75,16 +68,14 @@ export default function CharactersPage() {
                 )}
               </div>
 
-              {/* 名前と作品名 */}
               <h2 style={{ fontSize: '18px', margin: '0 0 8px 0', color: '#4dabf7' }}>{char.charName}</h2>
               <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>{char.workTitle}</p>
             </div>
           ))}
         </div>
-
       </div>
 
-      {/* 🌟 キャラクター詳細モーダル（クリックされた時に表示） */}
+      {/* キャラクター詳細モーダル */}
       {selectedCharacter && (
         <div 
           onClick={() => setSelectedCharacter(null)} 
@@ -94,7 +85,6 @@ export default function CharactersPage() {
             onClick={(e) => e.stopPropagation()} 
             style={{ backgroundColor: '#1a1a1a', padding: '30px', borderRadius: '16px', maxWidth: '500px', width: '100%', position: 'relative' }}
           >
-            {/* 閉じるボタン（×マーク） */}
             <button 
               onClick={() => setSelectedCharacter(null)} 
               style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: '#888', fontSize: '20px', cursor: 'pointer' }}
@@ -102,7 +92,6 @@ export default function CharactersPage() {
               ✕
             </button>
 
-            {/* キャラクター画像と名前 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
               <div style={{ width: '80px', height: '80px', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 {selectedCharacter.charImage ? (
@@ -117,16 +106,18 @@ export default function CharactersPage() {
               </div>
             </div>
 
-            {/* 詳細テキスト */}
             <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', maxHeight: '50vh', overflowY: 'auto' }}>
               <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', whiteSpace: 'pre-wrap', margin: 0 }}>
                 {selectedCharacter.fullDescription}
               </p>
             </div>
-            
           </div>
         </div>
       )}
+      
+      {/* 🌟 スクロールボタンをモーダルの外に配置 */}
+      <ScrollButtons />
+      
     </main>
   );
 }

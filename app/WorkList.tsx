@@ -5,7 +5,7 @@ import Link from 'next/link';
 import FilterControls from './components/FilterControls';
 import WorkCard from './components/WorkCard';
 import WorkModal from './components/WorkModal';
-import ScrollToTopButton from './components/ScrollToTopButton'; 
+import ScrollButtons from './components/ScrollButtons'; 
 
 export default function WorkList({ works, davidId }: { works: any[], davidId: number }) {
   const uniqueWorks = useMemo(() => {
@@ -21,10 +21,11 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [availabilityFilter, setAvailabilityFilter] = useState('ALL');
+  const [sortOrder, setSortOrder] = useState<'default' | 'popularity' | 'title'>('default'); // 並び替えステート
   
   // ジャンル管理用ステート
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [genreSearchMode, setGenreSearchMode] = useState<'include' | 'exclude'>('include'); // 追加
+  const [genreSearchMode, setGenreSearchMode] = useState<'include' | 'exclude'>('include');
   const [isExpanded, setIsExpanded] = useState(false);
 
   const allProviders = useMemo(() => {
@@ -33,7 +34,6 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     return Array.from(providersMap);
   }, [works]);
 
-  // 全ジャンル抽出
   const allGenres = useMemo(() => {
     const genresSet = new Set<string>();
     works.forEach(work => work.genres?.forEach((g: any) => genresSet.add(g.name)));
@@ -57,7 +57,6 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         availabilityFilter === 'ALL' ? true :
         availabilityFilter === 'AVAILABLE' ? hasProviders : !hasProviders;
       
-      // ジャンルフィルタリングロジック（含める / 除外するの切り替え）
       const matchesGenre = selectedGenres.length === 0 || 
         (genreSearchMode === 'include' 
           ? work.genres?.some((g: any) => selectedGenres.includes(g.name))
@@ -67,6 +66,17 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       return matchesSearch && matchesProvider && matchesAvailability && matchesGenre;
     });
   }, [uniqueWorks, searchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode]);
+
+  // 並び替え処理
+  const sortedWorks = useMemo(() => {
+    let list = [...filteredWorks];
+    if (sortOrder === 'popularity') {
+      list.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    } else if (sortOrder === 'title') {
+      list.sort((a, b) => (a.title || a.name).localeCompare(b.title || b.name));
+    }
+    return list;
+  }, [filteredWorks, sortOrder]);
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
@@ -92,22 +102,24 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           setSelectedGenres={setSelectedGenres}
           genreSearchMode={genreSearchMode}
           setGenreSearchMode={setGenreSearchMode}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
         />
 
         <p style={{ color: '#aaa', marginBottom: '40px' }}>
-          {filteredWorks.length} 件の作品を表示中 (全 {uniqueWorks.length} 作品)
+          {sortedWorks.length} 件の作品を表示中 (全 {uniqueWorks.length} 作品)
         </p>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '30px' }}>
-          {filteredWorks.map((work: any, index: number) => (
+          {sortedWorks.map((work: any, index: number) => (
             <WorkCard key={`${work.id}-${index}`} work={work} onClick={() => setSelectedWork(work)} />
           ))}
         </div>
       </div>
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
-      <ScrollToTopButton />
+      <ScrollButtons />
     </main>
   );
 }

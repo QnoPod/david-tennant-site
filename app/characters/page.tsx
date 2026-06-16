@@ -39,12 +39,17 @@ export default function CharactersPage() {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
         {/* ヘッダー部分 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
           <Link href="/" style={{ color: '#4dabf7', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
             ← 作品リストに戻る
           </Link>
         </div>
+
+        {/* 🌟 案内文を追加 */}
+        <p style={{ color: '#aaa', marginBottom: '30px', fontSize: '15px' }}>
+          カードをクリックすると詳細が表示されます
+        </p>
 
         {/* キャラクター一覧のグリッド */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '25px' }}>
@@ -53,6 +58,8 @@ export default function CharactersPage() {
               key={index} 
               onClick={() => setSelectedCharacter(char)} // 🌟 クリックしたキャラクターをセットする
               style={{ backgroundColor: '#222', borderRadius: '12px', padding: '20px', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }} // 🌟 カーソルを指マークに
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'} // 🌟 ホバー時の少し拡大するアニメーション
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               
               {/* アイコン画像 */}

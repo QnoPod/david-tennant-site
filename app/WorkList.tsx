@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import FilterControls from './components/FilterControls';
 import WorkCard from './components/WorkCard';
@@ -21,12 +21,30 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [availabilityFilter, setAvailabilityFilter] = useState('ALL');
-  const [sortOrder, setSortOrder] = useState<'default' | 'popularity' | 'title'>('default'); // 並び替えステート
+  const [sortOrder, setSortOrder] = useState<'default' | 'popularity' | 'title'>('default');
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   
-  // ジャンル管理用ステート
+  // 🌟 お気に入りリストをリアルタイム管理
+  const [favorites, setFavorites] = useState<number[]>([]);
+
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [genreSearchMode, setGenreSearchMode] = useState<'include' | 'exclude'>('include');
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // 🌟 イベント受信でお気に入りを更新
+  useEffect(() => {
+    const loadFavorites = () => {
+      const favs = typeof window !== 'undefined' 
+        ? JSON.parse(localStorage.getItem('favorites') || '[]') 
+        : [];
+      setFavorites(favs);
+    };
+    
+    loadFavorites();
+
+    window.addEventListener('favoritesUpdated', loadFavorites);
+    return () => window.removeEventListener('favoritesUpdated', loadFavorites);
+  }, []);
 
   const allProviders = useMemo(() => {
     const providersMap = new Set<string>();
@@ -62,12 +80,13 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           ? work.genres?.some((g: any) => selectedGenres.includes(g.name))
           : !work.genres?.some((g: any) => selectedGenres.includes(g.name))
         );
-      
-      return matchesSearch && matchesProvider && matchesAvailability && matchesGenre;
-    });
-  }, [uniqueWorks, searchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode]);
 
-  // 並び替え処理
+      const matchesFavorites = !showOnlyFavorites || favorites.includes(work.id);
+      
+      return matchesSearch && matchesProvider && matchesAvailability && matchesGenre && matchesFavorites;
+    });
+  }, [uniqueWorks, searchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode, showOnlyFavorites, favorites]);
+
   const sortedWorks = useMemo(() => {
     let list = [...filteredWorks];
     if (sortOrder === 'popularity') {
@@ -83,7 +102,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
         <div style={{ marginBottom: '20px' }}>
-          <Link href="/characters" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#4dabf7', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+          <Link href="/characters" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#ff9f43', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
             👥 キャラクターリストを見る
           </Link>
         </div>
@@ -106,6 +125,8 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           setSortOrder={setSortOrder}
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
+          showOnlyFavorites={showOnlyFavorites}
+          setShowOnlyFavorites={setShowOnlyFavorites}
         />
 
         <p style={{ color: '#aaa', marginBottom: '40px' }}>

@@ -1,13 +1,60 @@
 'use client';
+import { useState, useEffect } from 'react';
 
 export default function WorkCard({ work, onClick }: { work: any, onClick: () => void }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const checkFavorite = () => {
+      const favorites = typeof window !== 'undefined' 
+        ? JSON.parse(localStorage.getItem('favorites') || '[]')
+        : [];
+      setIsFavorite(favorites.includes(work.id));
+    };
+    
+    checkFavorite();
+
+    window.addEventListener('favoritesUpdated', checkFavorite);
+    return () => window.removeEventListener('favoritesUpdated', checkFavorite);
+  }, [work.id]);
+
+  const toggleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    let newFavorites;
+    
+    if (isFavorite) {
+      newFavorites = favorites.filter((id: number) => id !== work.id);
+    } else {
+      newFavorites = [...favorites, work.id];
+    }
+    
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    setIsFavorite(!isFavorite);
+    
+    window.dispatchEvent(new Event('favoritesUpdated'));
+  };
+
   return (
     <div 
       onClick={onClick} 
-      style={{ backgroundColor: '#222', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer', transition: 'transform 0.2s' }}
+      style={{ backgroundColor: '#222', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer', transition: 'transform 0.2s', position: 'relative' }}
       onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
       onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
     >
+      <button 
+        onClick={toggleFavorite}
+        style={{ 
+          position: 'absolute', top: '10px', right: '10px', zIndex: 10, 
+          background: isFavorite ? '#ff9f43' : 'rgba(0,0,0,0.5)', 
+          border: 'none', borderRadius: '50%', width: '36px', height: '36px', 
+          cursor: 'pointer', fontSize: '18px', color: '#fff',
+          display: 'flex', alignItems: 'center', justifyContent: 'center'
+        }}
+      >
+        {isFavorite ? '★' : '☆'}
+      </button>
+
       <div style={{ width: '100%', aspectRatio: '2/3', backgroundColor: '#333' }}>
         {work.poster_path ? (
           <img src={`https://image.tmdb.org/t/p/w500${work.poster_path}`} alt={work.title || work.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

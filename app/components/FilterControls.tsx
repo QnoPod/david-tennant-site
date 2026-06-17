@@ -15,17 +15,20 @@ type Props = {
   setSelectedGenres: Dispatch<SetStateAction<string[]>>;
   genreSearchMode: 'include' | 'exclude';
   setGenreSearchMode: (mode: 'include' | 'exclude') => void;
-  sortOrder: 'default' | 'popularity' | 'title'; // 追加
-  setSortOrder: (order: 'default' | 'popularity' | 'title') => void; // 追加
+  sortOrder: 'default' | 'popularity' | 'title';
+  setSortOrder: (order: 'default' | 'popularity' | 'title') => void;
   isExpanded: boolean;
   setIsExpanded: (val: boolean) => void;
+  showOnlyFavorites: boolean;
+  setShowOnlyFavorites: (val: boolean) => void;
 };
 
 export default function FilterControls({
   searchTerm, setSearchTerm, availabilityFilter, setAvailabilityFilter,
   allProviders, selectedProviders, toggleProvider, setSelectedProviders,
   allGenres, selectedGenres, setSelectedGenres, genreSearchMode, setGenreSearchMode,
-  sortOrder, setSortOrder, isExpanded, setIsExpanded
+  sortOrder, setSortOrder, isExpanded, setIsExpanded,
+  showOnlyFavorites, setShowOnlyFavorites
 }: Props) {
   return (
     <div style={{ marginBottom: '30px', padding: '20px', backgroundColor: '#222', borderRadius: '12px' }}>
@@ -37,21 +40,44 @@ export default function FilterControls({
         style={{ width: '100%', padding: '12px', marginBottom: '20px', borderRadius: '8px', border: '1px solid #444', backgroundColor: '#141414', color: '#fff', fontSize: '16px' }}
       />
     
-      <div style={{ marginBottom: '20px', display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+      <div style={{ marginBottom: '20px', display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center' }}>
         {['ALL', 'AVAILABLE', 'UNAVAILABLE'].map((val) => (
           <button 
             key={val}
             onClick={() => setAvailabilityFilter(val)}
             style={{ 
               padding: '8px 16px', borderRadius: '20px', border: '1px solid #444', cursor: 'pointer',
-              backgroundColor: availabilityFilter === val ? '#4dabf7' : '#333', color: '#fff'
+              backgroundColor: availabilityFilter === val ? '#ff9f43' : '#333', color: '#fff'
             }}
           >
             {val === 'ALL' ? 'すべて' : val === 'AVAILABLE' ? '配信あり' : '配信なし'}
           </button>
         ))}
 
-        {/* 並び替えセレクトボックス */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
+            <input 
+              type="checkbox" 
+              checked={showOnlyFavorites}
+              onChange={(e) => setShowOnlyFavorites(e.target.checked)}
+            />
+            お気に入りのみ表示
+          </label>
+          
+          {/* 🌟 お気に入り全解除ボタン */}
+          {showOnlyFavorites && (
+            <button 
+              onClick={() => {
+                localStorage.removeItem('favorites');
+                window.dispatchEvent(new Event('favoritesUpdated'));
+              }}
+              style={{ background: 'none', border: '1px solid #ff9f43', color: '#ff9f43', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
+            >
+              お気に入りを全解除
+            </button>
+          )}
+        </div>
+
         <select 
           value={sortOrder} 
           onChange={(e) => setSortOrder(e.target.value as any)}
@@ -71,19 +97,19 @@ export default function FilterControls({
           </label>
         ))}
         {selectedProviders.length > 0 && (
-          <button onClick={() => setSelectedProviders([])} style={{ background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>選択を全解除</button>
+          <button onClick={() => setSelectedProviders([])} style={{ background: 'none', border: 'none', color: '#ff9f43', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>選択を全解除</button>
         )}
       </div>
 
       <button 
         onClick={() => setIsExpanded(!isExpanded)} 
-        style={{ marginBottom: '15px', background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' }}
+        style={{ background: 'none', border: 'none', color: '#ff9f43', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' }}
       >
         {isExpanded ? '▲ ジャンル設定を閉じる' : '▼ ジャンルで絞り込む'}
       </button>
       
       {isExpanded && (
-        <div style={{ marginBottom: '10px', padding: '15px', borderLeft: '2px solid #4dabf7', backgroundColor: '#1a1a1a', borderRadius: '4px' }}>
+        <div style={{ marginTop: '15px', padding: '15px', borderLeft: '2px solid #ff9f43', backgroundColor: '#1a1a1a', borderRadius: '4px' }}>
           <div style={{ marginBottom: '15px', display: 'flex', gap: '20px' }}>
             <label style={{ color: '#ccc', cursor: 'pointer' }}>
               <input type="radio" checked={genreSearchMode === 'include'} onChange={() => setGenreSearchMode('include')} /> 含める
@@ -111,7 +137,7 @@ export default function FilterControls({
           </div>
 
           {selectedGenres.length > 0 && (
-            <button onClick={() => setSelectedGenres([])} style={{ background: 'none', border: 'none', color: '#4dabf7', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>
+            <button onClick={() => setSelectedGenres([])} style={{ background: 'none', border: 'none', color: '#ff9f43', cursor: 'pointer', textDecoration: 'underline', fontSize: '14px' }}>
               選択を全解除
             </button>
           )}

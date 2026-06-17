@@ -99,6 +99,45 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
+      
+      {/* 🌟 スマホとPCでレイアウトと文字サイズを切り替えるCSS */}
+      <style>{`
+        .work-grid {
+          display: grid;
+          /* PC表示: 横幅220px以上で並べられるだけ並べる */
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 30px;
+          
+          /* 🎨 PC用の各サイズ設定（変数） */
+          --card-padding: 15px;
+          --title-size: 16px;
+          --meta-size: 12px;
+          --icon-size: 32px;
+          --icon-gap: 8px;
+          --fav-btn-size: 36px;
+          --fav-btn-font: 18px;
+        }
+        
+        /* スマホ表示 (横幅600px以下) の場合 */
+        @media (max-width: 600px) {
+          .work-grid {
+            /* 強制的に3列にする */
+            grid-template-columns: repeat(3, 1fr);
+            /* スマホの画面に合わせて隙間を狭くする */
+            gap: 10px;
+            
+            /* 🎨 スマホ用に各サイズを全体的にギュッと小さくする */
+            --card-padding: 8px;
+            --title-size: 11px;
+            --meta-size: 9px;
+            --icon-size: 20px;
+            --icon-gap: 4px;
+            --fav-btn-size: 26px;
+            --fav-btn-font: 14px;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
         <div style={{ marginBottom: '20px' }}>
@@ -133,7 +172,8 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           {sortedWorks.length} 件の作品を表示中 (全 {uniqueWorks.length} 作品)
         </p>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '30px' }}>
+        {/* 🌟 inlineのstyleを消して、className="work-grid" を適用 */}
+        <div className="work-grid">
           {sortedWorks.map((work: any, index: number) => (
             <WorkCard key={`${work.id}-${index}`} work={work} onClick={() => setSelectedWork(work)} />
           ))}

@@ -47,8 +47,11 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
         style={{ 
           position: 'absolute', top: '10px', right: '10px', zIndex: 10, 
           background: isFavorite ? '#ff9f43' : 'rgba(0,0,0,0.5)', 
-          border: 'none', borderRadius: '50%', width: '36px', height: '36px', 
-          cursor: 'pointer', fontSize: '18px', color: '#fff',
+          border: 'none', borderRadius: '50%', 
+          /* 🌟 変数を使用 */
+          width: 'var(--fav-btn-size)', height: 'var(--fav-btn-size)', 
+          fontSize: 'var(--fav-btn-font)', 
+          cursor: 'pointer', color: '#fff',
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}
       >
@@ -62,20 +65,24 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#666' }}>No Image</div>
         )}
       </div>
-      <div style={{ padding: '15px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        <h2 style={{ margin: '0 0 5px 0', fontSize: '16px', lineHeight: '1.4' }}>{work.title || work.name}</h2>
-        <span style={{ fontSize: '12px', color: '#888', marginBottom: '15px' }}>
+      
+      {/* 🌟 余白や文字サイズに変数を適用 */}
+      <div style={{ padding: 'var(--card-padding)', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+        <h2 style={{ margin: '0 0 5px 0', fontSize: 'var(--title-size)', lineHeight: '1.3' }}>{work.title || work.name}</h2>
+        
+        <span style={{ fontSize: 'var(--meta-size)', color: '#888', marginBottom: '10px' }}>
           {work.media_type === 'movie' ? '🎬 映画' : '📺 TV番組'}
           {work.release_date || work.first_air_date ? ` (${(work.release_date || work.first_air_date).substring(0, 4)})` : ''}
         </span>
+        
         <div style={{ marginTop: 'auto' }}>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 'var(--icon-gap)', flexWrap: 'wrap' }}>
             {work.providers?.length > 0 ? (
               work.providers.map((provider: any) => (
-                <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} style={{ width: '32px', height: '32px', borderRadius: '6px' }} />
+                <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} style={{ width: 'var(--icon-size)', height: 'var(--icon-size)', borderRadius: '4px' }} />
               ))
             ) : (
-              <span style={{ color: '#aaa', fontSize: '12px' }}>日本での配信なし😢</span>
+              <span style={{ color: '#aaa', fontSize: 'var(--meta-size)' }}>日本での配信なし😢</span>
             )}
           </div>
         </div>

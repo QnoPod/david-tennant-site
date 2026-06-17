@@ -60,7 +60,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
 
       <div style={{ width: '100%', aspectRatio: '2/3', backgroundColor: '#333' }}>
         {work.poster_path ? (
-          <img src={`https://image.tmdb.org/t/p/w500${work.poster_path}`} alt={work.title || work.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={`https://image.tmdb.org/t/p/w500${work.poster_path}`} alt={work.title || work.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         ) : (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#666' }}>No Image</div>
         )}
@@ -79,7 +79,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
           <div style={{ display: 'flex', gap: 'var(--icon-gap)', flexWrap: 'wrap' }}>
             {work.providers?.length > 0 ? (
               work.providers.map((provider: any) => (
-                <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} style={{ width: 'var(--icon-size)', height: 'var(--icon-size)', borderRadius: '4px' }} />
+                <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} loading="lazy" style={{ width: 'var(--icon-size)', height: 'var(--icon-size)', borderRadius: '4px' }} />
               ))
             ) : (
               <span style={{ color: '#aaa', fontSize: 'var(--meta-size)' }}>日本での配信なし😢</span>

@@ -7,7 +7,8 @@ export default async function Home() {
       accept: 'application/json',
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZmI3MzU4NmRkZDRiMTc4YzFjNmMzZWIwNzAxN2Q4NCIsIm5iZiI6MTc4MTQ4NzM4NS40NzksInN1YiI6IjZhMmY1NzE5MjQwNGRmODU3NDA4YjEyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.53ek30REBz6SxDNbFv-zQIBxNhpW1XhC4eGl-xjs2Bc'
     },
-    cache: 'no-store' as RequestCache
+    // 🌟 修正ポイント：毎回取得をやめて、24時間（86400秒）キャッシュして使い回す設定に変更
+    next: { revalidate: 86400 } 
   };
 
   const searchRes = await fetch('https://api.themoviedb.org/3/search/person?query=David+Tennant&language=ja-JP', options);
@@ -38,14 +39,14 @@ export default async function Home() {
         const provData = await provRes.json();
         let jpProviders = provData.results?.JP?.flatrate || [];
 
-        // 🌟 --- ここから追加：特定作品の配信状況を手動で上書き・追加する ---
+        // 特定作品の配信状況を手動で上書き・追加する
         const currentTitle = work.title || work.name;
         if (currentTitle === 'Good Omens - Season 3: An Ineffable Goodbye') {
           // Amazon Prime Video のデータを手動で追加
           jpProviders = [
             ...jpProviders,
             {
-              provider_id: 119, // TMDBにおける Amazon Prime Video の共通ID
+              provider_id: 119,
               provider_name: 'Amazon Prime Video',
               logo_path: '/pvske1MyAoymrs5bguRfVqYiM9a.jpg'
             },
@@ -56,14 +57,12 @@ export default async function Home() {
             }
           ];
         }
-        // 🌟 --- ここまで追加 ---
-
         
-        // 🌟 ② 作品の詳細情報（時間やジャンルなど）を聞きに行く
+        // ② 作品の詳細情報（時間やジャンルなど）を聞きに行く
         const detailRes = await fetch(`https://api.themoviedb.org/3/${work.media_type}/${work.id}?language=ja-JP`, options);
         const detailData = await detailRes.json();
 
-        // 1話あたりの分数（配列で来る場合があるので調整）
+        // 1話あたりの分数
         const epTime = detailData.episode_run_time && detailData.episode_run_time.length > 0 
           ? detailData.episode_run_time[0] 
           : null;
@@ -71,7 +70,7 @@ export default async function Home() {
         return {
           ...work,
           providers: jpProviders,
-          // 🌟 取得した詳細データをポケットに詰め込む
+          // 取得した詳細データをポケットに詰め込む
           genres: detailData.genres || [],
           runtime: detailData.runtime || null,
           numberOfSeasons: detailData.number_of_seasons || null,

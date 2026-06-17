@@ -33,11 +33,43 @@ export default function CharactersPage() {
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
+      
+      {/* 🌟 スマホとPCでレイアウトと文字・画像サイズを切り替えるCSS */}
+      <style>{`
+        .character-grid {
+          display: grid;
+          /* PC表示: 横幅200px以上で並べられるだけ並べる */
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 25px;
+          
+          /* 🎨 PC用の各サイズ設定（変数） */
+          --card-padding: 20px;
+          --image-size: 120px;
+          --title-size: 18px;
+          --subtitle-size: 13px;
+        }
+        
+        /* スマホ表示 (横幅600px以下) の場合 */
+        @media (max-width: 600px) {
+          .character-grid {
+            /* 強制的に2列にする */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            
+            /* 🎨 スマホ用に各サイズを全体的にギュッと小さくする */
+            --card-padding: 10px;
+            --image-size: 80px;
+            --title-size: 14px;
+            --subtitle-size: 11px;
+          }
+        }
+      `}</style>
+
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
-          <Link href="/" style={{ color: '#4dabf7', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
+          <Link href="/" style={{ color: '#ff9f43', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
             ← 作品リストに戻る
           </Link>
         </div>
@@ -46,18 +78,19 @@ export default function CharactersPage() {
           カードをクリックすると詳細が表示されます
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '25px' }}>
+        {/* 🌟 inlineのstyleを消して、className="character-grid" を適用 */}
+        <div className="character-grid">
           {characters.map((char, index) => (
             <div 
               key={index} 
               onClick={() => setSelectedCharacter(char)}
-              style={{ backgroundColor: '#222', borderRadius: '12px', padding: '20px', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }}
+              style={{ backgroundColor: '#222', borderRadius: '12px', padding: 'var(--card-padding)', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }}
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
               
               <div style={{ 
-                width: '120px', height: '120px', margin: '0 auto 15px auto', borderRadius: '50%', 
+                width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 15px auto', borderRadius: '50%', 
                 overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center',
                 boxShadow: '0 4px 10px rgba(0,0,0,0.5)'
               }}>
@@ -68,8 +101,9 @@ export default function CharactersPage() {
                 )}
               </div>
 
-              <h2 style={{ fontSize: '18px', margin: '0 0 8px 0', color: '#4dabf7' }}>{char.charName}</h2>
-              <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>{char.workTitle}</p>
+              {/* タイトルとサブタイトルもCSS変数を適用してスマホ時に縮小 */}
+              <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>{char.charName}</h2>
+              <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>{char.workTitle}</p>
             </div>
           ))}
         </div>
@@ -101,7 +135,7 @@ export default function CharactersPage() {
                 )}
               </div>
               <div>
-                <h2 style={{ color: '#4dabf7', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
+                <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
                 <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>作品: {selectedCharacter.workTitle}</p>
               </div>
             </div>

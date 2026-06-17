@@ -203,6 +203,11 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       </div>
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
       <ScrollButtons />
+      {/* 🌟 フッター部分にバージョン情報を追加 */}
+      <footer style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '20px', color: '#666', fontSize: '14px' }}>
+        Ver 2.0
+      </footer>
+      
     </main>
   );
 }

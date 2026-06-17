@@ -118,6 +118,10 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           --fav-btn-font: 18px;
         }
         
+        .main-title {
+          font-size: 32px;
+        }
+
         /* スマホ表示 (横幅600px以下) の場合 */
         @media (max-width: 600px) {
           .work-grid {
@@ -135,11 +139,29 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
             --fav-btn-size: 26px;
             --fav-btn-font: 14px;
           }
+
+          /* 🌟 タイトルのスマホ対応 */
+          .main-title {
+            font-size: 24px; /* スマホでは少し小さくする */
+          }
+          .title-dash {
+            display: none; /* 「-」を消す */
+          }
+          .title-sub {
+            display: block; /* 改行させる */
+            font-size: 18px; /* サブタイトル部分を少し小さく */
+            margin-top: 4px;
+          }
         }
       `}</style>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '32px', marginBottom: '10px' }}>David Tennant - 作品＆配信情報</h1>
+        
+        {/* 🌟 タイトル部分を修正 */}
+        <h1 className="main-title" style={{ marginBottom: '10px' }}>
+          David Tennant<span className="title-dash"> - </span><span className="title-sub">作品＆配信情報</span>
+        </h1>
+        
         <div style={{ marginBottom: '20px' }}>
           <Link href="/characters" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#ff9f43', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
             👥 キャラクターリストを見る

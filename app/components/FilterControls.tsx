@@ -33,7 +33,7 @@ export default function FilterControls({
   showOnlyFavorites, setShowOnlyFavorites
 }: Props) {
   
-  // 🌟 アイコン付き入力欄用の共通スタイル
+  // 🌟 アイコン付き入力欄用のスタイル
   const inputWrapperStyle = {
     position: 'relative' as const,
     width: '100%',
@@ -48,9 +48,23 @@ export default function FilterControls({
     pointerEvents: 'none' as const,
   };
 
+  // 🌟 クリアボタン用のスタイル
+  const clearButtonStyle = {
+    position: 'absolute' as const,
+    right: '12px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    background: 'none',
+    border: 'none',
+    color: '#888',
+    fontSize: '20px',
+    cursor: 'pointer',
+    padding: '0 5px'
+  };
+
   const inputStyle = {
     width: '100%',
-    padding: '12px 12px 12px 40px', // 左側にアイコン分のスペースを空ける
+    padding: '12px 40px', // 左右に余裕を持たせる
     borderRadius: '8px',
     border: '1px solid #444',
     backgroundColor: '#141414',
@@ -60,7 +74,7 @@ export default function FilterControls({
 
   return (
     <div style={{ marginBottom: '30px', padding: '20px', backgroundColor: '#222', borderRadius: '12px' }}>
-      {/* 🌟 アイコン付き入力欄に変更 */}
+      {/* 🌟 作品名検索とキャラクター検索を縦に並べる */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
         <div style={inputWrapperStyle}>
           <span style={iconStyle}>🎬</span>
@@ -71,6 +85,7 @@ export default function FilterControls({
             onChange={(e) => setSearchTerm(e.target.value)}
             style={inputStyle}
           />
+          {searchTerm && <button onClick={() => setSearchTerm('')} style={clearButtonStyle}>×</button>}
         </div>
         <div style={inputWrapperStyle}>
           <span style={iconStyle}>👥</span>
@@ -81,6 +96,7 @@ export default function FilterControls({
             onChange={(e) => setCharSearchTerm(e.target.value)}
             style={inputStyle}
           />
+          {charSearchTerm && <button onClick={() => setCharSearchTerm('')} style={clearButtonStyle}>×</button>}
         </div>
       </div>
     

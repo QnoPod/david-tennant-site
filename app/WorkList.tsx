@@ -6,13 +6,41 @@ import FilterControls from './components/FilterControls';
 import WorkCard from './components/WorkCard';
 import WorkModal from './components/WorkModal';
 import ScrollButtons from './components/ScrollButtons'; 
+// 🌟 作成した検索辞書をインポート
+import { searchDictionary } from './data/searchDictionary';
+
+// 🌟 文字を強力に整える関数（コンポーネントの外に出して全体で使い回す）
+const normalizeText = (text: string) => {
+  if (!text) return '';
+  return String(text)
+    .normalize('NFKC')         // 全角アルファベットなどを半角に統一
+    .toLowerCase()             // 大文字を小文字に統一
+    .replace(/[\s ・=\-.,:;!?'"()\[\]{}~～＆&]/g, '');  // 🌟 半角・全角スペース、記号をすべて無視する
+};
 
 export default function WorkList({ works, davidId }: { works: any[], davidId: number }) {
   const uniqueWorks = useMemo(() => {
     const map = new Map();
     works.forEach((work) => {
-      const title = work.title || work.name;
-      if (!map.has(title)) map.set(title, work);
+      const originalTmdbTitle = work.title || work.name; // 🌟 追加：上書きされる前の「TMDB本来のタイトル」を保存
+      let displayTitle = originalTmdbTitle;
+      const originalTitle = work.original_title || work.original_name;
+      
+      // 🌟 辞書を使って、画面の表示タイトルも強制的に邦題へ上書きする
+      const normalizedOrig = normalizeText(originalTitle);
+      if (searchDictionary[normalizedOrig]) {
+        displayTitle = searchDictionary[normalizedOrig];
+      }
+
+      // タイトルを上書きした新しい作品データ（クローン）を作成
+      const updatedWork = {
+        ...work,
+        tmdb_title: originalTmdbTitle, // 🌟 追加：あらすじやキャラ情報取得用のキーとして「元のタイトル」を持たせておく
+        title: work.title ? displayTitle : undefined,
+        name: work.name ? displayTitle : undefined,
+      };
+
+      if (!map.has(displayTitle)) map.set(displayTitle, updatedWork);
     });
     return Array.from(map.values());
   }, [works]);
@@ -65,8 +93,26 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   };
 
   const filteredWorks = useMemo(() => {
+    const searchLower = normalizeText(searchTerm);
+
     return uniqueWorks.filter((work: any) => {
-      const matchesSearch = (work.title || work.name).toLowerCase().includes(searchTerm.toLowerCase());
+      // 🌟 邦題も原題も全部つなげて判定する
+      let allTitles = normalizeText(`
+        ${work.title || ''} 
+        ${work.name || ''} 
+        ${work.original_title || ''} 
+        ${work.original_name || ''}
+      `);
+
+      // 🌟 外部ファイルから読み込んだ辞書を使って、ヒットした作品にキーワードを追加
+      Object.entries(searchDictionary).forEach(([key, value]) => {
+        if (allTitles.includes(key)) {
+          allTitles += value;
+        }
+      });
+      
+      const matchesSearch = allTitles.includes(searchLower);
+      
       const matchesProvider = selectedProviders.length === 0 || 
         work.providers?.some((p: any) => selectedProviders.includes(p.provider_name));
       
@@ -203,6 +249,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       </div>
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
       <ScrollButtons />
+      
       {/* 🌟 フッター部分にバージョン情報を追加 */}
       <footer style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '20px', color: '#666', fontSize: '14px' }}>
         Ver 2.0

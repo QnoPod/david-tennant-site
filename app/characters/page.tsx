@@ -5,6 +5,17 @@ import Link from 'next/link';
 import { customCharacterInfo } from '../data/details';
 import { customCharacterImages } from '../data/characters';
 import ScrollButtons from '../components/ScrollButtons';
+// 🌟 作成した検索辞書をインポート
+import { searchDictionary } from '../data/searchDictionary';
+
+// 🌟 文字を強力に整える関数（邦題変換用）
+const normalizeText = (text: string) => {
+  if (!text) return '';
+  return String(text)
+    .normalize('NFKC')         
+    .toLowerCase()             
+    .replace(/[\s ・=\-.,:;!?'"()\[\]{}~～＆&]/g, ''); 
+};
 
 export default function CharactersPage() {
   const [selectedCharacter, setSelectedCharacter] = useState<any | null>(null);
@@ -23,8 +34,13 @@ export default function CharactersPage() {
 
     const charImage = customCharacterImages[workTitle] || null;
     
+    // 🌟 辞書を使って、画面の表示タイトルを邦題へ変換
+    const normalizedTitle = normalizeText(workTitle);
+    const displayWorkTitle = searchDictionary[normalizedTitle] || workTitle;
+    
     return {
       workTitle,
+      displayWorkTitle, // 🌟 画面表示用のタイトルを追加
       charName,
       charImage,
       fullDescription: rawInfo,
@@ -103,7 +119,8 @@ export default function CharactersPage() {
 
               {/* タイトルとサブタイトルもCSS変数を適用してスマホ時に縮小 */}
               <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>{char.charName}</h2>
-              <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>{char.workTitle}</p>
+              {/* 🌟 ここを char.displayWorkTitle に変更して邦題を表示 */}
+              <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>{char.displayWorkTitle}</p>
             </div>
           ))}
         </div>
@@ -136,7 +153,8 @@ export default function CharactersPage() {
               </div>
               <div>
                 <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
-                <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>作品: {selectedCharacter.workTitle}</p>
+                {/* 🌟 ここも selectedCharacter.displayWorkTitle に変更して邦題を表示 */}
+                <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>作品: {selectedCharacter.displayWorkTitle}</p>
               </div>
             </div>
 

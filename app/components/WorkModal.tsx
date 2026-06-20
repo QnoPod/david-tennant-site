@@ -6,7 +6,12 @@ import { customCharacterInfo } from '../data/details';
 
 export default function WorkModal({ work, onClose }: { work: any, onClose: () => void }) {
   if (!work) return null;
-  const workTitle = work.title || work.name;
+  
+  // 🌟 画面表示用のタイトル
+  const displayTitle = work.title || work.name;
+  
+  // 🌟 あらすじやキャラクター情報（custom...）を取得するための裏側のキー（TMDB本来のタイトル）
+  const lookupKey = work.tmdb_title || work.title || work.name;
 
   return (
     <div 
@@ -29,7 +34,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
         </div>
 
         <div style={{ padding: '30px', marginTop: '-40px', position: 'relative', overflowY: 'auto' }}>
-          <h2 style={{ fontSize: '26px', margin: '0 0 10px 0' }}>{workTitle}</h2>
+          {/* 🌟 画面には邦題（displayTitle）を表示 */}
+          <h2 style={{ fontSize: '26px', margin: '0 0 10px 0' }}>{displayTitle}</h2>
           
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '15px' }}>
             {work.genres && work.genres.map((genre: any) => (
@@ -55,7 +61,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 8px 0' }}>作品あらすじ</h3>
           <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', margin: '0 0 25px 0', whiteSpace: 'pre-wrap' }}>
-            {customOverviews[workTitle] || work.overview || '残念ながら、この作品の日本語のあらすじはまだ登録されていません。'}
+            {/* 🌟 裏側のデータは lookupKey（原題）を使って引き出す */}
+            {customOverviews[lookupKey] || work.overview || '残念ながら、この作品の日本語のあらすじはまだ登録されていません。'}
           </p>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
@@ -67,7 +74,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                          ? '/characters/self-icon.png' 
                        : work.character?.toLowerCase().startsWith('narrator')
                          ? '/characters/narrator-icon.jpg'
-                       : (customCharacterImages[workTitle] || '/default-character.jpg')
+                       : (customCharacterImages[lookupKey] || '/default-character.jpg') /* 🌟 lookupKey を使用 */
                    } 
                       alt="Character" 
                       style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 
@@ -75,7 +82,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             <div>
               <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
                 {
-                    workTitle === '木曜殺人クラブ' 
+                    (lookupKey === 'The Thursday Murder Club' || displayTitle === '木曜殺人クラブ') /* 🌟 両方対応 */
                       ? 'Ian Ventham' 
                        : work.character?.toLowerCase().startsWith('self') 
                         ? '本人' 
@@ -85,7 +92,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                  }
               </div>
               <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
-                {customCharacterInfo[workTitle] || '詳細なキャラクター情報はありません。'}
+                {/* 🌟 裏側のデータは lookupKey（原題）を使って引き出す */}
+                {customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。'}
               </p>
             </div>
           </div>
@@ -102,7 +110,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
           </div>
 
           {/* 🌟 ここから追加：「グッド・オーメンズ」シーズン3の場合のみ注意書きを表示 */}
-          {workTitle === 'Good Omens - Season 3: An Ineffable Goodbye' && (
+          {(lookupKey === 'Good Omens - Season 3: An Ineffable Goodbye' || displayTitle === 'Good Omens - Season 3: An Ineffable Goodbye') && (
             <p style={{ margin: '10px 0 0 0', fontSize: '13px', color: '#ff8787' }}>
               ※日本語字幕なし
             </p>

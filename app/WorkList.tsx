@@ -263,7 +263,10 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           showOnlyFavorites={showOnlyFavorites}
           setShowOnlyFavorites={setShowOnlyFavorites}
         />
-
+        
+        <p style={{ color: '#aaa', marginBottom: '30px', fontSize: '15px' }}>
+          カードをクリックすると詳細が表示されます
+        </p>
         <p style={{ color: '#aaa', marginBottom: '40px' }}>
           {sortedWorks.length} 件の作品を表示中 (全 {uniqueWorks.length} 作品)
         </p>

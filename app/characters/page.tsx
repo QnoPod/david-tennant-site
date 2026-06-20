@@ -54,7 +54,7 @@ export default function CharactersPage() {
       charImage,
       fullDescription: rawInfo,
     };
-  });
+  }).sort((a, b) => a.charName.localeCompare(b.charName, 'ja')); // 🌟 修正：名前の五十音順でソート
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>

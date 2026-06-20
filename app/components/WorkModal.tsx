@@ -92,7 +92,9 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             <div>
               <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
                 {
-                    (lookupKey === 'The Thursday Murder Club' || displayTitle === '木曜殺人クラブ') /* 🌟 両方対応 */
+                    (lookupKey === 'Doctor Who: 60th Anniversary Specials') 
+                      ? '14th Doctor'
+                    : (lookupKey === '木曜殺人クラブ') 
                       ? 'Ian Ventham' 
                        : work.character?.toLowerCase().startsWith('self') 
                         ? '本人' 
@@ -119,13 +121,12 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             )}
           </div>
 
-          {/* 🌟 ここから追加：「グッド・オーメンズ」シーズン3の場合のみ注意書きを表示 */}
-          {(lookupKey === 'Good Omens - Season 3: An Ineffable Goodbye' || displayTitle === 'Good Omens - Season 3: An Ineffable Goodbye') && (
+          {/* 🌟 注意書きを表示する対象リストに追加 */}
+          {(lookupKey === 'Good Omens - Season 3: An Ineffable Goodbye') && (
             <p style={{ margin: '10px 0 0 0', fontSize: '13px', color: '#ff8787' }}>
               ※日本語字幕なし
             </p>
           )}
-          {/* 🌟 ここまで追加 */}
 
         </div>
       </div>

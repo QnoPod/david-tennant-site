@@ -49,7 +49,8 @@ export const customCharacterImages: Record<string, string> = {
   "GO! GO! L.A.": "/characters/Richard.jpg",
   "Takin' Over the Asylum": "/characters/Campbell.jpg",
   "Rab C. Nesbitt": "/characters/Davina.png",
-  "Spaces": "/characters/Vinny.jpg"
+  "Spaces": "/characters/Vinny.jpg",
+  "Doctor Who: 60th Anniversary Specials": "/characters/14thDoctor.jpg",
 
   //"": "/characters/",
 };

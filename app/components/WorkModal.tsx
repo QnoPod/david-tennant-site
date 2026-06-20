@@ -91,19 +91,16 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                  style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 
                />
             <div>
-              <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
+<div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
                 {
-                    (lookupKey === 'Doctor Who: 60th Anniversary Specials') 
-                      ? '14th Doctor'
-                    : (lookupKey === '木曜殺人クラブ') 
-                      ? 'Ian Ventham' 
-                       : work.character?.toLowerCase().startsWith('self') 
-                        ? '本人' 
-                       : work.character?.toLowerCase().startsWith('narrator')
-                        ? 'ナレーター'
-                       : work.character === 'The Doctor' || work.character === 'The Doctor (10)' ? '10th Doctor'
-                       : (customCharacterInfo[lookupKey] ? customCharacterInfo[lookupKey].split('：')[0].split('\n')[0] : work.character || '情報なし')
-                 }
+                  // 🌟 特定の役名は日本語の固定名称を表示し、それ以外はDBの英語表記（work.character）を優先表示
+                   (lookupKey === 'Doctor Who: 60th Anniversary Specials') ? '14th Doctor'
+                  : (lookupKey === '木曜殺人クラブ') ? 'Ian Ventham' 
+                  :(work.character === 'The Doctor' || work.character === 'The Doctor (10)') ? '10代目ドクター'
+                  : work.character === 'Self' ? '本人'
+                  : work.character === 'Narrator' ? 'ナレーター'
+                  : (work.character || '情報なし')
+                }
               </div>
               <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
                 {

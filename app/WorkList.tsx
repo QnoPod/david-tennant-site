@@ -117,19 +117,25 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       
       const matchesSearch = allTitles.includes(searchLower);
       
-      // 🌟 修正：検索対象を「TMDBのキャラ名」＋「details.tsから抽出した日本語名」に拡大
+      // 🌟 検索対象を「TMDBのキャラ名」＋「details.tsから抽出した日本語名」に拡大
       const workTitle = work.tmdb_title || work.title || work.name;
       const charInfoRaw = customCharacterInfo[workTitle] || ''; 
       
-      // \n または ： より前の部分だけを名前として抽出[cite: 9]
+      // 🌟 共通情報の取得 (10代目ドクターの場合、共通情報を検索対象に追加)
+      const tenDocInfo = customCharacterInfo["10th Doctor"] || '';
+      const isTenDoc = work.character === 'The Doctor' || work.character === 'The Doctor (10)';
+      
+      // \n または ： より前の部分だけを名前として抽出
       const extractedCharName = charInfoRaw.includes('：') 
         ? charInfoRaw.split('：')[0] 
         : charInfoRaw.includes('\n') 
         ? charInfoRaw.split('\n')[0] 
         : charInfoRaw;
 
-      // 🌟 検索対象はTMDBのキャラ名と、抽出した日本語名[cite: 9]
-      const charName = normalizeText(`${work.character || ''} ${extractedCharName}`);
+      // 🌟 検索対象はTMDBのキャラ名と、抽出した日本語名＋共通情報
+      const charName = normalizeText(
+        `${work.character || ''} ${extractedCharName} ${isTenDoc ? tenDocInfo : ''}`
+      );
       
       // 🌟 キャラクター名検索の判定
       const matchesCharSearch = charName.includes(charSearchLower);
@@ -224,7 +230,6 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        {/* 🌟 タイトル部分を修正 */}
         <h1 className="main-title" style={{ marginBottom: '10px' }}>
           David Tennant<span className="title-dash"> - </span><span className="title-sub">作品＆配信情報</span>
         </h1>
@@ -238,8 +243,8 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         <FilterControls 
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
-          charSearchTerm={charSearchTerm}        // 🌟 追加
-          setCharSearchTerm={setCharSearchTerm}  // 🌟 追加
+          charSearchTerm={charSearchTerm}
+          setCharSearchTerm={setCharSearchTerm}
           availabilityFilter={availabilityFilter}
           setAvailabilityFilter={setAvailabilityFilter}
           allProviders={allProviders}
@@ -263,7 +268,6 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           {sortedWorks.length} 件の作品を表示中 (全 {uniqueWorks.length} 作品)
         </p>
         
-        {/* 🌟 inlineのstyleを消して、className="work-grid" を適用 */}
         <div className="work-grid">
           {sortedWorks.map((work: any, index: number) => (
             <WorkCard key={`${work.id}-${index}`} work={work} onClick={() => setSelectedWork(work)} />
@@ -272,8 +276,8 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       </div>
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
       <ScrollButtons />
-      
-      {/* 🌟 フッター部分にバージョン情報を追加 */}
+
+      {/* 🌟 フッター部分にバージョン情報を追加 */}      
       <footer style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '20px', color: '#666', fontSize: '14px' }}>
         Ver 2.0
       </footer>

@@ -51,6 +51,9 @@ export const customCharacterImages: Record<string, string> = {
   "Rab C. Nesbitt": "/characters/Davina.png",
   "Spaces": "/characters/Vinny.jpg",
   "Doctor Who: 60th Anniversary Specials": "/characters/14thDoctor.jpg",
+  "self": "/characters/self-icon.png",
+  "narrator": "/characters/narrator-icon.jpg",
+  "10th doctor": "/characters/10thDoctor.jpg",
 
   //"": "/characters/",
 };

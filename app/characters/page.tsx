@@ -32,7 +32,13 @@ export default function CharactersPage() {
       charName = rawInfo;
     }
 
-    const charImage = customCharacterImages[workTitle] || null;
+    // 🌟 修正：WorkModalと同じロジックで画像キーを解決する
+    const imageKey = 
+      (charName.includes('10th Doctor') || charName.includes('10代目ドクター')) ? '10th doctor' :
+      charName.includes('14代目ドクター') ? 'Doctor Who: 60th Anniversary Specials' :
+      workTitle;
+    
+    const charImage = customCharacterImages[imageKey] || customCharacterImages[workTitle] || null;
     
     // 🌟 辞書を使って、画面の表示タイトルを邦題へ変換
     const normalizedTitle = normalizeText(workTitle);
@@ -40,7 +46,7 @@ export default function CharactersPage() {
     
     return {
       workTitle,
-      displayWorkTitle, // 🌟 画面表示用のタイトルを追加
+      displayWorkTitle, // 🌟 画面表示用のタイトル
       charName,
       charImage,
       fullDescription: rawInfo,
@@ -119,7 +125,7 @@ export default function CharactersPage() {
 
               {/* タイトルとサブタイトルもCSS変数を適用してスマホ時に縮小 */}
               <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>{char.charName}</h2>
-              {/* 🌟 ここを char.displayWorkTitle に変更して邦題を表示 */}
+              {/* 🌟 邦題を表示 */}
               <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>{char.displayWorkTitle}</p>
             </div>
           ))}
@@ -153,7 +159,7 @@ export default function CharactersPage() {
               </div>
               <div>
                 <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
-                {/* 🌟 ここも selectedCharacter.displayWorkTitle に変更して邦題を表示 */}
+                {/* 🌟 邦題を表示 */}
                 <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>作品: {selectedCharacter.displayWorkTitle}</p>
               </div>
             </div>

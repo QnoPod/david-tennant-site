@@ -77,18 +77,19 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
           <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '25px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-              {/* 🌟 修正：キャラクター名によって表示する画像を切り替える */}
+               {/* 🌟 修正：すべての画像を customCharacterImages から取得。selfやnarratorのキーもここから参照される */}
                <img 
                  src={
-                       work.character?.toLowerCase().startsWith('self') 
-                         ? '/characters/self-icon.png' 
-                       : work.character?.toLowerCase().startsWith('narrator')
-                         ? '/characters/narrator-icon.jpg'
-                       : (customCharacterImages[lookupKey] || '/default-character.jpg') /* 🌟 lookupKey を使用 */
-                   } 
-                      alt="Character" 
-                      style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 
-                 />
+                   customCharacterImages[
+                     work.character?.toLowerCase().startsWith('self') ? 'self' :
+                     work.character?.toLowerCase().startsWith('narrator') ? 'narrator' : 
+                     (work.character === 'The Doctor' || work.character === 'The Doctor (10)') ? '10th doctor' :
+                     lookupKey
+                   ] || '/default-character.jpg'
+                 } 
+                 alt="Character" 
+                 style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 
+               />
             <div>
               <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
                 {
@@ -100,12 +101,17 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                         ? '本人' 
                        : work.character?.toLowerCase().startsWith('narrator')
                         ? 'ナレーター'
-                       : (work.character || '情報なし')
+                       : work.character === 'The Doctor' || work.character === 'The Doctor (10)' ? '10th Doctor'
+                       : (customCharacterInfo[lookupKey] ? customCharacterInfo[lookupKey].split('：')[0].split('\n')[0] : work.character || '情報なし')
                  }
               </div>
               <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
-                {/* 🌟 裏側のデータは lookupKey（原題）を使って引き出す */}
-                {customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。'}
+                {
+                  // 🌟 10代目ドクターなら共通の説明文を、それ以外なら作品ごとの詳細を表示
+                  (work.character === 'The Doctor' || work.character === 'The Doctor (10)') 
+                    ? customCharacterInfo["10th Doctor"] 
+                    : (customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。')
+                }
               </p>
             </div>
           </div>

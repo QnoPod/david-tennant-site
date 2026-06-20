@@ -97,8 +97,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                    (lookupKey === 'Doctor Who: 60th Anniversary Specials') ? '14th Doctor'
                   : (lookupKey === '木曜殺人クラブ') ? 'Ian Ventham' 
                   :(work.character === 'The Doctor' || work.character === 'The Doctor (10)') ? '10代目ドクター'
-                  : work.character === 'Self' ? '本人'
-                  : work.character === 'Narrator' ? 'ナレーター'
+                  : work.character?.toLowerCase().startsWith('self') ? '本人'
+                  : work.character?.toLowerCase().startsWith('narrator') ? 'ナレーター'
                   : (work.character || '情報なし')
                 }
               </div>

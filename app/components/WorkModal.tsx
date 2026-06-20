@@ -101,6 +101,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
               else if (lookupKey === '木曜殺人クラブ') displayCharName = 'Ian Ventham';
               else if (lookupKey === 'Being Considered') displayCharName = 'Ex';
               else if (lookupKey === 'Randall & Hopkirk (Deceased)') displayCharName = 'Gordon Stylus';
+              else if (lookupKey === 'A Mug\'s Game') displayCharName = 'Gavin';
               else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') displayCharName = '10代目ドクター';
               else if (charNameTrimmed.toLowerCase().startsWith('self')) displayCharName = '本人';
               else if (charNameTrimmed.toLowerCase().startsWith('narrator')) displayCharName = 'ナレーター';

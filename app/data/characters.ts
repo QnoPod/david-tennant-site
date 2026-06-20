@@ -82,6 +82,18 @@ export const customCharacterImages: Record<string, string> = {
   "Donald Peterson": "/characters/donald.jpg",
   "Roderick Peterson": "/characters/roderick.jpg", //
   "96 Ways to Say I Love You": "/characters/Mark.jpg",
+  "Hang Ups": "/characters/Martin Lamb.jpg",
+  "A Mug's Game": "/characters/Gavin.jpg",
+  "HOLDING THE BABY": "/characters/Nurse.jpg",
+  "THE MINOR CHARACTER": "/characters/Will.jpg",
+  "THIS IS JINSY": "/characters/Mr Slightlyman.jpg",
+  "THE ROMANTICS": "/characters/Jean-Jacques Rousseau.jpg",
+  "POSH NOSH": "/characters/Jose-Luis and Piers.jpg",
+  "HIGH STAKES": "/characters/Gaz Witney.jpg",
+  "THE BILL": "/characters/Steve Clemens.jpg",
+  "BUNCH OF FIVE": "/characters/Policeman.jpg",
+
+
 
   //"": "/characters/",
 };

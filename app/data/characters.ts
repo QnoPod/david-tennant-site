@@ -79,8 +79,8 @@ export const customCharacterImages: Record<string, string> = {
   "ブラック・レコード〜禁じられた記録〜/ヒトラーコード39": "/characters/Hector.jpg",
   "ユナイテッド -ミュンヘンの悲劇-": "/characters/Jimmy Murphy.jpg",
   "True Love": "/characters/Nick.jpg",
-  "Donald Peterson": "/characters/donald.jpg",
-  "Roderick Peterson": "/characters/roderick.jpg", //
+  "Donald Peterson": "/characters/Donald.jpg",
+  "Roderick Peterson": "/characters/Roderick.jpg", //
   "96 Ways to Say I Love You": "/characters/Mark.jpg",
   "Hang Ups": "/characters/Martin Lamb.jpg",
   "A Mug's Game": "/characters/Gavin.jpg",

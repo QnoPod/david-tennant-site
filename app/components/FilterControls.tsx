@@ -4,6 +4,8 @@ import { Dispatch, SetStateAction } from 'react';
 type Props = {
   searchTerm: string;
   setSearchTerm: (val: string) => void;
+  charSearchTerm: string;        
+  setCharSearchTerm: (val: string) => void; 
   availabilityFilter: string;
   setAvailabilityFilter: (val: string) => void;
   allProviders: string[];
@@ -24,21 +26,63 @@ type Props = {
 };
 
 export default function FilterControls({
-  searchTerm, setSearchTerm, availabilityFilter, setAvailabilityFilter,
+  searchTerm, setSearchTerm, charSearchTerm, setCharSearchTerm, availabilityFilter, setAvailabilityFilter,
   allProviders, selectedProviders, toggleProvider, setSelectedProviders,
   allGenres, selectedGenres, setSelectedGenres, genreSearchMode, setGenreSearchMode,
   sortOrder, setSortOrder, isExpanded, setIsExpanded,
   showOnlyFavorites, setShowOnlyFavorites
 }: Props) {
+  
+  // 🌟 アイコン付き入力欄用の共通スタイル
+  const inputWrapperStyle = {
+    position: 'relative' as const,
+    width: '100%',
+  };
+  
+  const iconStyle = {
+    position: 'absolute' as const,
+    left: '12px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    fontSize: '18px',
+    pointerEvents: 'none' as const,
+  };
+
+  const inputStyle = {
+    width: '100%',
+    padding: '12px 12px 12px 40px', // 左側にアイコン分のスペースを空ける
+    borderRadius: '8px',
+    border: '1px solid #444',
+    backgroundColor: '#141414',
+    color: '#fff',
+    fontSize: '16px',
+  };
+
   return (
     <div style={{ marginBottom: '30px', padding: '20px', backgroundColor: '#222', borderRadius: '12px' }}>
-      <input 
-        type="text"
-        placeholder="作品名で検索..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ width: '100%', padding: '12px', marginBottom: '20px', borderRadius: '8px', border: '1px solid #444', backgroundColor: '#141414', color: '#fff', fontSize: '16px' }}
-      />
+      {/* 🌟 アイコン付き入力欄に変更 */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+        <div style={inputWrapperStyle}>
+          <span style={iconStyle}>🎬</span>
+          <input 
+            type="text"
+            placeholder="作品名で検索..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={inputStyle}
+          />
+        </div>
+        <div style={inputWrapperStyle}>
+          <span style={iconStyle}>👥</span>
+          <input 
+            type="text"
+            placeholder="キャラクター名で検索..."
+            value={charSearchTerm}
+            onChange={(e) => setCharSearchTerm(e.target.value)}
+            style={inputStyle}
+          />
+        </div>
+      </div>
     
       <div style={{ marginBottom: '20px', display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center' }}>
         {['ALL', 'AVAILABLE', 'UNAVAILABLE'].map((val) => (
@@ -64,7 +108,6 @@ export default function FilterControls({
             お気に入りのみ表示
           </label>
           
-          {/* 🌟 お気に入り全解除ボタン */}
           {showOnlyFavorites && (
             <button 
               onClick={() => {

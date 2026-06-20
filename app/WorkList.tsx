@@ -8,6 +8,8 @@ import WorkModal from './components/WorkModal';
 import ScrollButtons from './components/ScrollButtons'; 
 // 🌟 作成した検索辞書をインポート
 import { searchDictionary } from './data/searchDictionary';
+// 🌟 キャラクター名情報がある details をインポート
+import { customCharacterInfo } from './data/details';
 
 // 🌟 文字を強力に整える関数（コンポーネントの外に出して全体で使い回す）
 const normalizeText = (text: string) => {
@@ -47,6 +49,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
   const [selectedWork, setSelectedWork] = useState<any | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [charSearchTerm, setCharSearchTerm] = useState(''); // 🌟 キャラクター検索用state
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [availabilityFilter, setAvailabilityFilter] = useState('ALL');
   const [sortOrder, setSortOrder] = useState<'default' | 'popularity' | 'title'>('default');
@@ -94,6 +97,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
   const filteredWorks = useMemo(() => {
     const searchLower = normalizeText(searchTerm);
+    const charSearchLower = normalizeText(charSearchTerm); // 🌟 キャラクタ検索用の正規化
 
     return uniqueWorks.filter((work: any) => {
       // 🌟 邦題も原題も全部つなげて判定する
@@ -113,6 +117,23 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       
       const matchesSearch = allTitles.includes(searchLower);
       
+      // 🌟 修正：検索対象を「TMDBのキャラ名」＋「details.tsから抽出した日本語名」に拡大
+      const workTitle = work.tmdb_title || work.title || work.name;
+      const charInfoRaw = customCharacterInfo[workTitle] || ''; 
+      
+      // \n または ： より前の部分だけを名前として抽出[cite: 9]
+      const extractedCharName = charInfoRaw.includes('：') 
+        ? charInfoRaw.split('：')[0] 
+        : charInfoRaw.includes('\n') 
+        ? charInfoRaw.split('\n')[0] 
+        : charInfoRaw;
+
+      // 🌟 検索対象はTMDBのキャラ名と、抽出した日本語名[cite: 9]
+      const charName = normalizeText(`${work.character || ''} ${extractedCharName}`);
+      
+      // 🌟 キャラクター名検索の判定
+      const matchesCharSearch = charName.includes(charSearchLower);
+      
       const matchesProvider = selectedProviders.length === 0 || 
         work.providers?.some((p: any) => selectedProviders.includes(p.provider_name));
       
@@ -129,9 +150,9 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
       const matchesFavorites = !showOnlyFavorites || favorites.includes(work.id);
       
-      return matchesSearch && matchesProvider && matchesAvailability && matchesGenre && matchesFavorites;
+      return matchesSearch && matchesCharSearch && matchesProvider && matchesAvailability && matchesGenre && matchesFavorites;
     });
-  }, [uniqueWorks, searchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode, showOnlyFavorites, favorites]);
+  }, [uniqueWorks, searchTerm, charSearchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode, showOnlyFavorites, favorites]);
 
   const sortedWorks = useMemo(() => {
     let list = [...filteredWorks];
@@ -217,6 +238,8 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         <FilterControls 
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
+          charSearchTerm={charSearchTerm}        // 🌟 追加
+          setCharSearchTerm={setCharSearchTerm}  // 🌟 追加
           availabilityFilter={availabilityFilter}
           setAvailabilityFilter={setAvailabilityFilter}
           allProviders={allProviders}

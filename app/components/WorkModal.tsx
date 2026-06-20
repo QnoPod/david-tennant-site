@@ -10,6 +10,9 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
   // 🌟 画面表示用のタイトル
   const displayTitle = work.title || work.name;
   
+  // 🌟 原題（邦題と異なる場合のみ表示用）
+  const originalTitle = work.original_title || work.original_name;
+
   // 🌟 あらすじやキャラクター情報（custom...）を取得するための裏側のキー（TMDB本来のタイトル）
   const lookupKey = work.tmdb_title || work.title || work.name;
 
@@ -35,7 +38,14 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
         <div style={{ padding: '30px', marginTop: '-40px', position: 'relative', overflowY: 'auto' }}>
           {/* 🌟 画面には邦題（displayTitle）を表示 */}
-          <h2 style={{ fontSize: '26px', margin: '0 0 10px 0' }}>{displayTitle}</h2>
+          <h2 style={{ fontSize: '26px', margin: '0 0 4px 0' }}>{displayTitle}</h2>
+          
+          {/* 🌟 邦題と原題が違う場合のみ、小さく原題を表示する */}
+          {(originalTitle && originalTitle !== displayTitle) && (
+            <p style={{ margin: '0 0 15px 0', fontSize: '15px', color: '#aaa', lineHeight: '1.2' }}>
+              {originalTitle}
+            </p>
+          )}
           
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '15px' }}>
             {work.genres && work.genres.map((genre: any) => (

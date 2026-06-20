@@ -93,7 +93,15 @@ export default function CharactersPage() {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
+          
+          {/* 🌟 修正：タイトルと投票ボタンを同じグループに入れて横並びにする */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
+            <Link href="/character-sort" prefetch={true} style={{ color: '#fff', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#ff9f43', borderRadius: '8px', fontWeight: 'bold' }}>
+               🏆 投票で遊ぶ（お試し設置中）
+            </Link>
+          </div>
+
           <Link href="/" prefetch={true} style={{ color: '#ff9f43', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
             ← 作品リストに戻る
           </Link>

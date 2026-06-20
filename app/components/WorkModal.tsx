@@ -96,6 +96,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                   // 🌟 特定の役名は日本語の固定名称を表示し、それ以外はDBの英語表記（work.character）を優先表示
                    (lookupKey === 'Doctor Who: 60th Anniversary Specials') ? '14th Doctor'
                   : (lookupKey === '木曜殺人クラブ') ? 'Ian Ventham' 
+                  : (lookupKey === 'Being Considered') ? 'Ex' 
+                  : (lookupKey === 'Randall & Hopkirk (Deceased)') ? 'Gordon Stylus' 
                   :(work.character === 'The Doctor' || work.character === 'The Doctor (10)') ? '10代目ドクター'
                   : work.character?.toLowerCase().startsWith('self') ? '本人'
                   : work.character?.toLowerCase().startsWith('narrator') ? 'ナレーター'

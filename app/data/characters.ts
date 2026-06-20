@@ -55,6 +55,27 @@ export const customCharacterImages: Record<string, string> = {
   "narrator": "/characters/narrator-icon.jpg",
   "10th doctor": "/characters/10thDoctor.jpg",
   "There She Goes": "/characters/Simon.jpg",
+  "Recovery": "/characters/Alan Hamilton.jpg",
+  "Dramarama": "/characters/Neil McDonald.jpg",
+  "Biting the Hands": "/characters/Third Squaddie.jpg",
+  "The Tales of Para Handy": "/characters/John MacBryde.jpg",
+  "Jude": "/characters/Drunk Undergraduate.jpg",
+  "Quality Control": "/characters/Gary Innes.jpg",
+  "Duck Patrol": "/characters/Simon 'Darwin' Brown.jpg",
+  "The Mrs Bradley Mysteries": "/characters/Max Valentine.jpg",
+  "People Like Us": "/characters/Rob Harker.jpg",
+  "Being Considered": "/characters/Ex.jpg",
+  "Randall & Hopkirk (Deceased)": "/characters/Gordon Stylus.jpg",
+  "The Last September": "/characters/Captain Gerald Colthurst.jpg",
+  "Terri McIntyre - Classy Bitch": "/characters/Greig Miller.jpg",
+  "Dead Ringers": "/characters/Regenerated Tony Blair.jpg",
+  "Trust": "/characters/Gavin MacEwan.png",
+  "Spine Chillers": "/characters/Dr. Krull.jpg",
+  "Old Street": "/characters/Mr. Watson.jpg",
+  "The Deputy": "/characters/Christopher Williams.jpg",
+  "The Quatermass Experiment": "/characters/Doctor Gordon Briscoe.jpg",
+
+
 
   //"": "/characters/",
 };

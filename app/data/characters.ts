@@ -54,6 +54,7 @@ export const customCharacterImages: Record<string, string> = {
   "self": "/characters/self-icon.png",
   "narrator": "/characters/narrator-icon.jpg",
   "10th doctor": "/characters/10thDoctor.jpg",
+  "There She Goes": "/characters/Simon.jpg",
 
   //"": "/characters/",
 };

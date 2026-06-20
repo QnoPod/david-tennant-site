@@ -92,17 +92,18 @@ export default function CharactersPage() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        {/* 🌟 修正：alignItemsを 'flex-start' にして上揃えにする */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
           
-          {/* 🌟 修正：タイトルと投票ボタンを同じグループに入れて横並びにする */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          {/* 🌟 修正：flexDirection を 'column' にしてタイトルとボタンを縦並びにする */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
-            <Link href="/character-sort" prefetch={true} style={{ color: '#fff', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#ff9f43', borderRadius: '8px', fontWeight: 'bold' }}>
+            <Link href="/character-sort" prefetch={true} style={{ color: '#fff', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#ff9f43', borderRadius: '8px', fontWeight: 'bold', width: 'fit-content' }}>
                🏆 投票で遊ぶ（お試し設置中）
             </Link>
           </div>
 
-          <Link href="/" prefetch={true} style={{ color: '#ff9f43', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
+          <Link href="/" prefetch={true} style={{ color: '#ff9f43', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px', marginTop: '5px' }}>
             ← 作品リストに戻る
           </Link>
         </div>

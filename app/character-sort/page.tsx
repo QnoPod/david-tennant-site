@@ -169,7 +169,7 @@ export default function CharacterSortPage() {
     return text;
   };
 
-  // 🌟 追加：Canvasを使って1位〜3位の画像を1枚に合成し、共有・保存する機能
+  // Canvasを使って1位〜3位の画像を1枚に合成し、共有・保存する機能
   const shareOrDownloadImage = async () => {
     if (ranking.length === 0) return;
 
@@ -313,10 +313,20 @@ export default function CharacterSortPage() {
         .btn-image { background-color: #ff9f43; color: #fff; }
         .btn-copy { background-color: #444; color: #fff; }
 
+        /* 🌟 キャラクター名・作品名をCSSクラスで管理 */
+        .char-name { font-size: 20px; margin: 0 0 5px 0; color: #fff; }
+        .char-work { font-size: 13px; color: #888; margin: 0 0 25px 0; }
+
         @media (max-width: 768px) {
-          .matchup-container { flex-direction: column; align-items: center; gap: 20px; }
-          .vs-text { margin: 10px 0; }
-          .char-card { width: 100%; max-width: 350px; padding: 20px; }
+          /* 🌟 修正：縦積み（column）から横並び（row）に変更し、全体のサイズを縮小 */
+          .matchup-container { flex-direction: row; gap: 8px; margin-bottom: 20px; }
+          .char-card { width: 50%; padding: 15px 10px; }
+          .char-image-wrap { width: 80px; height: 80px; margin-bottom: 10px; border-width: 2px; }
+          .char-name { font-size: 14px; margin-bottom: 3px; }
+          .char-work { font-size: 11px; margin-bottom: 15px; }
+          .vote-btn { padding: 10px 5px; font-size: 13px; margin-bottom: 10px; }
+          .skip-btn { padding: 8px 5px; font-size: 10px; }
+          .vs-text { font-size: 16px; margin: 0; }
         }
       `}</style>
 
@@ -364,26 +374,28 @@ export default function CharacterSortPage() {
             <div className="matchup-container">
               <div className="char-card">
                 <div className="char-image-wrap"><img src={matchUp[0].charImage} alt={matchUp[0].charName} /></div>
-                <h2 style={{ fontSize: '20px', margin: '0 0 5px 0' }}>{matchUp[0].charName}</h2>
-                <p style={{ fontSize: '13px', color: '#888', margin: '0 0 25px 0' }}>{matchUp[0].workTitle}</p>
+                {/* 🌟 インラインスタイルからCSSクラスに変更 */}
+                <h2 className="char-name">{matchUp[0].charName}</h2>
+                <p className="char-work">{matchUp[0].workTitle}</p>
                 <button className="vote-btn" onClick={() => handleVote(matchUp[0].id, matchUp[1].id)}>👈 こっち！</button>
-                <button className="skip-btn" onClick={() => handleSkip('A')}>知らない（ソートから除外）</button>
+                <button className="skip-btn" onClick={() => handleSkip('A')}>知らない（除外）</button>
               </div>
 
               <div className="vs-text">VS</div>
 
               <div className="char-card">
                 <div className="char-image-wrap"><img src={matchUp[1].charImage} alt={matchUp[1].charName} /></div>
-                <h2 style={{ fontSize: '20px', margin: '0 0 5px 0' }}>{matchUp[1].charName}</h2>
-                <p style={{ fontSize: '13px', color: '#888', margin: '0 0 25px 0' }}>{matchUp[1].workTitle}</p>
+                {/* 🌟 インラインスタイルからCSSクラスに変更 */}
+                <h2 className="char-name">{matchUp[1].charName}</h2>
+                <p className="char-work">{matchUp[1].workTitle}</p>
                 <button className="vote-btn" onClick={() => handleVote(matchUp[1].id, matchUp[0].id)}>こっち！ 👉</button>
-                <button className="skip-btn" onClick={() => handleSkip('B')}>知らない（ソートから除外）</button>
+                <button className="skip-btn" onClick={() => handleSkip('B')}>知らない（除外）</button>
               </div>
             </div>
 
             <div style={{ textAlign: 'center' }}>
               <button onClick={() => handleSkip('Both')} style={{ backgroundColor: '#333', color: '#aaa', border: 'none', padding: '12px 30px', borderRadius: '30px', fontSize: '15px', cursor: 'pointer', marginBottom: '40px' }}>
-                両方とも知らない（ソートから除外）
+                両方とも知らない（両方除外）
               </button>
             </div>
 
@@ -410,7 +422,6 @@ export default function CharacterSortPage() {
                 </p>
               ) : (
                 <>
-                  {/* 🌟 修正：シェアボタン群に「画像生成」ボタンを追加 */}
                   <div className="share-btn-group" style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '40px' }}>
                     <button className="share-btn btn-image" onClick={shareOrDownloadImage}>
                       📸 結果を画像にしてシェア／保存

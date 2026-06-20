@@ -81,12 +81,7 @@ export const customCharacterImages: Record<string, string> = {
   "True Love": "/characters/Nick.jpg",
   "Donald Peterson": "/characters/donald.jpg",
   "Roderick Peterson": "/characters/roderick.jpg", //
-  //"Nativity 2: Danger in the Manger!": "/characters/Donald.jpg",
-  //"Nativity 2: Danger in the Manger!": "/characters/Roderick.jpg",
-  //"": "/characters/",
-  //"": "/characters/",
-
-
+  "96 Ways to Say I Love You": "/characters/Mark.jpg",
 
   //"": "/characters/",
 };

@@ -74,6 +74,15 @@ export const customCharacterImages: Record<string, string> = {
   "Old Street": "/characters/Mr. Watson.jpg",
   "The Deputy": "/characters/Christopher Williams.jpg",
   "The Quatermass Experiment": "/characters/Doctor Gordon Briscoe.jpg",
+  "Sweetnightgoodheart": "/characters/Pete.jpg",
+  "The Chatterley Affair": "/characters/Richard Hoggart.jpg",
+  "ブラック・レコード〜禁じられた記録〜/ヒトラーコード39": "/characters/Hector.jpg",
+  "ユナイテッド -ミュンヘンの悲劇-": "/characters/Jimmy Murphy.jpg",
+  "True Love": "/characters/Nick.jpg",
+  //"Nativity 2: Danger in the Manger!": "/characters/Donald.jpg",
+  //"Nativity 2: Danger in the Manger!": "/characters/Roderick.jpg",
+  //"": "/characters/",
+  //"": "/characters/",
 
 
 

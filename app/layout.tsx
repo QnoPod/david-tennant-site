@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// 🌟 Vercel Analytics をインポート
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +17,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "David Tennant 作品データベース",
   description: "デヴィッド・テナントの出演作品をまとめたサイトです",
-  // ↓ ここからOGPの設定を追加！
   openGraph: {
     title: "David Tennant 作品データベース",
     description: "デヴィッド・テナントの出演作品をまとめたサイトです",
@@ -43,10 +44,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ja" // 🌟 サイトの言語を日本語(ja)に設定
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* 🌟 bodyの最後にAnalyticsを追加 */}
+        <Analytics />
+      </body>
     </html>
   );
 }

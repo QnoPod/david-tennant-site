@@ -79,6 +79,8 @@ export const customCharacterImages: Record<string, string> = {
   "ブラック・レコード〜禁じられた記録〜/ヒトラーコード39": "/characters/Hector.jpg",
   "ユナイテッド -ミュンヘンの悲劇-": "/characters/Jimmy Murphy.jpg",
   "True Love": "/characters/Nick.jpg",
+  "Donald Peterson": "/characters/donald.jpg",
+  "Roderick Peterson": "/characters/roderick.jpg", //
   //"Nativity 2: Danger in the Manger!": "/characters/Donald.jpg",
   //"Nativity 2: Danger in the Manger!": "/characters/Roderick.jpg",
   //"": "/characters/",

@@ -76,44 +76,64 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
           </p>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
-          <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '25px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-               {/* 🌟 修正：すべての画像を customCharacterImages から取得。selfやnarratorのキーもここから参照される */}
-               <img 
-                 src={
-                   customCharacterImages[
-                     work.character?.toLowerCase().startsWith('self') ? 'self' :
-                     work.character?.toLowerCase().startsWith('narrator') ? 'narrator' : 
-                     (work.character === 'The Doctor' || work.character === 'The Doctor (10)') ? '10th doctor' :
-                     lookupKey
-                   ] || '/default-character.jpg'
-                 } 
-                 alt="Character" 
-                 style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover' }} 
-               />
-            <div>
-<div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
-                {
-                  // 🌟 特定の役名は日本語の固定名称を表示し、それ以外はDBの英語表記（work.character）を優先表示
-                   (lookupKey === 'Doctor Who: 60th Anniversary Specials') ? '14th Doctor'
-                  : (lookupKey === '木曜殺人クラブ') ? 'Ian Ventham' 
-                  : (lookupKey === 'Being Considered') ? 'Ex' 
-                  : (lookupKey === 'Randall & Hopkirk (Deceased)') ? 'Gordon Stylus' 
-                  :(work.character === 'The Doctor' || work.character === 'The Doctor (10)') ? '10代目ドクター'
-                  : work.character?.toLowerCase().startsWith('self') ? '本人'
-                  : work.character?.toLowerCase().startsWith('narrator') ? 'ナレーター'
-                  : (work.character || '情報なし')
-                }
-              </div>
-              <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0 }}>
-                {
-                  // 🌟 10代目ドクターなら共通の説明文を、それ以外なら作品ごとの詳細を表示
-                  (work.character === 'The Doctor' || work.character === 'The Doctor (10)') 
-                    ? customCharacterInfo["10th Doctor"] 
-                    : (customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。')
-                }
-              </p>
-            </div>
-          </div>
+          
+          {/* 🌟 修正："/" で分割してキャラクター枠のブロックそのものを複数生成する */}
+          {
+            (work.character || '情報なし').split('/').map((charPart: string, index: number) => {
+              // 前後の空白を削除（例: "Donald", "Roderick Peterson"）
+              const charNameTrimmed = charPart.trim();
+              
+              // 🌟 1. 各キャラクターの画像キーを判定
+              let imageKey = lookupKey; // 基本は作品名
+              if (charNameTrimmed.toLowerCase().startsWith('self')) imageKey = 'self';
+              else if (charNameTrimmed.toLowerCase().startsWith('narrator')) imageKey = 'narrator';
+              else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') imageKey = '10th doctor';
+              else if (lookupKey === 'Nativity 2: Danger in the Manger!') {
+                // "Donald" だった場合は "Donald Peterson" をキーとして探す
+                imageKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
+              }
+              
+              const imgSrc = customCharacterImages[imageKey] || customCharacterImages[lookupKey] || '/default-character.jpg';
+
+              // 🌟 2. キャラクター名（青字）の表示内容を判定
+              let displayCharName = charNameTrimmed;
+              if (lookupKey === 'Doctor Who: 60th Anniversary Specials') displayCharName = '14th Doctor';
+              else if (lookupKey === '木曜殺人クラブ') displayCharName = 'Ian Ventham';
+              else if (lookupKey === 'Being Considered') displayCharName = 'Ex';
+              else if (lookupKey === 'Randall & Hopkirk (Deceased)') displayCharName = 'Gordon Stylus';
+              else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') displayCharName = '10代目ドクター';
+              else if (charNameTrimmed.toLowerCase().startsWith('self')) displayCharName = '本人';
+              else if (charNameTrimmed.toLowerCase().startsWith('narrator')) displayCharName = 'ナレーター';
+              else if (lookupKey === 'Nativity 2: Danger in the Manger!' && charNameTrimmed === 'Donald') displayCharName = 'Donald Peterson';
+
+              // 🌟 3. 説明文のキーを判定
+              let descKey = lookupKey; // 基本は作品名
+              if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') descKey = '10th Doctor';
+              else if (lookupKey === 'Nativity 2: Danger in the Manger!') {
+                // "Donald" だった場合は "Donald Peterson" をキーとして探す
+                descKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
+              }
+
+              return (
+                <div key={index} style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '15px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                  <img 
+                    src={imgSrc} 
+                    alt="Character" 
+                    style={{ width: '100px', height: '100px', borderRadius: '8px', objectFit: 'cover', flexShrink: 0 }} 
+                  />
+                  <div>
+                    <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: '8px' }}>
+                      {displayCharName}
+                    </div>
+                    {/* whiteSpace: 'pre-wrap' を維持して改行を反映 */}
+                    <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0, whiteSpace: 'pre-wrap' }}>
+                      {customCharacterInfo[descKey] || customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。'}
+                    </p>
+                  </div>
+                </div>
+              );
+            })
+          }
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 8px 0' }}>日本での配信状況</h3>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>

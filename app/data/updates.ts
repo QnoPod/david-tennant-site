@@ -9,8 +9,12 @@ export type UpdateInfo = {
 export const siteUpdates: UpdateInfo[] = [
   {
     date: "2026.06.21",
-    content: "タイムライン表示機能を追加しました。作品一覧とキャラクターリストの両方で、歴史を追えるようになります。",
+    content: "キャラクターリストを属性ごとにグループ化・表示切替できるようになりました。",
     isImportant: true,
+  },
+  {
+    date: "2026.06.21",
+    content: "タイムライン表示機能を追加しました。作品一覧とキャラクターリストの両方で、歴史を追えるようになります。",
   },
   {
     date: "2026.06.21",

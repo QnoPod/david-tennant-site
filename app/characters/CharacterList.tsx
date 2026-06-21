@@ -135,7 +135,17 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
       if (viewMode === 'timeline') {
         const yearA = a.year === '年不明' ? 0 : parseInt(a.year); // 年不明は一番最後にするため 0 扱い
         const yearB = b.year === '年不明' ? 0 : parseInt(b.year);
-        if (yearA !== yearB) return yearB - yearA; // 新しい順（降順）
+        
+        if (yearA !== yearB) {
+          return yearB - yearA; // 新しい順（降順）
+        }
+        
+        // 🌟 追加：公開年が同じ場合は年齢が高いほうを上にくるように修正
+        const ageA = a.age === '不明' ? 0 : Number(a.age);
+        const ageB = b.age === '不明' ? 0 : Number(b.age);
+        if (ageA !== ageB) {
+          return ageB - ageA; // 年齢の高い順（降順）
+        }
       }
       return a.charName.localeCompare(b.charName, 'ja');
     });

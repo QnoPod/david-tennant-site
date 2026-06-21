@@ -75,6 +75,22 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             {customOverviews[lookupKey] || work.overview || '残念ながら、この作品の日本語のあらすじはまだ登録されていません。'}
           </p>
 
+          {/* 🌟 追加：公式予告編動画がある場合のみYouTubeプレイヤーを表示 */}
+          {work.videoKey && (
+            <div style={{ marginBottom: '25px', aspectRatio: '16/9' }}>
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${work.videoKey}`}
+                title="Trailer"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ borderRadius: '8px' }}
+              ></iframe>
+            </div>
+          )}
+
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
           
           {/* 🌟 修正："/" で分割してキャラクター枠のブロックそのものを複数生成する */}

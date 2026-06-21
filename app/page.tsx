@@ -67,8 +67,8 @@ export default async function Home() {
         // 配信情報を拡張
         const providers = getEnhancedProviders(work.title || work.name, baseProviders);
 
-        // 作品詳細を取得
-        const detailRes = await fetch(`https://api.themoviedb.org/3/${work.media_type}/${work.id}?language=ja-JP`, API_OPTIONS);
+        // 🌟 修正：作品詳細と同時に動画情報（videos）を取得する
+        const detailRes = await fetch(`https://api.themoviedb.org/3/${work.media_type}/${work.id}?language=ja-JP&append_to_response=videos`, API_OPTIONS);
         const detailData = await detailRes.json();
 
         return {
@@ -78,7 +78,9 @@ export default async function Home() {
           runtime: detailData.runtime || null,
           numberOfSeasons: detailData.number_of_seasons || null,
           numberOfEpisodes: detailData.number_of_episodes || null,
-          episodeRunTime: detailData.episode_run_time?.[0] || null
+          episodeRunTime: detailData.episode_run_time?.[0] || null,
+          // 🌟 追加：動画IDを取得（最初のYouTubeトレーラーを優先）
+          videoKey: detailData.videos?.results?.find((v: any) => v.site === 'YouTube' && v.type === 'Trailer')?.key || null
         };
       })
     );

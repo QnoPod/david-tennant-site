@@ -365,10 +365,9 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           }
         }
 
-        /* 🌟 追加：タイムライン表示中は「公開順」以外の選択肢をドロップダウンから隠す */
+        /* 🌟 追加：タイムライン表示中は FilterControls 内の「公開順」以外の選択肢をCSSで強力に隠す */
         ${viewMode === 'timeline' ? `
-          select option[value="popularity"],
-          select option[value="title"] {
+          select option:not([value="default"]) {
             display: none !important;
           }
         ` : ''}

@@ -9,8 +9,12 @@ export type UpdateInfo = {
 export const siteUpdates: UpdateInfo[] = [
   {
     date: "2026.06.21",
-    content: "キャラクター投票機能をお試し追加しました。",
+    content: "タイムライン表示機能を追加しました。作品一覧とキャラクターリストの両方で、歴史を追えるようになります。",
     isImportant: true,
+  },
+  {
+    date: "2026.06.21",
+    content: "キャラクター投票機能をお試し追加しました。",
   },
 　{
     date: "2026.06.20",

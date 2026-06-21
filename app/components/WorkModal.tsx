@@ -95,7 +95,10 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
           
           {/* 🌟 修正："/" で分割してキャラクター枠のブロックそのものを複数生成する */}
           {
-            (work.character || '情報なし').split('/').map((charPart: string, index: number) => {
+            (lookupKey === 'Nativity 2: Danger in the Manger!'
+              ? (work.character || '情報なし').split('/')
+              : [work.character || '情報なし']
+            ).map((charPart: string, index: number) => {
               // 前後の空白を削除（例: "Donald", "Roderick Peterson"）
               const charNameTrimmed = charPart.trim();
               
@@ -134,6 +137,28 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                 descKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
               }
 
+              // 🌟 4. 説明文の取得と1行目（日本語名）の削除処理
+              const rawInfo = customCharacterInfo[descKey] || customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。';
+              
+              // 🌟 修正：先頭に空の改行などが入っていると誤作動するため、最初に必ず trim() します
+              let displayInfo = rawInfo.trim();
+              
+              // Nativity 2 以外は、説明文の1行目（日本語名）を削除して1段表示にする
+              if (lookupKey !== 'Nativity 2: Danger in the Manger!' && rawInfo !== '詳細なキャラクター情報はありません。') {
+                const newlineIndex = displayInfo.indexOf('\n');
+                const colonIndex = displayInfo.indexOf('：');
+
+                // 改行か全角コロン、どちらか「先に見つかった方」を基準に分割する
+                if (newlineIndex !== -1 && colonIndex !== -1) {
+                  const splitIndex = Math.min(newlineIndex, colonIndex);
+                  displayInfo = displayInfo.substring(splitIndex + 1).trim();
+                } else if (newlineIndex !== -1) {
+                  displayInfo = displayInfo.substring(newlineIndex + 1).trim();
+                } else if (colonIndex !== -1) {
+                  displayInfo = displayInfo.substring(colonIndex + 1).trim();
+                }
+              }
+
               return (
                 <div key={index} style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '15px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
                   <img 
@@ -147,7 +172,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                     </div>
                     {/* whiteSpace: 'pre-wrap' を維持して改行を反映 */}
                     <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0, whiteSpace: 'pre-wrap' }}>
-                      {customCharacterInfo[descKey] || customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。'}
+                      {displayInfo}
                     </p>
                   </div>
                 </div>

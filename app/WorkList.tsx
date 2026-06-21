@@ -67,6 +67,9 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   // 🌟 サイトについて・更新履歴モーダルの表示状態を管理
   const [showAboutModal, setShowAboutModal] = useState(false);
 
+  // 🌟 追加：表示モード（グリッドかタイムラインか）を管理するステート
+  const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
+
   // 🌟 イベント受信でお気に入りを更新
   useEffect(() => {
     const loadFavorites = () => {
@@ -168,15 +171,31 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     });
   }, [uniqueWorks, searchTerm, charSearchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode, showOnlyFavorites, favorites]);
 
+  // 🌟 追加：タイムライン表示中は強制的に「default（公開順）」として扱う
+  const activeSortOrder = viewMode === 'timeline' ? 'default' : sortOrder;
+
   const sortedWorks = useMemo(() => {
     let list = [...filteredWorks];
-    if (sortOrder === 'popularity') {
+    // 🌟 activeSortOrder を使ってソートを判定する
+    if (activeSortOrder === 'popularity') {
       list.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-    } else if (sortOrder === 'title') {
+    } else if (activeSortOrder === 'title') {
       list.sort((a, b) => (a.title || a.name).localeCompare(b.title || b.name));
     }
     return list;
-  }, [filteredWorks, sortOrder]);
+  }, [filteredWorks, activeSortOrder]);
+
+  // 🌟 追加：表示切替用の関数
+  const handleToggleView = () => {
+    setViewMode(prev => {
+      const nextMode = prev === 'grid' ? 'timeline' : 'grid';
+      // タイムラインに切り替えた瞬間、裏側のソート状態も「公開順」に戻す
+      if (nextMode === 'timeline') {
+        setSortOrder('default'); 
+      }
+      return nextMode;
+    });
+  };
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
@@ -222,6 +241,79 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           background-color: #333;
         }
 
+        /* 🌟 タイムライン表示用のCSSを追加 */
+        .timeline-container {
+          position: relative;
+          max-width: 900px;
+          margin: 40px auto;
+          padding: 20px 0;
+        }
+        .timeline-container::after {
+          content: '';
+          position: absolute;
+          width: 4px;
+          background-color: #4dabf7; /* タイムラインの線の色 */
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          margin-left: -2px;
+          border-radius: 2px;
+        }
+        .timeline-item {
+          padding: 10px 40px;
+          position: relative;
+          width: 50%;
+          box-sizing: border-box;
+          margin-bottom: 20px;
+        }
+        .timeline-item:nth-child(odd) {
+          left: 0;
+          text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+          left: 50%;
+          text-align: left;
+        }
+        .timeline-dot {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background-color: #ff9f43;
+          border: 4px solid #141414;
+          border-radius: 50%;
+          top: calc(50% - 10px);
+          z-index: 1;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+          right: -10px;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+          left: -10px;
+        }
+        .timeline-content {
+          background-color: #222;
+          border-radius: 12px;
+          padding: 15px;
+          display: inline-flex;
+          align-items: center;
+          gap: 15px;
+          text-align: left;
+          cursor: pointer;
+          transition: transform 0.2s, background-color 0.2s;
+          width: 100%;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .timeline-content:hover {
+          transform: scale(1.02);
+          background-color: #333;
+        }
+        .timeline-date {
+          font-weight: bold;
+          color: #ff9f43;
+          margin-bottom: 5px;
+          font-size: 16px;
+        }
+
         /* スマホ表示 (横幅600px以下) の場合 */
         @media (max-width: 600px) {
           .work-grid {
@@ -252,7 +344,34 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
             font-size: 18px; /* サブタイトル部分を少し小さく */
             margin-top: 4px;
           }
+
+          /* スマホ時のタイムラインの調整 */
+          .timeline-container::after {
+            left: 20px;
+          }
+          .timeline-item {
+            width: 100%;
+            padding-left: 50px;
+            padding-right: 0;
+            left: 0 !important;
+            text-align: left !important;
+          }
+          .timeline-dot {
+            left: 10px !important;
+            right: auto !important;
+          }
+          .timeline-content {
+            flex-direction: row;
+          }
         }
+
+        /* 🌟 追加：タイムライン表示中は「公開順」以外の選択肢をドロップダウンから隠す */
+        ${viewMode === 'timeline' ? `
+          select option[value="popularity"],
+          select option[value="title"] {
+            display: none !important;
+          }
+        ` : ''}
       `}</style>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -266,6 +385,12 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           <Link href="/characters" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 20px', backgroundColor: '#ff9f43', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
             👥 キャラクターリストを見る
           </Link>
+          
+          {/* 🌟 追加：表示切替ボタン（クラスはサイトについてボタンと共通にしています） */}
+          <button className="about-btn" onClick={handleToggleView}>
+            {viewMode === 'grid' ? '📅 タイムライン表示' : '🔲 グリッド表示'}
+          </button>
+
           <button className="about-btn" onClick={() => setShowAboutModal(true)}>
              ℹ️ サイトについて・更新履歴
           </button>
@@ -287,8 +412,13 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           setSelectedGenres={setSelectedGenres}
           genreSearchMode={genreSearchMode}
           setGenreSearchMode={setGenreSearchMode}
-          sortOrder={sortOrder}
-          setSortOrder={setSortOrder}
+          
+          // 🌟 修正：タイムライン表示中は強制的に 'default' を渡し、変更も無視する
+          sortOrder={activeSortOrder}
+          setSortOrder={(val) => {
+            if (viewMode === 'timeline') return; // タイムライン表示中は変更をブロック
+            setSortOrder(val);
+          }}
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
           showOnlyFavorites={showOnlyFavorites}
@@ -302,11 +432,50 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           {sortedWorks.length} 件の作品を表示中 (全 {uniqueWorks.length} 作品)
         </p>
         
-        <div className="work-grid">
-          {sortedWorks.map((work: any, index: number) => (
-            <WorkCard key={`${work.id}-${index}`} work={work} onClick={() => setSelectedWork(work)} />
-          ))}
-        </div>
+        {/* 🌟 追加：表示モードに応じた出し分け */}
+        {viewMode === 'grid' ? (
+          <div className="work-grid">
+            {sortedWorks.map((work: any, index: number) => (
+              <WorkCard key={`${work.id}-${index}`} work={work} onClick={() => setSelectedWork(work)} />
+            ))}
+          </div>
+        ) : (
+          <div className="timeline-container">
+            {sortedWorks.map((work: any, index: number) => {
+              // 放送日・公開日から年だけを抽出する
+              const year = work.first_air_date 
+                ? work.first_air_date.substring(0, 4) 
+                : work.release_date 
+                  ? work.release_date.substring(0, 4) 
+                  : '年不明';
+
+              return (
+                <div key={`${work.id}-${index}`} className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content" onClick={() => setSelectedWork(work)}>
+                    {work.poster_path ? (
+                      <img 
+                        src={`https://image.tmdb.org/t/p/w200${work.poster_path}`} 
+                        alt={work.title || work.name} 
+                        style={{ width: '70px', height: '105px', objectFit: 'cover', borderRadius: '8px', flexShrink: 0 }} 
+                      />
+                    ) : (
+                      <div style={{ width: '70px', height: '105px', backgroundColor: '#333', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '24px' }}>🎬</div>
+                    )}
+                    <div>
+                      <div className="timeline-date">{year}</div>
+                      <h3 style={{ margin: '0 0 5px 0', fontSize: '16px', color: '#fff', lineHeight: '1.3' }}>{work.title || work.name}</h3>
+                      <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>
+                        {work.media_type === 'movie' ? '🎬 映画' : '📺 TV番組'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
       </div>
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
       
@@ -352,7 +521,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
       <ScrollButtons />
 
-      {/* 🌟 フッター部分にバージョン情報を追加 */}    
+      {/* 🌟 フッター部分にバージョン情報を追加 */}      
       <footer style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '20px', color: '#666', fontSize: '14px' }}>
         Ver 3.0
       </footer>

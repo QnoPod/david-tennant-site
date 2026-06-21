@@ -162,12 +162,11 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                 }
               }
               
-              // Nativity 2 以外は、説明文の1行目（日本語名）を削除して1段表示にする
-              if (lookupKey !== 'Nativity 2: Danger in the Manger!' && rawInfo !== '詳細なキャラクター情報はありません。') {
+              // 🌟 修正：常に説明文の1行目（日本語名）を削除して、displayInfo を「詳細説明」だけにする
+              if (rawInfo !== '詳細なキャラクター情報はありません。') {
                 const newlineIndex = displayInfo.indexOf('\n');
                 const colonIndex = displayInfo.indexOf('：');
 
-                // 🌟 修正：説明文の中に「：」が含まれている場合に誤作動しないよう、改行(\n)の判定を先にする
                 if (newlineIndex !== -1 && colonIndex !== -1) {
                   const splitIndex = Math.min(newlineIndex, colonIndex);
                   displayInfo = displayInfo.substring(splitIndex + 1).trim();
@@ -178,8 +177,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                 }
               }
 
-              // 🌟 日本語名を表示するフラグ（Nativity 2以外、かつ青字の英語名と重複しない場合のみ）
-              const shouldShowJaName = jaName && lookupKey !== 'Nativity 2: Danger in the Manger!' && displayCharName !== jaName;
+              // 🌟 日本語名を表示するフラグ
+              const shouldShowJaName = jaName && displayCharName !== jaName;
 
               return (
                 <div key={index} style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', marginBottom: '15px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
@@ -192,7 +191,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                     <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: shouldShowJaName ? '4px' : '8px' }}>
                       {displayCharName}
                     </div>
-                    {/* 🌟 追加：details.ts から抽出した日本語名を、見やすい白字で青字のすぐ下に配置 */}
+                    {/* 🌟 追加：抽出した日本語名を、見やすい白字で青字のすぐ下に配置 */}
                     {shouldShowJaName && (
                       <div style={{ fontSize: '14px', color: '#fff', marginBottom: '8px', fontWeight: 'bold' }}>
                         {jaName}

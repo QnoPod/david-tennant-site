@@ -33,11 +33,11 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
       
       let charName = "情報なし";
       if (rawInfo.includes('：')) {
-        charName = rawInfo.split('：')[0];
+        charName = rawInfo.split('：')[0].trim();
       } else if (rawInfo.includes('\n')) {
-        charName = rawInfo.split('\n')[0];
+        charName = rawInfo.split('\n')[0].trim();
       } else {
-        charName = rawInfo;
+        charName = rawInfo.trim();
       }
 
       // 🌟 修正：WorkModalと同じロジックで画像キーを解決する
@@ -121,12 +121,31 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         age = parseInt(year) - 1971;
       }
 
+      // 🌟 修正：説明文から1行目（日本語のキャラクター名）を削除して詳細文だけにする処理
+      let cleanDescription = rawInfo.trim();
+      if (cleanDescription !== '詳細なキャラクター情報はありません。') {
+        const newlineIndex = cleanDescription.indexOf('\n');
+        const colonIndex = cleanDescription.indexOf('：');
+
+        if (newlineIndex !== -1 && colonIndex !== -1) {
+          const splitIndex = Math.min(newlineIndex, colonIndex);
+          cleanDescription = cleanDescription.substring(splitIndex + 1).trim();
+        } else if (newlineIndex !== -1) {
+          cleanDescription = cleanDescription.substring(newlineIndex + 1).trim();
+        } else if (colonIndex !== -1) {
+          cleanDescription = cleanDescription.substring(colonIndex + 1).trim();
+        } else {
+          // コロンも改行もない場合は、名前しか登録されていないと判定して空にする
+          cleanDescription = '';
+        }
+      }
+
       return {
         workTitle,
         displayWorkTitle, // 🌟 画面表示用のタイトル
         charName,
         charImage,
-        fullDescription: rawInfo,
+        fullDescription: cleanDescription, // 🌟 修正：切り落とした後の説明文を渡す
         year, // 🌟 取得した年データを持たせる
         age   // 🌟 追加：算出した年齢を持たせる
       };
@@ -251,7 +270,13 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           transform: scale(1.02);
           background-color: #333;
         }
-        
+        .timeline-date {
+          font-weight: bold;
+          color: #ff9f43;
+          margin-bottom: 5px;
+          font-size: 16px;
+        }
+
         /* スマホ表示 (横幅600px以下) の場合 */
         @media (max-width: 600px) {
           .character-grid {
@@ -442,11 +467,15 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
               </div>
             </div>
 
-            <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', maxHeight: '50vh', overflowY: 'auto' }}>
-              <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', whiteSpace: 'pre-wrap', margin: 0 }}>
-                {selectedCharacter.fullDescription}
-              </p>
-            </div>
+            {/* 🌟 修正：説明文がある場合のみ黒枠を表示するように変更 */}
+            {selectedCharacter.fullDescription && (
+              <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', maxHeight: '50vh', overflowY: 'auto' }}>
+                <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', whiteSpace: 'pre-wrap', margin: 0 }}>
+                  {selectedCharacter.fullDescription}
+                </p>
+              </div>
+            )}
+            
           </div>
         </div>
       )}

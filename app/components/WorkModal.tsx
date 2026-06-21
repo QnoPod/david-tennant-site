@@ -3,6 +3,8 @@
 import { customOverviews } from '../data/overviews';
 import { customCharacterImages } from '../data/characters';
 import { customCharacterInfo } from '../data/details';
+// 🌟 手動で動画IDを上書きするデータをインポート
+import { videoOverrides } from '../data/videoOverrides';
 
 export default function WorkModal({ work, onClose }: { work: any, onClose: () => void }) {
   if (!work) return null;
@@ -15,6 +17,9 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
   // 🌟 あらすじやキャラクター情報（custom...）を取得するための裏側のキー（TMDB本来のタイトル）
   const lookupKey = work.tmdb_title || work.title || work.name;
+
+  // 🌟 優先順位：1.手動設定(videoOverrides) -> 2.TMDB取得データ
+  const finalVideoKey = videoOverrides[lookupKey] || work.videoKey;
 
   return (
     <div 
@@ -76,12 +81,12 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
           </p>
 
           {/* 🌟 追加：公式予告編動画がある場合のみYouTubeプレイヤーを表示 */}
-          {work.videoKey && (
+          {finalVideoKey && (
             <div style={{ marginBottom: '25px', aspectRatio: '16/9' }}>
               <iframe
                 width="100%"
                 height="100%"
-                src={`https://www.youtube.com/embed/${work.videoKey}`}
+                src={`https://www.youtube.com/embed/${finalVideoKey}`}
                 title="Trailer"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -148,7 +153,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                 const newlineIndex = displayInfo.indexOf('\n');
                 const colonIndex = displayInfo.indexOf('：');
 
-                // 改行か全角コロン、どちらか「先に見つかった方」を基準に分割する
+                // 🌟 修正：説明文の中に「：」が含まれている場合に誤作動しないよう、改行(\n)の判定を先にする
                 if (newlineIndex !== -1 && colonIndex !== -1) {
                   const splitIndex = Math.min(newlineIndex, colonIndex);
                   displayInfo = displayInfo.substring(splitIndex + 1).trim();

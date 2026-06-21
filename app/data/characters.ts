@@ -93,6 +93,7 @@ export const customCharacterImages: Record<string, string> = {
   "THE BILL": "/characters/Steve Clemens.jpg",
   "BUNCH OF FIVE": "/characters/Policeman.jpg",
   "Much Ado About Nothing": "/characters/Benedick.jpg",
+  "Scrooge McDuck": "/characters/Scrooge McDuck.jpg",
 
 
 

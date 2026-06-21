@@ -88,6 +88,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
               if (charNameTrimmed.toLowerCase().startsWith('self')) imageKey = 'self';
               else if (charNameTrimmed.toLowerCase().startsWith('narrator')) imageKey = 'narrator';
               else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') imageKey = '10th doctor';
+              else if (charNameTrimmed.includes('Scrooge McDuck')) imageKey = 'Scrooge McDuck'; // 🌟 スクルージの共通処理を追加
               else if (lookupKey === 'Nativity 2: Danger in the Manger!') {
                 // "Donald" だった場合は "Donald Peterson" をキーとして探す
                 imageKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
@@ -103,6 +104,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
               else if (lookupKey === 'Randall & Hopkirk (Deceased)') displayCharName = 'Gordon Stylus';
               else if (lookupKey === 'A Mug\'s Game') displayCharName = 'Gavin';
               else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') displayCharName = '10代目ドクター';
+              //else if (charNameTrimmed.includes('Scrooge McDuck')) displayCharName = 'Scrooge McDuck'; // 🌟 スクルージの共通処理を追加
               else if (charNameTrimmed.toLowerCase().startsWith('self')) displayCharName = '本人';
               else if (charNameTrimmed.toLowerCase().startsWith('narrator')) displayCharName = 'ナレーター';
               else if (lookupKey === 'Nativity 2: Danger in the Manger!' && charNameTrimmed === 'Donald') displayCharName = 'Donald Peterson';
@@ -110,6 +112,7 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
               // 🌟 3. 説明文のキーを判定
               let descKey = lookupKey; // 基本は作品名
               if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') descKey = '10th Doctor';
+              else if (charNameTrimmed.includes('Scrooge McDuck')) descKey = 'Scrooge McDuck'; // 🌟 スクルージの共通処理を追加
               else if (lookupKey === 'Nativity 2: Danger in the Manger!') {
                 // "Donald" だった場合は "Donald Peterson" をキーとして探す
                 descKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;

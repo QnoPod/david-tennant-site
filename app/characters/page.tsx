@@ -36,6 +36,7 @@ export default function CharactersPage() {
     const imageKey = 
       (charName.includes('10th Doctor') || charName.includes('10代目ドクター')) ? '10th doctor' :
       charName.includes('14代目ドクター') ? 'Doctor Who: 60th Anniversary Specials' :
+      (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) ? 'Scrooge McDuck' : // 🌟 スクルージの画像共通化
       workTitle;
     
     const charImage = customCharacterImages[imageKey] || customCharacterImages[workTitle] || null;
@@ -136,12 +137,16 @@ export default function CharactersPage() {
               </div>
 
               {/* タイトルとサブタイトルもCSS変数を適用してスマホ時に縮小 */}
-              <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>{char.charName}</h2>
-              {/* 🌟 修正：キャラクターカード下部も10代目ドクターなら「Doctor Whoシリーズ」と表示 */}
+              <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>
+                {/* 🌟 スクルージの場合は画面表示名を強制的に変更 */}
+                {(char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
+              </h2>
+              {/* 🌟 修正：キャラクターカード下部も10代目ドクターやスクルージなら特定の文字を表示 */}
               <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>
                 {
                   ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(char.charName) ? 'Nativity 2: Danger in the Manger!' :
                   char.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
+                  (char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'ディズニー' : // 🌟 追加：スクルージの場合はディズニーと表示
                   char.displayWorkTitle
                 }
               </p>
@@ -176,12 +181,15 @@ export default function CharactersPage() {
                 )}
               </div>
               <div>
-                <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
-                {/* 🌟 修正：10代目ドクターの場合は「作品: Doctor Whoシリーズ」と強制表示 */}
+                <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>
+                  {(selectedCharacter.workTitle === 'Scrooge McDuck' || selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : selectedCharacter.charName}
+                </h2>
+                {/* 🌟 修正：10代目ドクターやスクルージの場合は作品名を強制表示 */}
                 <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>
                   作品: {
                     ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(selectedCharacter.charName) ? 'Nativity 2: Danger in the Manger!' :
                     selectedCharacter.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
+                    (selectedCharacter.workTitle === 'Scrooge McDuck' || selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'ディズニー' : // 🌟 追加
                     selectedCharacter.displayWorkTitle
                   }
                 </p>

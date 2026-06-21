@@ -92,7 +92,7 @@ export const customCharacterInfo: Record<string, string> = {
   "THE BILL": "スティーブ・クレメンス\n物語の鍵を握る誘拐犯の男。",
   "BUNCH OF FIVE": "警察官\n",
   "Much Ado About Nothing": "ベネディック\n強がりな独身主義者でありながら、周囲の策略によって犬猿の仲だったベアトリスと不器用に恋に落ちてしまう愛すべき皮肉屋。",
- 
+  "Scrooge McDuck": "スクルージ・マクダック\nディズニー作品に登場するドナルドダックの伯父であり、巨大な金庫の金貨の中を泳ぐのが大好きな世界一の金持ち。",
   
   //"": "\n",
 

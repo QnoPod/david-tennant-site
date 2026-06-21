@@ -126,9 +126,12 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
       const workTitle = work.tmdb_title || work.title || work.name;
       const charInfoRaw = customCharacterInfo[workTitle] || ''; 
       
-      // 🌟 共通情報の取得 (10代目ドクターの場合、共通情報を検索対象に追加)
+      // 🌟 共通情報の取得 (10代目ドクター、スクルージの場合、共通情報を検索対象に追加)
       const tenDocInfo = customCharacterInfo["10th Doctor"] || '';
       const isTenDoc = work.character === 'The Doctor' || work.character === 'The Doctor (10)';
+      
+      const scroogeInfo = customCharacterInfo["Scrooge McDuck"] || '';
+      const isScrooge = work.character && work.character.includes('Scrooge McDuck');
       
       // \n または ： より前の部分だけを名前として抽出
       const extractedCharName = charInfoRaw.includes('：') 
@@ -139,7 +142,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
       // 🌟 検索対象はTMDBのキャラ名と、抽出した日本語名＋共通情報
       const charName = normalizeText(
-        `${work.character || ''} ${extractedCharName} ${isTenDoc ? tenDocInfo : ''}`
+        `${work.character || ''} ${extractedCharName} ${isTenDoc ? tenDocInfo : ''} ${isScrooge ? scroogeInfo : ''}`
       );
       
       // 🌟 キャラクター名検索の判定
@@ -329,7 +332,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
             </h2>
             <p style={{ color: '#ddd', fontSize: '15px', lineHeight: '1.8', marginBottom: '30px' }}>
               当サイトは、デヴィッド・テナントの出演作品およびキャラクターの情報をまとめた非公式のファンデータベースです。<br />
-              配信状況の確認や、各キャラクターの詳細設定を振り返るのにお役立てください。<br />
+              配信状況の確認や、各キャラクターの詳細設定を振り返るのにお役立てください。
             </p>
 
             <h2 style={{ color: '#ff9f43', margin: '0 0 20px 0', borderBottom: '1px solid #333', paddingBottom: '10px' }}>
@@ -349,7 +352,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
 
       <ScrollButtons />
 
-      {/* 🌟 フッター部分にバージョン情報を追加 */}      
+      {/* 🌟 フッター部分にバージョン情報を追加 */}    
       <footer style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '20px', color: '#666', fontSize: '14px' }}>
         Ver 3.0
       </footer>

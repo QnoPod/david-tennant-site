@@ -52,15 +52,29 @@ export default function CharacterSortPage() {
       const imageKey = 
         (charName.includes('10th Doctor') || charName.includes('10代目ドクター')) ? '10th doctor' :
         charName.includes('14代目ドクター') ? 'Doctor Who: 60th Anniversary Specials' :
+        (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) ? 'Scrooge McDuck' : // 🌟 スクルージの画像共通化を追加
         workTitle;
       
       const charImage = customCharacterImages[imageKey] || customCharacterImages[workTitle] || '/default-character.png';
 
+      // 🌟 キャラクター名・作品名の表示上書き（ソート画面・結果画像すべてに適用されます）
+      let displayCharName = charName;
+      let displayWorkTitle = workTitle;
+
+      if (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) {
+        displayCharName = 'スクルージ・マクダック';
+        displayWorkTitle = 'ディズニー作品';
+      } else if (charName === '10代目ドクター') {
+        displayWorkTitle = 'Doctor Whoシリーズ';
+      } else if (['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(charName)) {
+        displayWorkTitle = 'Nativity 2: Danger in the Manger!';
+      }
+
       initialStats[workTitle] = {
         id: workTitle,
-        charName,
+        charName: displayCharName, // 🌟 上書きした名前を使用
         charImage,
-        workTitle,
+        workTitle: displayWorkTitle, // 🌟 上書きした作品名を使用
         rating: INITIAL_RATING,
         matches: 0,
         unknowns: 0,

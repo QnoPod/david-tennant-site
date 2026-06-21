@@ -9,6 +9,8 @@ import ScrollButtons from '../components/ScrollButtons';
 import { searchDictionary } from '../data/searchDictionary';
 // 🌟 追加：公開年が不明な作品の手動データ（yearOverrides）をインポート
 import { yearOverrides } from '../data/yearOverrides';
+// 🌟 追加：キャラクターの属性データをインポート
+import { characterAttributes } from '../data/characterAttributes';
 
 // 🌟 文字を強力に整える関数（邦題変換用）
 const normalizeText = (text: string) => {
@@ -25,6 +27,9 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
 
   // 🌟 追加：表示モード（グリッドかタイムラインか）を管理するステート
   const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
+  
+  // 🌟 追加：属性表示・グループ化を管理するステート
+  const [showAttributes, setShowAttributes] = useState(false);
 
   // 🌟 TMDBのデータを元にキャラクターリストを生成（useMemoで最適化）
   const characters = useMemo(() => {
@@ -139,6 +144,11 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           cleanDescription = '';
         }
       }
+      
+      // 🌟 修正：別ファイルから属性情報を取得し、複数タグ対応のために配列にする
+      const attrRaw = characterAttributes[charName] || '';
+      // 「,」「、」「/」のいずれかで分割して配列化する（両端の空白は除去）
+      const attributes = attrRaw ? attrRaw.split(/[、,\/]/).map(s => s.trim()).filter(Boolean) : [];
 
       return {
         workTitle,
@@ -147,7 +157,8 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         charImage,
         fullDescription: cleanDescription, // 🌟 修正：切り落とした後の説明文を渡す
         year, // 🌟 取得した年データを持たせる
-        age   // 🌟 追加：算出した年齢を持たせる
+        age,   // 🌟 追加：算出した年齢を持たせる
+        attributes // 🌟 修正：複数の属性を持てるように配列で渡す
       };
     }).sort((a, b) => {
       // 🌟 修正：タイムライン表示のときは公開年（新しい順/降順）でソート、グリッドのときは五十音順でソート
@@ -174,6 +185,189 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
   const handleToggleView = () => {
     setViewMode(prev => prev === 'grid' ? 'timeline' : 'grid');
   };
+
+  // 🌟 修正：属性でグループ化したデータを作成（複数タグ対応）
+  const groupedCharacters = useMemo(() => {
+    const groups: Record<string, typeof characters> = {};
+    characters.forEach(char => {
+      if (char.attributes && char.attributes.length > 0) {
+        // キャラクターが持つ複数のタグそれぞれに対してグループに追加
+        char.attributes.forEach((attr: string) => {
+          if (!groups[attr]) groups[attr] = [];
+          // 同じキャラが同じ枠に重複して入らないように念のためチェック
+          if (!groups[attr].find(c => c.workTitle === char.workTitle && c.charName === char.charName)) {
+            groups[attr].push(char);
+          }
+        });
+      } else {
+        // 属性がない場合は「その他」
+        if (!groups['その他']) groups['その他'] = [];
+        groups['その他'].push(char);
+      }
+    });
+    return groups;
+  }, [characters]);
+
+  // 🌟 修正：グループのキーをソート（「その他職業」「その他」を最後に回す）
+  const groupKeys = Object.keys(groupedCharacters).sort((a, b) => {
+    const getPriority = (key: string) => {
+      if (key === 'その他') return 2;
+      if (key === 'その他職業') return 1;
+      return 0;
+    };
+    
+    const pA = getPriority(a);
+    const pB = getPriority(b);
+    
+    // 優先度が異なる場合は優先度でソート（数値が大きいほど後ろ）
+    if (pA !== pB) {
+      return pA - pB;
+    }
+    
+    // 優先度が同じ場合は五十音順
+    return a.localeCompare(b, 'ja');
+  });
+
+  // 🌟 追加：属性タグをクリックした時にそのグループ枠へスクロールする関数[cite: 14]
+  const handleAttributeClick = (attr: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // キャラクターカード自体のクリックイベント（モーダルを開く処理）を止める
+    setSelectedCharacter(null); // モーダル内でクリックされた場合に備えて閉じる
+
+    if (!showAttributes) {
+      setShowAttributes(true);
+      // レンダリングを待ってからスクロール
+      setTimeout(() => {
+        const el = document.getElementById(`attr-group-${attr}`);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 80; // 少し上に余白を持たせる
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const el = document.getElementById(`attr-group-${attr}`);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  };
+
+  // 🌟 グリッド表示のレンダリング関数
+  const renderCharacterGrid = (charList: any[]) => (
+    <div className="character-grid">
+      {charList.map((char, index) => (
+        <div 
+          key={`${char.workTitle}-${index}`} 
+          onClick={() => setSelectedCharacter(char)}
+          style={{ backgroundColor: '#222', borderRadius: '12px', padding: 'var(--card-padding)', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer', position: 'relative' }}
+          onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
+          onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+        >
+          {/* 🌟 属性表示がONのときだけバッジを表示（複数タグ対応で縦並び） */}
+          {showAttributes && char.attributes && char.attributes.length > 0 && (
+            <div style={{ 
+              position: 'absolute', top: '10px', right: '10px', 
+              display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-end', zIndex: 2
+            }}>
+              {char.attributes.map((attr: string, i: number) => (
+                <span key={i} 
+                  className="attr-badge"
+                  onClick={(e) => handleAttributeClick(attr, e)}
+                  style={{ 
+                    backgroundColor: '#ff9f43', color: '#1a1a1a', 
+                    fontSize: '11px', padding: '3px 8px', borderRadius: '6px', fontWeight: 'bold',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                  }}>
+                  {attr}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div style={{ 
+            width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 15px auto', borderRadius: '50%', 
+            overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.5)'
+          }}>
+            {char.charImage ? (
+              <img src={char.charImage} alt={char.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            ) : (
+              <span style={{ fontSize: '40px' }}>🎭</span>
+            )}
+          </div>
+
+          <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>
+            {(char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
+          </h2>
+          <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>
+            {
+              ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(char.charName) ? 'Nativity 2: Danger in the Manger!' :
+              char.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
+              (char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'ディズニー' :
+              char.displayWorkTitle
+            }
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+
+  // 🌟 タイムライン表示のレンダリング関数
+  const renderCharacterTimeline = (charList: any[]) => (
+    <div className="timeline-container">
+      {charList.map((char, index) => (
+        <div key={`${char.workTitle}-${index}`} className="timeline-item">
+          <div className="timeline-dot"></div>
+          <div className="timeline-content" onClick={() => setSelectedCharacter(char)}>
+            {char.charImage ? (
+              <img 
+                src={char.charImage} 
+                alt={char.charName} 
+                style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #333' }} 
+              />
+            ) : (
+              <div style={{ width: '60px', height: '60px', backgroundColor: '#333', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '24px' }}>🎭</div>
+            )}
+            <div>
+              <div style={{ fontWeight: 'bold', color: '#fff', marginBottom: '5px', fontSize: '15px' }}>
+                {char.year !== '年不明' ? `${char.year}年` : '公開年不明'}
+                {char.age !== '不明' && (
+                  <span style={{ color: '#4dabf7', marginLeft: '8px', fontSize: '13px' }}>
+                    (当時 {char.age}歳)
+                  </span>
+                )}
+              </div>
+              <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ff9f43', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                {(char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
+                
+                {/* 🌟 属性表示ONのときのみバッジ表示（複数対応で横並び） */}
+                {showAttributes && char.attributes && char.attributes.length > 0 && (
+                  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                    {char.attributes.map((attr: string, i: number) => (
+                      <span key={i} 
+                        className="attr-badge"
+                        onClick={(e) => handleAttributeClick(attr, e)}
+                        style={{ backgroundColor: '#ff9f43', color: '#1a1a1a', fontSize: '11px', padding: '2px 6px', borderRadius: '6px', fontWeight: 'bold' }}>
+                        {attr}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </h3>
+              <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>
+                作品: {
+                  ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(char.charName) ? 'Nativity 2: Danger in the Manger!' :
+                  char.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
+                  (char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'ディズニー' : 
+                  char.displayWorkTitle
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
@@ -211,12 +405,27 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         .toggle-btn:hover {
           background-color: #333;
         }
+        .toggle-btn.active {
+          background-color: #ff9f43;
+          color: #1a1a1a;
+          border-color: #ff9f43;
+        }
+
+        /* 🌟 属性バッジのホバーアクション用CSSを追加 */
+        .attr-badge {
+          cursor: pointer;
+          transition: transform 0.1s, opacity 0.1s;
+        }
+        .attr-badge:hover {
+          transform: scale(1.05);
+          opacity: 0.8;
+        }
 
         /* 🌟 タイムライン表示用のCSS */
         .timeline-container {
           position: relative;
           max-width: 900px;
-          margin: 40px auto;
+          margin: 20px auto 0;
           padding: 20px 0;
         }
         .timeline-container::after {
@@ -270,12 +479,6 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           transform: scale(1.02);
           background-color: #333;
         }
-        .timeline-date {
-          font-weight: bold;
-          color: #ff9f43;
-          margin-bottom: 5px;
-          font-size: 16px;
-        }
 
         /* スマホ表示 (横幅600px以下) の場合 */
         @media (max-width: 600px) {
@@ -312,10 +515,8 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        {/* 🌟 修正：alignItemsを 'flex-start' にして上揃えにする */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
           
-          {/* 🌟 修正：flexDirection を 'column' にしてタイトルとボタンを縦並びにする */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
             <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
             
@@ -324,9 +525,16 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
                  🏆 投票で遊ぶ
               </Link>
               
-              {/* 🌟 追加：表示切替ボタン */}
               <button className="toggle-btn" onClick={handleToggleView}>
                 {viewMode === 'grid' ? '📅 タイムライン表示' : '🔲 グリッド表示'}
+              </button>
+
+              {/* 🌟 属性表示切り替えボタン */}
+              <button 
+                className={`toggle-btn ${showAttributes ? 'active' : ''}`} 
+                onClick={() => setShowAttributes(!showAttributes)}
+              >
+                {showAttributes ? '🏷️ 属性タグをオフ' : '🏷️ 属性タグで分ける'}
               </button>
             </div>
           </div>
@@ -340,89 +548,47 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           カードをクリックすると詳細が表示されます
         </p>
 
-        {/* 🌟 追加：表示モードに応じた出し分け */}
-        {viewMode === 'grid' ? (
-          <div className="character-grid">
-            {characters.map((char, index) => (
+        {/* 🌟 属性表示ONのときは枠付きグループとしてレンダリング */}
+        {showAttributes ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+            {groupKeys.map(attr => (
               <div 
-                key={index} 
-                onClick={() => setSelectedCharacter(char)}
-                style={{ backgroundColor: '#222', borderRadius: '12px', padding: 'var(--card-padding)', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer' }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                key={attr} 
+                id={`attr-group-${attr}`} // 🌟 追加：スクロール用のIDを付与
+                style={{ 
+                  border: '2px dashed #444', 
+                  borderRadius: '16px', 
+                  padding: '35px 20px 20px', 
+                  position: 'relative',
+                  scrollMarginTop: '20px' // スクロール時に少し上に余白を持たせる
+                }}
               >
-                
-                <div style={{ 
-                  width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 15px auto', borderRadius: '50%', 
-                  overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  boxShadow: '0 4px 10px rgba(0,0,0,0.5)'
+                {/* 🌟 グループ枠のタイトル（属性名） */}
+                <span style={{ 
+                  position: 'absolute', 
+                  top: '-14px', 
+                  left: '20px', 
+                  backgroundColor: '#444', 
+                  color: '#fff', 
+                  padding: '4px 16px', 
+                  borderRadius: '20px', 
+                  fontWeight: 'bold', 
+                  fontSize: '14px', 
+                  border: '1px solid #555' 
                 }}>
-                  {char.charImage ? (
-                    <img src={char.charImage} alt={char.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  ) : (
-                    <span style={{ fontSize: '40px' }}>🎭</span>
-                  )}
-                </div>
-
-                {/* タイトルとサブタイトルもCSS変数を適用してスマホ時に縮小 */}
-                <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>
-                  {/* 🌟 スクルージの場合は画面表示名を強制的に変更 */}
-                  {(char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
-                </h2>
-                {/* 🌟 修正：キャラクターカード下部も10代目ドクターやスクルージなら特定の文字を表示 */}
-                <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>
-                  {
-                    ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(char.charName) ? 'Nativity 2: Danger in the Manger!' :
-                    char.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
-                    (char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'ディズニー' : // 🌟 追加：スクルージの場合はディズニーと表示
-                    char.displayWorkTitle
-                  }
-                </p>
+                  🏷️ {attr} ({groupedCharacters[attr].length})
+                </span>
+                
+                {/* 🌟 現在の表示モードに合わせて各グループ内を描画 */}
+                {viewMode === 'grid' 
+                  ? renderCharacterGrid(groupedCharacters[attr]) 
+                  : renderCharacterTimeline(groupedCharacters[attr])}
               </div>
             ))}
           </div>
         ) : (
-          <div className="timeline-container">
-            {characters.map((char, index) => (
-              <div key={index} className="timeline-item">
-                <div className="timeline-dot"></div>
-                <div className="timeline-content" onClick={() => setSelectedCharacter(char)}>
-                  {char.charImage ? (
-                    <img 
-                      src={char.charImage} 
-                      alt={char.charName} 
-                      style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #333' }} 
-                    />
-                  ) : (
-                    <div style={{ width: '60px', height: '60px', backgroundColor: '#333', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '24px' }}>🎭</div>
-                  )}
-                  <div>
-                    {/* 🌟 追加：公開年を表示 */}
-                    <div style={{ fontWeight: 'bold', color: '#fff', marginBottom: '5px', fontSize: '15px' }}>
-                      {char.year !== '年不明' ? `${char.year}年` : '公開年不明'}
-                      {/* 🌟 追加：タイムライン時のみ、デイヴィッドの当時の年齢を表示 */}
-                      {char.age !== '不明' && (
-                        <span style={{ color: '#4dabf7', marginLeft: '8px', fontSize: '13px' }}>
-                          (当時 {char.age}歳)
-                        </span>
-                      )}
-                    </div>
-                    <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ff9f43' }}>
-                      {(char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
-                    </h3>
-                    <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>
-                      作品: {
-                        ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(char.charName) ? 'Nativity 2: Danger in the Manger!' :
-                        char.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
-                        (char.workTitle === 'Scrooge McDuck' || char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'ディズニー' : 
-                        char.displayWorkTitle
-                      }
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          /* 🌟 属性表示OFFのときは通常のリストとしてレンダリング */
+          viewMode === 'grid' ? renderCharacterGrid(characters) : renderCharacterTimeline(characters)
         )}
       </div>
 
@@ -452,22 +618,34 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
                 )}
               </div>
               <div>
-                <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>
+                <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px', display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                   {(selectedCharacter.workTitle === 'Scrooge McDuck' || selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : selectedCharacter.charName}
+                  
+                  {/* 🌟 属性表示ONのとき、モーダルにも属性バッジを表示（複数対応） */}
+                  {showAttributes && selectedCharacter.attributes && selectedCharacter.attributes.length > 0 && (
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                      {selectedCharacter.attributes.map((attr: string, i: number) => (
+                        <span key={i} 
+                          className="attr-badge"
+                          onClick={(e) => handleAttributeClick(attr, e)}
+                          style={{ backgroundColor: '#ff9f43', color: '#1a1a1a', fontSize: '12px', padding: '4px 10px', borderRadius: '6px', fontWeight: 'bold' }}>
+                          {attr}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </h2>
-                {/* 🌟 修正：10代目ドクターやスクルージの場合は作品名を強制表示 */}
                 <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>
                   作品: {
                     ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(selectedCharacter.charName) ? 'Nativity 2: Danger in the Manger!' :
                     selectedCharacter.charName === '10代目ドクター' ? 'Doctor Whoシリーズ' : 
-                    (selectedCharacter.workTitle === 'Scrooge McDuck' || selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'ディズニー' : // 🌟 追加
+                    (selectedCharacter.workTitle === 'Scrooge McDuck' || selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'ディズニー' : 
                     selectedCharacter.displayWorkTitle
                   }
                 </p>
               </div>
             </div>
 
-            {/* 🌟 修正：説明文がある場合のみ黒枠を表示するように変更 */}
             {selectedCharacter.fullDescription && (
               <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', maxHeight: '50vh', overflowY: 'auto' }}>
                 <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', whiteSpace: 'pre-wrap', margin: 0 }}>
@@ -480,7 +658,6 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         </div>
       )}
       
-      {/* 🌟 スクロールボタンをモーダルの外に配置 */}
       <ScrollButtons />
       
     </main>

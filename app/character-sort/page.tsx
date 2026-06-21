@@ -158,14 +158,14 @@ export default function CharacterSortPage() {
     
     const top3 = ranking.slice(0, 3);
     const themeDisplay = sortTheme.trim() ? `【${sortTheme.trim()}】` : 'キャラクター';
-    let text = `私のデヴィッド・テナント ${themeDisplay}ランキング！🏆\n\n`;
+    let text = `私の ${themeDisplay}DTキャラランキング！🏆\n\n`;
     
     const medals = ['🥇', '🥈', '🥉'];
     top3.forEach((char, index) => {
       text += `${medals[index]} ${index + 1}位: ${char.charName}\n`;
     });
     
-    text += `\n(${totalVotes}回ソートしました)\nあなたも独自のテーマでソートしよう！👇\n`;
+    text += `\n(${totalVotes}回ソートしました)\nあなたも独自のテーマでソートしよう！👇\n#DTキャラソート\n`;
     return text;
   };
 
@@ -188,7 +188,7 @@ export default function CharacterSortPage() {
     ctx.font = 'bold 22px sans-serif';
     ctx.textAlign = 'center';
     const themeDisplay = sortTheme.trim() ? `【${sortTheme.trim()}】` : 'キャラクター';
-    ctx.fillText(`私のデヴィッド・テナント ${themeDisplay}ランキング！`, 300, 45);
+    ctx.fillText(`私の ${themeDisplay}DTキャラランキング！`, 300, 45);
 
     const top3 = ranking.slice(0, 3);
     const medals = ['🥇 1位', '🥈 2位', '🥉 3位'];
@@ -354,7 +354,7 @@ export default function CharacterSortPage() {
               </div>
               <br/>
 
-              「<strong style={{ color: '#ff9f43', fontSize: '18px' }}>{sortTheme || '...'}</strong>」なキャラクターを選んでください！<br/>
+              「<strong style={{ color: '#ff9f43', fontSize: '18px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
               （現在の投票数：{totalVotes} 回）<br/>
 
               <p style={{ color: '#ff8787', fontSize: '14px', marginTop: '10px', marginBottom: '0', fontWeight: 'bold' }}>

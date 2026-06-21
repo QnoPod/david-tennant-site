@@ -228,7 +228,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     return a.localeCompare(b, 'ja');
   });
 
-  // 🌟 追加：属性タグをクリックした時にそのグループ枠へスクロールする関数[cite: 14]
+  // 🌟 追加：属性タグをクリックした時にそのグループ枠へスクロールする関数
   const handleAttributeClick = (attr: string, e: React.MouseEvent) => {
     e.stopPropagation(); // キャラクターカード自体のクリックイベント（モーダルを開く処理）を止める
     setSelectedCharacter(null); // モーダル内でクリックされた場合に備えて閉じる
@@ -263,27 +263,6 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
           onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
         >
-          {/* 🌟 属性表示がONのときだけバッジを表示（複数タグ対応で縦並び） */}
-          {showAttributes && char.attributes && char.attributes.length > 0 && (
-            <div style={{ 
-              position: 'absolute', top: '10px', right: '10px', 
-              display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-end', zIndex: 2
-            }}>
-              {char.attributes.map((attr: string, i: number) => (
-                <span key={i} 
-                  className="attr-badge"
-                  onClick={(e) => handleAttributeClick(attr, e)}
-                  style={{ 
-                    backgroundColor: '#ff9f43', color: '#1a1a1a', 
-                    fontSize: '11px', padding: '3px 8px', borderRadius: '6px', fontWeight: 'bold',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
-                  }}>
-                  {attr}
-                </span>
-              ))}
-            </div>
-          )}
-
           <div style={{ 
             width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 15px auto', borderRadius: '50%', 
             overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -307,6 +286,26 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
               char.displayWorkTitle
             }
           </p>
+
+          {/* 🌟 修正：写真との被りを防ぐため、タグを絶対配置から通常配置に変更し、文字の下に横並びで配置 */}
+          {showAttributes && char.attributes && char.attributes.length > 0 && (
+            <div style={{ 
+              display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', marginTop: '12px' 
+            }}>
+              {char.attributes.map((attr: string, i: number) => (
+                <span key={i} 
+                  className="attr-badge"
+                  onClick={(e) => handleAttributeClick(attr, e)}
+                  style={{ 
+                    backgroundColor: '#ff9f43', color: '#1a1a1a', 
+                    fontSize: '11px', padding: '3px 8px', borderRadius: '6px', fontWeight: 'bold',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                  }}>
+                  {attr}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </div>

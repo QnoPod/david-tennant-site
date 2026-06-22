@@ -1,13 +1,40 @@
 'use client';
+import { useState, useEffect } from 'react';
 
 import { customOverviews } from '../data/overviews';
 import { customCharacterImages } from '../data/characters';
 import { customCharacterInfo } from '../data/details';
 import { videoOverrides } from '../data/videoOverrides';
-// 🌟 作成したヘルパー関数をインポート
 import { parseCharacterInfo } from '../utils/characterUtils';
 
 export default function WorkModal({ work, onClose }: { work: any, onClose: () => void }) {
+  const [isWatched, setIsWatched] = useState(false);
+
+  useEffect(() => {
+    if (!work) return;
+    const checkWatched = () => {
+      const watched = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('watchedWorks') || '[]') : [];
+      setIsWatched(watched.includes(work.id));
+    };
+    checkWatched();
+    window.addEventListener('watchedUpdated', checkWatched);
+    return () => window.removeEventListener('watchedUpdated', checkWatched);
+  }, [work?.id]);
+
+  const toggleWatched = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
+    let newWatched;
+    if (isWatched) {
+      newWatched = watched.filter((id: number) => id !== work.id);
+    } else {
+      newWatched = [...watched, work.id];
+    }
+    localStorage.setItem('watchedWorks', JSON.stringify(newWatched));
+    setIsWatched(!isWatched);
+    window.dispatchEvent(new Event('watchedUpdated'));
+  };
+
   if (!work) return null;
   
   const displayTitle = work.title || work.name;
@@ -44,7 +71,30 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             </p>
           )}
           
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '15px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '15px', alignItems: 'center' }}>
+            {/* 🌟 視聴済ボタンをクールなデザインに変更 */}
+            <button
+              onClick={toggleWatched}
+              style={{
+                backgroundColor: isWatched ? 'rgba(77, 171, 247, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                color: isWatched ? '#4dabf7' : '#ccc',
+                border: `1px solid ${isWatched ? '#4dabf7' : '#555'}`,
+                padding: '6px 16px',
+                borderRadius: '24px',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '13px',
+                marginRight: '8px',
+                transition: 'all 0.2s'
+              }}
+            >
+              <span style={{ fontSize: '14px' }}>{isWatched ? '✔' : '▷'}</span>
+              {isWatched ? '視聴済' : '未視聴'}
+            </button>
+
             {work.genres && work.genres.map((genre: any) => (
               <span key={genre.id} style={{ fontSize: '12px', backgroundColor: '#333', color: '#ccc', padding: '4px 10px', borderRadius: '20px', border: '1px solid #444' }}>
                 {genre.name}
@@ -124,7 +174,6 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                 descKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
               }
 
-              // 🌟 修正：ヘルパー関数を使って一発で名前と説明文に分割！
               const rawInfo = customCharacterInfo[descKey] || customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。';
               const { jaName, description: displayInfo } = parseCharacterInfo(rawInfo);
 

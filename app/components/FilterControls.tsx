@@ -8,6 +8,8 @@ type Props = {
   setCharSearchTerm: (val: string) => void; 
   availabilityFilter: string;
   setAvailabilityFilter: (val: string) => void;
+  watchStatusFilter: string;
+  setWatchStatusFilter: (val: string) => void;
   allProviders: string[];
   selectedProviders: string[];
   toggleProvider: (name: string) => void;
@@ -27,13 +29,14 @@ type Props = {
 
 export default function FilterControls({
   searchTerm, setSearchTerm, charSearchTerm, setCharSearchTerm, availabilityFilter, setAvailabilityFilter,
+  watchStatusFilter, setWatchStatusFilter,
   allProviders, selectedProviders, toggleProvider, setSelectedProviders,
   allGenres, selectedGenres, setSelectedGenres, genreSearchMode, setGenreSearchMode,
   sortOrder, setSortOrder, isExpanded, setIsExpanded,
   showOnlyFavorites, setShowOnlyFavorites
 }: Props) {
   
-  // 🌟 アイコン付き入力欄用のスタイル
+  // アイコン付き入力欄用のスタイル
   const inputWrapperStyle = {
     position: 'relative' as const,
     width: '100%',
@@ -48,7 +51,7 @@ export default function FilterControls({
     pointerEvents: 'none' as const,
   };
 
-  // 🌟 クリアボタン用のスタイル
+  // クリアボタン用のスタイル
   const clearButtonStyle = {
     position: 'absolute' as const,
     right: '12px',
@@ -64,7 +67,7 @@ export default function FilterControls({
 
   const inputStyle = {
     width: '100%',
-    padding: '12px 40px', // 左右に余裕を持たせる
+    padding: '12px 40px',
     borderRadius: '8px',
     border: '1px solid #444',
     backgroundColor: '#141414',
@@ -74,7 +77,7 @@ export default function FilterControls({
 
   return (
     <div style={{ marginBottom: '30px', padding: '20px', backgroundColor: '#222', borderRadius: '12px' }}>
-      {/* 🌟 作品名検索とキャラクター検索を縦に並べる */}
+      {/* 作品名検索とキャラクター検索を縦に並べる */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
         <div style={inputWrapperStyle}>
           <span style={iconStyle}>🎬</span>
@@ -100,7 +103,7 @@ export default function FilterControls({
         </div>
       </div>
     
-      {/* 🌟 配信状態フィルターとソート順 (同じ行に配置し、区切り線を追加) */}
+      {/* 配信状態フィルターとソート順 */}
       <div style={{ marginBottom: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap', alignItems: 'center' }}>
         {['ALL', 'AVAILABLE', 'UNAVAILABLE'].map((val) => (
           <button 
@@ -129,7 +132,7 @@ export default function FilterControls({
         </select>
       </div>
 
-      {/* 🌟 お気に入りのみ表示 (独立した行に配置) */}
+      {/* お気に入りのみ表示 */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
         <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
           <input 
@@ -151,6 +154,39 @@ export default function FilterControls({
             お気に入りを全解除
           </button>
         )}
+      </div>
+
+      {/* 🌟 視聴状況での絞り込み：ラジオボタン形式へ変更 */}
+      <div style={{ marginBottom: '20px', display: 'flex', gap: '30px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
+          <input 
+            type="radio" 
+            name="watchStatus"
+            checked={watchStatusFilter === 'ALL'}
+            onChange={() => setWatchStatusFilter('ALL')}
+          />
+          すべて
+        </label>
+
+        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
+          <input 
+            type="radio" 
+            name="watchStatus"
+            checked={watchStatusFilter === 'WATCHED'}
+            onChange={() => setWatchStatusFilter('WATCHED')}
+          />
+          視聴済
+        </label>
+        
+        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
+          <input 
+            type="radio" 
+            name="watchStatus"
+            checked={watchStatusFilter === 'UNWATCHED'}
+            onChange={() => setWatchStatusFilter('UNWATCHED')}
+          />
+          未視聴
+        </label>
       </div>
 
       {/* プロバイダーの絞り込み */}

@@ -1,46 +1,101 @@
 'use client';
 import { useState, useEffect } from 'react';
-// 🌟 作成したCSSモジュールをインポート
 import styles from './WorkCard.module.css';
 
 export default function WorkCard({ work, onClick }: { work: any, onClick: () => void }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isWatched, setIsWatched] = useState(false);
 
   useEffect(() => {
-    const checkFavorite = () => {
+    const checkStatus = () => {
       const favorites = typeof window !== 'undefined' 
         ? JSON.parse(localStorage.getItem('favorites') || '[]')
         : [];
       setIsFavorite(favorites.includes(work.id));
+
+      const watched = typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('watchedWorks') || '[]')
+        : [];
+      setIsWatched(watched.includes(work.id));
     };
     
-    checkFavorite();
+    checkStatus();
 
-    window.addEventListener('favoritesUpdated', checkFavorite);
-    return () => window.removeEventListener('favoritesUpdated', checkFavorite);
+    window.addEventListener('favoritesUpdated', checkStatus);
+    window.addEventListener('watchedUpdated', checkStatus);
+    return () => {
+      window.removeEventListener('favoritesUpdated', checkStatus);
+      window.removeEventListener('watchedUpdated', checkStatus);
+    };
   }, [work.id]);
 
   const toggleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     let newFavorites;
-    
     if (isFavorite) {
       newFavorites = favorites.filter((id: number) => id !== work.id);
     } else {
       newFavorites = [...favorites, work.id];
     }
-    
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
     setIsFavorite(!isFavorite);
-    
     window.dispatchEvent(new Event('favoritesUpdated'));
+  };
+
+  const toggleWatched = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
+    let newWatched;
+    if (isWatched) {
+      newWatched = watched.filter((id: number) => id !== work.id);
+    } else {
+      newWatched = [...watched, work.id];
+    }
+    localStorage.setItem('watchedWorks', JSON.stringify(newWatched));
+    setIsWatched(!isWatched);
+    window.dispatchEvent(new Event('watchedUpdated'));
   };
 
   return (
     <div onClick={onClick} className={styles.card}>
       
-      {/* 🌟 条件に応じてクラス名（CSS）を切り替える */}
+      {/* 🌟 アイコンをスタイリッシュに変更 */}
+      <button 
+        onClick={toggleWatched}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          left: '10px',
+          zIndex: 10,
+          background: isWatched ? 'rgba(77, 171, 247, 0.9)' : 'rgba(20, 20, 20, 0.7)',
+          backdropFilter: 'blur(4px)',
+          border: `1.5px solid ${isWatched ? '#4dabf7' : 'rgba(255,255,255,0.4)'}`,
+          borderRadius: '50%',
+          width: '32px',
+          height: '32px',
+          color: isWatched ? '#fff' : 'rgba(255,255,255,0.8)',
+          fontSize: isWatched ? '16px' : '14px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'all 0.3s ease',
+          boxShadow: isWatched ? '0 0 10px rgba(77, 171, 247, 0.5)' : 'none'
+        }}
+        title={isWatched ? "視聴済を解除" : "視聴済にする"}
+        // ホバーエフェクト（簡易的にインラインで実装）
+        onMouseEnter={(e) => {
+          if (!isWatched) e.currentTarget.style.background = 'rgba(255,255,255,0.2)';
+        }}
+        onMouseLeave={(e) => {
+          if (!isWatched) e.currentTarget.style.background = 'rgba(20, 20, 20, 0.7)';
+        }}
+      >
+        {isWatched ? '✔' : '▷'}
+      </button>
+
+      {/* お気に入りボタン */}
       <button 
         onClick={toggleFavorite}
         className={`${styles.favButton} ${isFavorite ? styles.favButtonActive : styles.favButtonInactive}`}

@@ -38,6 +38,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     charSearchTerm, setCharSearchTerm,
     selectedProviders, setSelectedProviders, toggleProvider,
     availabilityFilter, setAvailabilityFilter,
+    watchStatusFilter, setWatchStatusFilter, // 🌟 フックから視聴済フィルターを受け取る
     sortOrder, setSortOrder,
     showOnlyFavorites, setShowOnlyFavorites,
     selectedGenres, setSelectedGenres,
@@ -138,6 +139,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           searchTerm={searchTerm} setSearchTerm={setSearchTerm}
           charSearchTerm={charSearchTerm} setCharSearchTerm={setCharSearchTerm}
           availabilityFilter={availabilityFilter} setAvailabilityFilter={setAvailabilityFilter}
+          watchStatusFilter={watchStatusFilter} setWatchStatusFilter={setWatchStatusFilter} // 🌟 子コンポーネントにフィルター状態を渡す
           allProviders={allProviders} selectedProviders={selectedProviders} toggleProvider={toggleProvider} setSelectedProviders={setSelectedProviders}
           allGenres={allGenres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}
           genreSearchMode={genreSearchMode} setGenreSearchMode={setGenreSearchMode}

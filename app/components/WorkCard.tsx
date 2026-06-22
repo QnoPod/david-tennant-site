@@ -1,5 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
+// 🌟 作成したCSSモジュールをインポート
+import styles from './WorkCard.module.css';
 
 export default function WorkCard({ work, onClick }: { work: any, onClick: () => void }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -36,53 +38,51 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
   };
 
   return (
-    <div 
-      onClick={onClick} 
-      style={{ backgroundColor: '#222', borderRadius: '12px', overflow: 'hidden', display: 'flex', flexDirection: 'column', cursor: 'pointer', transition: 'transform 0.2s', position: 'relative' }}
-      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-    >
+    <div onClick={onClick} className={styles.card}>
+      
+      {/* 🌟 条件に応じてクラス名（CSS）を切り替える */}
       <button 
         onClick={toggleFavorite}
-        style={{ 
-          position: 'absolute', top: '10px', right: '10px', zIndex: 10, 
-          background: isFavorite ? '#ff9f43' : 'rgba(0,0,0,0.5)', 
-          border: 'none', borderRadius: '50%', 
-          /* 🌟 変数を使用 */
-          width: 'var(--fav-btn-size)', height: 'var(--fav-btn-size)', 
-          fontSize: 'var(--fav-btn-font)', 
-          cursor: 'pointer', color: '#fff',
-          display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }}
+        className={`${styles.favButton} ${isFavorite ? styles.favButtonActive : styles.favButtonInactive}`}
       >
         {isFavorite ? '★' : '☆'}
       </button>
 
-      <div style={{ width: '100%', aspectRatio: '2/3', backgroundColor: '#333' }}>
+      <div className={styles.imageWrapper}>
         {work.poster_path ? (
-          <img src={`https://image.tmdb.org/t/p/w500${work.poster_path}`} alt={work.title || work.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img 
+            src={`https://image.tmdb.org/t/p/w500${work.poster_path}`} 
+            alt={work.title || work.name} 
+            loading="lazy" 
+            className={styles.posterImage} 
+          />
         ) : (
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#666' }}>No Image</div>
+          <div className={styles.noImage}>No Image</div>
         )}
       </div>
       
-      {/* 🌟 余白や文字サイズに変数を適用 */}
-      <div style={{ padding: 'var(--card-padding)', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        <h2 style={{ margin: '0 0 5px 0', fontSize: 'var(--title-size)', lineHeight: '1.3' }}>{work.title || work.name}</h2>
+      <div className={styles.content}>
+        <h2 className={styles.title}>{work.title || work.name}</h2>
         
-        <span style={{ fontSize: 'var(--meta-size)', color: '#888', marginBottom: '10px' }}>
+        <span className={styles.meta}>
           {work.media_type === 'movie' ? '🎬 映画' : '📺 TV番組'}
           {work.release_date || work.first_air_date ? ` (${(work.release_date || work.first_air_date).substring(0, 4)})` : ''}
         </span>
         
-        <div style={{ marginTop: 'auto' }}>
-          <div style={{ display: 'flex', gap: 'var(--icon-gap)', flexWrap: 'wrap' }}>
+        <div className={styles.providerArea}>
+          <div className={styles.providerList}>
             {work.providers?.length > 0 ? (
               work.providers.map((provider: any) => (
-                <img key={provider.provider_id} src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} alt={provider.provider_name} loading="lazy" style={{ width: 'var(--icon-size)', height: 'var(--icon-size)', borderRadius: '4px' }} />
+                <img 
+                  key={provider.provider_id} 
+                  src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`} 
+                  alt={provider.provider_name} 
+                  loading="lazy" 
+                  className={styles.providerIcon} 
+                />
               ))
             ) : (
-              <span style={{ color: '#aaa', fontSize: 'var(--meta-size)' }}>日本での配信なし😢</span>
+              <span className={styles.noProviders}>日本での配信なし😢</span>
             )}
           </div>
         </div>

@@ -3,22 +3,16 @@
 import { customOverviews } from '../data/overviews';
 import { customCharacterImages } from '../data/characters';
 import { customCharacterInfo } from '../data/details';
-// 🌟 手動で動画IDを上書きするデータをインポート
 import { videoOverrides } from '../data/videoOverrides';
+// 🌟 作成したヘルパー関数をインポート
+import { parseCharacterInfo } from '../utils/characterUtils';
 
 export default function WorkModal({ work, onClose }: { work: any, onClose: () => void }) {
   if (!work) return null;
   
-  // 🌟 画面表示用のタイトル
   const displayTitle = work.title || work.name;
-  
-  // 🌟 原題（邦題と異なる場合のみ表示用）
   const originalTitle = work.original_title || work.original_name;
-
-  // 🌟 あらすじやキャラクター情報（custom...）を取得するための裏側のキー（TMDB本来のタイトル）
   const lookupKey = work.tmdb_title || work.title || work.name;
-
-  // 🌟 優先順位：1.手動設定(videoOverrides) -> 2.TMDB取得データ
   const finalVideoKey = videoOverrides[lookupKey] || work.videoKey;
 
   return (
@@ -42,10 +36,8 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
         </div>
 
         <div style={{ padding: '30px', marginTop: '-40px', position: 'relative', overflowY: 'auto' }}>
-          {/* 🌟 画面には邦題（displayTitle）を表示 */}
           <h2 style={{ fontSize: '26px', margin: '0 0 4px 0' }}>{displayTitle}</h2>
           
-          {/* 🌟 邦題と原題が違う場合のみ、小さく原題を表示する */}
           {(originalTitle && originalTitle !== displayTitle) && (
             <p style={{ margin: '0 0 15px 0', fontSize: '15px', color: '#aaa', lineHeight: '1.2' }}>
               {originalTitle}
@@ -76,11 +68,9 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 8px 0' }}>作品あらすじ</h3>
           <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', margin: '0 0 25px 0', whiteSpace: 'pre-wrap' }}>
-            {/* 🌟 裏側のデータは lookupKey（原題）を使って引き出す */}
             {customOverviews[lookupKey] || work.overview || '残念ながら、この作品の日本語のあらすじはまだ登録されていません。'}
           </p>
 
-          {/* 🌟 追加：公式予告編動画がある場合のみYouTubeプレイヤーを表示 */}
           {finalVideoKey && (
             <div style={{ marginBottom: '25px', aspectRatio: '16/9' }}>
               <iframe
@@ -98,29 +88,24 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
 
           <h3 style={{ fontSize: '16px', color: '#aaa', margin: '0 0 15px 0' }}>演じたキャラクター</h3>
           
-          {/* 🌟 修正："/" で分割してキャラクター枠のブロックそのものを複数生成する */}
           {
             (lookupKey === 'Nativity 2: Danger in the Manger!'
               ? (work.character || '情報なし').split('/')
               : [work.character || '情報なし']
             ).map((charPart: string, index: number) => {
-              // 前後の空白を削除（例: "Donald", "Roderick Peterson"）
               const charNameTrimmed = charPart.trim();
               
-              // 🌟 1. 各キャラクターの画像キーを判定
-              let imageKey = lookupKey; // 基本は作品名
+              let imageKey = lookupKey;
               if (charNameTrimmed.toLowerCase().startsWith('self')) imageKey = 'self';
               else if (charNameTrimmed.toLowerCase().startsWith('narrator')) imageKey = 'narrator';
               else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') imageKey = '10th doctor';
-              else if (charNameTrimmed.includes('Scrooge McDuck')) imageKey = 'Scrooge McDuck'; // 🌟 スクルージの共通処理を追加
+              else if (charNameTrimmed.includes('Scrooge McDuck')) imageKey = 'Scrooge McDuck';
               else if (lookupKey === 'Nativity 2: Danger in the Manger!') {
-                // "Donald" だった場合は "Donald Peterson" をキーとして探す
                 imageKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
               }
               
               const imgSrc = customCharacterImages[imageKey] || customCharacterImages[lookupKey] || '/default-character.jpg';
 
-              // 🌟 2. キャラクター名（青字）の表示内容を判定
               let displayCharName = charNameTrimmed;
               if (lookupKey === 'Doctor Who: 60th Anniversary Specials') displayCharName = '14th Doctor';
               else if (lookupKey === '木曜殺人クラブ') displayCharName = 'Ian Ventham';
@@ -128,56 +113,21 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
               else if (lookupKey === 'Randall & Hopkirk (Deceased)') displayCharName = 'Gordon Stylus';
               else if (lookupKey === 'A Mug\'s Game') displayCharName = 'Gavin';
               else if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') displayCharName = '10th Doctor';
-              //else if (charNameTrimmed.includes('Scrooge McDuck')) displayCharName = 'Scrooge McDuck'; // 🌟 スクルージの共通処理を追加
               else if (charNameTrimmed.toLowerCase().startsWith('self')) displayCharName = '本人';
               else if (charNameTrimmed.toLowerCase().startsWith('narrator')) displayCharName = 'ナレーター';
               else if (lookupKey === 'Nativity 2: Danger in the Manger!' && charNameTrimmed === 'Donald') displayCharName = 'Donald Peterson';
 
-              // 🌟 3. 説明文のキーを判定
-              let descKey = lookupKey; // 基本は作品名
+              let descKey = lookupKey;
               if (charNameTrimmed === 'The Doctor' || charNameTrimmed === 'The Doctor (10)') descKey = '10th Doctor';
-              else if (charNameTrimmed.includes('Scrooge McDuck')) descKey = 'Scrooge McDuck'; // 🌟 スクルージの共通処理を追加
+              else if (charNameTrimmed.includes('Scrooge McDuck')) descKey = 'Scrooge McDuck';
               else if (lookupKey === 'Nativity 2: Danger in the Manger!') {
-                // "Donald" だった場合は "Donald Peterson" をキーとして探す
                 descKey = charNameTrimmed === 'Donald' ? 'Donald Peterson' : charNameTrimmed;
               }
 
-              // 🌟 4. 説明文の取得と1行目（日本語名）の削除処理
+              // 🌟 修正：ヘルパー関数を使って一発で名前と説明文に分割！
               const rawInfo = customCharacterInfo[descKey] || customCharacterInfo[lookupKey] || '詳細なキャラクター情報はありません。';
-              
-              // 🌟 修正：先頭に空の改行などが入っていると誤作動するため、最初に必ず trim() します
-              let displayInfo = rawInfo.trim();
-              let jaName = '';
+              const { jaName, description: displayInfo } = parseCharacterInfo(rawInfo);
 
-              // 🌟 追加：details.ts のデータから、あらかじめ日本語のキャラクター名を抽出しておく
-              if (rawInfo !== '詳細なキャラクター情報はありません。') {
-                const newlineIndex = displayInfo.indexOf('\n');
-                const colonIndex = displayInfo.indexOf('：');
-                if (newlineIndex !== -1 && colonIndex !== -1) {
-                  jaName = displayInfo.substring(0, Math.min(newlineIndex, colonIndex)).trim();
-                } else if (newlineIndex !== -1) {
-                  jaName = displayInfo.substring(0, newlineIndex).trim();
-                } else if (colonIndex !== -1) {
-                  jaName = displayInfo.substring(0, colonIndex).trim();
-                }
-              }
-              
-              // 🌟 修正：常に説明文の1行目（日本語名）を削除して、displayInfo を「詳細説明」だけにする
-              if (rawInfo !== '詳細なキャラクター情報はありません。') {
-                const newlineIndex = displayInfo.indexOf('\n');
-                const colonIndex = displayInfo.indexOf('：');
-
-                if (newlineIndex !== -1 && colonIndex !== -1) {
-                  const splitIndex = Math.min(newlineIndex, colonIndex);
-                  displayInfo = displayInfo.substring(splitIndex + 1).trim();
-                } else if (newlineIndex !== -1) {
-                  displayInfo = displayInfo.substring(newlineIndex + 1).trim();
-                } else if (colonIndex !== -1) {
-                  displayInfo = displayInfo.substring(colonIndex + 1).trim();
-                }
-              }
-
-              // 🌟 日本語名を表示するフラグ
               const shouldShowJaName = jaName && displayCharName !== jaName;
 
               return (
@@ -191,13 +141,11 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
                     <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#4dabf7', marginBottom: shouldShowJaName ? '4px' : '8px' }}>
                       {displayCharName}
                     </div>
-                    {/* 🌟 追加：抽出した日本語名を、見やすい白字で青字のすぐ下に配置 */}
                     {shouldShowJaName && (
                       <div style={{ fontSize: '14px', color: '#fff', marginBottom: '8px', fontWeight: 'bold' }}>
                         {jaName}
                       </div>
                     )}
-                    {/* whiteSpace: 'pre-wrap' を維持して改行を反映 */}
                     <p style={{ fontSize: '14px', lineHeight: '1.6', color: '#ccc', margin: 0, whiteSpace: 'pre-wrap' }}>
                       {displayInfo}
                     </p>
@@ -218,7 +166,6 @@ export default function WorkModal({ work, onClose }: { work: any, onClose: () =>
             )}
           </div>
 
-          {/* 🌟 注意書きを表示する対象リストに追加 */}
           {(lookupKey === 'Good Omens - Season 3: An Ineffable Goodbye') && (
             <p style={{ margin: '10px 0 0 0', fontSize: '13px', color: '#ff8787' }}>
               ※日本語字幕なし

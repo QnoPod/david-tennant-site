@@ -129,14 +129,15 @@ export default function CharacterSortPage() {
 
       let isWatched = isWorkWatched(workTitle);
 
-      if (!isWatched && (workTitle.includes('10th Doctor') || workTitle.includes('10代目ドクター') || workTitle.includes('14代目ドクター'))) {
-        isWatched = isWorkWatched('Doctor Who');
+      // 🌟 修正：作品名だけでなくキャラ名（charName）のチェックも加え、日本語の作品名（ダックテイルズなど）でも視聴済み判定が通るように強化
+      if (!isWatched && (workTitle.includes('10th Doctor') || workTitle.includes('10代目ドクター') || workTitle.includes('14代目ドクター') || charName.includes('10代目ドクター') || charName.includes('14代目ドクター'))) {
+        isWatched = isWorkWatched('Doctor Who') || isWorkWatched('Doctor Whoシリーズ') || isWorkWatched('ドクター・フー');
       }
-      if (!isWatched && (workTitle.includes('Scrooge McDuck') || workTitle.includes('スクルージ'))) {
-        isWatched = isWorkWatched('DuckTales');
+      if (!isWatched && (workTitle === 'Scrooge McDuck' || workTitle.includes('Scrooge McDuck') || workTitle.includes('スクルージ') || charName.includes('Scrooge McDuck') || charName.includes('スクルージ'))) {
+        isWatched = isWorkWatched('DuckTales') || isWorkWatched('ダックテイルズ');
       }
       if (!isWatched && ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(charName)) {
-        isWatched = isWorkWatched('Nativity 2: Danger in the Manger!');
+        isWatched = isWorkWatched('Nativity 2: Danger in the Manger!') || isWorkWatched('Nativity 2') || isWorkWatched('ネティビティ2');
       }
 
       if (isWatched) {

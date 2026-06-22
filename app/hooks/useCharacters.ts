@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { customCharacterInfo } from '../data/details';
 import { customCharacterImages } from '../data/characters';
 import { searchDictionary } from '../data/searchDictionary';
@@ -6,7 +6,6 @@ import { yearOverrides } from '../data/yearOverrides';
 import { characterAttributes } from '../data/characterAttributes';
 import { parseCharacterInfo } from '../utils/characterUtils';
 
-// 文字を強力に整える関数（内部で使用）
 const normalizeText = (text: string) => {
   if (!text) return '';
   return String(text)
@@ -16,13 +15,26 @@ const normalizeText = (text: string) => {
 };
 
 export function useCharacters(tmdbWorks: any[]) {
-  // 🌟 UIの表示切替に関わる状態管理
   const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
   const [showAttributes, setShowAttributes] = useState(false);
+  
+  const [watchStatusFilter, setWatchStatusFilter] = useState<string>('ALL');
+  const [watchedIds, setWatchedIds] = useState<number[]>([]);
 
-  // 🌟 TMDBデータと手動データを結合し、年齢計算などを行う巨大なロジック
+  useEffect(() => {
+    const loadWatchedStatus = () => {
+      const watched = typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('watchedWorks') || '[]')
+        : [];
+      setWatchedIds(watched);
+    };
+    loadWatchedStatus();
+    window.addEventListener('watchedUpdated', loadWatchedStatus);
+    return () => window.removeEventListener('watchedUpdated', loadWatchedStatus);
+  }, []);
+
   const characters = useMemo(() => {
-    return Object.keys(customCharacterInfo).map((workTitle) => {
+    const allChars = Object.keys(customCharacterInfo).map((workTitle) => {
       const rawInfo = customCharacterInfo[workTitle] || '';
       const { jaName, description: cleanDescription } = parseCharacterInfo(rawInfo);
       const charName = jaName || "情報なし";
@@ -30,7 +42,7 @@ export function useCharacters(tmdbWorks: any[]) {
       const imageKey = 
         (charName.includes('10th Doctor') || charName.includes('10代目ドクター')) ? '10th doctor' :
         charName.includes('14代目ドクター') ? 'Doctor Who: 60th Anniversary Specials' :
-        (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) ? 'Scrooge McDuck' : 
+        (workTitle.includes('Scrooge McDuck') || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) ? 'Scrooge McDuck' : 
         workTitle;
       
       const charImage = customCharacterImages[imageKey] || customCharacterImages[workTitle] || null;
@@ -43,44 +55,95 @@ export function useCharacters(tmdbWorks: any[]) {
 
       if (yearOverrides[workTitle]) {
         year = yearOverrides[workTitle];
-      } else if (charName === '10代目ドクター' || workTitle.includes('Doctor Who')) {
+      } else if (charName.includes('10代目ドクター') || workTitle.includes('Doctor Who') || workTitle.includes('10th Doctor')) {
         year = '2005';
         fullDateStr = '2005-06-18'; 
-      } else if (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck')) {
+      } else if (workTitle.includes('Scrooge McDuck') || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) {
         year = '2017';
         fullDateStr = '2017-08-12';
-      } else if (['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(charName)) {
+      } else if (charName.includes('ドナルド・ピーターソン') || charName.includes('ロデリック・ピーターソン')) {
         year = '2012';
         fullDateStr = '2012-11-23';
-      } else if (tmdbWorks && tmdbWorks.length > 0) {
-        const normalizedWorkTitle = normalizeText(workTitle);
-        const rawDisplayTitleNorm = normalizeText(rawDisplayTitle);
+      }
 
-        const matchedWork = tmdbWorks.find((w: any) => {
+      // 🌟 表記揺れ対策：関連する全ての名前を検索対象に
+      let searchTitles = [workTitle, rawDisplayTitle];
+      let matchedWorkIds: number[] = []; // 🌟 ここに関連する全IDをストックします
+
+      const lowerWorkTitle = workTitle.toLowerCase();
+      const lowerCharName = charName.toLowerCase();
+
+      // ドクター・フー関連（新旧すべて網羅）
+      if (
+        lowerCharName.includes('10代目') || 
+        lowerCharName.includes('14代目') || 
+        lowerCharName.includes('10th') || 
+        lowerCharName.includes('14th') || 
+        lowerCharName.includes('doctor') || 
+        lowerWorkTitle.includes('doctor') ||
+        lowerWorkTitle.includes('ドクター')
+      ) {
+        searchTitles.push('Doctor Who');
+        searchTitles.push('ドクター・フー');
+        matchedWorkIds.push(57243, 239770, 105919, 241855, 121); 
+      }
+
+      // ピーターソン兄弟（Nativity 2）
+      if (
+        lowerCharName.includes('ピーターソン') || 
+        lowerCharName.includes('peterson') || 
+        lowerWorkTitle.includes('nativity')
+      ) {
+        searchTitles.push('Nativity 2: Danger in the Manger!');
+        searchTitles.push('Nativity 2');
+        matchedWorkIds.push(119684); 
+      }
+
+      // スクルージ・マクダック
+      if (
+        lowerCharName.includes('スクルージ') || 
+        lowerCharName.includes('scrooge') || 
+        lowerWorkTitle.includes('scrooge') ||
+        lowerWorkTitle.includes('ダックテイルズ')
+      ) {
+        searchTitles.push('DuckTales');
+        searchTitles.push('ダックテイルズ');
+        matchedWorkIds.push(71184); 
+      }
+
+      // 🌟 TMDBデータとの総当たり照合（一致した作品のIDを「すべて」追加する）
+      if (tmdbWorks && tmdbWorks.length > 0) {
+        tmdbWorks.forEach((w: any) => {
           const tmdbTitle = normalizeText(w.title || '');
           const tmdbName = normalizeText(w.name || '');
           const tmdbOrigTitle = normalizeText(w.original_title || '');
           const tmdbOrigName = normalizeText(w.original_name || '');
 
-          return (
-            (tmdbTitle && (tmdbTitle.includes(normalizedWorkTitle) || tmdbTitle.includes(rawDisplayTitleNorm))) ||
-            (tmdbName && (tmdbName.includes(normalizedWorkTitle) || tmdbName.includes(rawDisplayTitleNorm))) ||
-            (tmdbOrigTitle && (tmdbOrigTitle.includes(normalizedWorkTitle) || tmdbOrigTitle.includes(rawDisplayTitleNorm))) ||
-            (tmdbOrigName && (tmdbOrigName.includes(normalizedWorkTitle) || tmdbOrigName.includes(rawDisplayTitleNorm))) ||
-            (normalizedWorkTitle && tmdbTitle && normalizedWorkTitle.includes(tmdbTitle)) ||
-            (normalizedWorkTitle && tmdbName && normalizedWorkTitle.includes(tmdbName))
-          );
-        });
+          const isMatch = searchTitles.some(t => {
+            const normT = normalizeText(t);
+            if (!normT) return false;
+            return (
+              (tmdbTitle && (tmdbTitle.includes(normT) || normT.includes(tmdbTitle))) ||
+              (tmdbName && (tmdbName.includes(normT) || normT.includes(tmdbName))) ||
+              (tmdbOrigTitle && (tmdbOrigTitle.includes(normT) || normT.includes(tmdbOrigTitle))) ||
+              (tmdbOrigName && (tmdbOrigName.includes(normT) || normT.includes(tmdbOrigName)))
+            );
+          });
 
-        if (matchedWork) {
-          const dateStr = matchedWork.first_air_date || matchedWork.release_date;
-          if (dateStr) {
-            year = dateStr.substring(0, 4);
-            fullDateStr = dateStr; 
+          if (isMatch) {
+            matchedWorkIds.push(w.id); // 関連するIDは全部ストック
+            
+            // ついでに公開年も取得（まだ不明な場合のみ）
+            const dateStr = w.first_air_date || w.release_date;
+            if (dateStr && year === '年不明') {
+              year = dateStr.substring(0, 4);
+              fullDateStr = dateStr; 
+            }
           }
-        }
+        });
       }
 
+      // 年齢計算ロジック
       let age: string | number = '不明';
       if (fullDateStr) {
         const releaseDate = new Date(fullDateStr);
@@ -98,12 +161,28 @@ export function useCharacters(tmdbWorks: any[]) {
       const attrRaw = characterAttributes[charName] || '';
       const attributes = attrRaw ? attrRaw.split(/[、,\/]/).map(s => s.trim()).filter(Boolean) : [];
 
+      // 🌟 【最重要修正】型安全のため、IDをすべて文字列に変換して比較する
+      const safeWatchedIds = watchedIds.map(String);
+      const safeMatchedIds = matchedWorkIds.map(String);
+
+      // ストックした関連IDの「どれか一つでも」視聴済みに含まれていればTRUE
+      const isWatched = safeMatchedIds.some(id => safeWatchedIds.includes(id));
+
       return {
         workTitle, displayWorkTitle, charName, charImage,
-        fullDescription: cleanDescription, year, age, attributes 
+        fullDescription: cleanDescription, year, age, attributes, isWatched
       };
-    }).sort((a, b) => {
-      // タイムラインのときは公開順、グリッドのときは五十音順
+    });
+
+    // 視聴ステータスフィルター
+    const filteredChars = allChars.filter((char) => {
+      if (watchStatusFilter === 'WATCHED') return char.isWatched;
+      if (watchStatusFilter === 'UNWATCHED') return !char.isWatched;
+      return true; 
+    });
+
+    // ソート処理
+    return filteredChars.sort((a, b) => {
       if (viewMode === 'timeline') {
         const yearA = a.year === '年不明' ? 0 : parseInt(a.year); 
         const yearB = b.year === '年不明' ? 0 : parseInt(b.year);
@@ -115,9 +194,8 @@ export function useCharacters(tmdbWorks: any[]) {
       }
       return a.charName.localeCompare(b.charName, 'ja');
     });
-  }, [tmdbWorks, viewMode]);
+  }, [tmdbWorks, viewMode, watchStatusFilter, watchedIds]);
 
-  // 🌟 属性ごとのグループ化ロジック
   const groupedCharacters = useMemo(() => {
     const groups: Record<string, typeof characters> = {};
     characters.forEach(char => {
@@ -130,14 +208,14 @@ export function useCharacters(tmdbWorks: any[]) {
         });
       } else {
         if (!groups['その他']) groups['その他'] = [];
+        groups['other'] = groups['その他']; 
         groups['その他'].push(char);
       }
     });
     return groups;
   }, [characters]);
 
-  // 🌟 グループ枠の表示順（ソート）
-  const groupKeys = Object.keys(groupedCharacters).sort((a, b) => {
+  const groupKeys = Object.keys(groupedCharacters).filter(k => k !== 'other').sort((a, b) => {
     const getPriority = (key: string) => {
       if (key === 'その他') return 2;
       if (key === 'その他職業') return 1;
@@ -153,10 +231,10 @@ export function useCharacters(tmdbWorks: any[]) {
     setViewMode(prev => prev === 'grid' ? 'timeline' : 'grid');
   };
 
-  // 🌟 必要なステートと計算結果だけを返す
   return {
     viewMode, handleToggleView,
     showAttributes, setShowAttributes,
+    watchStatusFilter, setWatchStatusFilter, 
     characters, groupedCharacters, groupKeys
   };
 }

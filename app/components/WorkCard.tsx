@@ -6,6 +6,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatched, setIsWatched] = useState(false);
 
+  // お気に入りと視聴済ステータスのローカルストレージ同期
   useEffect(() => {
     const checkStatus = () => {
       const favorites = typeof window !== 'undefined' 
@@ -29,6 +30,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
     };
   }, [work.id]);
 
+  // お気に入り切り替え
   const toggleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -43,6 +45,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
     window.dispatchEvent(new Event('favoritesUpdated'));
   };
 
+  // 視聴済切り替え
   const toggleWatched = (e: React.MouseEvent) => {
     e.stopPropagation();
     const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
@@ -60,49 +63,25 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
   return (
     <div onClick={onClick} className={styles.card}>
       
-      {/* 🌟 アイコンをスタイリッシュに変更 */}
+      {/* 🌟 左上：視聴済ボタン（状態に応じて半透明とライトブルーが切り替わります） */}
       <button 
         onClick={toggleWatched}
-        style={{
-          position: 'absolute',
-          top: '10px',
-          left: '10px',
-          zIndex: 10,
-          background: isWatched ? 'rgba(77, 171, 247, 0.9)' : 'rgba(20, 20, 20, 0.7)',
-          backdropFilter: 'blur(4px)',
-          border: `1.5px solid ${isWatched ? '#4dabf7' : 'rgba(255,255,255,0.4)'}`,
-          borderRadius: '50%',
-          width: '32px',
-          height: '32px',
-          color: isWatched ? '#fff' : 'rgba(255,255,255,0.8)',
-          fontSize: isWatched ? '16px' : '14px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 0.3s ease',
-          boxShadow: isWatched ? '0 0 10px rgba(77, 171, 247, 0.5)' : 'none'
-        }}
-        title={isWatched ? "視聴済を解除" : "視聴済にする"}
-        // ホバーエフェクト（簡易的にインラインで実装）
-        onMouseEnter={(e) => {
-          if (!isWatched) e.currentTarget.style.background = 'rgba(255,255,255,0.2)';
-        }}
-        onMouseLeave={(e) => {
-          if (!isWatched) e.currentTarget.style.background = 'rgba(20, 20, 20, 0.7)';
-        }}
+        className={`${styles.watchButton} ${isWatched ? styles.watchButtonActive : styles.watchButtonInactive}`}
+        title={isWatched ? "視聴済" : "未視聴"}
       >
         {isWatched ? '✔' : '▷'}
       </button>
 
-      {/* お気に入りボタン */}
+      {/* 右上：お気に入りボタン */}
       <button 
         onClick={toggleFavorite}
         className={`${styles.favButton} ${isFavorite ? styles.favButtonActive : styles.favButtonInactive}`}
+        title="お気に入り"
       >
         {isFavorite ? '★' : '☆'}
       </button>
 
+      {/* ポスター画像エリア */}
       <div className={styles.imageWrapper}>
         {work.poster_path ? (
           <img 
@@ -116,6 +95,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
         )}
       </div>
       
+      {/* 作品情報エリア */}
       <div className={styles.content}>
         <h2 className={styles.title}>{work.title || work.name}</h2>
         
@@ -124,7 +104,7 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
           {work.release_date || work.first_air_date ? ` (${(work.release_date || work.first_air_date).substring(0, 4)})` : ''}
         </span>
         
-        <div className={styles.providerArea}>
+        <div style={{ marginTop: 'auto' }}>
           <div className={styles.providerList}>
             {work.providers?.length > 0 ? (
               work.providers.map((provider: any) => (

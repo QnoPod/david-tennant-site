@@ -100,7 +100,8 @@ export default function FilterControls({
         </div>
       </div>
     
-      <div style={{ marginBottom: '20px', display: 'flex', gap: '20px', flexWrap: 'wrap', alignItems: 'center' }}>
+      {/* 🌟 配信状態フィルターとソート順 (同じ行に配置し、区切り線を追加) */}
+      <div style={{ marginBottom: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap', alignItems: 'center' }}>
         {['ALL', 'AVAILABLE', 'UNAVAILABLE'].map((val) => (
           <button 
             key={val}
@@ -114,28 +115,8 @@ export default function FilterControls({
           </button>
         ))}
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
-            <input 
-              type="checkbox" 
-              checked={showOnlyFavorites}
-              onChange={(e) => setShowOnlyFavorites(e.target.checked)}
-            />
-            お気に入りのみ表示
-          </label>
-          
-          {showOnlyFavorites && (
-            <button 
-              onClick={() => {
-                localStorage.removeItem('favorites');
-                window.dispatchEvent(new Event('favoritesUpdated'));
-              }}
-              style={{ background: 'none', border: '1px solid #ff9f43', color: '#ff9f43', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
-            >
-              お気に入りを全解除
-            </button>
-          )}
-        </div>
+        {/* 縦の区切り線 */}
+        <div style={{ width: '2px', height: '24px', backgroundColor: '#444', margin: '0 5px' }}></div>
 
         <select 
           value={sortOrder} 
@@ -148,6 +129,31 @@ export default function FilterControls({
         </select>
       </div>
 
+      {/* 🌟 お気に入りのみ表示 (独立した行に配置) */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', color: '#ff9f43', fontWeight: 'bold' }}>
+          <input 
+            type="checkbox" 
+            checked={showOnlyFavorites}
+            onChange={(e) => setShowOnlyFavorites(e.target.checked)}
+          />
+          お気に入りのみ表示
+        </label>
+        
+        {showOnlyFavorites && (
+          <button 
+            onClick={() => {
+              localStorage.removeItem('favorites');
+              window.dispatchEvent(new Event('favoritesUpdated'));
+            }}
+            style={{ background: 'none', border: '1px solid #ff9f43', color: '#ff9f43', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '12px' }}
+          >
+            お気に入りを全解除
+          </button>
+        )}
+      </div>
+
+      {/* プロバイダーの絞り込み */}
       <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginBottom: '20px' }}>
         {allProviders.map(name => (
           <label key={name} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '14px', color: '#ccc' }}>

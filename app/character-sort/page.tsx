@@ -29,10 +29,14 @@ export default function CharacterSortPage() {
   const [totalVotes, setTotalVotes] = useState(0);
   const [copied, setCopied] = useState(false);
   
+  // 🌟 追加：同じ組み合わせが何度も選出されないように過去の対戦履歴を記録するSet
+  const [pastMatchups, setPastMatchups] = useState<Set<string>>(new Set());
+  
   const [sortTheme, setSortTheme] = useState('好き');
   const [onlyWatched, setOnlyWatched] = useState(false);
 
-  const generateMatchUp = (currentStats: Record<string, CharacterStat>, filterWatched: boolean) => {
+  // 🌟 引数に currentPastMatchups を追加し、履歴を考慮したマッチングを行うように修正
+  const generateMatchUp = (currentStats: Record<string, CharacterStat>, filterWatched: boolean, currentPastMatchups: Set<string>) => {
     const charList = Object.values(currentStats).filter(c => {
       if (c.isExcluded) return false;
       if (filterWatched && !c.isWatched) return false;
@@ -44,10 +48,26 @@ export default function CharacterSortPage() {
       return;
     }
 
-    const sorted = [...charList].sort((a, b) => a.matches - b.matches || Math.random() - 0.5);
+    // まず配列全体をランダムにシャッフルする（Fisher-Yatesシャッフル等価）
+    const shuffled = [...charList].sort(() => Math.random() - 0.5);
+    // その後、試合数で昇順ソート（試合数が同数のキャラ同士はランダムな順序に保たれる）
+    const sorted = shuffled.sort((a, b) => a.matches - b.matches);
+
+    // 一番試合数が少ないキャラをAに選出
     const charA = sorted[0];
     const remaining = sorted.slice(1);
-    const charB = remaining[Math.floor(Math.random() * Math.min(10, remaining.length))];
+
+    // 🌟 修正：charAと「まだ対戦していない」キャラを優先的に絞り込む
+    let candidates = remaining.filter(c => !currentPastMatchups.has(`${charA.id}-${c.id}`));
+
+    // もし全員と対戦済（または絞り込みで0人になった）場合は、残りの候補全体から選ぶようにフォールバック
+    if (candidates.length === 0) {
+      candidates = remaining;
+    }
+
+    // 候補の中から、なるべく試合数が少ない上位(最大10人)の中からランダムに相手（B）を選ぶ
+    const opponentIndex = Math.floor(Math.random() * Math.min(10, candidates.length));
+    const charB = candidates[opponentIndex];
 
     setMatchUp([charA, charB]);
   };
@@ -61,12 +81,10 @@ export default function CharacterSortPage() {
       console.error("Failed to parse watchStatus from localStorage", e);
     }
 
-    // 🌟 タイトルの文字列から「視聴済」を判定する強化版の関数
     const isWorkWatched = (title: string) => {
       if (!title) return false;
       const tKey = title.trim().toLowerCase();
 
-      // 1. worksデータから連携された確実なキャッシュを確認
       try {
         const cache = localStorage.getItem('watchedTitlesCache');
         if (cache) {
@@ -82,7 +100,6 @@ export default function CharacterSortPage() {
         }
       } catch (e) {}
 
-      // 2. 従来の watchStatus (オブジェクト形式) も念のため確認
       if (watchStatusObj) {
          if (Array.isArray(watchStatusObj)) {
             return watchStatusObj.some((t: any) => String(t).trim().toLowerCase() === tKey);
@@ -110,15 +127,16 @@ export default function CharacterSortPage() {
         displayCharName = 'スクルージ・マクダック';
       }
 
-      // 作品名が視聴済かチェック
       let isWatched = isWorkWatched(workTitle);
 
-      // 特殊なキャラ名（10th Doctorやスクルージなど）へのフォールバック対応
       if (!isWatched && (workTitle.includes('10th Doctor') || workTitle.includes('10代目ドクター') || workTitle.includes('14代目ドクター'))) {
         isWatched = isWorkWatched('Doctor Who');
       }
       if (!isWatched && (workTitle.includes('Scrooge McDuck') || workTitle.includes('スクルージ'))) {
         isWatched = isWorkWatched('DuckTales');
+      }
+      if (!isWatched && ['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(charName)) {
+        isWatched = isWorkWatched('Nativity 2: Danger in the Manger!');
       }
 
       if (isWatched) {
@@ -176,8 +194,13 @@ export default function CharacterSortPage() {
 
     setStats(initialStats);
     setTotalVotes(0);          
-    setShowRanking(false);     
-    generateMatchUp(initialStats, filterWatched);
+    setShowRanking(false);
+    
+    // 履歴もリセットする
+    const resetMatchups = new Set<string>();
+    setPastMatchups(resetMatchups);
+    
+    generateMatchUp(initialStats, filterWatched, resetMatchups);
   };
 
   useEffect(() => {
@@ -186,6 +209,8 @@ export default function CharacterSortPage() {
   }, []);
 
   const handleVote = (winnerId: string, loserId: string) => {
+    if (!matchUp) return;
+    
     const winner = stats[winnerId];
     const loser = stats[loserId];
 
@@ -205,8 +230,26 @@ export default function CharacterSortPage() {
     };
 
     setStats(newStats);
-    setTotalVotes(prev => prev + 1);
-    generateMatchUp(newStats, onlyWatched);
+
+    // 🌟 履歴の保存（双方向のIDペアを記録して重複選出を防ぐ）
+    const newPastMatchups = new Set(pastMatchups);
+    newPastMatchups.add(`${matchUp[0].id}-${matchUp[1].id}`);
+    newPastMatchups.add(`${matchUp[1].id}-${matchUp[0].id}`);
+    setPastMatchups(newPastMatchups);
+    
+    setTotalVotes(prev => {
+      const newTotal = prev + 1;
+      const activeCount = Object.values(newStats).filter(c => !c.isExcluded && (!onlyWatched || c.isWatched)).length;
+      const targetVotes = activeCount * 2;
+      
+      // 目安となる目標投票数に達した「その瞬間」だけ自動遷移させる
+      if (newTotal === targetVotes) {
+        setShowRanking(true);
+      }
+      return newTotal;
+    });
+
+    generateMatchUp(newStats, onlyWatched, newPastMatchups);
   };
 
   const handleSkip = (skipType: 'A' | 'B' | 'Both') => {
@@ -223,34 +266,55 @@ export default function CharacterSortPage() {
     }
 
     setStats(newStats);
-    generateMatchUp(newStats, onlyWatched);
+
+    // スキップ時も履歴に残す（無駄な再選出を防ぐため）
+    const newPastMatchups = new Set(pastMatchups);
+    newPastMatchups.add(`${matchUp[0].id}-${matchUp[1].id}`);
+    newPastMatchups.add(`${matchUp[1].id}-${matchUp[0].id}`);
+    setPastMatchups(newPastMatchups);
+
+    const activeCount = Object.values(newStats).filter(c => !c.isExcluded && (!onlyWatched || c.isWatched)).length;
+    const targetVotes = activeCount * 2;
+    if (activeCount >= 2 && totalVotes >= targetVotes) {
+      setShowRanking(true);
+    }
+
+    generateMatchUp(newStats, onlyWatched, newPastMatchups);
   };
 
   const handleOnlyWatchedToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
     
-    // 1. もし「視聴済のみ」を有効にする場合、視聴済が足りているかチェック
     if (isChecked) {
       const watchedCount = Object.values(stats).filter(c => c.isWatched).length;
       if (watchedCount < 2) {
-        alert(`作品一覧で「視聴済」にチェックされたキャラクターが足りません（現在: ${watchedCount}人）。\n絞り込みソートを行うには、少なくとも2人以上のキャラクターが視聴済である必要があります。作品一覧画面から作品の視聴ステータスを更新してください。`);
+        alert(`作品一覧で「視聴済」にチェックされたキャラクターが足りません（現在: ${watchedCount}人）。\n絞り込みソートを行うには、少なくとも2人以上のキャラクターが視聴済みである必要があります。\n作品一覧画面から作品の視聴ステータスを更新してください。`);
         e.preventDefault(); 
         return;
       }
     }
 
-    // 2. 既にソート（投票）が始まっている場合に警告を出す
     if (totalVotes > 0) {
-      if (!window.confirm('条件を変更すると、これまでのソート状況がリセットされ初めからになります。よろしいですか？')) {
-        // キャンセルされた場合はチェックボックスの状態を元に戻す
+      if (!window.confirm('条件を変更すると、これまでのソート状況がリセットされ初めからになります。\nよろしいですか？')) {
         e.preventDefault();
         return;
       }
     }
 
-    // 3. 許可されたら設定を反映してリセット開始
     setOnlyWatched(isChecked);
     resetAndStartSort(isChecked); 
+  };
+
+  // 🌟 追加：はじめからやり直すボタン用のハンドラー（ワンクッション）
+  const handleReset = () => {
+    if (totalVotes > 0) {
+      if (window.confirm('本当にソートをはじめからやり直しますか？\nこれまでのソートデータはすべて消去されます。')) {
+        resetAndStartSort(onlyWatched);
+      }
+    } else {
+      // 投票前なら警告なしでリフレッシュ
+      resetAndStartSort(onlyWatched);
+    }
   };
 
   const ranking = Object.values(stats)
@@ -429,9 +493,19 @@ export default function CharacterSortPage() {
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
           <h1 style={{ fontSize: '28px', margin: 0, color: '#ff9f43' }}>キャラソート</h1>
-          <Link href="/characters" style={{ color: '#aaa', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>
-            ← リストに戻る
-          </Link>
+          
+          {/* 🌟 右上のボタンエリアに「やり直し」と「戻る」を並べる */}
+          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+            <button 
+              onClick={handleReset}
+              style={{ backgroundColor: '#dc3545', color: '#fff', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' }}
+            >
+              🔄 はじめから
+            </button>
+            <Link href="/characters" style={{ color: '#aaa', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px', fontSize: '14px' }}>
+              ← リストに戻る
+            </Link>
+          </div>
         </div>
 
         {!showRanking && matchUp ? (
@@ -450,7 +524,6 @@ export default function CharacterSortPage() {
               </div>
               <br/>
 
-              {/* 視聴済絞り込みチェックボックス */}
               <div style={{ marginBottom: '20px' }}>
                 <label style={{ color: '#ff9f43', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                   <input 
@@ -466,9 +539,6 @@ export default function CharacterSortPage() {
               「<strong style={{ color: '#ff9f43', fontSize: '18px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
               （現在の投票数：{totalVotes} 回）<br/>
 
-              <p style={{ color: '#ff8787', fontSize: '14px', marginTop: '10px', marginBottom: '0', fontWeight: 'bold' }}>
-                ※リストに戻ると始めからになります
-              </p>
               
               <div style={{ display: 'inline-block', marginTop: '15px', padding: '10px 20px', backgroundColor: '#333', borderRadius: '30px', border: '1px solid #555' }}>
                 {remainingVotes > 0 ? (
@@ -479,7 +549,6 @@ export default function CharacterSortPage() {
               </div>
             </div>
 
-            {/* 対戦エリア */}
             <div className="matchup-container">
               <div className="char-card">
                 <div className="char-image-wrap"><img src={matchUp[0].charImage} alt={matchUp[0].charName} /></div>
@@ -517,7 +586,6 @@ export default function CharacterSortPage() {
           </>
         ) : (
           <>
-            {/* ランキング表示エリア */}
             <div style={{ backgroundColor: '#222', borderRadius: '16px', padding: '30px', marginTop: '20px' }}>
               <h2 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '24px' }}>
                 現在の【{sortTheme || 'キャラクター'}】ランキング
@@ -525,7 +593,7 @@ export default function CharacterSortPage() {
               
               {ranking.length === 0 ? (
                 <p style={{ textAlign: 'center', color: '#888', marginBottom: '30px', lineHeight: '1.6' }}>
-                  投票データがありません。<br/>（すべてのキャラクターが除外されたか、まだ投票していないか、<br/>あるいは視聴済のキャラクターが2人以上いません）
+                  投票データがありません。<br/>（まだ投票していないか、ソート対象のキャラクターが2人以上いません）
                 </p>
               ) : (
                 <>
@@ -561,17 +629,24 @@ export default function CharacterSortPage() {
                 </>
               )}
 
-              {/* 比較できるキャラが2人以上残っている場合のみ「投票に戻る」ボタンを表示 */}
-              {activeCount >= 2 && (
-                <div style={{ textAlign: 'center', marginTop: '40px' }}>
+              {/* 🌟 ランキング画面からの各種導線 */}
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+                {activeCount >= 2 && (
                   <button 
                     onClick={() => setShowRanking(false)}
                     style={{ backgroundColor: '#ff9f43', color: '#fff', border: 'none', padding: '12px 40px', borderRadius: '8px', fontSize: '16px', cursor: 'pointer', fontWeight: 'bold' }}
                   >
                     投票に戻る
                   </button>
-                </div>
-              )}
+                )}
+                
+                <button 
+                  onClick={handleReset}
+                  style={{ backgroundColor: 'transparent', color: '#dc3545', border: '2px solid #dc3545', padding: '12px 40px', borderRadius: '8px', fontSize: '16px', cursor: 'pointer', fontWeight: 'bold' }}
+                >
+                  最初からやり直す
+                </button>
+              </div>
             </div>
           </>
         )}

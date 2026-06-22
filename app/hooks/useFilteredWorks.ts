@@ -14,15 +14,15 @@ export function useFilteredWorks(works: any[], viewMode: 'grid' | 'timeline') {
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [availabilityFilter, setAvailabilityFilter] = useState('ALL');
   
-  // 🌟 視聴状況のフィルター状態を追加
   const [watchStatusFilter, setWatchStatusFilter] = useState('ALL'); 
   
   const [sortOrder, setSortOrder] = useState<'default' | 'popularity' | 'title'>('default');
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   
   const [favorites, setFavorites] = useState<number[]>([]);
-  // 🌟 視聴済リストの状態を追加
-  const [watchedWorks, setWatchedWorks] = useState<number[]>([]); 
+  
+  const [watchedWorks, setWatchedWorks] = useState<any[]>([]); 
+  const [watchStatusObj, setWatchStatusObj] = useState<any>({});
 
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [genreSearchMode, setGenreSearchMode] = useState<'include' | 'exclude'>('include');
@@ -38,16 +38,45 @@ export function useFilteredWorks(works: any[], viewMode: 'grid' | 'timeline') {
     return () => window.removeEventListener('favoritesUpdated', loadFavorites);
   }, []);
 
-  // 🌟 視聴済リストのリアルタイム管理（お気に入りと同じ仕組み）
+  // 視聴済リストのリアルタイム管理
   useEffect(() => {
     const loadWatched = () => {
-      const watched = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('watchedWorks') || '[]') : [];
-      setWatchedWorks(watched);
+      if (typeof window !== 'undefined') {
+        try {
+          const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
+          setWatchedWorks(Array.isArray(watched) ? watched : []);
+        } catch (e) {
+          setWatchedWorks([]);
+        }
+        
+        try {
+          const statusObj = JSON.parse(localStorage.getItem('watchStatus') || '{}');
+          setWatchStatusObj(statusObj);
+        } catch (e) {
+          setWatchStatusObj({});
+        }
+      }
     };
+    
     loadWatched();
     window.addEventListener('watchedUpdated', loadWatched);
-    return () => window.removeEventListener('watchedUpdated', loadWatched);
+    window.addEventListener('watchStatusUpdated', loadWatched);
+    return () => {
+      window.removeEventListener('watchedUpdated', loadWatched);
+      window.removeEventListener('watchStatusUpdated', loadWatched);
+    };
   }, []);
+
+  // 🌟 IDベースの視聴済リストから、タイトル文字列のリストを生成して保存（キャラソート連携用）
+  useEffect(() => {
+    if (typeof window !== 'undefined' && works && works.length > 0) {
+      const watchedTitles = works
+        .filter((work: any) => watchedWorks.includes(work.id) || watchedWorks.includes(String(work.id)))
+        .map((work: any) => work.tmdb_title || work.title || work.name);
+
+      localStorage.setItem('watchedTitlesCache', JSON.stringify(watchedTitles));
+    }
+  }, [watchedWorks, works]);
 
   const uniqueWorks = useMemo(() => {
     const map = new Map();
@@ -91,6 +120,23 @@ export function useFilteredWorks(works: any[], viewMode: 'grid' | 'timeline') {
     const searchLower = normalizeText(searchTerm);
     const charSearchLower = normalizeText(charSearchTerm);
 
+    const isWorkWatchedByTitle = (title: string | undefined) => {
+      if (!title || !watchStatusObj) return false;
+      const tKey = String(title).trim();
+      if (Array.isArray(watchStatusObj)) {
+        return watchStatusObj.map((t: any) => String(t).trim()).includes(tKey);
+      }
+      if (typeof watchStatusObj === 'object') {
+        if (watchStatusObj[tKey] === 'WATCHED' || watchStatusObj[tKey] === true) return true;
+        for (const key in watchStatusObj) {
+          if (key.trim() === tKey) {
+            return watchStatusObj[key] === 'WATCHED' || watchStatusObj[key] === true;
+          }
+        }
+      }
+      return false;
+    };
+
     return uniqueWorks.filter((work: any) => {
       let allTitles = normalizeText(`${work.title || ''} ${work.name || ''} ${work.original_title || ''} ${work.original_name || ''}`);
 
@@ -123,18 +169,23 @@ export function useFilteredWorks(works: any[], viewMode: 'grid' | 'timeline') {
 
       const matchesFavorites = !showOnlyFavorites || favorites.includes(work.id);
 
-      // 🌟 視聴状況による絞り込み判定
-      const isWatched = watchedWorks.includes(work.id);
+      const isWatched = 
+        watchedWorks.includes(work.id) || 
+        watchedWorks.includes(String(work.id)) ||
+        isWorkWatchedByTitle(work.tmdb_title) ||
+        isWorkWatchedByTitle(work.title) ||
+        isWorkWatchedByTitle(work.name) ||
+        isWorkWatchedByTitle(work.original_title) ||
+        isWorkWatchedByTitle(work.original_name);
+
       const matchesWatchStatus = 
         watchStatusFilter === 'ALL' ? true : 
         watchStatusFilter === 'WATCHED' ? isWatched : 
-        !isWatched; // UNWATCHED の場合
+        !isWatched;
       
-      // 🌟 返り値に matchesWatchStatus を追加
       return matchesSearch && matchesCharSearch && matchesProvider && matchesAvailability && matchesGenre && matchesFavorites && matchesWatchStatus;
     });
-  // 🌟 依存配列に watchStatusFilter と watchedWorks を追加
-  }, [uniqueWorks, searchTerm, charSearchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode, showOnlyFavorites, favorites, watchStatusFilter, watchedWorks]);
+  }, [uniqueWorks, searchTerm, charSearchTerm, selectedProviders, availabilityFilter, selectedGenres, genreSearchMode, showOnlyFavorites, favorites, watchStatusFilter, watchedWorks, watchStatusObj]);
 
   const activeSortOrder = viewMode === 'timeline' ? 'default' : sortOrder;
 
@@ -152,7 +203,7 @@ export function useFilteredWorks(works: any[], viewMode: 'grid' | 'timeline') {
     searchTerm, setSearchTerm, charSearchTerm, setCharSearchTerm,
     selectedProviders, setSelectedProviders, toggleProvider,
     availabilityFilter, setAvailabilityFilter,
-    watchStatusFilter, setWatchStatusFilter, // 🌟 WorkList に渡すために return に追加
+    watchStatusFilter, setWatchStatusFilter,
     sortOrder, setSortOrder,
     showOnlyFavorites, setShowOnlyFavorites, selectedGenres, setSelectedGenres,
     genreSearchMode, setGenreSearchMode, allProviders, allGenres,

@@ -15,28 +15,121 @@ type CharacterStat = {
   matches: number; // 対戦回数
   unknowns: number; // 「知らない」と言われた回数
   isExcluded: boolean; // 「知らない」で除外されたかどうかのフラグ
+  isWatched: boolean; // 視聴済かどうかのフラグ
 };
 
 const INITIAL_RATING = 1500; // 初期レート
 const K_FACTOR = 32; // 1回の勝敗でのレート変動幅
-const SITE_URL = "https://david-tennant-site.vercel.app/character-sort"; // ご自身のサイトのURL
+const SITE_URL = "https://david-tennant-site.vercel.app/character-sort";
 
 export default function CharacterSortPage() {
   const [stats, setStats] = useState<Record<string, CharacterStat>>({});
   const [matchUp, setMatchUp] = useState<[CharacterStat, CharacterStat] | null>(null);
   const [showRanking, setShowRanking] = useState(false);
   const [totalVotes, setTotalVotes] = useState(0);
-  const [copied, setCopied] = useState(false); // コピー完了の通知用ステート
+  const [copied, setCopied] = useState(false);
   
-  // ソートのテーマ（お題）を管理するステート
   const [sortTheme, setSortTheme] = useState('好き');
+  const [onlyWatched, setOnlyWatched] = useState(false);
 
-  // 初期化：データを読み込んで全員のステータスを作成
-  useEffect(() => {
+  const generateMatchUp = (currentStats: Record<string, CharacterStat>, filterWatched: boolean) => {
+    const charList = Object.values(currentStats).filter(c => {
+      if (c.isExcluded) return false;
+      if (filterWatched && !c.isWatched) return false;
+      return true;
+    });
+    
+    if (charList.length < 2) {
+      setShowRanking(true);
+      return;
+    }
+
+    const sorted = [...charList].sort((a, b) => a.matches - b.matches || Math.random() - 0.5);
+    const charA = sorted[0];
+    const remaining = sorted.slice(1);
+    const charB = remaining[Math.floor(Math.random() * Math.min(10, remaining.length))];
+
+    setMatchUp([charA, charB]);
+  };
+
+  const resetAndStartSort = (filterWatched: boolean) => {
+    let watchStatusObj: any = {};
+    try {
+      const savedStatus = localStorage.getItem('watchStatus');
+      watchStatusObj = savedStatus ? JSON.parse(savedStatus) : {};
+    } catch (e) {
+      console.error("Failed to parse watchStatus from localStorage", e);
+    }
+
+    // 🌟 タイトルの文字列から「視聴済」を判定する強化版の関数
+    const isWorkWatched = (title: string) => {
+      if (!title) return false;
+      const tKey = title.trim().toLowerCase();
+
+      // 1. worksデータから連携された確実なキャッシュを確認
+      try {
+        const cache = localStorage.getItem('watchedTitlesCache');
+        if (cache) {
+          const titlesArr = JSON.parse(cache);
+          if (Array.isArray(titlesArr)) {
+             const isMatch = titlesArr.some((t: string) => {
+               if (!t) return false;
+               const wt = String(t).trim().toLowerCase();
+               return wt === tKey || wt.includes(tKey) || tKey.includes(wt);
+             });
+             if (isMatch) return true;
+          }
+        }
+      } catch (e) {}
+
+      // 2. 従来の watchStatus (オブジェクト形式) も念のため確認
+      if (watchStatusObj) {
+         if (Array.isArray(watchStatusObj)) {
+            return watchStatusObj.some((t: any) => String(t).trim().toLowerCase() === tKey);
+         }
+         if (typeof watchStatusObj === 'object') {
+            for (const key in watchStatusObj) {
+               if (key.trim().toLowerCase() === tKey) {
+                  return watchStatusObj[key] === 'WATCHED' || watchStatusObj[key] === true;
+               }
+            }
+         }
+      }
+      return false;
+    };
+
+    const charWatchedMap: Record<string, boolean> = {};
+
+    Object.keys(customCharacterInfo).forEach((workTitle) => {
+      if (!workTitle) return;
+      const rawInfo = customCharacterInfo[workTitle] || '';
+      let charName = rawInfo.includes('：') ? rawInfo.split('：')[0] : (rawInfo.includes('\n') ? rawInfo.split('\n')[0] : rawInfo);
+
+      let displayCharName = charName;
+      if (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) {
+        displayCharName = 'スクルージ・マクダック';
+      }
+
+      // 作品名が視聴済かチェック
+      let isWatched = isWorkWatched(workTitle);
+
+      // 特殊なキャラ名（10th Doctorやスクルージなど）へのフォールバック対応
+      if (!isWatched && (workTitle.includes('10th Doctor') || workTitle.includes('10代目ドクター') || workTitle.includes('14代目ドクター'))) {
+        isWatched = isWorkWatched('Doctor Who');
+      }
+      if (!isWatched && (workTitle.includes('Scrooge McDuck') || workTitle.includes('スクルージ'))) {
+        isWatched = isWorkWatched('DuckTales');
+      }
+
+      if (isWatched) {
+        charWatchedMap[displayCharName] = true;
+      }
+    });
+
     const initialStats: Record<string, CharacterStat> = {};
     
     Object.keys(customCharacterInfo).forEach((workTitle) => {
-      if (!workTitle) return; // 空キーの除外
+      if (!workTitle) return;
       
       const rawInfo = customCharacterInfo[workTitle] || '';
       let charName = "情報なし";
@@ -48,16 +141,14 @@ export default function CharacterSortPage() {
         charName = rawInfo;
       }
 
-      // page.tsx と同じ画像キー解決ロジック
       const imageKey = 
         (charName.includes('10th Doctor') || charName.includes('10代目ドクター')) ? '10th doctor' :
         charName.includes('14代目ドクター') ? 'Doctor Who: 60th Anniversary Specials' :
-        (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) ? 'Scrooge McDuck' : // 🌟 スクルージの画像共通化を追加
+        (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) ? 'Scrooge McDuck' :
         workTitle;
       
       const charImage = customCharacterImages[imageKey] || customCharacterImages[workTitle] || '/default-character.png';
 
-      // 🌟 キャラクター名・作品名の表示上書き（ソート画面・結果画像すべてに適用されます）
       let displayCharName = charName;
       let displayWorkTitle = workTitle;
 
@@ -72,55 +163,36 @@ export default function CharacterSortPage() {
 
       initialStats[workTitle] = {
         id: workTitle,
-        charName: displayCharName, // 🌟 上書きした名前を使用
+        charName: displayCharName,
         charImage,
-        workTitle: displayWorkTitle, // 🌟 上書きした作品名を使用
+        workTitle: displayWorkTitle,
         rating: INITIAL_RATING,
         matches: 0,
         unknowns: 0,
-        isExcluded: false, // 初期状態は全員参加
+        isExcluded: false,
+        isWatched: charWatchedMap[displayCharName] || false,
       };
     });
 
     setStats(initialStats);
-    generateMatchUp(initialStats);
-  }, []);
-
-  // 次の対戦カードを生成する
-  const generateMatchUp = (currentStats: Record<string, CharacterStat>) => {
-    // 「知らない」と除外されたキャラ以外をリスト化
-    const charList = Object.values(currentStats).filter(c => !c.isExcluded);
-    
-    if (charList.length < 2) {
-      // 比較できるキャラが2人未満になったら自動的に結果画面へ
-      setShowRanking(true);
-      return;
-    }
-
-    // 試合数が少ないキャラを優先的に選出（毎回同じにならないよう少しランダム性を混ぜる）
-    const sorted = [...charList].sort((a, b) => a.matches - b.matches || Math.random() - 0.5);
-    
-    const charA = sorted[0];
-    
-    // charA 以外で、なるべく試合数が少ない上位10人の中からランダムに相手を選ぶ
-    const remaining = sorted.slice(1);
-    const charB = remaining[Math.floor(Math.random() * Math.min(10, remaining.length))];
-
-    setMatchUp([charA, charB]);
+    setTotalVotes(0);          
+    setShowRanking(false);     
+    generateMatchUp(initialStats, filterWatched);
   };
 
-  // どちらかが勝った場合の処理（Eloレーティング計算）
+  useEffect(() => {
+    resetAndStartSort(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleVote = (winnerId: string, loserId: string) => {
     const winner = stats[winnerId];
     const loser = stats[loserId];
 
-    // 勝率の期待値を計算
     const expectedWinner = 1 / (1 + Math.pow(10, (loser.rating - winner.rating) / 400));
     const expectedLoser = 1 / (1 + Math.pow(10, (winner.rating - loser.rating) / 400));
 
     const newStats = { ...stats };
-    
-    // レートの更新
     newStats[winnerId] = {
       ...winner,
       rating: winner.rating + K_FACTOR * (1 - expectedWinner),
@@ -134,15 +206,13 @@ export default function CharacterSortPage() {
 
     setStats(newStats);
     setTotalVotes(prev => prev + 1);
-    generateMatchUp(newStats);
+    generateMatchUp(newStats, onlyWatched);
   };
 
-  // 「知らない」が押された場合（対戦をスキップ＆除外）
   const handleSkip = (skipType: 'A' | 'B' | 'Both') => {
     if (!matchUp) return;
     const newStats = { ...stats };
     
-    // 知らないと言われたキャラは isExcluded を true にして以降除外する
     if (skipType === 'A' || skipType === 'Both') {
       newStats[matchUp[0].id].unknowns += 1;
       newStats[matchUp[0].id].isExcluded = true;
@@ -153,20 +223,48 @@ export default function CharacterSortPage() {
     }
 
     setStats(newStats);
-    generateMatchUp(newStats); 
+    generateMatchUp(newStats, onlyWatched);
   };
 
-  // ランキング算出（除外されたキャラは表示しない）
+  const handleOnlyWatchedToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked;
+    
+    // 1. もし「視聴済のみ」を有効にする場合、視聴済が足りているかチェック
+    if (isChecked) {
+      const watchedCount = Object.values(stats).filter(c => c.isWatched).length;
+      if (watchedCount < 2) {
+        alert(`作品一覧で「視聴済」にチェックされたキャラクターが足りません（現在: ${watchedCount}人）。\n絞り込みソートを行うには、少なくとも2人以上のキャラクターが視聴済である必要があります。作品一覧画面から作品の視聴ステータスを更新してください。`);
+        e.preventDefault(); 
+        return;
+      }
+    }
+
+    // 2. 既にソート（投票）が始まっている場合に警告を出す
+    if (totalVotes > 0) {
+      if (!window.confirm('条件を変更すると、これまでのソート状況がリセットされ初めからになります。よろしいですか？')) {
+        // キャンセルされた場合はチェックボックスの状態を元に戻す
+        e.preventDefault();
+        return;
+      }
+    }
+
+    // 3. 許可されたら設定を反映してリセット開始
+    setOnlyWatched(isChecked);
+    resetAndStartSort(isChecked); 
+  };
+
   const ranking = Object.values(stats)
-    .filter(char => !char.isExcluded && char.matches > 0)
+    .filter(char => !char.isExcluded && char.matches > 0 && (!onlyWatched || char.isWatched))
     .sort((a, b) => b.rating - a.rating);
 
-  // 目安となる目標投票数の計算
-  const activeCount = Object.values(stats).filter(c => !c.isExcluded).length;
-  const targetVotes = activeCount * 2; // 目安：残っているキャラ数 × 2回
+  const activeCount = Object.values(stats).filter(c => {
+    if (c.isExcluded) return false;
+    if (onlyWatched && !c.isWatched) return false;
+    return true;
+  }).length;
+  const targetVotes = activeCount * 2;
   const remainingVotes = Math.max(0, targetVotes - totalVotes);
 
-  // シェア用のテキストを生成する関数
   const generateShareText = () => {
     if (ranking.length === 0) return "";
     
@@ -183,7 +281,6 @@ export default function CharacterSortPage() {
     return text;
   };
 
-  // Canvasを使って1位〜3位の画像を1枚に合成し、共有・保存する機能
   const shareOrDownloadImage = async () => {
     if (ranking.length === 0) return;
 
@@ -193,11 +290,9 @@ export default function CharacterSortPage() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // 背景塗りつぶし
     ctx.fillStyle = '#1a1a1a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // タイトルを描画
     ctx.fillStyle = '#ff9f43';
     ctx.font = 'bold 22px sans-serif';
     ctx.textAlign = 'center';
@@ -208,29 +303,25 @@ export default function CharacterSortPage() {
     const medals = ['🥇 1位', '🥈 2位', '🥉 3位'];
     const colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
 
-    // TOP3のキャラを描画
     for (let i = 0; i < top3.length; i++) {
       const char = top3[i];
       const y = 80 + i * 105;
 
-      // 画像を読み込む（非同期）
       const img = new window.Image();
       const loadImg = new Promise((resolve) => {
         img.onload = resolve;
-        img.onerror = resolve; // 画像がない場合もスキップして進める
+        img.onerror = resolve;
       });
       img.src = char.charImage;
       await loadImg;
 
-      // アイコンを丸く切り抜いて描画
       ctx.save();
       ctx.beginPath();
       ctx.arc(100, y + 40, 40, 0, Math.PI * 2);
       ctx.clip();
       ctx.fillStyle = '#333';
-      ctx.fillRect(60, y, 80, 80); // フォールバック用の背景色
+      ctx.fillRect(60, y, 80, 80);
       if (img.width > 0) {
-        // 画像を中央でトリミングして描画
         const size = Math.min(img.width, img.height);
         const sx = (img.width - size) / 2;
         const sy = (img.height - size) / 2;
@@ -238,34 +329,28 @@ export default function CharacterSortPage() {
       }
       ctx.restore();
 
-      // メダルテキスト
       ctx.fillStyle = colors[i];
       ctx.font = 'bold 18px sans-serif';
       ctx.textAlign = 'left';
       ctx.fillText(medals[i], 160, y + 30);
 
-      // キャラクター名
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 20px sans-serif';
       ctx.fillText(char.charName, 160, y + 60);
 
-      // 作品名
       ctx.fillStyle = '#888888';
       ctx.font = '14px sans-serif';
       ctx.fillText(char.workTitle, 160, y + 80);
     }
 
-    // サイトのURLをフッターに
     ctx.fillStyle = '#666666';
     ctx.font = '14px sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText("David Tennant 作品データベース  |  " + SITE_URL, 300, 430);
 
-    // Canvasを画像データ(Blob)に変換
     canvas.toBlob(async (blob) => {
       if (!blob) return;
 
-      // 1. スマホなど（Web Share APIが画像送信に対応している環境）
       if (navigator.canShare && navigator.canShare({ files: [new File([blob], 'ranking.png', { type: blob.type })] })) {
         try {
           const file = new File([blob], 'ranking.png', { type: blob.type });
@@ -280,11 +365,10 @@ export default function CharacterSortPage() {
         }
       }
 
-      // 2. PCなど（Share API非対応の場合は画像をダウンロードさせる）
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `david_tennant_ranking.png`; // 保存されるファイル名
+      a.download = `david_tennant_ranking.png`;
       a.click();
       URL.revokeObjectURL(url);
     }, 'image/png');
@@ -327,12 +411,10 @@ export default function CharacterSortPage() {
         .btn-image { background-color: #ff9f43; color: #fff; }
         .btn-copy { background-color: #444; color: #fff; }
 
-        /* 🌟 キャラクター名・作品名をCSSクラスで管理 */
         .char-name { font-size: 20px; margin: 0 0 5px 0; color: #fff; }
         .char-work { font-size: 13px; color: #888; margin: 0 0 25px 0; }
 
         @media (max-width: 768px) {
-          /* 🌟 修正：縦積み（column）から横並び（row）に変更し、全体のサイズを縮小 */
           .matchup-container { flex-direction: row; gap: 8px; margin-bottom: 20px; }
           .char-card { width: 50%; padding: 15px 10px; }
           .char-image-wrap { width: 80px; height: 80px; margin-bottom: 10px; border-width: 2px; }
@@ -356,7 +438,7 @@ export default function CharacterSortPage() {
           <>
             <div style={{ textAlign: 'center', color: '#ccc', marginBottom: '30px', lineHeight: '1.6' }}>
               
-              <div style={{ marginBottom: '20px', backgroundColor: '#1a1a1a', padding: '15px', borderRadius: '8px', display: 'inline-block', border: '1px solid #333' }}>
+              <div style={{ marginBottom: '15px', backgroundColor: '#1a1a1a', padding: '15px', borderRadius: '8px', display: 'inline-block', border: '1px solid #333' }}>
                 <label style={{ fontSize: '15px', marginRight: '10px', fontWeight: 'bold' }}>🏆 何のランキングを作る？：</label>
                 <input 
                   type="text" 
@@ -367,6 +449,19 @@ export default function CharacterSortPage() {
                 />
               </div>
               <br/>
+
+              {/* 視聴済絞り込みチェックボックス */}
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ color: '#ff9f43', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                  <input 
+                    type="checkbox"
+                    checked={onlyWatched}
+                    onChange={handleOnlyWatchedToggle}
+                    style={{ transform: 'scale(1.2)' }}
+                  />
+                  視聴済キャラクターのみでソートをする
+                </label>
+              </div>
 
               「<strong style={{ color: '#ff9f43', fontSize: '18px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
               （現在の投票数：{totalVotes} 回）<br/>
@@ -388,7 +483,6 @@ export default function CharacterSortPage() {
             <div className="matchup-container">
               <div className="char-card">
                 <div className="char-image-wrap"><img src={matchUp[0].charImage} alt={matchUp[0].charName} /></div>
-                {/* 🌟 インラインスタイルからCSSクラスに変更 */}
                 <h2 className="char-name">{matchUp[0].charName}</h2>
                 <p className="char-work">{matchUp[0].workTitle}</p>
                 <button className="vote-btn" onClick={() => handleVote(matchUp[0].id, matchUp[1].id)}>👈 こっち！</button>
@@ -399,7 +493,6 @@ export default function CharacterSortPage() {
 
               <div className="char-card">
                 <div className="char-image-wrap"><img src={matchUp[1].charImage} alt={matchUp[1].charName} /></div>
-                {/* 🌟 インラインスタイルからCSSクラスに変更 */}
                 <h2 className="char-name">{matchUp[1].charName}</h2>
                 <p className="char-work">{matchUp[1].workTitle}</p>
                 <button className="vote-btn" onClick={() => handleVote(matchUp[1].id, matchUp[0].id)}>こっち！ 👉</button>
@@ -431,8 +524,8 @@ export default function CharacterSortPage() {
               </h2>
               
               {ranking.length === 0 ? (
-                <p style={{ textAlign: 'center', color: '#888', marginBottom: '30px' }}>
-                  投票データがありません。<br/>（すべてのキャラクターが除外されたか、まだ投票していません）
+                <p style={{ textAlign: 'center', color: '#888', marginBottom: '30px', lineHeight: '1.6' }}>
+                  投票データがありません。<br/>（すべてのキャラクターが除外されたか、まだ投票していないか、<br/>あるいは視聴済のキャラクターが2人以上いません）
                 </p>
               ) : (
                 <>

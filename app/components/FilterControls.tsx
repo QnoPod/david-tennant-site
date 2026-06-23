@@ -13,6 +13,7 @@ type Props = {
   sortOrder: 'default' | 'popularity' | 'title'; setSortOrder: (order: 'default' | 'popularity' | 'title') => void;
   isExpanded: boolean; setIsExpanded: (val: boolean) => void;
   showOnlyFavorites: boolean; setShowOnlyFavorites: (val: boolean) => void;
+  onReset: () => void;
 };
 
 export default function FilterControls({
@@ -20,7 +21,8 @@ export default function FilterControls({
   watchStatusFilter, setWatchStatusFilter,
   allProviders, selectedProviders, toggleProvider, setSelectedProviders,
   allGenres, selectedGenres, setSelectedGenres, genreSearchMode, setGenreSearchMode,
-  sortOrder, setSortOrder, isExpanded, setIsExpanded, showOnlyFavorites, setShowOnlyFavorites
+  sortOrder, setSortOrder, isExpanded, setIsExpanded, showOnlyFavorites, setShowOnlyFavorites,
+  onReset
 }: Props) {
   
   return (
@@ -50,12 +52,12 @@ export default function FilterControls({
 
         .fc-btn-outline { 
           background: #1c1c20; color: #d0d0d0; border: 1px solid #2a2a2a; 
-          padding: 12px 20px; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-size: 14px; display: inline-flex; align-items: center; 
+          padding: 12px 20px; border-radius: 6px; cursor: pointer; transition: all 0.2s; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
         .fc-btn-outline:hover { background: #2a2a30; border-color: #444; }
         .fc-btn-outline.active { border-color: #d4af37; color: #d4af37; background: rgba(212,175,55,0.05); }
         
-        /* 🌟 配信サービスとジャンルで共有するモダンなタグスタイル */
+        /* 配信サービスとジャンルで共有するモダンなタグスタイル */
         .fc-filter-tag { 
           cursor: pointer; font-size: 13px; color: #888; background-color: transparent; 
           border: 1px solid #333; padding: 6px 12px; border-radius: 20px; font-weight: 500; transition: all 0.2s; display: inline-flex; align-items: center; 
@@ -64,7 +66,7 @@ export default function FilterControls({
         .fc-filter-tag.active { background-color: #d4af37; color: #0a0a0c; border-color: #d4af37; }
       `}</style>
 
-      {/* 🌟 上段: 検索ボックス（縦積み全幅） */}
+      {/* 上段: 検索ボックス */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <div className="fc-input-wrapper">
           <span className="fc-input-icon" style={{ color: '#b9a0db' }}>🎬</span>
@@ -78,7 +80,7 @@ export default function FilterControls({
         </div>
       </div>
 
-      {/* 🌟 中段: セレクトボックスとトグルボタン */}
+      {/* 中段: セレクトボックスとトグルボタン */}
       <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
         
         <select value={availabilityFilter} onChange={(e) => setAvailabilityFilter(e.target.value)} className="fc-select">
@@ -87,7 +89,6 @@ export default function FilterControls({
           <option value="UNAVAILABLE">配信なし</option>
         </select>
 
-        {/* 視聴状況 */}
         <select value={watchStatusFilter} onChange={(e) => setWatchStatusFilter(e.target.value)} className="fc-select">
           <option value="ALL">すべての視聴状況</option>
           <option value="WATCHED">視聴済</option>
@@ -114,7 +115,7 @@ export default function FilterControls({
               onClick={() => {
                 localStorage.removeItem('favorites');
                 window.dispatchEvent(new Event('favoritesUpdated'));
-                setShowOnlyFavorites(false); // 🌟 解除と同時にフィルターもオフにする
+                setShowOnlyFavorites(false); 
               }} 
               style={{ background: 'none', border: 'none', color: '#888', cursor: 'pointer', fontSize: '13px', textDecoration: 'underline', transition: 'color 0.2s' }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#eaeaea'}
@@ -126,10 +127,24 @@ export default function FilterControls({
         </div>
       </div>
 
-      {/* 🌟 下段: アコーディオン展開ボタン */}
-      <div style={{ display: 'flex', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '15px' }}>
-        <button onClick={() => setIsExpanded(!isExpanded)} className="fc-btn-outline" style={{ background: 'transparent', border: 'none', padding: '0', color: '#888' }}>
+      {/* 下段: アコーディオン展開ボタン と リセットボタン */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '15px', flexWrap: 'wrap', gap: '10px' }}>
+        
+        {/* 🌟 展開ボタンの文字サイズを小さく（12px）修正 */}
+        <button 
+          onClick={() => setIsExpanded(!isExpanded)} 
+          className="fc-btn-outline" 
+          style={{ background: 'transparent', border: 'none', padding: '0', color: '#888', fontSize: '12px' }}
+        >
           {isExpanded ? '▲ 詳細フィルターを閉じる' : '▼ 配信サービス・ジャンルで絞り込む'}
+        </button>
+        
+        <button 
+          onClick={onReset}
+          className="fc-btn-outline"
+          style={{ background: 'transparent', padding: '6px 12px', fontSize: '12px', color: '#aaa', border: '1px solid #333' }}
+        >
+          🔄 条件をすべてリセット
         </button>
       </div>
 
@@ -139,7 +154,7 @@ export default function FilterControls({
           
           {/* 配信サービス */}
           <div>
-            <h3 style={{ fontSize: '15px', color: '#d4af37', margin: '0 0 12px 0', fontWeight: '500' }}>配信サービスで絞り込む</h3>
+            <h3 style={{ fontSize: '13px', color: '#d4af37', margin: '0 0 12px 0', fontWeight: '500' }}>配信サービスで絞り込む</h3>
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               {allProviders.map(provider => (
                 <button 
@@ -161,7 +176,7 @@ export default function FilterControls({
           {/* ジャンル */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '12px' }}>
-              <h3 style={{ fontSize: '15px', color: '#d4af37', margin: 0, fontWeight: '500' }}>ジャンルで絞り込む</h3>
+              <h3 style={{ fontSize: '13px', color: '#d4af37', margin: 0, fontWeight: '500' }}>ジャンルで絞り込む</h3>
               <label style={{ color: '#eaeaea', cursor: 'pointer', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                 <input type="radio" checked={genreSearchMode === 'include'} onChange={() => setGenreSearchMode('include')} /> 含める
               </label>

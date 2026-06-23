@@ -37,6 +37,20 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     });
   };
 
+  // 🌟 追加：すべての検索・絞り込み条件を初期状態に戻す関数
+  const handleResetFilters = () => {
+    setSearchTerm('');
+    setCharSearchTerm('');
+    setAvailabilityFilter('ALL');
+    setWatchStatusFilter('ALL');
+    setSelectedProviders([]);
+    setSelectedGenres([]);
+    setShowOnlyFavorites(false);
+    setSortOrder('default');
+    setGenreSearchMode('include'); // 🌟 型エラーを解消
+    setIsExpanded(false); // アコーディオンも閉じる
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.header}>
@@ -74,14 +88,16 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
             setSortOrder={(val) => { if (viewMode !== 'timeline') setSortOrder(val); }}
             isExpanded={isExpanded} setIsExpanded={setIsExpanded}
             showOnlyFavorites={showOnlyFavorites} setShowOnlyFavorites={setShowOnlyFavorites}
+            onReset={handleResetFilters} // 🌟 ここでFilterControlsにリセット処理を渡します
           />
         </div>
         
         {/* 🌟 案内文と作品数 */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', marginTop: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', marginTop: '20px', flexWrap: 'wrap', gap: '10px' }}>
           <p style={{ color: '#aaa', fontSize: '12px', margin: 0 }}>
             カードをクリックすると詳細が表示されます
           </p>
+          {/* 🌟 リセットボタンをFilterControls内に移動したため、ここは作品数だけに */}
           <p style={{ color: '#d4af37', fontWeight: '500', margin: 0, fontSize: '14px' }}>
             {sortedWorks.length} / {uniqueWorks.length} 作品
           </p>

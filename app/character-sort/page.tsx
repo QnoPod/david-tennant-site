@@ -453,10 +453,10 @@ export default function CharacterSortPage() {
           box-shadow: 0 8px 20px rgba(0,0,0,0.4);
           border: 1px solid rgba(255,255,255,0.03);
         }
-        /* 🌟 画像の大きさは変えずにそのまま */
+        /* 🌟 画像の大きさをPC/スマホ共に少し拡大 */
         .char-image-wrap {
-          width: 120px;
-          height: 120px;
+          width: 140px; /* 120px -> 140px */
+          height: 140px; /* 120px -> 140px */
           border-radius: 50%;
           overflow: hidden;
           margin: 0 auto 16px auto;
@@ -466,7 +466,6 @@ export default function CharacterSortPage() {
         }
         .char-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* 🌟 全体的に文字を小さく調整 */
         .char-name { color: #d4af37; margin: 0 0 6px 0; font-size: 18px; font-weight: 600; }
         .char-work { color: #888; font-size: 12px; margin-bottom: 20px; line-height: 1.4; }
         .vs-text { display: flex; align-items: center; font-size: 20px; font-weight: bold; color: #666; padding: 0 10px; }
@@ -482,13 +481,11 @@ export default function CharacterSortPage() {
         @media (max-width: 600px) {
           .matchup-container { gap: 10px; margin-bottom: 20px; }
           .char-card { padding: 15px 8px; border-radius: 8px; justify-content: space-between; }
-          /* 🌟 スマホ時の画像サイズも以前のまま(60px) */
           .char-image-wrap { 
-            width: 60px; 
-            height: 60px; 
+            width: 80px; /* 60px -> 80px */
+            height: 80px; /* 60px -> 80px */
             margin: 0 auto 10px auto; 
           }
-          /* 🌟 スマホ時の文字をさらに小さく */
           .char-name { font-size: 11px; margin-bottom: 4px; line-height: 1.3; } 
           .char-work { font-size: 9px; margin-bottom: 10px; line-height: 1.2; } 
           .vs-text { font-size: 14px; padding: 0; }
@@ -511,7 +508,6 @@ export default function CharacterSortPage() {
             <h2 className={styles.subTitle} style={{ color: '#eaeaea', fontSize: '16px' }}>Sort</h2>
           </div>
           
-          {/* 🌟 ヘッダーのボタンの文字サイズも縮小 */}
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             <button 
               onClick={handleReset}
@@ -648,7 +644,8 @@ export default function CharacterSortPage() {
                       <div style={{ fontSize: '20px', fontWeight: 'bold', color: index === 0 ? '#FFD700' : index === 1 ? '#C0C0C0' : index === 2 ? '#CD7F32' : '#888', width: '36px', textAlign: 'center' }}>
                         {index + 1}
                       </div>
-                      <img src={char.charImage} alt={char.charName} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.05)' }} />
+                      {/* 🌟 ランキングの画像も少し拡大（60px -> 70px） */}
+                      <img src={char.charImage} alt={char.charName} style={{ width: '70px', height: '70px', borderRadius: '50%', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.05)' }} />
                       <div style={{ flexGrow: 1 }}>
                         <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#eaeaea' }}>{char.charName}</div>
                         <div style={{ fontSize: '12px', color: '#888', marginTop: '2px' }}>作品：{char.workTitle}</div>

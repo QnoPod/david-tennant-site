@@ -66,6 +66,17 @@ export default function FilterControls({
         .fc-filter-tag.active { background-color: #d4af37; color: #0a0a0c; border-color: #d4af37; }
       `}</style>
 
+      {/* 🌟 最上段: リセットボタン（右寄せ） */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '-10px' }}>
+        <button 
+          onClick={onReset}
+          className="fc-btn-outline"
+          style={{ background: 'transparent', padding: '6px 12px', fontSize: '12px', color: '#aaa', border: '1px solid #333' }}
+        >
+          🔄 条件をリセット
+        </button>
+      </div>
+
       {/* 上段: 検索ボックス */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <div className="fc-input-wrapper">
@@ -127,24 +138,14 @@ export default function FilterControls({
         </div>
       </div>
 
-      {/* 下段: アコーディオン展開ボタン と リセットボタン */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '15px', flexWrap: 'wrap', gap: '10px' }}>
-        
-        {/* 🌟 展開ボタンの文字サイズを小さく（12px）修正 */}
+      {/* 下段: アコーディオン展開ボタンのみ */}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '15px' }}>
         <button 
           onClick={() => setIsExpanded(!isExpanded)} 
           className="fc-btn-outline" 
           style={{ background: 'transparent', border: 'none', padding: '0', color: '#888', fontSize: '12px' }}
         >
           {isExpanded ? '▲ 詳細フィルターを閉じる' : '▼ 配信サービス・ジャンルで絞り込む'}
-        </button>
-        
-        <button 
-          onClick={onReset}
-          className="fc-btn-outline"
-          style={{ background: 'transparent', padding: '6px 12px', fontSize: '12px', color: '#aaa', border: '1px solid #333' }}
-        >
-          🔄 条件をすべてリセット
         </button>
       </div>
 

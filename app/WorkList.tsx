@@ -79,7 +79,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         
         {/* 🌟 案内文と作品数 */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', marginTop: '20px' }}>
-          <p style={{ color: '#aaa', fontSize: '13px', margin: 0 }}>
+          <p style={{ color: '#aaa', fontSize: '12px', margin: 0 }}>
             カードをクリックすると詳細が表示されます
           </p>
           <p style={{ color: '#d4af37', fontWeight: '500', margin: 0, fontSize: '14px' }}>

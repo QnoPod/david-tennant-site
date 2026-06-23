@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ScrollButtons from '../components/ScrollButtons';
 import { useCharacters } from '../hooks/useCharacters';
-// 🌟 全体の人数を取得するためにインポートを追加
 import { customCharacterInfo } from '../data/details';
 import styles from './CharacterList.module.css';
 
@@ -56,12 +55,10 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     return char.displayWorkTitle;
   };
 
-  // 🌟 属性グループを「人数が多い順」に並び替えるロジック
   const sortedGroupKeys = [...groupKeys].sort((a, b) => {
     const isOtherA = a === 'その他' || a === 'その他職業';
     const isOtherB = b === 'その他' || b === 'その他職業';
 
-    // 「その他」「その他職業」は常に最後にする
     if (isOtherA && !isOtherB) return 1;
     if (!isOtherA && isOtherB) return -1;
     
@@ -71,11 +68,9 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
        return 0;
     }
 
-    // 🌟 人数で降順（多い順）にソート
     const countDiff = groupedCharacters[b].length - groupedCharacters[a].length;
     if (countDiff !== 0) return countDiff;
 
-    // 人数が同じ場合は五十音順
     return a.localeCompare(b, 'ja');
   });
 
@@ -91,7 +86,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
             className={styles.card}
           >
             <div style={{ 
-              width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 20px auto', borderRadius: '50%', 
+              width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 16px auto', borderRadius: '50%', 
               overflow: 'hidden', backgroundColor: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center',
               boxShadow: '0 10px 20px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.05)'
             }}>
@@ -102,7 +97,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
               )}
             </div>
 
-            <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 10px 0', color: '#d4af37', fontWeight: '600' }}>
+            <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 6px 0', color: '#d4af37', fontWeight: '600' }}>
               {(char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
             </h2>
             <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0, letterSpacing: '0.05em' }}>
@@ -110,7 +105,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
             </p>
 
             {showAttributes && char.attributes && char.attributes.length > 0 && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', marginTop: '16px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', justifyContent: 'center', marginTop: '12px' }}>
                 {char.attributes.map((attr: string, i: number) => (
                   <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)}>
                     {attr}
@@ -134,15 +129,15 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
             <div className={styles.timelineDot}></div>
             <div className={styles.timelineContent} onClick={() => setSelectedCharacter(char)}>
               {char.charImage ? (
-                <img src={char.charImage} alt={char.charName} style={{ width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '1px solid #333' }} />
+                <img src={char.charImage} alt={char.charName} style={{ width: '70px', height: '70px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '1px solid #333' }} />
               ) : (
-                <div style={{ width: '80px', height: '80px', backgroundColor: '#0a0a0c', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '30px', opacity: 0.5 }}>🎭</div>
+                <div style={{ width: '70px', height: '70px', backgroundColor: '#0a0a0c', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '24px', opacity: 0.5 }}>🎭</div>
               )}
               <div>
-                <div style={{ fontWeight: '500', color: '#eaeaea', marginBottom: '8px', fontSize: '15px', letterSpacing: '0.05em' }}>
+                <div style={{ fontWeight: '500', color: '#eaeaea', marginBottom: '6px', fontSize: '13px', letterSpacing: '0.05em' }}>
                   {char.year !== '年不明' ? `${char.year}年` : '公開年不明'}
                   {char.age !== '不明' && (
-                    <span style={{ color: '#20b2aa', marginLeft: '10px', fontSize: '13px' }}>
+                    <span style={{ color: '#20b2aa', marginLeft: '8px', fontSize: '11px' }}>
                       (当時 {char.age}歳)
                     </span>
                   )}
@@ -151,16 +146,16 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
                   {(char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
                   
                   {showAttributes && char.attributes && char.attributes.length > 0 && (
-                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
                       {char.attributes.map((attr: string, i: number) => (
-                        <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)} style={{ padding: '2px 8px' }}>
+                        <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)}>
                           {attr}
                         </span>
                       ))}
                     </div>
                   )}
                 </h3>
-                <p style={{ margin: 0, fontSize: '14px', color: '#888' }}>
+                <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>
                   {customTitle}
                 </p>
               </div>
@@ -175,8 +170,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     <main className={styles.container}>
       <div className={styles.header}>
         
-        {/* 🌟 ヘッダーのレイアウト変更：タイトルと戻るボタンを横並びに */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
           <div className={styles.titleContainer} style={{ marginBottom: 0 }}>
             <h1 className={styles.mainTitle}>David Tennant</h1>
             <h2 className={styles.subTitle}>Characters</h2>
@@ -188,13 +182,13 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         
         <div className={styles.topNav}>
           <Link href="/character-sort" className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}>
-            <span style={{ color: '#111', fontSize: '16px' }}>🏆</span> 投票で遊ぶ
+            <span style={{ color: '#111', fontSize: '14px' }}>🏆</span> 投票で遊ぶ
           </Link>
           <button className={styles.actionBtn} onClick={handleToggleView}>
-            <span style={{ color: '#7aa5d2', fontSize: '16px' }}>📅</span> {viewMode === 'grid' ? 'タイムライン表示' : 'グリッド表示'}
+            <span style={{ color: '#7aa5d2', fontSize: '14px' }}>📅</span> {viewMode === 'grid' ? 'タイムライン表示' : 'グリッド表示'}
           </button>
           <button className={`${styles.actionBtn} ${showAttributes ? styles.actionBtnActive : ''}`} onClick={() => setShowAttributes(!showAttributes)}>
-            <span style={{ color: '#7aa5d2', fontSize: '16px' }}>🏷️</span> {showAttributes ? '属性をオフ' : '属性でカテゴライズ'}
+            <span style={{ color: '#7aa5d2', fontSize: '14px' }}>🏷️</span> {showAttributes ? '属性をオフ' : '属性でカテゴライズ'}
          </button>
 
           <select 
@@ -208,43 +202,41 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           </select>
         </div>
 
-        {/* 🌟 案内文と人数表示を横並び＆右寄せに */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-          <p style={{ color: '#aaa', fontSize: '15px', margin: 0 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+          <p style={{ color: '#aaa', fontSize: '13px', margin: 0 }}>
             カードをクリックすると詳細が表示されます
           </p>
-          <p style={{ color: '#d4af37', fontWeight: '500', margin: 0 }}>
+          <p style={{ color: '#d4af37', fontWeight: '500', margin: 0, fontSize: '14px' }}>
             {characters.length} / {Object.keys(customCharacterInfo).length} 人
           </p>
         </div>
 
         {showAttributes ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
-            {/* 🌟 並び替えた sortedGroupKeys を使用 */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
             {sortedGroupKeys.map(attr => groupedCharacters[attr].length > 0 && (
               <div 
                 key={attr} 
                 id={`attr-group-${attr}`} 
                 style={{ 
-                  border: '1px dashed rgba(255,255,255,0.2)', /* 🌟 枠を点線に変更 */
+                  border: '1px dashed rgba(255,255,255,0.2)',
                   borderRadius: '12px',
-                  padding: '40px 20px 20px', 
+                  padding: '30px 15px 15px', 
                   position: 'relative',
                   scrollMarginTop: '40px' 
                 }}
               >
                 <span style={{ 
                   position: 'absolute', 
-                  top: '-15px', 
-                  left: '20px', 
+                  top: '-12px', 
+                  left: '16px', 
                   backgroundColor: '#0a0a0c', 
                   color: '#d4af37', 
-                  padding: '0 15px', 
+                  padding: '0 12px', 
                   fontWeight: '500', 
-                  fontSize: '18px', 
+                  fontSize: '14px', 
                   letterSpacing: '0.05em'
                 }}>
-                  {attr} <span style={{ color: '#555', fontSize: '14px' }}>({groupedCharacters[attr].length})</span>
+                  {attr} <span style={{ color: '#555', fontSize: '12px' }}>({groupedCharacters[attr].length})</span>
                 </span>
                 
                 {viewMode === 'grid' 
@@ -258,7 +250,6 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         )}
       </div>
 
-      {/* キャラクター詳細モーダル */}
       {selectedCharacter && (
         <div 
           onClick={() => setSelectedCharacter(null)} 
@@ -266,32 +257,31 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         >
           <div 
             onClick={(e) => e.stopPropagation()} 
-            style={{ backgroundColor: '#16161a', padding: '40px', borderRadius: '12px', maxWidth: '600px', width: '100%', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 50px rgba(0,0,0,0.8)' }}
+            style={{ backgroundColor: '#16161a', padding: '30px', borderRadius: '12px', maxWidth: '600px', width: '100%', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 50px rgba(0,0,0,0.8)' }}
           >
-            <button onClick={() => setSelectedCharacter(null)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'none', border: 'none', color: '#666', fontSize: '24px', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#666'}>✕</button>
+            <button onClick={() => setSelectedCharacter(null)} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: '#666', fontSize: '20px', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#666'}>✕</button>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '30px', marginBottom: '30px' }}>
-              <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 10px 20px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '24px' }}>
+              <div style={{ width: '80px', height: '80px', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 10px 20px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
                 {selectedCharacter.charImage ? (
                   <img src={selectedCharacter.charImage} alt={selectedCharacter.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
-                  <span style={{ fontSize: '40px', opacity: 0.5 }}>🎭</span>
+                  <span style={{ fontSize: '30px', opacity: 0.5 }}>🎭</span>
                 )}
               </div>
               <div>
-                <h2 style={{ color: '#d4af37', margin: '0 0 8px 0', fontSize: '28px', fontWeight: '600', letterSpacing: '0.02em' }}>
+                <h2 style={{ color: '#d4af37', margin: '0 0 6px 0', fontSize: '22px', fontWeight: '600', letterSpacing: '0.02em' }}>
                   {(selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : selectedCharacter.charName}
                 </h2>
-                {/* 🌟 名前の下を「作品：〇〇」に変更 */}
-                <p style={{ fontSize: '15px', color: '#888', margin: 0, letterSpacing: '0.05em' }}>
+                <p style={{ fontSize: '13px', color: '#888', margin: 0, letterSpacing: '0.05em' }}>
                   作品：{getCustomWorkTitle(selectedCharacter)}
                 </p>
               </div>
             </div>
 
             {selectedCharacter.fullDescription && (
-              <div style={{ backgroundColor: '#0a0a0c', padding: '25px', borderRadius: '8px', maxHeight: '40vh', overflowY: 'auto', border: '1px solid rgba(255,255,255,0.02)' }}>
-                <p style={{ fontSize: '15px', lineHeight: '1.9', color: '#d0d0d0', whiteSpace: 'pre-wrap', margin: 0, letterSpacing: '0.02em' }}>
+              <div style={{ backgroundColor: '#0a0a0c', padding: '20px', borderRadius: '8px', maxHeight: '40vh', overflowY: 'auto', border: '1px solid rgba(255,255,255,0.02)' }}>
+                <p style={{ fontSize: '13px', lineHeight: '1.9', color: '#d0d0d0', whiteSpace: 'pre-wrap', margin: 0, letterSpacing: '0.02em' }}>
                   {selectedCharacter.fullDescription}
                 </p>
               </div>

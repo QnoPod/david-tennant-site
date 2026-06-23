@@ -168,7 +168,7 @@ export default function CharacterSortPage() {
         workTitle: displayWorkTitle,
         rating: INITIAL_RATING,
         matches: 0,
-        wins: 0, // 🌟 勝利（選ばれた）回数
+        wins: 0,
         unknowns: 0,
         isExcluded: false,
         isWatched: charWatchedMap[displayCharName] || false,
@@ -201,7 +201,7 @@ export default function CharacterSortPage() {
       ...winner,
       rating: winner.rating + K_FACTOR * (1 - expectedWinner),
       matches: winner.matches + 1,
-      wins: winner.wins + 1 // 🌟 勝者をカウントアップ
+      wins: winner.wins + 1 
     };
     newStats[loserId] = {
       ...loser,
@@ -443,54 +443,59 @@ export default function CharacterSortPage() {
         .char-card {
           background-color: #16161a;
           border-radius: 12px;
-          padding: 30px 20px;
+          padding: 24px 16px;
           text-align: center;
           flex: 1;
-          max-width: 350px;
+          max-width: 320px;
           display: flex;
           flex-direction: column;
           align-items: center;
           box-shadow: 0 8px 20px rgba(0,0,0,0.4);
           border: 1px solid rgba(255,255,255,0.03);
         }
+        /* 🌟 画像の大きさは変えずにそのまま */
         .char-image-wrap {
           width: 120px;
           height: 120px;
           border-radius: 50%;
           overflow: hidden;
-          margin: 0 auto 20px auto;
+          margin: 0 auto 16px auto;
           background-color: #0a0a0c;
           border: 1px solid rgba(255,255,255,0.05);
           box-shadow: 0 10px 20px rgba(0,0,0,0.6);
         }
         .char-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .char-name { color: #d4af37; margin: 0 0 10px 0; font-size: 20px; font-weight: 600; }
-        .char-work { color: #888; font-size: 14px; margin-bottom: 20px; line-height: 1.4; }
-        .vs-text { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: #666; padding: 0 10px; }
+        
+        /* 🌟 全体的に文字を小さく調整 */
+        .char-name { color: #d4af37; margin: 0 0 6px 0; font-size: 18px; font-weight: 600; }
+        .char-work { color: #888; font-size: 12px; margin-bottom: 20px; line-height: 1.4; }
+        .vs-text { display: flex; align-items: center; font-size: 20px; font-weight: bold; color: #666; padding: 0 10px; }
         
         .vote-btn-primary { 
           width: 100%; 
           margin-bottom: 10px; 
-          font-size: 16px; 
-          padding: 18px 20px !important; 
+          font-size: 14px !important; 
+          padding: 16px 16px !important; 
         }
-        .vote-btn-skip { width: 100%; border: none; background: transparent; font-size: 14px; }
+        .vote-btn-skip { width: 100%; border: none; background: transparent; font-size: 12px !important; padding: 10px !important; }
 
         @media (max-width: 600px) {
           .matchup-container { gap: 10px; margin-bottom: 20px; }
           .char-card { padding: 15px 8px; border-radius: 8px; justify-content: space-between; }
+          /* 🌟 スマホ時の画像サイズも以前のまま(60px) */
           .char-image-wrap { 
             width: 60px; 
             height: 60px; 
             margin: 0 auto 10px auto; 
           }
+          /* 🌟 スマホ時の文字をさらに小さく */
           .char-name { font-size: 11px; margin-bottom: 4px; line-height: 1.3; } 
           .char-work { font-size: 9px; margin-bottom: 10px; line-height: 1.2; } 
           .vs-text { font-size: 14px; padding: 0; }
           
           .vote-btn-primary { 
-            font-size: 13px !important; 
-            padding: 14px 8px !important; 
+            font-size: 12px !important; 
+            padding: 14px 6px !important; 
             margin-bottom: 8px !important; 
           }
           .vote-btn-skip { font-size: 10px !important; padding: 4px !important; }
@@ -499,26 +504,26 @@ export default function CharacterSortPage() {
 
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '15px', marginBottom: '30px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '15px', marginBottom: '24px' }}>
           
-          {/* 🌟 ヘッダータイトルを白字の「David Tennant / Sort」に変更 */}
           <div className={styles.titleContainer} style={{ marginBottom: 0 }}>
-            <h1 className={styles.mainTitle} style={{ color: '#ffffff' }}>David Tennant</h1>
-            <h2 className={styles.subTitle} style={{ color: '#eaeaea' }}>Sort</h2>
+            <h1 className={styles.mainTitle} style={{ color: '#ffffff', fontSize: '28px' }}>David Tennant</h1>
+            <h2 className={styles.subTitle} style={{ color: '#eaeaea', fontSize: '16px' }}>Sort</h2>
           </div>
           
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          {/* 🌟 ヘッダーのボタンの文字サイズも縮小 */}
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             <button 
               onClick={handleReset}
               className={styles.actionBtn}
-              style={{ borderColor: '#dc3545', color: '#dc3545', background: 'transparent' }}
+              style={{ borderColor: '#dc3545', color: '#dc3545', background: 'transparent', fontSize: '13px', padding: '8px 12px' }}
             >
               🔄 はじめから
             </button>
-            <Link href="/characters" className={styles.actionBtn} style={{ background: 'transparent' }}>
+            <Link href="/characters" className={styles.actionBtn} style={{ background: 'transparent', fontSize: '13px', padding: '8px 12px' }}>
               👥 キャラ一覧
             </Link>
-            <Link href="/" className={styles.actionBtn} style={{ background: 'transparent' }}>
+            <Link href="/" className={styles.actionBtn} style={{ background: 'transparent', fontSize: '13px', padding: '8px 12px' }}>
               🎬 作品一覧
             </Link>
           </div>
@@ -526,39 +531,39 @@ export default function CharacterSortPage() {
 
         {matchUp && !showRanking ? (
           <>
-            <div style={{ textAlign: 'center', color: '#ccc', marginBottom: '30px', lineHeight: '1.6' }}>
+            <div style={{ textAlign: 'center', color: '#ccc', marginBottom: '24px', lineHeight: '1.6', fontSize: '14px' }}>
               
-              <div style={{ marginBottom: '15px', backgroundColor: '#16161a', padding: '15px', borderRadius: '8px', display: 'inline-block', border: '1px solid rgba(255,255,255,0.03)', boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
-                <label style={{ fontSize: '15px', marginRight: '10px', fontWeight: 'bold' }}>🏆 何のランキングを作る？：</label>
+              <div style={{ marginBottom: '15px', backgroundColor: '#16161a', padding: '12px 16px', borderRadius: '8px', display: 'inline-block', border: '1px solid rgba(255,255,255,0.03)', boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
+                <label style={{ fontSize: '13px', marginRight: '10px', fontWeight: 'bold' }}>🏆 何のランキングを作る？：</label>
                 <input 
                   type="text" 
                   value={sortTheme}
                   onChange={(e) => setSortTheme(e.target.value)}
                   placeholder="例: 最強、友達になりたい"
-                  style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #2a2a2a', backgroundColor: '#0a0a0c', color: '#eaeaea', width: '220px', fontSize: '15px' }}
+                  style={{ padding: '6px 10px', borderRadius: '6px', border: '1px solid #2a2a2a', backgroundColor: '#0a0a0c', color: '#eaeaea', width: '200px', fontSize: '13px' }}
                 />
               </div>
               <br/>
 
-              <div style={{ marginBottom: '20px' }}>
-                <label style={{ color: '#d4af37', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ color: '#d4af37', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontSize: '13px' }}>
                   <input 
                     type="checkbox"
                     checked={onlyWatched}
                     onChange={handleOnlyWatchedToggle}
-                    style={{ transform: 'scale(1.2)' }}
+                    style={{ transform: 'scale(1.1)' }}
                   />
                   視聴済キャラクターのみでソートをする
                 </label>
               </div>
 
-              「<strong style={{ color: '#d4af37', fontSize: '18px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
+              「<strong style={{ color: '#d4af37', fontSize: '16px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
               （現在の投票数：{totalVotes} 回）<br/>
 
               
-              <div style={{ display: 'inline-block', marginTop: '15px', padding: '10px 20px', backgroundColor: '#16161a', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.03)' }}>
+              <div style={{ display: 'inline-block', marginTop: '12px', padding: '8px 16px', backgroundColor: '#16161a', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.03)', fontSize: '13px' }}>
                 {remainingVotes > 0 ? (
-                  <>精度が安定するまで <strong style={{ color: '#d4af37', fontSize: '18px' }}>あと {remainingVotes} 回</strong></>
+                  <>精度が安定するまで <strong style={{ color: '#d4af37', fontSize: '15px' }}>あと {remainingVotes} 回</strong></>
                 ) : (
                   <strong style={{ color: '#20b2aa' }}>✅ 十分なデータが集まりました！結果を見てみましょう</strong>
                 )}
@@ -566,7 +571,6 @@ export default function CharacterSortPage() {
             </div>
 
             <div className="matchup-container">
-              {/* キャラクターカードA */}
               <div className="char-card">
                 <div style={{ width: '100%' }}>
                   <div className="char-image-wrap">
@@ -583,7 +587,6 @@ export default function CharacterSortPage() {
               
               <div className="vs-text">VS</div>
               
-              {/* キャラクターカードB */}
               <div className="char-card">
                 <div style={{ width: '100%' }}>
                   <div className="char-image-wrap">
@@ -600,59 +603,58 @@ export default function CharacterSortPage() {
             </div>
 
             <div style={{ textAlign: 'center' }}>
-              <button onClick={() => handleSkip('Both')} className={styles.actionBtn} style={{ borderRadius: '30px', padding: '12px 30px' }}>
+              <button onClick={() => handleSkip('Both')} className={styles.actionBtn} style={{ borderRadius: '30px', padding: '10px 24px', fontSize: '13px' }}>
                 両方とも知らない（両方除外）
               </button>
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '30px', borderTop: '1px solid #333', paddingTop: '30px' }}>
+            <div style={{ textAlign: 'center', marginTop: '24px', borderTop: '1px solid #333', paddingTop: '24px' }}>
               <button 
                 onClick={() => setShowRanking(true)}
                 className={styles.actionBtn}
-                style={{ color: '#d4af37', borderColor: '#d4af37', background: 'transparent' }}
+                style={{ color: '#d4af37', borderColor: '#d4af37', background: 'transparent', fontSize: '14px', padding: '10px 24px' }}
               >
                 🏆 現在のランキング・シェア画面へ
               </button>
             </div>
           </>
         ) : (
-          <div style={{ backgroundColor: '#16161a', borderRadius: '16px', padding: '30px', marginTop: '20px', border: '1px solid rgba(255,255,255,0.03)', boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '24px', color: '#eaeaea' }}>
+          <div style={{ backgroundColor: '#16161a', borderRadius: '16px', padding: '24px', marginTop: '20px', border: '1px solid rgba(255,255,255,0.03)', boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '24px', fontSize: '20px', color: '#eaeaea' }}>
               現在の【<span style={{ color: '#d4af37' }}>{sortTheme || 'キャラクター'}</span>】ランキング
             </h2>
             
             {ranking.length === 0 ? (
-              <p style={{ textAlign: 'center', color: '#888', marginBottom: '30px', lineHeight: '1.6' }}>
+              <p style={{ textAlign: 'center', color: '#888', marginBottom: '24px', lineHeight: '1.6', fontSize: '14px' }}>
                 投票データがありません。<br/>（まだ投票していないか、ソート対象のキャラクターが2人以上いません）
               </p>
             ) : (
               <>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '40px' }}>
-                  <button className={styles.actionBtn} style={{ background: '#d4af37', color: '#0a0a0c', borderColor: '#d4af37' }} onClick={shareOrDownloadImage}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '30px' }}>
+                  <button className={styles.actionBtn} style={{ background: '#d4af37', color: '#0a0a0c', borderColor: '#d4af37', fontSize: '12px', padding: '8px 12px' }} onClick={shareOrDownloadImage}>
                     📸 結果を画像にしてシェア／保存
                   </button>
-                  <button className={styles.actionBtn} style={{ background: '#1DA1F2', color: '#fff', borderColor: '#1DA1F2' }} onClick={shareToTwitter}>
+                  <button className={styles.actionBtn} style={{ background: '#1DA1F2', color: '#fff', borderColor: '#1DA1F2', fontSize: '12px', padding: '8px 12px' }} onClick={shareToTwitter}>
                     🐦 X(Twitter)にテキスト投稿
                   </button>
-                  <button className={styles.actionBtn} onClick={copyToClipboard}>
+                  <button className={styles.actionBtn} style={{ fontSize: '12px', padding: '8px 12px' }} onClick={copyToClipboard}>
                     📋 {copied ? 'コピーしました！' : 'テキストをコピー'}
                   </button>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {ranking.slice(0, 50).map((char, index) => (
-                    <div key={char.id} style={{ display: 'flex', alignItems: 'center', backgroundColor: '#0a0a0c', padding: '15px', borderRadius: '12px', gap: '20px', border: '1px solid rgba(255,255,255,0.03)' }}>
-                      <div style={{ fontSize: '24px', fontWeight: 'bold', color: index === 0 ? '#FFD700' : index === 1 ? '#C0C0C0' : index === 2 ? '#CD7F32' : '#888', width: '40px', textAlign: 'center' }}>
+                    <div key={char.id} style={{ display: 'flex', alignItems: 'center', backgroundColor: '#0a0a0c', padding: '12px', borderRadius: '10px', gap: '16px', border: '1px solid rgba(255,255,255,0.03)' }}>
+                      <div style={{ fontSize: '20px', fontWeight: 'bold', color: index === 0 ? '#FFD700' : index === 1 ? '#C0C0C0' : index === 2 ? '#CD7F32' : '#888', width: '36px', textAlign: 'center' }}>
                         {index + 1}
                       </div>
                       <img src={char.charImage} alt={char.charName} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.05)' }} />
                       <div style={{ flexGrow: 1 }}>
-                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#eaeaea' }}>{char.charName}</div>
-                        <div style={{ fontSize: '13px', color: '#888' }}>作品：{char.workTitle}</div>
+                        <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#eaeaea' }}>{char.charName}</div>
+                        <div style={{ fontSize: '12px', color: '#888', marginTop: '2px' }}>作品：{char.workTitle}</div>
                       </div>
                       
-                      {/* 🌟 ランキング右側に「対戦回数」と「選択された回数(勝)」を表示 */}
-                      <div style={{ textAlign: 'right', fontSize: '13px', color: '#888' }}>
+                      <div style={{ textAlign: 'right', fontSize: '12px', color: '#888' }}>
                         <div style={{ marginBottom: '4px' }}>対戦: {char.matches}回</div>
                         <div style={{ color: '#d4af37', fontWeight: 'bold' }}>選択: {char.wins}回</div>
                       </div>
@@ -662,12 +664,12 @@ export default function CharacterSortPage() {
               </>
             )}
 
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '30px', flexWrap: 'wrap' }}>
               {activeCount >= 2 && (
                 <button 
                   onClick={() => setShowRanking(false)}
                   className={styles.actionBtnPrimary}
-                  style={{ padding: '14px 60px', fontSize: '16px' }}
+                  style={{ padding: '12px 40px', fontSize: '14px' }}
                 >
                   投票に戻る
                 </button>
@@ -676,7 +678,7 @@ export default function CharacterSortPage() {
               <button 
                 onClick={handleReset}
                 className={styles.actionBtn}
-                style={{ color: '#dc3545', borderColor: '#dc3545', background: 'transparent', padding: '14px 40px', fontSize: '16px' }}
+                style={{ color: '#dc3545', borderColor: '#dc3545', background: 'transparent', padding: '12px 30px', fontSize: '14px' }}
               >
                 最初からやり直す
               </button>

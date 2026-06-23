@@ -4,22 +4,23 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { customCharacterInfo } from '../data/details';
 import { customCharacterImages } from '../data/characters';
+import styles from '../characters/CharacterList.module.css'; // 既存のCSSを流用
 
-// キャラクターのステータス管理用型
 type CharacterStat = {
   id: string;
   charName: string;
   charImage: string;
   workTitle: string;
-  rating: number; // レート（強さ・人気度）
-  matches: number; // 対戦回数
-  unknowns: number; // 「知らない」と言われた回数
-  isExcluded: boolean; // 「知らない」で除外されたかどうかのフラグ
-  isWatched: boolean; // 視聴済かどうかのフラグ
+  rating: number;
+  matches: number;
+  wins: number; // 🌟 勝利（選ばれた）回数を追加
+  unknowns: number;
+  isExcluded: boolean;
+  isWatched: boolean;
 };
 
-const INITIAL_RATING = 1500; // 初期レート
-const K_FACTOR = 32; // 1回の勝敗でのレート変動幅
+const INITIAL_RATING = 1500;
+const K_FACTOR = 32;
 const SITE_URL = "https://david-tennant-site.vercel.app/character-sort";
 
 export default function CharacterSortPage() {
@@ -28,14 +29,10 @@ export default function CharacterSortPage() {
   const [showRanking, setShowRanking] = useState(false);
   const [totalVotes, setTotalVotes] = useState(0);
   const [copied, setCopied] = useState(false);
-  
-  // 🌟 追加：同じ組み合わせが何度も選出されないように過去の対戦履歴を記録するSet
   const [pastMatchups, setPastMatchups] = useState<Set<string>>(new Set());
-  
   const [sortTheme, setSortTheme] = useState('好き');
   const [onlyWatched, setOnlyWatched] = useState(false);
 
-  // 🌟 引数に currentPastMatchups を追加し、履歴を考慮したマッチングを行うように修正
   const generateMatchUp = (currentStats: Record<string, CharacterStat>, filterWatched: boolean, currentPastMatchups: Set<string>) => {
     const charList = Object.values(currentStats).filter(c => {
       if (c.isExcluded) return false;
@@ -43,32 +40,17 @@ export default function CharacterSortPage() {
       return true;
     });
     
-    if (charList.length < 2) {
-      setShowRanking(true);
-      return;
-    }
+    if (charList.length < 2) { setShowRanking(true); return; }
 
-    // まず配列全体をランダムにシャッフルする（Fisher-Yatesシャッフル等価）
     const shuffled = [...charList].sort(() => Math.random() - 0.5);
-    // その後、試合数で昇順ソート（試合数が同数のキャラ同士はランダムな順序に保たれる）
     const sorted = shuffled.sort((a, b) => a.matches - b.matches);
-
-    // 一番試合数が少ないキャラをAに選出
     const charA = sorted[0];
     const remaining = sorted.slice(1);
-
-    // 🌟 修正：charAと「まだ対戦していない」キャラを優先的に絞り込む
     let candidates = remaining.filter(c => !currentPastMatchups.has(`${charA.id}-${c.id}`));
+    if (candidates.length === 0) candidates = remaining;
 
-    // もし全員と対戦済（または絞り込みで0人になった）場合は、残りの候補全体から選ぶようにフォールバック
-    if (candidates.length === 0) {
-      candidates = remaining;
-    }
-
-    // 候補の中から、なるべく試合数が少ない上位(最大10人)の中からランダムに相手（B）を選ぶ
     const opponentIndex = Math.floor(Math.random() * Math.min(10, candidates.length));
     const charB = candidates[opponentIndex];
-
     setMatchUp([charA, charB]);
   };
 
@@ -129,7 +111,6 @@ export default function CharacterSortPage() {
 
       let isWatched = isWorkWatched(workTitle);
 
-      // 🌟 修正：作品名だけでなくキャラ名（charName）のチェックも加え、日本語の作品名（ダックテイルズなど）でも視聴済み判定が通るように強化
       if (!isWatched && (workTitle.includes('10th Doctor') || workTitle.includes('10代目ドクター') || workTitle.includes('14代目ドクター') || charName.includes('10代目ドクター') || charName.includes('14代目ドクター'))) {
         isWatched = isWorkWatched('Doctor Who') || isWorkWatched('Doctor Whoシリーズ') || isWorkWatched('ドクター・フー');
       }
@@ -174,7 +155,7 @@ export default function CharacterSortPage() {
       if (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) {
         displayCharName = 'スクルージ・マクダック';
         displayWorkTitle = 'ディズニー作品';
-      } else if (charName === '10代目ドクター') {
+      } else if (charName.includes('10代目ドクター')) {
         displayWorkTitle = 'Doctor Whoシリーズ';
       } else if (['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(charName)) {
         displayWorkTitle = 'Nativity 2: Danger in the Manger!';
@@ -187,6 +168,7 @@ export default function CharacterSortPage() {
         workTitle: displayWorkTitle,
         rating: INITIAL_RATING,
         matches: 0,
+        wins: 0, // 🌟 勝利（選ばれた）回数
         unknowns: 0,
         isExcluded: false,
         isWatched: charWatchedMap[displayCharName] || false,
@@ -196,17 +178,13 @@ export default function CharacterSortPage() {
     setStats(initialStats);
     setTotalVotes(0);          
     setShowRanking(false);
-    
-    // 履歴もリセットする
     const resetMatchups = new Set<string>();
     setPastMatchups(resetMatchups);
-    
     generateMatchUp(initialStats, filterWatched, resetMatchups);
   };
 
   useEffect(() => {
     resetAndStartSort(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleVote = (winnerId: string, loserId: string) => {
@@ -222,7 +200,8 @@ export default function CharacterSortPage() {
     newStats[winnerId] = {
       ...winner,
       rating: winner.rating + K_FACTOR * (1 - expectedWinner),
-      matches: winner.matches + 1
+      matches: winner.matches + 1,
+      wins: winner.wins + 1 // 🌟 勝者をカウントアップ
     };
     newStats[loserId] = {
       ...loser,
@@ -232,7 +211,6 @@ export default function CharacterSortPage() {
 
     setStats(newStats);
 
-    // 🌟 履歴の保存（双方向のIDペアを記録して重複選出を防ぐ）
     const newPastMatchups = new Set(pastMatchups);
     newPastMatchups.add(`${matchUp[0].id}-${matchUp[1].id}`);
     newPastMatchups.add(`${matchUp[1].id}-${matchUp[0].id}`);
@@ -243,7 +221,6 @@ export default function CharacterSortPage() {
       const activeCount = Object.values(newStats).filter(c => !c.isExcluded && (!onlyWatched || c.isWatched)).length;
       const targetVotes = activeCount * 2;
       
-      // 目安となる目標投票数に達した「その瞬間」だけ自動遷移させる
       if (newTotal === targetVotes) {
         setShowRanking(true);
       }
@@ -268,7 +245,6 @@ export default function CharacterSortPage() {
 
     setStats(newStats);
 
-    // スキップ時も履歴に残す（無駄な再選出を防ぐため）
     const newPastMatchups = new Set(pastMatchups);
     newPastMatchups.add(`${matchUp[0].id}-${matchUp[1].id}`);
     newPastMatchups.add(`${matchUp[1].id}-${matchUp[0].id}`);
@@ -306,14 +282,12 @@ export default function CharacterSortPage() {
     resetAndStartSort(isChecked); 
   };
 
-  // 🌟 追加：はじめからやり直すボタン用のハンドラー（ワンクッション）
   const handleReset = () => {
     if (totalVotes > 0) {
       if (window.confirm('本当にソートをはじめからやり直しますか？\nこれまでのソートデータはすべて消去されます。')) {
         resetAndStartSort(onlyWatched);
       }
     } else {
-      // 投票前なら警告なしでリフレッシュ
       resetAndStartSort(onlyWatched);
     }
   };
@@ -358,7 +332,7 @@ export default function CharacterSortPage() {
     ctx.fillStyle = '#1a1a1a';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#ff9f43';
+    ctx.fillStyle = '#d4af37';
     ctx.font = 'bold 22px sans-serif';
     ctx.textAlign = 'center';
     const themeDisplay = sortTheme.trim() ? `【${sortTheme.trim()}】` : 'キャラクター';
@@ -384,7 +358,7 @@ export default function CharacterSortPage() {
       ctx.beginPath();
       ctx.arc(100, y + 40, 40, 0, Math.PI * 2);
       ctx.clip();
-      ctx.fillStyle = '#333';
+      ctx.fillStyle = '#0a0a0c';
       ctx.fillRect(60, y, 80, 80);
       if (img.width > 0) {
         const size = Math.min(img.width, img.height);
@@ -399,7 +373,7 @@ export default function CharacterSortPage() {
       ctx.textAlign = 'left';
       ctx.fillText(medals[i], 160, y + 30);
 
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = '#eaeaea';
       ctx.font = 'bold 20px sans-serif';
       ctx.fillText(char.charName, 160, y + 60);
 
@@ -453,80 +427,121 @@ export default function CharacterSortPage() {
     });
   };
 
-  if (!matchUp && !showRanking) return <div style={{ color: '#2e2626', textAlign: 'center', marginTop: '50px' }}>Loading...</div>;
+  if (!matchUp && !showRanking) return <div style={{ color: '#eaeaea', textAlign: 'center', marginTop: '50px' }}>Loading...</div>;
 
   return (
-    <main style={{ padding: '40px 20px', fontFamily: 'sans-serif', backgroundColor: '#141414', minHeight: '100vh', color: '#fff' }}>
-      
+    <main className={styles.container}>
       <style>{`
-        .matchup-container { display: flex; justify-content: center; align-items: stretch; gap: 30px; margin-bottom: 40px; }
-        .char-card { background-color: #222; border-radius: 16px; padding: 30px 20px; text-align: center; width: 300px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
-        .char-image-wrap { width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin-bottom: 20px; background-color: #333; border: 4px solid #444; }
+        .matchup-container {
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+          gap: 30px;
+          margin-bottom: 40px;
+          flex-wrap: nowrap;
+        }
+        .char-card {
+          background-color: #16161a;
+          border-radius: 12px;
+          padding: 30px 20px;
+          text-align: center;
+          flex: 1;
+          max-width: 350px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+          border: 1px solid rgba(255,255,255,0.03);
+        }
+        .char-image-wrap {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 0 auto 20px auto;
+          background-color: #0a0a0c;
+          border: 1px solid rgba(255,255,255,0.05);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        }
         .char-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .vote-btn { background-color: #ff9f43; color: #fff; border: none; padding: 15px 20px; font-size: 18px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; margin-bottom: 15px; transition: background-color 0.2s, transform 0.1s; }
-        .vote-btn:hover { background-color: #e67e22; }
-        .vote-btn:active { transform: scale(0.96); }
-        .skip-btn { background-color: #444; color: #bbb; border: none; padding: 10px; font-size: 14px; border-radius: 6px; cursor: pointer; width: 100%; transition: background-color 0.2s; }
-        .skip-btn:hover { background-color: #555; color: #fff; }
-        .vs-text { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: #666; }
+        .char-name { color: #d4af37; margin: 0 0 10px 0; font-size: 20px; font-weight: 600; }
+        .char-work { color: #888; font-size: 14px; margin-bottom: 20px; line-height: 1.4; }
+        .vs-text { display: flex; align-items: center; font-size: 24px; font-weight: bold; color: #666; padding: 0 10px; }
         
-        .share-btn { padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s; font-size: 14px; }
-        .share-btn:hover { opacity: 0.8; }
-        .btn-twitter { background-color: #1DA1F2; color: #fff; }
-        .btn-image { background-color: #ff9f43; color: #fff; }
-        .btn-copy { background-color: #444; color: #fff; }
+        .vote-btn-primary { 
+          width: 100%; 
+          margin-bottom: 10px; 
+          font-size: 16px; 
+          padding: 18px 20px !important; 
+        }
+        .vote-btn-skip { width: 100%; border: none; background: transparent; font-size: 14px; }
 
-        .char-name { font-size: 20px; margin: 0 0 5px 0; color: #fff; }
-        .char-work { font-size: 13px; color: #888; margin: 0 0 25px 0; }
-
-        @media (max-width: 768px) {
-          .matchup-container { flex-direction: row; gap: 8px; margin-bottom: 20px; }
-          .char-card { width: 50%; padding: 15px 10px; }
-          .char-image-wrap { width: 80px; height: 80px; margin-bottom: 10px; border-width: 2px; }
-          .char-name { font-size: 14px; margin-bottom: 3px; }
-          .char-work { font-size: 11px; margin-bottom: 15px; }
-          .vote-btn { padding: 10px 5px; font-size: 13px; margin-bottom: 10px; }
-          .skip-btn { padding: 8px 5px; font-size: 10px; }
-          .vs-text { font-size: 16px; margin: 0; }
+        @media (max-width: 600px) {
+          .matchup-container { gap: 10px; margin-bottom: 20px; }
+          .char-card { padding: 15px 8px; border-radius: 8px; justify-content: space-between; }
+          .char-image-wrap { 
+            width: 60px; 
+            height: 60px; 
+            margin: 0 auto 10px auto; 
+          }
+          .char-name { font-size: 11px; margin-bottom: 4px; line-height: 1.3; } 
+          .char-work { font-size: 9px; margin-bottom: 10px; line-height: 1.2; } 
+          .vs-text { font-size: 14px; padding: 0; }
+          
+          .vote-btn-primary { 
+            font-size: 13px !important; 
+            padding: 14px 8px !important; 
+            margin-bottom: 8px !important; 
+          }
+          .vote-btn-skip { font-size: 10px !important; padding: 4px !important; }
         }
       `}</style>
 
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-          <h1 style={{ fontSize: '28px', margin: 0, color: '#ff9f43' }}>キャラソート</h1>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '15px', marginBottom: '30px' }}>
           
-          {/* 🌟 右上のボタンエリアに「やり直し」と「戻る」を並べる */}
-          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+          {/* 🌟 ヘッダータイトルを白字の「David Tennant / Sort」に変更 */}
+          <div className={styles.titleContainer} style={{ marginBottom: 0 }}>
+            <h1 className={styles.mainTitle} style={{ color: '#ffffff' }}>David Tennant</h1>
+            <h2 className={styles.subTitle} style={{ color: '#eaeaea' }}>Sort</h2>
+          </div>
+          
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button 
               onClick={handleReset}
-              style={{ backgroundColor: '#dc3545', color: '#fff', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' }}
+              className={styles.actionBtn}
+              style={{ borderColor: '#dc3545', color: '#dc3545', background: 'transparent' }}
             >
               🔄 はじめから
             </button>
-            <Link href="/characters" style={{ color: '#aaa', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px', fontSize: '14px' }}>
-              ← リストに戻る
+            <Link href="/characters" className={styles.actionBtn} style={{ background: 'transparent' }}>
+              👥 キャラ一覧
+            </Link>
+            <Link href="/" className={styles.actionBtn} style={{ background: 'transparent' }}>
+              🎬 作品一覧
             </Link>
           </div>
         </div>
 
-        {!showRanking && matchUp ? (
+        {matchUp && !showRanking ? (
           <>
             <div style={{ textAlign: 'center', color: '#ccc', marginBottom: '30px', lineHeight: '1.6' }}>
               
-              <div style={{ marginBottom: '15px', backgroundColor: '#1a1a1a', padding: '15px', borderRadius: '8px', display: 'inline-block', border: '1px solid #333' }}>
+              <div style={{ marginBottom: '15px', backgroundColor: '#16161a', padding: '15px', borderRadius: '8px', display: 'inline-block', border: '1px solid rgba(255,255,255,0.03)', boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
                 <label style={{ fontSize: '15px', marginRight: '10px', fontWeight: 'bold' }}>🏆 何のランキングを作る？：</label>
                 <input 
                   type="text" 
                   value={sortTheme}
                   onChange={(e) => setSortTheme(e.target.value)}
                   placeholder="例: 最強、友達になりたい"
-                  style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #555', backgroundColor: '#2a2a2a', color: '#fff', width: '220px', fontSize: '15px' }}
+                  style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid #2a2a2a', backgroundColor: '#0a0a0c', color: '#eaeaea', width: '220px', fontSize: '15px' }}
                 />
               </div>
               <br/>
 
               <div style={{ marginBottom: '20px' }}>
-                <label style={{ color: '#ff9f43', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <label style={{ color: '#d4af37', fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                   <input 
                     type="checkbox"
                     checked={onlyWatched}
@@ -537,41 +552,55 @@ export default function CharacterSortPage() {
                 </label>
               </div>
 
-              「<strong style={{ color: '#ff9f43', fontSize: '18px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
+              「<strong style={{ color: '#d4af37', fontSize: '18px' }}>{sortTheme || '...'}</strong>」キャラクターを選んでください！<br/>
               （現在の投票数：{totalVotes} 回）<br/>
 
               
-              <div style={{ display: 'inline-block', marginTop: '15px', padding: '10px 20px', backgroundColor: '#333', borderRadius: '30px', border: '1px solid #555' }}>
+              <div style={{ display: 'inline-block', marginTop: '15px', padding: '10px 20px', backgroundColor: '#16161a', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.03)' }}>
                 {remainingVotes > 0 ? (
-                  <>精度が安定するまで <strong style={{ color: '#ff9f43', fontSize: '18px' }}>あと {remainingVotes} 回</strong></>
+                  <>精度が安定するまで <strong style={{ color: '#d4af37', fontSize: '18px' }}>あと {remainingVotes} 回</strong></>
                 ) : (
-                  <strong style={{ color: '#69db7c' }}>✅ 十分なデータが集まりました！結果を見てみましょう</strong>
+                  <strong style={{ color: '#20b2aa' }}>✅ 十分なデータが集まりました！結果を見てみましょう</strong>
                 )}
               </div>
             </div>
 
             <div className="matchup-container">
+              {/* キャラクターカードA */}
               <div className="char-card">
-                <div className="char-image-wrap"><img src={matchUp[0].charImage} alt={matchUp[0].charName} /></div>
-                <h2 className="char-name">{matchUp[0].charName}</h2>
-                <p className="char-work">{matchUp[0].workTitle}</p>
-                <button className="vote-btn" onClick={() => handleVote(matchUp[0].id, matchUp[1].id)}>👈 こっち！</button>
-                <button className="skip-btn" onClick={() => handleSkip('A')}>知らない（除外）</button>
+                <div style={{ width: '100%' }}>
+                  <div className="char-image-wrap">
+                    <img src={matchUp[0].charImage} alt={matchUp[0].charName} />
+                  </div>
+                  <h2 className="char-name">{matchUp[0].charName}</h2>
+                  <p className="char-work">作品：{matchUp[0].workTitle}</p>
+                </div>
+                <div style={{ width: '100%' }}>
+                  <button className={`${styles.actionBtnPrimary} vote-btn-primary`} onClick={() => handleVote(matchUp[0].id, matchUp[1].id)}>👈 こっち！</button>
+                  <button className={`${styles.actionBtn} vote-btn-skip`} onClick={() => handleSkip('A')}>知らない（除外）</button>
+                </div>
               </div>
-
+              
               <div className="vs-text">VS</div>
-
+              
+              {/* キャラクターカードB */}
               <div className="char-card">
-                <div className="char-image-wrap"><img src={matchUp[1].charImage} alt={matchUp[1].charName} /></div>
-                <h2 className="char-name">{matchUp[1].charName}</h2>
-                <p className="char-work">{matchUp[1].workTitle}</p>
-                <button className="vote-btn" onClick={() => handleVote(matchUp[1].id, matchUp[0].id)}>こっち！ 👉</button>
-                <button className="skip-btn" onClick={() => handleSkip('B')}>知らない（除外）</button>
+                <div style={{ width: '100%' }}>
+                  <div className="char-image-wrap">
+                    <img src={matchUp[1].charImage} alt={matchUp[1].charName} />
+                  </div>
+                  <h2 className="char-name">{matchUp[1].charName}</h2>
+                  <p className="char-work">作品：{matchUp[1].workTitle}</p>
+                </div>
+                <div style={{ width: '100%' }}>
+                  <button className={`${styles.actionBtnPrimary} vote-btn-primary`} onClick={() => handleVote(matchUp[1].id, matchUp[0].id)}>こっち！ 👉</button>
+                  <button className={`${styles.actionBtn} vote-btn-skip`} onClick={() => handleSkip('B')}>知らない（除外）</button>
+                </div>
               </div>
             </div>
 
             <div style={{ textAlign: 'center' }}>
-              <button onClick={() => handleSkip('Both')} style={{ backgroundColor: '#333', color: '#aaa', border: 'none', padding: '12px 30px', borderRadius: '30px', fontSize: '15px', cursor: 'pointer', marginBottom: '40px' }}>
+              <button onClick={() => handleSkip('Both')} className={styles.actionBtn} style={{ borderRadius: '30px', padding: '12px 30px' }}>
                 両方とも知らない（両方除外）
               </button>
             </div>
@@ -579,77 +608,80 @@ export default function CharacterSortPage() {
             <div style={{ textAlign: 'center', marginTop: '30px', borderTop: '1px solid #333', paddingTop: '30px' }}>
               <button 
                 onClick={() => setShowRanking(true)}
-                style={{ backgroundColor: 'transparent', color: '#ff9f43', border: '2px solid #ff9f43', padding: '12px 30px', borderRadius: '8px', fontSize: '16px', cursor: 'pointer', fontWeight: 'bold' }}
+                className={styles.actionBtn}
+                style={{ color: '#d4af37', borderColor: '#d4af37', background: 'transparent' }}
               >
                 🏆 現在のランキング・シェア画面へ
               </button>
             </div>
           </>
         ) : (
-          <>
-            <div style={{ backgroundColor: '#222', borderRadius: '16px', padding: '30px', marginTop: '20px' }}>
-              <h2 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '24px' }}>
-                現在の【{sortTheme || 'キャラクター'}】ランキング
-              </h2>
-              
-              {ranking.length === 0 ? (
-                <p style={{ textAlign: 'center', color: '#888', marginBottom: '30px', lineHeight: '1.6' }}>
-                  投票データがありません。<br/>（まだ投票していないか、ソート対象のキャラクターが2人以上いません）
-                </p>
-              ) : (
-                <>
-                  <div className="share-btn-group" style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '40px' }}>
-                    <button className="share-btn btn-image" onClick={shareOrDownloadImage}>
-                      📸 結果を画像にしてシェア／保存
-                    </button>
-                    <button className="share-btn btn-twitter" onClick={shareToTwitter}>
-                      🐦 X(Twitter)にテキスト投稿
-                    </button>
-                    <button className="share-btn btn-copy" onClick={copyToClipboard}>
-                      📋 {copied ? 'コピーしました！' : 'テキストをコピー'}
-                    </button>
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                    {ranking.slice(0, 50).map((char, index) => (
-                      <div key={char.id} style={{ display: 'flex', alignItems: 'center', backgroundColor: '#333', padding: '15px', borderRadius: '12px', gap: '20px' }}>
-                        <div style={{ fontSize: '24px', fontWeight: 'bold', color: index === 0 ? '#FFD700' : index === 1 ? '#C0C0C0' : index === 2 ? '#CD7F32' : '#888', width: '30px', textAlign: 'center' }}>
-                          {index + 1}
-                        </div>
-                        <img src={char.charImage} alt={char.charName} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover' }} />
-                        <div style={{ flexGrow: 1 }}>
-                          <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{char.charName}</div>
-                          <div style={{ fontSize: '13px', color: '#aaa' }}>{char.workTitle}</div>
-                        </div>
-                        <div style={{ textAlign: 'right', fontSize: '13px', color: '#888' }}>
-                          <div>勝敗: {char.matches}戦</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {/* 🌟 ランキング画面からの各種導線 */}
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
-                {activeCount >= 2 && (
-                  <button 
-                    onClick={() => setShowRanking(false)}
-                    style={{ backgroundColor: '#ff9f43', color: '#fff', border: 'none', padding: '12px 40px', borderRadius: '8px', fontSize: '16px', cursor: 'pointer', fontWeight: 'bold' }}
-                  >
-                    投票に戻る
+          <div style={{ backgroundColor: '#16161a', borderRadius: '16px', padding: '30px', marginTop: '20px', border: '1px solid rgba(255,255,255,0.03)', boxShadow: '0 8px 20px rgba(0,0,0,0.4)' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '30px', fontSize: '24px', color: '#eaeaea' }}>
+              現在の【<span style={{ color: '#d4af37' }}>{sortTheme || 'キャラクター'}</span>】ランキング
+            </h2>
+            
+            {ranking.length === 0 ? (
+              <p style={{ textAlign: 'center', color: '#888', marginBottom: '30px', lineHeight: '1.6' }}>
+                投票データがありません。<br/>（まだ投票していないか、ソート対象のキャラクターが2人以上いません）
+              </p>
+            ) : (
+              <>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '40px' }}>
+                  <button className={styles.actionBtn} style={{ background: '#d4af37', color: '#0a0a0c', borderColor: '#d4af37' }} onClick={shareOrDownloadImage}>
+                    📸 結果を画像にしてシェア／保存
                   </button>
-                )}
-                
+                  <button className={styles.actionBtn} style={{ background: '#1DA1F2', color: '#fff', borderColor: '#1DA1F2' }} onClick={shareToTwitter}>
+                    🐦 X(Twitter)にテキスト投稿
+                  </button>
+                  <button className={styles.actionBtn} onClick={copyToClipboard}>
+                    📋 {copied ? 'コピーしました！' : 'テキストをコピー'}
+                  </button>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                  {ranking.slice(0, 50).map((char, index) => (
+                    <div key={char.id} style={{ display: 'flex', alignItems: 'center', backgroundColor: '#0a0a0c', padding: '15px', borderRadius: '12px', gap: '20px', border: '1px solid rgba(255,255,255,0.03)' }}>
+                      <div style={{ fontSize: '24px', fontWeight: 'bold', color: index === 0 ? '#FFD700' : index === 1 ? '#C0C0C0' : index === 2 ? '#CD7F32' : '#888', width: '40px', textAlign: 'center' }}>
+                        {index + 1}
+                      </div>
+                      <img src={char.charImage} alt={char.charName} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.05)' }} />
+                      <div style={{ flexGrow: 1 }}>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#eaeaea' }}>{char.charName}</div>
+                        <div style={{ fontSize: '13px', color: '#888' }}>作品：{char.workTitle}</div>
+                      </div>
+                      
+                      {/* 🌟 ランキング右側に「対戦回数」と「選択された回数(勝)」を表示 */}
+                      <div style={{ textAlign: 'right', fontSize: '13px', color: '#888' }}>
+                        <div style={{ marginBottom: '4px' }}>対戦: {char.matches}回</div>
+                        <div style={{ color: '#d4af37', fontWeight: 'bold' }}>選択: {char.wins}回</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+              {activeCount >= 2 && (
                 <button 
-                  onClick={handleReset}
-                  style={{ backgroundColor: 'transparent', color: '#dc3545', border: '2px solid #dc3545', padding: '12px 40px', borderRadius: '8px', fontSize: '16px', cursor: 'pointer', fontWeight: 'bold' }}
+                  onClick={() => setShowRanking(false)}
+                  className={styles.actionBtnPrimary}
+                  style={{ padding: '14px 60px', fontSize: '16px' }}
                 >
-                  最初からやり直す
+                  投票に戻る
                 </button>
-              </div>
+              )}
+              
+              <button 
+                onClick={handleReset}
+                className={styles.actionBtn}
+                style={{ color: '#dc3545', borderColor: '#dc3545', background: 'transparent', padding: '14px 40px', fontSize: '16px' }}
+              >
+                最初からやり直す
+              </button>
             </div>
-          </>
+          </div>
         )}
       </div>
     </main>

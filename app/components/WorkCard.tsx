@@ -6,7 +6,6 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatched, setIsWatched] = useState(false);
 
-  // お気に入りと視聴済ステータスのローカルストレージ同期
   useEffect(() => {
     const checkStatus = () => {
       const favorites = typeof window !== 'undefined' 
@@ -30,7 +29,6 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
     };
   }, [work.id]);
 
-  // お気に入り切り替え
   const toggleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -45,7 +43,6 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
     window.dispatchEvent(new Event('favoritesUpdated'));
   };
 
-  // 視聴済切り替え
   const toggleWatched = (e: React.MouseEvent) => {
     e.stopPropagation();
     const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
@@ -63,26 +60,27 @@ export default function WorkCard({ work, onClick }: { work: any, onClick: () => 
   return (
     <div onClick={onClick} className={styles.card}>
       
-      {/* 🌟 左上：視聴済ボタン（状態に応じて半透明とライトブルーが切り替わります） */}
-      <button 
-        onClick={toggleWatched}
-        className={`${styles.watchButton} ${isWatched ? styles.watchButtonActive : styles.watchButtonInactive}`}
-        title={isWatched ? "視聴済" : "未視聴"}
-      >
-        {isWatched ? '✔' : '▷'}
-      </button>
-
-      {/* 右上：お気に入りボタン */}
-      <button 
-        onClick={toggleFavorite}
-        className={`${styles.favButton} ${isFavorite ? styles.favButtonActive : styles.favButtonInactive}`}
-        title="お気に入り"
-      >
-        {isFavorite ? '★' : '☆'}
-      </button>
-
-      {/* ポスター画像エリア */}
       <div className={styles.imageWrapper}>
+        
+        {/* 🌟 左上：視聴状況ボタン */}
+        <button 
+          onClick={toggleWatched}
+          className={`${styles.watchButton} ${isWatched ? styles.watchActive : ''}`}
+          title={isWatched ? "視聴済" : "未視聴"}
+        >
+          {isWatched ? '✔' : '▷'}
+        </button>
+
+        {/* 🌟 右上：お気に入りボタン */}
+        <button 
+          onClick={toggleFavorite}
+          className={`${styles.favButton} ${isFavorite ? styles.favActive : ''}`}
+          title="お気に入り"
+        >
+          {isFavorite ? '★' : '☆'}
+        </button>
+
+        {/* ポスター画像エリア */}
         {work.poster_path ? (
           <img 
             src={`https://image.tmdb.org/t/p/w500${work.poster_path}`} 

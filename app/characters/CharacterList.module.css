@@ -1,63 +1,168 @@
 /* app/characters/CharacterList.module.css */
 
 .container {
-  padding: 40px 20px;
-  font-family: sans-serif;
-  background-color: #141414;
+  padding: 60px 20px;
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  background-color: #0a0a0c;
   min-height: 100vh;
-  color: #fff;
+  color: #eaeaea;
+  letter-spacing: 0.03em;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* タイトルエリア */
+.titleContainer {
+  margin-bottom: 24px;
+}
+
+.mainTitle {
+  font-size: 36px;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.subTitle {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 500;
+  color: #eaeaea;
+  letter-spacing: 0.05em;
+}
+
+/* トップナビボタン群 */
+.topNav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.actionBtn {
+  color: #d0d0d0;
+  border: 1px solid #2a2a2a;
+  padding: 12px 20px;
+  font-size: 14px;
+  background: #1c1c20;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.actionBtn:hover { background: #222228; border-color: #444; }
+
+.actionBtnPrimary {
+  background: linear-gradient(145deg, #d2a640 0%, #b89030 100%);
+  color: #111;
+  border-color: #d2a640;
+  box-shadow: 0 0 15px rgba(210, 166, 64, 0.4);
+  font-weight: 600;
+}
+.actionBtnPrimary:hover {
+  background: linear-gradient(145deg, #e4b64a 0%, #c49933 100%);
+  color: #111;
+  box-shadow: 0 0 20px rgba(210, 166, 64, 0.6);
+}
+
+/* セレクトボックス */
+.fcSelect {
+  background-color: #0a0a0c; color: #eaeaea; border: 1px solid #2a2a2a; 
+  padding: 12px 36px 12px 16px; border-radius: 6px; font-size: 14px; outline: none; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23eaeaea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;
 }
 
 .characterGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 25px;
-  --card-padding: 20px;
-  --image-size: 120px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 32px;
+  --card-padding: 24px;
+  --image-size: 130px;
   --title-size: 18px;
   --subtitle-size: 13px;
 }
 
-.toggleBtn {
-  color: #fff;
-  border: 1px solid #444;
-  padding: 8px 16px;
-  font-size: 14px;
-  background-color: #222;
+/* キャラクターカード */
+.card {
+  background-color: #16161a;
   border-radius: 8px;
-  font-weight: bold;
+  padding: var(--card-padding);
+  text-align: center;
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: background-color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
-.toggleBtn:hover { background-color: #333; }
-.toggleBtn.active { background-color: #ff9f43; color: #1a1a1a; border-color: #ff9f43; }
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
 
-.attrBadge { cursor: pointer; transition: transform 0.1s, opacity 0.1s; }
-.attrBadge:hover { transform: scale(1.05); opacity: 0.8; }
+/* 属性タグ */
+.attrBadge {
+  cursor: pointer;
+  font-size: 11px;
+  color: #d4af37; 
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.attrBadge:hover { 
+  background-color: rgba(212, 175, 55, 0.1); 
+  color: #d4af37; 
+}
+.attrBadgeActive { 
+  background-color: #d4af37; 
+  color: #0a0a0c; 
+  border-color: #d4af37; 
+}
 
-.timelineContainer { position: relative; max-width: 900px; margin: 20px auto 0; padding: 20px 0; }
-.timelineContainer::after { content: ''; position: absolute; width: 4px; background-color: #ff9f43; top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; }
-.timelineItem { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; margin-bottom: 20px; }
+/* タイムライン */
+.timelineContainer { position: relative; max-width: 900px; margin: 40px auto 0; padding: 20px 0; }
+.timelineContainer::after { content: ''; position: absolute; width: 2px; background-color: #333; top: 0; bottom: 0; left: 50%; margin-left: -1px; }
+.timelineItem { padding: 20px 50px; position: relative; width: 50%; box-sizing: border-box; margin-bottom: 30px; }
 .timelineItem:nth-child(odd) { left: 0; text-align: right; }
 .timelineItem:nth-child(even) { left: 50%; text-align: left; }
 
-.timelineDot { position: absolute; width: 20px; height: 20px; background-color: #4dabf7; border: 4px solid #141414; border-radius: 50%; top: calc(50% - 10px); z-index: 1; }
-.timelineItem:nth-child(odd) .timelineDot { right: -10px; }
-.timelineItem:nth-child(even) .timelineDot { left: -10px; }
+.timelineDot { position: absolute; width: 16px; height: 16px; background-color: #20b2aa; border: 3px solid #0a0a0c; border-radius: 50%; top: calc(50% - 8px); z-index: 1; box-shadow: 0 0 10px rgba(32, 178, 170, 0.6); }
+.timelineItem:nth-child(odd) .timelineDot { right: -8px; }
+.timelineItem:nth-child(even) .timelineDot { left: -8px; }
 
-.timelineContent { background-color: #222; border-radius: 12px; padding: 15px; display: inline-flex; align-items: center; gap: 15px; text-align: left; cursor: pointer; transition: transform 0.2s, background-color 0.2s; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-.timelineContent:hover { transform: scale(1.02); background-color: #333; }
+.timelineContent { 
+  background: #16161a; border-radius: 8px; padding: 20px; display: inline-flex; align-items: center; gap: 20px; text-align: left; cursor: pointer; transition: all 0.3s ease; width: 100%; border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+}
+.timelineContent:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.3); }
 
+.timelineTitle { margin: 0 0 6px 0; font-size: 17px; color: #d4af37; font-weight: 600; line-height: 1.4; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* 🌟 スマホ（画面幅600px以下）用スタイル */
 @media (max-width: 600px) {
-  .characterGrid {
-    grid-template-columns: repeat(2, 1fr); gap: 10px;
-    --card-padding: 10px; --image-size: 80px; --title-size: 14px; --subtitle-size: 11px;
-  }
+  .characterGrid { grid-template-columns: repeat(2, 1fr); gap: 16px; --card-padding: 16px; --image-size: 90px; --title-size: 15px; --subtitle-size: 11px; }
+  .container { padding: 40px 15px; }
   .timelineContainer::after { left: 20px; }
-  .timelineItem { width: 100%; padding-left: 50px; padding-right: 0; left: 0 !important; text-align: left !important; }
-  .timelineDot { left: 10px !important; right: auto !important; }
-  .timelineContent { flex-direction: row; }
+  .timelineItem { width: 100%; padding-left: 50px; padding-right: 0; left: 0 !important; text-align: left !important; margin-bottom: 20px; }
+  .timelineDot { left: 12px !important; right: auto !important; }
+  
+  /* 🌟 ここを flex-direction: row（横並び）に変更し、上揃えにしました */
+  .timelineContent { flex-direction: row; align-items: flex-start; gap: 15px; padding: 15px; }
+  
+  .timelineTitle { font-size: 15px; }
 }

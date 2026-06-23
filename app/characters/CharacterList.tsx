@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import ScrollButtons from '../components/ScrollButtons';
 import { useCharacters } from '../hooks/useCharacters';
+// 🌟 全体の人数を取得するためにインポートを追加
+import { customCharacterInfo } from '../data/details';
 import styles from './CharacterList.module.css';
 
 export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
@@ -36,128 +38,218 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     }
   };
 
+  const getCustomWorkTitle = (char: any) => {
+    if (!char) return '';
+    const charName = char.charName || '';
+    const workTitle = char.workTitle || '';
+
+    if (charName.includes('10代目ドクター')) {
+      return 'Doctor Whoシリーズ';
+    }
+    if (workTitle === 'Scrooge McDuck' || charName.includes('Scrooge McDuck') || charName.includes('スクルージ')) {
+      return 'ディズニー';
+    }
+    if (['ドナルド・ピーターソン', 'ロデリック・ピーターソン'].includes(charName)) {
+      return 'Nativity 2: Danger in the Manger!';
+    }
+    
+    return char.displayWorkTitle;
+  };
+
+  // 🌟 属性グループを「人数が多い順」に並び替えるロジック
+  const sortedGroupKeys = [...groupKeys].sort((a, b) => {
+    const isOtherA = a === 'その他' || a === 'その他職業';
+    const isOtherB = b === 'その他' || b === 'その他職業';
+
+    // 「その他」「その他職業」は常に最後にする
+    if (isOtherA && !isOtherB) return 1;
+    if (!isOtherA && isOtherB) return -1;
+    
+    if (isOtherA && isOtherB) {
+       if (a === 'その他職業' && b === 'その他') return -1;
+       if (a === 'その他' && b === 'その他職業') return 1;
+       return 0;
+    }
+
+    // 🌟 人数で降順（多い順）にソート
+    const countDiff = groupedCharacters[b].length - groupedCharacters[a].length;
+    if (countDiff !== 0) return countDiff;
+
+    // 人数が同じ場合は五十音順
+    return a.localeCompare(b, 'ja');
+  });
+
   const renderCharacterGrid = (charList: any[]) => (
     <div className={styles.characterGrid}>
-      {charList.map((char, index) => (
-        <div 
-          key={`${char.workTitle}-${index}`} 
-          onClick={() => setSelectedCharacter(char)}
-          style={{ backgroundColor: '#222', borderRadius: '12px', padding: 'var(--card-padding)', textAlign: 'center', transition: 'transform 0.2s', cursor: 'pointer', position: 'relative' }}
-          onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
-          onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-        >
-          <div style={{ 
-            width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 15px auto', borderRadius: '50%', 
-            overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.5)'
-          }}>
-            {char.charImage ? (
-              <img src={char.charImage} alt={char.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            ) : (
-              <span style={{ fontSize: '40px' }}>🎭</span>
+      {charList.map((char, index) => {
+        const customTitle = getCustomWorkTitle(char);
+
+        return (
+          <div 
+            key={`${char.workTitle}-${index}`} 
+            onClick={() => setSelectedCharacter(char)}
+            className={styles.card}
+          >
+            <div style={{ 
+              width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 20px auto', borderRadius: '50%', 
+              overflow: 'hidden', backgroundColor: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.05)'
+            }}>
+              {char.charImage ? (
+                <img src={char.charImage} alt={char.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                <span style={{ fontSize: '40px', opacity: 0.5 }}>🎭</span>
+              )}
+            </div>
+
+            <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 10px 0', color: '#d4af37', fontWeight: '600' }}>
+              {(char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
+            </h2>
+            <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0, letterSpacing: '0.05em' }}>
+              {customTitle}
+            </p>
+
+            {showAttributes && char.attributes && char.attributes.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', marginTop: '16px' }}>
+                {char.attributes.map((attr: string, i: number) => (
+                  <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)}>
+                    {attr}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
-
-          <h2 style={{ fontSize: 'var(--title-size)', margin: '0 0 8px 0', color: '#ff9f43' }}>
-            {char.charName}
-          </h2>
-          <p style={{ fontSize: 'var(--subtitle-size)', color: '#888', margin: 0 }}>
-            {char.displayWorkTitle}
-          </p>
-
-          {showAttributes && char.attributes && char.attributes.length > 0 && (
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', marginTop: '12px' }}>
-              {char.attributes.map((attr: string, i: number) => (
-                <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)} style={{ backgroundColor: '#ff9f43', color: '#1a1a1a', fontSize: '11px', padding: '3px 8px', borderRadius: '6px', fontWeight: 'bold' }}>
-                  {attr}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 
   const renderCharacterTimeline = (charList: any[]) => (
     <div className={styles.timelineContainer}>
-      {charList.map((char, index) => (
-        <div key={`${char.workTitle}-${index}`} className={styles.timelineItem}>
-          <div className={styles.timelineDot}></div>
-          <div className={styles.timelineContent} onClick={() => setSelectedCharacter(char)}>
-            {char.charImage ? (
-              <img src={char.charImage} alt={char.charName} style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '2px solid #333' }} />
-            ) : (
-              <div style={{ width: '60px', height: '60px', backgroundColor: '#333', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '24px' }}>🎭</div>
-            )}
-            <div>
-              <div style={{ fontWeight: 'bold', color: '#fff', marginBottom: '5px', fontSize: '15px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-                <span>{char.year !== '年不明' ? `${char.year}年` : '公開年不明'}</span>
-                {char.age !== '不明' && <span style={{ color: '#4dabf7', fontSize: '13px' }}>(当時 {char.age}歳)</span>}
+      {charList.map((char, index) => {
+        const customTitle = getCustomWorkTitle(char);
+
+        return (
+          <div key={`${char.workTitle}-${index}`} className={styles.timelineItem}>
+            <div className={styles.timelineDot}></div>
+            <div className={styles.timelineContent} onClick={() => setSelectedCharacter(char)}>
+              {char.charImage ? (
+                <img src={char.charImage} alt={char.charName} style={{ width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '1px solid #333' }} />
+              ) : (
+                <div style={{ width: '80px', height: '80px', backgroundColor: '#0a0a0c', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '30px', opacity: 0.5 }}>🎭</div>
+              )}
+              <div>
+                <div style={{ fontWeight: '500', color: '#eaeaea', marginBottom: '8px', fontSize: '15px', letterSpacing: '0.05em' }}>
+                  {char.year !== '年不明' ? `${char.year}年` : '公開年不明'}
+                  {char.age !== '不明' && (
+                    <span style={{ color: '#20b2aa', marginLeft: '10px', fontSize: '13px' }}>
+                      (当時 {char.age}歳)
+                    </span>
+                  )}
+                </div>
+                <h3 className={styles.timelineTitle}>
+                  {(char.charName.includes('Scrooge McDuck') || char.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : char.charName}
+                  
+                  {showAttributes && char.attributes && char.attributes.length > 0 && (
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                      {char.attributes.map((attr: string, i: number) => (
+                        <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)} style={{ padding: '2px 8px' }}>
+                          {attr}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </h3>
+                <p style={{ margin: 0, fontSize: '14px', color: '#888' }}>
+                  {customTitle}
+                </p>
               </div>
-              <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ff9f43', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                {char.charName}
-                {showAttributes && char.attributes && char.attributes.length > 0 && (
-                  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                    {char.attributes.map((attr: string, i: number) => (
-                      <span key={i} className={styles.attrBadge} onClick={(e) => handleAttributeClick(attr, e)} style={{ backgroundColor: '#ff9f43', color: '#1a1a1a', fontSize: '11px', padding: '2px 6px', borderRadius: '6px', fontWeight: 'bold' }}>
-                        {attr}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </h3>
-              <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>作品: {char.displayWorkTitle}</p>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 
   return (
     <main className={styles.container}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div className={styles.header}>
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <h1 style={{ fontSize: '32px', margin: 0 }}>キャラクターリスト</h1>
-            
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-              <Link href="/character-sort" className={styles.toggleBtn} style={{ backgroundColor: '#ff9f43', color: '#fff', border: '1px solid #ff9f43' }}>🏆 投票で遊ぶ</Link>
-              <button className={styles.toggleBtn} onClick={handleToggleView}>
-                {viewMode === 'grid' ? '📅 タイムライン表示' : '🔲 グリッド表示'}
-              </button>
-              <button className={`${styles.toggleBtn} ${showAttributes ? styles.active : ''}`} onClick={() => setShowAttributes(!showAttributes)}>
-                {showAttributes ? '🏷️ 属性をオフ' : '🏷️ 属性でカテゴライズ'}
-              </button>
-
-              <select 
-                value={watchStatusFilter} 
-                onChange={(e) => setWatchStatusFilter(e.target.value)} 
-                style={{ padding: '8px 12px', borderRadius: '8px', backgroundColor: '#222', color: '#fff', border: '1px solid #444', fontWeight: 'bold', cursor: 'pointer', fontSize: '14px' }}
-              >
-                <option value="ALL">すべて</option>
-                <option value="WATCHED">視聴済のみ</option>
-                <option value="UNWATCHED">未視聴のみ</option>
-              </select>
-            </div>
+        {/* 🌟 ヘッダーのレイアウト変更：タイトルと戻るボタンを横並びに */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+          <div className={styles.titleContainer} style={{ marginBottom: 0 }}>
+            <h1 className={styles.mainTitle}>David Tennant</h1>
+            <h2 className={styles.subTitle}>Characters</h2>
           </div>
-          <Link href="/" style={{ color: '#ff9f43', textDecoration: 'none', padding: '8px 16px', backgroundColor: '#222', borderRadius: '8px' }}>← 作品リストに戻る</Link>
+          <Link href="/" className={styles.actionBtn} style={{ background: 'transparent', border: '1px solid #333' }}>
+            🎬 作品一覧
+          </Link>
+        </div>
+        
+        <div className={styles.topNav}>
+          <Link href="/character-sort" className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}>
+            <span style={{ color: '#111', fontSize: '16px' }}>🏆</span> 投票で遊ぶ
+          </Link>
+          <button className={styles.actionBtn} onClick={handleToggleView}>
+            <span style={{ color: '#7aa5d2', fontSize: '16px' }}>📅</span> {viewMode === 'grid' ? 'タイムライン表示' : 'グリッド表示'}
+          </button>
+          <button className={`${styles.actionBtn} ${showAttributes ? styles.actionBtnActive : ''}`} onClick={() => setShowAttributes(!showAttributes)}>
+            <span style={{ color: '#7aa5d2', fontSize: '16px' }}>🏷️</span> {showAttributes ? '属性をオフ' : '属性でカテゴライズ'}
+         </button>
+
+          <select 
+            value={watchStatusFilter} 
+            onChange={(e) => setWatchStatusFilter(e.target.value)} 
+            className={styles.fcSelect}
+          >
+            <option value="ALL">すべて視聴状況</option>
+            <option value="WATCHED">視聴済</option>
+            <option value="UNWATCHED">未視聴</option>
+          </select>
         </div>
 
-        <p style={{ color: '#aaa', marginBottom: '30px', fontSize: '15px' }}>
-          カードをクリックすると詳細が表示されます（現在 {characters.length} 人を表示中）
-        </p>
+        {/* 🌟 案内文と人数表示を横並び＆右寄せに */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+          <p style={{ color: '#aaa', fontSize: '15px', margin: 0 }}>
+            カードをクリックすると詳細が表示されます
+          </p>
+          <p style={{ color: '#d4af37', fontWeight: '500', margin: 0 }}>
+            {characters.length} / {Object.keys(customCharacterInfo).length} 人
+          </p>
+        </div>
 
         {showAttributes ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-            {groupKeys.map(attr => groupedCharacters[attr].length > 0 && (
-              <div key={attr} id={`attr-group-${attr}`} style={{ border: '2px dashed #444', borderRadius: '16px', padding: '35px 20px 20px', position: 'relative', scrollMarginTop: '20px' }}>
-                <span style={{ position: 'absolute', top: '-14px', left: '20px', backgroundColor: '#444', color: '#fff', padding: '4px 16px', borderRadius: '20px', fontWeight: 'bold', fontSize: '14px', border: '1px solid #555' }}>
-                  🏷️ {attr} ({groupedCharacters[attr].length})
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+            {/* 🌟 並び替えた sortedGroupKeys を使用 */}
+            {sortedGroupKeys.map(attr => groupedCharacters[attr].length > 0 && (
+              <div 
+                key={attr} 
+                id={`attr-group-${attr}`} 
+                style={{ 
+                  border: '1px dashed rgba(255,255,255,0.2)', /* 🌟 枠を点線に変更 */
+                  borderRadius: '12px',
+                  padding: '40px 20px 20px', 
+                  position: 'relative',
+                  scrollMarginTop: '40px' 
+                }}
+              >
+                <span style={{ 
+                  position: 'absolute', 
+                  top: '-15px', 
+                  left: '20px', 
+                  backgroundColor: '#0a0a0c', 
+                  color: '#d4af37', 
+                  padding: '0 15px', 
+                  fontWeight: '500', 
+                  fontSize: '18px', 
+                  letterSpacing: '0.05em'
+                }}>
+                  {attr} <span style={{ color: '#555', fontSize: '14px' }}>({groupedCharacters[attr].length})</span>
                 </span>
-                {viewMode === 'grid' ? renderCharacterGrid(groupedCharacters[attr]) : renderCharacterTimeline(groupedCharacters[attr])}
+                
+                {viewMode === 'grid' 
+                  ? renderCharacterGrid(groupedCharacters[attr]) 
+                  : renderCharacterTimeline(groupedCharacters[attr])}
               </div>
             ))}
           </div>
@@ -166,29 +258,49 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
         )}
       </div>
 
+      {/* キャラクター詳細モーダル */}
       {selectedCharacter && (
-        <div onClick={() => setSelectedCharacter(null)} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
-          <div onClick={(e) => e.stopPropagation()} style={{ backgroundColor: '#1a1a1a', padding: '30px', borderRadius: '16px', maxWidth: '500px', width: '100%', position: 'relative', maxHeight: '90vh', display: 'flex', flexDirection: 'column' }}>
-            <button onClick={() => setSelectedCharacter(null)} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: '#888', fontSize: '20px', cursor: 'pointer', zIndex: 10 }}>✕</button>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px', flexShrink: 0 }}>
-              <div style={{ width: '80px', height: '80px', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#333', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                {selectedCharacter.charImage ? <img src={selectedCharacter.charImage} alt={selectedCharacter.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <span style={{ fontSize: '30px' }}>🎭</span>}
+        <div 
+          onClick={() => setSelectedCharacter(null)} 
+          style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ backgroundColor: '#16161a', padding: '40px', borderRadius: '12px', maxWidth: '600px', width: '100%', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 50px rgba(0,0,0,0.8)' }}
+          >
+            <button onClick={() => setSelectedCharacter(null)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'none', border: 'none', color: '#666', fontSize: '24px', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#666'}>✕</button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '30px', marginBottom: '30px' }}>
+              <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', backgroundColor: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 10px 20px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
+                {selectedCharacter.charImage ? (
+                  <img src={selectedCharacter.charImage} alt={selectedCharacter.charName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <span style={{ fontSize: '40px', opacity: 0.5 }}>🎭</span>
+                )}
               </div>
               <div>
-                <h2 style={{ color: '#ff9f43', margin: '0 0 5px 0', fontSize: '24px' }}>{selectedCharacter.charName}</h2>
-                <p style={{ fontSize: '14px', color: '#888', margin: 0 }}>
-                  作品: {selectedCharacter.displayWorkTitle}
+                <h2 style={{ color: '#d4af37', margin: '0 0 8px 0', fontSize: '28px', fontWeight: '600', letterSpacing: '0.02em' }}>
+                  {(selectedCharacter.charName.includes('Scrooge McDuck') || selectedCharacter.charName.includes('スクルージ')) ? 'スクルージ・マクダック' : selectedCharacter.charName}
+                </h2>
+                {/* 🌟 名前の下を「作品：〇〇」に変更 */}
+                <p style={{ fontSize: '15px', color: '#888', margin: 0, letterSpacing: '0.05em' }}>
+                  作品：{getCustomWorkTitle(selectedCharacter)}
                 </p>
               </div>
             </div>
+
             {selectedCharacter.fullDescription && (
-              <div style={{ backgroundColor: '#222', padding: '20px', borderRadius: '12px', overflowY: 'auto' }}>
-                <p style={{ fontSize: '15px', lineHeight: '1.8', color: '#ddd', whiteSpace: 'pre-wrap', margin: 0 }}>{selectedCharacter.fullDescription}</p>
+              <div style={{ backgroundColor: '#0a0a0c', padding: '25px', borderRadius: '8px', maxHeight: '40vh', overflowY: 'auto', border: '1px solid rgba(255,255,255,0.02)' }}>
+                <p style={{ fontSize: '15px', lineHeight: '1.9', color: '#d0d0d0', whiteSpace: 'pre-wrap', margin: 0, letterSpacing: '0.02em' }}>
+                  {selectedCharacter.fullDescription}
+                </p>
               </div>
             )}
+            
           </div>
         </div>
       )}
+      
       <ScrollButtons />
     </main>
   );

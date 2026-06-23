@@ -1,131 +1,94 @@
 /* app/components/WorkCard.module.css */
 
 .card {
-  background-color: #222;
-  border-radius: 12px;
+  background-color: #16161a;
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
   position: relative;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 .card:hover {
-  transform: scale(1.03);
-}
-
-/* 🌟 お気に入りボタンの基本スタイル */
-.favButton {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
-  border: none;
-  border-radius: 50%;
-  width: var(--fav-btn-size, 36px);
-  height: var(--fav-btn-size, 36px);
-  font-size: var(--fav-btn-font, 18px);
-  cursor: pointer;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-}
-
-.favButtonActive {
-  background-color: #ff9f43;
-}
-.favButtonInactive {
-  background-color: rgba(0, 0, 0, 0.2); /* 半透明の黒 */
-}
-
-/* 🌟 視聴済ボタンの基本スタイル（お気に入りと対称になるよう左上に配置） */
-.watchButton {
-  position: absolute;
-  top: 10px;
-  left: 10px; 
-  z-index: 10;
-  border: none;
-  border-radius: 50%;
-  width: var(--fav-btn-size, 36px);
-  height: var(--fav-btn-size, 36px);
-  font-size: var(--fav-btn-font, 16px);
-  cursor: pointer;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-}
-
-/* 視聴済（アクティブ）のときの色：綺麗なライトブルー */
-.watchButtonActive {
-  background-color: #4dabf7;
-}
-
-/* 🌟 未視聴（インアクティブ）のときの色：お気に入りと同じ半透明の黒に修正！ */
-.watchButtonInactive {
-  background-color: rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
 }
 
 .imageWrapper {
+  position: relative;
   width: 100%;
   aspect-ratio: 2/3;
-  background-color: #333;
+  background-color: #0a0a0c;
+  overflow: hidden;
 }
 
+/* 🌟 ボタン共通スタイル（未チェック時は黒の半透明） */
+.watchButton, .favButton {
+  position: absolute;
+  top: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2); /* 🌟 画像に合わせた濃さの半透明ブラック */
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff; /* アイコンは白 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+  /*backdrop-filter: blur(2px); /* 少しぼかしを入れて馴染ませる */
+}
+
+/* 位置の指定 */
+.watchButton { left: 10px; }
+.favButton { right: 10px; }
+
+/* ホバー時は少しだけ暗くして反応を示す */
+.watchButton:hover, .favButton:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.85); 
+}
+
+/* 🌟 左：視聴済（チェック時） */
+.watchActive {
+  background-color: #4dabf7 !important; /* ソリッドなブルー */
+  color: #fff;
+}
+.watchActive:hover { background-color: #3b8fd1 !important; }
+
+/* 🌟 右：お気に入り（チェック時） */
+.favActive {
+  background-color: #ff9f43 !important; /* ソリッドなオレンジ */
+  color: #fff;
+}
+.favActive:hover { background-color: #e68a2e !important; }
+
+/* ポスター画像 */
 .posterImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.card:hover .posterImage {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
-.noImage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: #666;
-}
-
-.content {
-  padding: var(--card-padding, 15px);
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.title {
-  margin: 0 0 5px 0;
-  font-size: var(--title-size, 16px);
-  line-height: 1.3;
-}
-
-.meta {
-  font-size: var(--meta-size, 12px);
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.providerArea {
-  margin-top: auto;
-}
-
-.providerList {
-  display: flex;
-  gap: var(--icon-gap, 8px);
-  flex-wrap: wrap;
-}
-
-.providerIcon {
-  width: var(--icon-size, 32px);
-  height: var(--icon-size, 32px);
-  border-radius: 4px;
-}
-
-.noProviders {
-  color: #aaa;
-  font-size: var(--meta-size, 12px);
-}
+.noImage { display: flex; align-items: center; justify-content: center; height: 100%; color: #444; font-size: 14px; }
+.content { padding: var(--card-padding); flex-grow: 1; display: flex; flex-direction: column; z-index: 2; background-color: #16161a; }
+.title { margin: 0 0 8px 0; font-size: var(--title-size); line-height: 1.4; color: #eaeaea; font-weight: 500; letter-spacing: 0.02em; transition: color 0.3s; }
+.card:hover .title { color: #d4af37; }
+.meta { font-size: var(--meta-size); color: #888; margin-bottom: 12px; letter-spacing: 0.05em; }
+.providerList { display: flex; gap: var(--icon-gap); flex-wrap: wrap; margin-top: auto; }
+.providerIcon { width: var(--icon-size); height: var(--icon-size); border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+.noProviders { color: #555; font-size: var(--meta-size); }

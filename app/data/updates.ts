@@ -8,9 +8,13 @@ export type UpdateInfo = {
 
 export const siteUpdates: UpdateInfo[] = [
   {
+    date: "2026.06.23",
+    content: "レイアウトを変更",
+    isImportant: true,
+  },
+  {
     date: "2026.06.21",
     content: "キャラクターリストを属性ごとにグループ化・表示切替できるようになりました。",
-    isImportant: true,
   },
   {
     date: "2026.06.21",

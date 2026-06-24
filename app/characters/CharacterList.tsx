@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ScrollButtons from '../components/ScrollButtons';
 import { useCharacters } from '../hooks/useCharacters';
@@ -8,6 +8,10 @@ import styles from './CharacterList.module.css';
 
 export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
   const [selectedCharacter, setSelectedCharacter] = useState<any | null>(null);
+  
+  // 🌟 お気に入り機能用のStateを追加
+  const [favoriteChars, setFavoriteChars] = useState<string[]>([]);
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
   const {
     viewMode, handleToggleView,
@@ -15,6 +19,29 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     watchStatusFilter, setWatchStatusFilter, 
     characters, groupedCharacters, groupKeys
   } = useCharacters(tmdbWorks);
+
+  // 🌟 初期マウント時にLocalStorageからお気に入りを読み込む
+  useEffect(() => {
+    const loaded = JSON.parse(localStorage.getItem('favoriteCharacters') || '[]');
+    setFavoriteChars(loaded);
+  }, []);
+
+  // 🌟 キャラクターを一意に識別するキー（名前＋作品名）
+  const getCharKey = (char: any) => `${char.charName}-${char.workTitle}`;
+
+  // 🌟 お気に入りボタンを押した時の処理
+  const toggleFavorite = (char: any, e: React.MouseEvent) => {
+    e.stopPropagation(); // モーダルが開くのを防ぐ
+    const key = getCharKey(char);
+    let newFavs;
+    if (favoriteChars.includes(key)) {
+      newFavs = favoriteChars.filter(k => k !== key);
+    } else {
+      newFavs = [...favoriteChars, key];
+    }
+    setFavoriteChars(newFavs);
+    localStorage.setItem('favoriteCharacters', JSON.stringify(newFavs));
+  };
 
   const handleAttributeClick = (attr: string, e: React.MouseEvent) => {
     e.stopPropagation(); 
@@ -55,6 +82,19 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     return char.displayWorkTitle;
   };
 
+  // 🌟 「お気に入りのみ」フィルタリングを適用した配列を作成
+  const displayCharacters = showOnlyFavorites 
+    ? characters.filter(c => favoriteChars.includes(getCharKey(c)))
+    : characters;
+
+  const displayGroupedCharacters = Object.keys(groupedCharacters).reduce((acc, key) => {
+    const filtered = showOnlyFavorites
+      ? groupedCharacters[key].filter(c => favoriteChars.includes(getCharKey(c)))
+      : groupedCharacters[key];
+    acc[key] = filtered;
+    return acc;
+  }, {} as Record<string, any[]>);
+
   const sortedGroupKeys = [...groupKeys].sort((a, b) => {
     const isOtherA = a === 'その他' || a === 'その他職業';
     const isOtherB = b === 'その他' || b === 'その他職業';
@@ -68,7 +108,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
        return 0;
     }
 
-    const countDiff = groupedCharacters[b].length - groupedCharacters[a].length;
+    const countDiff = displayGroupedCharacters[b].length - displayGroupedCharacters[a].length;
     if (countDiff !== 0) return countDiff;
 
     return a.localeCompare(b, 'ja');
@@ -78,6 +118,7 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     <div className={styles.characterGrid}>
       {charList.map((char, index) => {
         const customTitle = getCustomWorkTitle(char);
+        const isFav = favoriteChars.includes(getCharKey(char));
 
         return (
           <div 
@@ -85,6 +126,15 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
             onClick={() => setSelectedCharacter(char)}
             className={styles.card}
           >
+            {/* 🌟 お気に入りボタン */}
+            <button 
+              onClick={(e) => toggleFavorite(char, e)}
+              className={`${styles.favButton} ${isFav ? styles.favActive : ''}`}
+              title="お気に入り"
+            >
+              {isFav ? '★' : '☆'}
+            </button>
+
             <div style={{ 
               width: 'var(--image-size)', height: 'var(--image-size)', margin: '0 auto 16px auto', borderRadius: '50%', 
               overflow: 'hidden', backgroundColor: '#0a0a0c', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -123,11 +173,22 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
     <div className={styles.timelineContainer}>
       {charList.map((char, index) => {
         const customTitle = getCustomWorkTitle(char);
+        const isFav = favoriteChars.includes(getCharKey(char));
 
         return (
           <div key={`${char.workTitle}-${index}`} className={styles.timelineItem}>
             <div className={styles.timelineDot}></div>
             <div className={styles.timelineContent} onClick={() => setSelectedCharacter(char)}>
+              
+              {/* 🌟 お気に入りボタン */}
+              <button 
+                onClick={(e) => toggleFavorite(char, e)}
+                className={`${styles.favButton} ${isFav ? styles.favActive : ''}`}
+                title="お気に入り"
+              >
+                {isFav ? '★' : '☆'}
+              </button>
+
               {char.charImage ? (
                 <img src={char.charImage} alt={char.charName} style={{ width: '70px', height: '70px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '1px solid #333' }} />
               ) : (
@@ -184,9 +245,19 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
           <Link href="/character-sort" className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}>
             <span style={{ color: '#111', fontSize: '14px' }}>🏆</span> 投票で遊ぶ
           </Link>
+          
+          {/* 🌟 「お気に入りのみ」トグルボタンを追加 */}
+          <button 
+            className={`${styles.actionBtn} ${showOnlyFavorites ? styles.actionBtnActive : ''}`} 
+            onClick={() => setShowOnlyFavorites(!showOnlyFavorites)}
+          >
+            <span style={{ color: '#ff9f43', fontSize: '14px' }}>★</span> {showOnlyFavorites ? 'お気に入りのみ表示' : 'お気に入りだけ表示'}
+          </button>
+
           <button className={styles.actionBtn} onClick={handleToggleView}>
             <span style={{ color: '#7aa5d2', fontSize: '14px' }}>📅</span> {viewMode === 'grid' ? 'タイムライン表示' : 'グリッド表示'}
           </button>
+          
           <button className={`${styles.actionBtn} ${showAttributes ? styles.actionBtnActive : ''}`} onClick={() => setShowAttributes(!showAttributes)}>
             <span style={{ color: '#7aa5d2', fontSize: '14px' }}>🏷️</span> {showAttributes ? '属性をオフ' : '属性でカテゴライズ'}
          </button>
@@ -207,13 +278,13 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
             カードをクリックすると詳細が表示されます
           </p>
           <p style={{ color: '#d4af37', fontWeight: '500', margin: 0, fontSize: '14px' }}>
-            {characters.length} / {Object.keys(customCharacterInfo).length} 人
+            {displayCharacters.length} / {Object.keys(customCharacterInfo).length} 人
           </p>
         </div>
 
         {showAttributes ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
-            {sortedGroupKeys.map(attr => groupedCharacters[attr].length > 0 && (
+            {sortedGroupKeys.map(attr => displayGroupedCharacters[attr].length > 0 && (
               <div 
                 key={attr} 
                 id={`attr-group-${attr}`} 
@@ -236,17 +307,23 @@ export default function CharacterList({ tmdbWorks }: { tmdbWorks: any[] }) {
                   fontSize: '14px', 
                   letterSpacing: '0.05em'
                 }}>
-                  {attr} <span style={{ color: '#555', fontSize: '12px' }}>({groupedCharacters[attr].length})</span>
+                  {attr} <span style={{ color: '#555', fontSize: '12px' }}>({displayGroupedCharacters[attr].length})</span>
                 </span>
                 
                 {viewMode === 'grid' 
-                  ? renderCharacterGrid(groupedCharacters[attr]) 
-                  : renderCharacterTimeline(groupedCharacters[attr])}
+                  ? renderCharacterGrid(displayGroupedCharacters[attr]) 
+                  : renderCharacterTimeline(displayGroupedCharacters[attr])}
               </div>
             ))}
+            {/* 全ての属性が空になった場合のメッセージ */}
+            {displayCharacters.length === 0 && (
+              <p style={{ textAlign: 'center', color: '#888', padding: '40px 0' }}>該当するキャラクターがいません。</p>
+            )}
           </div>
         ) : (
-          viewMode === 'grid' ? renderCharacterGrid(characters) : renderCharacterTimeline(characters)
+          displayCharacters.length > 0 
+            ? (viewMode === 'grid' ? renderCharacterGrid(displayCharacters) : renderCharacterTimeline(displayCharacters))
+            : <p style={{ textAlign: 'center', color: '#888', padding: '40px 0' }}>該当するキャラクターがいません。</p>
         )}
       </div>
 

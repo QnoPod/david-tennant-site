@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import FilterControls from './components/FilterControls';
 import WorkCard from './components/WorkCard';
@@ -16,6 +16,10 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // 🌟 追加：親コンポーネントでまとめて LocalStorage を管理する
+  const [favoritesList, setFavoritesList] = useState<number[]>([]);
+  const [watchedList, setWatchedList] = useState<number[]>([]);
+
   const {
     searchTerm, setSearchTerm, charSearchTerm, setCharSearchTerm,
     selectedProviders, setSelectedProviders, toggleProvider,
@@ -29,6 +33,53 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     uniqueWorks, sortedWorks, activeSortOrder
   } = useFilteredWorks(works, viewMode);
 
+  // 🌟 追加：初期読み込みと変更監視をここだけで行う
+  useEffect(() => {
+    const loadSavedData = () => {
+      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
+      setFavoritesList(favs);
+      setWatchedList(watched);
+    };
+
+    loadSavedData();
+
+    window.addEventListener('favoritesUpdated', loadSavedData);
+    window.addEventListener('watchedUpdated', loadSavedData);
+    return () => {
+      window.removeEventListener('favoritesUpdated', loadSavedData);
+      window.removeEventListener('watchedUpdated', loadSavedData);
+    };
+  }, []);
+
+  // 🌟 追加：お気に入り切り替え処理
+  const handleToggleFavorite = (workId: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    let newFavorites;
+    if (favoritesList.includes(workId)) {
+      newFavorites = favoritesList.filter(id => id !== workId);
+    } else {
+      newFavorites = [...favoritesList, workId];
+    }
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    setFavoritesList(newFavorites);
+    window.dispatchEvent(new Event('favoritesUpdated'));
+  };
+
+  // 🌟 追加：視聴済み切り替え処理
+  const handleToggleWatched = (workId: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    let newWatched;
+    if (watchedList.includes(workId)) {
+      newWatched = watchedList.filter(id => id !== workId);
+    } else {
+      newWatched = [...watchedList, workId];
+    }
+    localStorage.setItem('watchedWorks', JSON.stringify(newWatched));
+    setWatchedList(newWatched);
+    window.dispatchEvent(new Event('watchedUpdated'));
+  };
+
   const handleToggleView = () => {
     setViewMode(prev => {
       const nextMode = prev === 'grid' ? 'timeline' : 'grid';
@@ -37,7 +88,6 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     });
   };
 
-  // 🌟 追加：すべての検索・絞り込み条件を初期状態に戻す関数
   const handleResetFilters = () => {
     setSearchTerm('');
     setCharSearchTerm('');
@@ -47,21 +97,19 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     setSelectedGenres([]);
     setShowOnlyFavorites(false);
     setSortOrder('default');
-    setGenreSearchMode('include'); // 🌟 型エラーを解消
-    setIsExpanded(false); // アコーディオンも閉じる
+    setGenreSearchMode('include');
+    setIsExpanded(false);
   };
 
   return (
     <main className={styles.main}>
       <div className={styles.header}>
         
-        {/* 🌟 2段組のタイトル構成 */}
         <div className={styles.titleContainer}>
           <h1 className={styles.mainTitle}>David Tennant</h1>
           <h2 className={styles.subTitle}>Film</h2>
         </div>
         
-        {/* 🌟 ボタン群 */}
         <div className={styles.topNav}>
           <Link href="/characters" className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}>
             <span style={{ color: '#4a38df', fontSize: '14px' }}>👥</span> キャラクターリストを見る
@@ -74,7 +122,6 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
           </button>
         </div>
         
-        {/* 🌟 フィルター全体も少し小さく見せるためにスタイル追加 */}
         <div style={{ fontSize: '13px' }}>
           <FilterControls 
             searchTerm={searchTerm} setSearchTerm={setSearchTerm}
@@ -88,16 +135,14 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
             setSortOrder={(val) => { if (viewMode !== 'timeline') setSortOrder(val); }}
             isExpanded={isExpanded} setIsExpanded={setIsExpanded}
             showOnlyFavorites={showOnlyFavorites} setShowOnlyFavorites={setShowOnlyFavorites}
-            onReset={handleResetFilters} // 🌟 ここでFilterControlsにリセット処理を渡します
+            onReset={handleResetFilters}
           />
         </div>
         
-        {/* 🌟 案内文と作品数 */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', marginTop: '20px', flexWrap: 'wrap', gap: '10px' }}>
           <p style={{ color: '#aaa', fontSize: '12px', margin: 0 }}>
             カードをクリックすると詳細が表示されます
           </p>
-          {/* 🌟 リセットボタンをFilterControls内に移動したため、ここは作品数だけに */}
           <p style={{ color: '#d4af37', fontWeight: '500', margin: 0, fontSize: '14px' }}>
             {sortedWorks.length} / {uniqueWorks.length} 作品
           </p>
@@ -106,7 +151,16 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         {viewMode === 'grid' ? (
           <div className={styles.workGrid}>
             {sortedWorks.map((work: any, index: number) => (
-              <WorkCard key={`${work.id}-${index}`} work={work} onClick={() => setSelectedWork(work)} />
+              <WorkCard 
+                key={`${work.id}-${index}`} 
+                work={work} 
+                onClick={() => setSelectedWork(work)}
+                /* 🌟 カードには結果と処理だけを渡す */
+                isFavorite={favoritesList.includes(work.id)}
+                isWatched={watchedList.includes(work.id)}
+                onToggleFavorite={(e) => handleToggleFavorite(work.id, e)}
+                onToggleWatched={(e) => handleToggleWatched(work.id, e)}
+              />
             ))}
           </div>
         ) : (

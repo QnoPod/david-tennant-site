@@ -1,79 +1,44 @@
 'use client';
-import { useState, useEffect } from 'react';
 import styles from './WorkCard.module.css';
 
-export default function WorkCard({ work, onClick }: { work: any, onClick: () => void }) {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isWatched, setIsWatched] = useState(false);
+// 🌟 Props の型定義を追加（親から受け取る情報）
+type WorkCardProps = {
+  work: any;
+  onClick: () => void;
+  isFavorite: boolean;
+  isWatched: boolean;
+  onToggleFavorite: (e: React.MouseEvent) => void;
+  onToggleWatched: (e: React.MouseEvent) => void;
+};
 
-  useEffect(() => {
-    const checkStatus = () => {
-      const favorites = typeof window !== 'undefined' 
-        ? JSON.parse(localStorage.getItem('favorites') || '[]')
-        : [];
-      setIsFavorite(favorites.includes(work.id));
-
-      const watched = typeof window !== 'undefined'
-        ? JSON.parse(localStorage.getItem('watchedWorks') || '[]')
-        : [];
-      setIsWatched(watched.includes(work.id));
-    };
-    
-    checkStatus();
-
-    window.addEventListener('favoritesUpdated', checkStatus);
-    window.addEventListener('watchedUpdated', checkStatus);
-    return () => {
-      window.removeEventListener('favoritesUpdated', checkStatus);
-      window.removeEventListener('watchedUpdated', checkStatus);
-    };
-  }, [work.id]);
-
-  const toggleFavorite = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    let newFavorites;
-    if (isFavorite) {
-      newFavorites = favorites.filter((id: number) => id !== work.id);
-    } else {
-      newFavorites = [...favorites, work.id];
-    }
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
-    setIsFavorite(!isFavorite);
-    window.dispatchEvent(new Event('favoritesUpdated'));
-  };
-
-  const toggleWatched = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
-    let newWatched;
-    if (isWatched) {
-      newWatched = watched.filter((id: number) => id !== work.id);
-    } else {
-      newWatched = [...watched, work.id];
-    }
-    localStorage.setItem('watchedWorks', JSON.stringify(newWatched));
-    setIsWatched(!isWatched);
-    window.dispatchEvent(new Event('watchedUpdated'));
-  };
+export default function WorkCard({ 
+  work, 
+  onClick, 
+  isFavorite, 
+  isWatched, 
+  onToggleFavorite, 
+  onToggleWatched 
+}: WorkCardProps) {
+  
+  // 🌟 カード内部での useEffect や LocalStorage へのアクセスをすべて削除しました！
 
   return (
     <div onClick={onClick} className={styles.card}>
       
       <div className={styles.imageWrapper}>
         
-        {/* 🌟 左上：視聴状況ボタン */}
+        {/* 左上：視聴状況ボタン */}
         <button 
-          onClick={toggleWatched}
+          onClick={onToggleWatched} // 🌟 親から受け取った処理を実行
           className={`${styles.watchButton} ${isWatched ? styles.watchActive : ''}`}
           title={isWatched ? "視聴済" : "未視聴"}
         >
           {isWatched ? '✔' : '▷'}
         </button>
 
-        {/* 🌟 右上：お気に入りボタン */}
+        {/* 右上：お気に入りボタン */}
         <button 
-          onClick={toggleFavorite}
+          onClick={onToggleFavorite} // 🌟 親から受け取った処理を実行
           className={`${styles.favButton} ${isFavorite ? styles.favActive : ''}`}
           title="お気に入り"
         >

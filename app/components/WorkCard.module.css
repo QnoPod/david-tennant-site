@@ -51,11 +51,7 @@
 .watchButton { left: 10px; }
 .favButton { right: 10px; }
 
-/* ホバー時は少しだけ暗くして反応を示す */
-.watchButton:hover, .favButton:hover {
-  transform: scale(1.1);
-  background-color: rgba(0, 0, 0, 0.85); 
-}
+
 
 /* 🌟 左：視聴済（チェック時） */
 .watchActive {

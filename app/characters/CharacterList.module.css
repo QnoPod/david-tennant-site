@@ -181,10 +181,7 @@
   transition: all 0.2s ease;
   z-index: 10;
 }
-.favButton:hover {
-  transform: scale(1.1);
-  background-color: rgba(0, 0, 0, 0.85);
-}
+
 .favActive {
   background-color: #ff9f43 !important;
   color: #fff;

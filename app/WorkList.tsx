@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import FilterControls from './components/FilterControls';
-import WorkCard from './components/WorkCard';
-import WorkModal from './components/WorkModal';
-import AboutModal from './components/AboutModal';
-import WorkTimelineView from './components/WorkTimelineView';
-import ScrollButtons from './components/ScrollButtons'; 
+
+// 🌟 新しい階層（ui/modals/views）からインポート
+import FilterControls from './components/ui/FilterControls';
+import ScrollButtons from './components/ui/ScrollButtons';
+import WorkCard from './components/views/WorkCard';
+import WorkTimelineView from './components/views/WorkTimelineView';
+import WorkModal from './components/modals/WorkModal';
+import AboutModal from './components/modals/AboutModal';
+
 import { useFilteredWorks } from './hooks/useFilteredWorks';
 import styles from './WorkList.module.css';
 

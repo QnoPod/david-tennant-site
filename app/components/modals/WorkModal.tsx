@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { customOverviews } from '../data/overviews';
-import { customCharacterImages } from '../data/characters';
-import { customCharacterInfo } from '../data/details';
-import { videoOverrides } from '../data/videoOverrides';
+import React, { useState, useEffect } from 'react'; 
+import { customOverviews } from '../../data/overviews';
+import { customCharacterImages } from '../../data/characters';
+import { customCharacterInfo } from '../../data/details';
+import { videoOverrides } from '../../data/videoOverrides';
 
 export default function WorkModal({ work, onClose }: { work: any, onClose: () => void }) {
   const [isWatched, setIsWatched] = useState(false);

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import BaseModal from './BaseModal';
-import { siteUpdates } from '../data/updates';
+import BaseModal from './BaseModal'; 
+import { siteUpdates } from '../../data/updates'; 
 
 type AboutModalProps = {
   isOpen: boolean;

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import styles from '../WorkList.module.css';
+import styles from '../../WorkList.module.css'; // 🌟 ../ から ../../ に修正
 
 type WorkTimelineViewProps = {
   sortedWorks: any[];

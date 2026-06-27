@@ -1,10 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import ScrollButtons from '../components/ScrollButtons';
-import CharacterDetailModal from '../components/CharacterDetailModal';
-import CharacterGridView from '../components/CharacterGridView';
-import CharacterTimelineView from '../components/CharacterTimelineView';
+import ScrollButtons from '../components/ui/ScrollButtons';
+import CharacterDetailModal from '../components/modals/CharacterDetailModal';
+import CharacterGridView from '../components/views/CharacterGridView';
+import CharacterTimelineView from '../components/views/CharacterTimelineView';
+
 import { useCharacters } from '../hooks/useCharacters';
 import { customCharacterInfo } from '../data/details';
 import styles from './CharacterList.module.css';

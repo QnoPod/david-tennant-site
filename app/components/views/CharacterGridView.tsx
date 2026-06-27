@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import styles from '../characters/CharacterList.module.css';
+import styles from '../../characters/CharacterList.module.css';
 
 type Props = {
   characters: any[];

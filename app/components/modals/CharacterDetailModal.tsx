@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import BaseModal from './BaseModal';
+import BaseModal from './BaseModal'; // 🌟 同じフォルダ内なので ./ だけでOKです
 
 type Props = {
   character: any | null;

@@ -1,16 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import PageHeader from './components/PageHeader';
 import FilterControls from './components/FilterControls';
 import WorkCard from './components/WorkCard';
 import WorkModal from './components/WorkModal';
-import AboutModal from './components/AboutModal';
-import WorkTimelineView from './components/WorkTimelineView';
 import ScrollButtons from './components/ScrollButtons'; 
+import { siteUpdates } from './data/updates';
 import { useFilteredWorks } from './hooks/useFilteredWorks';
-import { useLocalStorage } from './hooks/useLocalStorage';
 import styles from './WorkList.module.css';
 
 export default function WorkList({ works, davidId }: { works: any[], davidId: number }) {
@@ -19,9 +16,9 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // 🌟 カスタムフックのおかげで、1行でローカルストレージと同期可能に！
-  const [favoritesList, setFavoritesList] = useLocalStorage<number[]>('favorites', []);
-  const [watchedList, setWatchedList] = useLocalStorage<number[]>('watchedWorks', []);
+  // 🌟 追加：親コンポーネントでまとめて LocalStorage を管理する
+  const [favoritesList, setFavoritesList] = useState<number[]>([]);
+  const [watchedList, setWatchedList] = useState<number[]>([]);
 
   const {
     searchTerm, setSearchTerm, charSearchTerm, setCharSearchTerm,
@@ -36,16 +33,51 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     uniqueWorks, sortedWorks, activeSortOrder
   } = useFilteredWorks(works, viewMode);
 
-  // お気に入り切り替え
+  // 🌟 追加：初期読み込みと変更監視をここだけで行う
+  useEffect(() => {
+    const loadSavedData = () => {
+      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
+      setFavoritesList(favs);
+      setWatchedList(watched);
+    };
+
+    loadSavedData();
+
+    window.addEventListener('favoritesUpdated', loadSavedData);
+    window.addEventListener('watchedUpdated', loadSavedData);
+    return () => {
+      window.removeEventListener('favoritesUpdated', loadSavedData);
+      window.removeEventListener('watchedUpdated', loadSavedData);
+    };
+  }, []);
+
+  // 🌟 追加：お気に入り切り替え処理
   const handleToggleFavorite = (workId: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    setFavoritesList(prev => prev.includes(workId) ? prev.filter(id => id !== workId) : [...prev, workId]);
+    let newFavorites;
+    if (favoritesList.includes(workId)) {
+      newFavorites = favoritesList.filter(id => id !== workId);
+    } else {
+      newFavorites = [...favoritesList, workId];
+    }
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    setFavoritesList(newFavorites);
+    window.dispatchEvent(new Event('favoritesUpdated'));
   };
 
-  // 視聴済み切り替え
+  // 🌟 追加：視聴済み切り替え処理
   const handleToggleWatched = (workId: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    setWatchedList(prev => prev.includes(workId) ? prev.filter(id => id !== workId) : [...prev, workId]);
+    let newWatched;
+    if (watchedList.includes(workId)) {
+      newWatched = watchedList.filter(id => id !== workId);
+    } else {
+      newWatched = [...watchedList, workId];
+    }
+    localStorage.setItem('watchedWorks', JSON.stringify(newWatched));
+    setWatchedList(newWatched);
+    window.dispatchEvent(new Event('watchedUpdated'));
   };
 
   const handleToggleView = () => {
@@ -73,8 +105,10 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
     <main className={styles.main}>
       <div className={styles.header}>
         
-        {/* 🌟 共通化されたヘッダーコンポーネントを使用 */}
-        <PageHeader title="David Tennant" subtitle="Film" />
+        <div className={styles.titleContainer}>
+          <h1 className={styles.mainTitle}>David Tennant</h1>
+          <h2 className={styles.subTitle}>Film</h2>
+        </div>
         
         <div className={styles.topNav}>
           <Link href="/characters" className={`${styles.actionBtn} ${styles.actionBtnPrimary}`}>
@@ -106,7 +140,9 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
         </div>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', marginTop: '20px', flexWrap: 'wrap', gap: '10px' }}>
-          <p style={{ color: '#aaa', fontSize: '12px', margin: 0 }}>カードをクリックすると詳細が表示されます</p>
+          <p style={{ color: '#aaa', fontSize: '12px', margin: 0 }}>
+            カードをクリックすると詳細が表示されます
+          </p>
           <p style={{ color: '#d4af37', fontWeight: '500', margin: 0, fontSize: '14px' }}>
             {sortedWorks.length} / {uniqueWorks.length} 作品
           </p>
@@ -119,6 +155,7 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
                 key={`${work.id}-${index}`} 
                 work={work} 
                 onClick={() => setSelectedWork(work)}
+                /* 🌟 カードには結果と処理だけを渡す */
                 isFavorite={favoritesList.includes(work.id)}
                 isWatched={watchedList.includes(work.id)}
                 onToggleFavorite={(e) => handleToggleFavorite(work.id, e)}
@@ -127,15 +164,58 @@ export default function WorkList({ works, davidId }: { works: any[], davidId: nu
             ))}
           </div>
         ) : (
-          <WorkTimelineView sortedWorks={sortedWorks} onWorkClick={setSelectedWork} />
+          <div className={styles.timelineContainer}>
+            {sortedWorks.map((work: any, index: number) => {
+              const year = work.first_air_date ? work.first_air_date.substring(0, 4) : work.release_date ? work.release_date.substring(0, 4) : '年不明';
+              return (
+                <div key={`${work.id}-${index}`} className={styles.timelineItem}>
+                  <div className={styles.timelineDot}></div>
+                  <div className={styles.timelineContent} onClick={() => setSelectedWork(work)}>
+                    {work.poster_path ? (
+                      <img src={`https://image.tmdb.org/t/p/w200${work.poster_path}`} alt={work.title || work.name} style={{ width: '70px', height: '105px', objectFit: 'cover', borderRadius: '4px', flexShrink: 0 }} />
+                    ) : (
+                      <div style={{ width: '70px', height: '105px', backgroundColor: '#0a0a0c', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '20px', opacity: 0.5 }}>🎬</div>
+                    )}
+                    <div>
+                      <div className={styles.timelineDate}>{year}</div>
+                      <h3 className={styles.timelineTitle}>{work.title || work.name}</h3>
+                      <p className={styles.timelineMeta}>
+                        {work.media_type === 'movie' ? '🎬 映画' : '📺 TV番組'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         )}
 
       </div>
 
       <WorkModal work={selectedWork} onClose={() => setSelectedWork(null)} />
-      <AboutModal isOpen={showAboutModal} onClose={() => setShowAboutModal(false)} />
-      <ScrollButtons />
       
+      {showAboutModal && (
+        <div onClick={() => setShowAboutModal(false)} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(5px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ backgroundColor: '#16161a', padding: '30px', borderRadius: '12px', maxWidth: '600px', width: '100%', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 20px 50px rgba(0,0,0,0.8)', maxHeight: '80vh', overflowY: 'auto' }}>
+            <button onClick={() => setShowAboutModal(false)} style={{ position: 'absolute', top: '15px', right: '15px', background: 'none', border: 'none', color: '#666', fontSize: '20px', cursor: 'pointer', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#666'}>✕</button>
+            <h2 style={{ color: '#d4af37', marginTop: 0, marginBottom: '20px', borderBottom: '1px solid #333', paddingBottom: '12px', fontWeight: '500', fontSize: '20px' }}>ℹ️ サイトについて</h2>
+            <p style={{ color: '#d0d0d0', fontSize: '13px', lineHeight: '1.8', marginBottom: '30px', letterSpacing: '0.03em' }}>
+              当サイトは、デヴィッド・テナントの出演作品およびキャラクターの情報をまとめた非公式のファンデータベースです。<br />
+              配信状況の確認や、各キャラクターの詳細設定を振り返るのにお役立てください。
+            </p>
+            <h2 style={{ color: '#d4af37', margin: '0 0 16px 0', borderBottom: '1px solid #333', paddingBottom: '12px', fontWeight: '500', fontSize: '18px' }}>🕒 更新履歴</h2>
+            <ul style={{ color: '#d0d0d0', fontSize: '13px', lineHeight: '2', paddingLeft: '20px', margin: 0 }}>
+              {siteUpdates.map((update: any, index: number) => (
+                <li key={index} style={{ color: update.isImportant ? '#d4af37' : '#d0d0d0', fontWeight: update.isImportant ? 'bold' : 'normal' }}>
+                  <strong>{update.date}</strong> - {update.content}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      <ScrollButtons />
       <footer style={{ textAlign: 'center', marginTop: '60px', paddingBottom: '20px', color: '#555', fontSize: '12px', letterSpacing: '0.1em' }}>
         DAVID TENNANT FAN DATABASE Ver 3.0
       </footer>

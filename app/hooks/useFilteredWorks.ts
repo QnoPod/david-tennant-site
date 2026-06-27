@@ -1,8 +1,6 @@
-'use client';
 import { useState, useMemo, useEffect } from 'react';
 import { searchDictionary } from '../data/searchDictionary';
 import { customCharacterInfo } from '../data/details';
-import { useLocalStorage } from './useLocalStorage';
 
 // 文字を強力に整える関数
 const normalizeText = (text: string) => {
@@ -21,13 +19,55 @@ export function useFilteredWorks(works: any[], viewMode: 'grid' | 'timeline') {
   const [sortOrder, setSortOrder] = useState<'default' | 'popularity' | 'title'>('default');
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   
-  const [favorites] = useLocalStorage<number[]>('favorites', []);
-  const [watchedWorks] = useLocalStorage<any[]>('watchedWorks', []); 
-  const [watchStatusObj] = useLocalStorage<any>('watchStatus', {});
+  const [favorites, setFavorites] = useState<number[]>([]);
+  
+  const [watchedWorks, setWatchedWorks] = useState<any[]>([]); 
+  const [watchStatusObj, setWatchStatusObj] = useState<any>({});
 
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [genreSearchMode, setGenreSearchMode] = useState<'include' | 'exclude'>('include');
 
+  // お気に入りのリアルタイム管理
+  useEffect(() => {
+    const loadFavorites = () => {
+      const favs = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('favorites') || '[]') : [];
+      setFavorites(favs);
+    };
+    loadFavorites();
+    window.addEventListener('favoritesUpdated', loadFavorites);
+    return () => window.removeEventListener('favoritesUpdated', loadFavorites);
+  }, []);
+
+  // 視聴済リストのリアルタイム管理
+  useEffect(() => {
+    const loadWatched = () => {
+      if (typeof window !== 'undefined') {
+        try {
+          const watched = JSON.parse(localStorage.getItem('watchedWorks') || '[]');
+          setWatchedWorks(Array.isArray(watched) ? watched : []);
+        } catch (e) {
+          setWatchedWorks([]);
+        }
+        
+        try {
+          const statusObj = JSON.parse(localStorage.getItem('watchStatus') || '{}');
+          setWatchStatusObj(statusObj);
+        } catch (e) {
+          setWatchStatusObj({});
+        }
+      }
+    };
+    
+    loadWatched();
+    window.addEventListener('watchedUpdated', loadWatched);
+    window.addEventListener('watchStatusUpdated', loadWatched);
+    return () => {
+      window.removeEventListener('watchedUpdated', loadWatched);
+      window.removeEventListener('watchStatusUpdated', loadWatched);
+    };
+  }, []);
+
+  // 🌟 IDベースの視聴済リストから、タイトル文字列のリストを生成して保存（キャラソート連携用）
   useEffect(() => {
     if (typeof window !== 'undefined' && works && works.length > 0) {
       const watchedTitles = works

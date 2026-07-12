@@ -1,4 +1,8 @@
-/** Cloudflare Worker entry point for the vinext-starter template. */
+// @ts-nocheck
+/**
+ * ChatGPT Sites / Cloudflare専用Worker。
+ * VercelではNext.jsの標準サーバーを使うため、このファイルは実行されません。
+ */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
 

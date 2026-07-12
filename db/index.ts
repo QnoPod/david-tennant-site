@@ -1,3 +1,6 @@
+// @ts-nocheck
+// このファイルはChatGPT Sites / Cloudflare用の未使用DB接続です。
+// Vercel版では読み込まれないため、Cloudflare固有モジュールの型検査を除外します。
 import { env } from "cloudflare:workers";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "./schema";

@@ -4,7 +4,8 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ "${SITES_ENV_READY:-}" != "1" ]]; then
-  exec "${script_dir}/sites-env.sh" -- "$0" "$@"
+  # WindowsでZIP展開・Git操作をした場合でも、.sh の実行権限に依存しません。
+  exec bash "${script_dir}/sites-env.sh" -- bash "$0" "$@"
 fi
 
 command -v timeout >/dev/null || {
@@ -25,4 +26,5 @@ timeout \
   "${SITES_BUILD_TIMEOUT:-3m}" \
   "${vinext}" build
 
-"${script_dir}/validate-artifact.sh"
+# Vercel/LinuxとWindowsの両方で実行できるよう、明示的にbashで起動します。
+bash "${script_dir}/validate-artifact.sh"

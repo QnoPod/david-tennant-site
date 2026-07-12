@@ -1,4 +1,13 @@
 export const yearOverrides: Record<string, string> = {
+  // TMDBの作品名と辞書キーが異なる新作は、ここで公開年を補完します。
+  "木曜殺人クラブ": "2025",
+  "The Hack": "2025",
+  "Rivals": "2024",
+  "Macbeth": "2023",
+  "スター・ウォーズ：アソーカ": "2023",
+  "National Theatre Live: Good": "2023",
+  "Litvinenko": "2022",
+  "Inside Man": "2022",
   "THE MINOR CHARACTER": "2012",
   "HIGH STAKES": "2001",
   "THE ROMANTICS": "2006",

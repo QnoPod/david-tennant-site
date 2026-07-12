@@ -1,6 +1,7 @@
 // app/data/characterAttributes.ts
 
 export const characterAttributes: Record<string, string> = {
+  "ドン・ジュアン": "主人公, 舞台・古典",
   // 🌟 SF・ファンタジー系（ドクター、悪魔、宇宙など）
   "10代目ドクター": "主人公, 人外, ドクター",
   "14代目ドクター": "主人公, 人外, ドクター",
@@ -98,7 +99,7 @@ export const characterAttributes: Record<string, string> = {
   "ギャズ・ホイットニー": "実業家・金融",
 
   // 🌟 コメディ・その他
-  "デヴィッド": "主人公, 夫・父親",
+  "デイヴィッド": "主人公, 夫・父親",
   "本人": "本人",
   "フィリアス・フォッグ": "主人公, 貴族",
   "スクルージ・マクダック": "人外, 声優・アニメ",

@@ -1,0 +1,49 @@
+import { interviewCatalog } from "./catalog";
+import type { Interview, TranscriptLine } from "./types";
+
+type TranscriptLoader = () => Promise<readonly TranscriptLine[]>;
+
+/**
+ * 詳細ページを開いたときだけ、該当する長い翻訳ファイルを読み込みます。
+ * インタビューを追加したら、catalog.ts とこの対応表へ同じslugを追加してください。
+ */
+const transcriptLoaders: Record<string, TranscriptLoader> = {
+  "bella-maclean-found-her-fire-in-rivals": async () =>
+    (await import("./transcripts/bellaMacleanRivalsTranscript")).bellaMacleanRivalsTranscript,
+  "michael-sheen-david-tennant-one-final-time-lorraine": async () =>
+    (await import("./transcripts/michaelSheenLorraineTranscript")).michaelSheenLorraineTranscript,
+  "michael-sheen-his-dark-materials-this-morning": async () =>
+    (await import("./transcripts/michaelSheenThisMorningTranscript")).michaelSheenThisMorningTranscript,
+  "david-tennant-fights-the-demon-of-imposter-syndrome": async () =>
+    (await import("./transcripts/imposterSyndromeTranscript")).imposterSyndromeTranscript,
+  "nta-2015-special-recognition": async () =>
+    (await import("./transcripts/nta2015Transcript")).nta2015Transcript,
+};
+
+/** slugから基本情報と翻訳本文をまとめて取得します。 */
+export async function getInterviewBySlug(slug: string): Promise<Interview | null> {
+  const summary = interviewCatalog.find((item) => item.slug === slug);
+  const loadTranscript = transcriptLoaders[slug];
+  if (!summary || !loadTranscript) return null;
+  return { ...summary, transcript: await loadTranscript() };
+}
+
+/**
+ * 一覧ページから発言本文を検索します。翻訳ファイルは検索時だけサーバーで読み込み、
+ * ブラウザには一致したslugだけを返すため、通常の一覧表示を重くしません。
+ */
+export async function searchInterviewSlugs(query: string): Promise<string[]> {
+  const needle = query.normalize("NFKC").toLowerCase().trim();
+  if (!needle) return interviewCatalog.map((item) => item.slug);
+
+  const matches = await Promise.all(interviewCatalog.map(async (summary) => {
+    const loadTranscript = transcriptLoaders[summary.slug];
+    const transcript = loadTranscript ? await loadTranscript() : [];
+    const searchable = [
+      summary.title, summary.source, summary.description, ...summary.tags,
+      ...transcript.flatMap((line) => [line.speakerEn, line.speakerJa, line.en, line.ja]),
+    ].join(" ").normalize("NFKC").toLowerCase();
+    return searchable.includes(needle) ? summary.slug : null;
+  }));
+  return matches.filter((slug): slug is string => Boolean(slug));
+}

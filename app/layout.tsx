@@ -1,56 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import SiteFooter from "./components/SiteFooter";
+import SiteHeader from "./components/SiteHeader";
+import ScrollButtons from "./components/ScrollButtons";
 import "./globals.css";
-// 🌟 Vercel Analytics をインポート
-import { Analytics } from "@vercel/analytics/react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+/**
+ * 全ページ共通のレイアウト。
+ * ヘッダー、本文、フッターをここで一度だけ定義します。
+ */
 export const metadata: Metadata = {
-  title: "David Tennant 作品データベース",
-  description: "デヴィッド・テナントの出演作品をまとめたサイトです",
-  openGraph: {
-    title: "David Tennant 作品データベース",
-    description: "デヴィッド・テナントの出演作品をまとめたサイトです",
-    url: "https://david-tennant-site.vercel.app",
-    siteName: "David Tennant 作品データベース",
-    images: [
-      {
-        url: "David-Tennant.png", // サイトのトップページの画像ファイル名
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: "ja_JP",
-    type: "website",
+  title: {
+    default: "David Tennant Archive",
+    template: "%s | David Tennant Archive",
   },
-  verification: {
-    google: "j5TwLvhKIVK51iHawcqyg__byU-AxUzXlKIfrXumvqg",
-  },
+  description:
+    "デイヴィッド・テナントの出演作品、キャラクター、コミコン参加情報、インタビューをまとめた非公式ファンアーカイブ。",
+  other: { "codex-preview": "development" },
+  icons: { icon: "/favicon.svg" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="ja" // 🌟 サイトの言語を日本語(ja)に設定
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="ja">
+      <body>
+        <a className="skip-link" href="#main-content">本文へ移動</a>
+        <SiteHeader />
         {children}
-        {/* 🌟 bodyの最後にAnalyticsを追加 */}
-        <Analytics />
+        <SiteFooter />
+        <ScrollButtons />
       </body>
     </html>
   );

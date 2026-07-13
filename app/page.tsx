@@ -46,7 +46,7 @@ export default async function HomePage() {
               <div>
                 <p>{work.year} · {work.medium}</p>
                 <h3>{work.title}</h3>
-                <span>{work.role}</span>
+                <span className={work.title === "Doctor Who" ? "featured-role featured-role--doctor" : "featured-role"}>{work.role}</span>
               </div>
             </Link>
           ))}
@@ -55,7 +55,7 @@ export default async function HomePage() {
 
       <section className="section section--paper">
         <div className="shell">
-          <SectionHeading eyebrow="EXPLORE THE ARCHIVE" title="作品とキャラクターから探す" />
+          <SectionHeading eyebrow="EXPLORE THE ARCHIVE" title={<><span className="mobile-title-break">作品とキャラクター</span><span className="mobile-title-break">から探す</span></>} />
           <div className="portal-grid">
             <Link className="portal-card" href="/works">
               <span className="portal-card__index">01</span>
@@ -67,7 +67,7 @@ export default async function HomePage() {
             <Link className="portal-card portal-card--dark" href="/characters">
               <span className="portal-card__index">02</span>
               <p className="eyebrow">CHARACTER FILES</p>
-              <h3>キャラクターアーカイブ</h3>
+              <h3><span className="mobile-title-break">キャラクター</span><span className="mobile-title-break">アーカイブ</span></h3>
               <p>演じた人物を画像、年代、属性から検索。</p>
               <span className="text-link">キャラクターを見る →</span>
             </Link>
@@ -76,7 +76,7 @@ export default async function HomePage() {
       </section>
 
       <section className="section shell">
-        <SectionHeading eyebrow="LATEST CHARACTERS" title="最新のキャラクター" linkHref="/characters" linkLabel="キャラクター一覧" />
+        <SectionHeading eyebrow="LATEST CHARACTERS" title={<span className="mobile-title-nowrap">最新のキャラクター</span>} linkHref="/characters" linkLabel={<><span className="mobile-link-break">キャラクター</span><span className="mobile-link-break">一覧→</span></>} />
         <div className="character-strip">
           {latestCharacters.map((character) => (
             <Link href={`/characters?q=${encodeURIComponent(character.name)}`} key={character.key} className="mini-character">
@@ -129,3 +129,4 @@ export default async function HomePage() {
     </main>
   );
 }
+

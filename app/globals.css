@@ -525,3 +525,13 @@ img { display: block; max-width: 100%; }
 /* インタビュー検索はWORKSのフィルターパネルを共有し、検索欄だけを1列で表示します。 */
 .interview-filter-panel .interview-searches { grid-template-columns: 1fr; }
 
+
+
+/* 指定されたホーム／プロフィールの見出しを、スマホで読みやすい行構成に整えます。 */
+@media (max-width: 760px) {
+  .featured-role--doctor { white-space: nowrap; font-size: 10px; letter-spacing: -.03em; }
+  .mobile-title-break, .mobile-link-break { display: block; }
+  .mobile-title-nowrap { display: block; white-space: nowrap; font-size: 28px; }
+  .section-heading:has(.mobile-link-break) .text-link { display: block; text-align: right; }
+}
+

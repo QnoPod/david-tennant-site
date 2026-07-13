@@ -33,8 +33,9 @@ export default function ProfilePage() {
 
     <section className="section section--blue"><div className="shell"><SectionHeading eyebrow="RECOGNITION" title="主な受賞・栄誉" /><div className="recognition-grid">{recognition.map((item) => <article key={item.title}><time>{item.year}</time><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
 
-    <section className="section shell profile-scholarship"><div><p className="eyebrow">GIVING BACK</p><h2>次の世代が学ぶ機会を支える</h2></div><div><p>2026年、Georgia Tennantとともに母校Royal Conservatoire of Scotlandで、英国在住のSchool of Stage and Screenの学生を支援する奨学金を設立しました。</p><a className="button button--ghost" href="https://www.rcs.ac.uk/news-stories/georgia-and-david-tennant-establish-scholarship-at-royal-conservatoire-of-scotland/" target="_blank" rel="noreferrer">RCSの記事を読む ↗</a></div></section>
+    <section className="section shell profile-scholarship"><div><p className="eyebrow">GIVING BACK</p><h2><span className="mobile-title-break">次の世代が学ぶ</span><span className="mobile-title-break">機会を支える</span></h2></div><div><p>2026年、Georgia Tennantとともに母校Royal Conservatoire of Scotlandで、英国在住のSchool of Stage and Screenの学生を支援する奨学金を設立しました。</p><a className="button button--ghost" href="https://www.rcs.ac.uk/news-stories/georgia-and-david-tennant-establish-scholarship-at-royal-conservatoire-of-scotland/" target="_blank" rel="noreferrer">RCSの記事を読む ↗</a></div></section>
 
     <aside className="profile-sources section--paper"><div className="shell"><p className="eyebrow">SOURCES & FURTHER READING</p><div><a href="https://www.rcs.ac.uk/support-us/ways-to-support/scholarship-funds/georgia-david-tennant/" target="_blank" rel="noreferrer">Royal Conservatoire of Scotland ↗</a><a href="https://www.pbs.org/wgbh/masterpiece/specialfeatures/five-intriguing-facts-about-actor-david-tennant/" target="_blank" rel="noreferrer">PBS Masterpiece ↗</a></div></div></aside>
   </main>;
 }
+

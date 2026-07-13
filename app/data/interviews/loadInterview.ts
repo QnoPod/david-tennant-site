@@ -14,6 +14,8 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/michaelSheenLorraineTranscript")).michaelSheenLorraineTranscript,
   "michael-sheen-his-dark-materials-this-morning": async () =>
     (await import("./transcripts/michaelSheenThisMorningTranscript")).michaelSheenThisMorningTranscript,
+  "david-tennant-evil-character-jessica-jones": async () =>
+    (await import("./transcripts/davidTennantEvilCharacterTranscript")).davidTennantEvilCharacterTranscript,
   "david-tennant-fights-the-demon-of-imposter-syndrome": async () =>
     (await import("./transcripts/imposterSyndromeTranscript")).imposterSyndromeTranscript,
   "nta-2015-special-recognition": async () =>

@@ -21,7 +21,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Now, thank you for being here. And David, we were just talking backstage. This is blowing my mind this news. You have four children already. Your oldest is 17.",
-    "ja": "さて、来てくれてありがとうございます。デイヴィッド、さっき楽屋でも話していたんですが。こ のニュースには本当に驚かされましたよ。あなたはすでに4人のお子さんがいて、一番上は17歳です よね。"
+    "ja": "さて、来てくれてありがとうございます。デイヴィッド、さっき楽屋でも話していたんですが。このニュースには本当に驚かされましたよ。あなたはすでに4人のお子さんがいて、一番上は17歳ですよね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -33,7 +33,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "You just told me you and your wife, the lovely Georgia, are expecting your fifth child.",
-    "ja": "さっき教えてくれましたが、あなたと奥様の美しいジョージアさんとの間に、5人目のお子さんが 生まれるそうですね。"
+    "ja": "さっき教えてくれましたが、あなたと奥様の美しいジョージアさんとの間に、5人目のお子さんが生まれるそうですね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -63,7 +63,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I know. She is amazing. It is a lot. What's really weird about it is we're now getting lectures on birth control from our 17-year-old son. And that's definitely meant to be the other way around.",
-    "ja": "わかっています。彼女は素晴らしいですよ。大変なことですが。本当に妙なのは、今、僕たちは 17歳の息子から避妊について説教されていることなんです。普通は逆の立場ですよね。"
+    "ja": "わかっています。彼女は素晴らしいですよ。大変なことですが。本当に妙なのは、今、僕たちは17歳の息子から避妊について説教されていることなんです。普通は逆の立場ですよね。"
   },
   {
     "speakerEn": "James Corden",
@@ -81,7 +81,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Yeah. That's great. I mean, how's the state of the household? Is everyone ready? Five is a lot.",
-    "ja": "最高ですね。それで...家庭の状況はどうですか?みんな心の準備はできてるんですか?5人は多い ですよ。"
+    "ja": "最高ですね。それで...家庭の状況はどうですか?みんな心の準備はできてるんですか?5人は多いですよ。"
   },
   {
     "speakerEn": "David Tennant",
@@ -99,7 +99,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "17, and then there's a bit of a gap. And then we've got 8, 6, 3, and 1.",
-    "ja": "17歳がいて、それから少し間が空きます。それから僕たちには8歳、6歳、3歳、1歳の子がいま す。"
+    "ja": "17歳がいて、それから少し間が空きます。それから僕たちには8歳、6歳、3歳、1歳の子がいます。"
   },
   {
     "speakerEn": "Elizabeth Banks",
@@ -147,7 +147,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "I mean, you just had a birthday, and your father just turned 70. Is this right, Elizabeth?",
-    "ja": "つまり、あなたも最近誕生日を迎えましたし、お父様も70歳になったんですよね。エリザベス、 合ってますか?"
+    "ja": "つまり、あなたも最近誕生日を迎えましたし、お父様も70歳になったんですよね。エリザベス、合ってますか?"
   },
   {
     "speakerEn": "Elizabeth Banks",
@@ -159,7 +159,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "They both turned 70. We had a big party for my dad, and then I took my mother to see Cher.",
-    "ja": "両親とも70歳です。父のために盛大なパーティーを開いて、その後、母をシェールのコンサート に連れて行きました。"
+    "ja": "両親とも70歳です。父のために盛大なパーティーを開いて、その後、母をシェールのコンサートに連れて行きました。"
   },
   {
     "speakerEn": "James Corden",
@@ -171,7 +171,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "By the way, Cher is 73. She says in the concert, \"What's your grandma doing tonight?\" And I was like, dang, woman! She was amazing.",
-    "ja": "ちなみに、シェールは73歳なんですよ。彼女はコンサートで「あんたたちのおばあちゃん、今夜 何してる?」って言うんです。「やられた!」って思いましたね。彼女は最高でした。"
+    "ja": "ちなみに、シェールは73歳なんですよ。彼女はコンサートで「あんたたちのおばあちゃん、今夜何してる?」って言うんです。「やられた!」って思いましたね。彼女は最高でした。"
   },
   {
     "speakerEn": "James Corden",
@@ -183,18 +183,19 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "Uh, he just wasn't... his birthday was in the dead of winter. I went home to Massachusetts where I'm from, and um, I never travel there in the winter because there's always a storm and you always get snowed in.",
-    "ja": "ええと、そういうわけじゃなくて...父の誕生日は真冬だったんです。私の出身地のマサチュー セッツに帰ったんですが、冬には絶対にそこへは行かないようにしてるんです。いつも嵐が来て雪に 閉じ込められるから。"
+    "ja": "ええと、そういうわけじゃなくて...父の誕生日は真冬だったんです。私の出身地のマサチューセッツに帰ったんですが、冬には絶対にそこへは行かないようにしてるんです。いつも嵐が来て雪に閉じ込められるから。"
   },
   {
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "And that is exactly what happened to me. None of us could leave. We were trapped in the northeast in a nor'easter, which I drove in like a pro, because I grew up driving in the snow.",
-    "ja": "そして今回、まさにそれが起きたんです。誰も出発できなくなりました。北東部の暴風雪に閉じ 込められちゃって。でも私はプロみたいに運転しましたよ。雪の中で運転して育ちましたからね。"
+    "ja": "そして今回、まさにそれが起きたんです。誰も出発できなくなりました。北東部の暴風雪に閉じ込められちゃって。でも私はプロみたいに運転しましたよ。雪の中で運転して育ちましたからね。"
   },
   {
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Wow. That's right. I'm useless at any kind of weather driving. I'm like, I have to pull over, this is dangerous. And my wife's like, \"We went through a puddle. Chill out.\"",
-    "ja": "わあ、すごいな。僕は悪天候の運転は全然ダメなんです。「車を止めなきゃ、これは危険だ」っ てパニックになるんですが、妻には「ただの水たまりを通っただけよ。落ち着いて」って言われま す。"
+    "ja": "わあ、すごいな。僕は悪天候の運転は全然ダメなんです。「車を止めなきゃ、これは危険だ」ってパニックになるんですが、妻には「ただの水たまりを通っただけよ。落ち着いて」って言われます。"
   }
 ] as const;
+

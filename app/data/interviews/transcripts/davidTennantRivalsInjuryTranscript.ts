@@ -3,7 +3,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Slightly mistimed it and ended up smashing my knee open on the bed... on the bed frame. That wasn't...",
-    "ja": "少しタイミングを間違えて、ベッドの...ベッドのフレームで膝を強打してしまったん です。それは..."
+    "ja": "少しタイミングを間違えて、ベッドの...ベッドのフレームで膝を強打してしまったんです。それは..."
   },
   {
     "speakerEn": "Alex Hassell",
@@ -27,7 +27,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "David and Alex, hello and thank you so much for joining me on Heart Evening.",
-    "ja": "デイヴィッドとアレックス、こんにちは。Heart Evening にご参加いただきありがとう ございます。"
+    "ja": "デイヴィッドとアレックス、こんにちは。Heart Eveningにご参加いただきありがとうございます。"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -57,7 +57,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Can I just say, it was much more... could I use the word naughtier than expected?",
-    "ja": "一言いいですか、思っていたよりもずっと...「お茶目」という言葉を使ってもいいで すか?"
+    "ja": "一言いいですか、思っていたよりもずっと...「お茶目」という言葉を使ってもいいですか?"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -69,7 +69,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Yes! And I love the fact that the author Jilly Cooper called it a \"bonkbuster\". I actually think that that is the first time that I've actually heard that word. But it just sums it up, right?",
-    "ja": "ええ!原作者のジリー・クーパーがこれを「ボンクバスター(エロチックなベストセ ラー小説)」と呼んだのが好きです。実はその言葉を聞いたのは初めてだと思います。で も、それが見事に言い表していますよね?"
+    "ja": "ええ!原作者のジリー・クーパーがこれを「ボンクバスター(エロチックなベストセラー小説)」と呼んだのが好きです。実はその言葉を聞いたのは初めてだと思います。でも、それが見事に言い表していますよね?"
   },
   {
     "speakerEn": "David Tennant",
@@ -99,7 +99,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "And Alex, she has described you, I don't know if you know about this, as the perfect embodiment of her all-time hero. Did you know that?",
-    "ja": "そしてアレックス、ご存知かどうか分かりませんが、彼女はあなたを、彼女の永遠の ヒーローの完璧な体現者だと表現しています。知っていましたか?"
+    "ja": "そしてアレックス、ご存知かどうか分かりませんが、彼女はあなたを、彼女の永遠のヒーローの完璧な体現者だと表現しています。知っていましたか?"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -123,19 +123,19 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Did you feel much pressure then, bringing Rupert Campbell-Black to life?",
-    "ja": "では、ルパート・キャンベル=ブラックに命を吹き込むことに、大きなプレッシャー を感じましたか?"
+    "ja": "では、ルパート・キャンベル=ブラックに命を吹き込むことに、大きなプレッシャーを感じましたか?"
   },
   {
     "speakerEn": "Alex Hassell",
     "speakerJa": "アレックス・ハッセル",
     "en": "Yes. Yes I did. I know that lots of people have a sort of fantasy idea of him in their head I guess, and the idea of trying to embody that was somewhat intimidating.",
-    "ja": "はい。はい、感じました。たくさんの人が頭の中に彼についてのファンタジーのよう な理想像を持っていると思うので、それを体現しようとするのは少し怖かったです。"
+    "ja": "はい。はい、感じました。たくさんの人が頭の中に彼についてのファンタジーのような理想像を持っていると思うので、それを体現しようとするのは少し怖かったです。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I mean there was never a sense of any nervousness on your part. You swaggered onto that set with a...",
-    "ja": "でも、君の方から緊張している様子は全く感じられなかったよ。堂々とセットに現れ て..."
+    "ja": "でも、君の方から緊張している様子は全く感じられなかったよ。堂々とセットに現れて..."
   },
   {
     "speakerEn": "Alex Hassell",
@@ -153,13 +153,13 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "I can tell that there's a lot of love between you two as well. That's really nice, it's really nice to see.",
-    "ja": "お二人の間にもたくさんの愛があるのが分かります。本当に素敵ですね、見ていてと てもいい気分です。"
+    "ja": "お二人の間にもたくさんの愛があるのが分かります。本当に素敵ですね、見ていてとてもいい気分です。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Well, it was a very fun show to be a part of. We really did, it was a really nice, happy, clever, fun bunch of people.",
-    "ja": "まあ、参加していてとても楽しい作品でしたからね。本当に、とても素敵で、ハッ ピーで、賢くて、楽しい人たちの集まりでした。"
+    "ja": "まあ、参加していてとても楽しい作品でしたからね。本当に、とても素敵で、ハッピーで、賢くて、楽しい人たちの集まりでした。"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -171,7 +171,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Saucy, there you go. I like that word, you should say that. Family friendly, yeah. Many fans have been commenting on the trailer, which is brilliant, I think it just captured everything. And I picked this comment out, now it was from a lady called Sally, who said... this is to you David.",
-    "ja": "生意気、それですよ。その言葉いいわね、言ったほうがいいわ。家族向けね、ええ。 多くのファンが予告編についてコメントしていますが、素晴らしいですよね、全てを捉え ていると思います。そしてこのコメントを拾ってみたんですが、サリーという女性からの もので...これはデイヴィッド宛です。"
+    "ja": "生意気、それですよ。その言葉いいわね、言ったほうがいいわ。家族向けね、ええ。多くのファンが予告編についてコメントしていますが、素晴らしいですよね、全てを捉えていると思います。そしてこのコメントを拾ってみたんですが、サリーという女性からのもので...これはデイヴィッド宛です。"
   },
   {
     "speakerEn": "David Tennant",
@@ -183,19 +183,19 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "\"I just can't help but love David Tennant, even when he plays despicable characters. He's the kind of guy that you just love to hate.\"",
-    "ja": "「デイヴィッド・テナントは、卑劣なキャラクターを演じていても、どうしても好きに ならずにはいられない。彼は、憎みたいのに好きになってしまうような人だわ」"
+    "ja": "「デイヴィッド・テナントは、卑劣なキャラクターを演じていても、どうしても好きにならずにはいられない。彼は、憎みたいのに好きになってしまうような人だわ」"
   },
   {
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Now you've obviously played loads of characters in your lifetime. What is it about Lord Baddingham that you think that really is going to lure people in?",
-    "ja": "あなたはこれまでにたくさんのキャラクターを演じてこられました。バディンガム卿 のどこが、本当に人々を惹きつけると思いますか?"
+    "ja": "あなたはこれまでにたくさんのキャラクターを演じてこられました。バディンガム卿のどこが、本当に人々を惹きつけると思いますか?"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Well I suppose he sort of does occupy the space of the bad guy, doesn't he, really in this? You obviously just have to think about what his set of circumstances is and why he is who he is. So I think he's... I don't think he's despicable. I think he's hard done by, I think he's badly treated by this guy over here.",
-    "ja": "まあ、この作品の中では彼はいわゆる悪役のポジションにいるわけですよね?当然、 彼の置かれた状況や、なぜ彼がそういう人間になったのかを考えなければなりません。だ から僕は彼が...彼が卑劣だとは思いません。彼は不当な扱いを受けていると思います、こ このこの男(アレックス演じるルパート)にひどい扱いを受けていると思いますよ。"
+    "ja": "まあ、この作品の中では彼はいわゆる悪役のポジションにいるわけですよね?当然、彼の置かれた状況や、なぜ彼がそういう人間になったのかを考えなければなりません。だから僕は彼が...彼が卑劣だとは思いません。彼は不当な扱いを受けていると思います、ここのこの男(アレックス演じるルパート)にひどい扱いを受けていると思いますよ。"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -207,7 +207,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "By the world... the world has been very unkind to Tony Baddingham and he just needs a bit of redress, that's all.",
-    "ja": "世界が...世界がトニー・バディンガムにとても冷たくて、彼は少し埋め合わせが必要 なだけなんです、それだけです。"
+    "ja": "世界が...世界がトニー・バディンガムにとても冷たくて、彼は少し埋め合わせが必要なだけなんです、それだけです。"
   },
   {
     "speakerEn": "Pandora",
@@ -225,25 +225,25 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "She she's probably gonna comment after this, don't worry about it, I'll scroll and I'll find it and I'll add the both of you. Um, 80s nostalgia, obviously I mean it's huge at the moment isn't it, we love bringing things back. If you could reclaim anything back from that era, this is to the both of you, what would you bring back?",
-    "ja": "彼女は多分この後にコメントするわ、心配しないで。スクロールして見つけて、二人 をタグ付けするから。ええと、80年代のノスタルジー、今はすごいブームですよね、昔の ものを取り戻すのが好きですから。もしあの時代から何か一つ取り戻せるとしたら、お二 人にお聞きしますが、何を取り戻したいですか?"
+    "ja": "彼女は多分この後にコメントするわ、心配しないで。スクロールして見つけて、二人をタグ付けするから。ええと、80年代のノスタルジー、今はすごいブームですよね、昔のものを取り戻すのが好きですから。もしあの時代から何か一つ取り戻せるとしたら、お二人にお聞きしますが、何を取り戻したいですか?"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Well I lived through it. I mean I'm a little bit older than Alex, and I remember... what's been... what's been uh one of the great joys of watching the series back is the music that they've chosen and the way it sort of punctuates the action. And all those fantastic tracks, that I think because I was a teenager at the time, a lot of the things I... it was... wasn't cool to like that song. You know, 'cause you had to, you know you had to like the cool stuff. And actually now, you just go... some of that music was absolutely glorious! And to see it set alongside some of the visuals in this is... is... it's quite intoxicating I think.",
-    "ja": "まあ、僕はその時代を生きてきましたから。アレックスより少し年上で、覚えている のは...このシリーズを見返す際の大きな喜びの一つは、選ばれた音楽と、それがアクショ ンをどのように強調しているかということです。そして、それらの素晴らしい曲の数々 は、僕は当時ティーンエイジャーだったこともあって、多くの場合...その曲を好きだと言 うのはクールじゃなかったんです。クールなものを好きでいなきゃいけなかったから。で も今は実際に、その音楽のいくつかは本当に素晴らしいものだった!と思えます。そし て、この作品のビジュアルと一緒にそれを見るのは...かなり魅惑的だと思います。"
+    "ja": "まあ、僕はその時代を生きてきましたから。アレックスより少し年上で、覚えているのは...このシリーズを見返す際の大きな喜びの一つは、選ばれた音楽と、それがアクションをどのように強調しているかということです。そして、それらの素晴らしい曲の数々は、僕は当時ティーンエイジャーだったこともあって、多くの場合...その曲を好きだと言うのはクールじゃなかったんです。クールなものを好きでいなきゃいけなかったから。でも今は実際に、その音楽のいくつかは本当に素晴らしいものだった!と思えます。そして、この作品のビジュアルと一緒にそれを見るのは...かなり魅惑的だと思います。"
   },
   {
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Obviously there's a lot of fun things that happens on set, um a lot of drama, we want to know... where is this going Pandora? It's family friendly, so don't you worry about that, it's all good, so above board. There's lots of famous Brits as well in this cast, the cast is incredible. And it's really good to see. Was there any, let's just say moments that stuck out on set for you guys, that didn't go quite to plan, let's say. What are you going to admit to Alex?",
-    "ja": "セットでは楽しいことがたくさん起こるでしょうし、ドラマもたくさんあるでしょう から、知りたいんですが...これ、どこに向かってるのパンドラ?家族向けだから心配しな いで、全部大丈夫、公明正大だから。このキャストには有名なイギリス人もたくさんい て、キャストが信じられないくらい素晴らしいです。そしてそれを見るのは本当に素晴ら しい。セットで印象に残っている、まあ、計画通りにいかなかった瞬間などはありました か。アレックス、何を白状するの?"
+    "ja": "セットでは楽しいことがたくさん起こるでしょうし、ドラマもたくさんあるでしょうから、知りたいんですが...これ、どこに向かってるのパンドラ?家族向けだから心配しないで、全部大丈夫、公明正大だから。このキャストには有名なイギリス人もたくさんいて、キャストが信じられないくらい素晴らしいです。そしてそれを見るのは本当に素晴らしい。セットで印象に残っている、まあ、計画通りにいかなかった瞬間などはありましたか。アレックス、何を白状するの?"
   },
   {
     "speakerEn": "Alex Hassell",
     "speakerJa": "アレックス・ハッセル",
     "en": "Yeah I know that's what I'm just scrolling through... scrolling through... I had to dry hump a bed at one point... But I was being eyeline for someone. And obviously it was a sex scene, it was important that I was there for the person's eyeline so I just dry humped a bed for a while.",
-    "ja": "ええ、分かってます、今探しているところです...スクロールして...ある時、ベッドを ドライハンプ(服を着たままの性行為の模倣)しなきゃいけなかったことがありまし た...。誰かの目線の先にいる役割だったんです。もちろん濡れ場で、その人の目線のため に私がそこにいることが重要だったので、しばらくベッドをドライハンプしていました。"
+    "ja": "ええ、分かってます、今探しているところです...スクロールして...ある時、ベッドをドライハンプ(服を着たままの性行為の模倣)しなきゃいけなかったことがありました...。誰かの目線の先にいる役割だったんです。もちろん濡れ場で、その人の目線のために私がそこにいることが重要だったので、しばらくベッドをドライハンプしていました。"
   },
   {
     "speakerEn": "Pandora",
@@ -261,7 +261,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I had to launch my... similarly I had to launch myself onto a bed at one point, in in some moment of what is going to be sort of erotic ecstasy. And uh... slightly slightly mistimed it and ended up smashing my knee open on the bed... on the bed frame. That wasn't...",
-    "ja": "僕は自分の体を...同じように、ある時ベッドに向かって体を投げ出さなきゃいけなく て、官能的なエクスタシーになるような瞬間に。それで...少しタイミングを間違えて、 ベッドの...ベッドのフレームで膝を強打してしまったんです。それは..."
+    "ja": "僕は自分の体を...同じように、ある時ベッドに向かって体を投げ出さなきゃいけなくて、官能的なエクスタシーになるような瞬間に。それで...少しタイミングを間違えて、ベッドの...ベッドのフレームで膝を強打してしまったんです。それは..."
   },
   {
     "speakerEn": "Alex Hassell",
@@ -285,7 +285,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Okay well thank you very much for admitting those uh those little bloopers. No, well it depends what you're into really.",
-    "ja": "わかりました、そのちょっとしたNGシーンを白状してくれてどうもありがとう。い や、まあ何を好むかによりますけどね。"
+    "ja": "わかりました、そのちょっとしたNGシーンを白状してくれてどうもありがとう。いや、まあ何を好むかによりますけどね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -297,7 +297,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "And one thing that we love to ask people, ok, so it's to do with the questions that you are fed up with, the questions that you do not want to be asked anymore...",
-    "ja": "私たちが皆さんに聞くのが好きな質問が一つあるんです。うんざりしている質問、も う聞かれたくない質問に関することなんですが..."
+    "ja": "私たちが皆さんに聞くのが好きな質問が一つあるんです。うんざりしている質問、もう聞かれたくない質問に関することなんですが..."
   },
   {
     "speakerEn": "Alex Hassell",
@@ -315,7 +315,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "Alex Hassell",
     "speakerJa": "アレックス・ハッセル",
     "en": "Yeah no I mean I'd like there to be questions there maybe after this there will be. How do you say your surname, is it really Hassel?",
-    "ja": "いや、本当に、質問されるようになればいいなと、もしかしたらこの後そうなるかも しれないですね。「苗字はどう発音するんですか?本当にハッセル(Hassell)です か?」とか。"
+    "ja": "いや、本当に、質問されるようになればいいなと、もしかしたらこの後そうなるかもしれないですね。「苗字はどう発音するんですか?本当にハッセル(Hassell)ですか?」とか。"
   },
   {
     "speakerEn": "Pandora",
@@ -327,25 +327,25 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I don't know, I suppose the one that I do get a lot is \"Where's your sonic screwdriver?\" And the only trouble... and I don't mind that at all and I love a Doctor Who reference at any point of day or night, but I just don't have a very good answer for it. I have one on me, and then that's it always carry one. Always go packing. Always go packing! Yeah.",
-    "ja": "分かりませんが、僕がよく聞かれるのは「あなたのソニック・スクリュードライバー はどこですか?」ですね。唯一の困った点は...全く気にしていませんし、昼夜を問わず 『ドクター・フー』の話題が出るのは大好きなんですが、ただうまい返しがないんです よ。「持ってますよ」と言えばそれで終わりで、常に一つ持ち歩いてる。「常に装備して 出かけろ。常に装備して出かけろ!」ってね。ええ。"
+    "ja": "分かりませんが、僕がよく聞かれるのは「あなたのソニック・スクリュードライバーはどこですか?」ですね。唯一の困った点は...全く気にしていませんし、昼夜を問わず『ドクター・フー』の話題が出るのは大好きなんですが、ただうまい返しがないんですよ。「持ってますよ」と言えばそれで終わりで、常に一つ持ち歩いてる。「常に装備して出かけろ。常に装備して出かけろ!」ってね。ええ。"
   },
   {
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Isn't there a saying \"Fail to prepare, prepare to fail\"?",
-    "ja": "「準備を怠ることは、失敗の準備をすることだ」ということわざがありませんでし たっけ?"
+    "ja": "「準備を怠ることは、失敗の準備をすることだ」ということわざがありませんでしたっけ?"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Oh! That's the saying right? Yeah. So have that answer, BAM, then you're done. Be prepared, I was never a Boy Scout, this is the problem. It's not that I mind the question, I just don't... I suppose it's a question people ask not really looking for an answer. Just 'cause they want to say something clever! And they want to see your reaction, so I guess you have to really overdo the reaction every time, just like \"AHHHH!\"",
-    "ja": "おお!それがことわざでしたっけ?ええ。だからその答えを用意しておいて、バン! それで終わり。「備えよ常に」ですね、僕はボーイスカウトじゃなかったので、それが問 題なんです。質問されるのが嫌なわけじゃなくて、ただ...人々は本当に答えを求めて質問 しているわけじゃないんでしょうね。ただ何か気の利いたことを言いたいだけで!そして こちらの反応を見たいのだから、毎回かなり大げさに反応しなきゃいけないんだと思いま す。「ああああ!」みたいに。"
+    "ja": "おお!それがことわざでしたっけ?ええ。だからその答えを用意しておいて、バン! それで終わり。「備えよ常に」ですね、僕はボーイスカウトじゃなかったので、それが問題なんです。質問されるのが嫌なわけじゃなくて、ただ...人々は本当に答えを求めて質問しているわけじゃないんでしょうね。ただ何か気の利いたことを言いたいだけで!そしてこちらの反応を見たいのだから、毎回かなり大げさに反応しなきゃいけないんだと思います。「ああああ!」みたいに。"
   },
   {
     "speakerEn": "Pandora",
     "speakerJa": "パンドラ(インタビュアー)",
     "en": "Okay well thank you very very very much. It is such a pleasure and I cannot wait for everyone to see Rivals. It's going to be amazing.",
-    "ja": "わかりました、本当に本当にどうもありがとうございました。とても楽しかったで す。皆さんが『Rivals』を見るのが待ちきれません。素晴らしい作品になるはずです。"
+    "ja": "わかりました、本当に本当にどうもありがとうございました。とても楽しかったです。皆さんが『Rivals』を見るのが待ちきれません。素晴らしい作品になるはずです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -360,3 +360,4 @@ export const davidTennantRivalsInjuryTranscript = [
     "ja": "どうもありがとうございました、ありがとう。"
   }
 ] as const;
+

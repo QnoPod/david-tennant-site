@@ -16,8 +16,22 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/michaelSheenThisMorningTranscript")).michaelSheenThisMorningTranscript,
   "david-tennant-evil-character-jessica-jones": async () =>
     (await import("./transcripts/davidTennantEvilCharacterTranscript")).davidTennantEvilCharacterTranscript,
+  "david-tennant-injured-himself-rivals-scene": async () =>
+    (await import("./transcripts/davidTennantRivalsInjuryTranscript")).davidTennantRivalsInjuryTranscript,
+  "rivals-tennant-hassell-tv-insider": async () =>
+    (await import("./transcripts/rivalsTennantHassellTranscript")).rivalsTennantHassellTranscript,
+  "david-tennant-doctor-who-devilish-demon": async () =>
+    (await import("./transcripts/davidTennantDevilishDemonTranscript")).davidTennantDevilishDemonTranscript,
+  "david-tennant-emoji-graham-norton": async () =>
+    (await import("./transcripts/davidTennantEmojiTranscript")).davidTennantEmojiTranscript,
+  "david-tennant-child-five-james-corden": async () =>
+    (await import("./transcripts/davidTennantChildFiveTranscript")).davidTennantChildFiveTranscript,
+  "david-tennant-red-hair-this-morning": async () =>
+    (await import("./transcripts/davidTennantRedHairTranscript")).davidTennantRedHairTranscript,
   "david-tennant-fights-the-demon-of-imposter-syndrome": async () =>
     (await import("./transcripts/imposterSyndromeTranscript")).imposterSyndromeTranscript,
+  "david-tennant-rsc-winter-2013": async () =>
+    (await import("./transcripts/davidTennantRscWinter2013Transcript")).davidTennantRscWinter2013Transcript,
   "nta-2015-special-recognition": async () =>
     (await import("./transcripts/nta2015Transcript")).nta2015Transcript,
 };

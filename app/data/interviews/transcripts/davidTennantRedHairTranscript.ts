@@ -45,7 +45,7 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "So, so, let's speak about him a bit more. So he's John. And he's had a bit of a change in direction in his life, hasn't he?",
-    "ja": "(インタビュアーの質問を繰り返すように)じゃあ、彼のことをもう少し詳しく話しましょう。彼はジョンで、人生の方向性が少し変わったんですよね?"
+    "ja": "(インタビュアーの質問を繰り返すように)じゃあ、彼のことをもう少し詳しく話しましょう。彼はジョンで、人生の方向性が少し変わったんですよね？"
   },
   {
     "speakerEn": "David Tennant",
@@ -57,13 +57,13 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "A very much a midlife crisis, hence the beard and the piercings. And, and quite fun, though, I imagine when you sort of open a wardrobe and you go, oh my God, look at all this stuff! No, you, it's, well, it's, to try all the things that you feel far too old to try, you kind of get all these clothes on and think, oh yeah, this is, you know, you look ridiculous, but that's part of the point.",
-    "ja": "まさに中年の危機ですね。だからヒゲを伸ばしたり、ピアスを開けたり。でも、楽しいですよ。衣装部屋を開けて「うわあ、すごい服ばっかり!」ってなるわけですから。いや、だって、自分が挑戦するには年を取りすぎていると思うようなファッションを全部着てみて、「おお、いいね」なんて思うわけです。もちろんバカみたいに見えるんだけど、それが狙いの一部ですから。"
+    "ja": "まさに中年の危機ですね。だからヒゲを伸ばしたり、ピアスを開けたり。でも、楽しいですよ。衣装部屋を開けて「うわあ、すごい服ばっかり！」ってなるわけですから。いや、だって、自分が挑戦するには年を取りすぎていると思うようなファッションを全部着てみて、「おお、いいね」なんて思うわけです。もちろんバカみたいに見えるんだけど、それが狙いの一部ですから。"
   },
   {
     "speakerEn": "Holly Willoughby",
     "speakerJa": "ホリー・ウィロビー(女性インタビュアー)",
     "en": "Did it feel quite good?",
-    "ja": "結構いい気分でした?"
+    "ja": "結構いい気分でした？"
   },
   {
     "speakerEn": "David Tennant",
@@ -75,13 +75,13 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "If only that were the case, Philip. If only that were the case. No. All the people who weren't available, who weren't in the country, who were too expensive. And eventually, you know, as they get down the list, I'm still sitting there going, \"Still available, G! You know, still here.\" And, uh, and eventually they decided they would give in and let me have a go.",
-    "ja": "そうだったらよかったんですけどね、フィリップ。そうだったらよかったのに。いやいや、スケジュールが合わない人、国外にいる人、ギャラが高すぎる人を全員あたって、リストをどんどん下りていって。僕はまだそこに座って「G(ジョージアの愛称)、まだ空いてるよ! ここにいるよ!」って言ってるわけです。それで、最終的に彼らが折れて、僕にやらせてくれることになったんです。"
+    "ja": "そうだったらよかったんですけどね、フィリップ。そうだったらよかったのに。いやいや、スケジュールが合わない人、国外にいる人、ギャラが高すぎる人を全員あたって、リストをどんどん下りていって。僕はまだそこに座って「G(ジョージアの愛称)、まだ空いてるよ！ ここにいるよ！」って言ってるわけです。それで、最終的に彼らが折れて、僕にやらせてくれることになったんです。"
   },
   {
     "speakerEn": "Holly Willoughby",
     "speakerJa": "ホリー・ウィロビー(女性インタビュアー)",
     "en": "So how was that? Because you've worked together before, but she's not produced you before.",
-    "ja": "それで、いかがでしたか? 以前共演されたことはありますが、彼女があなたをプロデュースするのは初めてですよね。"
+    "ja": "それで、いかがでしたか？ 以前共演されたことはありますが、彼女があなたをプロデュースするのは初めてですよね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -99,7 +99,7 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "For me? Yeah, well the Glasgow Film Theatre, which is where we will be premiering the film on Sunday night, is just round the corner from my drama school. So I used to, I saw all sorts of things there. You'd get cheap student tickets and I went and Reservoir Dogs, and Betty Blue, and David Lynch movies, and all that. I went and, you know, saw all of them as a, as a, as a student.",
-    "ja": "僕にとって? ええ、まあグラスゴー・フィルム・シアター(今週日曜の夜にプレミア上映を行う場所)は、僕が通っていた演劇学校のすぐ近くなんです。だから昔はあそこで色んなものを観ました。安い学生チケットを手に入れて、『レザボア・ドッグス』とか『ベティ・ブルー』とか、デイヴィッド・リンチの映画とか、色々ね。学生時代に、そういった映画を全部そこで観たんです。"
+    "ja": "僕にとって？ ええ、まあグラスゴー・フィルム・シアター(今週日曜の夜にプレミア上映を行う場所)は、僕が通っていた演劇学校のすぐ近くなんです。だから昔はあそこで色んなものを観ました。安い学生チケットを手に入れて、『レザボア・ドッグス』とか『ベティ・ブルー』とか、デイヴィッド・リンチの映画とか、色々ね。学生時代に、そういった映画を全部そこで観たんです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -111,13 +111,13 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "Holly Willoughby",
     "speakerJa": "ホリー・ウィロビー(女性インタビュアー)",
     "en": "So let's explain the hair then, because you traveled back yesterday, didn't you. So you were in South Africa, what were you, what were you filming?",
-    "ja": "じゃあ、その髪色について説明してもらいましょう。昨日帰国されたんですよね。南アフリカにいらしたそうですが、何の撮影をしていたんですか?"
+    "ja": "じゃあ、その髪色について説明してもらいましょう。昨日帰国されたんですよね。南アフリカにいらしたそうですが、何の撮影をしていたんですか？"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I was filming something called Good Omens, which is a Neil Gaiman, Terry Pratchett novel, which Neil Gaiman has now adapted for, uh, Amazon and the BBC. So, uh, we, there it is! With Michael Sheen. And we've been shooting that for about six months now. And I just finished, yeah, about 48 hours ago.",
-    "ja": "『グッド・オーメンズ』という作品の撮影でした。ニール・ゲイマンとテリー・プラチェットの小説で、ニール・ゲイマン自身がAmazonとBBCのために脚色したものです。それで、僕たちは......あっ、出ましたね! マイケル・シーンと一緒に写っています。もう半年くらい撮影していて。ちょうど終わったところなんです、ええ、48時間くらい前に。"
+    "ja": "『グッド・オーメンズ』という作品の撮影でした。ニール・ゲイマンとテリー・プラチェットの小説で、ニール・ゲイマン自身がAmazonとBBCのために脚色したものです。それで、僕たちは......あっ、出ましたね！ マイケル・シーンと一緒に写っています。もう半年くらい撮影していて。ちょうど終わったところなんです、ええ、48時間くらい前に。"
   },
   {
     "speakerEn": "David Tennant",
@@ -129,7 +129,7 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "Holly Willoughby",
     "speakerJa": "ホリー・ウィロビー(女性インタビュアー)",
     "en": "And how long do we have to wait before we see that? Have you only wrapped? I think it's probably this time next year, something like that.",
-    "ja": "それはいつ頃見られるんですか? 撮影が終わったばかりですもんね。たぶん来年の今頃とか、そんな感じですか。"
+    "ja": "それはいつ頃見られるんですか？ 撮影が終わったばかりですもんね。たぶん来年の今頃とか、そんな感じですか。"
   },
   {
     "speakerEn": "David Tennant",
@@ -177,13 +177,13 @@ export const davidTennantRedHairTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Oh God, I'll be desperate. That's the problem. That's part of the reason I resist it, 'cause I would become so hooked on it, and so needy about it! And the thing of going, what, interesting, what do you think I can say about my life today? I would become obsessed. It's just as well I don't do it.",
-    "ja": "おお神よ、僕は必死になっちゃうでしょうね。それが問題なんです。僕がSNSをやらない理由の一つは、絶対にのめり込んで、すごく承認欲求の塊になっちゃうのが分かっているからなんです! 「ええと、面白いこと、今日の僕の生活について何か言えることはないかな?」なんてことばかり考えて、執着しちゃうと思う。やらないのが一番ですね。"
+    "ja": "おお神よ、僕は必死になっちゃうでしょうね。それが問題なんです。僕がSNSをやらない理由の一つは、絶対にのめり込んで、すごく承認欲求の塊になっちゃうのが分かっているからなんです！ 「ええと、面白いこと、今日の僕の生活について何か言えることはないかな？」なんてことばかり考えて、執着しちゃうと思う。やらないのが一番ですね。"
   },
   {
     "speakerEn": "Holly Willoughby",
     "speakerJa": "ホリー・ウィロビー(女性インタビュアー)",
     "en": "Don't go there. Don't go there. We also, we haven't spoken about Broadchurch either, and that's... you have to come back and talk to us about that when that comes out. When, when is that? Cause you filmed that in the US?",
-    "ja": "手を出さない方がいいわ。手を出さない方がいい。あと、『ブロードチャーチ』の話もまだしていませんね。それについては......放送される時にまた来てお話ししていただかないと。それはいつですか? アメリカで撮影されたんですよね?"
+    "ja": "手を出さない方がいいわ。手を出さない方がいい。あと、『ブロードチャーチ』の話もまだしていませんね。それについては......放送される時にまた来てお話ししていただかないと。それはいつですか？ アメリカで撮影されたんですよね？"
   },
   {
     "speakerEn": "David Tennant",
@@ -216,4 +216,5 @@ export const davidTennantRedHairTranscript = [
     "ja": "お会いできて嬉しかったです。"
   }
 ] as const;
+
 

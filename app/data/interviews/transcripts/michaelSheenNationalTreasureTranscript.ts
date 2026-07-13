@@ -10,13 +10,13 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "That's right, he's globally famous, and one of the few valuable things the country's got. Isn't that right Alex?",
-    "ja": "その通り、彼は世界的に有名で、この国が持つ数少ない価値あるものの一つです。そうだよね、アレックス?"
+    "ja": "その通り、彼は世界的に有名で、この国が持つ数少ない価値あるものの一つです。そうだよね、アレックス？"
   },
   {
     "speakerEn": "Alex Brooker",
     "speakerJa": "アレックス・ブルッカー",
     "en": "That's correct Adam. So David, remember when you signed the perspex before the show earlier, we got a little confession to make.",
-    "ja": "その通りだよ、アダム。それでデイヴィッド、さっき番組の前にアクリル板にサインしてもらったのを覚えてる?実はちょっと白状しなきゃいけないことがあるんだ。"
+    "ja": "その通りだよ、アダム。それでデイヴィッド、さっき番組の前にアクリル板にサインしてもらったのを覚えてる？実はちょっと白状しなきゃいけないことがあるんだ。"
   },
   {
     "speakerEn": "Alex Brooker",
@@ -58,13 +58,13 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Six foot one, thank you very much!",
-    "ja": "僕は6フィート1インチ(約185cm)だよ、どうもありがとう!"
+    "ja": "僕は6フィート1インチ(約185cm)だよ、どうもありがとう！"
   },
   {
     "speakerEn": "Michelle de Swarte",
     "speakerJa": "ミシェル・デ・スワート",
     "en": "Alright Josh, it'd be fantastic for someone like yourself to get to the high things on the shelf and stuff... But... Oh I'm gonna... But and the... Over to you!",
-    "ja": "そうねジョシュ、あなたみたいな人が棚の上の高いものとかを取るのには素晴らしいでしょうね...でも...ああ、私は...でも、そして...あなたにお任せするわ!"
+    "ja": "そうねジョシュ、あなたみたいな人が棚の上の高いものとかを取るのには素晴らしいでしょうね...でも...ああ、私は...でも、そして...あなたにお任せするわ！"
   },
   {
     "speakerEn": "Josh Widdicombe",
@@ -94,7 +94,7 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "Alex Brooker",
     "speakerJa": "アレックス・ブルッカー",
     "en": "Oh no, we might keep them, because this show's never won one. Hard to believe at this stage of the evening, isn't it?",
-    "ja": "ああいや、それは僕らがもらっておくかもしれない。だってこの番組は一度も受賞したことがないからね。今夜のこの段階では信じがたいことだけどね?"
+    "ja": "ああいや、それは僕らがもらっておくかもしれない。だってこの番組は一度も受賞したことがないからね。今夜のこの段階では信じがたいことだけどね？"
   },
   {
     "speakerEn": "Josh Widdicombe",
@@ -106,37 +106,37 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "Michelle de Swarte",
     "speakerJa": "ミシェル・デ・スワート",
     "en": "He's also fantastic for the elderly, he can talk nostalgia with you, because he's time traveled. And where else are you gonna see a Doctor at the moment?",
-    "ja": "お年寄りにも素晴らしいですよ、彼はタイムトラベルをしたことがあるので、ノスタルジックな話ができます。それに、今の時代、他でドクター(医者/ドクター・フー)に会える場所なんてありますか?"
+    "ja": "お年寄りにも素晴らしいですよ、彼はタイムトラベルをしたことがあるので、ノスタルジックな話ができます。それに、今の時代、他でドクター(医者/ドクター・フー)に会える場所なんてありますか？"
   },
   {
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "Oh, exciting news guys, exciting news. I'm hearing we've just sold him!",
-    "ja": "おお、エキサイティングなニュースだみんな。たった今彼が売れたと聞いたよ!"
+    "ja": "おお、エキサイティングなニュースだみんな。たった今彼が売れたと聞いたよ！"
   },
   {
     "speakerEn": "Alex Brooker",
     "speakerJa": "アレックス・ブルッカー",
     "en": "Oh brilliant!",
-    "ja": "おお、素晴らしい!"
+    "ja": "おお、素晴らしい！"
   },
   {
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "In fact, we can speak to the highest bidder right now. It's a Mr... Michael Sheen!",
-    "ja": "実際、今すぐ最高額の落札者と話すことができます。マイケル・シーン氏です!"
+    "ja": "実際、今すぐ最高額の落札者と話すことができます。マイケル・シーン氏です！"
   },
   {
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "Hello caller Michael Sheen, what are you going to do with your David Tennant?",
-    "ja": "もしもし、電話の主のマイケル・シーンさん、あなたのデイヴィッド・テナントをどうするつもりですか?"
+    "ja": "もしもし、電話の主のマイケル・シーンさん、あなたのデイヴィッド・テナントをどうするつもりですか？"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "I'm going to keep him in my basement. So I have all the good roles!",
-    "ja": "私の地下室に閉じ込めておくつもりさ。そうすれば、いい役は全部私のものになるからね!"
+    "ja": "私の地下室に閉じ込めておくつもりさ。そうすれば、いい役は全部私のものになるからね！"
   },
   {
     "speakerEn": "David Tennant",
@@ -148,19 +148,19 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "I'll tell you what. That kicked on a notch, didn't it, right? Let's get him packaged.",
-    "ja": "いいか、言っておくけど。あれは一段とギアが上がったよね?彼を梱包しよう。"
+    "ja": "いいか、言っておくけど。あれは一段とギアが上がったよね？彼を梱包しよう。"
   },
   {
     "speakerEn": "Josh Widdicombe",
     "speakerJa": "ジョシュ・ウィディコム",
     "en": "And we've got a box! We've got a box to put you in. It is much bigger on the inside.",
-    "ja": "そして箱があるよ!君を入れるための箱があるんだ。中はもっとずっと広いんだよ。"
+    "ja": "そして箱があるよ！君を入れるための箱があるんだ。中はもっとずっと広いんだよ。"
   },
   {
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "Thanks for watching The Last Leg! My name's Adam Hills!",
-    "ja": "『The Last Leg』をご覧いただきありがとうございました!アダム・ヒルズでした!"
+    "ja": "『The Last Leg』をご覧いただきありがとうございました！アダム・ヒルズでした！"
   },
   {
     "speakerEn": "Alex Brooker",
@@ -172,13 +172,14 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "Adam Hills",
     "speakerJa": "アダム・ヒルズ",
     "en": "See you next week for The Last Leg!",
-    "ja": "また来週の『The Last Leg』でお会いしましょう!"
+    "ja": "また来週の『The Last Leg』でお会いしましょう！"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Guys, guys, guys! Guys, I thought this was just a joke for the show. Come on. Guys! Air holes! There's no air holes! Help!",
-    "ja": "みんな、みんな、みんな!僕はてっきり、これはただの番組のジョークだと思ってたよ。おい。みんな!空気穴!空気穴がないよ!誰か助けて!"
+    "ja": "みんな、みんな、みんな！僕はてっきり、これはただの番組のジョークだと思ってたよ。おい。みんな！空気穴！空気穴がないよ！誰か助けて！"
   }
 ] as const;
+
 

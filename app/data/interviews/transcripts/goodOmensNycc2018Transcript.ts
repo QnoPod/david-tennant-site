@@ -4,7 +4,7 @@ export const goodOmensNycc2018Transcript = [
     "speakerEn": "Kevin Smith",
     "speakerJa": "ケヴィン・スミス",
     "en": "There are those of us who know the book, particularly in this world, but there are a bunch of people are about to discover a brand new story, an original story that they've never heard before. Take me through it real quick.",
-    "ja": "この世界には原作を知っている人もいますが、全く新しい、今まで聞いたことのないオリジナルの物語をこれから発見しようとしている人たちも大勢います。手短に教えてもらえますか?"
+    "ja": "この世界には原作を知っている人もいますが、全く新しい、今まで聞いたことのないオリジナルの物語をこれから発見しようとしている人たちも大勢います。手短に教えてもらえますか？"
   },
   {
     "speakerEn": "Neil Gaiman",
@@ -22,13 +22,13 @@ export const goodOmensNycc2018Transcript = [
     "speakerEn": "Jon Hamm",
     "speakerJa": "ジョン・ハム",
     "en": "The world is all there in the book. So you kind of understand where everybody exists in the hierarchy or in the framework. And then it's kind of like, \"Alright, well, let's play. What are we gonna do?\" And I envisioned this guy as kind of like the boss that you have that you just hate. Because he's so self-assured and he's so often wrong. And playing a handsome idiot is... is fun. There's a lot of comedy to be mined there and we were surrounded by such adept comic performers as well. It was a super fun place to be.",
-    "ja": "この世界はすべて原作の中にあります。だから、階層や枠組みの中で誰がどこに存在しているのかがなんとなくわかるんです。それから、「よし、じゃあ遊んでみよう。どうする?」という感じになります。僕は、この男を、とにかく嫌いでたまらない上司のような存在として思い描きました。自信満々で、頻繁に間違っているからです。ハンサムな馬鹿を演じるのは...楽しいですよ。そこには引き出せるコメディ要素がたくさんありますし、私たちはとても熟練したコメディ俳優たちにも囲まれていましたからね。本当に楽しい現場でした。"
+    "ja": "この世界はすべて原作の中にあります。だから、階層や枠組みの中で誰がどこに存在しているのかがなんとなくわかるんです。それから、「よし、じゃあ遊んでみよう。どうする？」という感じになります。僕は、この男を、とにかく嫌いでたまらない上司のような存在として思い描きました。自信満々で、頻繁に間違っているからです。ハンサムな馬鹿を演じるのは...楽しいですよ。そこには引き出せるコメディ要素がたくさんありますし、私たちはとても熟練したコメディ俳優たちにも囲まれていましたからね。本当に楽しい現場でした。"
   },
   {
     "speakerEn": "Kevin Smith",
     "speakerJa": "ケヴィン・スミス",
     "en": "Playing a demon. How does one go about that?",
-    "ja": "悪魔を演じるにあたって、どのようにアプローチするんですか?"
+    "ja": "悪魔を演じるにあたって、どのようにアプローチするんですか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -40,7 +40,7 @@ export const goodOmensNycc2018Transcript = [
     "speakerEn": "Kevin Smith",
     "speakerJa": "ケヴィン・スミス",
     "en": "Were you guys friends prior to this? Did you know each other in the real world?",
-    "ja": "お二人はこの作品の前から友達だったんですか?現実世界で知り合いだったんでしょうか?"
+    "ja": "お二人はこの作品の前から友達だったんですか？現実世界で知り合いだったんでしょうか？"
   },
   {
     "speakerEn": "Michael Sheen",
@@ -52,19 +52,19 @@ export const goodOmensNycc2018Transcript = [
     "speakerEn": "Kevin Smith",
     "speakerJa": "ケヴィン・スミス",
     "en": "Jumping into this world. How do you turn down something like this?",
-    "ja": "この世界に飛び込むことについて。どうしてこんな素晴らしいオファーを断れるでしょうか?"
+    "ja": "この世界に飛び込むことについて。どうしてこんな素晴らしいオファーを断れるでしょうか？"
   },
   {
     "speakerEn": "Miranda Richardson",
     "speakerJa": "ミランダ・リチャードソン",
     "en": "I thought it was a beautiful story and I'd get to play two different people, kind of. On the plebeian level as opposed to the angelic level. Somebody who's, for my money, really sweet, very humane. What's not to like?",
-    "ja": "美しい物語だと思いましたし、ある意味で2つの異なる人格を演じられるのも魅力的でした。天使のようなレベルに対して、庶民的なレベルでのことです。私としては、本当に愛らしくて、とても人間味のある人物だと思っています。気に入らないはずがないですよね?"
+    "ja": "美しい物語だと思いましたし、ある意味で2つの異なる人格を演じられるのも魅力的でした。天使のようなレベルに対して、庶民的なレベルでのことです。私としては、本当に愛らしくて、とても人間味のある人物だと思っています。気に入らないはずがないですよね？"
   },
   {
     "speakerEn": "Kevin Smith",
     "speakerJa": "ケヴィン・スミス",
     "en": "Now, when it comes to directing episodic, generally they'll break it up amongst a bunch of different directors. You did all six of this one?",
-    "ja": "さて、エピソードものの監督をする場合、通常は複数の監督で手分けしますよね。あなたは今回の全6エピソードをすべて担当されたんですか?"
+    "ja": "さて、エピソードものの監督をする場合、通常は複数の監督で手分けしますよね。あなたは今回の全6エピソードをすべて担当されたんですか？"
   },
   {
     "speakerEn": "Douglas Mackinnon",
@@ -73,3 +73,4 @@ export const goodOmensNycc2018Transcript = [
     "ja": "非常に壮大な原作なので、私はこう言いました。「監督は一人にするべきだ。たとえ私じゃなくても、一人の監督がやる必要がある。そうしないとうまくいかないから」と。ご存知の通り、台詞のある役が240、CGIショットが1200、そして何百ものロケ地がありました。だから、それをなんとかまとめるためには...ここにいるような素晴らしい人たちで周りを固めて、あとはただ出発するだけだと思ったんです。"
   }
 ] as const;
+

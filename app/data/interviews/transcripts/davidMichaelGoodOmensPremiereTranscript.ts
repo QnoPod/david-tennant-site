@@ -4,7 +4,7 @@ export const davidMichaelGoodOmensPremiereTranscript = [
     "speakerEn": "Interviewer",
     "speakerJa": "インタビュアー",
     "en": "For people who maybe aren't familiar with this astonishing book, can you just tell us a little bit about each of your characters and what makes them individually and collectively such a fascinating duo?",
-    "ja": "この素晴らしい原作本に馴染みのない方々のために、お二人のそれぞれのキャラクターについて、そして彼らが個人としてもコンビとしてもこれほどまでに魅力的な理由を少し教えていただけますか?"
+    "ja": "この素晴らしい原作本に馴染みのない方々のために、お二人のそれぞれのキャラクターについて、そして彼らが個人としてもコンビとしてもこれほどまでに魅力的な理由を少し教えていただけますか？"
   },
   {
     "speakerEn": "Michael Sheen",
@@ -64,7 +64,7 @@ export const davidMichaelGoodOmensPremiereTranscript = [
     "speakerEn": "Interviewer",
     "speakerJa": "インタビュアー",
     "en": "Did you ever feel like you wanted to swap roles throughout the...",
-    "ja": "撮影を通して、お互いの役を交換したいと感じたことはありましたか?"
+    "ja": "撮影を通して、お互いの役を交換したいと感じたことはありましたか？"
   },
   {
     "speakerEn": "Michael Sheen",
@@ -106,7 +106,7 @@ export const davidMichaelGoodOmensPremiereTranscript = [
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "Hey! How about that, I just made that one up.",
-    "ja": "おい!(笑)どうだい、今思いついたんだよ。"
+    "ja": "おい！(笑)どうだい、今思いついたんだよ。"
   },
   {
     "speakerEn": "David Tennant",
@@ -124,13 +124,13 @@ export const davidMichaelGoodOmensPremiereTranscript = [
     "speakerEn": "Interviewer",
     "speakerJa": "インタビュアー",
     "en": "Does that mean you had a lot of fun off-set together as well?",
-    "ja": "ということは、撮影の合間もご一緒にかなり楽しまれたということですか?"
+    "ja": "ということは、撮影の合間もご一緒にかなり楽しまれたということですか？"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "Well, we did, I mean on the days when it was just me and David, which was a lot, we would have a lovely time just hanging out. But then we'd have these amazing actors, some of which are here tonight, who would pop in every now and again. And then it was just like a party, wasn't it?",
-    "ja": "ええ、そうですね。私とデイヴィッドだけの撮影日も多かったんですが、そういう日は二人で過ごして素晴らしい時間を持ちました。でもそれから、今夜も何人かここに来ていますが、素晴らしい俳優陣が時折ひょっこりやって来るんです。そうなると、もうまるでパーティーのようでしたよね?"
+    "ja": "ええ、そうですね。私とデイヴィッドだけの撮影日も多かったんですが、そういう日は二人で過ごして素晴らしい時間を持ちました。でもそれから、今夜も何人かここに来ていますが、素晴らしい俳優陣が時折ひょっこりやって来るんです。そうなると、もうまるでパーティーのようでしたよね？"
   },
   {
     "speakerEn": "David Tennant",
@@ -139,4 +139,5 @@ export const davidMichaelGoodOmensPremiereTranscript = [
     "ja": "ええ、素晴らしい人たちが次々と現れて、どんどん良くなっていったんです。僕らの撮影が終わった後でさえ...他の人たちがやって来ては番組に参加していました。とにかく規模がどんどん大きくなっていったんです。最終的にエピソードの1つを見て、冒頭のクレジットが出た時、番組に出演していることすら僕が知らなかった俳優さんたちの名前があって、後から追加で撮影されていたんです。本当に信じられないような豪華な顔ぶれですよ。"
   }
 ] as const;
+
 

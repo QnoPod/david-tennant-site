@@ -27,7 +27,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Whatcha!",
-    "ja": "よいしょっと!"
+    "ja": "よいしょっと！"
   },
   {
     "speakerEn": "David Tennant",
@@ -141,7 +141,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Shall I roll again?",
-    "ja": "もう一度振りましょうか?"
+    "ja": "もう一度振りましょうか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -165,7 +165,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "A producer friend of ours called Phin Glynn who sort of very early into the pandemic went, \"What are we going to do now?\"",
-    "ja": "フィン・グリンというプロデューサーの友人が、パンデミックのかなり早い段階で「これからどうしようか?」と言ったんです。"
+    "ja": "フィン・グリンというプロデューサーの友人が、パンデミックのかなり早い段階で「これからどうしようか？」と言ったんです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -219,7 +219,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Shall I roll again?",
-    "ja": "もう一度振りましょうか?"
+    "ja": "もう一度振りましょうか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -231,7 +231,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "This was a show called Takin' Over the Asylum. Which won a BAFTA back in... 19... 1994? Is that right?",
-    "ja": "これは『Takin' Over the Asylum』という番組です。英国アカデミー賞(BAFTA)を受賞しました...19...1994年かな?合ってますか?"
+    "ja": "これは『Takin' Over the Asylum』という番組です。英国アカデミー賞(BAFTA)を受賞しました...19...1994年かな？合ってますか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -333,7 +333,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And who would have been Aziraphale? Who do you get before you get Michael Sheen? Brad Pitt? I just made that up.",
-    "ja": "じゃあアジラフェルは誰が?マイケル・シーンの前となると誰でしょう?ブラッド・ピット?今のはでっち上げです。"
+    "ja": "じゃあアジラフェルは誰が？マイケル・シーンの前となると誰でしょう？ブラッド・ピット？今のはでっち上げです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -351,7 +351,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "What have we got left?",
-    "ja": "何が残っていますか?"
+    "ja": "何が残っていますか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -387,7 +387,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "There have been 15 Doctors... actually there's been a few more than 15 Doctors. Depends how... I mean how in depth do you want me to get on this?",
-    "ja": "これまで15人のドクターが...実際には15人よりももう少し多くいます。どれくらい... つまり、どれくらい深く掘り下げてほしいですか?"
+    "ja": "これまで15人のドクターが...実際には15人よりももう少し多くいます。どれくらい... つまり、どれくらい深く掘り下げてほしいですか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -417,7 +417,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I mean, hey! Alec Hardy from Broadchurch.",
-    "ja": "つまり...おや!『ブロードチャーチ』のアレック・ハーディですね。"
+    "ja": "つまり...おや！『ブロードチャーチ』のアレック・ハーディですね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -495,7 +495,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Has that evolved, has that got crisper or better or more economical? I don't know.",
-    "ja": "それが進化してきたのか、より明確になったのか、良くなったのか、より経済的になったのか?分かりません。"
+    "ja": "それが進化してきたのか、より明確になったのか、良くなったのか、より経済的になったのか？分かりません。"
   },
   {
     "speakerEn": "David Tennant",
@@ -519,7 +519,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Which of these characters would get on? I mean, I don't think Kilgrave would get on with anyone, and Alec Hardy's pretty grumpy. The Doctor would probably get on with most people. And that's me.",
-    "ja": "これらのキャラクターの誰が気が合うでしょうか?まあ、キルグレイブは誰とも気が合わないでしょうし、アレック・ハーディはかなり不機嫌ですからね。ドクターは多分ほとんどの人と気が合うでしょう。そして僕自身ですね。"
+    "ja": "これらのキャラクターの誰が気が合うでしょうか？まあ、キルグレイブは誰とも気が合わないでしょうし、アレック・ハーディはかなり不機嫌ですからね。ドクターは多分ほとんどの人と気が合うでしょう。そして僕自身ですね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -537,7 +537,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "What have I not played yet? A vet. I've not yet played a vet. I think I have played a dentist.",
-    "ja": "まだ演じたことがないのは何でしょう?獣医ですね。まだ獣医は演じたことがありません。歯医者は演じたことがあると思います。"
+    "ja": "まだ演じたことがないのは何でしょう？獣医ですね。まだ獣医は演じたことがありません。歯医者は演じたことがあると思います。"
   },
   {
     "speakerEn": "David Tennant",
@@ -546,4 +546,5 @@ export const davidTennantEvilCharacterTranscript = [
     "ja": "はい、『獣医探偵』を演じるのを楽しみにしています。ITV1で近日公開予定です。"
   }
 ] as const;
+
 

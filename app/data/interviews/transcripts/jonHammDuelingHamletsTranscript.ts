@@ -52,7 +52,7 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "So I do this massive speech at the beginning?",
-    "ja": "私が最初にこの長ゼリフを言うの?"
+    "ja": "私が最初にこの長ゼリフを言うの？"
   },
   {
     "speakerEn": "David Tennant",
@@ -88,7 +88,7 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Get thee to a nunnery: why wouldst thou be a breeder of sinners?",
-    "ja": "尼寺へ行け。なぜ罪人を産もうとするのだ?"
+    "ja": "尼寺へ行け。なぜ罪人を産もうとするのだ？"
   },
   {
     "speakerEn": "Michael Sheen",
@@ -106,7 +106,7 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "I thought you were carrying on!",
-    "ja": "そのまま続くのかと思ったよ!"
+    "ja": "そのまま続くのかと思ったよ！"
   },
   {
     "speakerEn": "David Tennant",
@@ -118,7 +118,7 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "What should such fellows as I do crawling between earth and heaven?",
-    "ja": "私のような者が、天と地の間を這いずり回って、何をすべきなのか?"
+    "ja": "私のような者が、天と地の間を這いずり回って、何をすべきなのか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -130,13 +130,13 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "Jon Hamm",
     "speakerJa": "ジョン・ハム",
     "en": "Where's your father?",
-    "ja": "お父様はどこ?"
+    "ja": "お父様はどこ？"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "At home, my lord. Is it me or you?",
-    "ja": "家にいます、ご主人様。私の番?君の番?"
+    "ja": "家にいます、ご主人様。私の番？君の番？"
   },
   {
     "speakerEn": "David Tennant",
@@ -154,7 +154,7 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "Jon Hamm",
     "speakerJa": "ジョン・ハム",
     "en": "O, help him, you sweet heavens!",
-    "ja": "ああ、優しい天よ、彼をお救いください!"
+    "ja": "ああ、優しい天よ、彼をお救いください！"
   },
   {
     "speakerEn": "Natalie Walker",
@@ -166,7 +166,7 @@ export const jonHammDuelingHamletsTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Unbelievable. You know, this is how we should have done it. It works as a double act, doesn't it?",
-    "ja": "信じられないね。こうやって演じるべきだったんだよ。ダブルキャストとしても成立するよね?"
+    "ja": "信じられないね。こうやって演じるべきだったんだよ。ダブルキャストとしても成立するよね？"
   },
   {
     "speakerEn": "Michael Sheen",
@@ -193,4 +193,5 @@ export const jonHammDuelingHamletsTranscript = [
     "ja": "シェイクスピアとミントか。すごいな。"
   }
 ] as const;
+
 

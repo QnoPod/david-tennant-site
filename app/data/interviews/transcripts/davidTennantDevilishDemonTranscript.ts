@@ -27,7 +27,7 @@ export const davidTennantDevilishDemonTranscript = [
     "speakerEn": "Dermot O'Leary",
     "speakerJa": "ダーモット・オレアリー(男性インタビュアー)",
     "en": "So, so, I mean it's pure Terry Pratchett and Neil Gaiman, isn't it, the whole thing. So tell us, so if people haven't seen the first series and they want to go back, set the, set the whole scene.",
-    "ja": "つまり、テリー・プラチェットとニール・ゲイマンの世界観が、全編にわたって純粋に表現されているわけですよね。それで教えてください、もしシーズン1を見ていなくてこれから見返したいという人たちのために、全体の世界観を説明していただけますか?"
+    "ja": "つまり、テリー・プラチェットとニール・ゲイマンの世界観が、全編にわたって純粋に表現されているわけですよね。それで教えてください、もしシーズン1を見ていなくてこれから見返したいという人たちのために、全体の世界観を説明していただけますか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -39,7 +39,7 @@ export const davidTennantDevilishDemonTranscript = [
     "speakerEn": "Alison Hammond",
     "speakerJa": "アリソン・ハモンド(女性インタビュアー)",
     "en": "So do you still need each other then?",
-    "ja": "じゃあ、今でもお互いを必要としているの?"
+    "ja": "じゃあ、今でもお互いを必要としているの？"
   },
   {
     "speakerEn": "David Tennant",
@@ -66,4 +66,5 @@ export const davidTennantDevilishDemonTranscript = [
     "ja": "だから共謀してハルマゲドンを阻止したと。"
   }
 ] as const;
+
 

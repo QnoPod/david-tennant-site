@@ -3,7 +3,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "How are you? Thank you for being here. Thank you for coming to see us, you both look delightful.",
-    "ja": "お元気ですか?来てくれてありがとう。番組に来てくれて嬉しいです、お二人とも素敵ですね。"
+    "ja": "お元気ですか？来てくれてありがとう。番組に来てくれて嬉しいです、お二人とも素敵ですね。"
   },
   {
     "speakerEn": "Elizabeth Banks",
@@ -15,7 +15,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Well, I don't want this to be about me, but isn't it though?",
-    "ja": "自分の話ばかりしたくはないんだけど、イケてるでしょ?"
+    "ja": "自分の話ばかりしたくはないんだけど、イケてるでしょ？"
   },
   {
     "speakerEn": "James Corden",
@@ -45,7 +45,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "17 years apart?",
-    "ja": "17歳差ですか?"
+    "ja": "17歳差ですか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -69,19 +69,19 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "That is... Go on, what does he say?",
-    "ja": "それは...続けて、彼はなんて言うんです?"
+    "ja": "それは...続けて、彼はなんて言うんです？"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "\"Come on, do I need to teach you the basics?\"",
-    "ja": "「ちょっと、僕が基本を教えないといけないの?」って。"
+    "ja": "「ちょっと、僕が基本を教えないといけないの？」って。"
   },
   {
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Yeah. That's great. I mean, how's the state of the household? Is everyone ready? Five is a lot.",
-    "ja": "最高ですね。それで...家庭の状況はどうですか?みんな心の準備はできてるんですか?5人は多いですよ。"
+    "ja": "最高ですね。それで...家庭の状況はどうですか？みんな心の準備はできてるんですか？5人は多いですよ。"
   },
   {
     "speakerEn": "David Tennant",
@@ -93,7 +93,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "What's the next oldest?",
-    "ja": "次の年長のお子さんは?"
+    "ja": "次の年長のお子さんは？"
   },
   {
     "speakerEn": "David Tennant",
@@ -147,7 +147,7 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "I mean, you just had a birthday, and your father just turned 70. Is this right, Elizabeth?",
-    "ja": "つまり、あなたも最近誕生日を迎えましたし、お父様も70歳になったんですよね。エリザベス、合ってますか?"
+    "ja": "つまり、あなたも最近誕生日を迎えましたし、お父様も70歳になったんですよね。エリザベス、合ってますか？"
   },
   {
     "speakerEn": "Elizabeth Banks",
@@ -165,19 +165,19 @@ export const davidTennantChildFiveTranscript = [
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Oh! Glorious!",
-    "ja": "おお!素晴らしいですね!"
+    "ja": "おお！素晴らしいですね！"
   },
   {
     "speakerEn": "Elizabeth Banks",
     "speakerJa": "エリザベス・バンクス",
     "en": "By the way, Cher is 73. She says in the concert, \"What's your grandma doing tonight?\" And I was like, dang, woman! She was amazing.",
-    "ja": "ちなみに、シェールは73歳なんですよ。彼女はコンサートで「あんたたちのおばあちゃん、今夜何してる?」って言うんです。「やられた!」って思いましたね。彼女は最高でした。"
+    "ja": "ちなみに、シェールは73歳なんですよ。彼女はコンサートで「あんたたちのおばあちゃん、今夜何してる？」って言うんです。「やられた！」って思いましたね。彼女は最高でした。"
   },
   {
     "speakerEn": "James Corden",
     "speakerJa": "ジェームズ・コーデン",
     "en": "Wow. So your dad, not a Cher fan? Didn't fancy it?",
-    "ja": "わあ。じゃあお父様はシェールのファンじゃない?行きたがらなかったんですか?"
+    "ja": "わあ。じゃあお父様はシェールのファンじゃない？行きたがらなかったんですか？"
   },
   {
     "speakerEn": "Elizabeth Banks",
@@ -198,4 +198,5 @@ export const davidTennantChildFiveTranscript = [
     "ja": "わあ、すごいな。僕は悪天候の運転は全然ダメなんです。「車を止めなきゃ、これは危険だ」ってパニックになるんですが、妻には「ただの水たまりを通っただけよ。落ち着いて」って言われます。"
   }
 ] as const;
+
 

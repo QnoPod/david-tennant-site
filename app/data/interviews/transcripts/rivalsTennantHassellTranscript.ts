@@ -3,7 +3,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Rupert (Alex)",
     "speakerJa": "ルパート(アレックス)",
     "en": "You know you're dancing with the devil.",
-    "ja": "悪魔と踊っている自覚はあるだろう?"
+    "ja": "悪魔と踊っている自覚はあるだろう？"
   },
   {
     "speakerEn": "Tony (David)",
@@ -21,7 +21,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "This is the rivalry of the show, but what do they respect in each other?",
-    "ja": "【質問】本作の核となるライバル関係ですが、二人はお互いのどんなところをリスペクトしているのでしょうか?"
+    "ja": "【質問】本作の核となるライバル関係ですが、二人はお互いのどんなところをリスペクトしているのでしょうか？"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -39,7 +39,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "David, who is Tony without success and control? Does he not know or does he know and that's why he's scared to fail?",
-    "ja": "【質問】デイヴィッド、成功や支配力を持たないトニーとは一体何者なのでしょうか? 本人はそれを分かっていないのか、それとも分かっているからこそ失敗を恐れているのでしょうか?"
+    "ja": "【質問】デイヴィッド、成功や支配力を持たないトニーとは一体何者なのでしょうか？ 本人はそれを分かっていないのか、それとも分かっているからこそ失敗を恐れているのでしょうか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -51,7 +51,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "Alex, who is Rupert without his reputation? Is that something he doesn't want to lose?",
-    "ja": "【質問】アレックス、名声を持たないルパートとは一体何者ですか? それは彼にとって絶対に失いたくないものなのでしょうか?"
+    "ja": "【質問】アレックス、名声を持たないルパートとは一体何者ですか？ それは彼にとって絶対に失いたくないものなのでしょうか？"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -63,7 +63,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "David, why can't Tony be happy with just Monica and let Cameron go? What is it about both women that he needs, wants to keep both?",
-    "ja": "【質問】デイヴィッド、トニーはなぜモニカだけで満足できず、キャメロンを手放せないのでしょうか? 彼が両方の女性を必要とし、手元に置いておきたいと思う理由は?"
+    "ja": "【質問】デイヴィッド、トニーはなぜモニカだけで満足できず、キャメロンを手放せないのでしょうか？ 彼が両方の女性を必要とし、手元に置いておきたいと思う理由は？"
   },
   {
     "speakerEn": "David Tennant",
@@ -75,7 +75,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "Alex, why is Rupert drawn to Taggie? Is any of it about who he can be around her versus other women who expect him to be who his reputation is?",
-    "ja": "【質問】アレックス、なぜルパートはタギーに惹かれるのでしょうか? 世間の評判通りの振る舞いを求める他の女性たちと違い、彼女の前では『素の自分』でいられることと関係しているのでしょうか?"
+    "ja": "【質問】アレックス、なぜルパートはタギーに惹かれるのでしょうか？ 世間の評判通りの振る舞いを求める他の女性たちと違い、彼女の前では『素の自分』でいられることと関係しているのでしょうか？"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -87,7 +87,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "David, you've played dark characters—I think of Secret Smile, Jessica Jones. How does Tony compare?",
-    "ja": "【質問】デイヴィッド、あなたは『シークレット・スマイル』や『ジェシカ・ジョーンズ』など、これまでにもダークなキャラクターを演じてこられました。彼らと比べてトニーはどうですか?"
+    "ja": "【質問】デイヴィッド、あなたは『シークレット・スマイル』や『ジェシカ・ジョーンズ』など、これまでにもダークなキャラクターを演じてこられました。彼らと比べてトニーはどうですか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -99,19 +99,19 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "Alex, would you say that Rupert may want to change the most from who he's perceived to be out of all the characters?",
-    "ja": "【質問】アレックス、ルパートは登場人物の中で最も「世間からのイメージ(評判)」から抜け出し、変わりたいと願っているキャラクターだと言えますか?"
+    "ja": "【質問】アレックス、ルパートは登場人物の中で最も「世間からのイメージ(評判)」から抜け出し、変わりたいと願っているキャラクターだと言えますか？"
   },
   {
     "speakerEn": "Alex Hassell",
     "speakerJa": "アレックス・ハッセル",
     "en": "Mmm. I don't know that I, I don't think he's a very reflective person. So I think potentially that he, it's not like him to sort of sit and ruminate too much on his feelings. But I think he would be surprised by what he feels driven to do and how he feels driven to act, um, as the story progresses. Yeah. And what his allegiances are. But then he also has massive blind spots. I think he sort of can be feeling those things, um, about Taggie, for example, and about a sort of idea of, um, trying to elevate his sense of morals whilst at the same time having sex with someone else. And, and, um, and, you know, engaging in going behind people's back or sort of gambling other people's money away, that kind of thing. So he, um, it's a sort of one step back, uh, forward, two steps back type situation for Rupert. Um, which I think is what makes him such an intriguing character. You think he's getting somewhere and then you're like, why on earth is he doing that? How can those two things exist in the same, um, at the same time for this character? And that was a wonderfully fascinating thing to play as an actor, to, to read the script and be like, but I'm saying I'm boasting about, um, you know, one sexual conquest in front of another woman that I'm apparently having some feelings for. Like, it's a very strange, uh, behavior from my point of view, and was really fascinating to try and get my head around.",
-    "ja": "うーん、どうでしょう。彼はあまり内省的な人間ではないので、座って自分の感情をあれこれ分析するようなタイプではないんです。でも、物語が進むにつれて、自分が何に突き動かされているのか、そして誰に忠誠を誓っているのかに、彼自身が一番驚くことになると思います。ただ、彼には大きな盲点もあって。例えばタギーに対して道徳心を高めようとしながら、裏では別の女性と寝たり、人の背後で暗躍して他人の金でギャンブルしたりする。まさに『一歩進んで二歩下がる』状態ですね。でも、そこが彼の魅力的なところでもあるんです。『おっ、成長したな』と思った矢先に、『一体なんでそんなことするの!?』と裏切られる。俳優としては、この矛盾を演じるのは最高に面白かったですよ。台本を読みながら、『えっ、気がある女性の前で、別の女性とのベッドの武勇伝を語ってるぞ?』と(笑)。僕から見てもかなり奇妙な行動で、それをどうやって自分の中に落とし込むかが腕の見せ所でしたね。"
+    "ja": "うーん、どうでしょう。彼はあまり内省的な人間ではないので、座って自分の感情をあれこれ分析するようなタイプではないんです。でも、物語が進むにつれて、自分が何に突き動かされているのか、そして誰に忠誠を誓っているのかに、彼自身が一番驚くことになると思います。ただ、彼には大きな盲点もあって。例えばタギーに対して道徳心を高めようとしながら、裏では別の女性と寝たり、人の背後で暗躍して他人の金でギャンブルしたりする。まさに『一歩進んで二歩下がる』状態ですね。でも、そこが彼の魅力的なところでもあるんです。『おっ、成長したな』と思った矢先に、『一体なんでそんなことするの！？』と裏切られる。俳優としては、この矛盾を演じるのは最高に面白かったですよ。台本を読みながら、『えっ、気がある女性の前で、別の女性とのベッドの武勇伝を語ってるぞ？』と(笑)。僕から見てもかなり奇妙な行動で、それをどうやって自分の中に落とし込むかが腕の見せ所でしたね。"
   },
   {
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "By the end of the series, is your character a better person or in a better place?",
-    "ja": "【質問】シリーズの終盤までに、あなたのキャラクターはより良い人間、あるいはより良い状況に成長できているのでしょうか?"
+    "ja": "【質問】シリーズの終盤までに、あなたのキャラクターはより良い人間、あるいはより良い状況に成長できているのでしょうか？"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -123,7 +123,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "In this rivalry, who's winning more often and who feels like he's winning more often? That can be different.",
-    "ja": "【質問】このライバル関係において、実際に勝っている回数が多いのはどちらで、「勝っている」と実感しているのはどちらですか? 両者は違うこともありますよね。"
+    "ja": "【質問】このライバル関係において、実際に勝っている回数が多いのはどちらで、「勝っている」と実感しているのはどちらですか？ 両者は違うこともありますよね。"
   },
   {
     "speakerEn": "David Tennant",
@@ -141,7 +141,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "What did you two enjoy most about playing this dynamic? When you two go head-to-head, it's so good.",
-    "ja": "【質問】このダイナミクスを演じる上で、お二人が一番楽しんだことは何ですか? お二人が真っ向からぶつかり合うシーンは本当に素晴らしいです。"
+    "ja": "【質問】このダイナミクスを演じる上で、お二人が一番楽しんだことは何ですか？ お二人が真っ向からぶつかり合うシーンは本当に素晴らしいです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -171,7 +171,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "Who needs this rivalry more?",
-    "ja": "【質問】このライバル関係を、より「必要」としているのはどちらだと思いますか?"
+    "ja": "【質問】このライバル関係を、より「必要」としているのはどちらだと思いますか？"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -201,7 +201,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "Question",
     "speakerJa": "質問",
     "en": "David, if Tony were to lose the franchise, how would he react? Who should be the most worried if that were to happen?",
-    "ja": "【質問】デイヴィッド、もしトニーがフランチャイズを失ったら、彼はどう反応するでしょうか? もしそうなった場合、誰が一番身の危険を感じるべきですか?"
+    "ja": "【質問】デイヴィッド、もしトニーがフランチャイズを失ったら、彼はどう反応するでしょうか？ もしそうなった場合、誰が一番身の危険を感じるべきですか？"
   },
   {
     "speakerEn": "David Tennant",
@@ -210,4 +210,5 @@ export const rivalsTennantHassellTranscript = [
     "ja": "それは物語の結末に関わるので、完全にネタバレの領域に入ってしまいますね (笑)。でもあえて言うなら、彼が『裏切られた』と感じた相手全員でしょう。彼は絶対的な忠誠を求める人間であり、裏切り者には一片の容赦もありません。だから......絶対にバレないという確信がない限り、彼を怒らせないほうが身のためですよ。"
   }
 ] as const;
+
 

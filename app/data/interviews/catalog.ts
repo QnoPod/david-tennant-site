@@ -313,11 +313,80 @@ export const interviewCatalog: readonly InterviewSummary[] = [
       sources: ["NYCC 2018"],
     },
   },
+  {
+    slug: "david-tennant-closet-picks",
+    title: "David Tennant’s Closet Picks",
+    year: "2026",
+    publishedDate: "2026-07-07",
+    source: "The Criterion Collection",
+    mediaType: "video",
+    videoId: "RoXYGX-tM7c",
+    externalUrl: "https://www.youtube.com/watch?v=RoXYGX-tM7c",
+    thumbnailUrl: "https://i.ytimg.com/vi/RoXYGX-tM7c/hqdefault.jpg",
+    duration: "Video",
+    description: "デイヴィッド・テナントがCriterion Closetでお気に入りの映画を選び、映画と演劇への思いを語る。",
+    tagGroups: { 
+     actors: [], 
+     genres: [], 
+     sources: ["The Criterion Collection"] },
+  },
+  {
+    slug: "david-ty-tennant-best-moments",
+    title: "David Tennant And his son Ty Tennant best moments (together & talking about each others)",
+    year: "2025",
+    publishedDate: "2025-03-03",
+    source: "YouTube",
+    mediaType: "video",
+    videoId: "EWqoAQ2-2w0",
+    externalUrl: "https://www.youtube.com/watch?v=EWqoAQ2-2w0",
+    thumbnailUrl: "https://i.ytimg.com/vi/EWqoAQ2-2w0/hqdefault.jpg",
+    duration: "Video",
+    description: "デイヴィッド・テナントと息子タイ・テナントの共演・インタビュー場面を集めた映像。",
+    tagGroups: {
+       actors: ["Ty Tennant"],
+       genres: ["Good Omens", "Doctor Who","Around the World in 80 Days"],
+       sources: ["YouTube"] },
+  },
+  {
+    slug: "david-michael-good-omens-season-two-prime-video",
+    title: "David Tennant & Michael Sheen Interview | Good Omens Season 2 | Prime Video",
+    year: "2023",
+    publishedDate: "2023-07-27",
+    source: "Prime Video",
+    mediaType: "video",
+    videoId: "eC2iupZUfpc",
+    externalUrl: "https://www.youtube.com/watch?v=eC2iupZUfpc",
+    thumbnailUrl: "https://i.ytimg.com/vi/eC2iupZUfpc/hqdefault.jpg",
+    duration: "Video",
+    description: "『グッド・オーメンズ』シーズン2について、デイヴィッド・テナントとマイケル・シーンが役と関係性を語るPrime Videoのインタビュー。",
+    tagGroups: {
+       actors: ["Michael Sheen"],
+       genres: ["Good Omens"], 
+       sources: ["Prime Video"] },
+  },
+  {
+    slug: "david-tennant-broadchurch-secrets-this-morning",
+    title: "David Tennant Has Found Keeping Broadchurch Secrets Completely Exhausting | This Morning",
+    year: "2017",
+    publishedDate: "2017-02-27",
+    source: "This Morning",
+    mediaType: "video",
+    videoId: "QfJhW6GMCG0",
+    externalUrl: "https://www.youtube.com/watch?v=QfJhW6GMCG0",
+    thumbnailUrl: "https://i.ytimg.com/vi/QfJhW6GMCG0/hqdefault.jpg",
+    duration: "Video",
+    description: "『ブロードチャーチ』の秘密保持、ドクター・フー、舞台『Don Juan in Soho』などについて語るThis Morningのインタビュー。",
+    tagGroups: {
+       actors: [], 
+       genres: ["Broadchurch", "Doctor Who", "Don Juan in Soho"], 
+       sources: ["This Morning"] },
+  },
 ];
 
 /** 公開年月日の新しい順に並べた一覧を返します。元データは変更しません。 */
 export function getInterviewsNewestFirst() {
   return [...interviewCatalog].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 }
+
 
 

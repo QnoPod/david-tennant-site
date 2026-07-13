@@ -43,6 +43,15 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/jonHammDuelingHamletsTranscript")).jonHammDuelingHamletsTranscript,
   "good-omens-nycc-2018": async () =>
     (await import("./transcripts/goodOmensNycc2018Transcript")).goodOmensNycc2018Transcript,
+
+  "david-tennant-closet-picks": async () =>
+    (await import("./transcripts/davidTennantClosetPicksTranscript")).davidTennantClosetPicksTranscript,
+  "david-ty-tennant-best-moments": async () =>
+    (await import("./transcripts/davidTyTennantBestMomentsTranscript")).davidTyTennantBestMomentsTranscript,
+  "david-michael-good-omens-season-two-prime-video": async () =>
+    (await import("./transcripts/davidMichaelGoodOmensSeasonTwoTranscript")).davidMichaelGoodOmensSeasonTwoTranscript,
+  "david-tennant-broadchurch-secrets-this-morning": async () =>
+    (await import("./transcripts/davidTennantBroadchurchSecretsTranscript")).davidTennantBroadchurchSecretsTranscript,
 };
 
 /** slugから基本情報と翻訳本文をまとめて取得します。 */
@@ -72,5 +81,6 @@ export async function searchInterviewSlugs(query: string): Promise<string[]> {
   }));
   return matches.filter((slug): slug is string => Boolean(slug));
 }
+
 
 

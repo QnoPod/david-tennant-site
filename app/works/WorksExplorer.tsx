@@ -220,7 +220,7 @@ function EpisodeAppearances({ work }: { work: Work }) {
   return <section className="detail-section episode-appearances">
     <h3>出演エピソード</h3>
     <ol>{result.appearances.map((episode) => <li key={`${episode.seasonNumber}-${episode.episodeNumber}`}>
-      <strong>S{episode.seasonNumber} E{episode.episodeNumber}</strong>
+      <strong>{episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}</strong>
       {episode.title && <span>「{episode.title}」</span>}
       {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
       {episode.character && <small>{episode.character}</small>}

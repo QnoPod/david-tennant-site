@@ -3,6 +3,8 @@ import type { EpisodeAppearance } from "../lib/types";
 /**
  * TMDBで具体的な出演回を取得できないTV作品の補完データです。
  * シーズン・話数まで確認できた作品だけを記載します。
+ * 俳優・声優としての出演に加え、本人出演のトーク番組・バラエティ・授賞式も対象です。
+ * 授賞式のようにシーズン・話数を持たない番組はdisplayLabelで「第○回」と表示します。
  * キーには原題を使い、作品詳細ではTMDBの日本語名と原題の両方を照合します。
  */
 export const episodeOverrides: Record<string, EpisodeAppearance[]> = {
@@ -69,6 +71,44 @@ export const episodeOverrides: Record<string, EpisodeAppearance[]> = {
     { seasonNumber: 65, episodeNumber: 2, title: "Episode 2", originalTitle: "Episode 2", airDate: "2023-04-21", character: "Guest Host" },
     { seasonNumber: 69, episodeNumber: 6, title: "Episode 6", originalTitle: "Episode 6", airDate: "2025-05-09", character: "Guest Host" },
     { seasonNumber: 71, episodeNumber: 10, title: "Episode 10", originalTitle: "Episode 10", airDate: "2026-06-05", character: "Guest Host" },
+  ],
+  // 本人出演のトーク・バラエティ番組。再編集だけの総集編は含めません。
+  "The Graham Norton Show": [
+    { seasonNumber: 1, episodeNumber: 6, title: "David Tennant, Jo Brand, The Proclaimers", originalTitle: "David Tennant, Jo Brand, The Proclaimers", airDate: "2007-03-29", character: "本人（ゲスト）" },
+    { seasonNumber: 6, episodeNumber: 6, title: "David Tennant, Johnny Vegas, Alison Moyet", originalTitle: "David Tennant, Johnny Vegas, Alison Moyet", airDate: "2009-11-09", character: "本人（ゲスト）" },
+    { seasonNumber: 9, episodeNumber: 1, title: "David Tennant, Catherine Tate, Jon Richardson, Josh Groban", originalTitle: "David Tennant, Catherine Tate, Jon Richardson, Josh Groban", airDate: "2011-04-15", character: "本人（ゲスト）" },
+    { seasonNumber: 14, episodeNumber: 6, title: "Emma Thompson, David Tennant, Matt Smith, Robbie Williams, Jimmy Carr", originalTitle: "Emma Thompson, David Tennant, Matt Smith, Robbie Williams, Jimmy Carr", airDate: "2013-11-22", character: "本人（ゲスト）" },
+    { seasonNumber: 16, episodeNumber: 15, title: "David Tennant, Olivia Colman, Harvey Weinstein, Jessie J", originalTitle: "David Tennant, Olivia Colman, Harvey Weinstein, Jessie J", airDate: "2015-01-16", character: "本人（ゲスト）" },
+    { seasonNumber: 23, episodeNumber: 7, title: "Emilia Clarke, David Tennant, Gloria Estefan, Phoebe Waller-Bridge, Leon Bridges", originalTitle: "Emilia Clarke, David Tennant, Gloria Estefan, Phoebe Waller-Bridge, Leon Bridges", airDate: "2018-05-18", character: "本人（ゲスト）" },
+    { seasonNumber: 25, episodeNumber: 9, title: "Gloria Estefan, Chris Hemsworth, David Tennant, Michael Sheen, Jonas Brothers", originalTitle: "Gloria Estefan, Chris Hemsworth, David Tennant, Michael Sheen, Jonas Brothers", airDate: "2019-05-31", character: "本人（ゲスト）" },
+    { seasonNumber: 28, episodeNumber: 11, title: "George Clooney, Michael Sheen, David Tennant, Viola Davis, Vanessa Kirby", originalTitle: "George Clooney, Michael Sheen, David Tennant, Viola Davis, Vanessa Kirby", airDate: "2020-12-18", character: "本人（ゲスト）" },
+    { seasonNumber: 30, episodeNumber: 1, title: "Eric Idle, Jamie Lee Curtis, David Tennant, Lydia West, Robbie Williams", originalTitle: "Eric Idle, Jamie Lee Curtis, David Tennant, Lydia West, Robbie Williams", airDate: "2022-09-30", character: "本人（ゲスト）" },
+  ],
+  "The Last Leg": [
+    { seasonNumber: 10, episodeNumber: 1, title: "Episode One", originalTitle: "Episode One", airDate: "2017-01-27", character: "本人（ゲスト）" },
+    { seasonNumber: 13, episodeNumber: 1, title: "Episode One", originalTitle: "Episode One", airDate: "2018-01-26", character: "本人（ゲスト）" },
+    { seasonNumber: 14, episodeNumber: 7, title: "Episode Seven", originalTitle: "Episode Seven", airDate: "2018-08-03", character: "本人（ゲスト）" },
+    { seasonNumber: 19, episodeNumber: 2, title: "Episode Two", originalTitle: "Episode Two", airDate: "2020-01-24", character: "本人（ゲスト）" },
+    { seasonNumber: 22, episodeNumber: 3, title: "Episode Three", originalTitle: "Episode Three", airDate: "2021-06-18", character: "本人（ゲスト）" },
+    { seasonNumber: 27, episodeNumber: 2, title: "Episode Two", originalTitle: "Episode Two", airDate: "2023-02-03", character: "本人（ゲスト）" },
+    { seasonNumber: 29, episodeNumber: 2, title: "Episode Two", originalTitle: "Episode Two", airDate: "2023-11-17", character: "本人（ゲスト）" },
+  ],
+  "The Jonathan Ross Show": [
+    { seasonNumber: 4, episodeNumber: 1, title: "Jeremy Piven, Sarah Millican, David Tennant, Phil Taylor", originalTitle: "Jeremy Piven, Sarah Millican, David Tennant, Phil Taylor", airDate: "2013-01-05", character: "本人（ゲスト）" },
+    { seasonNumber: 9, episodeNumber: 5, title: "Cristiano Ronaldo, David Tennant, Agyness Deyn", originalTitle: "Cristiano Ronaldo, David Tennant, Agyness Deyn", airDate: "2015-11-14", character: "本人（ゲスト）" },
+    { seasonNumber: 15, episodeNumber: 15, title: "The Jonathan Ross Christmas Show", originalTitle: "The Jonathan Ross Christmas Show", airDate: "2019-12-24", character: "本人（ゲスト）" },
+  ],
+  // 年次授賞式は放送回をdisplayLabelで示し、出演時の役割も明記します。
+  "National Television Awards": [
+    { seasonNumber: 20, episodeNumber: 1, displayLabel: "第20回", title: "20th National Television Awards", originalTitle: "20th National Television Awards", airDate: "2015-01-21", character: "本人（特別表彰受賞者）" },
+  ],
+  "The British Academy Film Awards": [
+    { seasonNumber: 77, episodeNumber: 1, displayLabel: "第77回", title: "2024 EE BAFTA Film Awards", originalTitle: "77th British Academy Film Awards", airDate: "2024-02-18", character: "司会" },
+    { seasonNumber: 78, episodeNumber: 1, displayLabel: "第78回", title: "2025 EE BAFTA Film Awards", originalTitle: "78th British Academy Film Awards", airDate: "2025-02-16", character: "司会" },
+  ],
+  "EE BAFTA Film Awards": [
+    { seasonNumber: 77, episodeNumber: 1, displayLabel: "第77回", title: "2024 EE BAFTA Film Awards", originalTitle: "77th British Academy Film Awards", airDate: "2024-02-18", character: "司会" },
+    { seasonNumber: 78, episodeNumber: 1, displayLabel: "第78回", title: "2025 EE BAFTA Film Awards", originalTitle: "78th British Academy Film Awards", airDate: "2025-02-16", character: "司会" },
   ],
   "Family Guy": [{ seasonNumber: 15, episodeNumber: 4, title: "Inside Family Guy", originalTitle: "Inside Family Guy", airDate: "2016-10-23", character: "Tenth Doctor" }],
   "Thunderbirds Are Go!": [{ seasonNumber: 2, episodeNumber: 25, title: "Hyperspeed", originalTitle: "Hyperspeed", airDate: "2017-12-09", character: "Tycho Reeves" }],

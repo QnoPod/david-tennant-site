@@ -23,6 +23,10 @@ export type Work = {
   videoKey?: string | null;
   /** TMDBにない作品をdata/manualWorks.tsから追加した場合に使用します。 */
   isManual?: boolean;
+  /** 同名のTMDB作品がある場合は追加せず、TMDB側の作品情報を優先します。 */
+  addOnlyIfMissing?: boolean;
+  /** 本人出演番組など、CHARACTERSの役柄一覧へは追加しない作品に使用します。 */
+  excludeFromCharacters?: boolean;
   manualTitle?: string;
   posterUrl?: string;
   backdropUrl?: string;
@@ -35,6 +39,8 @@ export type Work = {
 export type EpisodeAppearance = {
   seasonNumber: number;
   episodeNumber: number;
+  /** 授賞式など、通常のS/E表記を持たない番組で使う表示名（例: 第77回）。 */
+  displayLabel?: string;
   title?: string;
   originalTitle?: string;
   airDate?: string;

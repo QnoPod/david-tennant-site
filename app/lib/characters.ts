@@ -96,7 +96,7 @@ export function getCharacters(works: Work[] = []): Character[] {
   });
 
   // manualWorks.tsの役柄も、WORKSと同じ作品名・公開日を使ってCHARACTERSへ追加します。
-  const manualCharacters: Character[] = works.filter((work) => work.isManual).flatMap((work) => {
+  const manualCharacters: Character[] = works.filter((work) => work.isManual && !work.excludeFromCharacters).flatMap((work) => {
     const year = getWorkDate(work).slice(0, 4) || "年不明";
     return getWorkCharacters(work).map((character, index) => ({
       key: `manual-${work.id}-${index}`,

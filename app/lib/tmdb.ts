@@ -32,7 +32,18 @@ function applyGenreOverrides(work: Work): Work {
 /** TMDB作品と手入力作品を統合し、ジャンル上書き後に公開日の新しい順に並べます。 */
 function withManualWorks(works: Work[]) {
   const merged = new Map(works.map((work) => [`${work.media_type}-${work.id}`, work]));
-  for (const work of manualWorks) merged.set(`${work.media_type}-${work.id}`, work);
+  for (const work of manualWorks) {
+    // トーク番組などはTMDBに同名作品がある時だけそちらを優先し、二重表示を防ぎます。
+    const manualTitles = [work.title, work.name, work.original_title, work.original_name]
+      .filter((title): title is string => Boolean(title))
+      .map((title) => title.normalize("NFKC").toLowerCase().replace(/\s+/g, ""));
+    const alreadyExists = work.addOnlyIfMissing && [...merged.values()].some((item) =>
+      [item.title, item.name, item.original_title, item.original_name]
+        .filter((title): title is string => Boolean(title))
+        .some((title) => manualTitles.includes(title.normalize("NFKC").toLowerCase().replace(/\s+/g, ""))),
+    );
+    if (!alreadyExists) merged.set(`${work.media_type}-${work.id}`, work);
+  }
   return [...merged.values()].map(applyGenreOverrides).sort((a, b) => getWorkDate(b).localeCompare(getWorkDate(a)));
 }
 

@@ -1,0 +1,61 @@
+/* ================================================================
+   CHARACTERS / INTERVIEWS — MOBILE FIXES
+   スマートフォン表示だけに関係する補正を分離して管理します。
+   ================================================================ */
+
+/* 年代順ではお気に入りボタンを顔画像の外（キャラクター情報欄）へ置きます。 */
+.character-timeline-card .favorite-button--timeline {
+  position: relative;
+  inset: auto;
+  width: auto;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin-top: 9px;
+  padding: 0 11px;
+  border-radius: 17px;
+  font-size: 11px;
+}
+
+@media (max-width: 760px) {
+  /* 長い英字見出しが画面幅を超えないサイズに限定します。 */
+  .characters-page .page-hero h1,
+  .interviews-page .page-hero h1 {
+    max-width: 100%;
+    font-size: clamp(40px, 13vw, 56px);
+    letter-spacing: -.04em;
+    line-height: .9;
+  }
+
+  /* キャラクター検索の操作欄を、幅が変わっても崩れない2列にします。 */
+  .characters-page .archive-controls__actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .characters-page .archive-controls__actions > select,
+  .characters-page .archive-controls__actions > button:not(.archive-view-button),
+  .characters-page .archive-controls__actions > span {
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+
+  .characters-page .archive-controls__actions .archive-view-button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 8px;
+  }
+
+  .characters-page .archive-controls__actions > span {
+    min-width: 0;
+    text-align: left;
+  }
+
+  /* 年代順カード内のボタンを押しやすくし、顔には重ねません。 */
+  .character-timeline-card .favorite-button--timeline {
+    min-height: 32px;
+    border-radius: 16px;
+  }
+}

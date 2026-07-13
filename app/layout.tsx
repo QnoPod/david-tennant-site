@@ -3,6 +3,7 @@ import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import ScrollButtons from "./components/ScrollButtons";
 import "./globals.css";
+import "./mobile-fixes.css";
 
 /**
  * 全ページ共通のレイアウト。

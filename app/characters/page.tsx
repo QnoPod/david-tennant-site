@@ -9,5 +9,5 @@ export const metadata: Metadata = { title: "キャラクター" };
 
 export default async function CharactersPage() {
   const works = await getWorks();
-  return <main id="main-content"><PageHero eyebrow="CHARACTER FILES" title="CHARACTERS" description="デイヴィッドが演じた人物を、年代や役柄の属性からたどります。" /><Suspense fallback={null}><CharactersExplorer characters={getCharacters(works)} /></Suspense></main>;
+  return <main id="main-content" className="characters-page"><PageHero eyebrow="CHARACTER FILES" title="CHARACTERS" description="デイヴィッドが演じた人物を、年代や役柄の属性から検索" /><Suspense fallback={null}><CharactersExplorer characters={getCharacters(works)} /></Suspense></main>;
 }

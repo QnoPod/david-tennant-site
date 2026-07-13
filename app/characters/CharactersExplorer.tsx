@@ -51,12 +51,22 @@ export default function CharactersExplorer({ characters }: { characters: Charact
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
   };
 
+  const favoriteButton = (character: Character, timeline: boolean) => (
+    <button
+      className={`favorite-button ${timeline ? "favorite-button--timeline" : ""} ${favorites.includes(character.key) ? "is-favorite" : ""}`}
+      onClick={() => toggleFavorite(character.key)}
+      aria-label="お気に入りを切り替える"
+    >
+      ★{timeline ? " お気に入り" : ""}
+    </button>
+  );
+
   /** グリッドとタイムラインで、同じ詳細ボタンとデータ紐づけを再利用します。 */
   const characterCard = (character: Character, timeline = false) => <article className={timeline ? "work-timeline-card character-timeline-card" : "media-card character-card"} key={character.key}>
     <button className="card-hit" onClick={() => setSelected(character)} aria-label={`${character.name}の詳細`} />
     <div className="character-card__image">
       <img src={character.image} alt={`${character.name}の画像`} loading="lazy" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} />
-      <button className={`favorite-button ${favorites.includes(character.key) ? "is-favorite" : ""}`} onClick={() => toggleFavorite(character.key)} aria-label="お気に入りを切り替える">★</button>
+      {!timeline && favoriteButton(character, false)}
     </div>
     <div className="character-card__body">
       <p>{character.year} · {character.attributes[0] || "CHARACTER"}</p>
@@ -64,6 +74,7 @@ export default function CharactersExplorer({ characters }: { characters: Charact
       {character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}
       {timeline && character.age !== null && <b className="character-age">当時 {character.age}歳</b>}
       <span>{character.displayWorkTitle}</span>
+      {timeline && favoriteButton(character, true)}
     </div>
   </article>;
 

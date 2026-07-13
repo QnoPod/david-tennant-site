@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Modal from "../components/Modal";
 import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
-import type { Work } from "../lib/types";
+import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import { getDisplayTitle, getOriginalTitle, getSourceTitle, getWorkCharacters, getWorkOverview, getWorkVideoKey, normalizeText } from "../lib/workPresentation";
 import WorkFilters, { type GenreMode, type SortOrder } from "./WorkFilters";
 
@@ -173,6 +173,8 @@ function WorkDetailModal({ work, watched, onToggleWatched, onClose }: { work: Wo
 
       <section className="detail-section"><h3>作品あらすじ</h3><p>{getWorkOverview(work)}</p></section>
 
+      {work.media_type === "tv" && <EpisodeAppearances work={work} />}
+
       <section className="detail-section"><h3>日本の定額配信サービス</h3>{work.providers?.length ? <div className="provider-detail-list">{work.providers.map((provider) => <div key={provider.provider_id}>{provider.logo_path && <img src={getProviderLogo(provider.logo_path)} alt="" />}<span>{provider.provider_name}</span></div>)}</div> : <p>現在、日本の定額配信サービスは確認できません。</p>}<small>配信状況は変更される場合があります。各サービスの公式情報もご確認ください。</small></section>
 
       {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} allowFullScreen /></div></section>}
@@ -180,4 +182,48 @@ function WorkDetailModal({ work, watched, onToggleWatched, onClose }: { work: Wo
       <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}<p>{character.description}</p></div></article>)}</div></section>
     </div>}
   </Modal>;
+}
+
+/** TV作品を選んだ時だけ出演エピソードを取得し、一覧表示の通信量を増やさないようにします。 */
+function EpisodeAppearances({ work }: { work: Work }) {
+  const manualResult = work.episodeAppearances?.length
+    ? { status: "exact" as const, appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length }
+    : null;
+  const [result, setResult] = useState<EpisodeAppearanceResult | null>(manualResult);
+
+  useEffect(() => {
+    if (work.episodeAppearances?.length) {
+      setResult({ status: "exact", appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length });
+      return;
+    }
+    if (work.isManual) {
+      setResult(null);
+      return;
+    }
+    const controller = new AbortController();
+    setResult(null);
+    const params = new URLSearchParams({ seriesId: String(work.id) });
+    [getSourceTitle(work), work.original_name, work.name].filter((title): title is string => Boolean(title))
+      .forEach((title) => params.append("title", title));
+    fetch(`/api/tmdb/episode-appearances?${params}`, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("episode request failed");
+        return response.json() as Promise<EpisodeAppearanceResult>;
+      })
+      .then(setResult)
+      .catch(() => undefined);
+    return () => controller.abort();
+  }, [work.id, work.isManual, work.episodeAppearances]);
+
+  // 具体的なシーズン・話数が取得できた作品だけに欄を表示します。
+  if (!result?.appearances.length) return null;
+  return <section className="detail-section episode-appearances">
+    <h3>出演エピソード</h3>
+    <ol>{result.appearances.map((episode) => <li key={`${episode.seasonNumber}-${episode.episodeNumber}`}>
+      <strong>S{episode.seasonNumber} E{episode.episodeNumber}</strong>
+      {episode.title && <span>「{episode.title}」</span>}
+      {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
+      {episode.character && <small>{episode.character}</small>}
+    </li>)}</ol>
+  </section>;
 }

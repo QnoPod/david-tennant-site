@@ -242,6 +242,12 @@ img { display: block; max-width: 100%; }
 .detail-section h3 { margin: 0 0 18px; color: var(--gold); font-family: var(--serif); font-size: 23px; font-weight: 600; }
 .detail-section > p { color: #55555b; font-size: 13px; line-height: 1.9; white-space: pre-line; }
 .detail-section > small { display: block; margin-top: 12px; color: var(--muted); font-size: 9px; }
+.episode-appearances ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.episode-appearances li { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: baseline; gap: 10px; padding: 12px 14px; background: var(--paper); }
+.episode-appearances li strong { color: var(--blue); font-size: 11px; letter-spacing: .08em; }
+.episode-appearances li span { font-family: var(--serif); font-size: 16px; }
+.episode-appearances li time, .episode-appearances li small { color: var(--muted); font-size: 9px; }
+.episode-appearances li small { grid-column: 2 / -1; }
 .provider-detail-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .provider-detail-list > div { min-width: 150px; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid var(--line); }
 .provider-detail-list img { width: 34px; height: 34px; border-radius: 6px; }
@@ -486,6 +492,9 @@ img { display: block; max-width: 100%; }
   .work-status--favorite { right: 5px; }
   .work-detail__backdrop { height: 190px; margin: -28px -20px -70px; }
   .work-detail > header h2 { font-size: 40px; }
+  .episode-appearances li { grid-template-columns: 62px 1fr; }
+  .episode-appearances li time { grid-column: 2; }
+  .episode-appearances li small { grid-column: 2; }
   .work-characters article { grid-template-columns: 82px 1fr; gap: 12px; }
   .work-characters img { width: 82px; height: 82px; }
   .character-timeline-card { grid-template-columns: 82px 1fr; }
@@ -534,4 +543,3 @@ img { display: block; max-width: 100%; }
   .mobile-title-nowrap { display: block; white-space: nowrap; font-size: 28px; }
   .section-heading:has(.mobile-link-break) .text-link { display: block; text-align: right; }
 }
-

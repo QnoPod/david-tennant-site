@@ -27,6 +27,26 @@ export type Work = {
   posterUrl?: string;
   backdropUrl?: string;
   manualCharacters?: WorkCharacter[];
+  /** 特定の回だけに出演する場合のエピソード情報。手入力作品でも使用できます。 */
+  episodeAppearances?: EpisodeAppearance[];
+};
+
+/** TVシリーズ内でデイヴィッド・テナントが出演した1エピソード。 */
+export type EpisodeAppearance = {
+  seasonNumber: number;
+  episodeNumber: number;
+  title?: string;
+  originalTitle?: string;
+  airDate?: string;
+  character?: string;
+};
+
+/** TMDBの出演エピソード照会結果。 */
+export type EpisodeAppearanceResult = {
+  status: "exact" | "partial" | "count-only" | "full-series" | "not-found";
+  appearances: EpisodeAppearance[];
+  episodeCount?: number;
+  note?: string;
 };
 
 export type WorkCharacter = {

@@ -188,9 +188,67 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     description: "デイヴィッド・テナントへの特別表彰を知らせるサプライズ映像。",
     tags: ["Awards"],
   },
+
+  {
+    slug: "michael-sheen-national-treasure-david-tennant",
+    title: "Michael Sheen Buys National Treasure David Tennant | The Last Leg",
+    year: "2023",
+    publishedDate: "2023-02-07",
+    source: "The Last Leg",
+    mediaType: "video",
+    videoId: "fqRBpSiEQIU",
+    externalUrl: "https://www.youtube.com/watch?v=fqRBpSiEQIU",
+    thumbnailUrl: "https://i.ytimg.com/vi/fqRBpSiEQIU/hqdefault.jpg",
+    duration: "Video",
+    description: "『The Last Leg』で、番組が“国宝”デイヴィッド・テナントを売りに出し、マイケル・シーンが最高額で落札するコメディー企画。",
+    tags: ["Michael Sheen", "Comedy", "The Last Leg"],
+  },
+  {
+    slug: "david-michael-good-omens-premiere",
+    title: "David Tennant & Michael Sheen Interview Good Omens Premiere",
+    year: "2019",
+    publishedDate: "2019-06-04",
+    source: "YouTube",
+    mediaType: "video",
+    videoId: "82_PciuxSow",
+    externalUrl: "https://www.youtube.com/watch?v=82_PciuxSow",
+    thumbnailUrl: "https://i.ytimg.com/vi/82_PciuxSow/hqdefault.jpg",
+    duration: "Video",
+    description: "『グッド・オーメンズ』プレミアで、デイヴィッド・テナントとマイケル・シーンがクロウリーとアジラフェル、二人の共演について語る。",
+    tags: ["Good Omens", "Michael Sheen", "Crowley", "Aziraphale"],
+  },
+  {
+    slug: "jon-hamm-david-tennant-michael-sheen-dueling-hamlets",
+    title: "Jon Hamm, David Tennant, Michael Sheen Perform Dueling Hamlets",
+    year: "2018",
+    publishedDate: "2018-10-08",
+    source: "Vulture",
+    mediaType: "video",
+    videoId: "4J4ysolU-7U",
+    externalUrl: "https://www.youtube.com/watch?v=4J4ysolU-7U",
+    thumbnailUrl: "https://i.ytimg.com/vi/4J4ysolU-7U/hqdefault.jpg",
+    duration: "Video",
+    description: "ジョン・ハムをオフィーリア役に、デイヴィッド・テナントとマイケル・シーンが交代でハムレットを演じる特別インタビュー。",
+    tags: ["Good Omens", "Michael Sheen", "Jon Hamm", "Hamlet", "Vulture"],
+  },
+  {
+    slug: "good-omens-nycc-2018",
+    title: "David Tennant, Michael Sheen and Jon Hamm Talk \"Good Omens\" | NYCC 2018",
+    year: "2018",
+    publishedDate: "2018-10-07",
+    source: "NYCC 2018",
+    mediaType: "video",
+    videoId: "rZyydRTuQJ0",
+    externalUrl: "https://www.youtube.com/watch?v=rZyydRTuQJ0",
+    thumbnailUrl: "https://i.ytimg.com/vi/rZyydRTuQJ0/hqdefault.jpg",
+    duration: "Video",
+    description: "NYCC 2018のパネルで、デイヴィッド・テナント、マイケル・シーン、ジョン・ハムらが『グッド・オーメンズ』の世界と役作りを語る。",
+    tags: ["Good Omens", "Michael Sheen", "Jon Hamm", "NYCC"],
+  },
 ];
 
 /** 公開年月日の新しい順に並べた一覧を返します。元データは変更しません。 */
 export function getInterviewsNewestFirst() {
   return [...interviewCatalog].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 }
+

@@ -146,8 +146,10 @@ export const davidMichaelGoodOmensSeasonTwoTranscript = [
   },
   {
     "speakerEn": "Michael & David",
+    "speakerJa": "マイケル・シーン＆デイヴィッド・テナント",
     "en": "Thank you. Bye bye.",
     "ja": "ありがとう。さようなら。"
   }
 ] as const;
+
 

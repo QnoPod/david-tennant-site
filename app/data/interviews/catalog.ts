@@ -18,7 +18,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://www.datocms-assets.com/39109/1783013189-l-officiel_usa_julaug26_watchlist_bella_web_11.jpg?auto=format&fit=max&w=1200",
     duration: "Article",
     description: "『Rivals』でタギーを演じるベラ・マクリーンが、撮影現場の熱量と、共演者デイヴィッド・テナントの勤勉さや明るさを語る。",
-    tags: ["Rivals", "Article"],
+    tagGroups: {
+      actors: ["Bella Maclean","David Tennant"],
+      genres: ["Rivals","Article"],
+      sources: ["L'OFFICIEL USA"],
+    },
   },
   {
     slug: "michael-sheen-david-tennant-one-final-time-lorraine",
@@ -32,7 +36,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/G-VJL50HKRM/hqdefault.jpg",
     duration: "Video · 3:58〜",
     description: "マイケル・シーンが『Good Omens』での共演を経て、デイヴィッド・テナントとの信頼関係について語る。",
-    tags: ["Michael Sheen"],
+    tagGroups: {
+      actors: ["Michael Sheen","David Tennant"],
+      genres: ["Good Omens"],
+      sources: ["Lorraine"],
+    },
   },
   {
     slug: "michael-sheen-his-dark-materials-this-morning",
@@ -46,7 +54,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/bqK9HOk5M-0/hqdefault.jpg",
     duration: "Video · 7:54〜",
     description: "マイケル・シーンが、友人デイヴィッド・テナントとの次の共演の可能性について語る。",
-    tags: ["Michael Sheen", "This Morning"],
+    tagGroups: {
+      actors: ["Michael Sheen","David Tennant"],
+      genres: ["Interview"],
+      sources: ["This Morning"],
+    },
   },
   {
     slug: "david-tennant-evil-character-jessica-jones",
@@ -60,7 +72,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/ee9R5cdH48Y/hqdefault.jpg",
     duration: "Video",
     description: "キャリアを振り返りながら、『ジェシカ・ジョーンズ』のキルグレイヴ、『ドクター・フー』、『グッド・オーメンズ』、『ステージド』、『ブロードチャーチ』について語るBAFTAのインタビュー。",
-    tags: ["Jessica Jones", "Kilgrave", "Doctor Who", "Good Omens", "BAFTA"],
+    tagGroups: {
+      actors: ["David Tennant"],
+      genres: ["Jessica Jones","Doctor Who","Good Omens"],
+      sources: ["BAFTA"],
+    },
   },
   {
     slug: "david-tennant-injured-himself-rivals-scene",
@@ -74,7 +90,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/1doxWTIY5mQ/hqdefault.jpg",
     duration: "Video",
     description: "『Rivals』の撮影中のエピソードや役作りについて、アレックス・ハッセルらと語るインタビュー。",
-    tags: ["Rivals", "Alex Hassell", "Tony Baddingham"],
+    tagGroups: {
+      actors: ["David Tennant","Alex Hassell"],
+      genres: ["Rivals"],
+      sources: ["Heart"],
+    },
   },
   {
     slug: "rivals-tennant-hassell-tv-insider",
@@ -88,7 +108,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/OfefFfJoq60/hqdefault.jpg",
     duration: "Video",
     description: "『Rivals』のデイヴィッド・テナントとアレックス・ハッセルが、トニーとルパートの対立と二人の関係性を語る。",
-    tags: ["Rivals", "Alex Hassell", "Tony Baddingham", "Rupert Campbell-Black"],
+    tagGroups: {
+      actors: ["David Tennant","Alex Hassell"],
+      genres: ["Rivals"],
+      sources: ["TV Insider"],
+    },
   },
   {
     slug: "david-tennant-doctor-who-devilish-demon",
@@ -102,7 +126,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/c5usETfdf2c/hqdefault.jpg",
     duration: "Video",
     description: "『ドクター・フー』と『グッド・オーメンズ』を中心に、デイヴィッド・テナントの出演作について語るインタビュー。",
-    tags: ["Doctor Who", "Good Omens", "This Morning"],
+    tagGroups: {
+      actors: ["David Tennant","Michael Sheen"],
+      genres: ["Doctor Who","Good Omens"],
+      sources: ["This Morning"],
+    },
   },
   {
     slug: "david-tennant-emoji-graham-norton",
@@ -116,7 +144,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/UztioBpKlRk/hqdefault.jpg",
     duration: "Video",
     description: "グラハム・ノートンとのトークで、絵文字やメッセージ文化にまつわるユーモラスなエピソードを披露する。",
-    tags: ["The Graham Norton Show", "Comedy", "BBC"],
+    tagGroups: {
+      actors: ["David Tennant"],
+      genres: ["Comedy"],
+      sources: ["The Graham Norton Show - BBC"],
+    },
   },
   {
     slug: "david-tennant-child-five-james-corden",
@@ -130,7 +162,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/RqXkjxd3Ub8/hqdefault.jpg",
     duration: "Video",
     description: "ジェームズ・コーデンとエリザベス・バンクスを交え、家族や子どもについて楽しく語るトーク。",
-    tags: ["James Corden", "Family", "Georgia Tennant"],
+    tagGroups: {
+      actors: ["David Tennant","Georgia Tennant","James Corden"],
+      genres: ["Family","Comedy"],
+      sources: ["The Late Late Show with James Corden"],
+    },
   },
   {
     slug: "david-tennant-red-hair-this-morning",
@@ -144,7 +180,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/1cbqMxZUon8/hqdefault.jpg",
     duration: "Video",
     description: "映画『You, Me and Him』の出演や、赤い髪の理由について語るインタビュー。",
-    tags: ["You, Me and Him", "This Morning"],
+    tagGroups: {
+      actors: ["David Tennant"],
+      genres: ["You, Me and Him"],
+      sources: ["This Morning"],
+    },
   },
   {
     slug: "david-tennant-fights-the-demon-of-imposter-syndrome",
@@ -158,7 +198,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/3sBA0RWPAbY/hqdefault.jpg",
     duration: "Video",
     description: "恐怖心やインポスター症候群、舞台で頭の中に響く「悪魔の声」、経験を重ねることで得た向き合い方をデイヴィッドが語る。",
-    tags: ["Acting"],
+    tagGroups: {
+      actors: ["David Tennant"],
+      genres: ["Acting"],
+      sources: ["Off Camera with Sam Jones"],
+    },
   },
   {
     slug: "david-tennant-rsc-winter-2013",
@@ -172,7 +216,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/fs55s8990OA/hqdefault.jpg",
     duration: "Video",
     description: "ロイヤル・シェイクスピア・カンパニーへの復帰と、シェイクスピア作品への思いを語るインタビュー。",
-    tags: ["Royal Shakespeare Company", "Shakespeare", "Richard II"],
+    tagGroups: {
+      actors: ["David Tennant"],
+      genres: ["Shakespeare","Richard II"],
+      sources: ["Royal Shakespeare Company"],
+    },
   },
   {
     slug: "nta-2015-special-recognition",
@@ -186,7 +234,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/Li_WIjv53pI/hqdefault.jpg",
     duration: "Video",
     description: "デイヴィッド・テナントへの特別表彰を知らせるサプライズ映像。",
-    tags: ["Awards"],
+    tagGroups: {
+      actors: ["David Tennant"],
+      genres: ["Awards"],
+      sources: ["National Television Awards"],
+    },
   },
 
   {
@@ -201,7 +253,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/fqRBpSiEQIU/hqdefault.jpg",
     duration: "Video",
     description: "『The Last Leg』で、番組が“国宝”デイヴィッド・テナントを売りに出し、マイケル・シーンが最高額で落札するコメディー企画。",
-    tags: ["Michael Sheen", "Comedy", "The Last Leg"],
+    tagGroups: {
+      actors: ["Michael Sheen","David Tennant"],
+      genres: ["Comedy"],
+      sources: ["The Last Leg"],
+    },
   },
   {
     slug: "david-michael-good-omens-premiere",
@@ -215,7 +271,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/82_PciuxSow/hqdefault.jpg",
     duration: "Video",
     description: "『グッド・オーメンズ』プレミアで、デイヴィッド・テナントとマイケル・シーンがクロウリーとアジラフェル、二人の共演について語る。",
-    tags: ["Good Omens", "Michael Sheen", "Crowley", "Aziraphale"],
+    tagGroups: {
+      actors: ["David Tennant","Michael Sheen"],
+      genres: ["Good Omens"],
+      sources: ["YouTube"],
+    },
   },
   {
     slug: "jon-hamm-david-tennant-michael-sheen-dueling-hamlets",
@@ -229,7 +289,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/4J4ysolU-7U/hqdefault.jpg",
     duration: "Video",
     description: "ジョン・ハムをオフィーリア役に、デイヴィッド・テナントとマイケル・シーンが交代でハムレットを演じる特別インタビュー。",
-    tags: ["Good Omens", "Michael Sheen", "Jon Hamm", "Hamlet", "Vulture"],
+    tagGroups: {
+      actors: ["Jon Hamm","David Tennant","Michael Sheen"],
+      genres: ["Good Omens","Hamlet","Shakespeare"],
+      sources: ["Vulture"],
+    },
   },
   {
     slug: "good-omens-nycc-2018",
@@ -243,7 +307,11 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     thumbnailUrl: "https://i.ytimg.com/vi/rZyydRTuQJ0/hqdefault.jpg",
     duration: "Video",
     description: "NYCC 2018のパネルで、デイヴィッド・テナント、マイケル・シーン、ジョン・ハムらが『グッド・オーメンズ』の世界と役作りを語る。",
-    tags: ["Good Omens", "Michael Sheen", "Jon Hamm", "NYCC"],
+    tagGroups: {
+      actors: ["David Tennant","Michael Sheen","Jon Hamm"],
+      genres: ["Good Omens","NYCC"],
+      sources: ["NYCC 2018"],
+    },
   },
 ];
 
@@ -251,4 +319,5 @@ export const interviewCatalog: readonly InterviewSummary[] = [
 export function getInterviewsNewestFirst() {
   return [...interviewCatalog].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 }
+
 

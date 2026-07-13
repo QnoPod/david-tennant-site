@@ -1,5 +1,5 @@
 import { interviewCatalog } from "./catalog";
-import type { Interview, TranscriptLine } from "./types";
+import { getAllInterviewTags, type Interview, type TranscriptLine } from "./types";
 
 type TranscriptLoader = () => Promise<readonly TranscriptLine[]>;
 
@@ -65,11 +65,12 @@ export async function searchInterviewSlugs(query: string): Promise<string[]> {
     const loadTranscript = transcriptLoaders[summary.slug];
     const transcript = loadTranscript ? await loadTranscript() : [];
     const searchable = [
-      summary.title, summary.source, summary.description, ...summary.tags,
+      summary.title, summary.source, summary.description, ...getAllInterviewTags(summary.tagGroups),
       ...transcript.flatMap((line) => [line.speakerEn, line.speakerJa, line.en, line.ja]),
     ].join(" ").normalize("NFKC").toLowerCase();
     return searchable.includes(needle) ? summary.slug : null;
   }));
   return matches.filter((slug): slug is string => Boolean(slug));
 }
+
 

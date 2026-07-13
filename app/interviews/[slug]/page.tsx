@@ -5,6 +5,7 @@ import InterviewMedia from "../../components/interviews/InterviewMedia";
 import InterviewTranscript from "../../components/interviews/InterviewTranscript";
 import { interviewCatalog } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
+import { getAllInterviewTags } from "../../data/interviews/types";
 
 type InterviewPageProps = { params: Promise<{ slug: string }> };
 
@@ -23,10 +24,11 @@ export default async function InterviewDetailPage({ params }: InterviewPageProps
   if (!interview) notFound();
   return <main id="main-content"><article className="interview-detail shell">
     <Link className="back-link" href="/interviews">← インタビュー一覧</Link>
-    <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1>{interview.title}</h1><p>{interview.description}</p><div className="tag-row">{interview.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></header>
+    <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1>{interview.title}</h1><p>{interview.description}</p><div className="tag-row">{getAllInterviewTags(interview.tagGroups).map((tag) => <span key={tag}>{tag}</span>)}</div></header>
     <InterviewMedia interview={interview} />
     <div className="transcript-heading"><div><p className="eyebrow">{interview.mediaType === "video" ? "TRANSCRIPT & TRANSLATION" : "ARTICLE & TRANSLATION"}</p><h2>英語原文・日本語訳</h2></div><a className="text-link" href={interview.externalUrl} target="_blank" rel="noreferrer">{interview.mediaType === "video" ? "YouTubeで見る" : "掲載記事を読む"} ↗</a></div>
     <InterviewTranscript lines={interview.transcript} />
     <aside className="translation-note"><strong>翻訳について</strong><p>読みやすさを優先した日本語訳です。動画の内容や文脈に合わせて、今後注釈を追加する場合があります。</p></aside>
   </article></main>;
 }
+

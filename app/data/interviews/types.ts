@@ -1,3 +1,15 @@
+/** インタビューのタグを、役者・ジャンル・配信元に分けて管理します。 */
+export type InterviewTagGroups = {
+  actors: readonly string[];
+  genres: readonly string[];
+  sources: readonly string[];
+};
+
+/** カード表示・本文検索で3分類のタグをまとめて扱うための共通関数です。 */
+export function getAllInterviewTags(tagGroups: InterviewTagGroups): readonly string[] {
+  return [...tagGroups.actors, ...tagGroups.genres, ...tagGroups.sources];
+}
+
 /** インタビュー一覧で使う、本文を含まない軽量な基本情報。 */
 export type InterviewSummary = {
   slug: string;
@@ -12,7 +24,7 @@ export type InterviewSummary = {
   thumbnailUrl: string;
   duration: string;
   description: string;
-  tags: readonly string[];
+  tagGroups: InterviewTagGroups;
 };
 
 /** 英語原文と日本語訳を1組にした本文データ。 */
@@ -27,3 +39,4 @@ export type TranscriptLine = {
 export type Interview = InterviewSummary & {
   transcript: readonly TranscriptLine[];
 };
+

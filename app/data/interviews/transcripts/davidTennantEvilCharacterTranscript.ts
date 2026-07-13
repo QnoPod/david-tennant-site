@@ -15,13 +15,13 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And I'll have to put him down, 'cause he's getting old.",
-    "ja": "そして私は彼を安楽死させなければならないでしょう、彼は年老いていますから。"
+    "ja": "そして僕は彼を安楽死させなければならないでしょう、彼は年老いていますから。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Hello, David Tennant here. I'm going to roll the dice of my career and find out what it's got to tell me.",
-    "ja": "こんにちは、デイヴィッド・テナントです。私は自分のキャリアのサイコロを振って、 それが私に何を教えてくれるかを見つけようと思います。"
+    "ja": "こんにちは、デイヴィッド・テナントです。僕は自分のキャリアのサイコロを振って、 それが僕に何を教えてくれるかを見つけようと思います。"
   },
   {
     "speakerEn": "David Tennant",
@@ -93,13 +93,13 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And Kilgrave certainly afforded me that.",
-    "ja": "そしてキルグレイブは確かに私にその機会を与えてくれました。"
+    "ja": "そしてキルグレイブは確かに僕にその機会を与えてくれました。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "It was a great series. A lot darker than a lot of the Marvel stuff that we see now.",
-    "ja": "素晴らしいシリーズでした。私たちが今見ているマーベル作品の多くよりもずっと暗 かったです。"
+    "ja": "素晴らしいシリーズでした。僕たちが今見ているマーベル作品の多くよりもずっと暗 かったです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -129,7 +129,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Something I was very proud to be a part of. It managed to sort of straddle the worlds of having something very important and difficult to talk about.",
-    "ja": "私が参加できたことをとても誇りに思っている作品です。それは、語るのが非常に重 要で難しいことと、..."
+    "ja": "僕が参加できたことをとても誇りに思っている作品です。それは、語るのが非常に重 要で難しいことと、..."
   },
   {
     "speakerEn": "David Tennant",
@@ -147,19 +147,19 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Oh, well that's me in Staged.",
-    "ja": "ああ、これは『ステージド』の私ですね。"
+    "ja": "ああ、これは『ステージド』の僕ですね。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Staged is something we made during lockdown. From our own houses.",
-    "ja": "『ステージド』はロックダウン中に私たちが作ったものです。自分たちの家から。"
+    "ja": "『ステージド』はロックダウン中に僕たちが作ったものです。自分たちの家から。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I was in it, my wife Georgia was in it. And then Michael Sheen and Anna Lundberg from their house in Wales were also in it.",
-    "ja": "私と妻のジョージアが出演しました。そしてウェールズの家からマイケル・シーンと アナ・ルンドバーグも出演しました。"
+    "ja": "僕と妻のジョージアが出演しました。そしてウェールズの家からマイケル・シーンと アナ・ルンドバーグも出演しました。"
   },
   {
     "speakerEn": "David Tennant",
@@ -195,13 +195,13 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And one of the really exciting things about it is everyone was locked in their house, we quickly discovered.",
-    "ja": "そして、本当にエキサイティングだったことの一つは、みんなが家から出られない状 態だったことです。私たちはすぐにそれに気づきました。"
+    "ja": "そして、本当にエキサイティングだったことの一つは、みんなが家から出られない状 態だったことです。僕たちはすぐにそれに気づきました。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "So when we approached Samuel L. Jackson, Judi Dench, Ewan McGregor, Jim Parsons, sort of everyone we approached went, \"Yeah, I'm not doing anything else.\"",
-    "ja": "だから、サミュエル・L・ジャクソン、ジュディ・デンチ、ユアン・マクレガー、ジ ム・パーソンズなどにアプローチした時、私たちが声をかけたほぼ全員が「ええ、他に何 もしていないから」と言ってくれました。"
+    "ja": "だから、サミュエル・L・ジャクソン、ジュディ・デンチ、ユアン・マクレガー、ジ ム・パーソンズなどにアプローチした時、僕たちが声をかけたほぼ全員が「ええ、他に何 もしていないから」と言ってくれました。"
   },
   {
     "speakerEn": "David Tennant",
@@ -243,7 +243,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "It was the first big TV job I'd had really. Certainly the first thing where I was in a whole series.",
-    "ja": "私にとって本当に初めての大きなテレビの仕事でした。全シリーズに出演したのも間 違いなくこれが初めてです。"
+    "ja": "僕にとって本当に初めての大きなテレビの仕事でした。全シリーズに出演したのも間 違いなくこれが初めてです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -267,7 +267,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "It was a very significant moment for me I suppose. The first time I'd had something on the telly that people noticed, made me move from Scotland to London, and kind of everything that I've achieved professionally ever since came from that show.",
-    "ja": "私にとって非常に重要な瞬間だったと思います。人々が注目してくれるテレビ番組に 初めて出演し、それがきっかけでスコットランドからロンドンへと移住し、それ以来、職 業的に達成したことはすべてあの番組から始まったようなものですから。"
+    "ja": "僕にとって非常に重要な瞬間だったと思います。人々が注目してくれるテレビ番組に 初めて出演し、それがきっかけでスコットランドからロンドンへと移住し、それ以来、職 業的に達成したことはすべてあの番組から始まったようなものですから。"
   },
   {
     "speakerEn": "David Tennant",
@@ -309,7 +309,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Michael Sheen was definitely cast first. He's never let me forget it.",
-    "ja": "マイケル・シーンが間違いなく最初にキャスティングされました。彼は決して私にそ のことを忘れさせてくれません。"
+    "ja": "マイケル・シーンが間違いなく最初にキャスティングされました。彼は決して僕にそ のことを忘れさせてくれません。"
   },
   {
     "speakerEn": "David Tennant",
@@ -327,7 +327,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Before either of us though, there'd been a movie version, which I think was Terry Gilliam was going to direct. No, I think Johnny Depp was going to play Crowley.",
-    "ja": "でも私たちのどちらよりも前に、映画化の話があって、たしかテリー・ギリアムが監 督する予定だったと思います。いや、ジョニー・デップがクロウリーを演じる予定だった と思います。"
+    "ja": "でも僕たちのどちらよりも前に、映画化の話があって、たしかテリー・ギリアムが監 督する予定だったと思います。いや、ジョニー・デップがクロウリーを演じる予定だった と思います。"
   },
   {
     "speakerEn": "David Tennant",
@@ -363,7 +363,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "One of two Doctors that I have played. I was number 10 and number 14.",
-    "ja": "私が演じた2人のドクターのうちの一人です。私は10代目と14代目でした。"
+    "ja": "僕が演じた2人のドクターのうちの一人です。僕は10代目と14代目でした。"
   },
   {
     "speakerEn": "David Tennant",
@@ -381,7 +381,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I came in in 2005 and did a little stint until about 2010 and then for the 60th anniversary I came back and did another little stint. Which is when I became the 14th Doctor.",
-    "ja": "私は2005年に参加し、2010年頃まで短い期間務めました。その後、60周年の際に 戻ってきて、もう一度短い期間務めました。その時に14代目ドクターになったんです。"
+    "ja": "僕は2005年に参加し、2010年頃まで短い期間務めました。その後、60周年の際に 戻ってきて、もう一度短い期間務めました。その時に14代目ドクターになったんです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -393,13 +393,13 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "There's been 15 sort of Doctors in the kind of run, but there's also... there was also John Hurt which was a Doctor we didn't know about.",
-    "ja": "レギュラーとして約15人のドクターがいますが、他にも...私たちが知らなかったジョ ン・ハートのドクターもいましたし。"
+    "ja": "レギュラーとして約15人のドクターがいますが、他にも...僕たちが知らなかったジョ ン・ハートのドクターもいましたし。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "There's also... there's a fugitive Doctor, there's a couple of versions of the First Doctor... Anyway, I was the 10th.",
-    "ja": "さらに...逃亡者ドクターもいるし、初代ドクターにもいくつかのバージョンがある し...とにかく、私は10代目でした。"
+    "ja": "さらに...逃亡者ドクターもいるし、初代ドクターにもいくつかのバージョンがある し...とにかく、僕は10代目でした。"
   },
   {
     "speakerEn": "David Tennant",
@@ -411,7 +411,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "But if you don't know what Doctor Who is about, you should go and check it out. It's an evolving and wonderful and very alive world, which has a lot of very devoted followers, of which I am one.",
-    "ja": "でも『ドクター・フー』がどんな番組か知らないのなら、ぜひ見てみるべきです。そ れは進化し続ける、素晴らしく、非常に活気に満ちた世界であり、熱狂的なファンがたく さんいます。私もその一人です。"
+    "ja": "でも『ドクター・フー』がどんな番組か知らないのなら、ぜひ見てみるべきです。そ れは進化し続ける、素晴らしく、非常に活気に満ちた世界であり、熱狂的なファンがたく さんいます。僕もその一人です。"
   },
   {
     "speakerEn": "David Tennant",
@@ -465,7 +465,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And we stayed in this brilliant hotel called The Bull, which I hope is still there and I hope now they've seen this they'll invite me back.",
-    "ja": "ザ・ブルという素晴らしいホテルに泊まりました。まだあそこにあるといいなと思い ますし、彼らがこれを見たら私をまた招待してくれるといいなと思います。"
+    "ja": "ザ・ブルという素晴らしいホテルに泊まりました。まだあそこにあるといいなと思い ますし、彼らがこれを見たら僕をまた招待してくれるといいなと思います。"
   },
   {
     "speakerEn": "David Tennant",
@@ -477,7 +477,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I don't know that I've ever really had a methodology, or a particular understanding of what it is one does... with a character.",
-    "ja": "私はこれまで、キャラクターに対して自分が何をしているのかについての方法論や特 別な理解を持っていたことはないと思います。"
+    "ja": "僕はこれまで、キャラクターに対して自分が何をしているのかについての方法論や特 別な理解を持っていたことはないと思います。"
   },
   {
     "speakerEn": "David Tennant",
@@ -507,7 +507,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "So I suppose if anything has evolved over the years, it's just an understanding that we're all scrambling around in the dark and nobody really knows what they're doing.",
-    "ja": "ですから、もし長年で進化したものがあるとすれば、それは「私たちは皆、暗闇の中 を手探りで進んでいて、誰も本当は自分が何をしているのか分かっていないんだ」という 理解だけだと思います。"
+    "ja": "ですから、もし長年で進化したものがあるとすれば、それは「僕たちは皆、暗闇の中 を手探りで進んでいて、誰も本当は自分が何をしているのか分かっていないんだ」という 理解だけだと思います。"
   },
   {
     "speakerEn": "David Tennant",
@@ -519,19 +519,19 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Which of these characters would get on? I mean, I don't think Kilgrave would get on with anyone, and Alec Hardy's pretty grumpy. The Doctor would probably get on with most people. And that's me.",
-    "ja": "これらのキャラクターの誰が気が合うでしょうか?まあ、キルグレイブは誰とも気が 合わないでしょうし、アレック・ハーディはかなり不機嫌ですからね。ドクターは多分ほ とんどの人と気が合うでしょう。そして私自身ですね。"
+    "ja": "これらのキャラクターの誰が気が合うでしょうか?まあ、キルグレイブは誰とも気が 合わないでしょうし、アレック・ハーディはかなり不機嫌ですからね。ドクターは多分ほ とんどの人と気が合うでしょう。そして僕自身ですね。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I mean the staged me was obviously hopefully not too much like the real me. He was quite craven and unpleasant.",
-    "ja": "『ステージド』の私は、幸いにも実際の私とはあまり似ていないはずです。彼はかな り臆病で不愉快な奴でしたから。"
+    "ja": "『ステージド』の僕は、幸いにも実際の僕とはあまり似ていないはずです。彼はかな り臆病で不愉快な奴でしたから。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I'd like me and the Doctor to hang out. Just 'cause I'd quite like a go at time travel.",
-    "ja": "私とドクターで一緒に遊びたいですね。ただタイムトラベルに挑戦してみたいからで す。"
+    "ja": "僕とドクターで一緒に遊びたいですね。ただタイムトラベルに挑戦してみたいからで す。"
   },
   {
     "speakerEn": "David Tennant",

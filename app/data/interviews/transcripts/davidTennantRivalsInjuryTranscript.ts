@@ -21,7 +21,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Not my sexiest move.",
-    "ja": "私の最もセクシーな動きではなかったですね。"
+    "ja": "僕の最もセクシーな動きではなかったですね。"
   },
   {
     "speakerEn": "Pandora",
@@ -111,7 +111,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "You're the perfect embodiment of my all-time hero as well, I'd like to point out.",
-    "ja": "あなたは私の永遠のヒーローの完璧な体現者でもあると、指摘しておきたいですね。"
+    "ja": "あなたは僕の永遠のヒーローの完璧な体現者でもあると、指摘しておきたいですね。"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -195,7 +195,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Well I suppose he sort of does occupy the space of the bad guy, doesn't he, really in this? You obviously just have to think about what his set of circumstances is and why he is who he is. So I think he's... I don't think he's despicable. I think he's hard done by, I think he's badly treated by this guy over here.",
-    "ja": "まあ、この作品の中では彼はいわゆる悪役のポジションにいるわけですよね?当然、 彼の置かれた状況や、なぜ彼がそういう人間になったのかを考えなければなりません。だ から私は彼が...彼が卑劣だとは思いません。彼は不当な扱いを受けていると思います、こ このこの男(アレックス演じるルパート)にひどい扱いを受けていると思いますよ。"
+    "ja": "まあ、この作品の中では彼はいわゆる悪役のポジションにいるわけですよね?当然、 彼の置かれた状況や、なぜ彼がそういう人間になったのかを考えなければなりません。だ から僕は彼が...彼が卑劣だとは思いません。彼は不当な扱いを受けていると思います、こ このこの男(アレックス演じるルパート)にひどい扱いを受けていると思いますよ。"
   },
   {
     "speakerEn": "Alex Hassell",
@@ -231,7 +231,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Well I lived through it. I mean I'm a little bit older than Alex, and I remember... what's been... what's been uh one of the great joys of watching the series back is the music that they've chosen and the way it sort of punctuates the action. And all those fantastic tracks, that I think because I was a teenager at the time, a lot of the things I... it was... wasn't cool to like that song. You know, 'cause you had to, you know you had to like the cool stuff. And actually now, you just go... some of that music was absolutely glorious! And to see it set alongside some of the visuals in this is... is... it's quite intoxicating I think.",
-    "ja": "まあ、私はその時代を生きてきましたから。アレックスより少し年上で、覚えている のは...このシリーズを見返す際の大きな喜びの一つは、選ばれた音楽と、それがアクショ ンをどのように強調しているかということです。そして、それらの素晴らしい曲の数々 は、私は当時ティーンエイジャーだったこともあって、多くの場合...その曲を好きだと言 うのはクールじゃなかったんです。クールなものを好きでいなきゃいけなかったから。で も今は実際に、その音楽のいくつかは本当に素晴らしいものだった!と思えます。そし て、この作品のビジュアルと一緒にそれを見るのは...かなり魅惑的だと思います。"
+    "ja": "まあ、僕はその時代を生きてきましたから。アレックスより少し年上で、覚えている のは...このシリーズを見返す際の大きな喜びの一つは、選ばれた音楽と、それがアクショ ンをどのように強調しているかということです。そして、それらの素晴らしい曲の数々 は、僕は当時ティーンエイジャーだったこともあって、多くの場合...その曲を好きだと言 うのはクールじゃなかったんです。クールなものを好きでいなきゃいけなかったから。で も今は実際に、その音楽のいくつかは本当に素晴らしいものだった!と思えます。そし て、この作品のビジュアルと一緒にそれを見るのは...かなり魅惑的だと思います。"
   },
   {
     "speakerEn": "Pandora",
@@ -261,7 +261,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I had to launch my... similarly I had to launch myself onto a bed at one point, in in some moment of what is going to be sort of erotic ecstasy. And uh... slightly slightly mistimed it and ended up smashing my knee open on the bed... on the bed frame. That wasn't...",
-    "ja": "私は自分の体を...同じように、ある時ベッドに向かって体を投げ出さなきゃいけなく て、官能的なエクスタシーになるような瞬間に。それで...少しタイミングを間違えて、 ベッドの...ベッドのフレームで膝を強打してしまったんです。それは..."
+    "ja": "僕は自分の体を...同じように、ある時ベッドに向かって体を投げ出さなきゃいけなく て、官能的なエクスタシーになるような瞬間に。それで...少しタイミングを間違えて、 ベッドの...ベッドのフレームで膝を強打してしまったんです。それは..."
   },
   {
     "speakerEn": "Alex Hassell",
@@ -279,7 +279,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Not my sexiest move.",
-    "ja": "私の最もセクシーな動きではなかったですね。"
+    "ja": "僕の最もセクシーな動きではなかったですね。"
   },
   {
     "speakerEn": "Pandora",
@@ -327,7 +327,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I don't know, I suppose the one that I do get a lot is \"Where's your sonic screwdriver?\" And the only trouble... and I don't mind that at all and I love a Doctor Who reference at any point of day or night, but I just don't have a very good answer for it. I have one on me, and then that's it always carry one. Always go packing. Always go packing! Yeah.",
-    "ja": "分かりませんが、私がよく聞かれるのは「あなたのソニック・スクリュードライバー はどこですか?」ですね。唯一の困った点は...全く気にしていませんし、昼夜を問わず 『ドクター・フー』の話題が出るのは大好きなんですが、ただうまい返しがないんです よ。「持ってますよ」と言えばそれで終わりで、常に一つ持ち歩いてる。「常に装備して 出かけろ。常に装備して出かけろ!」ってね。ええ。"
+    "ja": "分かりませんが、僕がよく聞かれるのは「あなたのソニック・スクリュードライバー はどこですか?」ですね。唯一の困った点は...全く気にしていませんし、昼夜を問わず 『ドクター・フー』の話題が出るのは大好きなんですが、ただうまい返しがないんです よ。「持ってますよ」と言えばそれで終わりで、常に一つ持ち歩いてる。「常に装備して 出かけろ。常に装備して出かけろ!」ってね。ええ。"
   },
   {
     "speakerEn": "Pandora",
@@ -339,7 +339,7 @@ export const davidTennantRivalsInjuryTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Oh! That's the saying right? Yeah. So have that answer, BAM, then you're done. Be prepared, I was never a Boy Scout, this is the problem. It's not that I mind the question, I just don't... I suppose it's a question people ask not really looking for an answer. Just 'cause they want to say something clever! And they want to see your reaction, so I guess you have to really overdo the reaction every time, just like \"AHHHH!\"",
-    "ja": "おお!それがことわざでしたっけ?ええ。だからその答えを用意しておいて、バン! それで終わり。「備えよ常に」ですね、私はボーイスカウトじゃなかったので、それが問 題なんです。質問されるのが嫌なわけじゃなくて、ただ...人々は本当に答えを求めて質問 しているわけじゃないんでしょうね。ただ何か気の利いたことを言いたいだけで!そして こちらの反応を見たいのだから、毎回かなり大げさに反応しなきゃいけないんだと思いま す。「ああああ!」みたいに。"
+    "ja": "おお!それがことわざでしたっけ?ええ。だからその答えを用意しておいて、バン! それで終わり。「備えよ常に」ですね、僕はボーイスカウトじゃなかったので、それが問 題なんです。質問されるのが嫌なわけじゃなくて、ただ...人々は本当に答えを求めて質問 しているわけじゃないんでしょうね。ただ何か気の利いたことを言いたいだけで!そして こちらの反応を見たいのだから、毎回かなり大げさに反応しなきゃいけないんだと思いま す。「ああああ!」みたいに。"
   },
   {
     "speakerEn": "Pandora",

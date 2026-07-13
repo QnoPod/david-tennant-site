@@ -10,7 +10,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Oh, fear motivates everything I do at all times. It's a constant engine, yeah.",
-    "ja": "ええ、恐怖は常に私のすべての行動の動機になっています。それは絶え間なく動くエンジンのようなものです、はい。"
+    "ja": "ええ、恐怖は常に僕のすべての行動の動機になっています。それは絶え間なく動くエンジンのようなものです、はい。"
   },
   {
     "speakerEn": "Sam Jones",
@@ -34,7 +34,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I think it's just that sense that you're always waiting to be found out. That you're always... it's a, for me, that that's what being an actor is about.",
-    "ja": "常に「いつかバレるんじゃないか」と待ち構えているような感覚だと思います。常に…私にとって、俳優であるということはそういうことなんです。"
+    "ja": "常に「いつかバレるんじゃないか」と待ち構えているような感覚だと思います。常に…僕にとって、俳優であるということはそういうことなんです。"
   },
   {
     "speakerEn": "David Tennant",
@@ -46,7 +46,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And at some point someone's going to tap me on the shoulder and go, \"Come on. You've had your fun. Move on. There's some people who can actually do this. There are some proper actors in the world. Stop pretending and move on. You're a little wee nyaff from Paisley. You don't really get to do this.\"",
-    "ja": "そして、いつか誰かが私の肩を叩いてこう言うんです。「さあ、もう十分楽しんだだろう。次に進みなさい。実際にこれができる人たちがいるんだ。世界にはちゃんとした俳優がいる。ふりをするのはやめて、次に進みなさい。君はペイズリー出身のちっぽけな小僧だ。君がこれをやる資格は本当はないんだよ」と。"
+    "ja": "そして、いつか誰かが僕の肩を叩いてこう言うんです。「さあ、もう十分楽しんだだろう。次に進みなさい。実際にこれができる人たちがいるんだ。世界にはちゃんとした俳優がいる。ふりをするのはやめて、次に進みなさい。君はペイズリー出身のちっぽけな小僧だ。君がこれをやる資格は本当はないんだよ」と。"
   },
   {
     "speakerEn": "Sam Jones",
@@ -70,7 +70,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "But I don't... I say that like it's a bad thing and obviously on some level it probably is quite negative. But I don't hate it. I do see that there's an engine to that that's quite useful.",
-    "ja": "でも、私は…悪いことのように言っていますし、明らかにどこかネガティブな面もあるでしょう。でも、嫌いじゃないんです。それがかなり役立つエンジンになっているとも感じていますから。"
+    "ja": "でも、僕は…悪いことのように言っていますし、明らかにどこかネガティブな面もあるでしょう。でも、嫌いじゃないんです。それがかなり役立つエンジンになっているとも感じていますから。"
   },
   {
     "speakerEn": "Sam Jones",
@@ -124,7 +124,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "\"Ladies and gentlemen, I'm so sorry. It turns out I can't do this anymore and I'm going to have to go and probably retire. So thank you very much for coming. I'm sure we'll manage to refund your tickets. I'm going off stage now to jump off a cliff.\"",
-    "ja": "「ご来場の皆様、本当に申し訳ありません。どうやら私にはもうこれができなくなったようで、おそらく引退しなければなりません。ご来場ありがとうございました。チケットの払い戻しは確実に行います。私はこれから舞台を降りて…崖から飛び降ります」とね。"
+    "ja": "「ご来場の皆様、本当に申し訳ありません。どうやら僕にはもうこれができなくなったようで、おそらく引退しなければなりません。ご来場ありがとうございました。チケットの払い戻しは確実に行います。僕はこれから舞台を降りて…崖から飛び降ります」とね。"
   },
   {
     "speakerEn": "Sam Jones",
@@ -190,7 +190,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And if it's not there, it's not there. So I think I don't know that I could be a singer for that very reason. I think I would cripple myself.",
-    "ja": "だからそこで出てこなければ、もう出てこないんです。まさにその理由で、私は歌手にはなれないと思います。自分で自分を追い詰めてしまうでしょうね。"
+    "ja": "だからそこで出てこなければ、もう出てこないんです。まさにその理由で、僕は歌手にはなれないと思います。自分で自分を追い詰めてしまうでしょうね。"
   },
   {
     "speakerEn": "Sam Jones",
@@ -220,13 +220,13 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "So it's a sort of play where you're watching a play and you're watching people watching a play. And I sit there with a theater program.",
-    "ja": "劇を観ている人たちを観るというような劇で、私は演劇のプログラムを持って座っているんです。"
+    "ja": "劇を観ている人たちを観るというような劇で、僕は演劇のプログラムを持って座っているんです。"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And I got the heebie-jeebies about that, so I wrote out my entire part in tiny little letters inside this theater program. And once I did that, I was absolutely fine. Cause I knew...",
-    "ja": "そこで私は急に不安に襲われて、自分のパートのセリフをすべて小さな文字でそのプログラムの中に書き込みました。そうしたら、もう完全に安心できたんです。だって、分かっていましたから…"
+    "ja": "そこで僕は急に不安に襲われて、自分のパートのセリフをすべて小さな文字でそのプログラムの中に書き込みました。そうしたら、もう完全に安心できたんです。だって、分かっていましたから…"
   },
   {
     "speakerEn": "Sam Jones",
@@ -316,7 +316,7 @@ export const imposterSyndromeTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "And I'm thinking, I'm making up Shakespeare for the Royal Shakespeare Company to an audience of critics who have seen this play 150 times over their careers. They're pulling out their...",
-    "ja": "「私はロイヤル・シェイクスピア・カンパニーで、キャリアの中でこの劇を150回は観てきた批評家たちの前で、シェイクスピアをでっち上げているんだ」と考えていました。「彼らはメモを取り出して…」というように。"
+    "ja": "「僕はロイヤル・シェイクスピア・カンパニーで、キャリアの中でこの劇を150回は観てきた批評家たちの前で、シェイクスピアをでっち上げているんだ」と考えていました。「彼らはメモを取り出して…」というように。"
   },
   {
     "speakerEn": "David Tennant",

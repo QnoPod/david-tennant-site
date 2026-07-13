@@ -28,13 +28,13 @@ export const michaelSheenLorraineTranscript = [
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "Yeah, the strange thing is of course that for years and years and years we didn't work together because we'd be up for the same parts. I mean we look quite different now, obviously he's still very svelte and gorgeous whereas I am as nature intended me.",
-    "ja": "ええ、不思議なことに、僕たちは長年ずっと一緒に仕事をする機会がなかったんです。同じ役のオーディションを受けていましたからね。今はもう見た目もかなり違いますが、彼は今でもとてもスレンダーでゴージャスで、僕は大自然が意図した通りの姿になっていますし（笑）。"
+    "ja": "ええ、不思議なことに、私たちは長年ずっと一緒に仕事をする機会がなかったんです。同じ役のオーディションを受けていましたからね。今はもう見た目もかなり違いますが、彼は今でもとてもスレンダーでゴージャスで、私は大自然が意図した通りの姿になっていますし（笑）。"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "But um, but we would be up for the same sort of roles, so we never really, you know, our paths didn't cross. So now it's so wonderful because we get to actually do stuff together and um, and you know he makes me laugh so much and he's just such a brilliant actor.",
-    "ja": "でも、当時は同じような役柄の候補になっていたので、交わることがなかったんです。だから今は、実際に一緒に仕事ができるのが本当に素晴らしいですね。彼は僕をすごく笑わせてくれるし、とにかく素晴らしい俳優です。"
+    "ja": "でも、当時は同じような役柄の候補になっていたので、交わることがなかったんです。だから今は、実際に一緒に仕事ができるのが本当に素晴らしいですね。彼は私をすごく笑わせてくれるし、とにかく素晴らしい俳優です。"
   },
   {
     "speakerEn": "Michael Sheen",

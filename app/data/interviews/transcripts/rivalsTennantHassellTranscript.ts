@@ -147,7 +147,7 @@ export const rivalsTennantHassellTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "We didn't get to do that much of that, really. A lot of it, a lot of the time we're in separate teams, so we didn't get to play that many scenes together, but it was always fun when we did.",
-    "ja": "実は、一緒に演じる機会はそれほど多くなかったんです。物語の大部分で私たちは 別々の陣営に分かれているので。でも、一緒のシーンの時はいつも楽しかったです よ。"
+    "ja": "実は、一緒に演じる機会はそれほど多くなかったんです。物語の大部分で僕たちは 別々の陣営に分かれているので。でも、一緒のシーンの時はいつも楽しかったです よ。"
   },
   {
     "speakerEn": "Alex Hassell",

@@ -36,6 +36,11 @@ export type TranscriptLine = {
   speakerJa: string;
   en: string;
   ja: string;
+  /**
+   * 動画内でこの発言が始まる時刻。"01:23" または "1:02:03" 形式で入力します。
+   * 記事、または時刻未確認の発言では省略できます。
+   */
+  timestamp?: string;
 };
 
 /** 詳細ページで使う、基本情報と本文を合わせたデータ。 */

@@ -3,6 +3,7 @@ import type { TranscriptLine } from "../types";
 /** 添付された原文と日本語訳。詳細ページを開いた時だけ読み込みます。 */
 export const davidTennantFilmFirstsBaftaTranscript = [
   {
+    "timestamp": "00:00",
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "So the cool ones were, Michael Sheen, James McAvoy, Stephen Campbell Moore, Fenella Woolgar, Emily Mortimer. They were the cool ones. And then there was me.",

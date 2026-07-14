@@ -1,155 +1,188 @@
-/** 添付された原文と日本語訳。詳細ページを開いた時だけ読み込みます。 */
+import type { TranscriptLine } from "../types";
+
+/** 添付された英語原文・日本語訳。詳細ページを開いた時だけ読み込みます。 */
 export const davidMichaelGoodOmensSeasonTwoTranscript = [
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "I love how David manages to play a character who isn't as cool as he thinks he is, but he does it in a way that is also still incredibly cool. He's found a brilliant way of being cool whilst sort of not being cool and making fun of being cool. Now your turn.",
-    "ja": "デイヴィッドが、自分が思っているほどクールじゃないキャラクターを演じているのに、同時に信じられないほどクールに演じきっているところが好きなんだ。あいつは、クールじゃない状態やクールであることをからかいつつも、見事にクールでいる方法を見つけ出している。さあ、次は私を褒める番だぞ。"
+    "en": "I love how David manages to play a character who isn't as cool as he thinks he is, but he does it in a way that is... is also still incredibly cool. I... he's found a brilliant way of being cool whilst sort of not being cool and making fun of being cool. Now your turn.",
+    "ja": "デイヴィッドが、自分が思っているほどクールじゃないキャラクターを演じているのに、それがまた信じられないほどクールになっているのが大好きなんです。彼は、クールでありながら、どこかクールじゃなくて、クールであることをからかうような、素晴らしい方法を見つけ出しましたよね。さあ、あなたの番ですよ。",
+    "timestamp": "00:00"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Oh well, thank you. I mean, not much. I've not really got... anything. No. No, it's the sweetness, isn't it? It's that sort of purity and that kind of winsomeness...",
-    "ja": "おや、ありがとう。そうだね、特にないかな。僕からは......何もないや。いやいや、嘘だよ。あの甘さだよね？あの純粋さと、愛嬌というか......。"
+    "en": "Oh, well, thank you. Uh, I mean, not much. I've not really got... I've not got anything. No. No, it's the sweetness, isn't it? It's that sort of purity and that kind of winsomeness.",
+    "ja": "ああ、どうもありがとう。ええと、特にはないかな。本当に......何もないよ。いやいや、その甘さだよね。ある種の純粋さとか、愛嬌みたいなものかな。",
+    "timestamp": "00:18"
   },
   {
     "speakerEn": "Daniel",
     "speakerJa": "ダニエル",
     "en": "It is a pleasure to meet both of you. How is your day going so far, gents?",
-    "ja": "お二人にお会いできて光栄です。今日の調子はいかがですか？"
+    "ja": "お二人にお会いできて光栄です。今日の調子はいかがですか？",
+    "timestamp": "00:33"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "Very good.",
-    "ja": "絶好調だよ。"
+    "en": "Very good. Thoroughly enjoying it. We haven't been together for a while.",
+    "ja": "とてもいいですよ。心から楽しんでいます。私たちはしばらく一緒にいなかったので。",
+    "timestamp": "00:37"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Lovely, yeah. Thoroughly enjoying it. We haven't been together for a while.",
-    "ja": "最高だよ。心から楽しんでる。僕たち、しばらく一緒にいなかったからね。"
-  },
-  {
-    "speakerEn": "Michael Sheen",
-    "speakerJa": "マイケル・シーン",
     "en": "Long time. In the flesh.",
-    "ja": "ああ、ずいぶんな。生で会うのは。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "So that's very nice. And talking about this is great. I mean this feels like such a long time ago when we shot it. Because these things take such a long time to actually come to fruition. So it's nice that people are going to get to see it.",
-    "ja": "だからすごく嬉しいんだ。それに、この作品について話せるのも素晴らしいよ。撮影したのはずいぶん昔のように感じるからね。こういうのって、実際に形になるまですごく時間がかかるから。みんなに観てもらえるようになるのは嬉しいな。"
+    "ja": "久しぶりだよね。直接会うのは。",
+    "timestamp": "00:41"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "Yeah, that is exciting.",
-    "ja": "ああ、それはワクワクする。"
-  },
-  {
-    "speakerEn": "Anthony",
-    "speakerJa": "アンソニー",
-    "en": "And that's so exciting, right? Because it's been a while since we've gone to catch up with Crowley and with Aziraphale. So I'm just curious, what excited both of you most about returning to these characters?",
-    "ja": "本当に楽しみですよね。クロウリーとアジラフェルに再会するまでしばらく時間がかかりましたから。お二人がこのキャラクターに戻るにあたって、一番ワクワクしたのはどんなことですか？"
-  },
-  {
-    "speakerEn": "Michael Sheen",
-    "speakerJa": "マイケル・シーン",
-    "en": "Well, I mean the fact that they asked at all... yes. And how much the audience out there took these characters to their heart, and the story to their hearts, and how much they cared about it, and the passion that people have towards it. Knowing that there is a whole bunch more of it about to come out. Yeah. And knowing hopefully how much pleasure that will give to those people is very exciting.",
-    "ja": "そうだな、そもそも私たちにオファーが来たってこと自体が......ああ。それに、視聴者がこのキャラクターや物語をどれだけ心に留め、大切に思い、情熱を注いでくれているかということだ。これからもっとたくさんの物語が世に出るってわかっていること。ああ。そして、それがみんなにどれだけの喜びを与えるかを想像すると、すごくワクワクするんだ。"
+    "en": "Yeah. So that's very nice. And talking about this is great. I mean, this feels like such a long time ago when we shot it.",
+    "ja": "ええ。だからとても嬉しいです。それに、この作品について話せるのも素晴らしいですね。撮影したのはずっと昔のことのように感じますから。",
+    "timestamp": "00:42"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Yes, because it was 2019 the first lot came out. And I feel like I've met a lot of Aziraphales and Crowleys in the interim. A lot of people dressed up, always in twos, always, you know, best friends, sort of cosplaying and being these characters. It's had such a reach it seems. And that's not something you imagine when you turn up for day one of series one on something like this. You can't really ever imagine a future like that. And to be here for series two, it was never on the cards. So it's a delight. Seeing how kind of communities have developed around it. And seeing how people have formed friendships and have met people that have come to become incredibly meaningful relationships. People have supported each other and helped each other and set up charities. I mean it's extraordinary what has happened as a result of it. Yeah, it's really exciting.",
-    "ja": "そうだね、最初のシーズンが出たのは2019年だったから。その間に、たくさんのアジラフェルやクロウリーに会った気がするよ。大勢の人がドレスアップして、いつも二人組で、親友同士でコスプレしてキャラクターになりきってくれていた。すごく広く影響を与えたみたいだね。こういう作品のシリーズ1の初日を迎える時って、そんな未来は全く想像できないんだ。だから、こうしてシリーズ2のためにここにいるなんて、予定にもなかったことだから、本当に喜びだよ。この作品を中心にコミュニティがどう発展してきたかを見るのは素晴らしいね。人々が友情を育み、信じられないほど意味のある関係になる人たちと出会っていくのを見るのは。みんなが互いに支え合い、助け合い、慈善団体を設立したりもしている。結果として起きていることは本当に並外れているよ。うん、本当にエキサイティングだ。"
+    "en": "Because these things take such a long time to actually come to fruition. So it's nice that people are going to get to see it.",
+    "ja": "こういう作品が実際に形になるまでには、すごく時間がかかるからね。だから、皆さんに観てもらえるのは嬉しいよ。",
+    "timestamp": "00:48"
   },
   {
     "speakerEn": "Daniel",
     "speakerJa": "ダニエル",
+    "en": "Yeah. And that's what's so exciting, right? Because it's been a while since we've gone to catch up with Crowley and with Aziraphale. So I'm just curious, what's exciting both of you most about returning to these characters?",
+    "ja": "そうですよね、そこが本当にエキサイティングなんです。クロウリーとアジラフェルの物語の続きを見られるのは久しぶりですから。お二人がこのキャラクターに戻るにあたって、一番ワクワクしていることは何ですか？",
+    "timestamp": "00:54"
+  },
+  {
+    "speakerEn": "Michael Sheen",
+    "speakerJa": "マイケル・シーン",
+    "en": "Well, I mean, the fact that they asked at all. Yes. And how much the audience out there took these characters to their heart and the story to their hearts and how much they cared about it and the passion that people have towards it. Knowing that there is a whole bunch more of it about to come out and knowing hopefully how much pleasure that will give to those people is very exciting.",
+    "ja": "そうですね、まずオファーがあったこと自体ですね。それから、視聴者の皆さんがどれほどこのキャラクターや物語を心に留め、大切に思い、情熱を注いでくれているかということです。まだまだたくさんのエピソードが控えていて、それが皆さんにどれほどの喜びをもたらすかと思うと、とてもワクワクします。",
+    "timestamp": "01:04"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "Yes, because it was 2019 the first lot came out. I feel like I've met a lot of Aziraphales and Crowleys in the interim. A lot of people dressed up, always in twos, always, you know, best friends, sort of cosplaying and being these characters. It's had such a reach, it seems, and that's not something you imagine when you turn up for day one of series one on something like this, you can't really ever imagine a future like that. And to be here for series two, it was never on the cards. So it's a delight.",
+    "ja": "そうだね、最初のシーズンが出たのは2019年だったから。その間に、たくさんのアジラフェルとクロウリーに会った気がするよ。たくさんの人がコスプレをしていて、いつも二人組で、親友同士で、このキャラクターになりきってくれていたんだ。これほどの影響力を持つなんて、シーズン1の撮影初日には想像もしていなかったよ。そんな未来は想像できないからね。だから、こうしてシーズン2を迎えられたことは全く予定外だったし、本当に嬉しいことだよ。",
+    "timestamp": "01:24"
+  },
+  {
+    "speakerEn": "Michael Sheen",
+    "speakerJa": "マイケル・シーン",
+    "en": "Seeing how kind of communities have developed around it and seeing how people have formed friendships and met people that have come to become incredibly meaningful relationships. Now people have like supported each other and helped each other and set up charities. I mean it's extraordinary what has happened as a result of it. Yeah, it's really exciting.",
+    "ja": "作品を中心にコミュニティが形成され、人々が友情を育み、信じられないほど意味のある関係を築いていくのを見るのは素晴らしいことです。ファン同士が支え合い、助け合い、チャリティーを立ち上げたりもしています。この作品の結果として起こったことは本当に驚異的ですよ。ええ、本当にワクワクします。",
+    "timestamp": "01:57"
+  },
+  {
+    "speakerEn": "Anthony",
+    "speakerJa": "アンソニー",
     "en": "You've both worked together on many projects. What keeps you working together and who is the bigger troublemaker on set?",
-    "ja": "お二人は多くのプロジェクトで共演されていますよね。一緒に仕事をし続ける理由は何ですか？そして、撮影現場でよりトラブルメーカーなのはどちらですか？"
+    "ja": "お二人はこれまでに多くのプロジェクトで共演されていますが、お二人が一緒に働き続ける理由は何ですか？また、撮影現場でよりトラブルメーカーなのはどちらですか？",
+    "timestamp": "02:15"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "I owe David a lot of money. And that's pretty much the reason why we have to keep going. Still got a long way to go.",
-    "ja": "デイヴィッドに多額の借金があるんだ。私たちが一緒にやり続けなきゃならない理由は、まあそんなところだ。まだまだ......完済への道は長いからな。"
+    "en": "I owe David a lot of money. And that's pretty much the reason why we have to keep going. Still not... still got a long way to go. I mean, we've only really worked together since Good Omens one. I mean, we did a movie together years and years and years and years and years ago, and we're never in a scene together. So that's where we first met, but we'd never been on, we'd never shared an actual screen until we did the first series of this.",
+    "ja": "私がデイヴィッドに多額の借金をしているからです。それが、私たちが一緒に働き続けなければならないほぼ唯一の理由ですね。まだまだ......道のりは長いです。実際には、『グッド・オーメンズ』シーズン1からしか共演していないんですよ。何年か前に同じ映画に出演したことはありましたが、同じシーンに出ることはなかった。そこで初めて会ったんですが、この作品の最初のシリーズをやるまで、実際に同じ画面に映ったことはありませんでした。",
+    "timestamp": "02:22"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "I mean we've only really worked together since Good Omens 1. I mean we did a movie together years and years ago and we were never in a scene together. So that's where we first met, but we'd never shared an actual screen until we did the first series of this. Because a lot of the time we'd be up for the same parts. So there was only one David or Michael shaped hole in the script. Now those holes have got very different shapes. So we don't really fit into the same hole anymore. But we were playing one character that sort of split into two. Yes. And since we started series 1, we've not really worked with anyone else. So uh, yeah, maybe it's time to see other people.",
-    "ja": "実のところ、僕たちが本格的に一緒に仕事をしたのは『グッド・オーメンズ』シーズン1からなんだ。何年も前に一緒に映画に出たことはあったけど、同じシーンに出ることは一度もなかった。初めて会ったのはその時だけど、この作品の最初のシリーズをやるまで、実際に画面を共有したことはなかったんだ。だって、大抵は同じ役の候補になっていたからね。脚本にはデイヴィッドかマイケルの形をした穴が一つしかなかった。今ではその穴もずいぶん違う形になったから、もう同じ穴には収まらないけどね。でも、僕たちは二つに分かれた一つのキャラクターを演じていたようなものだったんだ。そう。それに、シリーズ1を始めてから、僕たち他の誰とも仕事をしてないから。だから......うん、そろそろ他の人と会う時期かもしれないな。"
+    "en": "Because a lot of the time we'd be up for the same parts. Now those holes have got very different shapes. So we don't really fit into the same hole anymore. But there we're playing one character that sort of split into two.",
+    "ja": "というのも、僕たちは同じ役の候補になることが多かったからね。今ではその穴の形もずいぶん変わってしまったから、もう同じ穴には入れないんだけどね。でもここでは、二つに分かれた一つのキャラクターを演じているようなものだから。",
+    "timestamp": "02:48"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "Yeah. But you know, playing these characters, Aziraphale and Crowley are so beautifully created and written, that they're just a gift to play in their own right. But the fact that the dynamic between us when we play them seems to work so well is just fantastic. But you know, that didn't mean to say that it would translate into anything else. So when we did Staged as well, seeing that that still works, and works really well... and we just have a good time working together. It's never about anything else other than the work and enjoying it. And that's such a lovely thing to be able to know that you're gonna get. So once this all falls away, we'll just have to try and find something else, won't we really.",
-    "ja": "ああ。でもな、アジラフェルとクロウリーはとても美しく作られ、書かれているから、演じること自体が贈り物みたいなものなんだ。それに加えて、私たちが演じたときの二人のダイナミクスがとても上手く機能しているように見えるのは、本当に素晴らしいことだ。でも......それが他の作品にも通じるなんて保証はなかった。だから『ステージド』をやった時も、それがまだ機能して、しかもすごく上手くいくのを見て......私たちはただ一緒に仕事をするのが楽しいんだ。仕事そのものと、それを楽しむこと以外に何もない。それが手に入るとわかっているのは、とても素晴らしいことだ。だから、このすべてが終わったら、私たちはまた何か別のものを探さなきゃならないだろうな。"
-  },
-  {
-    "speakerEn": "Anthony",
-    "speakerJa": "アンソニー",
-    "en": "And you're both so wonderful. So I'm just curious, what would you love about each other's characters?",
-    "ja": "お二人とも本当に素晴らしいです。そこでお聞きしたいのですが、お互いのキャラクターのどんなところが好きですか？"
-  },
-  {
-    "speakerEn": "Michael Sheen",
-    "speakerJa": "マイケル・シーン",
-    "en": "Well, I love how David manages to play a character who isn't as cool as he thinks he is, but he does it in a way that is also still incredibly cool. He's found a brilliant way of being cool whilst sort of not being cool and making fun of being cool. I find that really wonderful. And how Crowley is someone who is ticking all the boxes of being evil, but actually you get such a sense of goodness underneath. Which of course Crowley would hate, hate to think that anyone would think that, but that is part of the brilliance of what David does as that character. Now your turn.",
-    "ja": "そうだな、デイヴィッドが、自分が思っているほどクールじゃないキャラクターを演じているのに、同時に信じられないほどクールに演じきっているところが好きなんだ。あいつは、クールじゃない状態やクールであることをからかいつつも、見事にクールでいる方法を見つけ出している。そこが本当に素晴らしいと思うよ。それから、クロウリーは悪であることの条件をすべて満たしているような奴だけど、実際にはその底にある善良さがすごく伝わってくる。もちろん、そんな風に思われるのはクロウリーにとっては耐えられないだろうけどな。でも、そこがデイヴィッドがこのキャラクターとしてやっている素晴らしいところの一部なんだ。さあ、次は私を褒める番だぞ。"
+    "en": "Yes. And we've... since we started series one, we've not really worked with anyone else.",
+    "ja": "ええ。そして......シーズン1を始めてから、私たちは他の誰とも一緒に仕事をしていないようなものです。",
+    "timestamp": "03:02"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Oh well, thank you. I mean, not much. I've not really got... anything. No. No, it's the sweetness, isn't it? It's that sort of purity and that kind of winsomeness and that wide-eyed kind of puppy dog innocence. That where everything is still a bit of a surprise to Aziraphale. After all these many millennia. Everything is still all rather fresh and new and surprising. And sometimes a little disappointing. And of course, in series one, towards the end, we got to play each other's character, we got to inhabit each other's bodies. And that was great fun.",
-    "ja": "おや、ありがとう。そうだね、特にないかな。僕からは......何もないや。いやいや、嘘だよ。あの甘さだよね？あの純粋さと、愛嬌というか、目を丸くした子犬のような無邪気さ。何千年も経っているのに、アジラフェルにとっては今でもすべてがちょっとした驚きなんだ。何もかもがまだかなり新鮮で、新しくて、驚きに満ちている。そして時々、少しがっかりするんだよね。もちろん、シリーズ1の終わり頃には、お互いのキャラクターを演じる機会があった。お互いの体に入り込んだんだ。あれはすごく楽しかったな。"
-  },
-  {
-    "speakerEn": "Michael Sheen",
-    "speakerJa": "マイケル・シーン",
-    "en": "And to do our sort of impersonation of each other.",
-    "ja": "お互いのモノマネみたいなことをするのもな。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Although I don't do impersonations.",
-    "ja": "僕、モノマネはしない主義なんだけどね。"
+    "en": "Yes. So yeah, maybe it's time to see other people. But you know, when we playing these characters, Aziraphale and Crowley are so beautifully created and written that they're just a gift to play, you know, in their own right. But the fact that the dynamic between us when we play them seems to work so well is just fantastic. And we just have a good time working together. It's never about anything else other than the work and enjoying it. And that's such a lovely thing to be able to know that you're going to get.",
+    "ja": "そうだね。だから、そろそろ他の人を見る時期かもしれないよ。でもね、アジラフェルとクロウリーはとても美しく作られていて、見事に書かれているから、演じること自体が贈り物みたいなものなんだ。それに、僕たちが演じたときの二人の力関係がとても上手く機能しているのは素晴らしいことだよ。僕たちは純粋に一緒に仕事をするのが楽しいんだ。他の何でもなく、ただ仕事を楽しめている。それって、確実に得られると分かっているのは素晴らしいことだよ。",
+    "timestamp": "03:08"
   },
   {
     "speakerEn": "Daniel",
     "speakerJa": "ダニエル",
-    "en": "Both of you, thank you both so much. You are both so wonderful on the show. And David, just really quickly as we wrap, I have to say as somebody who has an older sister named Jessica, whenever you were in Jessica Jones as Kilgrave and yelling her name, it sends shivers down her spine. So that was always fun for me as a little brother who loves to torment her.",
-    "ja": "お二人とも、本当にありがとうございました。番組ではお二人ともとても素晴らしいです。それからデイヴィッド、最後に手短に一つだけ。僕にはジェシカという姉がいるんですが、『ジェシカ・ジョーンズ』でキルグレイブとしてあなたが彼女の名前を叫ぶたびに、姉は背筋が凍る思いをしていたんです。姉をからかうのが大好きな弟としては、それがいつも面白くて。"
+    "en": "And you're both so wonderful. So I'm just curious, what do you, what do you love about each other's characters?",
+    "ja": "お二人は本当に素晴らしいです。そこでお聞きしたいのですが、お互いのキャラクターのどんなところが好きですか？",
+    "timestamp": "03:51"
+  },
+  {
+    "speakerEn": "Michael Sheen",
+    "speakerJa": "マイケル・シーン",
+    "en": "Well, I love how David manages to play a character who isn't as cool as he thinks he is, but he does it in a way that is also still incredibly cool. I find that really wonderful. And how Crowley is someone who is ticking all the boxes of being evil, but actually you get such a sense of goodness underneath, which of course Crowley would hate... hate to think that anyone would think that. But that is part of the brilliance of what David does as that character. Now your turn.",
+    "ja": "そうですね、デイヴィッドが、自分が思っているほどクールじゃないキャラクターを演じているのに、それがまた信じられないほどクールになっているのが大好きなんです。本当に素晴らしいと思います。それに、クロウリーは悪である条件をすべて満たしている人物なのに、その奥には善の感情がはっきりと見え隠れしているんです。もちろん、クロウリー自身は誰かにそう思われることを嫌がるでしょうけれどね。でも、それがデイヴィッドの演じるキャラクターの素晴らしさの一部なんです。さあ、あなたの番ですよ。",
+    "timestamp": "03:57"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "Oh, well, thank you. Uh, I mean, not much. I've not really got... I've not got anything. No. No, it's the sweetness, isn't it? It's that sort of purity and that kind of winsomeness and that wide-eyed kind of puppy dog innocence. That where everything is still a bit of a surprise to Aziraphale after all these many, many millennia. Everything's still all rather... rather fresh and new and surprising. And sometimes a little disappointing.",
+    "ja": "ああ、どうもありがとう。ええと、特にはないかな。本当に......何もないよ。いやいや、その甘さだよね。ある種の純粋さとか、愛嬌、目を丸くした子犬のような無邪気さかな。何千年も経っているのに、アジラフェルにとってはすべてがまだ少し驚きなんだ。すべてがまだ新鮮で、新しくて、驚きに満ちている。そして時には少しがっかりもする。",
+    "timestamp": "04:36"
+  },
+  {
+    "speakerEn": "Michael Sheen",
+    "speakerJa": "マイケル・シーン",
+    "en": "Well, and of course in series one towards the end we got to play each other's character, you know, we got to inhabit each other's bodies. And that was great fun.",
+    "ja": "そうそう、もちろんシーズン1の終盤では、お互いのキャラクターを演じることができましたよね。お互いの体に乗り移って。あれはすごく楽しかったです。",
+    "timestamp": "05:05"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "And to do our sort of impersonation of each other.",
+    "ja": "お互いのモノマネみたいなこともできたしね。",
+    "timestamp": "05:13"
+  },
+  {
+    "speakerEn": "Daniel",
+    "speakerJa": "ダニエル",
+    "en": "Both of you, thank you both so much. You are both so wonderful on the show. And David, just really quickly as we wrap, I have to say as somebody who has an older sister named Jessica, whenever you were in Jessica Jones as Kilgrave and yelling her name, it sent shivers down her spine. So that was always fun for me as a little brother who loves to torment her.",
+    "ja": "お二人とも、本当にありがとうございました。番組での皆さんは本当に素晴らしいです。そしてデイヴィッド、最後に一つだけ。ジェシカという姉を持つ身として言わせてください。『ジェシカ・ジョーンズ』であなたがキルグレイブとして彼女の名前を叫ぶたびに、姉の背筋が凍っていたそうです。姉をいじめるのが大好きな弟としては、それがいつも楽しかったですよ。",
+    "timestamp": "05:20"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I am glad to have been of service.",
-    "ja": "お役に立てて嬉しいよ。"
+    "ja": "僕がお役に立てて嬉しいよ。",
+    "timestamp": "05:39"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
     "en": "When he shouts my name, I get shivers down my spine as well.",
-    "ja": "あいつが私の名前を叫ぶときも、背筋が凍る思いがするんだよな。"
+    "ja": "彼が私の名前を叫ぶときも、背筋が凍りますよ。",
+    "timestamp": "05:41"
   },
   {
     "speakerEn": "Daniel",
     "speakerJa": "ダニエル",
     "en": "Gentlemen, thank you both so much again. Congratulations on the show. We hope to talk to you both again soon.",
-    "ja": "お二人とも、改めて本当にありがとうございました。番組の公開おめでとうございます。また近いうちにお話しできるのを楽しみにしています。"
+    "ja": "お二人とも、改めてありがとうございました。番組の成功を祈っています。またすぐにお話しできることを楽しみにしています。",
+    "timestamp": "05:46"
   },
   {
     "speakerEn": "Michael & David",
     "speakerJa": "マイケル・シーン＆デイヴィッド・テナント",
     "en": "Thank you. Bye bye.",
-    "ja": "ありがとう。さようなら。"
+    "ja": "ありがとう。さようなら。",
+    "timestamp": "05:50"
   }
-] as const;
-
+] as const satisfies readonly TranscriptLine[];
 

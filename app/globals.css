@@ -242,6 +242,15 @@ img { display: block; max-width: 100%; }
 .detail-section h3 { margin: 0 0 18px; color: var(--gold); font-family: var(--serif); font-size: 23px; font-weight: 600; }
 .detail-section > p { color: #55555b; font-size: 13px; line-height: 1.9; white-space: pre-line; }
 .detail-section > small { display: block; margin-top: 12px; color: var(--muted); font-size: 9px; }
+.related-content { margin-top: 8px; }
+.related-content__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.related-content__grid article { display: flex; min-height: 145px; flex-direction: column; align-items: flex-start; padding: 18px; border: 1px solid var(--line); background: var(--white); }
+.related-content__grid p { margin: 0 0 9px; color: var(--gold); font-size: 9px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.related-content__grid article > a:not(.related-content__secondary) { color: var(--navy); font-family: var(--serif); font-size: 17px; font-weight: 700; line-height: 1.35; text-decoration: none; }
+.related-content__grid article > a:hover, .related-content__grid article > a:focus-visible { color: var(--gold); }
+.related-content__grid small { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.5; }
+.related-content__secondary { margin-top: auto; padding-top: 13px; color: var(--gold); font-size: 10px; font-weight: 800; text-decoration: none; }
+.character-detail-content .detail-layout--character { padding: 0 0 35px; }
 .episode-appearances ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .episode-appearances li { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: baseline; gap: 10px; padding: 12px 14px; background: var(--paper); }
 .episode-appearances li strong { color: var(--blue); font-size: 11px; letter-spacing: .08em; }
@@ -423,6 +432,7 @@ img { display: block; max-width: 100%; }
 .translation-note { display: grid; grid-template-columns: 180px 1fr; gap: 20px; margin-top: 46px; padding: 22px; background: var(--paper); }
 .translation-note strong { font-size: 12px; }
 .translation-note p { margin: 0; color: var(--muted); font-size: 12px; }
+.translation-note + .related-content { margin-top: 46px; }
 
 /* ---------- About and footer ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9vw; }
@@ -551,6 +561,8 @@ img { display: block; max-width: 100%; }
   .translation-grid { grid-template-columns: 1fr; gap: 26px; }
   .translation-grid p { font-size: 18px; }
   .translation-note { grid-template-columns: 1fr; }
+  .related-content__grid { grid-template-columns: 1fr; }
+  .related-content__grid article { min-height: 0; }
   .updates-list > div, .career-timeline article { grid-template-columns: 100px 1fr; }
   .site-footer__grid { grid-template-columns: 1fr; }
   .site-footer__legal { flex-direction: column; }

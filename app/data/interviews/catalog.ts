@@ -116,7 +116,7 @@ export const interviewCatalog: readonly InterviewSummary[] = [
     description: "デイヴィッド・テナントとマイケル・シーンが『グッド・オーメンズ』の天使と悪魔、二人の関係、世界の終末を止める物語について語る。",
     tagGroups: {
       actors: ["Michael Sheen"],
-      genres: ["Good Omens", "Broadchurch"],
+      genres: ["Good Omens"],
       sources: ["This Morning"],
     },
   },

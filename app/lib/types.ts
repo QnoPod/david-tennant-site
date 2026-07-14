@@ -65,6 +65,8 @@ export type WorkCharacter = {
 
 export type Character = {
   key: string;
+  /** WORKSの視聴済み情報と照合する、紐づいたTMDB／手入力作品ID。 */
+  workIds: number[];
   workTitle: string;
   displayWorkTitle: string;
   name: string;

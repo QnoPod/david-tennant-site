@@ -89,11 +89,12 @@ export function getCharacters(works: Work[] = []): Character[] {
     // characterImages.ts のパスは public 配下を指すローカルURLです。
     const imagePath = customCharacterImages[imageKey] || customCharacterImages[workTitle];
     const defaultDisplayTitle = searchDictionary[normalize(workTitle)] || workTitle;
-    const matched = workCatalog.find((entry) =>
+    const matchedEntries = workCatalog.filter((entry) =>
       entry.titles.includes(normalize(workTitle))
       || entry.titles.includes(normalize(defaultDisplayTitle))
       || entry.characters.some((character) => normalize(character.name) === normalize(parsed.name)),
     );
+    const matched = matchedEntries[0];
     const matchedWork = matched?.work;
     const matchingCharacter = matched?.characters.find((character) => normalize(character.name) === normalize(parsed.name));
 
@@ -122,6 +123,7 @@ export function getCharacters(works: Work[] = []): Character[] {
     const age = isTenthDoctor ? 34 : calculateAge(releaseDate, year);
     return {
       key: `${workTitle}-${parsed.name}`,
+      workIds: [...new Set(matchedEntries.map((entry) => entry.work.id))],
       workTitle,
       displayWorkTitle,
       name: parsed.name || "役名未登録",
@@ -143,6 +145,7 @@ export function getCharacters(works: Work[] = []): Character[] {
       const year = referenceDate.slice(0, 4) || "年不明";
       return {
         key: `manual-${work.id}-${index}`,
+        workIds: [work.id],
         workTitle: getWorkTitle(work),
         displayWorkTitle: getDisplayTitle(work),
         name: character.name,

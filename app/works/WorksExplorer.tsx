@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Modal from "../components/Modal";
+import RelatedLinks from "../components/RelatedLinks";
+import { findRelatedInterviews } from "../lib/relatedContent";
 import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import { getDisplayTitle, getOriginalTitle, getSourceTitle, getWorkCharacters, getWorkOverview, getWorkVideoKey, normalizeText } from "../lib/workPresentation";
@@ -16,9 +19,12 @@ const WATCHED_KEY = "watchedWorks";
  * 表示だけを新サイトの読みやすいカード／年表デザインに置き換えています。
  */
 export default function WorksExplorer({ works }: { works: Work[] }) {
-  const initialQuery = useSearchParams().get("q") ?? "";
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") ?? "";
+  // CHARACTERSから遷移した場合は、作品名ではなくWORKS側の役名検索へ引き継ぎます。
+  const initialCharacterQuery = searchParams.get("character") ?? "";
   const [query, setQuery] = useState(initialQuery);
-  const [characterQuery, setCharacterQuery] = useState("");
+  const [characterQuery, setCharacterQuery] = useState(initialCharacterQuery);
   const [availability, setAvailability] = useState("ALL");
   const [watchStatus, setWatchStatus] = useState("ALL");
   const [sortOrder, setSortOrder] = useState<SortOrder>("default");
@@ -165,6 +171,12 @@ function WorkDetailModal({ work, watched, onToggleWatched, onClose }: { work: Wo
   const videoKey = work ? getWorkVideoKey(work) : null;
   const displayTitle = work ? getDisplayTitle(work) : "";
   const originalTitle = work ? getOriginalTitle(work) : "";
+  const relatedInterviews = work ? findRelatedInterviews([
+    displayTitle,
+    getSourceTitle(work),
+    originalTitle,
+    ...characters.flatMap((character) => [character.name, character.englishName]),
+  ]) : [];
   return <Modal open={Boolean(work)} onClose={onClose} label={`${displayTitle}の詳細`}>
     {work && <div className="work-detail">
       {(work.backdrop_path || work.backdropUrl) && <div className="work-detail__backdrop" style={{ backgroundImage: `linear-gradient(to top, var(--white), transparent), url('${getBackdropUrl(work.backdrop_path, work.backdropUrl)}')` }} />}
@@ -179,7 +191,8 @@ function WorkDetailModal({ work, watched, onToggleWatched, onClose }: { work: Wo
 
       {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} allowFullScreen /></div></section>}
 
-      <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}<p>{character.description}</p></div></article>)}</div></section>
+      <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}<p>{character.description}</p><Link className="text-link" href={`/characters?q=${encodeURIComponent(character.name)}`}>キャラクター詳細を見る →</Link></div></article>)}</div></section>
+      <RelatedLinks title="関連インタビュー" items={relatedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))} />
     </div>}
   </Modal>;
 }

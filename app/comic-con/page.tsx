@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "コミコン参加情報" };
 /** 今後の自動取得情報と、手動で確認した過去の参加記録をまとめて表示します。 */
 export default async function ComicConPage() {
   const events = await getConventionAppearances();
-  return <main id="main-content"><PageHero eyebrow="COMIC CON & APPEARANCES" title="COMIC CON" description="デイヴィッド・テナントの出演発表、参加確認済みの記録、キャンセル情報を状態別にまとめています。" />
+  return <main id="main-content"><PageHero eyebrow="COMIC CON & APPEARANCES" title="COMIC CON" description="COMIC CONの参加状況を確認" />
     <section className="archive-section shell">
       <div className="source-notice"><span>LIVE + ARCHIVE</span><p>今後の参加予定は定期取得し、過去分は実際のパネルや開催後記録を確認した固定データです。定期取得できた項目には掲載元を表示しています。予約前には必ず主催者の公式情報をご確認ください。</p></div>
       <ConventionExplorer upcoming={events} past={pastConventionAppearances} />

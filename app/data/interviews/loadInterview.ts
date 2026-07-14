@@ -8,6 +8,8 @@ type TranscriptLoader = () => Promise<readonly TranscriptLine[]>;
  * インタビューを追加したら、catalog.ts とこの対応表へ同じslugを追加してください。
  */
 const transcriptLoaders: Record<string, TranscriptLoader> = {
+  "david-tennant-masked-singer-daughter-kelly-clarkson": async () =>
+    (await import("./transcripts/davidTennantMaskedSingerRevealTranscript")).davidTennantMaskedSingerRevealTranscript,
   "david-tennant-snack-wars-scotland-england": async () =>
     (await import("./transcripts/davidTennantSnackWarsTranscript")).davidTennantSnackWarsTranscript,
   "david-tennant-rivals-capital-fm-2026": async () =>
@@ -68,6 +70,10 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidMichaelGoodOmensSeasonTwoTranscript")).davidMichaelGoodOmensSeasonTwoTranscript,
   "david-tennant-broadchurch-secrets-this-morning": async () =>
     (await import("./transcripts/davidTennantBroadchurchSecretsTranscript")).davidTennantBroadchurchSecretsTranscript,
+  "david-tennant-olivia-colman-broadchurch-fan-art": async () =>
+    (await import("./transcripts/davidTennantOliviaBroadchurchFanArtTranscript")).davidTennantOliviaBroadchurchFanArtTranscript,
+  "david-tennant-spills-broadchurch-beans": async () =>
+    (await import("./transcripts/davidTennantSpillsBroadchurchBeansTranscript")).davidTennantSpillsBroadchurchBeansTranscript,
 };
 
 /** slugから基本情報と翻訳本文をまとめて取得します。 */
@@ -97,4 +103,3 @@ export async function searchInterviewSlugs(query: string): Promise<string[]> {
   }));
   return matches.filter((slug): slug is string => Boolean(slug));
 }
-

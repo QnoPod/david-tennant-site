@@ -554,10 +554,68 @@ export const interviewCatalog: readonly InterviewSummary[] = [
        genres: ["Broadchurch", "Doctor Who", "Don Juan in Soho"], 
        sources: ["This Morning"] },
   },
+  {
+    slug: "david-tennant-masked-singer-daughter-kelly-clarkson",
+    title: "デイヴィッド・テナント、『マスクド・シンガー』の正体公開で娘の子ども時代を壊したとジョーク",
+    titleEn: "David Tennant Jokes He Crushed Daughter's Childhood After 'Masked Singer' Reveal",
+    year: "2026",
+    publishedDate: "2026-05-29",
+    source: "The Kelly Clarkson Show",
+    mediaType: "video",
+    videoId: "fkAZ5w9QAgs",
+    externalUrl: "https://www.youtube.com/watch?v=fkAZ5w9QAgs",
+    thumbnailUrl: "https://i.ytimg.com/vi/fkAZ5w9QAgs/hqdefault.jpg",
+    duration: "Video",
+    description: "『ライバルズ』への出演、子どもの頃から憧れた『ドクター・フー』、家族が本人だと信じた『マスクド・シンガー』の思い出を語る。",
+    tagGroups: {
+      actors: [],
+      genres: ["Rivals", "Doctor Who"],
+      sources: ["The Kelly Clarkson Show"],
+    },
+  },
+  {
+    slug: "david-tennant-olivia-colman-broadchurch-fan-art",
+    title: "デイヴィッド・テナント＆オリヴィア・コールマン、『ブロードチャーチ』のセクシーなファンアートを見る",
+    titleEn: "David Tennant and Olivia Colman Check Out The Sexy Broadchurch Fan Art - The Graham Norton Show",
+    year: "2015",
+    publishedDate: "2015-01-17",
+    source: "The Graham Norton Show - BBC",
+    mediaType: "video",
+    videoId: "SFi_hHniXEk",
+    externalUrl: "https://www.youtube.com/watch?v=SFi_hHniXEk",
+    thumbnailUrl: "https://i.ytimg.com/vi/SFi_hHniXEk/hqdefault.jpg",
+    duration: "Video",
+    description: "デイヴィッド・テナントとオリヴィア・コールマンが、ハーディとミラーを描いた『ブロードチャーチ』のファンアートを見る。",
+    tagGroups: {
+      actors: ["Olivia Colman"],
+      genres: ["Broadchurch"],
+      sources: ["The Graham Norton Show - BBC"],
+    },
+  },
+  {
+    slug: "david-tennant-spills-broadchurch-beans",
+    title: "デイヴィッド・テナント、『ブロードチャーチ』の秘密を明かす",
+    titleEn: "David Tennant spills the Broadchurch beans",
+    year: "2015",
+    publishedDate: "2015-01-12",
+    source: "Absolute Radio",
+    mediaType: "video",
+    videoId: "Ui6Xrw-aX50",
+    externalUrl: "https://www.youtube.com/watch?v=Ui6Xrw-aX50",
+    thumbnailUrl: "https://i.ytimg.com/vi/Ui6Xrw-aX50/hqdefault.jpg",
+    duration: "Video",
+    description: "シーズン2の事件、ハーディの暮らし、ウェストベイをはじめとする撮影地についてクリスチャン・オコンネルと語る。",
+    tagGroups: {
+      actors: [],
+      genres: ["Broadchurch"],
+      sources: ["Absolute Radio"],
+    },
+  },
 ];
 
 /** 公開年月日の新しい順に並べた一覧を返します。元データは変更しません。 */
 export function getInterviewsNewestFirst() {
   return [...interviewCatalog].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 }
+
 

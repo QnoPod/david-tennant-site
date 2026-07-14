@@ -124,6 +124,7 @@ export function getCharacters(works: Work[] = []): Character[] {
     return {
       key: `${workTitle}-${parsed.name}`,
       workIds: [...new Set(matchedEntries.map((entry) => entry.work.id))],
+      date: releaseDate,
       workTitle,
       displayWorkTitle,
       name: parsed.name || "役名未登録",
@@ -146,6 +147,7 @@ export function getCharacters(works: Work[] = []): Character[] {
       return {
         key: `manual-${work.id}-${index}`,
         workIds: [work.id],
+        date: referenceDate,
         workTitle: getWorkTitle(work),
         displayWorkTitle: getDisplayTitle(work),
         name: character.name,

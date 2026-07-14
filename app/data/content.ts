@@ -6,6 +6,7 @@
 export const navigation = [
   { href: "/", label: "HOME" },
   { href: "/profile", label: "PROFILE" },
+  { href: "/timeline", label: "TIMELINE" },
   { href: "/works", label: "WORKS" },
   { href: "/characters", label: "CHARACTERS" },
   { href: "/comic-con", label: "COMIC CON" },

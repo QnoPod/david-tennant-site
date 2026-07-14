@@ -67,6 +67,8 @@ export type Character = {
   key: string;
   /** WORKSの視聴済み情報と照合する、紐づいたTMDB／手入力作品ID。 */
   workIds: number[];
+  /** 出演回の放送日。月日不明の場合は作品公開日または空文字です。 */
+  date: string;
   workTitle: string;
   displayWorkTitle: string;
   name: string;
@@ -83,7 +85,23 @@ export type ConventionAppearance = {
   name: string;
   date: string;
   venue: string;
+  /** 開催国。地域差が重要な場合は「イギリス（ウェールズ）」のように記載します。 */
+  country: string;
+  /** イベントを運営する主催者または主催ブランド。 */
+  organizer: string;
+  /** 本人の参加日がイベント全体の日程と異なる場合に使用するISO日付。 */
+  appearanceDate?: string;
+  /** 複数日参加など、画面に表示する本人参加日の説明。 */
+  appearanceLabel?: string;
+  /** 過去イベントでは「参加確認済み」などの状態を明示します。 */
+  status?: "upcoming" | "attended" | "announced" | "cancelled";
+  /** 出演発表のみ・キャンセル理由など、状態の補足説明です。 */
+  statusNote?: string;
+  isHistorical?: boolean;
   officialUrl?: string;
+  /** イベント専用の記録ページ。存在を確認できた場合だけ設定します。 */
   detailUrl?: string;
+  /** detailUrlが実在する専用ページであることを確認済みかどうか。 */
+  recordUrlVerified?: boolean;
   sourceUrl: string;
 };

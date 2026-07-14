@@ -1,118 +1,223 @@
+import type { TranscriptLine } from "../types";
+
+/** 添付された英語原文・日本語訳。詳細ページを開いた時だけ読み込みます。 */
 export const davidTennantEmojiTranscript = [
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
-    "en": "You would think having lots of children would keep you kind of young, tech-savvy, you know, you'd know what's going on. But David Tennant, this has not happened for you. You recently found out that you got left behind in the world of texting and things.",
-    "ja": "たくさんの子供がいれば、若々しく、テクノロジーにも詳しくて、世の中のことに精通していそうに思えますよね。でもデイヴィッド・テナント、あなたは違ったようです。最近、自分がテキストメッセージなどの世界から取り残されていることに気づいたそうですね。"
+    "en": "You would think having lots of children would keep you kind of young, tech-savvy, you know, you'd know what's going on, but David Tennant, this has not happened for you. You recently found out that you got left behind in the world of texting and things.",
+    "ja": "子どもがたくさんいれば、若々しくてテクノロジーにも詳しくて、世の中の動きにもついていけるだろうって思うじゃないですか。でもデイヴィッド・テナント、あなたにはそれが起きていない。最近、自分がメールなどの世界から取り残されていることに気づいたそうですね。",
+    "timestamp": "00:01"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Well, yeah. I know when you start jobs, because of the MeToo movement, and lots of great strides forward are being made in making sure workplaces are safe. So now different companies have different ways of coping with that, and I had to, for a show I was doing, sit and watch a video and prove that I'd watched this video from start to finish.",
-    "ja": "ええ、そうなんです。新しい仕事を始める時、MeToo運動の影響もあって、職場を安全にするための素晴らしい進歩がたくさんありますよね。だから今、様々な企業がそれぞれ違った対応をしていて、僕がやっていた番組でも、あるビデオを最初から最後まで座って見て、確実に見たと証明しなければならなかったんです。"
+    "en": "Well, yeah. I was just... now when you start jobs, there's a... because of the MeToo movement and lots of, you know, great strides forward are being made in making sure workplaces are safe and... so now different companies have different ways of coping with that, and I was... I had to, for a show I was doing, I had to sit and watch a video and prove that I'd watched this video from start to finish, and it very... takes you through things that are acceptable and not acceptable in the workplace.",
+    "ja": "ええ、まあ。あの、今は新しい仕事を始めるとき...#MeToo運動の影響や、職場を安全にするための大きな進歩もあって、企業ごとに色々な対応策を取っているんです。それで、僕が出演していた番組のために、あるビデオを座って見て、最初から最後まで見たことを証明しなければならなかったんです。そのビデオでは、職場で何が許されて、何が許されないのかを詳しく説明していました。",
+    "timestamp": "00:15"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "And it takes you through things that are acceptable and not acceptable in the workplace. And then, right at the end of this sequence, it was talking about how to communicate on your mobile phone, and what's appropriate and what isn't appropriate. It says, \"And remember, the eggplant emoji is not just an eggplant.\" And that's it!",
-    "ja": "職場で許されること、許されないことを丁寧に説明してくれるんですが、その映像の最後の方で、携帯電話でのコミュニケーション方法や、何が適切で何が不適切かについて話していたんです。そこで「ナス(eggplant)の絵文字は、単なるナスではないことを覚えておきましょう」と。それで終わりなんですよ！"
+    "en": "And then, right at the end of this sequence, it was talking about how to communicate on your mobile phone and what's appropriate and what isn't appropriate. It says, \"And remember, the eggplant emoji is not just an eggplant.\" And that's it!",
+    "ja": "そして、その一連のビデオの最後のところで、携帯電話でのコミュニケーション方法について、何が適切で何が不適切かという話になったんです。そこで「ナスの絵文字はただのナスではないことを覚えておきましょう」って。それで終わりなんですよ！",
+    "timestamp": "00:40"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "I'm left going, \"What the f*** is an eggplant?\" It's an aubergine, right? But that's not what they mean! There's a whole, and it turns out, I knew nothing about this, there's a whole kind of language...",
-    "ja": "僕は「ナス(eggplant)って一体何なんだ？」と取り残されてしまって。あれはオベルジーヌ(イギリス英語でナス)ですよね？でもそういう意味じゃないんです！全く知らなかったんですが、そこには全く別の言語体系があって..."
+    "en": "And I'm left going, \"What the f*** is an eggplant?\"",
+    "ja": "それで僕は「エッグプラント(ナス)って一体何なんだ？」って取り残されたわけです。",
+    "timestamp": "00:55"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "It's an aubergine, right? I mean, it's... but that's not what they mean! There's a whole, and it turns out, and I didn't know anything about this, there's a whole kind of language...",
+    "ja": "オウバジーン(※イギリス英語でナス)のことですよね？つまり...でもそういう意味じゃないんです！どうやら...僕は全く知らなかったんですが、全く別の言語みたいなものがあるんです...",
+    "timestamp": "00:59"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
     "en": "Yes, there is.",
-    "ja": "ええ、ありますね。"
+    "ja": "ええ、ありますよ。",
+    "timestamp": "01:08"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "...usually based around foodstuffs, where they represent other things! I mean, asking someone out for a taco could easily be misinterpreted, it turns out. Did you know that?",
-    "ja": "...大抵は食べ物をベースにして、別のものを表しているんです！タコスを食べるために誰かを誘うのも、簡単に誤解される可能性があると分かりました。知ってましたか？"
-  },
-  {
-    "speakerEn": "Chris Hemsworth",
-    "speakerJa": "クリス・ヘムズワース",
-    "en": "I mean the eggplant kind of looks like... it doesn't even look like an eggplant.",
-    "ja": "ナスは...ナスにすら見えないというか、その..."
+    "en": "Usually based around food stuffs.",
+    "ja": "大抵は食べ物に基づいているんです。",
+    "timestamp": "01:09"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "And then you've got the peach...",
-    "ja": "それに桃(ピーチ)もあって..."
+    "en": "Where they represent other things.",
+    "ja": "食べ物が別のものを表しているんです。",
+    "timestamp": "01:13"
+  },
+  {
+    "speakerEn": "Graham Norton",
+    "speakerJa": "グラハム・ノートン",
+    "en": "Yeah.",
+    "ja": "そうですね。",
+    "timestamp": "01:17"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "And asking someone out for a taco could easily be misinterpreted. It turns out! Did you know that?",
+    "ja": "誰かをタコスに誘うだけで、簡単に誤解されかねないんですよ。どうやらね！知ってました？",
+    "timestamp": "01:18"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "Be careful! Did you know about this? Did you know about this?",
+    "ja": "気をつけてくださいよ！これ知ってました？知ってましたか？",
+    "timestamp": "01:25"
+  },
+  {
+    "speakerEn": "Graham Norton",
+    "speakerJa": "グラハム・ノートン",
+    "en": "Yes, of course.",
+    "ja": "ええ、もちろんです。",
+    "timestamp": "01:28"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "And the peach... and then if you start adding to that the raindrops and all that, you can do anything.",
-    "ja": "そう、桃ね。それに雨粒(水滴)なんかを組み合わせ始めると、何でもできちゃうんだよ。"
+    "en": "Where have you been?",
+    "ja": "私たちが知っている間、あなたはどこにいたんですか？",
+    "timestamp": "01:29"
+  },
+  {
+    "speakerEn": "Chris Hemsworth",
+    "speakerJa": "クリス・ヘムズワース",
+    "en": "I mean the eggplant kind of looks like... it doesn't even look like an eggplant. It's... you know.",
+    "ja": "まあ、ナスの絵文字はなんとなく...ナスにすら見えないというか。あれは...その、ね。",
+    "timestamp": "01:31"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "It's a loss of innocence! I'm coming here with a, you know, \"Ooh, a doughnut!\" I don't know what's going on. It's a minefield, clearly.",
-    "ja": "本当に純真さが失われていきますよ！僕は「わあ、ドーナツだ！」って感覚で来ているのに。何が起きているのかさっぱりです。明らかに地雷原ですよ。"
+    "en": "And then you've got the peach.",
+    "ja": "それから、桃の絵文字もありますよね。",
+    "timestamp": "01:35"
+  },
+  {
+    "speakerEn": "Michael Sheen",
+    "speakerJa": "マイケル・シーン",
+    "en": "And then if you start adding to that, the raindrops and all that, you can do anything.",
+    "ja": "私が思うに、さらにそこに雨粒なんかを付け加え始めたら、もう何でもありになりますよ。",
+    "timestamp": "01:37"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "It's a... turn that innocent... \"Come here with your...\" oh, I don't know what it's... it's a minefield, clearly.",
+    "ja": "本当に...あの純粋なものが...「ここに来て...」ああ、もう何が何だか...明らかに地雷原ですよ、僕にとっては。",
+    "timestamp": "01:42"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
     "en": "But do you text? Do you have a smartphone?",
-    "ja": "でもテキストメッセージは送りますよね？スマートフォンは持ってますか？"
+    "ja": "でも、メールはしますよね？スマートフォンは持っていますか？",
+    "timestamp": "01:52"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "I do, yes!",
-    "ja": "持ってます、はい！"
+    "en": "I do, yes.",
+    "ja": "持ってますよ、はい。僕もね。",
+    "timestamp": "01:54"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
-    "en": "Okay, then I've no idea how that passed you by. That's weird.",
-    "ja": "なら、どうして今まで気づかなかったのか全く分かりませんね。不思議です。"
+    "en": "Okay, then I've no idea how that passed you by, that's weird.",
+    "ja": "なるほど、だとしたらどうして今まで気づかなかったのか不思議ですね、奇妙ですよ。",
+    "timestamp": "01:55"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Because I thought the emojis were just meant to represent what they represented! I didn't know there was this whole kind of other language you had to learn!",
-    "ja": "だって、絵文字はそのままの意味を表すものだと思っていたからです！学ばなきゃいけない全く別の言語があるなんて知りませんでしたよ！"
+    "en": "Because... because I thought the emojis were just meant to represent what they represented! I didn't know there was this whole kind of other language you had to learn.",
+    "ja": "なぜなら...絵文字はただその物を表すためのものだと僕は思っていたからです！まさか、学ばなければならないような、こんな全く別の言語があるなんて知らなかったんですよ。",
+    "timestamp": "01:59"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
-    "en": "Can we get explicit emojis? That's what we need!",
-    "ja": "あからさまな(性的な)絵文字って作れないんですかね？それが必要ですよ！"
+    "en": "Can you get explicit emoji?",
+    "ja": "露骨な絵文字ってあるんですかね？",
+    "timestamp": "02:08"
   },
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Yes! Apple needs to move forward and just call a vagina a vagina!",
-    "ja": "そうです！Appleはもっと前進して、女性器は女性器と呼ぶべきです！"
+    "en": "That's what we need! Yes, Apple needs to move forward and just call a vagina a vagina!",
+    "ja": "それこそ僕らに必要なものです！そう、Appleは一歩前進して、ヴァギナはヴァギナとはっきり呼ぶべきなんです！",
+    "timestamp": "02:10"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
-    "en": "But the thing is, there's an image of you as the Doctor that the fans are not letting go. And it's just this, it's a very simple thing. It's just you in the street, doing that. Now, this meme is called \"David Tennant in places he shouldn't be.\"",
-    "ja": "でもね、ファンが手放さない、ドクターとしてのあなたの画像があるんです。これなんですが、すごくシンプルなものです。あなたが通りで、ただこうしているだけ。で、このミームは「いるべきではない場所にいるデイヴィッド・テナント」と呼ばれています。"
+    "en": "Just peering at it, what is that? Is that a mouldy...",
+    "ja": "じっと見つめて、「あれは何だ？カビの生えた...」ってね。",
+    "timestamp": "02:22"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
-    "en": "Well, if you don't know what an eggplant emoji is, the chances of you seeing a meme are really slim. Now obviously, a beginner one is just, of course, you're at the Royal Wedding. Where else would you be?",
-    "ja": "まあ、ナスの絵文字を知らないなら、ミームを見ている可能性はすごく低そうですけどね。当然ながら、初心者向けなのは、もちろん、ロイヤルウェディングですね。他にどこにいるっていうんでしょう？"
+    "en": "The thing is, there's an image of you as the Doctor... that fans are not letting go. And it's just this, it's a very simple thing, it's just you in the street, doing that. Now, this meme is called \"David Tennant in places he shouldn't be\". Right, so you must have seen this.",
+    "ja": "実は、ドクターとしてのあなたの画像があって...ファンが手放さないものがあるんです。これなんですが、とてもシンプルで、ただあなたが通りでこんなポーズをしているだけのものです。今、このミームは「いるべきではない場所にいるデイヴィッド・テナント」と呼ばれています。これなら、あなたも見たことがあるでしょう。",
+    "timestamp": "02:27"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "I've seen a couple of things, yeah.",
+    "ja": "僕も2、3個は見たことがありますね。",
+    "timestamp": "02:43"
   },
   {
     "speakerEn": "Graham Norton",
     "speakerJa": "グラハム・ノートン",
-    "en": "Then we've got you in education. You know the answer, no one else does. You're on it. Oh, ice skating! There you go, very good at that. Then we've got you in film. There you are in the Lion King. And finally, there you are, synchronised swimming! Very good!",
-    "ja": "次は教育現場。あなただけが答えを知っていて、他の誰も知りません。完璧です。ああ、アイススケート！とても上手ですね。次は映画の中。ライオン・キングですね。そして最後は、シンクロナイズドスイミング！お見事！"
+    "en": "Because if you don't know what an eggplant emoji is, I mean, the chances of you seeing a meme... really slim. Now obviously, beginners, a beginner one is just of course you're at the royal wedding. Where else, where else would you be?",
+    "ja": "だって、ナスの絵文字を知らないとなると、ミームを見る確率なんて...本当に低いですからね。さて、まずは初級編です。初級編はもちろん、ロイヤルウェディングにいるあなたです。他のどこにいるって言うんですか？",
+    "timestamp": "02:46"
+  },
+  {
+    "speakerEn": "Graham Norton",
+    "speakerJa": "グラハム・ノートン",
+    "en": "Uh, then we've got you in education, you know the answer, no one else does. You're on it.",
+    "ja": "ええと、次は教育の場にいるあなたですね。あなただけが答えを知っていて、他の誰も知らない。さすがです。",
+    "timestamp": "03:05"
+  },
+  {
+    "speakerEn": "Graham Norton",
+    "speakerJa": "グラハム・ノートン",
+    "en": "Uh, then I think what have we got next, oh ice skating, there you go, very good at that.",
+    "ja": "ええと、次は...ああ、アイススケートですね、はいどうぞ、とても上手ですね。",
+    "timestamp": "03:15"
+  },
+  {
+    "speakerEn": "Graham Norton",
+    "speakerJa": "グラハム・ノートン",
+    "en": "Um, then we've got you in film, there you are in The Lion King.",
+    "ja": "うーん、次は映画の中のあなたです。ライオン・キングですね。",
+    "timestamp": "03:22"
+  },
+  {
+    "speakerEn": "Graham Norton",
+    "speakerJa": "グラハム・ノートン",
+    "en": "And finally, there you are synchronised swimming. Very good, right? We like it, there you go. Okay.",
+    "ja": "そして最後は、シンクロナイズドスイミングをするあなたです。とてもいいですよね？お気に入りです。これで全部です。よし。",
+    "timestamp": "03:29"
   }
-] as const;
-
+] as const satisfies readonly TranscriptLine[];
 

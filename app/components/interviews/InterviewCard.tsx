@@ -12,11 +12,11 @@ export default function InterviewCard({ interview }: { interview: InterviewSumma
     </div>
     <div>
       <p>{interview.publishedDate.replaceAll("-", ".")} · {interview.source}</p>
-      <h2>{interview.title}</h2>
-      <p>{interview.description}</p>
+      <h2 className={interview.titleEn ? "interview-title-ja" : undefined}>{interview.title}</h2>
+      {interview.titleEn && <p className="interview-title-en" lang="en">{interview.titleEn}</p>}
+      <p className="interview-card-description">{interview.description}</p>
       <div className="tag-row">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
       <strong>{isVideo ? "動画と翻訳を読む" : "記事と翻訳を読む"} →</strong>
     </div>
   </Link>;
 }
-

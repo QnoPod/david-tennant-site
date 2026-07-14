@@ -273,7 +273,7 @@ export const davidTennantEvilCharacterTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "So I'm very grateful to David Blair the director who took a chance on a wee Scottish boy who hadn't done much. Thanks David.",
-    "ja": "だから、大した経験のなかったスコットランドの小僧にチャンスをくれたデヴィッド・ブレア監督にはとても感謝しています。ありがとう、デイヴィッド。"
+    "ja": "だから、大した経験のなかったスコットランドの小僧にチャンスをくれたデイヴィッド・ブレア監督にはとても感謝しています。ありがとう、デイヴィッド。"
   },
   {
     "speakerEn": "David Tennant",

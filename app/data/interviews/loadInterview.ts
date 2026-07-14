@@ -8,6 +8,22 @@ type TranscriptLoader = () => Promise<readonly TranscriptLine[]>;
  * インタビューを追加したら、catalog.ts とこの対応表へ同じslugを追加してください。
  */
 const transcriptLoaders: Record<string, TranscriptLoader> = {
+  "david-tennant-snack-wars-scotland-england": async () =>
+    (await import("./transcripts/davidTennantSnackWarsTranscript")).davidTennantSnackWarsTranscript,
+  "david-tennant-rivals-capital-fm-2026": async () =>
+    (await import("./transcripts/davidTennantRivalsCapitalTranscript")).davidTennantRivalsCapitalTranscript,
+  "david-tennant-film-firsts-bafta": async () =>
+    (await import("./transcripts/davidTennantFilmFirstsBaftaTranscript")).davidTennantFilmFirstsBaftaTranscript,
+  "michael-sheen-david-tennant-one-show-2020": async () =>
+    (await import("./transcripts/davidMichaelOneShowTranscript")).davidMichaelOneShowTranscript,
+  "jon-hamm-david-tennant-wired-autocomplete": async () =>
+    (await import("./transcripts/jonHammDavidWiredTranscript")).jonHammDavidWiredTranscript,
+  "david-michael-save-world-this-morning": async () =>
+    (await import("./transcripts/davidMichaelSaveWorldThisMorningTranscript")).davidMichaelSaveWorldThisMorningTranscript,
+  "david-michael-good-omens-interview-nycc": async () =>
+    (await import("./transcripts/davidMichaelGoodOmensNyccInterviewTranscript")).davidMichaelGoodOmensNyccInterviewTranscript,
+  "david-tennant-very-bad-scotsman-letterman": async () =>
+    (await import("./transcripts/davidTennantLettermanTranscript")).davidTennantLettermanTranscript,
   "bella-maclean-found-her-fire-in-rivals": async () =>
     (await import("./transcripts/bellaMacleanRivalsTranscript")).bellaMacleanRivalsTranscript,
   "michael-sheen-david-tennant-one-final-time-lorraine": async () =>
@@ -74,13 +90,11 @@ export async function searchInterviewSlugs(query: string): Promise<string[]> {
     const loadTranscript = transcriptLoaders[summary.slug];
     const transcript = loadTranscript ? await loadTranscript() : [];
     const searchable = [
-      summary.title, summary.source, summary.description, ...getAllInterviewTags(summary.tagGroups),
+      summary.title, summary.titleEn, summary.source, summary.description, ...getAllInterviewTags(summary.tagGroups),
       ...transcript.flatMap((line) => [line.speakerEn, line.speakerJa, line.en, line.ja]),
     ].join(" ").normalize("NFKC").toLowerCase();
     return searchable.includes(needle) ? summary.slug : null;
   }));
   return matches.filter((slug): slug is string => Boolean(slug));
 }
-
-
 

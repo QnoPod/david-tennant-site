@@ -22,7 +22,7 @@ export const davidTennantClosetPicksTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "It had some great performances in this. David Warner, I remember being very good in this. Sean Connery, that's right, Sean Connery's in it. Ralph Richardson. Ian Holm. Anyway, a great film.",
-    "ja": "役者の演技も素晴らしいんだよ。デヴィッド・ワーナーがすごく良かったのを覚えている。ショーン・コネリーも、そうだ、出ているんだよね。ラルフ・リチャードソン、イアン・ホルム。とにかく最高な映画だよ。"
+    "ja": "役者の演技も素晴らしいんだよ。デイヴィッド・ワーナーがすごく良かったのを覚えている。ショーン・コネリーも、そうだ、出ているんだよね。ラルフ・リチャードソン、イアン・ホルム。とにかく最高な映画だよ。"
   },
   {
     "speakerEn": "David Tennant",
@@ -40,7 +40,7 @@ export const davidTennantClosetPicksTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "David Lean Directs Noël Coward. So there's... oh, there's four movies on here. Brief Encounter is probably the one that I am most excited about here.",
-    "ja": "『デヴィッド・リーン監督、ノエル・カワード作品集』。おっ、4本も入っているんだね。この中だと、やっぱり『逢びき(Brief Encounter)』が一番テンションが上がるかな。"
+    "ja": "『デイヴィッド・リーン監督、ノエル・カワード作品集』。おっ、4本も入っているんだね。この中だと、やっぱり『逢びき(Brief Encounter)』が一番テンションが上がるかな。"
   },
   {
     "speakerEn": "David Tennant",
@@ -52,7 +52,7 @@ export const davidTennantClosetPicksTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Beautifully shot. The sumptuousness of the black and whites, and the billowing steam from the train engines. Just as a study of kind of humanity, it's a really beautiful film. Surprisingly subtle and intelligent and... but then, it's David Lean, so maybe it's not that surprising.",
-    "ja": "映像も本当に美しい。白黒の豊かさや、機関車から立ち上る蒸気とかね。人間というものを探求した、本当に美しい映画なんだ。驚くほど繊細で知的で...まあ、デヴィッド・リーンだから、驚くことじゃないのかもしれないけれど。"
+    "ja": "映像も本当に美しい。白黒の豊かさや、機関車から立ち上る蒸気とかね。人間というものを探求した、本当に美しい映画なんだ。驚くほど繊細で知的で...まあ、デイヴィッド・リーンだから、驚くことじゃないのかもしれないけれど。"
   },
   {
     "speakerEn": "David Tennant",

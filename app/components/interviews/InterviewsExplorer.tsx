@@ -58,7 +58,7 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
   const filtered = useMemo(() => {
     const needle = query.normalize("NFKC").toLowerCase().trim();
     return interviews.filter((interview) => {
-      const searchable = [interview.title, interview.source, interview.description]
+      const searchable = [interview.title, interview.titleEn, interview.source, interview.description]
         .join(" ").normalize("NFKC").toLowerCase();
       const matchesMetadata = searchable.includes(needle);
       const matchesTranscript = contentMatches?.includes(interview.slug) ?? false;
@@ -129,4 +129,3 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
     {visibleCount < filtered.length && <button className="interview-load-more" type="button" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE_COUNT)}>さらに表示する</button>}
   </section>;
 }
-

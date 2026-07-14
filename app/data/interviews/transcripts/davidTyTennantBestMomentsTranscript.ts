@@ -2,13 +2,7 @@ import type { TranscriptLine } from "../types";
 
 /** 添付された英語原文・日本語訳。詳細ページを開いた時だけ読み込みます。 */
 export const davidTyTennantBestMomentsTranscript = [
-  {
-    "speakerEn": "Kelly Clarkson",
-    "speakerJa": "ケリー・クラークソン",
-    "en": "I hope you are ready in commercial breaks to take pictures with people because you are probably the most excited everyone on our staff has been to be here at the show. Everyone loves you. I'm not kidding, they're like, everyone wants pictures. I'm like, get 'em in the commercial breaks. No, everybody really loves your work, you're so good at what you do. Thank you for being here, we're very excited.",
-    "ja": "CMの間に皆と写真を撮る準備ができているといいんですけど。だって、あなたはこの番組のスタッフ全員が今までで一番興奮しているゲストなんですよ。みんなあなたのことが大好きなんです。冗談抜きで、「みんな写真を撮りたがってるよ」って言われて、「CMの間に捕まえて」って言ったくらいです。本当に、みんなあなたの作品を愛しています。あなたは本当に素晴らしい才能の持ち主ですね。ここに来てくれてありがとうございます。私たちもとても興奮しています。",
-    "timestamp": "00:00"
-  },
+
   {
     "speakerEn": "Ty Tennant",
     "speakerJa": "タイ・テナント",

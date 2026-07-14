@@ -72,7 +72,7 @@ export type Character = {
   description: string;
   image: string;
   year: string;
-  /** 作品公開・初回放送年月日と生年月日から算出した満年齢。 */
+  /** 出演エピソードの放送日（不明時は作品公開日）と生年月日から算出した満年齢。 */
   age: number | null;
   attributes: string[];
 };

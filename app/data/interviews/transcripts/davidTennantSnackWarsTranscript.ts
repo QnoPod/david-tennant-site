@@ -149,8 +149,8 @@ export const davidTennantSnackWarsTranscript = [
   {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "Look at the color of that. Look. That's like a dead man's finger.",
-    "ja": "この色を見てください。ほら。まるで死人の指みたいですよ。"
+    "en": "Look at the color of that. Look. That's like a dead man's c*ck.",
+    "ja": "この色を見てください。ほら。まるで死人のペニスみたいですよ。"
   },
   {
     "speakerEn": "David Tennant",

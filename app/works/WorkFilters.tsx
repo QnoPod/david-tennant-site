@@ -10,7 +10,8 @@ type Props = {
   watchStatus: string; setWatchStatus: (value: string) => void;
   sortOrder: SortOrder; setSortOrder: (value: SortOrder) => void;
   favoritesOnly: boolean; setFavoritesOnly: (value: boolean) => void;
-  onClearFavorites: () => void;
+  favoriteCount: number;
+  onClearFavorites: () => boolean;
   providers: string[]; selectedProviders: string[]; setSelectedProviders: (value: string[]) => void;
   genres: string[]; selectedGenres: string[]; setSelectedGenres: (value: string[]) => void;
   genreMode: GenreMode; setGenreMode: (value: GenreMode) => void;
@@ -32,7 +33,7 @@ export default function WorkFilters(props: Props) {
       <select aria-label="視聴状況" value={props.watchStatus} onChange={(event) => props.setWatchStatus(event.target.value)}><option value="ALL">すべての視聴状況</option><option value="WATCHED">視聴済</option><option value="UNWATCHED">未視聴</option></select>
       <select aria-label="並び順" value={props.sortOrder} onChange={(event) => props.setSortOrder(event.target.value as SortOrder)}><option value="default">公開順（新しい順）</option><option value="popularity">人気順</option><option value="title">タイトル順（ABC/五十音）</option></select>
       <button className={props.favoritesOnly ? "is-active" : ""} onClick={() => props.setFavoritesOnly(!props.favoritesOnly)}>{props.favoritesOnly ? "★ お気に入りのみ表示" : "☆ お気に入りのみ表示"}</button>
-      {props.favoritesOnly && <button onClick={() => { props.onClearFavorites(); props.setFavoritesOnly(false); }}>お気に入りをすべて解除</button>}
+      <button className="archive-clear-favorites" disabled={!props.favoriteCount} onClick={() => { if (props.onClearFavorites()) props.setFavoritesOnly(false); }}>お気に入りを一括解除</button>
     </div>
     <button className="work-filters__expand" onClick={() => props.setExpanded(!props.expanded)}>{props.expanded ? "▲ 詳細フィルターを閉じる" : "▼ 配信サービス・ジャンルで絞り込む"}</button>
     {props.expanded && <div className="work-filter-details">

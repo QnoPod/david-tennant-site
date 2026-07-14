@@ -11,6 +11,7 @@ export const navigation = [
   { href: "/characters", label: "CHARACTERS" },
   { href: "/comic-con", label: "COMIC CON" },
   { href: "/interviews", label: "INTERVIEWS" },
+  { href: "/my-archive", label: "MY ARCHIVE" },
   { href: "/about", label: "ABOUT" },
 ];
 

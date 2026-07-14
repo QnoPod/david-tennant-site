@@ -85,7 +85,8 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const fallbackName = rawName.toLowerCase().startsWith("self") ? "本人"
       : rawName.toLowerCase().startsWith("narrator") ? "ナレーター"
       : rawName || "役名未登録";
-    const englishName = sourceTitle === "Doctor Who: 60th Anniversary Specials" ? "14th Doctor"
+    const englishName = sourceTitle === "Being Considered" ? "ex-boyfriend"
+      : sourceTitle === "Doctor Who: 60th Anniversary Specials" ? "14th Doctor"
       : dictionaryKey === "10th Doctor" ? "10th Doctor"
       : dictionaryKey === "Donald Peterson" ? "Donald Peterson"
       : dictionaryKey === "Roderick Peterson" ? "Roderick Peterson"

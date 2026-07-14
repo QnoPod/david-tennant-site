@@ -63,6 +63,7 @@ function parseAppearances(html: string): ConventionAppearance[] {
       statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。",
       officialUrl: official ? new URL(official, SOURCE_URL).toString() : undefined,
       detailUrl: new URL(match[1], SOURCE_URL).toString(), sourceUrl: SOURCE_URL,
+      isAutoFetched: true,
     };
   // 件数を制限せず、取得元に掲載されている現在の参加予定をすべて返します。
   }).filter((event) => event.name);

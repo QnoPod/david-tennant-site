@@ -122,6 +122,7 @@ export default function ConventionExplorer({
             <p className={`event-status event-status--${status}`}>{presentation.label}</p>
             <h2>{event.name}</h2>
             <div className="event-card__meta"><span>開催国：{event.country}</span><span>主催：{event.organizer}</span></div>
+            {event.isAutoFetched && <p className="event-card__source">掲載元：<a href={event.sourceUrl} target="_blank" rel="noreferrer">Comiconomicon ↗</a></p>}
             <p>{event.venue}</p>
             {event.statusNote && <p className="event-card__note">{event.statusNote}</p>}
             {hasUpcomingLinks && <div className="button-row">

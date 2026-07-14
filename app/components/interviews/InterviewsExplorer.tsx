@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import type { InterviewSummary } from "../../data/interviews/types";
+import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, readArchiveList, writeArchiveList } from "../../lib/archiveStorage";
 import InterviewCard from "./InterviewCard";
 
 const INITIAL_VISIBLE_COUNT = 6;
@@ -19,6 +20,8 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
   const [query, setQuery] = useState("");
   const [mediaType, setMediaType] = useState<"all" | "video" | "article">("all");
   const [year, setYear] = useState("all");
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [favoriteSlugs, setFavoriteSlugs] = useState<string[]>([]);
   const [tagExpanded, setTagExpanded] = useState(false);
   const [selectedTags, setSelectedTags] = useState<Record<TagCategory, string[]>>({
     actors: [],
@@ -28,6 +31,18 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
   const [contentMatches, setContentMatches] = useState<string[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  // 一覧や詳細でしおりを変更した場合も、お気に入り検索へ即時反映します。
+  useEffect(() => {
+    const syncFavorites = () => setFavoriteSlugs(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteInterviews));
+    syncFavorites();
+    window.addEventListener("storage", syncFavorites);
+    window.addEventListener(ARCHIVE_UPDATED_EVENT, syncFavorites);
+    return () => {
+      window.removeEventListener("storage", syncFavorites);
+      window.removeEventListener(ARCHIVE_UPDATED_EVENT, syncFavorites);
+    };
+  }, []);
 
   const years = useMemo(() => [...new Set(interviews.map((item) => item.year))].sort((a, b) => b.localeCompare(a)), [interviews]);
   // カタログへタグを追加するだけで、役者・ジャンル・配信元の選択肢へ反映します。
@@ -71,10 +86,11 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
 
       return matchesQuery
         && matchesTags
+        && (!favoritesOnly || favoriteSlugs.includes(interview.slug))
         && (mediaType === "all" || interview.mediaType === mediaType)
         && (year === "all" || interview.year === year);
     });
-  }, [contentMatches, interviews, mediaType, query, selectedTags, year]);
+  }, [contentMatches, favoriteSlugs, favoritesOnly, interviews, mediaType, query, selectedTags, year]);
 
   const updateQuery = (value: string) => {
     setQuery(value); setContentMatches(null); setIsSearching(Boolean(value.trim()));
@@ -95,8 +111,14 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
   };
 
   const clearFilters = () => {
-    setQuery(""); setMediaType("all"); setYear("all"); setTagExpanded(false);
+    setQuery(""); setMediaType("all"); setYear("all"); setFavoritesOnly(false); setTagExpanded(false);
     setSelectedTags({ actors: [], genres: [], sources: [] }); setContentMatches(null); setIsSearching(false);
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+  };
+
+  const clearAllFavorites = () => {
+    if (!favoriteSlugs.length || !window.confirm("インタビューのしおりをすべて解除しますか？")) return;
+    writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteInterviews, []);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
@@ -109,8 +131,10 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
       <div className="work-filter-row">
         <select value={mediaType} onChange={(event) => { setMediaType(event.target.value as typeof mediaType); setVisibleCount(INITIAL_VISIBLE_COUNT); }} aria-label="種類"><option value="all">すべての種類</option><option value="video">動画</option><option value="article">記事</option></select>
         <select value={year} onChange={(event) => { setYear(event.target.value); setVisibleCount(INITIAL_VISIBLE_COUNT); }} aria-label="公開年"><option value="all">すべての公開年</option>{years.map((item) => <option key={item}>{item}</option>)}</select>
+        <button className={favoritesOnly ? "is-active" : ""} type="button" aria-pressed={favoritesOnly} onClick={() => { setFavoritesOnly((current) => !current); setVisibleCount(INITIAL_VISIBLE_COUNT); }}>🔖 お気に入り</button>
+        <button className="interview-clear-favorites" type="button" disabled={!favoriteSlugs.length} onClick={clearAllFavorites}>お気に入りを一括解除</button>
       </div>
-      <button className="work-filters__expand" type="button" onClick={() => setTagExpanded((current) => !current)}>{tagExpanded ? "▲ 詳細フィルターを閉じる" : "▼ 役者・ジャンル・配信元で絞り込む"}</button>
+      <button className="work-filters__expand" type="button" onClick={() => setTagExpanded((current) => !current)}>{tagExpanded ? "▲ 詳細フィルターを閉じる" : "▼ 役者・関連作品・配信元で絞り込む"}</button>
       {tagExpanded && <div className="work-filter-details">
         {TAG_CATEGORIES.map((category) => {
           const selected = selectedTags[category];

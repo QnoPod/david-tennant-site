@@ -5,14 +5,15 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
+import { ARCHIVE_STORAGE_KEYS, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { findRelatedInterviews } from "../lib/relatedContent";
 import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import { getDisplayTitle, getOriginalTitle, getSourceTitle, getWorkCharacters, getWorkOverview, getWorkVideoKey, normalizeText } from "../lib/workPresentation";
 import WorkFilters, { type GenreMode, type SortOrder } from "./WorkFilters";
 
-const FAVORITES_KEY = "favorites";
-const WATCHED_KEY = "watchedWorks";
+const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteWorks;
+const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
 
 /**
  * 旧サイトの全検索条件、配信情報、視聴済み、お気に入りを維持する作品一覧。
@@ -41,8 +42,8 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   // 旧サイトと同じlocalStorageキーを使い、既存のマークを引き継ぎます。
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      setFavorites(JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"));
-      setWatched(JSON.parse(localStorage.getItem(WATCHED_KEY) || "[]"));
+      setFavorites(readArchiveList<number>(FAVORITES_KEY));
+      setWatched(readArchiveList<number>(WATCHED_KEY));
     });
     return () => cancelAnimationFrame(frame);
   }, []);
@@ -101,10 +102,14 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   }, [filtered]);
 
   const saveList = (key: string, list: number[], setter: (value: number[]) => void) => {
-    localStorage.setItem(key, JSON.stringify(list));
+    writeArchiveList(key, list);
     setter(list);
   };
-  const toggleFavorite = (work: Work) => saveList(FAVORITES_KEY, favorites.includes(work.id) ? favorites.filter((id) => id !== work.id) : [...favorites, work.id], setFavorites);
+  const toggleFavorite = (work: Work) => {
+    const isFavorite = favorites.includes(work.id);
+    if (isFavorite && !window.confirm(`「${getDisplayTitle(work)}」のお気に入りを解除しますか？`)) return;
+    saveList(FAVORITES_KEY, isFavorite ? favorites.filter((id) => id !== work.id) : [...favorites, work.id], setFavorites);
+  };
   const toggleWatched = (work: Work) => saveList(WATCHED_KEY, watched.includes(work.id) ? watched.filter((id) => id !== work.id) : [...watched, work.id], setWatched);
 
   const resetFilters = () => {
@@ -147,7 +152,12 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
         availability={availability} setAvailability={setAvailability} watchStatus={watchStatus} setWatchStatus={setWatchStatus}
         sortOrder={view === "timeline" ? "default" : sortOrder} setSortOrder={setSortOrder}
         favoritesOnly={favoritesOnly} setFavoritesOnly={setFavoritesOnly}
-        onClearFavorites={() => saveList(FAVORITES_KEY, [], setFavorites)}
+        favoriteCount={favorites.length}
+        onClearFavorites={() => {
+          if (!favorites.length || !window.confirm("WORKSのお気に入りをすべて解除しますか？")) return false;
+          saveList(FAVORITES_KEY, [], setFavorites);
+          return true;
+        }}
         providers={providers} selectedProviders={selectedProviders} setSelectedProviders={setSelectedProviders}
         genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}
         genreMode={genreMode} setGenreMode={setGenreMode} expanded={expanded} setExpanded={setExpanded}

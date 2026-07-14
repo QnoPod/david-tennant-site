@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import InterviewMedia from "../../components/interviews/InterviewMedia";
+import InterviewBookmarkButton from "../../components/interviews/InterviewBookmarkButton";
 import InterviewTranscript from "../../components/interviews/InterviewTranscript";
 import RelatedLinks from "../../components/RelatedLinks";
 import { interviewCatalog } from "../../data/interviews/catalog";
@@ -28,7 +29,7 @@ export default async function InterviewDetailPage({ params }: InterviewPageProps
   const relatedInterviews = findRelatedInterviews(relatedWorkTags, interview.slug);
   return <main id="main-content"><article className="interview-detail shell">
     <Link className="back-link" href="/interviews">← インタビュー一覧</Link>
-    <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1 className={interview.titleEn ? "interview-title-ja" : undefined}>{interview.title}</h1>{interview.titleEn && <p className="interview-detail-title-en" lang="en">{interview.titleEn}</p>}<p className="interview-detail-description">{interview.description}</p><div className="tag-row">{getAllInterviewTags(interview.tagGroups).map((tag) => <span key={tag}>{tag}</span>)}</div></header>
+    <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1 className={interview.titleEn ? "interview-title-ja" : undefined}>{interview.title}</h1>{interview.titleEn && <p className="interview-detail-title-en" lang="en">{interview.titleEn}</p>}<p className="interview-detail-description">{interview.description}</p><InterviewBookmarkButton slug={interview.slug} title={interview.title} /><div className="tag-row">{getAllInterviewTags(interview.tagGroups).map((tag) => <span key={tag}>{tag}</span>)}</div></header>
     <InterviewMedia interview={interview} />
     <div className="transcript-heading"><div><p className="eyebrow">{interview.mediaType === "video" ? "TRANSCRIPT & TRANSLATION" : "ARTICLE & TRANSLATION"}</p><h2>英語原文・日本語訳</h2></div><a className="text-link" href={interview.externalUrl} target="_blank" rel="noreferrer">{interview.mediaType === "video" ? "YouTubeで見る" : "掲載記事を読む"} ↗</a></div>
     <InterviewTranscript lines={interview.transcript} videoId={interview.videoId} />

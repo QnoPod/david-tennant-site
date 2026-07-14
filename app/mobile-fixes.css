@@ -27,11 +27,11 @@
     line-height: .9;
   }
 
-  /* キャラクター検索の操作欄を、幅が変わっても崩れない2列にします。 */
+  /* キャラクター検索の操作欄は、すべて検索欄と同じ横幅の1列にします。 */
   .characters-page .archive-controls__actions {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px;
   }
 
@@ -40,6 +40,13 @@
   .characters-page .archive-controls__actions > span {
     width: 100%;
     grid-column: 1 / -1;
+  }
+
+  .characters-page .character-favorite-controls {
+    width: 100%;
+    min-width: 0;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .characters-page .archive-controls__actions .archive-view-button {

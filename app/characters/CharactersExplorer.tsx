@@ -5,12 +5,13 @@ import { useSearchParams } from "next/navigation";
 import ArchiveControls from "../components/ArchiveControls";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
+import { ARCHIVE_STORAGE_KEYS, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { findRelatedInterviews } from "../lib/relatedContent";
 import type { Character } from "../lib/types";
 import { normalizeText } from "../lib/workPresentation";
 
-const FAVORITES_KEY = "david-archive-favorite-characters";
-const WATCHED_KEY = "watchedWorks";
+const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteCharacters;
+const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
 
 /** キャラクター検索、属性カテゴリ、お気に入り、グリッド／年代表示を担当。 */
 export default function CharactersExplorer({ characters }: { characters: Character[] }) {
@@ -32,8 +33,8 @@ export default function CharactersExplorer({ characters }: { characters: Charact
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      setFavorites(JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"));
-      setWatchedWorks(JSON.parse(localStorage.getItem(WATCHED_KEY) || "[]"));
+      setFavorites(readArchiveList<string>(FAVORITES_KEY));
+      setWatchedWorks(readArchiveList<number>(WATCHED_KEY));
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
@@ -75,10 +76,19 @@ export default function CharactersExplorer({ characters }: { characters: Charact
     return [...groups.entries()].map(([year, items]) => [year, [...items].sort((a, b) => (b.age ?? -1) - (a.age ?? -1))] as const);
   }, [filtered]);
 
-  const toggleFavorite = (key: string) => {
-    const next = favorites.includes(key) ? favorites.filter((item) => item !== key) : [...favorites, key];
+  const toggleFavorite = (character: Character) => {
+    const isFavorite = favorites.includes(character.key);
+    if (isFavorite && !window.confirm(`「${character.name}」のお気に入りを解除しますか？`)) return;
+    const next = isFavorite ? favorites.filter((item) => item !== character.key) : [...favorites, character.key];
     setFavorites(next);
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
+    writeArchiveList(FAVORITES_KEY, next);
+  };
+
+  const clearFavorites = () => {
+    if (!favorites.length || !window.confirm("CHARACTERSのお気に入りをすべて解除しますか？")) return;
+    setFavorites([]);
+    setFavoritesOnly(false);
+    writeArchiveList(FAVORITES_KEY, []);
   };
 
   const attributeSectionId = (item: string) => `character-attribute-${encodeURIComponent(item)}`;
@@ -96,8 +106,8 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   const favoriteButton = (character: Character, timeline: boolean) => (
     <button
       className={`favorite-button ${timeline ? "favorite-button--timeline" : ""} ${favorites.includes(character.key) ? "is-favorite" : ""}`}
-      onClick={() => toggleFavorite(character.key)}
-      aria-label="お気に入りを切り替える"
+      onClick={() => toggleFavorite(character)}
+      aria-label={favorites.includes(character.key) ? `${character.name}のお気に入りを解除` : `${character.name}をお気に入りに追加`}
     >
       ★{timeline ? " お気に入り" : ""}
     </button>
@@ -125,11 +135,16 @@ export default function CharactersExplorer({ characters }: { characters: Charact
 
   return (
     <section className="archive-section shell">
-      <ArchiveControls query={query} onQueryChange={setQuery} view={view} onViewChange={setView} count={filtered.length}>
+      <ArchiveControls className="archive-controls--characters" query={query} onQueryChange={setQuery} view={view} onViewChange={setView} count={filtered.length} showViewControls={false}>
         <select aria-label="視聴状況" value={watchStatus} onChange={(event) => setWatchStatus(event.target.value)}><option value="ALL">すべての視聴状況</option><option value="WATCHED">視聴済</option><option value="UNWATCHED">未視聴</option></select>
-        <button className={favoritesOnly ? "is-active" : ""} onClick={() => setFavoritesOnly((value) => !value)}>★ お気に入り</button>
         <button className={showAttributes ? "is-active" : ""} onClick={() => setShowAttributes((value) => !value)}>{showAttributes ? "属性をOFF" : "属性をON"}</button>
+        <div className="character-favorite-controls">
+          <button className={favoritesOnly ? "is-active" : ""} onClick={() => setFavoritesOnly((value) => !value)}>{favoritesOnly ? "★ お気に入りのみ表示" : "☆ お気に入りのみ表示"}</button>
+          <button className="archive-clear-favorites" disabled={!favorites.length} onClick={clearFavorites}>お気に入りを一括解除</button>
+        </div>
       </ArchiveControls>
+
+      <div className="archive-summary"><p>カードを選ぶと、キャラクターの説明と関連作品・インタビューを表示します。</p><div><button className={view === "grid" ? "is-active" : ""} onClick={() => setView("grid")}>グリッド</button><button className={view === "timeline" ? "is-active" : ""} onClick={() => setView("timeline")}>年代順</button><strong>{filtered.length} / {characters.length}人</strong></div></div>
 
       {showAttributes ? <div className="character-attribute-sections">{attributeGroups.map((group) => <section className="character-attribute-section" id={attributeSectionId(group.attribute)} key={group.attribute}>
         <div className="character-attribute-section__heading"><p className="eyebrow">ATTRIBUTE FILE</p><h2>{group.attribute}</h2><span>{group.characters.length}人</span></div>

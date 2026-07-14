@@ -104,4 +104,6 @@ export type ConventionAppearance = {
   /** detailUrlが実在する専用ページであることを確認済みかどうか。 */
   recordUrlVerified?: boolean;
   sourceUrl: string;
+  /** Comiconomiconから定期取得できた項目だけ、画面に掲載元を表示します。 */
+  isAutoFetched?: boolean;
 };

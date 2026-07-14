@@ -12,11 +12,11 @@ import { normalizeText } from "../lib/workPresentation";
 const FAVORITES_KEY = "david-archive-favorite-characters";
 const WATCHED_KEY = "watchedWorks";
 
-/** キャラクター検索、属性絞り込み、お気に入り、グリッド／年代表示を担当。 */
+/** キャラクター検索、属性カテゴリ、お気に入り、グリッド／年代表示を担当。 */
 export default function CharactersExplorer({ characters }: { characters: Character[] }) {
   const initialQuery = useSearchParams().get("q") ?? "";
   const [query, setQuery] = useState(initialQuery);
-  const [attribute, setAttribute] = useState("all");
+  const [showAttributes, setShowAttributes] = useState(false);
   const [watchStatus, setWatchStatus] = useState("ALL");
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
@@ -38,17 +38,32 @@ export default function CharactersExplorer({ characters }: { characters: Charact
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const attributes = useMemo(() => [...new Set(characters.flatMap((item) => item.attributes))].sort((a, b) => a.localeCompare(b, "ja")), [characters]);
+  const attributeCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const character of characters) {
+      for (const item of new Set(character.attributes)) counts.set(item, (counts.get(item) ?? 0) + 1);
+    }
+    return counts;
+  }, [characters]);
   const watchedWorkIds = useMemo(() => new Set(watchedWorks.map(String)), [watchedWorks]);
   const filtered = useMemo(() => characters.filter((character) => {
     // 日本語名、英語名、辞書キー、表示用作品名のすべてを検索対象にします。
     const text = normalizeText(`${character.name} ${character.englishName} ${character.workTitle} ${character.displayWorkTitle}`);
     const isWatched = character.workIds.some((id) => watchedWorkIds.has(String(id)));
     return text.includes(normalizeText(query))
-      && (attribute === "all" || character.attributes.includes(attribute))
       && (watchStatus === "ALL" || (watchStatus === "WATCHED" ? isWatched : !isWatched))
       && (!favoritesOnly || favorites.includes(character.key));
-  }), [attribute, characters, favorites, favoritesOnly, query, watchStatus, watchedWorkIds]);
+  }), [characters, favorites, favoritesOnly, query, watchStatus, watchedWorkIds]);
+  const attributeGroups = useMemo(() => [...attributeCounts.keys()]
+    .map((item) => ({ attribute: item, characters: filtered.filter((character) => character.attributes.includes(item)) }))
+    .filter((group) => group.characters.length)
+    .sort((a, b) => {
+      // 「その他職業」は件数にかかわらず最後へ置き、それ以外は現在の表示人数が多い順です。
+      const aIsOther = a.attribute === "その他職業" || a.attribute === "その他の職業";
+      const bIsOther = b.attribute === "その他職業" || b.attribute === "その他の職業";
+      if (aIsOther !== bIsOther) return aIsOther ? 1 : -1;
+      return b.characters.length - a.characters.length || a.attribute.localeCompare(b.attribute, "ja");
+    }), [attributeCounts, filtered]);
 
   const timelineGroups = useMemo(() => {
     const groups = new Map<string, Character[]>();
@@ -64,6 +79,18 @@ export default function CharactersExplorer({ characters }: { characters: Charact
     const next = favorites.includes(key) ? favorites.filter((item) => item !== key) : [...favorites, key];
     setFavorites(next);
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
+  };
+
+  const attributeSectionId = (item: string) => `character-attribute-${encodeURIComponent(item)}`;
+
+  /** カードの属性を押すとカテゴリ表示をONにし、該当する属性枠まで移動します。 */
+  const goToAttribute = (item: string) => {
+    setShowAttributes(true);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        document.getElementById(attributeSectionId(item))?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   };
 
   const favoriteButton = (character: Character, timeline: boolean) => (
@@ -84,11 +111,14 @@ export default function CharactersExplorer({ characters }: { characters: Charact
       {!timeline && favoriteButton(character, false)}
     </div>
     <div className="character-card__body">
-      <p>{character.year} · {character.attributes[0] || "CHARACTER"}</p>
+      <p>{character.year}</p>
       <h2>{character.name}</h2>
       {character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}
       {timeline && character.age !== null && <b className="character-age">当時 {character.age}歳</b>}
       <span>{character.displayWorkTitle}</span>
+      {showAttributes && <div className="character-card__attributes">
+        {character.attributes.map((item) => <button type="button" className={showAttributes ? "is-active" : ""} key={item} onClick={() => goToAttribute(item)}>{item}</button>)}
+      </div>}
       {timeline && favoriteButton(character, true)}
     </div>
   </article>;
@@ -96,12 +126,18 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   return (
     <section className="archive-section shell">
       <ArchiveControls query={query} onQueryChange={setQuery} view={view} onViewChange={setView} count={filtered.length}>
-        <select aria-label="属性" value={attribute} onChange={(event) => setAttribute(event.target.value)}><option value="all">すべての属性</option>{attributes.map((item) => <option key={item}>{item}</option>)}</select>
         <select aria-label="視聴状況" value={watchStatus} onChange={(event) => setWatchStatus(event.target.value)}><option value="ALL">すべての視聴状況</option><option value="WATCHED">視聴済</option><option value="UNWATCHED">未視聴</option></select>
         <button className={favoritesOnly ? "is-active" : ""} onClick={() => setFavoritesOnly((value) => !value)}>★ お気に入り</button>
+        <button className={showAttributes ? "is-active" : ""} onClick={() => setShowAttributes((value) => !value)}>{showAttributes ? "属性をOFF" : "属性をON"}</button>
       </ArchiveControls>
 
-      {view === "grid" ? <div className="media-grid character-grid">{filtered.map((character) => characterCard(character))}</div>
+      {showAttributes ? <div className="character-attribute-sections">{attributeGroups.map((group) => <section className="character-attribute-section" id={attributeSectionId(group.attribute)} key={group.attribute}>
+        <div className="character-attribute-section__heading"><p className="eyebrow">ATTRIBUTE FILE</p><h2>{group.attribute}</h2><span>{group.characters.length}人</span></div>
+        {view === "grid"
+          ? <div className="media-grid character-grid">{group.characters.map((character) => characterCard(character))}</div>
+          : <div className="work-timeline character-timeline character-attribute-timeline">{group.characters.map((character) => characterCard(character, true))}</div>}
+      </section>)}</div>
+        : view === "grid" ? <div className="media-grid character-grid">{filtered.map((character) => characterCard(character))}</div>
         : <div className="work-timeline character-timeline">{timelineGroups.map(([year, yearCharacters]) => <section className="timeline-year-group" key={year}><h2>{year}</h2><div>{yearCharacters.map((character) => characterCard(character, true))}</div></section>)}</div>}
       {!filtered.length && <p className="empty-state">条件に一致するキャラクターがいません。</p>}
 

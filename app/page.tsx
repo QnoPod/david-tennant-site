@@ -1,16 +1,20 @@
 import Link from "next/link";
 import SectionHeading from "./components/SectionHeading";
-import { featuredWorks, homeSiteMap, siteUpdates } from "./data/content";
+import { featuredWorks, homeSiteMap } from "./data/content";
 import { getInterviewsNewestFirst } from "./data/interviews/catalog";
 import { getCharacters } from "./lib/characters";
 import { getConventionAppearances } from "./lib/comiconomicon";
 import { getWorks } from "./lib/tmdb";
+import { buildAutomaticSiteUpdates } from "./lib/siteUpdates";
+import { getUpcomingWorks } from "./lib/upcoming";
 
 /** トップページ。サイト内の各アーカイブへ迷わず移動できる入口です。 */
 export default async function HomePage() {
-  const [appearances, works] = await Promise.all([getConventionAppearances(), getWorks()]);
+  const [appearances, works, upcoming] = await Promise.all([getConventionAppearances(), getWorks(), getUpcomingWorks()]);
   const nextAppearance = appearances[0];
-  const latestInterview = getInterviewsNewestFirst()[0];
+  const interviews = getInterviewsNewestFirst();
+  const latestInterview = interviews[0];
+  const siteUpdates = buildAutomaticSiteUpdates({ interviews, upcoming, conventions: appearances });
   // 公開年が確認できる役を新しい順に並べ、トップには最新6人だけを表示します。
   const latestCharacters = getCharacters(works).filter((character) => /^\d{4}$/.test(character.year)).slice(0, 6);
 
@@ -136,7 +140,7 @@ export default async function HomePage() {
         <SectionHeading eyebrow="LATEST UPDATES" title="更新履歴" linkHref="/about" linkLabel="サイトについて" />
         <div className="updates-list">
           {siteUpdates.map((update) => (
-            <div key={`${update.date}-${update.text}`}><time>{update.date}</time><p>{update.text}</p></div>
+            <div key={`${update.date}-${update.text}`}><time>{update.date.replaceAll("-", ".")}</time><p><span>{update.category}</span><Link href={update.href}>{update.text}</Link></p></div>
           ))}
         </div>
       </section>

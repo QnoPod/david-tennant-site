@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import InterviewCard from "../components/interviews/InterviewCard";
+import RecentlyViewed from "../components/RecentlyViewed";
 import type { InterviewSummary } from "../data/interviews/types";
 import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { getMediaLabel, getPosterUrl, getWorkDate } from "../lib/tmdb";
@@ -87,6 +88,8 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
     <ArchiveSection id="favorite-interviews" title="インタビューのしおり" eyebrow="BOOKMARKED INTERVIEWS" count={favoriteInterviews.length} onClear={() => clearSection(ARCHIVE_STORAGE_KEYS.favoriteInterviews, "インタビューのしおり")} empty="しおりを付けたインタビューはまだありません。" emptyHref="/interviews" emptyLabel="インタビューを探す">
       <div className="interview-grid">{favoriteInterviews.map((interview) => <InterviewCard key={interview.slug} interview={interview} />)}</div>
     </ArchiveSection>
+
+    <RecentlyViewed embedded />
 
     <p className="my-archive-note">保存内容はこのブラウザ内に記録されます。別の端末やブラウザには自動で共有されません。</p>
   </section>;

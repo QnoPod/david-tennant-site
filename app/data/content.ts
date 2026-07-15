@@ -13,6 +13,7 @@ export const navigation = [
   { href: "/comic-con", label: "COMIC CON" },
   { href: "/interviews", label: "INTERVIEWS" },
   { href: "/my-archive", label: "MY ARCHIVE" },
+  { href: "/search", label: "SEARCH" },
   { href: "/about", label: "ABOUT" },
 ];
 
@@ -26,6 +27,7 @@ export const homeSiteMap = [
   { href: "/comic-con", label: "COMIC CON", title: "コミコン参加情報", description: "今後の予定と、キャンセルを含む過去の参加記録。" },
   { href: "/interviews", label: "INTERVIEWS", title: "インタビュー", description: "動画・記事の英語原文と日本語訳を読む。" },
   { href: "/my-archive", label: "MY ARCHIVE", title: "マイアーカイブ", description: "お気に入り作品、キャラクター、インタビューのしおり。" },
+  { href: "/search", label: "SEARCH", title: "サイト内検索", description: "すべてのアーカイブを、ひとつのキーワードで横断検索。" },
   { href: "/about", label: "ABOUT", title: "このサイトについて", description: "ファンサイトの方針、更新情報、翻訳について。" },
 ] as const;
 
@@ -58,8 +60,4 @@ export const careerTimeline = [
   { year: "2023", title: "Macbeth", text: "Donmar Warehouseの『Macbeth』でマクベスを演じ、2024年にWest Endへ移る。" },
   { year: "2024", title: "Rivals", text: "『Rivals』でトニー・バディンガムを演じる。" },
   { year: "2025", title: "The Hack & The Thursday Murder Club", text: "ニック・デイヴィス、イアン・ヴェンサムという異なる実在／フィクションの人物を演じる。" },
-];
-
-export const siteUpdates = [
-  { date: "2026.07.12", text: "ファンアーカイブを全面リニューアルしました。" },
 ];

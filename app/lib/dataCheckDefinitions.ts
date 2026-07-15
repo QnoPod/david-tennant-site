@@ -6,6 +6,7 @@ export const DATA_CHECK_DEFINITIONS = {
   characterDetail: { label: "キャラクター詳細未設定", editFile: "characterDetails.ts / manualWorks.ts" },
   episodes: { label: "出演エピソード未確認", editFile: "episodeOverrides.ts / manualWorks.ts" },
   providers: { label: "日本の配信先未確認", editFile: "TMDB取得結果 / manualWorks.ts" },
+  duplicate: { label: "重複データ", editFile: "manualWorks.ts / characterDetails.ts / TMDB統合処理" },
 } as const;
 
 export type DataCheckKey = keyof typeof DATA_CHECK_DEFINITIONS;

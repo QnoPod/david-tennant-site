@@ -5,7 +5,8 @@ import Link from "next/link";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import { findRelatedInterviews } from "../lib/relatedContent";
-import { getBackdropUrl, getMediaLabel, getProviderLogo, getWorkDate } from "../lib/tmdb";
+import { recordRecentlyViewed } from "../lib/recentlyViewed";
+import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import {
   getDisplayTitle,
@@ -40,6 +41,17 @@ export default function WorkDetailModal({ work, watched, onToggleWatched, onClos
     ...characters.flatMap((character) => [character.name, character.englishName]),
   ]);
 
+  useEffect(() => {
+    recordRecentlyViewed({
+      key: `work-${work.media_type}-${work.id}`,
+      type: "work",
+      title: displayTitle,
+      subtitle: originalTitle !== displayTitle ? originalTitle : undefined,
+      href: `/works?q=${encodeURIComponent(displayTitle)}`,
+      image: getPosterUrl(work.poster_path, work.posterUrl),
+    });
+  }, [displayTitle, originalTitle, work.id, work.media_type, work.posterUrl, work.poster_path]);
+
   return <Modal open onClose={onClose} label={`${displayTitle}の詳細`}>
     <div className="work-detail">
       {(work.backdrop_path || work.backdropUrl) && <div className="work-detail__backdrop" style={{ backgroundImage: `linear-gradient(to top, var(--white), transparent), url('${getBackdropUrl(work.backdrop_path, work.backdropUrl)}')` }} />}
@@ -54,6 +66,7 @@ export default function WorkDetailModal({ work, watched, onToggleWatched, onClos
       {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} loading="lazy" allowFullScreen /></div></section>}
 
       <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} loading="lazy" decoding="async" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}<p>{character.description}</p><Link className="text-link" href={`/characters?q=${encodeURIComponent(character.name)}`}>キャラクター詳細を見る →</Link></div></article>)}</div></section>
+      {work.updatedAt && <p className="detail-updated-at">情報最終確認：<time dateTime={work.updatedAt}>{work.updatedAt.replaceAll("-", ".")}</time></p>}
       <RelatedLinks title="関連インタビュー" items={relatedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))} />
     </div>
   </Modal>;
@@ -65,10 +78,12 @@ function EpisodeAppearances({ work }: { work: Work }) {
     ? { status: "exact" as const, appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length }
     : null;
   const [result, setResult] = useState<EpisodeAppearanceResult | null>(manualResult);
+  const [selectedSeason, setSelectedSeason] = useState<"all" | number>("all");
 
   useEffect(() => {
     if (work.episodeAppearances?.length) {
       setResult({ status: "exact", appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length });
+      setSelectedSeason("all");
       return;
     }
     if (work.isManual) {
@@ -91,13 +106,27 @@ function EpisodeAppearances({ work }: { work: Work }) {
   }, [work]);
 
   if (!result?.appearances.length) return null;
+  const seasons = [...new Set(result.appearances.map((episode) => episode.seasonNumber))].sort((a, b) => a - b);
+  const visibleEpisodes = (selectedSeason === "all" ? result.appearances : result.appearances.filter((episode) => episode.seasonNumber === selectedSeason))
+    .slice().sort((a, b) => a.seasonNumber - b.seasonNumber || a.episodeNumber - b.episodeNumber);
+  const groups = [...new Set(visibleEpisodes.map((episode) => episode.seasonNumber))].map((season) => ({
+    season,
+    episodes: visibleEpisodes.filter((episode) => episode.seasonNumber === season),
+  }));
   return <section className="detail-section episode-appearances">
-    <h3>出演エピソード</h3>
-    <ol>{result.appearances.map((episode) => <li key={`${episode.seasonNumber}-${episode.episodeNumber}`}>
-      <strong>{episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}</strong>
-      {episode.title && <span>「{episode.title}」</span>}
-      {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
-      {episode.character && <small>{episode.character}</small>}
-    </li>)}</ol>
+    <div className="episode-appearances__heading"><h3>出演エピソード</h3><span>{result.appearances.length}件確認済み</span></div>
+    {seasons.length > 1 && <div className="episode-season-nav" aria-label="シーズンで絞り込む">
+      <button type="button" className={selectedSeason === "all" ? "is-active" : ""} onClick={() => setSelectedSeason("all")}>すべて</button>
+      {seasons.map((season) => <button type="button" className={selectedSeason === season ? "is-active" : ""} onClick={() => setSelectedSeason(season)} key={season}>{season === 0 ? "特別回" : `シーズン${season}`}<span>{result.appearances.filter((episode) => episode.seasonNumber === season).length}</span></button>)}
+    </div>}
+    <div className="episode-season-groups">{groups.map((group) => <section key={group.season}>
+      <h4>{group.season === 0 ? "特別回・授賞式" : `シーズン ${group.season}`}</h4>
+      <ol>{group.episodes.map((episode) => <li key={`${episode.seasonNumber}-${episode.episodeNumber}-${episode.airDate || ""}`}>
+        <strong>{episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}</strong>
+        {episode.title && <span>「{episode.title}」</span>}
+        {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
+        {episode.character && <small>{episode.character}</small>}
+      </li>)}</ol>
+    </section>)}</div>
   </section>;
 }

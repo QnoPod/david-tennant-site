@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import InterviewMedia from "../../components/interviews/InterviewMedia";
 import InterviewBookmarkButton from "../../components/interviews/InterviewBookmarkButton";
 import InterviewTranscript from "../../components/interviews/InterviewTranscript";
+import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
 import RelatedLinks from "../../components/RelatedLinks";
 import { interviewCatalog } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
@@ -28,6 +29,7 @@ export default async function InterviewDetailPage({ params }: InterviewPageProps
   const relatedWorkTags = interview.tagGroups.genres;
   const relatedInterviews = findRelatedInterviews(relatedWorkTags, interview.slug);
   return <main id="main-content"><article className="interview-detail shell">
+    <RecentlyViewedTracker item={{ key: `interview-${interview.slug}`, type: "interview", title: interview.title, subtitle: interview.source, href: `/interviews/${interview.slug}`, image: interview.thumbnailUrl }} />
     <Link className="back-link" href="/interviews">← インタビュー一覧</Link>
     <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1 className={interview.titleEn ? "interview-title-ja" : undefined}>{interview.title}</h1>{interview.titleEn && <p className="interview-detail-title-en" lang="en">{interview.titleEn}</p>}<p className="interview-detail-description">{interview.description}</p><InterviewBookmarkButton slug={interview.slug} title={interview.title} /><div className="tag-row">{getAllInterviewTags(interview.tagGroups).map((tag) => <span key={tag}>{tag}</span>)}</div></header>
     <InterviewMedia interview={interview} />

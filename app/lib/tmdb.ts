@@ -107,7 +107,8 @@ function addManualProviders(title: string, providers: Work["providers"] = []) {
 export async function getEnrichedWorks(): Promise<Work[]> {
   const works = await getWorks();
   const token = process.env.TMDB_READ_TOKEN;
-  if (!token) return works;
+  const checkedAt = new Date().toISOString().slice(0, 10);
+  if (!token) return works.map((work) => ({ ...work, updatedAt: work.updatedAt || checkedAt }));
 
   const enriched: Work[] = [];
   const chunkSize = 24;
@@ -145,7 +146,7 @@ export async function getEnrichedWorks(): Promise<Work[]> {
         return work;
       }
     }));
-    enriched.push(...results);
+    enriched.push(...results.map((work) => ({ ...work, updatedAt: work.updatedAt || checkedAt })));
   }
   return enriched;
 }

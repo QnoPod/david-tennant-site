@@ -33,6 +33,8 @@ export type Work = {
   manualCharacters?: WorkCharacter[];
   /** 特定の回だけに出演する場合のエピソード情報。手入力作品でも使用できます。 */
   episodeAppearances?: EpisodeAppearance[];
+  /** 作品・配信・出演回情報を最後に確認した日（YYYY-MM-DD）。 */
+  updatedAt?: string;
 };
 
 /** 公開前・制作中の出演情報。公開済みのWORKSとは分けて扱います。 */

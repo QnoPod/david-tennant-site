@@ -11,12 +11,16 @@ export function normalizeText(value: string) {
   return String(value || "").normalize("NFKC").toLowerCase().replace(/[\s・=\-.,:;!?"'()[\]{}~～＆&]/g, "");
 }
 
-/** TMDBの原題をsearchDictionary.tsで邦題へ変換します。 */
+/**
+ * WORKSの太字タイトルを返します。
+ * 手入力の邦題、辞書の邦題、TMDBの日本語タイトル、原題の順に採用します。
+ */
 export function getDisplayTitle(work: Work) {
   if (work.manualTitle) return work.manualTitle;
   const sourceTitle = getWorkTitle(work);
   const originalTitle = work.original_title || work.original_name || sourceTitle;
-  return searchDictionary[normalizeText(originalTitle)] || searchDictionary[normalizeText(sourceTitle)] || sourceTitle;
+  const japaneseTitle = searchDictionary[normalizeText(originalTitle)] || searchDictionary[normalizeText(sourceTitle)];
+  return japaneseTitle?.trim() || sourceTitle.trim() || originalTitle.trim();
 }
 
 /** キャラクター辞書や概要辞書を引くときに使う、変換前の作品名。 */
@@ -27,6 +31,15 @@ export function getSourceTitle(work: Work) {
 /** 詳細画面で邦題と併記する、TMDB登録上の原題を返します。 */
 export function getOriginalTitle(work: Work) {
   return work.original_title || work.original_name || getSourceTitle(work);
+}
+
+/** 邦題がある作品だけ、太字タイトルの下へ表示する原題を返します。 */
+export function getOriginalTitleForDisplay(work: Work) {
+  const displayTitle = getDisplayTitle(work);
+  const originalTitle = getOriginalTitle(work).trim();
+  return originalTitle && normalizeText(originalTitle) !== normalizeText(displayTitle)
+    ? originalTitle
+    : null;
 }
 
 function parseCharacterInfo(raw?: string) {

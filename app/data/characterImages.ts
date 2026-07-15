@@ -97,6 +97,9 @@ export const customCharacterImages: Record<string, string> = {
   "BUNCH OF FIVE": "/characters/Policeman.jpg",
   "Much Ado About Nothing": "/characters/Benedick.jpg",
   "Scrooge McDuck": "/characters/Scrooge McDuck.jpg",
+  "The Big Night In": "/characters/Mr. Logan.png",
+  "The Genius Game": "/characters/The Creator.png",
+  "Screening": "/characters/Timothy.png",
 
 
 

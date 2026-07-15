@@ -16,6 +16,19 @@ export const navigation = [
   { href: "/about", label: "ABOUT" },
 ];
 
+/** HOMEのサイトマップ。説明文もここで管理し、ページ追加時に編集しやすくします。 */
+export const homeSiteMap = [
+  { href: "/profile", label: "PROFILE", title: "プロフィール", description: "生い立ち、俳優としての歩み、受賞歴などを紹介。" },
+  { href: "/timeline", label: "TIMELINE", title: "統合年表", description: "出演作品、役柄、インタビュー、イベントを年代順に確認。" },
+  { href: "/works", label: "WORKS", title: "出演作品", description: "映画、ドラマ、舞台、声の出演と日本の配信情報を検索。" },
+  { href: "/upcoming", label: "UPCOMING", title: "今後の出演予定", description: "撮影中、制作中、公開予定の作品と最新発表を確認。" },
+  { href: "/characters", label: "CHARACTERS", title: "キャラクター", description: "演じた人物を画像、年代、属性、視聴状況から探す。" },
+  { href: "/comic-con", label: "COMIC CON", title: "コミコン参加情報", description: "今後の予定と、キャンセルを含む過去の参加記録。" },
+  { href: "/interviews", label: "INTERVIEWS", title: "インタビュー", description: "動画・記事の英語原文と日本語訳を読む。" },
+  { href: "/my-archive", label: "MY ARCHIVE", title: "マイアーカイブ", description: "お気に入り作品、キャラクター、インタビューのしおり。" },
+  { href: "/about", label: "ABOUT", title: "このサイトについて", description: "ファンサイトの方針、更新情報、翻訳について。" },
+] as const;
+
 export const featuredWorks = [
   { title: "Doctor Who", year: "2005—", medium: "TV", role: "10代目／14代目ドクター" },
   { title: "Broadchurch", year: "2013—2017", medium: "TV", role: "アレック・ハーディ" },

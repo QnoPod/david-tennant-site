@@ -1,6 +1,6 @@
 import Link from "next/link";
 import SectionHeading from "./components/SectionHeading";
-import { featuredWorks, siteUpdates } from "./data/content";
+import { featuredWorks, homeSiteMap, siteUpdates } from "./data/content";
 import { getInterviewsNewestFirst } from "./data/interviews/catalog";
 import { getCharacters } from "./lib/characters";
 import { getConventionAppearances } from "./lib/comiconomicon";
@@ -115,6 +115,20 @@ export default async function HomePage() {
               </div>
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="section section--paper">
+        <div className="shell">
+          <SectionHeading eyebrow="SITE MAP" title="サイトマップ" />
+          <p className="home-sitemap__lead">見たい情報に合わせて、サイト内の各アーカイブへ移動できます。</p>
+          <nav className="home-sitemap" aria-label="サイトマップ">
+            {homeSiteMap.map((item, index) => <Link href={item.href} className="home-sitemap__item" key={item.href}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div><p>{item.label}</p><h3>{item.title}</h3><small>{item.description}</small></div>
+              <b aria-hidden="true">→</b>
+            </Link>)}
+          </nav>
         </div>
       </section>
 

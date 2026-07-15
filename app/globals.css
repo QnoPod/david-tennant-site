@@ -627,6 +627,8 @@ img { display: block; max-width: 100%; }
 .my-archive-summary span { margin-top: 10px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
 .my-archive-section { padding-top: 84px; scroll-margin-top: 88px; }
 .my-archive-section .section-heading { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.my-archive-section .section-heading h2,
+.my-archive-section.recently-viewed .recently-viewed__heading h2 { font-size: clamp(24px, 2.7vw, 36px); white-space: nowrap; }
 .my-archive-section__actions { display: flex; align-items: center; gap: 12px; }
 .my-archive-section__actions span { color: var(--gold); font-family: var(--serif); font-size: 20px; }
 .my-archive-section__actions button { min-height: 36px; padding: 6px 12px; border: 1px solid rgba(141,59,54,.35); color: #8d3b36; background: var(--white); cursor: pointer; font-size: 9px; font-weight: 800; }
@@ -750,8 +752,9 @@ img { display: block; max-width: 100%; }
   .home-sitemap { grid-template-columns: minmax(0, 1fr); }
   .home-sitemap__lead { margin-top: -14px; }
   .home-sitemap__item { min-height: 150px; padding: 20px; }
-  .recently-viewed__heading { align-items: start; }
-  .recently-viewed__heading h2 { font-size: 34px; }
+  .recently-viewed__heading { align-items: start; gap: 10px; }
+  .recently-viewed__heading h2 { font-size: 20px; }
+  .recently-viewed__heading button { flex-shrink: 0; }
   .recently-viewed__list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
   .recently-viewed__list > a { flex: 0 0 280px; scroll-snap-align: start; }
   .character-strip { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
@@ -835,8 +838,10 @@ img { display: block; max-width: 100%; }
   .my-archive-summary strong { font-size: 30px; }
   .my-archive-summary span { margin-top: 7px; font-size: 8px; line-height: 1.35; overflow-wrap: anywhere; }
   .my-archive-section { padding-top: 64px; }
-  .my-archive-section .section-heading { align-items: end; }
-  .my-archive-section .section-heading h2 { font-size: 28px; }
+  .my-archive-section .section-heading { align-items: end; gap: 10px; }
+  .my-archive-section .section-heading h2 { font-size: 20px; }
+  .my-archive-section__actions { flex-shrink: 0; gap: 6px; }
+  .my-archive-section__actions button { padding-inline: 8px; }
   .my-archive-item-grid { grid-template-columns: 1fr; }
   .my-archive-item > a { grid-template-columns: 92px minmax(0, 1fr); }
   .my-archive-item img { width: 92px; height: 126px; }

@@ -20,12 +20,22 @@
 @media (max-width: 760px) {
   /* 長い英字見出しが画面幅を超えないサイズに限定します。 */
   .characters-page .page-hero h1,
-  .interviews-page .page-hero h1 {
+  .interviews-page .page-hero h1,
+  .upcoming-page .page-hero h1 {
     max-width: 100%;
     font-size: clamp(40px, 13vw, 56px);
     letter-spacing: -.04em;
     line-height: .9;
   }
+
+  .upcoming-summary { display: grid; grid-template-columns: auto 1fr; }
+  .upcoming-summary small { grid-column: 1 / -1; margin-left: 0; }
+  .upcoming-grid { grid-template-columns: minmax(0, 1fr); }
+  .upcoming-card { padding: 21px; }
+  .upcoming-section-heading { display: block; }
+  .upcoming-section-heading h2 { font-size: 26px; }
+  .upcoming-announcement-list article { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .upcoming-announcement-list a { width: fit-content; text-align: left; }
 
   /* キャラクター検索の操作欄は、すべて検索欄と同じ横幅の1列にします。 */
   .characters-page .archive-controls__actions {

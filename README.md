@@ -27,6 +27,18 @@ npm run build
 
 TMDBから作品情報を取得する場合は、環境変数 `TMDB_READ_TOKEN` にTMDB Read Access Tokenを設定してください。未設定時は `app/lib/tmdb.ts` の軽量な予備データを使用します。
 
+### UPCOMINGの自動監視
+
+`/upcoming`は最大1日ごとにTMDB、TVmaze、Wikidata、ニュースRSS、登録した公式発表ページの記事本文を確認します。YouTube公式チャンネルの監視と、英語記事の自動翻訳を使う場合は、Vercelへ次の環境変数を追加してください。
+
+```text
+YOUTUBE_API_KEY=YouTube Data API v3のAPIキー
+DEEPL_API_KEY=DeepL APIキー（英語の確認待ち情報を日本語化する場合）
+CRON_SECRET=16文字以上のランダムな文字列
+```
+
+監視先、記事URLの条件、公式チャンネル名、抽出キーワードは`app/data/upcomingSources.ts`で編集できます。記事本文の解析は`app/lib/upcoming-sources/articleScraper.ts`、翻訳は`translate.ts`へ分離しています。TMDB等にない確認済み情報は`app/data/upcomingWorks.ts`へ手入力します。
+
 ## 主なフォルダ
 
 ```text
@@ -43,10 +55,13 @@ app/
 │  ├─ characterImages.ts     キャラクター画像
 │  ├─ overviews.ts           作品あらすじの補完
 │  ├─ searchDictionary.ts    原題・邦題の対応
+│  ├─ upcomingSources.ts     UPCOMINGの自動監視先・抽出条件
+│  ├─ upcomingWorks.ts       公式発表済み予定の手入力補完
 │  └─ yearOverrides.ts       公開年の補完
 ├─ interviews/               インタビュー一覧・詳細ページ
 ├─ characters/               キャラクター一覧ページ
 ├─ works/                    出演作品一覧ページ
+├─ upcoming/                 未公開作品・発表候補ページ
 └─ lib/                      データ取得・変換処理
 public/                      ローカル画像
 ```

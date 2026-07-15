@@ -1,5 +1,6 @@
 import { manualWorks, workGenreOverrides } from "../data/manualWorks";
 import type { Work } from "./types";
+import { getUnreleasedTmdbKeys } from "./upcoming";
 
 const TMDB_API = "https://api.themoviedb.org/3";
 const API_HEADERS = (token: string) => ({ Authorization: `Bearer ${token}`, accept: "application/json" });
@@ -78,7 +79,10 @@ export async function getWorks(): Promise<Work[]> {
       const key = `${work.media_type}-${work.id}`;
       if (!unique.has(key)) unique.set(key, work);
     }
-    return withManualWorks([...unique.values()]);
+    const fetchedWorks = [...unique.values()];
+    // 完全未公開の作品はWORKSへ混ぜず、専用のUPCOMINGページで扱います。
+    const unreleasedKeys = await getUnreleasedTmdbKeys(fetchedWorks, token);
+    return withManualWorks(fetchedWorks.filter((work) => !unreleasedKeys.has(`${work.media_type}-${work.id}`)));
   } catch {
     return withManualWorks(fallbackWorks);
   }

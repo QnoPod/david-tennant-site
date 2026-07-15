@@ -129,6 +129,46 @@ img { display: block; max-width: 100%; }
 .updates-list time { color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: .08em; }
 .updates-list p { margin: 0; font-size: 14px; }
 
+/* ---------- Upcoming productions ---------- */
+.upcoming-notice { margin-bottom: 28px; }
+.upcoming-summary { display: flex; align-items: baseline; gap: 10px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.upcoming-summary strong { color: var(--gold); font-family: var(--serif); font-size: 42px; font-weight: 500; line-height: 1; }
+.upcoming-summary span { font-size: 13px; font-weight: 800; }
+.upcoming-summary small { margin-left: auto; color: var(--muted); font-size: 10px; }
+.upcoming-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin: 42px 0 20px; }
+.upcoming-section-heading .eyebrow { margin: 0; }
+.upcoming-section-heading h2 { margin: 0; font-family: var(--serif); font-size: 32px; font-weight: 500; }
+.upcoming-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.upcoming-card { min-width: 0; display: flex; flex-direction: column; padding: 25px; border: 1px solid var(--line); border-top: 3px solid var(--gold); background: var(--white); }
+.upcoming-card.status-rumored { border-top-color: #8b5d7d; }
+.upcoming-card.status-filming { border-top-color: #557c65; }
+.upcoming-card.status-post-production { border-top-color: var(--blue); }
+.upcoming-card.status-cancelled { border-top-color: #8d3b36; opacity: .76; }
+.upcoming-card__meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 9px; font-weight: 900; letter-spacing: .08em; }
+.upcoming-card__status { width: fit-content; margin: 20px 0 12px; padding: 4px 9px; color: var(--white); background: var(--blue); font-size: 9px; font-weight: 900; letter-spacing: .05em; }
+.status-rumored .upcoming-card__status { background: #8b5d7d; }
+.status-filming .upcoming-card__status { background: #557c65; }
+.status-cancelled .upcoming-card__status { background: #8d3b36; }
+.upcoming-card h2 { margin: 0; font-family: var(--serif); font-size: 25px; font-weight: 600; line-height: 1.2; }
+.upcoming-card__original { margin: 7px 0 0; color: var(--muted); font-size: 11px; }
+.upcoming-card__role { display: grid; grid-template-columns: auto 1fr; gap: 9px; margin: 18px 0 0; font-size: 12px; }
+.upcoming-card__role b { color: var(--gold); font-size: 9px; letter-spacing: .06em; }
+.upcoming-card__overview { flex: 1; margin: 18px 0 24px; color: var(--muted); font-size: 12px; line-height: 1.75; }
+.upcoming-card footer { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
+.upcoming-card footer a { grid-column: 1 / -1; width: fit-content; margin-top: 8px; color: var(--blue); font-weight: 800; text-decoration: none; }
+.upcoming-card footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.upcoming-empty { padding: 70px 24px; border: 1px solid var(--line); text-align: center; }
+.upcoming-empty h2 { margin: 0; font-family: var(--serif); font-size: 30px; font-weight: 500; }
+.upcoming-empty > p:last-child { max-width: 620px; margin: 18px auto 0; color: var(--muted); font-size: 12px; }
+.upcoming-announcements { margin-top: 76px; padding-top: 1px; border-top: 1px solid var(--line); }
+.upcoming-announcement-list { border-top: 1px solid var(--line); }
+.upcoming-announcement-list article { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; padding: 22px 4px; border-bottom: 1px solid var(--line); }
+.upcoming-announcement-list p { margin: 0 0 5px; color: var(--gold); font-size: 9px; font-weight: 900; letter-spacing: .06em; }
+.upcoming-announcement-list h3 { margin: 0; font-family: var(--serif); font-size: 20px; line-height: 1.35; }
+.upcoming-announcement-list span { display: -webkit-box; max-width: 760px; margin-top: 7px; overflow: hidden; color: var(--muted); font-size: 11px; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.upcoming-announcement-list a { min-width: 115px; color: var(--blue); font-size: 10px; font-weight: 900; text-align: right; text-decoration: none; }
+.upcoming-announcement-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
 /* ---------- Unified timeline ---------- */
 .timeline-controls { position: sticky; top: 76px; z-index: 40; display: grid; grid-template-columns: minmax(280px, 1fr) auto; gap: 14px 20px; padding: 18px; margin-bottom: 28px; border: 1px solid var(--line); background: rgba(255,254,249,.95); backdrop-filter: blur(14px); }
 .timeline-controls__heading { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 20px; }

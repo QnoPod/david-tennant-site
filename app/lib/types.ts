@@ -35,6 +35,28 @@ export type Work = {
   episodeAppearances?: EpisodeAppearance[];
 };
 
+/** 公開前・制作中の出演情報。公開済みのWORKSとは分けて扱います。 */
+export type UpcomingWork = {
+  /** TMDB等の取得元とIDを組み合わせた重複しないキー。 */
+  key: string;
+  /** 作品情報か、ニュース・動画から検出した確認待ちの発表かを区別します。 */
+  kind?: "work" | "announcement";
+  mediaType: "movie" | "tv" | "stage" | "other";
+  title: string;
+  originalTitle?: string;
+  character?: string;
+  overview?: string;
+  releaseDate?: string;
+  /** 記事・動画が公開された日。作品自体の公開日とは分けて管理します。 */
+  publishedDate?: string;
+  status: "rumored" | "planned" | "filming" | "post-production" | "scheduled" | "unknown" | "cancelled";
+  source: string;
+  sourceUrl?: string;
+  /** 公式発表を確認済みの場合だけtrueにします。 */
+  confirmed?: boolean;
+  lastCheckedAt: string;
+};
+
 /** TVシリーズ内でデイヴィッド・テナントが出演した1エピソード。 */
 export type EpisodeAppearance = {
   seasonNumber: number;

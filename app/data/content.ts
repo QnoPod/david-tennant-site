@@ -8,6 +8,7 @@ export const navigation = [
   { href: "/profile", label: "PROFILE" },
   { href: "/timeline", label: "TIMELINE" },
   { href: "/works", label: "WORKS" },
+  { href: "/upcoming", label: "UPCOMING" },
   { href: "/characters", label: "CHARACTERS" },
   { href: "/comic-con", label: "COMIC CON" },
   { href: "/interviews", label: "INTERVIEWS" },

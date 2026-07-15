@@ -32,6 +32,11 @@ function isSelfRole(value: string) {
   return value.toLowerCase().includes("self") || value.includes("本人");
 }
 
+/** Huyang表記を既存のヒュイヤンへ統一します。 */
+function isHuyangRole(value: string) {
+  return value.toLowerCase().includes("huyang") || value.includes("ヒュイヤン");
+}
+
 const DAVID_BIRTH_DATE = { year: 1971, month: 4, day: 18 } as const;
 
 /** 出演回の放送日（取得できない場合は作品公開日）と1971年4月18日の差から満年齢を算出します。 */
@@ -94,11 +99,13 @@ export function getCharacters(works: Work[] = []): Character[] {
     const parsed = parseInfo(raw);
     const isNarrator = isNarratorRole(parsed.name);
     const isSelf = isSelfRole(parsed.name);
+    const isHuyang = isHuyangRole(parsed.name);
     const imageKey = parsed.name.includes("10代目") ? "10th doctor"
       : parsed.name.includes("14代目") ? "Doctor Who: 60th Anniversary Specials"
       : parsed.name.includes("スクルージ") ? "Scrooge McDuck"
       : isSelf ? "self"
       : isNarrator ? "narrator"
+      : isHuyang ? "Huyang"
       : workTitle;
     // characterImages.ts のパスは public 配下を指すローカルURLです。
     const imagePath = customCharacterImages[imageKey] || customCharacterImages[workTitle];
@@ -122,6 +129,7 @@ export function getCharacters(works: Work[] = []): Character[] {
     const englishName = matchingCharacter?.englishName
       || (isSelf ? "Self"
         : isNarrator ? "Narrator"
+        : isHuyang ? "Huyang"
         : parsed.name.includes("10代目ドクター") ? "10th Doctor"
         : parsed.name.includes("14代目ドクター") ? "14th Doctor"
         : parsed.name.includes("スクルージ・マクダック") ? "Scrooge McDuck"
@@ -143,7 +151,7 @@ export function getCharacters(works: Work[] = []): Character[] {
       date: releaseDate,
       workTitle,
       displayWorkTitle,
-      name: isSelf ? "本人" : isNarrator ? "ナレーター" : parsed.name || "役名未登録",
+      name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || "役名未登録",
       englishName,
       description: parsed.description || "詳細情報は準備中です。",
       image: imagePath || "/images/default-character.jpg",

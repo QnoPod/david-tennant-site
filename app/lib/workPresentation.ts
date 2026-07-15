@@ -62,6 +62,11 @@ function isSelfRole(value: string) {
   return value.toLowerCase().includes("self") || value.includes("本人");
 }
 
+/** Huyangを含む英語表記と日本語表記を同じヒュイヤン役として判定します。 */
+function isHuyangRole(value: string) {
+  return value.toLowerCase().includes("huyang") || value.includes("ヒュイヤン");
+}
+
 /**
  * キャラクター画像は public/characters に置いたローカルファイルだけを使います。
  * characterImages.ts には「/characters/ファイル名」の形で記載してください。
@@ -85,6 +90,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const rawName = part.trim();
     const isNarrator = isNarratorRole(rawName);
     const isSelf = isSelfRole(rawName);
+    const isHuyang = isHuyangRole(rawName);
     let dictionaryKey = sourceTitle;
     let imageKey = sourceTitle;
 
@@ -98,6 +104,9 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       imageKey = "self";
     } else if (isNarrator) {
       imageKey = "narrator";
+    } else if (isHuyang) {
+      dictionaryKey = "スター・ウォーズ：アソーカ";
+      imageKey = "Huyang";
     } else if (rawName.includes("Scrooge McDuck")) {
       dictionaryKey = "Scrooge McDuck";
       imageKey = "Scrooge McDuck";
@@ -117,9 +126,10 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       : dictionaryKey === "Roderick Peterson" ? "Roderick Peterson"
       : isSelf ? "Self"
       : isNarrator ? "Narrator"
+      : isHuyang ? "Huyang"
       : rawName || dictionaryKey;
     return {
-      name: isSelf ? "本人" : isNarrator ? "ナレーター" : parsed.name || fallbackName,
+      name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || fallbackName,
       englishName,
       image: getCharacterImage(customCharacterImages[imageKey] || customCharacterImages[sourceTitle]),
       description: parsed.description,

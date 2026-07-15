@@ -65,7 +65,7 @@ img { display: block; max-width: 100%; }
 .section-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(32px, 4vw, 54px); font-weight: 500; line-height: 1.05; }
 .page-hero { padding-block: 90px 70px; border-bottom: 1px solid var(--line); }
 .page-hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(62px, 9vw, 126px); font-weight: 400; letter-spacing: -.055em; line-height: .82; }
-.page-hero > p:last-child { max-width: 650px; margin: 36px 0 0 auto; color: var(--muted); font-size: 15px; }
+.page-hero > p:last-child { max-width: 650px; margin: 36px 0 0; color: var(--muted); font-size: 15px; }
 
 /* ---------- Home: hero ---------- */
 .hero { min-height: 700px; display: grid; grid-template-columns: 1.03fr .97fr; align-items: stretch; padding-top: 48px; }

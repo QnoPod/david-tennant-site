@@ -23,7 +23,7 @@ export default function ProfilePage() {
     <PageHero eyebrow="PROFILE" title="DAVID TENNANT" description="" />
 
     <section className="section shell profile-intro">
-      <img src="/images/david-tennant.png" alt="デイヴィッド・テナント" />
+      <img src="/images/david-tennant.png" alt="デイヴィッド・テナント" fetchPriority="high" decoding="async" />
       <div><p className="eyebrow">AT A GLANCE</p><p>大胆なエネルギーと繊細な内面表現を併せ持ちながら、ヒーローから悪役、実在の人物、シェイクスピア作品まで幅広い役を演じる。テレビの人気シリーズだけでなく、劇場、ラジオ、アニメーション、朗読でも活動を続けている。</p>
         <dl><div><dt>芸名</dt><dd>David Tennant</dd></div><div><dt>出生名</dt><dd>David John McDonald</dd></div><div><dt>生年月日</dt><dd>1971年4月18日</dd></div><div><dt>出生地</dt><dd>Bathgate, West Lothian, Scotland</dd></div><div><dt>教育</dt><dd>Royal Scottish Academy of Music and Drama（現Royal Conservatoire of Scotland）</dd></div><div><dt>活動分野</dt><dd>映画・テレビ・舞台・ラジオ・声の出演</dd></div></dl>
       </div>
@@ -38,4 +38,3 @@ export default function ProfilePage() {
     <aside className="profile-sources section--paper"><div className="shell"><p className="eyebrow">SOURCES & FURTHER READING</p><div><a href="https://www.rcs.ac.uk/support-us/ways-to-support/scholarship-funds/georgia-david-tennant/" target="_blank" rel="noreferrer">Royal Conservatoire of Scotland ↗</a><a href="https://www.pbs.org/wgbh/masterpiece/specialfeatures/five-intriguing-facts-about-actor-david-tennant/" target="_blank" rel="noreferrer">PBS Masterpiece ↗</a></div></div></aside>
   </main>;
 }
-

@@ -238,16 +238,12 @@ img { display: block; max-width: 100%; }
 .character-attribute-timeline { margin-left: 8px; padding-left: 34px; border-left: 1px solid var(--gold); }
 .media-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px 16px; }
 .media-card { min-width: 0; position: relative; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
-.media-card > img { width: 100%; aspect-ratio: 2/3; object-fit: cover; background: var(--paper); filter: saturate(.83); transition: transform .25s, filter .25s; }
-.media-card:hover > img { transform: translateY(-5px); filter: saturate(1); }
 .media-card > div { padding: 14px 3px 0; }
-.media-card p, .timeline-card p { margin: 0 0 6px; color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
-.media-card h2, .timeline-card h2 { margin: 0 0 5px; font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.25; }
-.media-card div > span, .timeline-card div > span { display: block; overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
-.timeline-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
-.timeline-card { width: 100%; display: grid; grid-template-columns: 112px 1fr; gap: 24px; align-items: center; padding: 18px 0; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; cursor: pointer; }
-.timeline-card > img { width: 112px; height: 74px; object-fit: cover; }
-.timeline-card h2 { font-size: 23px; }
+.media-card p { margin: 0 0 6px; color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+.media-card h2 { margin: 0 0 5px; font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.25; }
+.media-card div > span { display: block; overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.archive-load-more { min-width: 240px; min-height: 50px; display: block; margin: 42px auto 0; padding: 0 24px; border: 1px solid var(--blue); color: var(--blue); background: var(--white); cursor: pointer; font-size: 11px; font-weight: 800; }
+.archive-load-more:hover, .archive-load-more:focus-visible { color: var(--white); background: var(--blue); }
 .character-card { cursor: default; border: 1px solid var(--line); background: var(--white); }
 .character-card__image { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--paper); }
 .character-card__image > img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .25s; }
@@ -675,19 +671,10 @@ img { display: block; max-width: 100%; }
   .unified-timeline__event h3 { font-size: 18px; }
   .archive-controls__actions { flex-wrap: wrap; }
   .archive-controls__actions button, .archive-controls__actions select { flex: 1 1 auto; }
-  .archive-controls--characters { grid-template-columns: minmax(0, 1fr); }
-  .archive-controls--characters .search-field,
-  .archive-controls--characters .archive-controls__actions { width: 100%; min-width: 0; }
-  .archive-controls--characters .archive-controls__actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .archive-controls--characters .archive-controls__actions > select,
-  .archive-controls--characters .archive-controls__actions > button { grid-column: 1; width: 100%; max-width: none; }
   .character-favorite-controls { width: 100%; min-width: 0; grid-column: 1; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 0; background: transparent; }
   .archive-controls__actions .character-favorite-controls button { width: 100%; max-width: none; min-width: 0; padding-inline: 13px; font-size: 11px; white-space: nowrap; }
   .media-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
   .media-card h2 { font-size: 15px; }
-  .timeline-card { grid-template-columns: 90px 1fr; gap: 15px; }
-  .timeline-card > img { width: 90px; height: 70px; }
-  .timeline-card h2 { font-size: 18px; }
   .modal-backdrop { align-items: end; padding: 0; }
   .modal-panel { max-height: 88vh; padding: 28px 20px; border-radius: 16px 16px 0 0; }
   .detail-layout { grid-template-columns: 110px 1fr; gap: 18px; }

@@ -1,17 +1,20 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 import ArchiveControls from "../components/ArchiveControls";
-import Modal from "../components/Modal";
-import RelatedLinks from "../components/RelatedLinks";
 import { ARCHIVE_STORAGE_KEYS, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
-import { findRelatedInterviews } from "../lib/relatedContent";
 import type { Character } from "../lib/types";
 import { normalizeText } from "../lib/workPresentation";
 
 const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteCharacters;
 const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
+const INITIAL_VISIBLE_COUNT = 24;
+const INITIAL_ATTRIBUTE_GROUP_COUNT = 4;
+
+// キャラクター詳細はカードを開いたときだけ読み込みます。
+const CharacterDetailModal = dynamic(() => import("./CharacterDetailModal"), { ssr: false });
 
 /** キャラクター検索、属性カテゴリ、お気に入り、グリッド／年代表示を担当。 */
 export default function CharactersExplorer({ characters }: { characters: Character[] }) {
@@ -24,12 +27,8 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   const [watchedWorks, setWatchedWorks] = useState<number[]>([]);
   const [view, setView] = useState<"grid" | "timeline">("grid");
   const [selected, setSelected] = useState<Character | null>(null);
-  const selectedInterviews = selected ? findRelatedInterviews([
-    selected.workTitle,
-    selected.displayWorkTitle,
-    selected.name,
-    selected.englishName,
-  ]) : [];
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const [visibleAttributeGroups, setVisibleAttributeGroups] = useState(INITIAL_ATTRIBUTE_GROUP_COUNT);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -66,15 +65,21 @@ export default function CharactersExplorer({ characters }: { characters: Charact
       return b.characters.length - a.characters.length || a.attribute.localeCompare(b.attribute, "ja");
     }), [attributeCounts, filtered]);
 
+  const visibleCharacters = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount]);
   const timelineGroups = useMemo(() => {
     const groups = new Map<string, Character[]>();
-    for (const character of filtered) {
+    for (const character of visibleCharacters) {
       const year = /^\d{4}$/.test(character.year) ? character.year : "年不明";
       groups.set(year, [...(groups.get(year) ?? []), character]);
     }
     // 同じ年では年齢の高い順。結果として若いキャラクターが下に並びます。
     return [...groups.entries()].map(([year, items]) => [year, [...items].sort((a, b) => (b.age ?? -1) - (a.age ?? -1))] as const);
-  }, [filtered]);
+  }, [visibleCharacters]);
+
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+    setVisibleAttributeGroups(INITIAL_ATTRIBUTE_GROUP_COUNT);
+  }, [favoritesOnly, query, view, watchStatus]);
 
   const toggleFavorite = (character: Character) => {
     const isFavorite = favorites.includes(character.key);
@@ -96,6 +101,8 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   /** カードの属性を押すとカテゴリ表示をONにし、該当する属性枠まで移動します。 */
   const goToAttribute = (item: string) => {
     setShowAttributes(true);
+    const targetIndex = attributeGroups.findIndex((group) => group.attribute === item);
+    if (targetIndex >= 0) setVisibleAttributeGroups((count) => Math.max(count, targetIndex + 1));
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         document.getElementById(attributeSectionId(item))?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -117,7 +124,7 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   const characterCard = (character: Character, timeline = false) => <article className={timeline ? "work-timeline-card character-timeline-card" : "media-card character-card"} key={character.key}>
     <button className="card-hit" onClick={() => setSelected(character)} aria-label={`${character.name}の詳細`} />
     <div className="character-card__image">
-      <img src={character.image} alt={`${character.name}の画像`} loading="lazy" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} />
+      <img src={character.image} alt={`${character.name}の画像`} loading="lazy" decoding="async" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} />
       {!timeline && favoriteButton(character, false)}
     </div>
     <div className="character-card__body">
@@ -146,19 +153,18 @@ export default function CharactersExplorer({ characters }: { characters: Charact
 
       <div className="archive-summary"><p>カードを選ぶと、キャラクターの説明と関連作品・インタビューを表示します。</p><div><button className={view === "grid" ? "is-active" : ""} onClick={() => setView("grid")}>グリッド</button><button className={view === "timeline" ? "is-active" : ""} onClick={() => setView("timeline")}>年代順</button><strong>{filtered.length} / {characters.length}人</strong></div></div>
 
-      {showAttributes ? <div className="character-attribute-sections">{attributeGroups.map((group) => <section className="character-attribute-section" id={attributeSectionId(group.attribute)} key={group.attribute}>
+      {showAttributes ? <div className="character-attribute-sections">{attributeGroups.slice(0, visibleAttributeGroups).map((group) => <section className="character-attribute-section" id={attributeSectionId(group.attribute)} key={group.attribute}>
         <div className="character-attribute-section__heading"><p className="eyebrow">ATTRIBUTE FILE</p><h2>{group.attribute}</h2><span>{group.characters.length}人</span></div>
         {view === "grid"
           ? <div className="media-grid character-grid">{group.characters.map((character) => characterCard(character))}</div>
           : <div className="work-timeline character-timeline character-attribute-timeline">{group.characters.map((character) => characterCard(character, true))}</div>}
-      </section>)}</div>
-        : view === "grid" ? <div className="media-grid character-grid">{filtered.map((character) => characterCard(character))}</div>
+      </section>)}{visibleAttributeGroups < attributeGroups.length && <button className="archive-load-more" type="button" onClick={() => setVisibleAttributeGroups((count) => count + INITIAL_ATTRIBUTE_GROUP_COUNT)}>さらに属性を表示</button>}</div>
+        : view === "grid" ? <div className="media-grid character-grid">{visibleCharacters.map((character) => characterCard(character))}</div>
         : <div className="work-timeline character-timeline">{timelineGroups.map(([year, yearCharacters]) => <section className="timeline-year-group" key={year}><h2>{year}</h2><div>{yearCharacters.map((character) => characterCard(character, true))}</div></section>)}</div>}
       {!filtered.length && <p className="empty-state">条件に一致するキャラクターがいません。</p>}
+      {!showAttributes && visibleCount < filtered.length && <button className="archive-load-more" type="button" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE_COUNT)}>さらに{Math.min(INITIAL_VISIBLE_COUNT, filtered.length - visibleCount)}人を表示</button>}
 
-      <Modal open={Boolean(selected)} onClose={() => setSelected(null)} label={selected ? `${selected.name}の詳細` : "キャラクター詳細"}>
-        {selected && <div className="character-detail-content"><div className="detail-layout detail-layout--character"><img src={selected.image} alt={selected.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><p className="eyebrow">{selected.year} · CHARACTER FILE</p><h2>{selected.name}</h2>{selected.englishName && normalizeText(selected.englishName) !== normalizeText(selected.name) && <p className="character-english-name">{selected.englishName}</p>}<p className="detail-subtitle">{selected.displayWorkTitle}</p><div className="tag-row">{selected.attributes.map((item) => <span key={item}>{item}</span>)}</div><p className="detail-copy">{selected.description}</p></div></div><RelatedLinks title="関連情報" items={[{ href: `/works?character=${encodeURIComponent(selected.name)}`, title: selected.displayWorkTitle, meta: "出演作品", description: `${selected.name}の役名でWORKSを検索` }, ...selectedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))]} /></div>}
-      </Modal>
+      {selected && <CharacterDetailModal character={selected} onClose={() => setSelected(null)} />}
     </section>
   );
 }

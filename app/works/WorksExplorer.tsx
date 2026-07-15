@@ -1,19 +1,20 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
-import Modal from "../components/Modal";
-import RelatedLinks from "../components/RelatedLinks";
 import { ARCHIVE_STORAGE_KEYS, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
-import { findRelatedInterviews } from "../lib/relatedContent";
-import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
-import type { EpisodeAppearanceResult, Work } from "../lib/types";
-import { getDisplayTitle, getOriginalTitle, getSourceTitle, getWorkCharacters, getWorkOverview, getWorkVideoKey, normalizeText } from "../lib/workPresentation";
+import { getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
+import type { Work } from "../lib/types";
+import { getDisplayTitle, getSourceTitle, getWorkCharacters, normalizeText } from "../lib/workPresentation";
 import WorkFilters, { type GenreMode, type SortOrder } from "./WorkFilters";
 
 const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteWorks;
 const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
+const INITIAL_VISIBLE_COUNT = 15;
+
+// 作品詳細はカードを開くまで不要なので、一覧の初期JavaScriptから分離します。
+const WorkDetailModal = dynamic(() => import("./WorkDetailModal"), { ssr: false });
 
 /**
  * 旧サイトの全検索条件、配信情報、視聴済み、お気に入りを維持する作品一覧。
@@ -38,6 +39,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [watched, setWatched] = useState<number[]>([]);
   const [selected, setSelected] = useState<Work | null>(null);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
   // 旧サイトと同じlocalStorageキーを使い、既存のマークを引き継ぎます。
   useEffect(() => {
@@ -92,14 +94,20 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     return result.sort((a, b) => getDisplayTitle(a).localeCompare(getDisplayTitle(b), "ja"));
   }, [availability, characterQuery, favorites, favoritesOnly, genreMode, query, selectedGenres, selectedProviders, sortOrder, uniqueWorks, view, watchStatus, watched]);
 
+  const visibleWorks = useMemo(() => filtered.slice(0, visibleCount), [filtered, visibleCount]);
   const timelineGroups = useMemo(() => {
     const groups = new Map<string, Work[]>();
-    for (const work of filtered) {
+    for (const work of visibleWorks) {
       const year = getWorkDate(work).slice(0, 4) || "年不明";
       groups.set(year, [...(groups.get(year) ?? []), work]);
     }
     return [...groups.entries()];
-  }, [filtered]);
+  }, [visibleWorks]);
+
+  // 検索条件や表示方法を変えたら先頭の15件へ戻し、DOMの肥大化を防ぎます。
+  useEffect(() => {
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+  }, [availability, characterQuery, favoritesOnly, genreMode, query, selectedGenres, selectedProviders, sortOrder, view, watchStatus]);
 
   const saveList = (key: string, list: number[], setter: (value: number[]) => void) => {
     writeArchiveList(key, list);
@@ -126,7 +134,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     return <article className={timeline ? "work-timeline-card" : "media-card work-card"} key={`${work.media_type}-${work.id}`}>
       <button className="card-hit" onClick={() => setSelected(work)} aria-label={`${displayTitle}の詳細`} />
       <div className="work-card__image">
-        <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${displayTitle}のポスター`} loading="lazy" />
+        <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${displayTitle}のポスター`} loading="lazy" decoding="async" />
         <button className={`work-status work-status--watched ${isWatched ? "is-active" : ""}`} onClick={() => toggleWatched(work)} aria-label={isWatched ? "視聴済みを解除" : "視聴済みにする"}>✓</button>
         <button className={`work-status work-status--favorite ${isFavorite ? "is-active" : ""}`} onClick={() => toggleFavorite(work)} aria-label={isFavorite ? "お気に入りを解除" : "お気に入りに追加"}>★</button>
       </div>
@@ -137,7 +145,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
         <span>{getWorkCharacters(work).map((character) => character.name).join(" / ")}</span>
         <div className="provider-icons" aria-label="日本の定額配信サービス">
           {(work.providers ?? []).map((provider) => provider.logo_path
-            ? <img key={provider.provider_id} src={getProviderLogo(provider.logo_path)} alt={provider.provider_name} title={provider.provider_name} loading="lazy" />
+            ? <img key={provider.provider_id} src={getProviderLogo(provider.logo_path)} alt={provider.provider_name} title={provider.provider_name} loading="lazy" decoding="async" />
             : <b key={provider.provider_id}>{provider.provider_name}</b>)}
           {!work.providers?.length && <em>日本の定額配信なし</em>}
         </div>
@@ -166,87 +174,12 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
 
       <div className="archive-summary"><p>カードを選ぶと配信情報・予告編・役柄の詳細を表示します。</p><div><button className={view === "grid" ? "is-active" : ""} onClick={() => setView("grid")}>グリッド</button><button className={view === "timeline" ? "is-active" : ""} onClick={() => setView("timeline")}>年代順</button><strong>{filtered.length} / {uniqueWorks.length}作品</strong></div></div>
 
-      {view === "grid" ? <div className="media-grid">{filtered.map((work) => card(work))}</div>
+      {view === "grid" ? <div className="media-grid">{visibleWorks.map((work) => card(work))}</div>
         : <div className="work-timeline">{timelineGroups.map(([year, yearWorks]) => <section className="timeline-year-group" key={year}><h2>{year}</h2><div>{yearWorks.map((work) => card(work, true))}</div></section>)}</div>}
       {!filtered.length && <p className="empty-state">条件に一致する作品がありません。</p>}
+      {visibleCount < filtered.length && <button className="archive-load-more" type="button" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE_COUNT)}>さらに{Math.min(INITIAL_VISIBLE_COUNT, filtered.length - visibleCount)}作品を表示</button>}
 
-      <WorkDetailModal work={selected} watched={selected ? watched.includes(selected.id) : false} onToggleWatched={() => selected && toggleWatched(selected)} onClose={() => setSelected(null)} />
+      {selected && <WorkDetailModal work={selected} watched={watched.includes(selected.id)} onToggleWatched={() => toggleWatched(selected)} onClose={() => setSelected(null)} />}
     </section>
   );
-}
-
-/** 作品・配信・予告編・演じたキャラクターを一か所にまとめた詳細画面。 */
-function WorkDetailModal({ work, watched, onToggleWatched, onClose }: { work: Work | null; watched: boolean; onToggleWatched: () => void; onClose: () => void }) {
-  const characters = work ? getWorkCharacters(work) : [];
-  const videoKey = work ? getWorkVideoKey(work) : null;
-  const displayTitle = work ? getDisplayTitle(work) : "";
-  const originalTitle = work ? getOriginalTitle(work) : "";
-  const relatedInterviews = work ? findRelatedInterviews([
-    displayTitle,
-    getSourceTitle(work),
-    originalTitle,
-    ...characters.flatMap((character) => [character.name, character.englishName]),
-  ]) : [];
-  return <Modal open={Boolean(work)} onClose={onClose} label={`${displayTitle}の詳細`}>
-    {work && <div className="work-detail">
-      {(work.backdrop_path || work.backdropUrl) && <div className="work-detail__backdrop" style={{ backgroundImage: `linear-gradient(to top, var(--white), transparent), url('${getBackdropUrl(work.backdrop_path, work.backdropUrl)}')` }} />}
-      <header><p className="eyebrow">{getWorkDate(work).slice(0, 4)} · {getMediaLabel(work.media_type)}</p><h2>{displayTitle}</h2>{normalizeText(originalTitle) !== normalizeText(displayTitle) && <p className="detail-subtitle">{originalTitle}</p>}<button className={`detail-watch ${watched ? "is-active" : ""}`} onClick={onToggleWatched}>{watched ? "✓ 視聴済" : "▷ 未視聴"}</button></header>
-      <div className="work-detail__facts">{work.media_type !== "stage" && <span>{work.media_type === "movie" ? (work.runtime ? `${work.runtime}分` : "映画") : `${work.numberOfSeasons ? `全${work.numberOfSeasons}シーズン` : "TV番組"}${work.numberOfEpisodes ? ` · ${work.numberOfEpisodes}話` : ""}${work.episodeRunTime ? ` · 1話約${work.episodeRunTime}分` : ""}`}</span>}{work.genres?.map((genre) => <span key={genre.id}>{genre.name}</span>)}</div>
-
-      <section className="detail-section"><h3>作品あらすじ</h3><p>{getWorkOverview(work)}</p></section>
-
-      {work.media_type === "tv" && <EpisodeAppearances work={work} />}
-
-      <section className="detail-section"><h3>日本の定額配信サービス</h3>{work.providers?.length ? <div className="provider-detail-list">{work.providers.map((provider) => <div key={provider.provider_id}>{provider.logo_path && <img src={getProviderLogo(provider.logo_path)} alt="" />}<span>{provider.provider_name}</span></div>)}</div> : <p>現在、日本の定額配信サービスは確認できません。</p>}<small>配信状況は変更される場合があります。各サービスの公式情報もご確認ください。</small></section>
-
-      {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} allowFullScreen /></div></section>}
-
-      <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}<p>{character.description}</p><Link className="text-link" href={`/characters?q=${encodeURIComponent(character.name)}`}>キャラクター詳細を見る →</Link></div></article>)}</div></section>
-      <RelatedLinks title="関連インタビュー" items={relatedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))} />
-    </div>}
-  </Modal>;
-}
-
-/** TV作品を選んだ時だけ出演エピソードを取得し、一覧表示の通信量を増やさないようにします。 */
-function EpisodeAppearances({ work }: { work: Work }) {
-  const manualResult = work.episodeAppearances?.length
-    ? { status: "exact" as const, appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length }
-    : null;
-  const [result, setResult] = useState<EpisodeAppearanceResult | null>(manualResult);
-
-  useEffect(() => {
-    if (work.episodeAppearances?.length) {
-      setResult({ status: "exact", appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length });
-      return;
-    }
-    if (work.isManual) {
-      setResult(null);
-      return;
-    }
-    const controller = new AbortController();
-    setResult(null);
-    const params = new URLSearchParams({ seriesId: String(work.id) });
-    [getSourceTitle(work), work.original_name, work.name].filter((title): title is string => Boolean(title))
-      .forEach((title) => params.append("title", title));
-    fetch(`/api/tmdb/episode-appearances?${params}`, { signal: controller.signal })
-      .then(async (response) => {
-        if (!response.ok) throw new Error("episode request failed");
-        return response.json() as Promise<EpisodeAppearanceResult>;
-      })
-      .then(setResult)
-      .catch(() => undefined);
-    return () => controller.abort();
-  }, [work.id, work.isManual, work.episodeAppearances]);
-
-  // 具体的なシーズン・話数が取得できた作品だけに欄を表示します。
-  if (!result?.appearances.length) return null;
-  return <section className="detail-section episode-appearances">
-    <h3>出演エピソード</h3>
-    <ol>{result.appearances.map((episode) => <li key={`${episode.seasonNumber}-${episode.episodeNumber}`}>
-      <strong>{episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}</strong>
-      {episode.title && <span>「{episode.title}」</span>}
-      {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
-      {episode.character && <small>{episode.character}</small>}
-    </li>)}</ol>
-  </section>;
 }

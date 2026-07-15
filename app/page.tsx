@@ -32,7 +32,7 @@ export default async function HomePage() {
           </div>
         </div>
         <div className="hero__portrait" aria-label="デイヴィッド・テナントの写真">
-          <img src="/images/david-tennant.png" alt="笑顔のデイヴィッド・テナント" />
+          <img src="/images/david-tennant.png" alt="笑顔のデイヴィッド・テナント" fetchPriority="high" decoding="async" />
           <span className="hero__year">1971 —</span>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default async function HomePage() {
         <div className="character-strip">
           {latestCharacters.map((character) => (
             <Link href={`/characters?q=${encodeURIComponent(character.name)}`} key={character.key} className="mini-character">
-              <img src={character.image} alt="" loading="lazy" />
+              <img src={character.image} alt="" loading="lazy" decoding="async" />
               <div><strong>{character.name}</strong><span>{character.year} · {character.displayWorkTitle}</span></div>
             </Link>
           ))}
@@ -129,4 +129,3 @@ export default async function HomePage() {
     </main>
   );
 }
-

@@ -79,7 +79,7 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
 
     <ArchiveSection id="favorite-characters" title="お気に入りキャラクター" eyebrow="FAVORITE CHARACTERS" count={favoriteCharacters.length} onClear={() => clearSection(ARCHIVE_STORAGE_KEYS.favoriteCharacters, "お気に入りキャラクター")} empty="お気に入りにしたキャラクターはまだありません。" emptyHref="/characters" emptyLabel="キャラクターを探す">
       <div className="my-archive-item-grid">{favoriteCharacters.map((character) => <article className="my-archive-item" key={character.key}>
-        <Link href={`/characters?q=${encodeURIComponent(character.name)}`}><img src={character.image} alt={`${character.name}の画像`} loading="lazy" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><p>{character.year} · CHARACTER</p><h3>{character.name}</h3>{character.englishName && <small>{character.englishName}</small>}<span>{character.displayWorkTitle}</span></div></Link>
+        <Link href={`/characters?q=${encodeURIComponent(character.name)}`}><img src={character.image} alt={`${character.name}の画像`} loading="lazy" decoding="async" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><p>{character.year} · CHARACTER</p><h3>{character.name}</h3>{character.englishName && <small>{character.englishName}</small>}<span>{character.displayWorkTitle}</span></div></Link>
         <button className="my-archive-favorite" type="button" aria-label={`${character.name}のお気に入りを解除`} title="お気に入りを解除" onClick={() => remove(ARCHIVE_STORAGE_KEYS.favoriteCharacters, character.key)}>★</button>
       </article>)}</div>
     </ArchiveSection>
@@ -108,7 +108,7 @@ function WorkArchiveCard({ work, actionLabel, onRemove }: { work: Work; actionLa
   const sourceTitle = getSourceTitle(work);
   return <article className="my-archive-item">
     <Link href={`/works?q=${encodeURIComponent(title)}`}>
-      <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${title}のポスター`} loading="lazy" />
+      <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${title}のポスター`} loading="lazy" decoding="async" />
       <div><p>{getWorkDate(work).slice(0, 4) || "—"} · {getMediaLabel(work.media_type)}</p><h3>{title}</h3>{sourceTitle !== title && <small>{sourceTitle}</small>}<span>{work.character || "役名未登録"}</span></div>
     </Link>
     <button className="my-archive-favorite" type="button" aria-label={`${title}の${actionLabel}`} title={actionLabel} onClick={onRemove}>★</button>

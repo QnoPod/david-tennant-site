@@ -41,12 +41,12 @@ export default async function UpcomingPage() {
     <PageHero
       eyebrow="ANNOUNCED · IN PRODUCTION · COMING SOON"
       title="UPCOMING"
-      description="まだ公開されていない出演予定、制作中・撮影中の作品、公開日が決まった新作をまとめています。"
+      description="今後の出演予定"
     />
     <section className="archive-section shell">
       <div className="source-notice upcoming-notice">
         <span>AUTO CHECK + MANUAL REVIEW</span>
-        <p>TMDB、TVmaze、Wikidata、ニュースRSS、公式発表ページと記事本文、YouTube公式チャンネルを最大1日ごとに確認しています。英語情報は日本語補完データと設定済みの翻訳機能を適用し、誤登録を避けるため新しい発表は「確認待ち」として区別します。</p>
+        <p>TMDB、TVmaze、Wikidata、ニュースRSS、公式発表ページと記事本文、YouTube公式チャンネルを最大1日ごとに確認しています。誤登録を避けるため新しい発表は「確認待ち」として区別。</p>
       </div>
 
       <div className="upcoming-summary" aria-label="取得結果">

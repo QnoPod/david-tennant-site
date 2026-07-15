@@ -14,7 +14,7 @@ export default async function TimelinePage() {
   const [works, conventions] = await Promise.all([getWorks(), getConventionAppearances()]);
   const events = buildTimelineEvents(works, getCharacters(works), [...conventions, ...pastConventionAppearances]);
   return <main id="main-content" className="timeline-page">
-    <PageHero eyebrow="LIFE · WORKS · WORDS · APPEARANCES" title="TIMELINE" description="出演作品、キャラクター、出演回、インタビュー、コミコン参加情報を一つの年代軸でたどります。" />
+    <PageHero eyebrow="LIFE · WORKS · WORDS · APPEARANCES" title="TIMELINE" description="活動を年代順に表示" />
     <TimelineExplorer events={events} />
   </main>;
 }

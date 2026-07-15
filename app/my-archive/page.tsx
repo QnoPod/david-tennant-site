@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "マイアーカイブ" };
 export default async function MyArchivePage() {
   const works = await getWorks();
   return <main id="main-content" className="my-archive-page">
-    <PageHero eyebrow="YOUR SAVED COLLECTION" title="MY ARCHIVE" description="最近見た項目、お気に入りの作品・キャラクター、インタビューのしおりを一か所で確認できます。" />
+    <PageHero eyebrow="YOUR SAVED COLLECTION" title="MY ARCHIVE" description="お気に入りと閲覧履歴" />
     <MyArchive works={works} characters={getCharacters(works)} interviews={interviewCatalog} />
   </main>;
 }

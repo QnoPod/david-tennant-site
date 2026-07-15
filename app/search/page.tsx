@@ -21,5 +21,5 @@ export default async function SearchPage() {
     conventions: [...liveConventions, ...pastConventionAppearances],
     upcoming,
   });
-  return <main id="main-content"><PageHero eyebrow="SEARCH ALL ARCHIVES" title="SEARCH" description="作品、キャラクター、インタビュー、コミコン、今後の予定をまとめて検索します。" /><Suspense fallback={null}><SearchExplorer items={items} /></Suspense></main>;
+  return <main id="main-content"><PageHero eyebrow="SEARCH ALL ARCHIVES" title="SEARCH" description="作品、キャラクター、インタビュー、コミコン、今後の予定をまとめて検索" /><Suspense fallback={null}><SearchExplorer items={items} /></Suspense></main>;
 }

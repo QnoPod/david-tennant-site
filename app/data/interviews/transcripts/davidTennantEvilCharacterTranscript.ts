@@ -14,7 +14,7 @@ export const davidTennantEvilCharacterTranscript = [
     speakerJa: "デイヴィッド・テナント",
     en: "Hello, David Tennant here. I'm going to roll the dice of my career... and find out what it's got to tell me.",
     ja: "こんにちは、デイヴィッド・テナントです。これから、僕のキャリアを賭けたサイコロを振って...何が出るか見てみようと思う。",
-    timestamp: "00:10",
+    timestamp: "00:08",
   },
   {
     speakerEn: "David Tennant",

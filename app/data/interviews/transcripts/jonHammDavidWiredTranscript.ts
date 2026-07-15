@@ -1,1001 +1,755 @@
 import type { TranscriptLine } from "../types";
 
-/** 添付された原文と日本語訳。詳細ページを開いた時だけ読み込みます。 */
+/** 添付された英語原文・日本語訳。詳細ページを開いた時だけ読み込みます。 */
 export const jonHammDavidWiredTranscript = [
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "My name is Jon Hamm.",
-    "ja": "私の名前はジョン・ハムです。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "My name's Jon Hamm.",
+    ja: "私の名前はジョン・ハムです。",
+    timestamp: "00:00",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "And I'm David Tennant.",
-    "ja": "そして僕はデイヴィッド・テナント。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "And I'm David Tennant.",
+    ja: "そして僕はデイヴィッド・テナント。",
+    timestamp: "00:01",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "And we're going to be doing the WIRED Autocomplete Interview.",
-    "ja": "これからWIREDのオートコンプリート・インタビューをやります。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "And we're going to be doing the WIRED Autocomplete Interview.",
+    ja: "これからWIREDのオートコンプリート・インタビューをやるよ。",
+    timestamp: "00:02",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "In Scottish! (laughs)",
-    "ja": "スコットランド語でね！(笑)"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "In Scottish.",
+    ja: "スコットランド語でね。",
+    timestamp: "00:05",
   },
   {
-    "speakerEn": "Text",
-    "speakerJa": "テキスト",
-    "en": "Autocomplete suggests the most common searches on the internet",
-    "ja": "オートコンプリートはインターネット上で最もよく検索される言葉を提案します"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I will be playing Vanna White.",
+    ja: "私はヴァンナ・ホワイト役をやるよ。",
+    timestamp: "00:09",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I will be playing Vanna White.",
-    "ja": "僕はヴァンナ・ホワイト役をやるよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "And I will be playing Carol Smiley. That's right. The British version of Vanna White. Nobody gets that.",
+    ja: "僕はキャロル・スマイリー役だ。そう、イギリス版のヴァンナ・ホワイトさ。誰もピンとこないだろうけど。",
+    timestamp: "00:11",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "And I will be playing Carol Smiley.",
-    "ja": "そして私はキャロル・スマイリー役をやります。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"What Jon Hamm...\" \"What is Jon Hamm drama teacher?\"",
+    ja: "「ジョン・ハム 何...」「ジョン・ハムの演劇教師とは？」",
+    timestamp: "00:19",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "That's right. The British version of Vanna White. Nobody gets that.",
-    "ja": "その通り。イギリス版ヴァンナ・ホワイトだね。誰も分からないだろうけど。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"What is Jon Hamm drama teacher?\"",
+    ja: "「ジョン・ハムの演劇教師とは？」",
+    timestamp: "00:26",
   },
   {
-    "speakerEn": "Text",
-    "speakerJa": "テキスト",
-    "en": "So WIRED asked the cast of Good Omens some of the internet's burning questions",
-    "ja": "そこでWIREDは『グッド・オーメンズ』のキャストに、インターネット上の気になる質問をいくつかぶつけてみました"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I was a drama teacher. I think that's what they're getting at. And I also had a drama teacher. My drama teacher's name was Wayne Salomon. And when I was a drama teacher, it was in 1995 at John Burroughs High School.",
+    ja: "私が演劇教師だったんだ。みんなそれが聞きたいんだろう。私にも恩師がいて、ウェイン・サロモンという名前だった。私が教えていたのは1995年、ジョン・バロウズ高校でのことだ。",
+    timestamp: "00:27",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What Jon Hamm.",
-    "ja": "ジョン・ハム何。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "There you go. That's a pretty conclusive...",
+    ja: "なるほど。かなり決定的な答えだね...",
+    timestamp: "00:35",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "What Jon Hamm.",
-    "ja": "ジョン・ハム何。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Those are answers to questions that no one was asking.",
+    ja: "誰も聞いてないような質問への答えだけどね。",
+    timestamp: "00:37",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Shall I do this one?",
-    "ja": "私がやろうか？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"What happened to Jon Hamm's voice?\" Oh, that's a very interesting story. Did you ever hear this story?",
+    ja: "「ジョン・ハムの声に何が起きた？」ああ、これは面白い話だよ。聞いたことある？",
+    timestamp: "00:40",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "What is Jon Hamm drama teacher.",
-    "ja": "ジョン・ハム何演劇講師。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "What happened to your voice? No I didn't know this.",
+    ja: "声に何があったの？いや、知らなかったな。",
+    timestamp: "00:47",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What is Jon Hamm drama teacher?",
-    "ja": "ジョン・ハムの演劇講師とは何ですか？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I had surgery on my vocal cords in 2013.",
+    ja: "2013年に声帯の手術をしたんだ。",
+    timestamp: "00:49",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I was a drama teacher.",
-    "ja": "僕は演劇の先生だったんだよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Did you?",
+    ja: "そうだったの？",
+    timestamp: "00:51",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I think that's what they're getting at.",
-    "ja": "おそらくそういう意図の質問でしょうね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Yes I did. I had a polyp on my vocal cord that had to be removed. It was removed and now I sound perfectly fine.",
+    ja: "そう。声帯にポリープができて、切除しなきゃならなかった。無事に取れて、今はすっかり元通りさ。",
+    timestamp: "00:52",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "And I also had a drama teacher. My drama teacher's name was Wayne Salomon.",
-    "ja": "それに僕にも演劇の先生がいたよ。先生の名前はウェイン・サロモンだった。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Everyday's a school day on this...",
+    ja: "この番組は毎日が勉強になるね...",
+    timestamp: "00:57",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "And when I was a drama teacher, it was in 1995 at John Burroughs High School.",
-    "ja": "私が演劇の講師をしていたのは、1995年のジョン・バロウズ高校でのことでした。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I'm telling ya.",
+    ja: "本当だよ。",
+    timestamp: "00:59",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "There you go. That's a pretty conclusive...",
-    "ja": "ほらね。かなり決定的な..."
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"What age is Jon Hamm?\"",
+    ja: "「ジョン・ハムの年齢は？」",
+    timestamp: "01:00",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Those are answers to questions that no one was asking.",
-    "ja": "誰も聞いていない質問への答えですね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Well interestingly enough tomorrow's his birthday!",
+    ja: "面白いことに、明日が彼の誕生日なんだよ！",
+    timestamp: "01:04",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah.",
-    "ja": "そうだね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "It is! And I'll be 48 years old.",
+    ja: "そうなんだ！48歳になるよ。",
+    timestamp: "01:06",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What happened to Jon Hamm's voice?",
-    "ja": "ジョン・ハムの声に何が起きた？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "He's very old. 1971. Much, much older than me.",
+    ja: "彼はすごく年寄りなんだ。1971年生まれ。僕よりずっと、ずっと年上だよ。",
+    timestamp: "01:09",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Oh, that's a very interesting story. What happened to your voice? No, I didn't know this.",
-    "ja": "おや、これはとても興味深い話だ。君の声に何があったの？いや、知らなかったよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Shut up.",
+    ja: "うるさいよ。",
+    timestamp: "01:12",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I had surgery on my vocal cords in 2013.",
-    "ja": "2013年に声帯の手術を受けたんですよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"What highschool did Jon Hamm...\" I'm gonna guess this has \"go to\".",
+    ja: "「ジョン・ハムの出身高校は...」たぶん「どこ」って続くんだろうな。",
+    timestamp: "01:13",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Did you?",
-    "ja": "本当に？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Go to.",
+    ja: "「どこ」だね。",
+    timestamp: "01:18",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Yes, I did. I had a polyp on my vocal cord that had to be removed. It was removed and now I sound perfectly fine.",
-    "ja": "ええ。声帯にポリープがあって、切除しなければならなかったんです。無事に切除して、今はすっかり元の声です。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Go to! There you go, well done. John Burroughs High School. St. Louis, Missouri. From 1983 to 1989.",
+    ja: "「どこ」だ！ほらね、よくできました。ミズーリ州セントルイスのジョン・バロウズ高校。1983年から1989年まで通ってた。",
+    timestamp: "01:19",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Every day is a school day on this one. I'm telling you!",
-    "ja": "ここでは毎日が勉強だね。本当に！"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "And then you went back and taught there.",
+    ja: "それから戻って、そこで教えたんだね。",
+    timestamp: "01:25",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What age is Jon Hamm?",
-    "ja": "ジョン・ハムの年齢は？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "And then I went back and taught there in '95.",
+    ja: "そう、95年に戻って教えたんだ。",
+    timestamp: "01:27",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "What age is Jon Hamm?",
-    "ja": "ジョン・ハムは何歳？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Yeah. Pretty cool.",
+    ja: "うん。すごくクールだね。",
+    timestamp: "01:29",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Well interestingly enough, tomorrow is my birthday.",
-    "ja": "実は面白いことに、明日が私の誕生日なんです。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "That is pretty cool. Oh, and I named a theater after my theater teacher.",
+    ja: "かなりクールだよね。ああ、あと演劇の恩師の名前をとって劇場を名付けたんだ。",
+    timestamp: "01:30",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It is!",
-    "ja": "そうなんだ！"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Did you? Nice!",
+    ja: "そうなの？素敵だね！",
+    timestamp: "01:34",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "And I'll be 48 years old.",
-    "ja": "48歳になります。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I'm a nice guy.",
+    ja: "私はいいヤツなんだよ。",
+    timestamp: "01:36",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "He's very old. March 10th. 1971. Much older than me.",
-    "ja": "彼はとてもおじいちゃんだよ。1971年3月10日生まれ。僕よりずっと年上さ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "You are a nice guy, makes me sick.",
+    ja: "君はいいヤツだよ、吐き気がするくらいね。",
+    timestamp: "01:37",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Shut up.",
-    "ja": "黙りなさい。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"What tv show was Jon Hamm in.\" It's a small word, I think it must be... in. Yeah. Doctor Who.",
+    ja: "「ジョン・ハムが出演したテレビ番組」短い単語だね、たぶん...「出演」だな。そう。ドクター・フーだ。",
+    timestamp: "01:38",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What high school did Jon Hamm...",
-    "ja": "ジョン・ハムの出身高校は..."
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "The Unbreakable Kimmy Schmidt.",
+    ja: "アンブレイカブル・キミー・シュミット。",
+    timestamp: "01:46",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I'm gonna guess this has got a 'go to'.",
-    "ja": "これは「go to」が続くと思うな。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Very good. 30 Rock. Saturday Night Live. Also good. Mad Men.",
+    ja: "いいね。30 ROCK。サタデー・ナイト・ライブ。これもいいね。マッドメン。",
+    timestamp: "01:48",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Yeah. Go to.",
-    "ja": "ええ。「通っていた」ですね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "All right. Okay.",
+    ja: "なるほど。オッケー。",
+    timestamp: "01:53",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "There you go. Well done.",
-    "ja": "ほらね。お見事。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is David Tennant scottish?\"",
+    ja: "「デイヴィッド・テナントはスコットランド人？」",
+    timestamp: "01:56",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "John Burroughs High School.",
-    "ja": "ジョン・バロウズ高校です。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Scottish. Ish. Scottish.",
+    ja: "スコットランド人。っぽい。スコットランド人だよ。",
+    timestamp: "02:00",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah.",
-    "ja": "うん。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is David Tennant related to Charlie Sheen?\"",
+    ja: "「デイヴィッド・テナントはチャーリー・シーンと親戚？」",
+    timestamp: "02:03",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "St. Louis, Missouri. From 1983 to 1989.",
-    "ja": "ミズーリ州セントルイス。1983年から1989年まで。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "(Laughs) Is David Tennant related to Charlie Sheen?! Well yes. I mean obviously. We're brothers. Who thinks that? Because you kind of look alike?",
+    ja: "(笑)僕がチャーリー・シーンと親戚？！まあ、そうだね。見ての通りさ。僕たちは兄弟なんだ。誰がそんなこと思うの？少し似てるから？",
+    timestamp: "02:06",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "And then you went back and taught there.",
-    "ja": "それで、戻ってそこで教えたんだね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Do we?",
+    ja: "似てるか？",
+    timestamp: "02:18",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "And then I went back and taught there in '95.",
-    "ja": "そうです、95年に戻って教えました。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Yeah. Charlie Sheen? I mean...",
+    ja: "うん。チャーリー・シーン？つまり...",
+    timestamp: "02:19",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah. Pretty cool.",
-    "ja": "うん。すごくかっこいいよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "You're like two and a half Charlie Sheens.",
+    ja: "君はチャーリー・シーン2.5人分くらいあるよ。",
+    timestamp: "02:22",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "It is pretty cool. Oh, and I named a theater after my theater teacher.",
-    "ja": "なかなかかっこいいですよね。ああ、それと演劇の先生の名前を劇場につけました。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is David Tennant vegan?\"",
+    ja: "「デイヴィッド・テナントはヴィーガン？」",
+    timestamp: "02:25",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Did you?",
-    "ja": "そうなの？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Why would anyone ask that? I'm not vegan.",
+    ja: "どうしてそんなこと聞くんだろう？ヴィーガンじゃないよ。",
+    timestamp: "02:28",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Yeah, and then that's...",
-    "ja": "ええ、それで..."
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "You can't be vegan, you're wearing Levi's.",
+    ja: "リーバイスを履いてるからヴィーガンにはなれないね。",
+    timestamp: "02:30",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Nice. You're a nice guy.",
-    "ja": "いいね。君はいい奴だ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "But I'm more vegetarian than I used to be.",
+    ja: "でも昔よりはベジタリアン寄りの食生活をしてるよ。",
+    timestamp: "02:32",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Kind of a nice guy. Sometimes.",
-    "ja": "ちょっといい奴なんです。たまにはね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I think we all are. You know what I had last night?",
+    ja: "みんなそうだと思うよ。昨日の夜、私が何を食べたと思う？",
+    timestamp: "02:34",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "You are a nice guy. Makes me sick.",
-    "ja": "本当にいい奴だよ。吐き気がするくらいね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "What?",
+    ja: "何を？",
+    timestamp: "02:36",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What TV show was Jon Hamm in?",
-    "ja": "ジョン・ハムが出演したテレビ番組は？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Gnocchi.",
+    ja: "ニョッキだ。",
+    timestamp: "02:37",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It's a small word. I think it must be... Yeah. Doctor Who.",
-    "ja": "短い単語だね。きっと...うん。ドクター・フーだ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "You crazy!",
+    ja: "狂ってるね！",
+    timestamp: "02:38",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "The Unbreakable Kimmy Schmidt.",
-    "ja": "『アンブレイカブル・キミー・シュミット』。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "No, it was delicious.",
+    ja: "いやいや、美味しかったよ。",
+    timestamp: "02:39",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Very good.",
-    "ja": "すごくいいね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is David Tennant left handed?\" Oh, now this I don't know.",
+    ja: "「デイヴィッド・テナントは左利き？」ああ、これは私は知らないな。",
+    timestamp: "02:40",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "30 Rock.",
-    "ja": "『30 ROCK/サーティー・ロック』。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Well I did take that off with my left hand.",
+    ja: "まあ、今これを左手で剥がしたけどね。",
+    timestamp: "02:44",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Very excellent.",
-    "ja": "素晴らしい。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "You did. But I don't think you are.",
+    ja: "そうだね。でも君が左利きだとは思わないな。",
+    timestamp: "02:46",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Saturday Night Live.",
-    "ja": "『サタデー・ナイト・ライブ』。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "But principally, I'm this handed.",
+    ja: "でも基本的には、こっち利きだよ。",
+    timestamp: "02:47",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Also good.",
-    "ja": "それもいいね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Righty.",
+    ja: "右利きだ。",
+    timestamp: "02:49",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Mad Men.",
-    "ja": "『マッドメン』。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"How did Jon Hamm and Paul Rudd meet?\"",
+    ja: "「ジョン・ハムとポール・ラッドの出会いは？」",
+    timestamp: "03:11",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "All right.",
-    "ja": "わかったよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "A good friend of mine's older brother was his roommate in college. And so he came back from college for Thanksgiving or something like that, and we all played Trivial Pursuit together.",
+    ja: "私の親友の兄が、大学で彼とルームメイトだったんだ。それで彼が感謝祭か何かで大学から帰省してきて、みんなで一緒にトリビアル・パスートをやったんだよ。",
+    timestamp: "03:15",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is David Tennant...",
-    "ja": "デイヴィッド・テナントは..."
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"How tall is Jon Hamm?\"",
+    ja: "「ジョン・ハムの身長は？」",
+    timestamp: "03:33",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Is David Tennant...",
-    "ja": "デイヴィッド・テナントは..."
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "6'1\". 6'2\".",
+    ja: "6フィート1インチ。6フィート2インチ。",
+    timestamp: "03:36",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is David Tennant Scottish?",
-    "ja": "デイヴィッド・テナントはスコットランド人？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "6'1 and a half. I round up.",
+    ja: "6フィート1.5インチ。切り上げてるんだ。",
+    timestamp: "03:39",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Scottish?",
-    "ja": "スコットランド人？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Okay, sure, why not. That's what I do. I say I'm 6'1\". I always add an extra half inch.",
+    ja: "なるほど、いいんじゃないかな。僕もそうしてる。自分の身長は6フィート1インチって言ってるよ。いつも0.5インチ分おまけしてるんだ。",
+    timestamp: "03:41",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Ish. Scottish.",
-    "ja": "みたいな。スコットランド人。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Where did Jon Hamm first work?\"",
+    ja: "「ジョン・ハムが初めて働いた場所は？」",
+    timestamp: "03:47",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is David Tennant related to Charlie Sheen? What?!",
-    "ja": "デイヴィッド・テナントはチャーリー・シーンの親戚？何だって？！"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "My first job was as a dishwasher at Spiro's restaurant in St. Louis, Missouri.",
+    ja: "私の最初の仕事は、ミズーリ州セントルイスにあるスピロスというレストランでの皿洗いだったよ。",
+    timestamp: "03:51",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Well yes. I mean obviously. They're brothers. Who thinks that? Cause you kind of look alike?",
-    "ja": "ええ、まあ。明らかでしょう。兄弟ですから。誰がそんなこと考えるんです？少し似てるから？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Are the dishes in a Greek restaurant harder to clean than the dishes of another...",
+    ja: "ギリシャ料理レストランの皿って、他のレストランの皿より洗うのが大変だったりする...？",
+    timestamp: "03:57",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Do we?",
-    "ja": "似てる？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Where is Jon Hamm in...\" Game of Thrones. Good question! Finally, a question I'd like to know the answer to. Where is Jon Hamm in Game of Thrones? Where's David Tennant in Game of Thrones?",
+    ja: "「ジョン・ハムはどこにいる...」ゲーム・オブ・スローンズで。良い質問だね！やっと私も答えを知りたい質問が来たよ。ゲーム・オブ・スローンズのどこにジョン・ハムがいるんだ？デイヴィッド・テナントはどこだ？",
+    timestamp: "04:02",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Yeah. Charlie Sheen? I mean... You're like two and a half Charlie Sheens.",
-    "ja": "ええ。チャーリー・シーン？というか...あなたはチャーリー・シーン2.5人分くらいありますよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "It's an excellent question. They hired everybody in Europe for that show but you. The only English actor not in it.",
+    ja: "素晴らしい質問だ。あの番組はヨーロッパ中の俳優を雇ったのに、君だけは呼ばれなかった。出演してない唯一のイギリス人俳優だ。",
+    timestamp: "04:12",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is David Tennant vegan? Why would anyone ask that? I'm not vegan.",
-    "ja": "デイヴィッド・テナントはヴィーガン？なんでそんなこと聞くの？僕はヴィーガンじゃないよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "You're not English.",
+    ja: "君はイギリス人(イングランド人)じゃないだろ。",
+    timestamp: "04:18",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "You can't be vegan, you're wearing Levi's.",
-    "ja": "リーバイスを履いているんですから、ヴィーガンなわけないでしょう。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "I'm not English, but I mean from England.",
+    ja: "僕はイングランド人じゃないけど、イギリス出身って意味でね。",
+    timestamp: "04:19",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "But I'm more vegetarian than I used to be.",
-    "ja": "でも昔よりはベジタリアン寄りだよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Can Jon Hamm... ride a dragon?\"",
+    ja: "「ジョン・ハムは...ドラゴンに乗れる？」",
+    timestamp: "04:26",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I think we all are. You know what I had last night?",
-    "ja": "みんなそうだと思います。私が昨夜何を食べたか知ってますか？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Too short for that.",
+    ja: "短すぎるよ。",
+    timestamp: "04:29",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "What?",
-    "ja": "何？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Sing? Oh, let's find out. No.",
+    ja: "歌えるか？ああ、試してみよう。いや、無理だ。",
+    timestamp: "04:30",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Gnocchi.",
-    "ja": "ニョッキです。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"Does David Tennant reply to fan mail?\"",
+    ja: "「デイヴィッド・テナントはファンレターに返事する？」",
+    timestamp: "04:39",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "You're crazy!",
-    "ja": "頭がおかしいよ！"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "I'm gonna take this one. I bet he does. You know why? Time Lords. They got all the time in the world.",
+    ja: "これは私が答えよう。彼は絶対返事してるよ。なぜかって？タイムロードだからさ。彼らには時間が無限にあるからね。",
+    timestamp: "04:43",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "No, it was delicious.",
-    "ja": "いいえ、美味しかったです。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Yeah.",
+    ja: "その通りだ。",
+    timestamp: "04:49",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is David Tennant left-handed?",
-    "ja": "デイヴィッド・テナントは左利き？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "You know what I will do though? And this is a good fan mail tip. I bet you do the same thing. If there's not a self-addressed stamped envelope in there...",
+    ja: "でも私がどうするか教えてあげようか？これはファンレターを送る時のいいアドバイスだよ。君も同じだと思うけど。もし返信用切手と封筒が入ってなかったら...",
+    timestamp: "04:50",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Ooh, now this I don't know. I'd be interested to find out.",
-    "ja": "おっと、これは知りませんね。気になります。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "It's over.",
+    ja: "そこでおしまいさ。",
+    timestamp: "04:57",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Well I did tear that off with my left hand.",
-    "ja": "まあ、確かに左手で剥がしたけどね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "It's over guys. I can't be bothered.",
+    ja: "そこでおしまいだ。そんな手間はかけられないよ。",
+    timestamp: "04:58",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "You did. But I don't think you are.",
-    "ja": "そうでしたね。でも違うと思います。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"Does David Tennant speak French?\" Oui. Bien sûr.",
+    ja: "「デイヴィッド・テナントはフランス語を話す？」ウィ。ビアン・シュール(はい。もちろんです)。",
+    timestamp: "05:01",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "But principally, I'm, I'm this handed.",
-    "ja": "でも基本的には、僕はこっち利きだよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"Did David Tennant carry the Olympic torch?\" Only in Doctor Who. Which of course is the real reality.",
+    ja: "「デイヴィッド・テナントはオリンピックの聖火を運んだ？」ドクター・フーの中でだけね。もちろん、それが本物の現実だけど。",
+    timestamp: "05:06",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Righty.",
-    "ja": "右ですね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Wait, but you did... there was an Olympic episode of Doctor Who.",
+    ja: "待って、でもやったよな...ドクター・フーにオリンピックのエピソードがあったよね。",
+    timestamp: "05:14",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "How old David Tennant?",
-    "ja": "デイヴィッド・テナント年齢？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Yeah, yeah, yeah. Fantastic. We did the 2012 Olympics before we did the 2012 Olympics.",
+    ja: "うんうん、そうだよ。最高だったね。僕たちは2012年のオリンピックが開催される前に、2012年のオリンピックをやったんだ。",
+    timestamp: "05:16",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "How old David Tennant?",
-    "ja": "デイヴィッド・テナントの年齢は？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"Why did David Tennant change his name?\" Oh! Actors' union.",
+    ja: "「なぜデイヴィッド・テナントは名前を変えたの？」ああ！俳優組合のせいだよ。",
+    timestamp: "05:24",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Doesn't have a question mark, this is bad grammatically.",
-    "ja": "クエスチョンマークがない、これは文法的にダメだね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "This is all a lie?",
+    ja: "今の名前は全部ウソなのか？",
+    timestamp: "05:29",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "How old David Tennant?",
-    "ja": "デイヴィッド・テナントの年齢は？"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Yeah, it's all a lie. I'm David John McDonald from Paisley. Not anymore. Two... two Actors' unions on different sides of the planet made me change my name twice. David John McDonald.",
+    ja: "うん、全部ウソさ。僕はペイズリー出身のデイヴィッド・ジョン・マクドナルド。今は違うけどね。地球の反対側にある2つの俳優組合のせいで、2回も名前を変えなきゃならなかったんだ。デイヴィッド・ジョン・マクドナルドさ。",
+    timestamp: "05:30",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I'm not quite as old as Jon Hamm.",
-    "ja": "僕はジョン・ハムほど年をとってないよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"How to meet David Tennant?\" Oh, there's not... that's it. How to meet David Tennant.",
+    ja: "「デイヴィッド・テナントに会うには？」ああ、続きはないんだ...これで終わり。デイヴィッド・テナントに会うには。",
+    timestamp: "05:41",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Were you born in 1971?",
-    "ja": "1971年生まれですか？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "You just walk up and say hi.",
+    ja: "ただ歩み寄って『やあ』って言えばいいのさ。",
+    timestamp: "05:46",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I am just a month behind you. April 18th.",
-    "ja": "君のちょうど1ヶ月後だよ。4月18日。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Yeah. And don't waste his time. You have to find me though.",
+    ja: "そうだね。そして僕の時間を無駄にしないこと。でもまずは僕を見つけないといけないけどね。",
+    timestamp: "05:48",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Oh my god.",
-    "ja": "なんてことだ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "I keep moving, so I will make it difficult for you.",
+    ja: "僕は常に動き回ってるから、そう簡単には見つからないよ。",
+    timestamp: "05:51",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "How old David Tennant. How old... Jon Hamm? Oh boy. I don't like this at all. I'm going to peel this while you sup your coffee.",
-    "ja": "デイヴィッド・テナントの年齢。ジョン・ハム...の年齢？やれやれ。これは全然好きじゃないな。君がコーヒーを飲んでる間にこれを剥がすよ。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Don't call him Tom Baker though.",
+    ja: "でも彼をトム・ベイカー(※歴代ドクターの一人)とは呼ばないようにね。",
+    timestamp: "05:54",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "How did Jon Hamm...",
-    "ja": "ジョン・ハムはどのように..."
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is Jon Hamm... related to Mia Hamm?\" No.",
+    ja: "「ジョン・ハムは...ミア・ハム(元女子サッカー選手)と親戚？」いや。",
+    timestamp: "05:58",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "How did Jon Hamm and Paul Rudd meet?",
-    "ja": "ジョン・ハムとポール・ラッドの出会いは？"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is Jon Hamm British?\" Absolutely not.",
+    ja: "「ジョン・ハムはイギリス人？」絶対に違うね。",
+    timestamp: "06:01",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Jon Hamm and Paul Rudd met...",
-    "ja": "ジョン・ハムとポール・ラッドの出会いは..."
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is Jon Hamm single?\"",
+    ja: "「ジョン・ハムは独身？」",
+    timestamp: "06:03",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Oh, this is an interesting story.",
-    "ja": "おっ、これは面白い話だね。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is Jon Hamm a feminist?\" Sure.",
+    ja: "「ジョン・ハムはフェミニスト？」もちろん。",
+    timestamp: "06:05",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "A good friend of mine's older brother was his roommate in college. And so he came back from college for Thanksgiving or something like that, and we all played Trivial Pursuit together.",
-    "ja": "私の親友の兄が、大学で彼のルームメイトだったんです。それで彼が感謝祭か何かで大学から帰ってきて、みんなで一緒にトリビアル・パスートをして遊びました。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "\"Is Jon Hamm a baseball fan?\" Yes. Look at that.",
+    ja: "「ジョン・ハムは野球ファン？」そうだね。ほら見なよ。",
+    timestamp: "06:07",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Okay.",
-    "ja": "なるほど。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "That was really quick. Come on! Come on! We're hammering through them.",
+    ja: "すごく早かったね。さあ！さあ！どんどんやっつけちゃおう。",
+    timestamp: "06:10",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "It's before the internet and things like Google. So you had to play board games.",
-    "ja": "インターネットやGoogleのようなものがある前の時代ですからね。ボードゲームをするしかなかったんです。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"What is David Tennant doing now?\" I'm sitting here answering these questions. And I'm going fast because we're running out of time!",
+    ja: "「デイヴィッド・テナントは今何をしてる？」僕は今ここに座って、これらの質問に答えてるよ。時間がないから急いでるんだ！",
+    timestamp: "06:13",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "How tall is Jon Hamm? 6'1\". 6'2\".",
-    "ja": "ジョン・ハムの身長は？185cm。188cm。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"What is David Tennant in?\" Good Omens. Amazon Prime video.",
+    ja: "「デイヴィッド・テナントの出演作は？」グッド・オーメンズ。Amazon Prime ビデオでね。",
+    timestamp: "06:19",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It's one or the other.",
-    "ja": "どっちかだね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"What is David Tennant's nationality?\" Scottish! We've met it already! Freedom!",
+    ja: "「デイヴィッド・テナントの国籍は？」スコットランド人！もう答えたよね！フリーダム！",
+    timestamp: "06:23",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Let's round it up.",
-    "ja": "切り上げましょう。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"What is David Tennant's phone number?\" Oh dear. That's a little personal. Let's move on. 911.",
+    ja: "「デイヴィッド・テナントの電話番号は？」おやまあ。それはちょっと個人的すぎるね。次に行こう。911だよ。",
+    timestamp: "06:29",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Okay, sure.",
-    "ja": "うん、そうだね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "\"What is David Tennant Hamlet?\" I don't understand the question. What is David Tennant Hamlet?",
+    ja: "「デイヴィッド・テナントのハムレットとは？」質問の意味がわからないな。デイヴィッド・テナントのハムレットって何？",
+    timestamp: "06:36",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Why not. That's what I do. I say I'm 6'1\". Always add an extra half inch. Six and three quarters.",
-    "ja": "もちろんです。私はそうしています。身長は185cmと言っています。いつも半インチ余分に足すんです。6フィートと4分の3インチです。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Check your syntax, check your grammar.",
+    ja: "構文を確認して、文法もチェックしてね。",
+    timestamp: "06:44",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Where did Jon Hamm first work? My first job was as a dishwasher at Spiro's restaurant in St. Louis, Missouri.",
-    "ja": "ジョン・ハムが初めて働いた場所は？私の最初の仕事は、ミズーリ州セントルイスのスピロスというレストランでの皿洗いでした。"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "But we had a lovely time, thank you.",
+    ja: "でも楽しい時間だったよ、ありがとう。",
+    timestamp: "06:47",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Are the dishes in a Greek restaurant harder to clean than the dishes of another...",
-    "ja": "ギリシャ料理店の皿は他の店の皿より洗うのが大変なの..."
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "We sure did, thank you.",
+    ja: "本当にね、ありがとう。",
+    timestamp: "06:49",
   },
   {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Break 'em. (laughs)",
-    "ja": "割っちゃうんですよ。(笑)"
+    speakerEn: "Jon Hamm",
+    speakerJa: "ジョン・ハム",
+    en: "Cheers internet.",
+    ja: "乾杯、インターネットのみんな。",
+    timestamp: "06:51",
   },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Where is Jon Hamm in Game of Thrones? Good question! Finally, a question I'd like to know the answer to. Where is Jon Hamm in Game of Thrones? Where's David Tennant in Game of Thrones?",
-    "ja": "ゲーム・オブ・スローンズのジョン・ハムはどこ？いい質問です！ようやく私自身も答えを知りたい質問が来ました。ゲーム・オブ・スローンズのジョン・ハムはどこにいる？ゲーム・オブ・スローンズのデイヴィッド・テナントはどこ？"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It's an excellent question. They hired everybody in Europe for that show. Except you?",
-    "ja": "素晴らしい質問だね。あの番組はヨーロッパ中の役者を雇ったのに。君以外は？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "The only English actor not in it.",
-    "ja": "出演していない唯一のイギリス人俳優ですね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "You're not English.",
-    "ja": "君はイギリス人じゃないよ。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I'm not English, but I mean from England. I would have liked to have been in Game of Thrones. I could have ridden a dragon.",
-    "ja": "イギリス人ではありませんが、つまりイギリス出身の俳優ってことです。ゲーム・オブ・スローンズには出たかったですね。ドラゴンに乗れたかもしれないのに。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Can Jon Hamm ride a dragon?",
-    "ja": "ジョン・ハムはドラゴンに乗れる？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Ride a dragon? Too short for that.",
-    "ja": "ドラゴンに乗る？それには背が低すぎますね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Can Jon Hamm sing? Oh, let's find out!",
-    "ja": "ジョン・ハムは歌える？おお、確かめてみよう！"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "No. (both laugh)",
-    "ja": "無理です。(二人で笑う)"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "This is more exciting for me.",
-    "ja": "私にとってはこっちの方がワクワクします。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "David Tennant.",
-    "ja": "デイヴィッド・テナント。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Does David Tennant...",
-    "ja": "デイヴィッド・テナントは..."
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Does David Tennant reply to fan mail?",
-    "ja": "デイヴィッド・テナントはファンレターに返事をする？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I'm gonna take this one. I bet he does. You know why? Time Lords. They got all the time in the hands.",
-    "ja": "これは私が答えましょう。きっと返事をしますよ。なぜかわかりますか？タイムロードですから。時間はいくらでも持っているんです。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah.",
-    "ja": "うん。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "You know what I will do though, and this is a good fan mail tip. I bet you do the same thing. If there's not a self-addressed stamped envelope in there...",
-    "ja": "でも私がどうするか教えましょう、これはファンレターの良いヒントになります。あなたも同じことをしているはずです。もし返信用封筒が入っていなかったら..."
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It's over.",
-    "ja": "終わりだね。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Sorry guys. It's over, yeah. I can't be bothered. Yeah.",
-    "ja": "みんなごめんなさい。終わりです。面倒は見切れませんね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Does David Tennant speak French? Oui, bien sûr.",
-    "ja": "デイヴィッド・テナントはフランス語を話す？Oui, bien sûr.(ええ、もちろんです)"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Oh!",
-    "ja": "おお！"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Did David Tennant...",
-    "ja": "デイヴィッド・テナントは..."
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Speak French...",
-    "ja": "フランス語を話す..."
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Carry the Olympic torch? Only in Doctor Who. Which of course is the real reality.",
-    "ja": "オリンピックの聖火を運んだ？『ドクター・フー』の中だけでね。もちろんそれが本当の現実なんだけど。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Wait, but you did... there was an Olympic episode of Doctor Who?",
-    "ja": "待って、でも実際に...ドクター・フーにオリンピックのエピソードがあったんですか？"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah, yeah, yeah.",
-    "ja": "うん、そうそう。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Fantastic.",
-    "ja": "素晴らしい。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "We did the 2012 Olympics before they did the 2012 Olympics.",
-    "ja": "現実の2012年オリンピックよりも前に、僕らは2012年オリンピックをやったんだ。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Time Lords! They do everything!",
-    "ja": "タイムロードめ！何でもやりますね！"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Why did David Tennant change his name? Oh, Actors' Equity.",
-    "ja": "デイヴィッド・テナントはなぜ名前を変えたの？ああ、俳優組合(アクターズ・エクイティ)のせいだよ。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "This is all a lie?",
-    "ja": "これって全部嘘なんですか？"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah, it's a lie. I'm David John McDonald from Paisley.",
-    "ja": "うん、嘘だよ。僕はペイズリー出身のデイヴィッド・ジョン・マクドナルドさ。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Ah, not anymore.",
-    "ja": "ああ、もう違いますけどね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Two, two actors' unions on different sides of the planet made me change my name. Twice. David John McDonald.",
-    "ja": "地球の反対側にある2つの俳優組合が、僕に名前を変えさせたんだ。2回もね。デイヴィッド・ジョン・マクドナルド。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "How to meet David Tennant? Oh, there's not, that's it. How to meet David Tennant.",
-    "ja": "デイヴィッド・テナントに会うには？ああ、ないや、これだ。デイヴィッド・テナントに会うには。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "How to meet David Tennant. You just walk up and say hi.",
-    "ja": "デイヴィッド・テナントに会うには。歩み寄って挨拶すればいいだけです。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yeah. And don't waste his time. You have to find me though.",
-    "ja": "うん。それと彼の時間を無駄にしないこと。まずは僕を見つけないといけないけどね。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "You definitely have to find him.",
-    "ja": "間違いなく見つけないといけませんね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I keep moving so I will make it difficult for you.",
-    "ja": "僕は動き回ってるから、簡単には見つからないよ。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Don't call him Tom Baker though.",
-    "ja": "トム・ベイカーとは呼ばないでくださいね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "I don't like that.",
-    "ja": "それは好きじゃないな。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I don't either.",
-    "ja": "私も嫌です。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Is Jon Hamm related to Mia Hamm? No.",
-    "ja": "ジョン・ハムはミア・ハムの親戚？いいえ。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is Jon Hamm British?",
-    "ja": "ジョン・ハムはイギリス人？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Absolutely not.",
-    "ja": "全く違います。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is Jon Hamm single? Hmm.",
-    "ja": "ジョン・ハムは独身？ふむ。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Is Jon Hamm a feminist? Sure.",
-    "ja": "ジョン・ハムはフェミニスト？もちろんです。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Is Jon Hamm a baseball fan?",
-    "ja": "ジョン・ハムは野球ファン？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Yes. Look at that! That was really quick. Come on! We're hammering through them!",
-    "ja": "ええ。見てください！すごく早かった。さあ！どんどん片付けていきますよ！"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "What is David Tennant doing now? I'm sitting here answering these questions! And I'm going fast because we're running out of time! What is David Tennant in? Good Omens, Amazon Prime Video. What is David Tennant's nationality?",
-    "ja": "デイヴィッド・テナントは今何をしてる？ここに座って質問に答えてるよ！時間がないから急いでるんだ！デイヴィッド・テナントの出演作は？『グッド・オーメンズ』、Amazonプライム・ビデオ。デイヴィッド・テナントの国籍は？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Scottish! We've met it already! Come on, freedom!",
-    "ja": "スコットランド！もう出ましたよ！さあ、フリーダム(自由)だ！"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "What is David Tennant's phone number?",
-    "ja": "デイヴィッド・テナントの電話番号は？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Oh dear. That's a little personal.",
-    "ja": "おやまあ。少し個人的すぎますね。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Let's move on. 911.",
-    "ja": "次に行こう。911。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "What is David Tennant Hamlet? I don't understand the question. What is David Tennant Hamlet?",
-    "ja": "デイヴィッド・テナントのハムレットとは何ですか？質問の意味がわかりませんね。デイヴィッド・テナントのハムレットとは？"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "I would like to ask the internet to please use better grammar when entering things into the Google search box.",
-    "ja": "インターネットにお願いしたいんですが、Googleの検索ボックスに入力する時は、もう少し正しい文法を使ってください。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Yes, please. Check your syntax, check your grammar.",
-    "ja": "うん、お願いするよ。構文をチェックして、文法もチェックして。"
-  },
-  {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "But we had a lovely time. Thank you.",
-    "ja": "でも素晴らしい時間でした。ありがとう。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "We sure did. Thank you.",
-    "ja": "本当にね。ありがとう。"
-  },
-  {
-    "speakerEn": "Jon Hamm",
-    "speakerJa": "ジョン・ハム",
-    "en": "Cheers internet.",
-    "ja": "乾杯、インターネット。"
-  }
 ] as const satisfies readonly TranscriptLine[];
+

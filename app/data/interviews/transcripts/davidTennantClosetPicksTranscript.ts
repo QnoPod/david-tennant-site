@@ -1,124 +1,160 @@
-/** 添付された原文と日本語訳。詳細ページを開いた時だけ読み込みます。 */
+import type { TranscriptLine } from "../types";
+
+/** 添付された英語原文・日本語訳。詳細ページを開いた時だけ読み込みます。 */
 export const davidTennantClosetPicksTranscript = [
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "My name's David Tennant, and I'm thrilled to say I'm in the Criterion closet. There are so many different types of everything here.",
-    "ja": "僕はデイヴィッド・テナント。クライテリオンのクローゼットに来られて、本当にワクワクしているよ。ここには、ありとあらゆる種類のものが山ほどあるね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "My name's David Tennant, and I'm thrilled to say I'm in the Criterion closet.",
+    ja: "僕はデイヴィッド・テナント。クライテリオン・クローゼットに来られて最高にワクワクしてるよ。",
+    timestamp: "00:00",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Oh, look at that cover, Time Bandits. Terry Gilliam was one of the Monty Python crew, team. Still is, I guess, it's not a club that you leave. And Time Bandits, I think it was probably the first film of his I saw.",
-    "ja": "おっ、このパッケージを見て。『バンデットQ(Time Bandits)』だ。テリー・ギリアムはモンティ・パイソンの一員で...いや、今もそうだね、抜けられるようなクラブじゃないし。たぶん、僕が初めて観た彼の映画だと思う。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "There's so many different types of everything here. Oh, look at that cover. Time Bandits.",
+    ja: "ここにはあらゆるジャンルの作品がたくさんあるな。おっ、あのパッケージを見て。『バンデットQ(Time Bandits)』だ。",
+    timestamp: "00:05",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Uh, it's just got this extraordinary imagination. There's just nothing really like it. It sees the world through Terry Gilliam's brain, which is fascinating and very pleasing.",
-    "ja": "とにかく想像力が桁違いなんだ。他に似たような作品なんて思いつかないよ。テリー・ギリアムの脳内を通して世界を見ている感覚で、それがたまらなく魅力的で、嬉しい気持ちになるんだ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Terry Gilliam was one of the Monty Python crew, team. Still is, I guess. It's not a club that you leave. And Time Bandits, I think it was probably the first film of his I saw.",
+    ja: "テリー・ギリアムはモンティ・パイソンの一員だった。まあ、今でもそうだろうね、抜けられるようなクラブじゃないから。そして『バンデットQ』は、おそらく僕が初めて観た彼の映画だと思う。",
+    timestamp: "00:12",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It had some great performances in this. David Warner, I remember being very good in this. Sean Connery, that's right, Sean Connery's in it. Ralph Richardson. Ian Holm. Anyway, a great film.",
-    "ja": "役者の演技も素晴らしいんだよ。デイヴィッド・ワーナーがすごく良かったのを覚えている。ショーン・コネリーも、そうだ、出ているんだよね。ラルフ・リチャードソン、イアン・ホルム。とにかく最高な映画だよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Uh, it's just got this extraordinary imagination. There's just nothing really like it. It sees the world through Terry Gilliam's brain, which is fascinating and very pleasing.",
+    ja: "とにかく並外れた想像力に溢れているんだ。似たような作品なんて他にないよ。テリー・ギリアムの脳内を通して世界を見ているようで、魅力的だしすごく面白い。",
+    timestamp: "00:24",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Ah. This, The Importance of Being Earnest. I've always loved this play. I'm probably never going to be in it now, a little bit too old.",
-    "ja": "ああ、これ。『真面目が肝心』。昔からこの戯曲が大好きなんだ。まあ、僕は少し歳をとりすぎちゃったから、もう演じる機会はないだろうけれどね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Had some great performances in this. David Warner, I remember being very good in this. Sean Connery. That's right, Sean Connery's in it. Ralph Richardson. Ian Holm. Anyway, great film.",
+    ja: "素晴らしい演技もたくさんあった。デビッド・ワーナーがすごく良かったのを覚えてるな。ショーン・コネリーもだ。そうだ、彼も出てるんだよ。ラルフ・リチャードソン、イアン・ホルム。とにかく、最高に素晴らしい映画だよ。",
+    timestamp: "00:36",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "This I suppose is the sort of... is the acme of productions of it. Um, it's got the famous line, \"A handbag?!\" Edith Evans delivering that famous Oscar Wilde line and having it captured forever on film. Michael Redgrave as well, right? A perfect telling of a great bit of writing.",
-    "ja": "これは、その...映像化の頂点と言えるんじゃないかな。有名なセリフがあるよね、「ハンドバッグですって？！」って。イーディス・エヴァンスが、あのオスカー・ワイルドの有名なセリフを放つ瞬間が、永遠にフィルムに刻まれている。マイケル・レッドグレイヴも出ているよね。素晴らしい脚本の、完璧な表現だよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Ah. This. The Importance of Being Earnest. I've always loved this play. I'm probably never going to be in it now, a little bit too old.",
+    ja: "ああ、これ。『真面目が肝心』。僕はこの戯曲が昔から大好きなんだ。たぶんもう自分が出演することはないだろうけどね、少し歳をとりすぎちゃったから。",
+    timestamp: "00:46",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "David Lean Directs Noël Coward. So there's... oh, there's four movies on here. Brief Encounter is probably the one that I am most excited about here.",
-    "ja": "『デイヴィッド・リーン監督、ノエル・カワード作品集』。おっ、4本も入っているんだね。この中だと、やっぱり『逢びき(Brief Encounter)』が一番テンションが上がるかな。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "This, I suppose, is the sort of... is the acme of productions of it. It's got the famous line, \"A handbag?\" Edith Evans delivering that famous Oscar Wilde line and having it captured forever on film. Michael Redgrave as well, right? A perfect telling of a great bit of writing.",
+    ja: "これは間違いなく、本作の決定版と言えるプロダクションだろうな。「ハンドバッグですって？」という有名なセリフがある。オスカー・ワイルドのその名台詞をイーディス・エヴァンスが放ち、それが永遠にフィルムに収められているんだ。マイケル・レッドグレイヴも出てるよね。偉大な戯曲を完璧に表現しているよ。",
+    timestamp: "00:56",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "It's a love story. And it's about people having an affair, an illicit affair. And yet all told through the micro-gestures and moments of eyes darting, hands touching.",
-    "ja": "これはラブストーリーで、不倫...許されない恋の話なんだ。なのに、そのすべてが、視線を泳がせたり、手が触れ合ったりするような、ほんの些細な仕草を通して語られる。...なんだかすごく繊細で。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "David Lean directs Noël Coward. So there's four movies on here. Brief Encounter is probably the one that I am most excited about here.",
+    ja: "デヴィッド・リーン監督のノエル・カワード作品集。4つの映画が入ってるんだけど、『逢びき(Brief Encounter)』はおそらく、ここにある中で一番僕が興奮する作品だね。",
+    timestamp: "01:16",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Beautifully shot. The sumptuousness of the black and whites, and the billowing steam from the train engines. Just as a study of kind of humanity, it's a really beautiful film. Surprisingly subtle and intelligent and... but then, it's David Lean, so maybe it's not that surprising.",
-    "ja": "映像も本当に美しい。白黒の豊かさや、機関車から立ち上る蒸気とかね。人間というものを探求した、本当に美しい映画なんだ。驚くほど繊細で知的で...まあ、デイヴィッド・リーンだから、驚くことじゃないのかもしれないけれど。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "It's a love story, and it's about people having an affair, an illicit affair. And yet all told through micro-gestures and moments of eyes darting, hands touching.",
+    ja: "ラブストーリーであり、不倫関係に落ちる人々を描いている。それなのに、すべてが微細な仕草や、視線の揺れ、手が触れ合う瞬間といったものだけで語られているんだ。",
+    timestamp: "01:28",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "His Girl Friday. Cary Grant. There's something sort of otherworldly about Cary Grant. You sort of can't imagine he was a human being who walked amongst us. He was the perfect ultimate movie star.",
-    "ja": "『ヒズ・ガール・フライデー』。ケーリー・グラント。ケーリー・グラントって、どこか浮世離れしたところがあるよね。僕たちと同じ人間としてこの世界を歩いていたなんて、ちょっと想像できない。完璧で、究極の映画スターだった。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Beautifully shot. The sumptuousness of the black and whites and the billowing steam from the train engines. Just as a study of humanity, it's a really beautiful film. Surprisingly subtle and intelligent and... But then it's David Lean, so maybe it's not that surprising.",
+    ja: "映像も本当に美しい。白黒の豊かなコントラストや、機関車から立ち上る蒸気。人間というものを深く掘り下げた、本当に美しい映画だよ。驚くほど繊細で知的で......いや、デヴィッド・リーンだから、驚くことでもないか。",
+    timestamp: "01:40",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "And he just did his thing. He didn't ever do anything else, really, he just was Cary Grant. You know, his characters had names that weren't Cary Grant, but he was always Cary Grant. And it was a glorious thing to witness. He was like a sort of perfect cocktail. And him and Rosalind Russell in this movie are two perfect cocktails.",
-    "ja": "彼はただ、彼自身のやり方を貫いたんだ。他の誰かになろうなんて全くしなかった。ただ“ケーリー・グラント”であり続けたんだよ。役名は違っても、彼は常に彼自身だった。...僕には真似できないな。まるで完璧に調合されたカクテルみたいでね。この映画の彼とロザリンド・ラッセルは、まさに2つの完璧なカクテルってわけさ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "His Girl Friday. Cary Grant. There's something sort of otherworldly about Cary Grant. You sort of can't imagine he was a human being who walked amongst us. He was the perfect, ultimate movie star.",
+    ja: "『ヒズ・ガール・フライデー』。ケーリー・グラントだね。彼にはどこか浮世離れしたところがある。僕たちと同じように生きていた人間だなんて、ちょっと想像できないくらいだ。彼は完璧で、究極の映画スターだった。",
+    timestamp: "02:03",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Ah, now. A box set here of Olivier's three Shakespeare adaptations. As a drama student, these are the kind of things you sort of think, well, what did the greatest Shakespearean actor of all time, how did he do it? What were his choices?",
-    "ja": "さてと。ローレンス・オリヴィエのシェイクスピア映画3部作のボックスセットだ。演劇学生だった頃、こういうのを観て考えるんだよ。史上最高のシェイクスピア俳優は、どう演じたのか？どんな選択をしたのか？ってね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "And he just did his thing. He didn't ever do anything else, really, he just was Cary Grant. You know, his characters had names that weren't Cary Grant, but he was always Cary Grant, and it was a glorious thing to witness. He was like a perfect cocktail. And him and Rosalind Russell in this movie are two perfect cocktails.",
+    ja: "彼はただ自分のやり方を貫いたんだ。それ以外のことはしなかった。彼はただ「ケーリー・グラント」であっただけで。役名がケーリー・グラントじゃなくても、彼は常にケーリー・グラントであり、それを見るのは至福の体験だったよ。彼は完璧なカクテルのような存在だった。そしてこの映画の彼とロザリンド・ラッセルは、2つの完璧なカクテルなんだ。",
+    timestamp: "02:16",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Obviously they're slightly from a different time. Expectations about acting were slightly different. And Olivier himself was a kind of grand man of the theatre.",
-    "ja": "もちろん、時代が少し違うから、演技に対する期待値も今とはちょっと違う。それにオリヴィエ自身、演劇界の偉大な権威みたいな存在だったしね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Ah, now. A box set here of Olivier's three Shakespeare adaptations. As a drama student, these are the kind of things you sort of think, \"Well, what did the greatest Shakespearean actor of all time, how did he do it? What were his choices?\"",
+    ja: "ああ、それから。ローレンス・オリヴィエによるシェイクスピア映画3作のボックスセットだ。演劇学生なら誰しも、「史上最高のシェイクスピア俳優は、一体どうやって演じたんだ？どんな選択をしたんだ？」って考えるような代物だよ。",
+    timestamp: "02:38",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "So these three, Henry V, Hamlet, and Richard III, they're a little dated now in some ways, and yet there's something in the essence of what he did, and how he uses that language. And he made it, you know, for his time, Olivier was doing new things by speaking that verse in a very naturalistic way, by making it kind of sexy and raw.",
-    "ja": "だから、この『ヘンリー五世』『ハムレット』『リチャード三世』の3本は、今観ると少し古臭く感じる部分もある。それでも、彼がやったことの本質や、言葉の使い方がしっかり残っている。当時のオリヴィエは、韻文をすごく自然に語って、ある意味セクシーで生々しいものにするっていう、新しい試みをしていたんだ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Obviously, they are slightly from a different time. Expectations about acting were slightly different. And Olivier himself was a grand man of the theatre.",
+    ja: "もちろん、時代は少し違う。演技に対する期待値も今とは若干異なっていたし、オリヴィエ自身も演劇界の偉大な重鎮だった。",
+    timestamp: "02:56",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "And I feel very lucky that we have these three movies, because of course most of that work that he did was on stage, it was live, it disappeared on the night that he performed it.",
-    "ja": "この3本の映画が残っている僕たちは、本当にラッキーだと思うよ。だって、彼の仕事のほとんどは舞台の上で、生のもので、演じたその夜には消えてしまうものだったからね。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "So these three, Henry V, Hamlet, and Richard III, they're a little dated now in some ways. And yet there's something in the essence of what he did, and how he uses that language.",
+    ja: "だから『ヘンリー五世』『ハムレット』『リチャード三世』の3作は、今見ると少し古く感じる部分もある。それでも、彼の演技の本質や、言葉の扱い方には何か特別なものがあるんだ。",
+    timestamp: "03:07",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "But we have these to get a glimpse into what that was, to why Olivier was regarded as the greatest Shakespearean of all time. And there are moments in these films where the clouds part and the light pours through and you see something very, very special.",
-    "ja": "でも、これを見れば、その一端を垣間見ることができる。なぜオリヴィエが史上最高のシェイクスピア俳優と呼ばれたのかが分かるんだ。この映画の中には、雲が晴れて光が差し込むような、本当に特別なものが見える瞬間があるんだよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "He made it, you know, for his time, Olivier was doing new things by speaking that verse in a very naturalistic way, by making it kind of sexy and raw.",
+    ja: "当時の彼としては、とても自然に詩を語り、どこかセクシーで生々しいものにすることで、新しい試みをしていたんだよ。",
+    timestamp: "03:21",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "12 Angry Men. Might be my very favorite film of all time. I remember I would have been sort of 16 maybe, and this came on the TV at Christmas time, late one night. My parents had gone to bed and I sat and watched this film, not really knowing anything about it, and being absolutely enthralled.",
-    "ja": "『十二人の怒れる男』。僕の人生で一番好きな映画かもしれない。たぶん16歳の時だったかな、クリスマスの時期の深夜にテレビでやっていたんだ。親はもう寝ていて、僕は一人で座って、前知識なしでこの映画を観て...完全に引き込まれたよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "And I feel very lucky that we have these three movies because, of course, most of that work that he did was on stage, was live. It disappeared on the night that he performed it. But we have these to get a glimpse into what that was, to why Olivier was regarded as the greatest Shakespearean of all time. There are moments in these films where the clouds part and the light pours through, and you see something very, very special.",
+    ja: "この3つの映画が残っていることを、僕はとても幸運に思う。当然だけど、彼の仕事の大部分は舞台の上であり、ライブだった。演じたその夜に消えてしまうものだったんだ。でもこれらのおかげで、彼がどういう俳優だったのか、なぜ史上最高のシェイクスピア俳優と呼ばれたのかを垣間見ることができる。この映画の中には、雲が割れて光が差し込むような、信じられないほど特別な瞬間があるんだよ。",
+    timestamp: "03:33",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "So it's about the mechanics of an actual case, which is fascinating in itself, but then of course it's also about all our inbuilt prejudices. It's about relationships between fathers and children.",
-    "ja": "実際の事件のメカニズムを描いているだけでも十分に面白いんだけど、それだけじゃなく、僕たちの内面に潜む偏見とか、父親と子供の関係性についても描かれているんだ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "12 Angry Men might be my very favorite film of all time. I remember I would have been sort of 16, maybe, and this came on the TV at Christmas time.",
+    ja: "『十二人の怒れる男』は、僕が一番好きな映画かもしれない。たぶん16歳の時だったかな、クリスマスの時期にテレビで放送されていたのを覚えてる。",
+    timestamp: "04:00",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Henry Fonda is magnificent, glorious, titanic performance. Lee J. Cobb... that's him... is one of the great performances of all time. But they all are.",
-    "ja": "ヘンリー・フォンダがとにかく素晴らしい。壮大で、圧倒的な演技だ。リー・J・コッブ...この人ね...彼の演技も映画史に残るくらいすごい。でも、全員が最高なんだよ。"
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Late one night, my parents had gone to bed, and I sat and watched this film, not really knowing anything about it, and being absolutely enthralled.",
+    ja: "ある日の深夜、両親が寝静まった後に、何の前知識もなくただ座ってこの映画を観たんだけど、完全に心を奪われたよ。",
+    timestamp: "04:12",
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
-    "en": "Just like when I was 16, if you've never seen this, give yourself a treat. It will transport you.",
-    "ja": "僕が16歳の時と同じように、もしこれをまだ観たことがないなら、ぜひ自分へのご褒美として観てみて。きっと別の世界へ連れて行ってくれるからさ。"
-  }
-] as const;
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "So it's about the mechanics of an actual case, which is fascinating in itself. But then, of course, it's also about all our in-built prejudices. It's about relationships between fathers and children.",
+    ja: "実際の事件の仕組みを描いていて、それだけでも魅力的だ。でも同時に、僕たちの中に組み込まれた偏見についての物語でもあり、父親と子供の関係についての物語でもあるんだ。",
+    timestamp: "04:19",
+  },
+  {
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Henry Fonda is magnificent. Glorious, titanic performance. Lee J. Cobb, that's him, is one of the great performances of all time. But they all are.",
+    ja: "ヘンリー・フォンダは素晴らしい。栄光に満ちた、巨大な存在感を示す演技だね。リー・J・コッブ、あそこの彼だけど、映画史に残る名演のひとつだよ。いや、全員がそうだけどね。",
+    timestamp: "04:33",
+  },
+  {
+    speakerEn: "David Tennant",
+    speakerJa: "デイヴィッド・テナント",
+    en: "Just like when I was 16, if you've never seen this, give yourself a treat, it will transport you.",
+    ja: "16歳だった時の僕のように、もし君がこれを観たことがないなら、ぜひ自分へのご褒美として観てほしい。きっと別の世界へ連れて行ってくれるはずさ。",
+    timestamp: "04:45",
+  },
+] as const satisfies readonly TranscriptLine[];
 

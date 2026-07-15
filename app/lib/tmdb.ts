@@ -1,6 +1,6 @@
 import { manualWorks, workGenreOverrides } from "../data/manualWorks";
+import { workImageOverrides } from "../data/workImages";
 import type { Work } from "./types";
-import { getUnreleasedTmdbKeys } from "./upcoming";
 
 const TMDB_API = "https://api.themoviedb.org/3";
 const API_HEADERS = (token: string) => ({ Authorization: `Bearer ${token}`, accept: "application/json" });
@@ -30,6 +30,14 @@ function applyGenreOverrides(work: Work): Work {
   return { ...work, genres };
 }
 
+/** 原題・邦題のどちらかに一致するローカル作品画像を適用します。 */
+function applyImageOverrides(work: Work): Work {
+  const titles = [work.title, work.name, work.original_title, work.original_name]
+    .filter((title): title is string => Boolean(title));
+  const override = titles.map((title) => workImageOverrides[title]).find(Boolean);
+  return override ? { ...work, ...override } : work;
+}
+
 /** TMDB作品と手入力作品を統合し、ジャンル上書き後に公開日の新しい順に並べます。 */
 function withManualWorks(works: Work[]) {
   const merged = new Map(works.map((work) => [`${work.media_type}-${work.id}`, work]));
@@ -45,7 +53,10 @@ function withManualWorks(works: Work[]) {
     );
     if (!alreadyExists) merged.set(`${work.media_type}-${work.id}`, work);
   }
-  return [...merged.values()].map(applyGenreOverrides).sort((a, b) => getWorkDate(b).localeCompare(getWorkDate(a)));
+  return [...merged.values()]
+    .map(applyImageOverrides)
+    .map(applyGenreOverrides)
+    .sort((a, b) => getWorkDate(b).localeCompare(getWorkDate(a)));
 }
 
 /**
@@ -79,10 +90,7 @@ export async function getWorks(): Promise<Work[]> {
       const key = `${work.media_type}-${work.id}`;
       if (!unique.has(key)) unique.set(key, work);
     }
-    const fetchedWorks = [...unique.values()];
-    // 完全未公開の作品はWORKSへ混ぜず、専用のUPCOMINGページで扱います。
-    const unreleasedKeys = await getUnreleasedTmdbKeys(fetchedWorks, token);
-    return withManualWorks(fetchedWorks.filter((work) => !unreleasedKeys.has(`${work.media_type}-${work.id}`)));
+    return withManualWorks([...unique.values()]);
   } catch {
     return withManualWorks(fallbackWorks);
   }
@@ -107,8 +115,7 @@ function addManualProviders(title: string, providers: Work["providers"] = []) {
 export async function getEnrichedWorks(): Promise<Work[]> {
   const works = await getWorks();
   const token = process.env.TMDB_READ_TOKEN;
-  const checkedAt = new Date().toISOString().slice(0, 10);
-  if (!token) return works.map((work) => ({ ...work, updatedAt: work.updatedAt || checkedAt }));
+  if (!token) return works;
 
   const enriched: Work[] = [];
   const chunkSize = 24;
@@ -146,7 +153,7 @@ export async function getEnrichedWorks(): Promise<Work[]> {
         return work;
       }
     }));
-    enriched.push(...results.map((work) => ({ ...work, updatedAt: work.updatedAt || checkedAt })));
+    enriched.push(...results);
   }
   return enriched;
 }

@@ -52,6 +52,16 @@ function parseCharacterInfo(raw?: string) {
   return { name: raw.slice(0, split).trim(), description: raw.slice(split + 1).trim() || "詳細情報は準備中です。" };
 }
 
+/** Narrator、Narrator (voice)などを同じナレーター役として判定します。 */
+function isNarratorRole(value: string) {
+  return /\bnarrator\b/i.test(value) || value.includes("ナレーター");
+}
+
+/** Self、Self - Host、Himselfなどを同じ本人出演として判定します。 */
+function isSelfRole(value: string) {
+  return value.toLowerCase().includes("self") || value.includes("本人");
+}
+
 /**
  * キャラクター画像は public/characters に置いたローカルファイルだけを使います。
  * characterImages.ts には「/characters/ファイル名」の形で記載してください。
@@ -73,6 +83,8 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
 
   return rawParts.map((part) => {
     const rawName = part.trim();
+    const isNarrator = isNarratorRole(rawName);
+    const isSelf = isSelfRole(rawName);
     let dictionaryKey = sourceTitle;
     let imageKey = sourceTitle;
 
@@ -82,9 +94,9 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     } else if (rawName === "The Doctor" || rawName === "The Doctor (10)") {
       dictionaryKey = "10th Doctor";
       imageKey = "10th doctor";
-    } else if (rawName.toLowerCase().startsWith("self")) {
+    } else if (isSelf) {
       imageKey = "self";
-    } else if (rawName.toLowerCase().startsWith("narrator")) {
+    } else if (isNarrator) {
       imageKey = "narrator";
     } else if (rawName.includes("Scrooge McDuck")) {
       dictionaryKey = "Scrooge McDuck";
@@ -95,19 +107,19 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     }
 
     const parsed = parseCharacterInfo(customCharacterInfo[dictionaryKey] || customCharacterInfo[sourceTitle]);
-    const fallbackName = rawName.toLowerCase().startsWith("self") ? "本人"
-      : rawName.toLowerCase().startsWith("narrator") ? "ナレーター"
+    const fallbackName = isSelf ? "本人"
+      : isNarrator ? "ナレーター"
       : rawName || "役名未登録";
     const englishName = sourceTitle === "Being Considered" ? "ex-boyfriend"
       : sourceTitle === "Doctor Who: 60th Anniversary Specials" ? "14th Doctor"
       : dictionaryKey === "10th Doctor" ? "10th Doctor"
       : dictionaryKey === "Donald Peterson" ? "Donald Peterson"
       : dictionaryKey === "Roderick Peterson" ? "Roderick Peterson"
-      : rawName.toLowerCase().startsWith("self") ? "Self"
-      : rawName.toLowerCase().startsWith("narrator") ? "Narrator"
+      : isSelf ? "Self"
+      : isNarrator ? "Narrator"
       : rawName || dictionaryKey;
     return {
-      name: parsed.name || fallbackName,
+      name: isSelf ? "本人" : isNarrator ? "ナレーター" : parsed.name || fallbackName,
       englishName,
       image: getCharacterImage(customCharacterImages[imageKey] || customCharacterImages[sourceTitle]),
       description: parsed.description,

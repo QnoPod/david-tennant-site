@@ -3,11 +3,19 @@ import type { ConventionAppearance } from "./types";
 const SOURCE_URL = "https://comiconomicon.com/guest/490/David_Tennant";
 
 const fallbackAppearances: ConventionAppearance[] = [
-  { name: "Dragon Con", date: "3 - 7 Sep, 2026", venue: "Georgia World Congress Center Atlanta, GA", country: "アメリカ", organizer: "Dragon Con", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.dragoncon.org", sourceUrl: SOURCE_URL },
-  { name: "Lexington Comic & Toy Con - Fall", date: "4 - 6 Sep, 2026", venue: "Lexington Convention Center, Lexington, Kentucky, USA", country: "アメリカ", organizer: "Lexington Comic & Toy Con", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://lexingtoncomiccon.com", sourceUrl: SOURCE_URL },
-  { name: "Comic Con Northern Ireland", date: "19 - 20 Sep, 2026", venue: "Eikon Exhibition Centre, Lisburn, United Kingdom", country: "イギリス（北アイルランド）", organizer: "Monopoly Events", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.comicconnorthernireland.co.uk", sourceUrl: SOURCE_URL },
-  { name: "Comic Con Liverpool - October", date: "10 - 11 Oct, 2026", venue: "Exhibition Centre Liverpool, Liverpool, United Kingdom", country: "イギリス（イングランド）", organizer: "Monopoly Events", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.comicconventionliverpool.co.uk", sourceUrl: "https://www.rostercon.com/en/event-convention/comic-con-liverpool-october-2026" },
+  { name: "Dragon Con", date: "3 - 7 Sep, 2026", venue: "Georgia World Congress Center Atlanta, GA", country: "アメリカ", organizer: "Dragon Con", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.dragoncon.org", sourceUrl: SOURCE_URL, updatedAt: "2026-07-15" },
+  { name: "Lexington Comic & Toy Con - Fall", date: "4 - 6 Sep, 2026", venue: "Lexington Convention Center, Lexington, Kentucky, USA", country: "アメリカ", organizer: "Lexington Comic & Toy Con", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://lexingtoncomiccon.com", sourceUrl: SOURCE_URL, updatedAt: "2026-07-15" },
+  { name: "Comic Con Northern Ireland", date: "19 - 20 Sep, 2026", venue: "Eikon Exhibition Centre, Lisburn, United Kingdom", country: "イギリス（北アイルランド）", organizer: "Monopoly Events", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.comicconnorthernireland.co.uk", sourceUrl: SOURCE_URL, updatedAt: "2026-07-15" },
+  { name: "Comic Con Liverpool - October", date: "10 - 11 Oct, 2026", venue: "Exhibition Centre Liverpool, Liverpool, United Kingdom", country: "イギリス（イングランド）", organizer: "Monopoly Events", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.comicconventionliverpool.co.uk", sourceUrl: "https://www.rostercon.com/en/event-convention/comic-con-liverpool-october-2026", updatedAt: "2026-07-15" },
 ];
+
+const fallbackByName = new Map(fallbackAppearances.map((event) => [event.name.toLocaleLowerCase(), event]));
+
+/** 自動取得できた既知イベントへ、手動確認済みの内容更新日を引き継ぎます。 */
+function applyKnownUpdateDate(event: ConventionAppearance): ConventionAppearance {
+  const known = fallbackByName.get(event.name.toLocaleLowerCase());
+  return known?.updatedAt ? { ...event, updatedAt: known.updatedAt } : event;
+}
 
 /** 自動取得した会場表記から、画面に表示する開催国を補完します。 */
 function inferCountry(venue: string) {
@@ -76,7 +84,7 @@ export async function getConventionAppearances(): Promise<ConventionAppearance[]
       next: { revalidate: 21600 },
     });
     if (!response.ok) throw new Error("Comiconomicon request failed");
-    const parsed = parseAppearances(await response.text());
+    const parsed = parseAppearances(await response.text()).map(applyKnownUpdateDate);
     if (!parsed.length) return fallbackAppearances;
 
     // 取得元ごとに掲載タイミングが異なるため、確認済みの補完予定も重複なく併合します。

@@ -133,6 +133,4 @@ export type ConventionAppearance = {
   sourceUrl: string;
   /** Comiconomiconから定期取得できた項目だけ、画面に掲載元を表示します。 */
   isAutoFetched?: boolean;
-  /** 参加予定・状態・日程などの内容が最後に変更された日。定期確認だけでは更新しません。 */
-  updatedAt?: string;
 };

@@ -41,13 +41,9 @@ export function buildAutomaticSiteUpdates({
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 3);
 
-  // 定期取得しただけでは日付を変えず、内容更新日があるイベントだけを履歴へ載せます。
-  const conventionUpdates = [...conventions]
-    .filter((item): item is ConventionAppearance & { updatedAt: string } => Boolean(item.updatedAt))
-    .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
-    .slice(0, 2)
-    .map((item) => ({
-      date: item.updatedAt,
+  const checkedAt = new Date().toISOString().slice(0, 10);
+  const conventionUpdates = conventions.slice(0, 2).map((item) => ({
+      date: checkedAt,
       text: `${item.name}の${item.status === "cancelled" ? "キャンセル情報" : "参加情報"}を掲載`,
       href: "/comic-con",
       category: "COMIC CON" as const,

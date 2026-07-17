@@ -1,5 +1,6 @@
 import { manualUpcomingWorks } from "../data/upcomingWorks";
 import { upcomingTranslations } from "../data/upcomingTranslations";
+import { upcomingTitleAliasGroups } from "../data/upcomingSources";
 import { searchDictionary } from "../data/searchDictionary";
 import { getSupplementalUpcoming } from "./upcoming-sources";
 import type { UpcomingWork, Work } from "./types";
@@ -94,12 +95,28 @@ function candidateAliases(item: UpcomingWork) {
   const localized = localizeUpcoming(item);
   const values = [item.title, item.originalTitle, localized.title, localized.originalTitle]
     .filter(Boolean) as string[];
+  const searchable = normalize([
+    ...values,
+    item.character,
+    item.overview,
+    localized.character,
+    localized.overview,
+  ].filter(Boolean).join(" "));
   const aliases = new Set<string>();
   for (const value of values) {
     aliases.add(normalize(value));
     aliases.add(normalize(withoutSeason(value)));
     const dictionaryTitle = searchDictionary[normalize(value)];
     if (dictionaryTitle) aliases.add(normalize(dictionaryTitle));
+  }
+  for (const group of upcomingTitleAliasGroups) {
+    const normalizedGroup = group.flatMap((value) => [normalize(value), normalize(withoutSeason(value))]);
+    const exactTitleMatch = [...aliases].some((alias) => normalizedGroup.includes(alias));
+    // 短い一般語の部分一致は避け、役名など十分に長い照合語だけ本文から探します。
+    const contextualMatch = normalizedGroup.some((alias) => alias.length >= 8 && searchable.includes(alias));
+    if (exactTitleMatch || contextualMatch) {
+      normalizedGroup.forEach((alias) => aliases.add(alias));
+    }
   }
   return [...aliases].filter((value) => value.length >= 3);
 }

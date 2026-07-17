@@ -77,10 +77,10 @@ export function isRelevantArticleAnnouncement(title: string, description: string
  * 記事見出し全体を作品名として扱わないようにします。
  */
 export function extractProjectTitle(value: string) {
-  const text = decodeHtml(value).replace(/\s+/g, " ").trim();
+  const text = decodeHtml(value).normalize("NFKC").replace(/\s+/g, " ").trim();
   const patterns = [
     /David\s+Tennant(?:\s+(?:and|&)\s+[A-Z][\p{L} .'-]+)?\s+in\s+[“"'‘]?([A-Z][\p{L}\p{N} :'!&.-]{1,90}?)[”"'’]?(?:\s+(?:season|series)\s*(\d+))?(?:\s*[–—|]|$)/iu,
-    /[“"'‘『「]([^”"'’』」]{2,100})[”"'’』」]\s+(?:season|series|シーズン|シリーズ)\s*(\d+)/iu,
+    /[“"'‘『「]([^”"'’』」]{2,100})[”"'’』」]\s*(?:season|series|シーズン|シリーズ)\s*([0-9０-９]+)/iu,
     /(?:first[- ]look|first images?|unveils? images?|reveals? images?)[^.!?]{0,120}?\b(?:in|for|from|of)\s+[“"'‘]?([A-Z][\p{L}\p{N} :'!&.-]{1,90}?)(?:[”"'’]?\s*(?:season|series)\s*(\d+))?(?:\s*[–—|]|$)/iu,
     /David\s+Tennant[^.!?]{0,80}?(?:joins|boards|stars?\s+in|to\s+star\s+in|returns?\s+for|cast\s+in)[^“"'‘]{0,20}[“"'‘]([^”"'’]{2,100})[”"'’]/iu,
     /^[“"'‘]?(.+?)[”"'’]?\s+(?:casts?|adds?|taps?)\s+David\s+Tennant(?:\s+[–—|]|$)/iu,

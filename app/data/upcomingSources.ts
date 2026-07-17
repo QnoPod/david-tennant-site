@@ -1,5 +1,25 @@
 /** RSS、公式ページ、YouTubeを追加・削除するための監視先一覧です。 */
-export const personKeywords = ["David Tennant", "デイヴィッド・テナント"];
+export const personKeywords = [
+  "David Tennant",
+  "デイヴィッド・テナント",
+  // 日本語媒体でよく使われる表記揺れも同一人物として扱います。
+  "デヴィッド・テナント",
+  "デビッド・テナント",
+];
+
+/** 原題・邦題・シーズン表記の違いを、同じ作品として横断照合するための別名一覧です。 */
+export const upcomingTitleAliasGroups = [
+  [
+    "Time",
+    "タイム",
+    "TIME シリーズ3",
+    "Time Season 3",
+    "Time Series 3",
+    // 公式記事から作品名を抽出できず、役名だけが見出しに残った場合の照合語です。
+    "Prison Officer Bailey",
+    "刑務官ベイリー",
+  ],
+] as const;
 
 /** 過去記事や通常のインタビューを除外し、出演・制作発表らしい情報だけを残します。 */
 export const announcementKeywords = [

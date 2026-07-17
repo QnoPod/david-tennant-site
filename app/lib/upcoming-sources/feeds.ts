@@ -74,6 +74,7 @@ async function getFeedUpcomingUncached() {
 /** 大きな公式ページを閲覧のたびに巡回しないよう、抽出後の軽量な結果だけを1日保存します。 */
 export const getFeedUpcoming = unstable_cache(
   getFeedUpcomingUncached,
-  ["upcoming-article-monitor-v4"],
+  // v5: 旧キャッシュで記事説明文が作品名として残ったケースを破棄します。
+  ["upcoming-article-monitor-v5"],
   { revalidate: UPCOMING_REVALIDATE_SECONDS, tags: ["upcoming-article-monitor"] },
 );

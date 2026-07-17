@@ -80,6 +80,28 @@ function withoutCheckDates(item) {
   return content;
 }
 
+/**
+ * 外部APIが返すnullを再帰的に除去します。
+ * UpcomingWorkの任意項目は、値が不明な場合にnullではなく項目自体を省略します。
+ */
+function omitNullValues(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map(omitNullValues)
+      .filter((child) => child !== undefined);
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([, child]) => child !== null && child !== undefined)
+        .map(([key, child]) => [key, omitNullValues(child)]),
+    );
+  }
+
+  return value;
+}
+
 function stableStringify(value) {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(",")}]`;
   if (value && typeof value === "object") {
@@ -209,7 +231,8 @@ async function fetchSnapshot() {
 }
 
 function renderSource(items) {
-  return `import type { UpcomingWork } from "../lib/types";\n\n/**\n * GitHub Actionsが自動更新するUPCOMINGデータです。\n * 新しい取得元・公開日・制作状況は既存作品へ統合し、内容が変わった場合だけコミットします。\n * 公開済み・キャンセル済み作品と、180日を過ぎた未確認発表は自動的に整理します。\n */\nexport const manualUpcomingWorks: UpcomingWork[] = ${JSON.stringify(items, null, 2)};\n`;
+  const cleanItems = omitNullValues(items);
+  return `import type { UpcomingWork } from "../lib/types";\n\n/**\n * GitHub Actionsが自動更新するUPCOMINGデータです。\n * 新しい取得元・公開日・制作状況は既存作品へ統合し、内容が変わった場合だけコミットします。\n * 公開済み・キャンセル済み作品と、180日を過ぎた未確認発表は自動的に整理します。\n */\nexport const manualUpcomingWorks: UpcomingWork[] = ${JSON.stringify(cleanItems, null, 2)};\n`;
 }
 
 async function main() {
@@ -226,8 +249,10 @@ async function main() {
   const active = [];
 
   for (const incoming of snapshot) {
-    const previous = existingByIdentity.get(identity(incoming));
-    const merged = mergeWithExisting(previous, incoming);
+    // TVmazeなどが返すreleaseDate: nullを、型安全な「未設定」に変換します。
+    const cleanIncoming = omitNullValues(incoming);
+    const previous = existingByIdentity.get(identity(cleanIncoming));
+    const merged = mergeWithExisting(previous, cleanIncoming);
     if (expiredAnnouncement(merged)) continue;
     if (await shouldRemoveAsReleased(merged, credits)) continue;
     active.push(preserveChangeDate(merged, previous));

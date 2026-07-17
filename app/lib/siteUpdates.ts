@@ -27,13 +27,13 @@ export function buildAutomaticSiteUpdates({
     category: "INTERVIEW" as const,
   }));
 
-  // 日次確認日（lastCheckedAt）は使わず、内容更新日または発表公開日だけを更新履歴へ反映します。
+  // 日次取得や記事の公開日ではなく、前回保存時から内容が変わった日だけを履歴へ反映します。
   const upcomingUpdates: AutomaticSiteUpdate[] = [...upcoming]
     .flatMap((item) => {
-      const date = item.updatedAt || item.publishedDate;
+      const date = item.updatedAt;
       return date ? [{
         date,
-        text: `${item.kind === "announcement" ? "出演発表候補" : "今後の出演予定"}「${item.title}」を確認`,
+        text: `${item.kind === "announcement" ? "出演発表候補" : "今後の出演予定"}「${item.title}」を更新`,
         href: "/upcoming",
         category: "UPCOMING" as const,
       }] : [];

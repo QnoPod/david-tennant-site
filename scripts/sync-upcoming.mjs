@@ -120,12 +120,21 @@ function sameContent(left, right) {
 
 function preserveChangeDate(item, previous) {
   if (previous && sameContent(item, previous)) {
+    // APIを確認しただけの日は、確認日・更新日とも動かしません。
+    // updatedAtが未登録の既存データへ、同期日を後付けすることも避けます。
+    const {
+      updatedAt: _incomingUpdatedAt,
+      lastCheckedAt: _incomingLastCheckedAt,
+      ...unchangedContent
+    } = item;
     return {
-      ...item,
-      updatedAt: previous.updatedAt || previous.lastCheckedAt || TODAY,
+      ...unchangedContent,
+      ...(previous.updatedAt ? { updatedAt: previous.updatedAt } : {}),
       lastCheckedAt: previous.lastCheckedAt || TODAY,
     };
   }
+
+  // 新規追加、または前回保存時から内容が変わった場合だけ日付を更新します。
   return { ...item, updatedAt: TODAY, lastCheckedAt: TODAY };
 }
 

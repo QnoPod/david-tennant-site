@@ -37,6 +37,13 @@ export type Work = {
   updatedAt?: string;
 };
 
+/** UPCOMING作品の根拠として表示する公式発表・記事です。 */
+export type UpcomingSource = {
+  name: string;
+  url: string;
+  publishedDate?: string;
+};
+
 /** 公開前・制作中の出演情報。公開済みのWORKSとは分けて扱います。 */
 export type UpcomingWork = {
   /** TMDB等の取得元とIDを組み合わせた重複しないキー。 */
@@ -54,8 +61,12 @@ export type UpcomingWork = {
   status: "rumored" | "planned" | "filming" | "post-production" | "scheduled" | "unknown" | "cancelled";
   source: string;
   sourceUrl?: string;
+  /** 同じ作品について確認した公式発表・記事・データベースの一覧です。 */
+  sources?: UpcomingSource[];
   /** 公式発表を確認済みの場合だけtrueにします。 */
   confirmed?: boolean;
+  /** 「確認待ちの発表」に留めている具体的な理由。手入力で上書きできます。 */
+  reviewReason?: string;
   /** 作品情報が前回保存時から変わった日。新規追加時にも設定します。 */
   updatedAt?: string;
   /** 内容変更を最後に確認した日。取得結果が同じ場合は更新しません。 */

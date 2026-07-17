@@ -70,6 +70,8 @@ function mergeWithExisting(previous, incoming) {
     status: incoming.status !== "unknown" ? incoming.status : previous.status,
     source: previous.source || incoming.source,
     sourceUrl: previous.sourceUrl || incoming.sourceUrl,
+    // 確認済みに移った場合は、以前の「確認待ち理由」を残しません。
+    reviewReason: incoming.reviewReason,
     confirmed: Boolean(previous.confirmed || incoming.confirmed),
     sources: mergeSources(previous, incoming),
   };

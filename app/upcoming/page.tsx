@@ -95,6 +95,10 @@ export default async function UpcomingPage() {
               <p>{item.source} · {item.publishedDate ? `公開 ${formatDate(item.publishedDate)}` : `確認 ${formatDate(item.lastCheckedAt)}`}</p>
               <h3>{item.title}</h3>
               {item.overview && <span>{item.overview}</span>}
+              <div className="upcoming-announcement__reason">
+                <b>確認待ちの理由</b>
+                <span>{item.reviewReason || "出演または制作状況について、十分な裏付けを確認できていないため。"}</span>
+              </div>
             </div>
             {item.sourceUrl && <a href={item.sourceUrl} target="_blank" rel="noreferrer">内容を確認 ↗</a>}
           </article>)}

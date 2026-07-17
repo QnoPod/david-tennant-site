@@ -190,6 +190,9 @@ img { display: block; max-width: 100%; }
 .upcoming-announcement-list p { margin: 0 0 5px; color: var(--gold); font-size: 9px; font-weight: 900; letter-spacing: .06em; }
 .upcoming-announcement-list h3 { margin: 0; font-family: var(--serif); font-size: 20px; line-height: 1.35; }
 .upcoming-announcement-list span { display: -webkit-box; max-width: 760px; margin-top: 7px; overflow: hidden; color: var(--muted); font-size: 11px; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.upcoming-announcement__reason { max-width: 760px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 8px; margin-top: 12px; padding: 9px 11px; border-left: 3px solid var(--gold); background: var(--paper); }
+.upcoming-announcement__reason b { color: var(--gold); font-size: 9px; line-height: 1.7; white-space: nowrap; }
+.upcoming-announcement-list .upcoming-announcement__reason span { display: block; max-width: none; margin: 0; overflow: visible; color: var(--ink); font-size: 10px; line-height: 1.7; -webkit-line-clamp: unset; }
 .upcoming-announcement-list a { min-width: 115px; color: var(--blue); font-size: 10px; font-weight: 900; text-align: right; text-decoration: none; }
 .upcoming-announcement-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -825,6 +828,9 @@ img { display: block; max-width: 100%; }
   .scroll-buttons button { width: 42px; height: 42px; }
   .source-notice { grid-template-columns: auto 1fr; }
   .source-notice a { grid-column: 2; }
+  .upcoming-announcement-list article { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .upcoming-announcement-list a { min-width: 0; text-align: left; }
+  .upcoming-announcement__reason { grid-template-columns: minmax(0, 1fr); gap: 3px; }
   .event-card { grid-template-columns: 1fr; gap: 20px; }
   .convention-tabs { grid-template-columns: 1fr; }
   .convention-tabs button { border-right: 0; border-bottom: 1px solid var(--line); }

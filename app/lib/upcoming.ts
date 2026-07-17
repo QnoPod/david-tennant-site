@@ -175,10 +175,39 @@ function mergeCandidateEntries(entries: UpcomingWork[]) {
     status: item.status !== "unknown" ? item.status : previous.status,
     source: item.source || previous.source,
     sourceUrl: item.sourceUrl || previous.sourceUrl,
+    reviewReason: item.reviewReason || previous.reviewReason,
     updatedAt: item.updatedAt || previous.updatedAt,
     lastCheckedAt: item.lastCheckedAt || previous.lastCheckedAt,
   }), first);
   return { ...merged, sources: collectSources(entries) };
+}
+
+/** 取得状況から、閲覧者に見せる「確認待ち」の理由を組み立てます。 */
+function buildReviewReason({
+  merged,
+  evidenceCount,
+  sourceCount,
+}: {
+  merged: UpcomingWork;
+  evidenceCount: number;
+  sourceCount: number;
+}) {
+  // 手入力データでは、作品固有の説明を優先できます。
+  if (merged.reviewReason) return merged.reviewReason;
+
+  if (merged.status === "rumored") {
+    return "デイヴィッド・テナントの出演、または出演継続を示す正式発表を確認できていないため。";
+  }
+  if (!merged.originalTitle) {
+    return "作品名を特定できる公式情報がまだ確認できていないため。";
+  }
+  if (evidenceCount === 0) {
+    return "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。";
+  }
+  if (sourceCount < 2) {
+    return `${merged.source}の1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。`;
+  }
+  return "出演または制作状況について、制作元などの公式発表を確認できていないため。";
 }
 
 /**
@@ -205,6 +234,12 @@ function consolidateCandidates(items: UpcomingWork[]) {
       ...merged,
       kind: verified ? "work" as const : "announcement" as const,
       confirmed: verified,
+      // 確認済みになった時点で理由を削除し、確認待ちの項目だけへ保持します。
+      reviewReason: verified ? undefined : buildReviewReason({
+        merged,
+        evidenceCount: evidence.length,
+        sourceCount,
+      }),
     };
   });
 }

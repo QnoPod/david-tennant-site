@@ -3,7 +3,7 @@ import { upcomingTranslations } from "../data/upcomingTranslations";
 import { upcomingTitleAliasGroups } from "../data/upcomingSources";
 import { searchDictionary } from "../data/searchDictionary";
 import { getSupplementalUpcoming } from "./upcoming-sources";
-import type { UpcomingWork, Work } from "./types";
+import type { UpcomingSource, UpcomingWork, Work } from "./types";
 
 const TMDB_API = "https://api.themoviedb.org/3";
 const TVMAZE_API = "https://api.tvmaze.com";
@@ -143,10 +143,26 @@ function hasActiveProductionEvidence(item: UpcomingWork) {
     && ["planned", "filming", "post-production", "scheduled"].includes(item.status);
 }
 
+/** 旧形式のsourceUrlと新しい複数取得元を、URL単位で重複なく統合します。 */
+function collectSources(entries: UpcomingWork[]) {
+  const sources = new Map<string, UpcomingSource>();
+  for (const item of entries) {
+    for (const source of item.sources ?? []) sources.set(source.url, source);
+    if (item.sourceUrl) {
+      sources.set(item.sourceUrl, {
+        name: item.source,
+        url: item.sourceUrl,
+        publishedDate: item.publishedDate,
+      });
+    }
+  }
+  return [...sources.values()];
+}
+
 /** 表示文は後に渡された手入力を優先しつつ、自動取得した不足項目を補完します。 */
 function mergeCandidateEntries(entries: UpcomingWork[]) {
   const [first, ...rest] = entries;
-  return rest.reduce<UpcomingWork>((previous, item) => ({
+  const merged = rest.reduce<UpcomingWork>((previous, item) => ({
     ...previous,
     ...item,
     key: previous.key || item.key,
@@ -162,6 +178,7 @@ function mergeCandidateEntries(entries: UpcomingWork[]) {
     updatedAt: item.updatedAt || previous.updatedAt,
     lastCheckedAt: item.lastCheckedAt || previous.lastCheckedAt,
   }), first);
+  return { ...merged, sources: collectSources(entries) };
 }
 
 /**

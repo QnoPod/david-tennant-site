@@ -35,9 +35,21 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     status: "filming",
     source: "BritBox / BBC発表",
     sourceUrl: "https://www.thefutoncritic.com/news/2026/03/17/britbox-announces-additional-casting-start-of-production-for-season-three-of-jimmy-mcgoverns-award-winning-drama-series-time-822310/20260317britbox01/",
+    sources: [
+      {
+        name: "BritBox / BBC：制作・追加キャスト発表",
+        url: "https://www.thefutoncritic.com/news/2026/03/17/britbox-announces-additional-casting-start-of-production-for-season-three-of-jimmy-mcgoverns-award-winning-drama-series-time-822310/20260317britbox01/",
+        publishedDate: "2026-03-17",
+      },
+      {
+        name: "BritBox：『タイム』シーズン3 初公開画像",
+        url: "https://press.britbox.com/post/britbox-reveals-first-look-at-david-tennant-and-siobhan-finneran",
+        publishedDate: "2026-07-17",
+      },
+    ],
     confirmed: true,
-    updatedAt: "2026-07-15",
-    lastCheckedAt: "2026-07-15",
+    updatedAt: "2026-07-17",
+    lastCheckedAt: "2026-07-17",
   },
   {
     key: "official-only-murders-season-6",

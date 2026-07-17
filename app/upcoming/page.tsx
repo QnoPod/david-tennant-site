@@ -71,7 +71,12 @@ export default async function UpcomingPage() {
           <footer>
             <span>{work.confirmed ? "公式発表確認済み" : `${work.source}から自動取得`}</span>
             <time dateTime={work.lastCheckedAt}>確認：{work.lastCheckedAt.replaceAll("-", ".")}</time>
-            {work.sourceUrl && <a href={work.sourceUrl} target="_blank" rel="noreferrer">取得元を確認 ↗</a>}
+            {(work.sources?.length
+              ? work.sources
+              : work.sourceUrl ? [{ name: work.source, url: work.sourceUrl }] : []
+            ).map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>
+              取得元：{source.name} ↗
+            </a>)}
           </footer>
         </article>)}
         </div>
@@ -83,7 +88,7 @@ export default async function UpcomingPage() {
 
       {announcements.length > 0 && <section className="upcoming-announcements" aria-labelledby="announcement-heading">
         <div className="upcoming-section-heading"><p className="eyebrow">REVIEW QUEUE</p><h2 id="announcement-heading">確認待ちの発表</h2></div>
-        <p className="upcoming-review-note">確定情報として掲載するには、公式発表または別の取得元による一致確認が必要です。キャンセル・公開済み・単なる噂記事は表示しません。</p>
+        
         <div className="upcoming-announcement-list">
           {announcements.map((item) => <article key={item.key}>
             <div>

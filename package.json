@@ -10,6 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "sync:upcoming": "node --experimental-strip-types scripts/sync-upcoming.mjs",
     "build:sites": "bash scripts/build-verified.sh",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "validate:artifact": "bash scripts/validate-artifact.sh",

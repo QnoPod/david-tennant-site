@@ -181,6 +181,9 @@ img { display: block; max-width: 100%; }
 .upcoming-card footer { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
 .upcoming-card footer a { grid-column: 1 / -1; width: fit-content; margin-top: 8px; color: var(--blue); font-weight: 800; text-decoration: none; }
 .upcoming-card footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.upcoming-card footer .upcoming-source-summary { grid-column: 1 / -1; display: grid; gap: 5px; margin-top: 8px; padding-top: 9px; border-top: 1px dotted var(--line); }
+.upcoming-card footer .upcoming-source-summary a { margin-top: 0; }
+.upcoming-card footer .upcoming-source-summary p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
 .upcoming-empty { padding: 70px 24px; border: 1px solid var(--line); text-align: center; }
 .upcoming-empty h2 { margin: 0; font-family: var(--serif); font-size: 30px; font-weight: 500; }
 .upcoming-empty > p:last-child { max-width: 620px; margin: 18px auto 0; color: var(--muted); font-size: 12px; }
@@ -193,6 +196,10 @@ img { display: block; max-width: 100%; }
 .upcoming-announcement__reason { max-width: 760px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 8px; margin-top: 12px; padding: 9px 11px; border-left: 3px solid var(--gold); background: var(--paper); }
 .upcoming-announcement__reason b { color: var(--gold); font-size: 9px; line-height: 1.7; white-space: nowrap; }
 .upcoming-announcement-list .upcoming-announcement__reason span { display: block; max-width: none; margin: 0; overflow: visible; color: var(--ink); font-size: 10px; line-height: 1.7; -webkit-line-clamp: unset; }
+.upcoming-announcement__source-summaries { max-width: 760px; display: grid; gap: 10px; margin-top: 13px; }
+.upcoming-announcement__source-summaries .upcoming-source-summary { display: grid; gap: 4px; padding-top: 9px; border-top: 1px dotted var(--line); }
+.upcoming-announcement__source-summaries .upcoming-source-summary a { min-width: 0; width: fit-content; text-align: left; }
+.upcoming-announcement-list .upcoming-announcement__source-summaries span { display: block; max-width: none; margin: 0; overflow: visible; color: var(--muted); font-size: 10px; line-height: 1.65; -webkit-line-clamp: unset; }
 .upcoming-announcement-list a { min-width: 115px; color: var(--blue); font-size: 10px; font-weight: 900; text-align: right; text-decoration: none; }
 .upcoming-announcement-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
 

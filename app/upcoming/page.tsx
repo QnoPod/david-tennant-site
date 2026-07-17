@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
 import { getUpcomingWorks } from "../lib/upcoming";
-import type { UpcomingWork } from "../lib/types";
+import type { UpcomingSource, UpcomingWork } from "../lib/types";
 
 export const metadata: Metadata = { title: "制作・公開予定" };
 export const revalidate = 86400;
@@ -29,6 +29,11 @@ function formatDate(date?: string) {
   if (!month) return `${year}年`;
   if (!day) return `${year}年${Number(month)}月`;
   return `${year}年${Number(month)}月${Number(day)}日`;
+}
+
+function sourcesFor(work: UpcomingWork): UpcomingSource[] {
+  if (work.sources?.length) return work.sources;
+  return work.sourceUrl ? [{ name: work.source, url: work.sourceUrl, publishedDate: work.publishedDate }] : [];
 }
 
 /** 未公開作品と自動検出した発表候補を、WORKSから分離して表示します。 */
@@ -71,12 +76,10 @@ export default async function UpcomingPage() {
           <footer>
             <span>{work.confirmed ? "公式発表確認済み" : `${work.source}から自動取得`}</span>
             <time dateTime={work.lastCheckedAt}>確認：{work.lastCheckedAt.replaceAll("-", ".")}</time>
-            {(work.sources?.length
-              ? work.sources
-              : work.sourceUrl ? [{ name: work.source, url: work.sourceUrl }] : []
-            ).map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>
-              取得元：{source.name} ↗
-            </a>)}
+            {sourcesFor(work).map((source) => <div className="upcoming-source-summary" key={source.url}>
+              <a href={source.url} target="_blank" rel="noreferrer">取得元：{source.name} ↗</a>
+              {source.summary && <p>{source.summary}</p>}
+            </div>)}
           </footer>
         </article>)}
         </div>
@@ -99,8 +102,13 @@ export default async function UpcomingPage() {
                 <b>確認待ちの理由</b>
                 <span>{item.reviewReason || "出演または制作状況について、十分な裏付けを確認できていないため。"}</span>
               </div>
+              <div className="upcoming-announcement__source-summaries">
+                {sourcesFor(item).map((source) => <div className="upcoming-source-summary" key={source.url}>
+                  <a href={source.url} target="_blank" rel="noreferrer">取得元：{source.name} ↗</a>
+                  {source.summary && <span>{source.summary}</span>}
+                </div>)}
+              </div>
             </div>
-            {item.sourceUrl && <a href={item.sourceUrl} target="_blank" rel="noreferrer">内容を確認 ↗</a>}
           </article>)}
         </div>
       </section>}

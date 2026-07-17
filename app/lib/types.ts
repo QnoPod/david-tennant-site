@@ -42,6 +42,8 @@ export type UpcomingSource = {
   name: string;
   url: string;
   publishedDate?: string;
+  /** 取得元から確認できた内容を、日本語で最大2文に整理した要約です。 */
+  summary?: string;
 };
 
 /** 公開前・制作中の出演情報。公開済みのWORKSとは分けて扱います。 */

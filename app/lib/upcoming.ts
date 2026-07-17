@@ -182,6 +182,52 @@ function mergeCandidateEntries(entries: UpcomingWork[]) {
   return { ...merged, sources: collectSources(entries) };
 }
 
+const sourceStatusLabels: Record<UpcomingWork["status"], string> = {
+  rumored: "出演情報が未確定情報として掲載されています",
+  planned: "制作予定として掲載されています",
+  filming: "制作中・撮影中の作品として掲載されています",
+  "post-production": "ポストプロダクション中の作品として掲載されています",
+  scheduled: "公開・放送予定の作品として掲載されています",
+  unknown: "今後の出演候補として掲載されています",
+  cancelled: "制作中止として掲載されています",
+};
+
+function formatSummaryDate(value?: string) {
+  if (!value) return "";
+  const [year, month, day] = value.split("-");
+  if (!month) return `${year}年`;
+  if (!day) return `${year}年${Number(month)}月`;
+  return `${year}年${Number(month)}月${Number(day)}日`;
+}
+
+/** 取得済みの構造化情報から、転載にならない短い日本語要約を自動生成します。 */
+function buildAutomaticSourceSummary(item: UpcomingWork, sourceName: string) {
+  const title = `「${item.title}」`;
+  const firstLook = /(?:first\s*look|初公開|ファーストルック)/i.test(sourceName);
+  const lead = firstLook
+    ? `${sourceName}では、${title}の初公開画像または最新ビジュアルが紹介されています。`
+    : `${sourceName}では、${title}が${sourceStatusLabels[item.status]}`;
+  const details = [
+    item.character ? `デイヴィッド・テナントの出演役は${item.character}` : "デイヴィッド・テナントの出演情報あり",
+    item.releaseDate ? `公開・放送予定は${formatSummaryDate(item.releaseDate)}` : "公開・放送日は未定",
+  ];
+  return `${lead}${lead.endsWith("。") ? "" : "。"}${details.join("、")}です。`;
+}
+
+/** 手入力要約を保持し、不足している取得元だけへ自動要約を補います。 */
+function addAutomaticSourceSummaries(item: UpcomingWork): UpcomingWork {
+  const sources: UpcomingSource[] = item.sources?.length
+    ? item.sources
+    : item.sourceUrl ? [{ name: item.source, url: item.sourceUrl, publishedDate: item.publishedDate }] : [];
+  return {
+    ...item,
+    sources: sources.map((source) => ({
+      ...source,
+      summary: source.summary || buildAutomaticSourceSummary(item, source.name),
+    })),
+  };
+}
+
 /** 取得状況から、閲覧者に見せる「確認待ち」の理由を組み立てます。 */
 function buildReviewReason({
   merged,
@@ -399,6 +445,7 @@ export async function getUpcomingWorks(): Promise<UpcomingWork[]> {
   ]);
   return consolidateCandidates([...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks])
     .map(localizeUpcoming)
+    .map(addAutomaticSourceSummaries)
     .sort((a, b) => {
     // 作品は公開予定日が近い順、確認待ちの発表は新着順に並べます。
     if ((a.kind || "work") !== (b.kind || "work")) return (a.kind || "work") === "work" ? -1 : 1;

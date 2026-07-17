@@ -1,6 +1,15 @@
 import type { OfficialPageSource } from "../../data/upcomingSources";
 import type { UpcomingWork } from "../types";
-import { decodeHtml, isRelevantArticleAnnouncement, recentEnough, stableKey, todayIso } from "./shared";
+import {
+  decodeHtml,
+  extractProjectTitle,
+  inferAnnouncementStatus,
+  isRelevantArticleAnnouncement,
+  isTentativeAnnouncement,
+  recentEnough,
+  stableKey,
+  todayIso,
+} from "./shared";
 
 const REQUEST_HEADERS = {
   Accept: "text/html,application/xhtml+xml",
@@ -129,10 +138,18 @@ export async function scrapeOfficialSource(source: OfficialPageSource): Promise<
         const title = article.title || linkText;
         if (!title || !recentEnough(article.publishedDate, 550)
           || !isRelevantArticleAnnouncement(title, article.description, article.body)) continue;
+        const searchable = `${title} ${article.description} ${article.body.slice(0, 2500)}`;
+        const projectTitle = extractProjectTitle(`${title} ${article.description}`);
+        const status = inferAnnouncementStatus(searchable);
         found.push({
-          key: stableKey("scraped-article", url), kind: "announcement", mediaType: "other", title,
+          key: stableKey("scraped-article", url), kind: "announcement", mediaType: "other",
+          title: projectTitle || title,
+          originalTitle: projectTitle,
           overview: article.description || article.body.slice(0, 420), publishedDate: article.publishedDate,
-          status: "unknown", source: source.name, sourceUrl: url, confirmed: false, lastCheckedAt: todayIso(),
+          status, source: source.name, sourceUrl: url,
+          // 公式サイトでも、噂・交渉中の表現は確定根拠として扱いません。
+          confirmed: Boolean(projectTitle && status !== "unknown" && !isTentativeAnnouncement(searchable)),
+          lastCheckedAt: todayIso(),
         });
       }
     }

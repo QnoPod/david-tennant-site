@@ -57,7 +57,122 @@ function tmdbStatus(status?: string, hasFutureDate = false): UpcomingWork["statu
 }
 
 function isUnreleasedStatus(status?: string) {
-  return ["Rumored", "Planned", "Pilot", "In Production", "Post Production", "Canceled", "Cancelled"].includes(status || "");
+  return ["Planned", "Pilot", "In Production", "Post Production"].includes(status || "");
+}
+
+function isCancelledStatus(status?: string) {
+  return ["Canceled", "Cancelled"].includes(status || "");
+}
+
+/** 日付の精度に応じて、確実に公開時期を過ぎた項目だけを判定します。 */
+function isPastReleaseDate(value?: string) {
+  if (!value) return false;
+  const today = todayIso();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value <= today;
+  if (/^\d{4}-\d{2}$/.test(value)) return value < today.slice(0, 7);
+  if (/^\d{4}$/.test(value)) return Number(value) < Number(today.slice(0, 4));
+  return false;
+}
+
+/** 公開済み・中止済みの項目は、手入力と自動取得のどちらからも表示しません。 */
+function isActiveUpcoming(item: UpcomingWork) {
+  const text = `${item.title} ${item.overview || ""}`;
+  if (item.status === "cancelled" || /\b(?:cancelled|canceled|scrapped)\b/i.test(text)) return false;
+  return !isPastReleaseDate(item.releaseDate);
+}
+
+/** シーズン表記の有無が違う記事とデータベースを、同じ作品として照合します。 */
+function withoutSeason(value = "") {
+  return value
+    .replace(/(?:season|series)\s*(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten)/gi, "")
+    .replace(/(?:シーズン|シリーズ)\s*[0-9０-９一二三四五六七八九十]+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function candidateAliases(item: UpcomingWork) {
+  const localized = localizeUpcoming(item);
+  const values = [item.title, item.originalTitle, localized.title, localized.originalTitle]
+    .filter(Boolean) as string[];
+  const aliases = new Set<string>();
+  for (const value of values) {
+    aliases.add(normalize(value));
+    aliases.add(normalize(withoutSeason(value)));
+    const dictionaryTitle = searchDictionary[normalize(value)];
+    if (dictionaryTitle) aliases.add(normalize(dictionaryTitle));
+  }
+  return [...aliases].filter((value) => value.length >= 3);
+}
+
+function sameProject(left: UpcomingWork, right: UpcomingWork) {
+  // 記事候補はmediaTypeがotherになりやすいため、片方がotherなら作品名を優先します。
+  if (left.mediaType !== right.mediaType && left.mediaType !== "other" && right.mediaType !== "other") return false;
+  const rightAliases = new Set(candidateAliases(right));
+  return candidateAliases(left).some((alias) => rightAliases.has(alias));
+}
+
+/** 同じ配信元の記事転載を複数の根拠として数えないよう、ドメイン単位で集計します。 */
+function evidenceSource(item: UpcomingWork) {
+  try {
+    return new URL(item.sourceUrl || "").hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return normalize(item.source);
+  }
+}
+
+function hasActiveProductionEvidence(item: UpcomingWork) {
+  return Boolean(item.originalTitle)
+    && isActiveUpcoming(item)
+    && ["planned", "filming", "post-production", "scheduled"].includes(item.status);
+}
+
+/** 表示文は後に渡された手入力を優先しつつ、自動取得した不足項目を補完します。 */
+function mergeCandidateEntries(entries: UpcomingWork[]) {
+  const [first, ...rest] = entries;
+  return rest.reduce<UpcomingWork>((previous, item) => ({
+    ...previous,
+    ...item,
+    key: previous.key || item.key,
+    title: item.title || previous.title,
+    originalTitle: item.originalTitle || previous.originalTitle,
+    character: item.character || previous.character,
+    overview: item.overview || previous.overview,
+    releaseDate: item.releaseDate || previous.releaseDate,
+    publishedDate: item.publishedDate || previous.publishedDate,
+    status: item.status !== "unknown" ? item.status : previous.status,
+    source: item.source || previous.source,
+    sourceUrl: item.sourceUrl || previous.sourceUrl,
+    updatedAt: item.updatedAt || previous.updatedAt,
+    lastCheckedAt: item.lastCheckedAt || previous.lastCheckedAt,
+  }), first);
+}
+
+/**
+ * 「制作・公開予定」へ載せる基準：
+ * - 公式取得元が作品名と進行中の制作状況を明示している
+ * - または、異なる2ドメインが同じ作品名と進行中の状況を示している
+ * 1媒体だけ、作品名不明、噂・交渉中は「確認待ちの発表」に留めます。
+ */
+function consolidateCandidates(items: UpcomingWork[]) {
+  const groups: UpcomingWork[][] = [];
+  for (const item of items.filter(isActiveUpcoming)) {
+    const group = groups.find((entries) => entries.some((entry) => sameProject(entry, item)));
+    if (group) group.push(item);
+    else groups.push([item]);
+  }
+
+  return groups.map((entries) => {
+    const evidence = entries.filter(hasActiveProductionEvidence);
+    const sourceCount = new Set(evidence.map(evidenceSource).filter(Boolean)).size;
+    const hasOfficialEvidence = evidence.some((item) => item.confirmed === true);
+    const verified = hasOfficialEvidence || sourceCount >= 2;
+    const merged = mergeCandidateEntries(entries);
+    return {
+      ...merged,
+      kind: verified ? "work" as const : "announcement" as const,
+      confirmed: verified,
+    };
+  });
 }
 
 async function fetchTmdbDetail(work: Work, token: string): Promise<TmdbDetail | null> {
@@ -87,7 +202,10 @@ export async function getUnreleasedTmdbKeys(works: Work[], token: string) {
     const details = await Promise.all(chunk.map(async (work) => ({ work, detail: await fetchTmdbDetail(work, token) })));
     for (const { work, detail } of details) {
       const date = detail?.release_date || detail?.first_air_date || work.release_date || work.first_air_date || "";
-      if (date > today || (!date && isUnreleasedStatus(detail?.status))) keys.add(`${work.media_type}-${work.id}`);
+      // 中止作品も通常のWORKSへ戻さず、どちらの公開一覧からも除外します。
+      if (isCancelledStatus(detail?.status) || date > today || (!date && isUnreleasedStatus(detail?.status))) {
+        keys.add(`${work.media_type}-${work.id}`);
+      }
     }
   }
   return keys;
@@ -131,6 +249,7 @@ async function getTmdbUpcoming(): Promise<UpcomingWork[]> {
       for (const { work, detail } of rows) {
         const releaseDate = detail?.release_date || detail?.first_air_date || work.release_date || work.first_air_date || "";
         const hasFutureDate = releaseDate > today;
+        if (isCancelledStatus(detail?.status)) continue;
         if (!hasFutureDate && !isUnreleasedStatus(detail?.status)) continue;
         const sourceTitle = detail?.title || detail?.name || work.title || work.name || "タイトル未登録";
         result.push({
@@ -202,21 +321,16 @@ async function getTvmazeUpcoming(): Promise<UpcomingWork[]> {
   }
 }
 
-/** 自動取得と手入力を統合し、同名作品は信頼度の高い情報を優先します。 */
+/** 自動取得と手入力を統合し、取得元を横断確認して表示区分を決めます。 */
 export async function getUpcomingWorks(): Promise<UpcomingWork[]> {
   const [tmdb, tvmaze, supplemental] = await Promise.all([
     getTmdbUpcoming(),
     getTvmazeUpcoming(),
     getSupplementalUpcoming(),
   ]);
-  const merged = new Map<string, UpcomingWork>();
-  for (const item of [...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks]) {
-    // 同じ作品に公開日が未登録／後から登録された場合も、別カードに分裂させません。
-    const identity = `${item.kind || "work"}-${item.mediaType}-${normalize(item.originalTitle || item.title)}`;
-    const previous = merged.get(identity);
-    merged.set(identity, previous ? { ...previous, ...item } : item);
-  }
-  return [...merged.values()].map(localizeUpcoming).sort((a, b) => {
+  return consolidateCandidates([...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks])
+    .map(localizeUpcoming)
+    .sort((a, b) => {
     // 作品は公開予定日が近い順、確認待ちの発表は新着順に並べます。
     if ((a.kind || "work") !== (b.kind || "work")) return (a.kind || "work") === "work" ? -1 : 1;
     if ((a.kind || "work") === "announcement") {
@@ -225,5 +339,5 @@ export async function getUpcomingWorks(): Promise<UpcomingWork[]> {
     if (!a.releaseDate && b.releaseDate) return 1;
     if (a.releaseDate && !b.releaseDate) return -1;
     return (a.releaseDate || "9999-99-99").localeCompare(b.releaseDate || "9999-99-99");
-  });
+    });
 }

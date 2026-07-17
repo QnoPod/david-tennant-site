@@ -45,8 +45,8 @@ export default async function UpcomingPage() {
     />
     <section className="archive-section shell">
       <div className="source-notice upcoming-notice">
-        <span>AUTO CHECK + MANUAL REVIEW</span>
-        <p>TMDB、TVmaze、Wikidata、ニュースRSS、公式発表ページと記事本文、YouTube公式チャンネルを最大1日ごとに確認しています。誤登録を避けるため新しい発表は「確認待ち」として区別。</p>
+        <span>AUTO CHECK + CROSS VERIFICATION</span>
+        <p>公式発表、または異なる2取得元で作品名と制作状況を確認できた情報だけを「制作・公開予定」に表示。1取得元のみ・作品名不明・噂や交渉中の情報は「確認待ち」に分けます。</p>
       </div>
 
       <div className="upcoming-summary" aria-label="取得結果">
@@ -83,6 +83,7 @@ export default async function UpcomingPage() {
 
       {announcements.length > 0 && <section className="upcoming-announcements" aria-labelledby="announcement-heading">
         <div className="upcoming-section-heading"><p className="eyebrow">REVIEW QUEUE</p><h2 id="announcement-heading">確認待ちの発表</h2></div>
+        
         <div className="upcoming-announcement-list">
           {announcements.map((item) => <article key={item.key}>
             <div>

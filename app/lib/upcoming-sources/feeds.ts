@@ -2,7 +2,16 @@ import { unstable_cache } from "next/cache";
 import { officialPageSources, rssSources } from "../../data/upcomingSources";
 import type { UpcomingWork } from "../types";
 import { scrapeOfficialSource } from "./articleScraper";
-import { decodeHtml, isRelevantArticleAnnouncement, recentEnough, stableKey, todayIso, UPCOMING_REVALIDATE_SECONDS } from "./shared";
+import {
+  decodeHtml,
+  extractProjectTitle,
+  inferAnnouncementStatus,
+  isRelevantArticleAnnouncement,
+  recentEnough,
+  stableKey,
+  todayIso,
+  UPCOMING_REVALIDATE_SECONDS,
+} from "./shared";
 import { translateAnnouncements } from "./translate";
 
 function tag(block: string, name: string) {
@@ -26,14 +35,16 @@ async function getRssAnnouncements(): Promise<UpcomingWork[]> {
         const publishedDate = rawDate ? new Date(rawDate).toISOString().slice(0, 10) : undefined;
         if (!link || !title || !recentEnough(publishedDate)
           || !isRelevantArticleAnnouncement(title, description, "")) return [];
+        const projectTitle = extractProjectTitle(`${title} ${description}`);
         return [{
           key: stableKey("rss", link),
           kind: "announcement" as const,
           mediaType: "other" as const,
-          title,
+          title: projectTitle || title,
+          originalTitle: projectTitle,
           overview: description,
           publishedDate,
-          status: "unknown" as const,
+          status: inferAnnouncementStatus(`${title} ${description}`),
           source: source.name,
           sourceUrl: link,
           confirmed: false,

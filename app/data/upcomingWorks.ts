@@ -25,7 +25,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "url": "https://www.themoviedb.org/movie/1377495"
       }
     ],
-    "updatedAt": "2026-07-17"
+    "updatedAt": "2026-07-17",
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。"
   },
   {
     "key": "official-neverending-pillow-fort",
@@ -47,7 +48,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       },
       {
         "name": "TMDB",
-        "url": "https://www.themoviedb.org/movie/1685578"
+        "url": "https://www.themoviedb.org/movie/1685578",
+        "summary": "TMDBでは、「ネバーエンディング・ピロー・フォート（仮題）」が制作予定として掲載されています。デイヴィッド・テナントの出演情報あり、公開・放送日は未定です。"
       }
     ]
   },
@@ -70,7 +72,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "url": "https://www.themoviedb.org/movie/850538"
       }
     ],
-    "updatedAt": "2026-07-17"
+    "updatedAt": "2026-07-17",
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。"
   },
   {
     "key": "official-tenth-doctor-adventures-2027",
@@ -85,14 +88,14 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Doctor Who公式 / Big Finish",
     "sourceUrl": "https://www.doctorwho.tv/news-and-features/the-tenth-doctor-returns-in-a-new-series-of-audio-adventures",
     "confirmed": true,
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "Doctor Who公式 / Big Finish",
         "url": "https://www.doctorwho.tv/news-and-features/the-tenth-doctor-returns-in-a-new-series-of-audio-adventures"
       }
-    ]
+    ],
+    "updatedAt": "2026-07-17",
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "tvmaze-tv-57469",
@@ -113,7 +116,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "url": "https://www.tvmaze.com/shows/57469/hide"
       }
     ],
-    "updatedAt": "2026-07-17"
+    "updatedAt": "2026-07-17",
+    "reviewReason": "TVmazeの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。"
   },
   {
     "key": "official-only-murders-season-6",
@@ -126,14 +130,14 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Deadline",
     "sourceUrl": "https://deadline.com/2026/06/only-murders-in-the-building-david-tennant-nicola-coughlan-1236955027/",
     "confirmed": true,
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "Deadline",
         "url": "https://deadline.com/2026/06/only-murders-in-the-building-david-tennant-nicola-coughlan-1236955027/"
       }
-    ]
+    ],
+    "updatedAt": "2026-07-17",
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "official-four-seasons-season-3",
@@ -154,7 +158,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "name": "Netflix Tudum",
         "url": "https://www.netflix.com/tudum/articles/the-four-seasons-renewed-season-3"
       }
-    ]
+    ],
+    "reviewReason": "デイヴィッド・テナントの出演、または出演継続を示す正式発表を確認できていないため。"
   },
   {
     "key": "official-time-series-3",
@@ -175,7 +180,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       {
         "name": "BritBox：『タイム』シーズン3 初公開画像",
         "url": "https://press.britbox.com/post/britbox-reveals-first-look-at-david-tennant-and-siobhan-finneran",
-        "publishedDate": "2026-07-17"
+        "publishedDate": "2026-07-17",
+        "summary": "BritBox：『タイム』シーズン3 初公開画像では、「TIME シリーズ3」の初公開画像または最新ビジュアルが紹介されています。デイヴィッド・テナントの出演役は刑務官ベイリー（Prison Officer Bailey）、公開・放送日は未定です。"
       }
     ],
     "confirmed": true,

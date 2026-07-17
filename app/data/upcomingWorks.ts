@@ -102,7 +102,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "originalTitle": "Hide",
     "character": "役名未発表",
     "overview": "『ジキル博士とハイド氏』を陰謀スリラーとして再構成する企画です。失脚した記者が、キャリアを立て直せる特ダネを目撃したことで正体不明の敵に追われ、事故をきっかけに自分にも異変が起きていることを知ります。",
-    "releaseDate": null,
     "status": "planned",
     "source": "TVmaze",
     "sourceUrl": "https://www.tvmaze.com/shows/57469/hide",

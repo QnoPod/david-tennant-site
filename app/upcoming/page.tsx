@@ -83,7 +83,7 @@ export default async function UpcomingPage() {
 
       {announcements.length > 0 && <section className="upcoming-announcements" aria-labelledby="announcement-heading">
         <div className="upcoming-section-heading"><p className="eyebrow">REVIEW QUEUE</p><h2 id="announcement-heading">確認待ちの発表</h2></div>
-        
+        <p className="upcoming-review-note">確定情報として掲載するには、公式発表または別の取得元による一致確認が必要です。キャンセル・公開済み・単なる噂記事は表示しません。</p>
         <div className="upcoming-announcement-list">
           {announcements.map((item) => <article key={item.key}>
             <div>

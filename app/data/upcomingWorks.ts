@@ -18,15 +18,15 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "TMDB",
     "sourceUrl": "https://www.themoviedb.org/movie/1377495",
     "confirmed": false,
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "TMDB",
         "url": "https://www.themoviedb.org/movie/1377495"
       }
     ],
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
     "updatedAt": "2026-07-17",
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。"
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "official-neverending-pillow-fort",
@@ -39,8 +39,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Deadline",
     "sourceUrl": "https://deadline.com/2026/04/david-tennant-guy-pearce-to-star-the-neverending-pillow-fort-1236877211/",
     "confirmed": true,
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "Deadline",
@@ -51,7 +49,9 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "url": "https://www.themoviedb.org/movie/1685578",
         "summary": "TMDBでは、「ネバーエンディング・ピロー・フォート（仮題）」が制作予定として掲載されています。デイヴィッド・テナントの出演情報あり、公開・放送日は未定です。"
       }
-    ]
+    ],
+    "updatedAt": "2026-07-17",
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "tmdb-movie-850538",
@@ -65,15 +65,15 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "TMDB",
     "sourceUrl": "https://www.themoviedb.org/movie/850538",
     "confirmed": false,
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "TMDB",
         "url": "https://www.themoviedb.org/movie/850538"
       }
     ],
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
     "updatedAt": "2026-07-17",
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。"
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "official-tenth-doctor-adventures-2027",
@@ -98,6 +98,27 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-17"
   },
   {
+    "key": "scraped-article-lfr2xk",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "メディアセンター",
+    "originalTitle": "Media Centre",
+    "overview": "BBCに関する最新ニュース、メディア向け資料、番組情報",
+    "status": "unknown",
+    "source": "BBC Media Centre",
+    "sourceUrl": "https://www.bbc.co.uk/mediacentre/",
+    "confirmed": false,
+    "lastCheckedAt": "2026-07-18",
+    "sources": [
+      {
+        "name": "BBC Media Centre",
+        "url": "https://www.bbc.co.uk/mediacentre/"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-07-18"
+  },
+  {
     "key": "tvmaze-tv-57469",
     "kind": "announcement",
     "mediaType": "tv",
@@ -109,15 +130,15 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "TVmaze",
     "sourceUrl": "https://www.tvmaze.com/shows/57469/hide",
     "confirmed": false,
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "TVmaze",
         "url": "https://www.tvmaze.com/shows/57469/hide"
       }
     ],
+    "reviewReason": "TVmazeの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
     "updatedAt": "2026-07-17",
-    "reviewReason": "TVmazeの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。"
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "official-only-murders-season-6",
@@ -151,15 +172,15 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Netflix Tudum",
     "sourceUrl": "https://www.netflix.com/tudum/articles/the-four-seasons-renewed-season-3",
     "confirmed": false,
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17",
     "sources": [
       {
         "name": "Netflix Tudum",
         "url": "https://www.netflix.com/tudum/articles/the-four-seasons-renewed-season-3"
       }
     ],
-    "reviewReason": "デイヴィッド・テナントの出演、または出演継続を示す正式発表を確認できていないため。"
+    "reviewReason": "デイヴィッド・テナントの出演、または出演継続を示す正式発表を確認できていないため。",
+    "updatedAt": "2026-07-17",
+    "lastCheckedAt": "2026-07-17"
   },
   {
     "key": "official-time-series-3",

@@ -1,4 +1,4 @@
-import { interviewCatalog } from "../data/interviews/catalog";
+import { getPublishedInterviews } from "../data/interviews/catalog";
 import type { InterviewSummary } from "../data/interviews/types";
 import { searchDictionary } from "../data/searchDictionary";
 import { normalizeText } from "./workPresentation";
@@ -30,7 +30,7 @@ export function findRelatedInterviews(terms: readonly (string | undefined)[], ex
   const needles = expandWorkTitleTerms(terms);
   if (!needles.length) return [];
 
-  return interviewCatalog
+  return getPublishedInterviews()
     .filter((interview) => interview.slug !== excludeSlug)
     .map((interview) => {
       const relatedWorkTags = interview.tagGroups.genres.map(normalizeText);

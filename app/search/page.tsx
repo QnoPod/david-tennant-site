@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import PageHero from "../components/PageHero";
 import { pastConventionAppearances } from "../data/pastConventionAppearances";
-import { interviewCatalog } from "../data/interviews/catalog";
+import { getPublishedInterviews } from "../data/interviews/catalog";
 import { getCharacters } from "../lib/characters";
 import { getConventionAppearances } from "../lib/comiconomicon";
 import { buildGlobalSearchItems } from "../lib/globalSearch";
@@ -17,7 +17,7 @@ export default async function SearchPage() {
   const items = buildGlobalSearchItems({
     works,
     characters: getCharacters(works),
-    interviews: interviewCatalog,
+    interviews: getPublishedInterviews(),
     conventions: [...liveConventions, ...pastConventionAppearances],
     upcoming,
   });

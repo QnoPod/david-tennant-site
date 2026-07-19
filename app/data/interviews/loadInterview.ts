@@ -1,4 +1,4 @@
-import { interviewCatalog } from "./catalog";
+import { getPublishedInterviews } from "./catalog";
 import { getAllInterviewTags, type Interview, type TranscriptLine } from "./types";
 
 type TranscriptLoader = () => Promise<readonly TranscriptLine[]>;
@@ -78,10 +78,11 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
 
 /** slugから基本情報と翻訳本文をまとめて取得します。 */
 export async function getInterviewBySlug(slug: string): Promise<Interview | null> {
-  const summary = interviewCatalog.find((item) => item.slug === slug);
+  const summary = getPublishedInterviews().find((item) => item.slug === slug);
   const loadTranscript = transcriptLoaders[slug];
-  if (!summary || !loadTranscript) return null;
-  return { ...summary, transcript: await loadTranscript() };
+  if (!summary) return null;
+  // 自動取得した概要だけの記事も詳細を開けるよう、本文未登録時は空配列を返します。
+  return { ...summary, transcript: loadTranscript ? await loadTranscript() : [] };
 }
 
 /**
@@ -90,9 +91,10 @@ export async function getInterviewBySlug(slug: string): Promise<Interview | null
  */
 export async function searchInterviewSlugs(query: string): Promise<string[]> {
   const needle = query.normalize("NFKC").toLowerCase().trim();
-  if (!needle) return interviewCatalog.map((item) => item.slug);
+  const publishedInterviews = getPublishedInterviews();
+  if (!needle) return publishedInterviews.map((item) => item.slug);
 
-  const matches = await Promise.all(interviewCatalog.map(async (summary) => {
+  const matches = await Promise.all(publishedInterviews.map(async (summary) => {
     const loadTranscript = transcriptLoaders[summary.slug];
     const transcript = loadTranscript ? await loadTranscript() : [];
     const searchable = [

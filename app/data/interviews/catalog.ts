@@ -1,11 +1,12 @@
 import type { InterviewSummary } from "./types";
+import { autoInterviewCandidates } from "./autoCandidates";
 
 /**
  * インタビュー一覧用の軽量カタログ。
  * 新しい記事を追加するときは、最初にこの配列へ基本情報を1件追加します。
  * 長い英語原文・日本語訳は transcripts/ に分けて保存してください。
  */
-export const interviewCatalog: readonly InterviewSummary[] = [
+const manualInterviewCatalog: readonly InterviewSummary[] = [
   {
     slug: "david-tennant-snack-wars-scotland-england",
     title: "デイヴィッド・テナント、スコットランド対イングランドの食べ物を食べ比べ｜Snack Wars",
@@ -613,9 +614,19 @@ export const interviewCatalog: readonly InterviewSummary[] = [
   },
 ];
 
-/** 公開年月日の新しい順に並べた一覧を返します。元データは変更しません。 */
-export function getInterviewsNewestFirst() {
-  return [...interviewCatalog].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+/** 手入力記事と自動取得候補を、重複しない単一のカタログとして扱います。 */
+export const interviewCatalog: readonly InterviewSummary[] = [
+  ...manualInterviewCatalog,
+  ...autoInterviewCandidates,
+];
+
+/** 公開を許可した記事だけを返します。自動取得候補は初期状態では含まれません。 */
+export function getPublishedInterviews(): readonly InterviewSummary[] {
+  return interviewCatalog.filter((interview) => interview.isPublished !== false && interview.reviewStatus !== "rejected");
 }
 
+/** 公開年月日の新しい順に並べた公開記事を返します。元データは変更しません。 */
+export function getInterviewsNewestFirst() {
+  return [...getPublishedInterviews()].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+}
 

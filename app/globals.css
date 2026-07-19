@@ -308,6 +308,13 @@ img { display: block; max-width: 100%; }
 .data-check-list li b { color: #8d3b36; font-size: 11px; }
 .data-check-list li p { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 .data-check-list code { overflow-wrap: anywhere; padding: 8px; color: var(--blue); background: var(--paper); font-size: 10px; }
+.interview-candidate-checks { padding-top: 0; }
+.interview-candidate-checks .section-heading { align-items: end; margin-bottom: 18px; }
+.interview-candidate-checks .section-heading > p { margin: 0; color: var(--muted); font-size: 11px; }
+.interview-candidate-guide { display: grid; gap: 10px; margin-bottom: 24px; padding: 18px; border: 1px solid var(--line); background: var(--paper); }
+.interview-candidate-guide p { margin: 0; font-size: 12px; line-height: 1.7; }
+.interview-candidate-guide code { overflow-wrap: anywhere; padding: 10px; color: var(--blue); background: var(--white); }
+.interview-candidate-checks .data-check-list a { color: var(--blue); font-size: 11px; font-weight: 800; }
 .character-card { cursor: default; border: 1px solid var(--line); background: var(--white); }
 .character-card__image { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--paper); }
 .character-card__image > img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .25s; }

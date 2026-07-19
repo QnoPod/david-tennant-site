@@ -1,6 +1,6 @@
 import { careerTimeline } from "../data/content";
 import { episodeOverrides } from "../data/episodeOverrides";
-import { interviewCatalog } from "../data/interviews/catalog";
+import { getPublishedInterviews } from "../data/interviews/catalog";
 import { getDisplayTitle, getOriginalTitle, getWorkCharacters, normalizeText } from "./workPresentation";
 import { getMediaLabel, getWorkDate } from "./tmdb";
 import type { Character, ConventionAppearance, Work } from "./types";
@@ -94,7 +94,7 @@ export function buildTimelineEvents(works: Work[], characters: Character[], conv
     event,
   ])).values()];
 
-  const interviewEvents: TimelineEvent[] = interviewCatalog.map((interview) => ({
+  const interviewEvents: TimelineEvent[] = getPublishedInterviews().map((interview) => ({
     id: `interview-${interview.slug}`,
     type: "interview",
     date: interview.publishedDate,

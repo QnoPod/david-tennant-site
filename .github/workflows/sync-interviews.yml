@@ -1,0 +1,61 @@
+name: Sync INTERVIEW candidates
+
+on:
+  schedule:
+    # 1日1回、新しい動画・記事を探して非公開候補として保存します。
+    - cron: "15 5 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "取得範囲"
+        required: true
+        default: "daily"
+        type: choice
+        options:
+          - daily
+          - full-backfill
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-interview-candidates
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Discover videos and articles as unpublished candidates
+        run: npm run sync:interviews
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+          # 手動のfull-backfillだけYouTube開設期まで遡り、通常同期は直近14日に限定します。
+          INTERVIEW_DISCOVERY_DAYS: ${{ inputs.mode == 'full-backfill' && '7300' || '14' }}
+          YOUTUBE_MAX_PAGES: ${{ inputs.mode == 'full-backfill' && '12' || '1' }}
+
+      - name: Commit only when candidates changed
+        shell: bash
+        run: |
+          if git diff --quiet -- app/data/interviews/autoCandidates.ts; then
+            echo "No INTERVIEW candidate changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/data/interviews/autoCandidates.ts
+          git commit -m "Auto-update INTERVIEW candidates"
+          git pull --rebase origin main
+          git push origin HEAD:main

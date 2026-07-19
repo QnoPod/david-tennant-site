@@ -11,4 +11,23 @@ export const workImageOverrides: Record<string, Pick<Work, "posterUrl" | "backdr
    "The Deputy": {
     posterUrl: "/works/The Deputy.jpg",
   },
+   "Doctor Who: Rise of the Cybermen & The Age of Steel": {
+    posterUrl: "/works/Doctor Who Rise of the Cybermen & The Age of Steel.jpg",
+  },
+   "Doctor Who: The Impossible Planet & The Satan Pit": {
+    posterUrl: "/works/Doctor Who The Impossible Planet & The Satan Pit.jpg",
+  },
+  "The Science of Doctor Who": {
+    posterUrl: "/works/The Science of Doctor Who.png",
+  },
+    "The Stolen Earth / Journey's End": {
+    posterUrl: "/works/The Stolen Earth  Journey's End.jpg",
+  },
+    "Doctor Who: Daleks in Manhattan & Evolution of the Daleks": {
+    posterUrl: "/works/Doctor Who Daleks in Manhattan & Evolution of the Daleks.jpg",
+  },
+    "Doctor Who: The Sontaran Stratagem & The Poison Sky": {
+    posterUrl: "/works/Doctor Who The Sontaran Stratagem & The Poison Sky.jpg",
+  },
+  
 };

@@ -69,6 +69,38 @@ function isHuyangRole(value: string) {
   return value.toLowerCase().includes("huyang") || value.includes("ヒュイヤン");
 }
 
+/** 14th Doctorの英語表記を既存の14代目ドクターへ統一します。 */
+function isFourteenthDoctorRole(value: string) {
+  const normalized = value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  return /^14th doctor$/i.test(normalized) || normalized.includes("14代目ドクター");
+}
+
+/**
+ * TMDBの日本語タイトル・原題・予備データのどれを使っていても、
+ * デイヴィッドが14代目ドクターを演じる2023年の特別編を判定します。
+ */
+function isFourteenthDoctorWork(work: Work) {
+  if (work.id === 241855) return true;
+
+  const titles = [getSourceTitle(work), work.title, work.name, work.original_title, work.original_name]
+    .filter((title): title is string => Boolean(title))
+    .map((title) => normalizeText(title));
+
+  return titles.some((title) =>
+    title.includes("doctorwho60thanniversaryspecials")
+    || title.includes("doctorwhochildreninneedspecial2023")
+    || title.includes("ドクターフー60周年スペシャル")
+    || title.includes("ドクターフーチルドレンインニードスペシャル2023"),
+  );
+}
+
+/** 過去映像で登場するドクターを、通常出演のドクター役と区別します。 */
+export function isArchiveDoctorRole(value: string) {
+  const normalized = value.normalize("NFKC").replace(/\s+/g, " ").trim();
+  return (/\bthe doctor\b/i.test(normalized) && /\barchive footage\b/i.test(normalized))
+    || normalized.includes("ドクター（アーカイブ映像）");
+}
+
 /**
  * キャラクター画像は public/characters に置いたローカルファイルだけを使います。
  * characterImages.ts には「/characters/ファイル名」の形で記載してください。
@@ -82,7 +114,21 @@ function getCharacterImage(path?: string) {
  * Doctor Who、DuckTales、Nativity 2の複数役にも対応します。
  */
 export function getWorkCharacters(work: Work): WorkCharacter[] {
-  if (work.manualCharacters?.length) return work.manualCharacters;
+  const isFourteenthDoctorSpecial = isFourteenthDoctorWork(work);
+
+  // 手入力キャラクターがある場合も、対象作品では14代目ドクターの表記と画像を必ず適用します。
+  if (work.manualCharacters?.length) {
+    if (!isFourteenthDoctorSpecial) return work.manualCharacters;
+    const fourteenthDoctor = parseCharacterInfo(customCharacterInfo["Doctor Who: 60th Anniversary Specials"]);
+    return work.manualCharacters.map((character) => ({
+      ...character,
+      name: "14代目ドクター",
+      englishName: "14th Doctor",
+      image: getCharacterImage(customCharacterImages["Doctor Who: 60th Anniversary Specials"]),
+      description: fourteenthDoctor.description || character.description,
+    }));
+  }
+
   const sourceTitle = getSourceTitle(work);
   const rawParts = sourceTitle === "Nativity 2: Danger in the Manger!"
     ? (work.character || "").split("/")
@@ -93,12 +139,16 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const isNarrator = isNarratorRole(rawName);
     const isSelf = isSelfRole(rawName);
     const isHuyang = isHuyangRole(rawName);
+    const isFourteenthDoctor = isFourteenthDoctorRole(rawName) || isFourteenthDoctorSpecial;
+    const isArchiveDoctor = isArchiveDoctorRole(rawName);
     let dictionaryKey = sourceTitle;
     let imageKey = sourceTitle;
 
-    if (sourceTitle === "Doctor Who: 60th Anniversary Specials") {
-      dictionaryKey = sourceTitle;
-      imageKey = sourceTitle;
+    if (isArchiveDoctor) {
+      imageKey = "archive doctor";
+    } else if (isFourteenthDoctor) {
+      dictionaryKey = "Doctor Who: 60th Anniversary Specials";
+      imageKey = "Doctor Who: 60th Anniversary Specials";
     } else if (rawName === "The Doctor" || rawName === "The Doctor (10)") {
       dictionaryKey = "10th Doctor";
       imageKey = "10th doctor";
@@ -118,11 +168,14 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     }
 
     const parsed = parseCharacterInfo(customCharacterInfo[dictionaryKey] || customCharacterInfo[sourceTitle]);
-    const fallbackName = isSelf ? "本人"
+    const fallbackName = isArchiveDoctor ? "ドクター（アーカイブ映像）"
+      : isFourteenthDoctor ? "14代目ドクター"
+      : isSelf ? "本人"
       : isNarrator ? "ナレーター"
       : rawName || "役名未登録";
     const englishName = sourceTitle === "Being Considered" ? "ex-boyfriend"
-      : sourceTitle === "Doctor Who: 60th Anniversary Specials" ? "14th Doctor"
+      : isArchiveDoctor ? rawName
+      : isFourteenthDoctor ? "14th Doctor"
       : dictionaryKey === "10th Doctor" ? "10th Doctor"
       : dictionaryKey === "Donald Peterson" ? "Donald Peterson"
       : dictionaryKey === "Roderick Peterson" ? "Roderick Peterson"
@@ -131,7 +184,12 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       : isHuyang ? "Huyang"
       : rawName || dictionaryKey;
     return {
-      name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || fallbackName,
+      name: isArchiveDoctor ? "ドクター（アーカイブ映像）"
+        : isFourteenthDoctor ? "14代目ドクター"
+        : isSelf ? "本人"
+        : isNarrator ? "ナレーター"
+        : isHuyang ? "ヒュイヤン"
+        : parsed.name || fallbackName,
       englishName,
       image: getCharacterImage(customCharacterImages[imageKey] || customCharacterImages[sourceTitle]),
       description: isSelf ? selfCharacterDescription

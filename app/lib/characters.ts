@@ -6,7 +6,7 @@ import { searchDictionary } from "../data/searchDictionary";
 import { yearOverrides } from "../data/yearOverrides";
 import { getWorkDate, getWorkTitle } from "./tmdb";
 import type { Character, EpisodeAppearance, Work, WorkCharacter } from "./types";
-import { getDisplayTitle, getWorkCharacters } from "./workPresentation";
+import { getDisplayTitle, getWorkCharacters, isArchiveDoctorRole } from "./workPresentation";
 
 /** 「役名\n説明文」という既存データを、表示に使いやすい形に分割します。 */
 function parseInfo(raw: string) {
@@ -102,7 +102,9 @@ export function getCharacters(works: Work[] = []): Character[] {
     const isNarrator = isNarratorRole(parsed.name);
     const isSelf = isSelfRole(parsed.name);
     const isHuyang = isHuyangRole(parsed.name);
-    const imageKey = parsed.name.includes("10代目") ? "10th doctor"
+    const isArchiveDoctor = isArchiveDoctorRole(parsed.name);
+    const imageKey = isArchiveDoctor ? "archive doctor"
+      : parsed.name.includes("10代目") ? "10th doctor"
       : parsed.name.includes("14代目") ? "Doctor Who: 60th Anniversary Specials"
       : parsed.name.includes("スクルージ") ? "Scrooge McDuck"
       : isSelf ? "self"
@@ -129,7 +131,8 @@ export function getCharacters(works: Work[] = []): Character[] {
       : defaultDisplayTitle;
 
     const englishName = matchingCharacter?.englishName
-      || (isSelf ? "Self"
+      || (isArchiveDoctor ? parsed.name
+        : isSelf ? "Self"
         : isNarrator ? "Narrator"
         : isHuyang ? "Huyang"
         : parsed.name.includes("10代目ドクター") ? "10th Doctor"
@@ -153,7 +156,11 @@ export function getCharacters(works: Work[] = []): Character[] {
       date: releaseDate,
       workTitle,
       displayWorkTitle,
-      name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || "役名未登録",
+      name: isArchiveDoctor ? "ドクター（アーカイブ映像）"
+        : isSelf ? "本人"
+        : isNarrator ? "ナレーター"
+        : isHuyang ? "ヒュイヤン"
+        : parsed.name || "役名未登録",
       englishName,
       description: isSelf ? selfCharacterDescription
         : isNarrator ? narratorCharacterDescription

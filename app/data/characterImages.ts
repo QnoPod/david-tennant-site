@@ -58,6 +58,8 @@ export const customCharacterImages: Record<string, string> = {
   "self": "/characters/self-icon.png",
   "narrator": "/characters/narrator-icon.jpg",
   "10th doctor": "/characters/10thDoctor.jpg",
+  // アーカイブ映像で登場するドクター専用。10代目ドクター画像とは別に管理します。
+  "archive doctor": "/characters/DoctorArchiveFootage.jpg",
   "There She Goes": "/characters/Simon.jpg",
   "Recovery": "/characters/Alan Hamilton.jpg",
   "Dramarama": "/characters/Neil McDonald.jpg",
@@ -98,6 +100,9 @@ export const customCharacterImages: Record<string, string> = {
   "BUNCH OF FIVE": "/characters/Policeman.jpg",
   "Much Ado About Nothing": "/characters/Benedick.jpg",
   "Scrooge McDuck": "/characters/Scrooge McDuck.jpg",
+  "The Genius Game": "/characters/The Creator.png",
+  "Screening": "/characters/Timothy.png",
+  "The Big Night In": "/characters/Mr. Logan.png",
 
 
 

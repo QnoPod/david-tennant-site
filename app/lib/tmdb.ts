@@ -38,6 +38,25 @@ function applyImageOverrides(work: Work): Work {
   return override ? { ...work, ...override } : work;
 }
 
+/**
+ * TMDBの日本語名・原題・予備データで表記が異なっても、
+ * 2023年の60周年特別編は14代目ドクター役として統一します。
+ * 取得直後に補正することで、WORKS・CHARACTERS・検索・年表で同じ役名を使えます。
+ */
+function applyCharacterOverrides(work: Work): Work {
+  const titles = [work.title, work.name, work.original_title, work.original_name]
+    .filter((title): title is string => Boolean(title))
+    .map((title) => title.normalize("NFKC").toLowerCase().replace(/[\s・:=\-]/g, ""));
+  const isFourteenthDoctorSpecial = work.id === 241855 || titles.some((title) =>
+    title.includes("doctorwho60thanniversaryspecials")
+    || title.includes("doctorwhochildreninneedspecial2023")
+    || title.includes("ドクターフー60周年スペシャル")
+    || title.includes("ドクターフーチルドレンインニードスペシャル2023"),
+  );
+
+  return isFourteenthDoctorSpecial ? { ...work, character: "14th Doctor" } : work;
+}
+
 /** TMDB作品と手入力作品を統合し、ジャンル上書き後に公開日の新しい順に並べます。 */
 function withManualWorks(works: Work[]) {
   const merged = new Map(works.map((work) => [`${work.media_type}-${work.id}`, work]));
@@ -55,6 +74,7 @@ function withManualWorks(works: Work[]) {
   }
   return [...merged.values()]
     .map(applyImageOverrides)
+    .map(applyCharacterOverrides)
     .map(applyGenreOverrides)
     .sort((a, b) => getWorkDate(b).localeCompare(getWorkDate(a)));
 }

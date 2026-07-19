@@ -105,6 +105,14 @@ export const customCharacterImages: Record<string, string> = {
   "The Big Night In": "/characters/Mr. Logan.png",
   "ARK：アニメーションシリーズ": "/characters/Sir Edmund Rockwell.png",
   "ムーンガール ＆ デビル・ダイナソー": "/characters/Franklin.png",
+  "天才ねこモーリスとゆかいな仲間たち": "/characters/Dangerous Beans.jpg",
+  "ヴォクス・マキナの伝説": "/characters/General Kreig.png",
+  "ラウド・ハウス・ムービー": "/characters/Angus.jpg",
+  "Heart to Heart": "/characters/Heart.jpg",
+  "gen:LOCK": "/characters/Dr. Weller.jpg",
+  "ハイウェイ・ラット ～嫌われおいはぎネズミ～": "/characters/The Highway Rat.jpg",
+  "ファイナル・スペース": "/characters/Lord Commander.jpg",
+  "フェルディナンド": "/characters/Angus_Ferdinand.jpg",
 
 
 

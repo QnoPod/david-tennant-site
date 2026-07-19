@@ -114,11 +114,16 @@ export function getCharacters(works: Work[] = []): Character[] {
     // characterImages.ts のパスは public 配下を指すローカルURLです。
     const imagePath = customCharacterImages[imageKey] || customCharacterImages[workTitle];
     const defaultDisplayTitle = searchDictionary[normalize(workTitle)] || workTitle;
-    const matchedEntries = workCatalog.filter((entry) =>
-      entry.titles.includes(normalize(workTitle))
-      || entry.titles.includes(normalize(defaultDisplayTitle))
-      || entry.characters.some((character) => normalize(character.name) === normalize(parsed.name)),
+    // 同名キャラクターが別作品にいる場合は、役名一致より作品タイトル一致を優先します。
+    // 例：『ラウド・ハウス・ムービー』と『フェルディナンド』のアンガス。
+    const normalizedWorkTitles = [normalize(workTitle), normalize(defaultDisplayTitle)];
+    const titleMatchedEntries = workCatalog.filter((entry) =>
+      normalizedWorkTitles.some((title) => entry.titles.includes(title)),
     );
+    const characterMatchedEntries = workCatalog.filter((entry) =>
+      entry.characters.some((character) => normalize(character.name) === normalize(parsed.name)),
+    );
+    const matchedEntries = titleMatchedEntries.length ? titleMatchedEntries : characterMatchedEntries;
     const matched = matchedEntries[0];
     const matchedWork = matched?.work;
     const matchingCharacter = matched?.characters.find((character) => normalize(character.name) === normalize(parsed.name));
@@ -139,6 +144,13 @@ export function getCharacters(works: Work[] = []): Character[] {
         : parsed.name.includes("14代目ドクター") ? "14th Doctor"
         : parsed.name === "エドマンド・ロックウェル卿" ? "Sir Edmund Rockwell"
         : parsed.name === "フランクリン" ? "Franklin"
+        : parsed.name === "デンジャラス・ビーンズ" ? "Dangerous Beans"
+        : parsed.name === "クリーグ将軍" ? "General Krieg"
+        : parsed.name === "アンガス" ? "Angus"
+        : parsed.name === "ハート（ランプ）" ? "Heart"
+        : parsed.name === "ルーファス・ウェラー博士" ? "Dr. Rufus Weller"
+        : parsed.name === "ハイウェイ・ラット" ? "The Highway Rat"
+        : parsed.name === "ロード・コマンダー" ? "Lord Commander"
         : parsed.name.includes("スクルージ・マクダック") ? "Scrooge McDuck"
         : parsed.name === "ドナルド・ピーターソン" ? "Donald Peterson"
         : parsed.name === "ロデリック・ピーターソン" ? "Roderick Peterson"

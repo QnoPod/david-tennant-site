@@ -29,5 +29,8 @@ export const workImageOverrides: Record<string, Pick<Work, "posterUrl" | "backdr
     "Doctor Who: The Sontaran Stratagem & The Poison Sky": {
     posterUrl: "/works/Doctor Who The Sontaran Stratagem & The Poison Sky.jpg",
   },
+    "The British Academy Film Awards": {
+    posterUrl: "/works/The British Academy Film Awards.jpg",
+  },
   
 };

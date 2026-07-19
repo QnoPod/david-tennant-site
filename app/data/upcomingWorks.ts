@@ -108,7 +108,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "BBC Media Centre",
     "sourceUrl": "https://www.bbc.co.uk/mediacentre/",
     "confirmed": false,
-    "lastCheckedAt": "2026-07-18",
     "sources": [
       {
         "name": "BBC Media Centre",
@@ -116,7 +115,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-07-18"
+    "updatedAt": "2026-07-18",
+    "lastCheckedAt": "2026-07-18"
   },
   {
     "key": "tvmaze-tv-57469",

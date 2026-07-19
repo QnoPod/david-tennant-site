@@ -25,6 +25,13 @@ const YOUTUBE_RETRY_LIMIT = 5;
 const TODAY = new Date().toISOString().slice(0, 10);
 let lastYouTubeRequestAt = 0;
 
+class YouTubeDailyQuotaError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "YouTubeDailyQuotaError";
+  }
+}
+
 function wait(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
@@ -204,11 +211,11 @@ async function youtubeFetch(pathname, params) {
     if (response.ok) return payload;
 
     const detail = youtubeErrorDetail(payload, responseText.slice(0, 300));
-    const dailyQuotaExhausted = /quotaexceeded|dailylimitexceeded|daily.*limit|daily.*quota/i.test(detail);
+    const dailyQuotaExhausted = /quotaexceeded|dailylimitexceeded|daily.*limit|daily.*quota|quota exceeded[\s\S]*per day|search queries per day/i.test(detail);
     const retryable = !dailyQuotaExhausted && (response.status === 429 || response.status >= 500);
     if (!retryable || attempt === YOUTUBE_RETRY_LIMIT) {
       if (dailyQuotaExhausted) {
-        throw new Error(
+        throw new YouTubeDailyQuotaError(
           `YouTube API daily quota was exhausted: ${pathname}: ${detail}. Wait for the Pacific Time daily reset before rerunning full-backfill.`,
         );
       }
@@ -236,21 +243,30 @@ async function discoverYouTube() {
   }
 
   const ids = new Set();
-  for (const query of interviewYouTubeQueries) {
+  let stoppedByDailyQuota = false;
+  searchQueries: for (const query of interviewYouTubeQueries) {
     let queryCount = 0;
     let pageToken = "";
     for (let page = 0; page < YOUTUBE_MAX_PAGES; page += 1) {
-      const payload = await youtubeFetch("/search", {
-        part: "snippet",
-        type: "video",
-        order: "date",
-        maxResults: 50,
-        publishedAfter: publishedAfter(),
-        q: query,
-        relevanceLanguage: "en",
-        safeSearch: "moderate",
-        ...(pageToken ? { pageToken } : {}),
-      });
+      let payload;
+      try {
+        payload = await youtubeFetch("/search", {
+          part: "snippet",
+          type: "video",
+          order: "date",
+          maxResults: 50,
+          publishedAfter: publishedAfter(),
+          q: query,
+          relevanceLanguage: "en",
+          safeSearch: "moderate",
+          ...(pageToken ? { pageToken } : {}),
+        });
+      } catch (error) {
+        if (!(error instanceof YouTubeDailyQuotaError)) throw error;
+        stoppedByDailyQuota = true;
+        console.warn(`${error.message}\nSaving the video IDs collected before the quota limit.`);
+        break searchQueries;
+      }
       for (const item of payload.items ?? []) {
         if (!item.id?.videoId) continue;
         ids.add(item.id.videoId);
@@ -263,9 +279,17 @@ async function discoverYouTube() {
   }
   console.log(`YouTube search total: ${ids.size} unique video IDs`);
   if (!ids.size) {
+    if (stoppedByDailyQuota) {
+      throw new YouTubeDailyQuotaError(
+        "YouTube Search Queries daily quota was already exhausted before any results were collected. Retry after the Pacific Time daily reset.",
+      );
+    }
     throw new Error(
       "YouTube API returned no video IDs. Check API restrictions, YouTube Data API v3 activation, and quota.",
     );
+  }
+  if (stoppedByDailyQuota) {
+    console.warn("The backfill is partial because the Search Queries daily quota was reached. Rerun full-backfill after the next daily reset; duplicate prevention will keep existing candidates once.");
   }
 
   // videos.listは一度に50IDまでなので、全検索結果を50件ずつ取得します。

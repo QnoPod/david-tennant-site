@@ -6,8 +6,21 @@ import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, readArchiveList, writeArch
 import InterviewCard from "./InterviewCard";
 
 const INITIAL_VISIBLE_COUNT = 6;
+const EXPLORER_STATE_KEY = "david-tennant-interviews-explorer-state-v1";
 const TAG_CATEGORIES = ["actors", "genres", "sources"] as const;
 type TagCategory = typeof TAG_CATEGORIES[number];
+
+type SavedExplorerState = {
+  restorePending: boolean;
+  scrollY: number;
+  query: string;
+  mediaType: "all" | "video" | "article";
+  year: string;
+  favoritesOnly: boolean;
+  tagExpanded: boolean;
+  selectedTags: Record<TagCategory, string[]>;
+  visibleCount: number;
+};
 
 const TAG_CATEGORY_LABELS: Record<TagCategory, string> = {
   actors: "役者",
@@ -31,6 +44,66 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
   const [contentMatches, setContentMatches] = useState<string[] | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+
+  // 詳細ページから戻った場合だけ、検索条件・表示件数・スクロール位置を一度復元します。
+  useEffect(() => {
+    let saved: SavedExplorerState | null = null;
+    try {
+      const raw = window.sessionStorage.getItem(EXPLORER_STATE_KEY);
+      saved = raw ? JSON.parse(raw) as SavedExplorerState : null;
+    } catch {
+      saved = null;
+    }
+    if (!saved?.restorePending) return;
+    const timers = new Set<number>();
+    let cancelled = false;
+    const schedule = (callback: () => void, delay: number) => {
+      const timer = window.setTimeout(() => {
+        timers.delete(timer);
+        if (!cancelled) callback();
+      }, delay);
+      timers.add(timer);
+    };
+
+    // Effect本体ではなく次のタスクで状態を復元し、不要な連続レンダーを避けます。
+    schedule(() => {
+      if (!saved) return;
+      setQuery(saved.query || "");
+      setMediaType(["all", "video", "article"].includes(saved.mediaType) ? saved.mediaType : "all");
+      setYear(saved.year || "all");
+      setFavoritesOnly(Boolean(saved.favoritesOnly));
+      setTagExpanded(Boolean(saved.tagExpanded));
+      setSelectedTags({
+        actors: saved.selectedTags?.actors ?? [],
+        genres: saved.selectedTags?.genres ?? [],
+        sources: saved.selectedTags?.sources ?? [],
+      });
+      setVisibleCount(Math.max(INITIAL_VISIBLE_COUNT, saved.visibleCount || INITIAL_VISIBLE_COUNT));
+      if (saved.query?.trim()) setIsSearching(true);
+
+      // 直接INTERVIEWSを開いたときに古い位置へ戻らないよう、復元予約はここで消費します。
+      try {
+        window.sessionStorage.setItem(EXPLORER_STATE_KEY, JSON.stringify({ ...saved, restorePending: false }));
+      } catch {
+        // sessionStorageが使えない環境でも一覧表示自体は継続します。
+      }
+
+      let attempts = 0;
+      const restoreScroll = () => {
+        window.scrollTo(0, Math.max(0, saved?.scrollY ?? 0));
+        attempts += 1;
+        // 検索本文やカードが描画されるまで高さが足りない場合に、短時間だけ再試行します。
+        if (attempts < 30 && Math.abs(window.scrollY - (saved?.scrollY ?? 0)) > 2) schedule(restoreScroll, 100);
+      };
+      schedule(restoreScroll, 0);
+    }, 0);
+
+    return () => {
+      cancelled = true;
+      timers.forEach((timer) => window.clearTimeout(timer));
+      timers.clear();
+    };
+  }, []);
 
   // 一覧や詳細でしおりを変更した場合も、お気に入り検索へ即時反映します。
   useEffect(() => {
@@ -122,6 +195,26 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
+  /** インタビュー詳細へ移動する直前の一覧状態を、同じタブの間だけ保存します。 */
+  const saveExplorerState = () => {
+    const state: SavedExplorerState = {
+      restorePending: true,
+      scrollY: window.scrollY,
+      query,
+      mediaType,
+      year,
+      favoritesOnly,
+      tagExpanded,
+      selectedTags,
+      visibleCount,
+    };
+    try {
+      window.sessionStorage.setItem(EXPLORER_STATE_KEY, JSON.stringify(state));
+    } catch {
+      // 保存できない環境では通常のページ遷移を妨げません。
+    }
+  };
+
   return <section className="archive-section shell interview-archive">
     <div className="work-filters interview-filter-panel" aria-label="インタビューの検索と絞り込み">
       <div className="work-filters__top"><strong>インタビューを絞り込む</strong><button type="button" onClick={clearFilters}>条件をリセット</button></div>
@@ -148,7 +241,7 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
     </div>
 
     <div className="interview-results"><p><span>{filtered.length}</span> INTERVIEWS</p><small>{isSearching ? "発言内容を検索中…" : "公開年月日の新しい順"}</small></div>
-    <div className="interview-grid">{filtered.slice(0, visibleCount).map((interview) => <InterviewCard interview={interview} key={interview.slug} />)}</div>
+    <div className="interview-grid">{filtered.slice(0, visibleCount).map((interview) => <InterviewCard interview={interview} key={interview.slug} onOpen={saveExplorerState} />)}</div>
     {!filtered.length && <div className="empty-state"><p>条件に一致するインタビューがありません。</p><button type="button" onClick={clearFilters}>すべて表示する</button></div>}
     {visibleCount < filtered.length && <button className="interview-load-more" type="button" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE_COUNT)}>さらに表示する</button>}
   </section>;

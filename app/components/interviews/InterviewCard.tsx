@@ -3,11 +3,11 @@ import { getAllInterviewTags, type InterviewSummary } from "../../data/interview
 import InterviewBookmarkButton from "./InterviewBookmarkButton";
 
 /** 動画と記事で共通利用する、インタビュー一覧カード。 */
-export default function InterviewCard({ interview }: { interview: InterviewSummary }) {
+export default function InterviewCard({ interview, onOpen }: { interview: InterviewSummary; onOpen?: () => void }) {
   const isVideo = interview.mediaType === "video";
   const tags = getAllInterviewTags(interview.tagGroups);
   return <article className="interview-card">
-    <Link className="interview-card__link" href={`/interviews/${interview.slug}`} aria-label={`${interview.title}を読む`} />
+    <Link className="interview-card__link" href={`/interviews/${interview.slug}`} aria-label={`${interview.title}を読む`} onClick={onOpen} />
     <InterviewBookmarkButton slug={interview.slug} title={interview.title} compact />
     <div className="video-thumb">
       <img src={interview.thumbnailUrl} alt="" loading="lazy" decoding="async" />

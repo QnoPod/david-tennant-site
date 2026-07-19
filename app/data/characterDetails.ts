@@ -4,6 +4,12 @@ export const selfCharacterDescription = "デイヴィッド・テナント本人
 /** Narrator、David Tennant (voice)、ナレーター表記で共通利用する説明です。 */
 export const narratorCharacterDescription = "デイヴィッド・テナントがナレーションを担当";
 
+/** 複数作品に同じ役で登場するキャラクターの説明辞書です。 */
+export const customRoleInfo: Record<string, string> = {
+  "Spitelout": "スピテルアウト\nバーク島の「毛むくじゃらのならず者族」に属する屈強なバイキング戦士で、スノットの父親。誇り高く豪快で、息子にも強い戦士であることを求める厳格さを持つ一方、危機では仲間や家族を守るために戦う。",
+  "Ivar the Whitless": "アイヴァー・ザ・ウィットレス\nウォーロードたちに仕えるドラゴン捕獲者。捕らえたドラゴンを船で運び、槍や剣を手にヒックたちと敵対する。自信満々に振る舞うが思慮が浅く、ドラゴン救出作戦に翻弄される敵役。",
+};
+
 // キャラクター詳細説明辞書
 export const customCharacterInfo: Record<string, string> = {
 

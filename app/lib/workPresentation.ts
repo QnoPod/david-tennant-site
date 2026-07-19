@@ -1,4 +1,4 @@
-import { customCharacterInfo, narratorCharacterDescription, selfCharacterDescription } from "../data/characterDetails";
+import { customCharacterInfo, customRoleInfo, narratorCharacterDescription, selfCharacterDescription } from "../data/characterDetails";
 import { customCharacterImages } from "../data/characterImages";
 import { customOverviews } from "../data/overviews";
 import { searchDictionary } from "../data/searchDictionary";
@@ -101,6 +101,14 @@ export function isArchiveDoctorRole(value: string) {
     || normalized.includes("ドクター（アーカイブ映像）");
 }
 
+/** 複数作品で共通利用するキャラクター画像の役名キーを返します。 */
+export function getSharedRoleImageKey(...values: string[]) {
+  const normalized = normalizeText(values.join(" "));
+  if (normalized.includes("spitelout") || normalized.includes("スピテルアウト")) return "Spitelout";
+  if (normalized.includes("ivarthewhitless") || normalized.includes("アイヴァーザウィットレス")) return "Ivar the Whitless";
+  return null;
+}
+
 /**
  * キャラクター画像は public/characters に置いたローカルファイルだけを使います。
  * characterImages.ts には「/characters/ファイル名」の形で記載してください。
@@ -116,11 +124,22 @@ function getCharacterImage(path?: string) {
 export function getWorkCharacters(work: Work): WorkCharacter[] {
   const isFourteenthDoctorSpecial = isFourteenthDoctorWork(work);
 
-  // 手入力キャラクターがある場合も、対象作品では14代目ドクターの表記と画像を必ず適用します。
+  // 手入力キャラクターにも、複数作品で共通利用する役名別画像を適用します。
   if (work.manualCharacters?.length) {
-    if (!isFourteenthDoctorSpecial) return work.manualCharacters;
+    const manualCharacters = work.manualCharacters.map((character) => {
+      const sharedImageKey = getSharedRoleImageKey(character.name, character.englishName);
+      if (!sharedImageKey) return character;
+      const roleInfo = parseCharacterInfo(customRoleInfo[sharedImageKey]);
+      return {
+        ...character,
+        name: roleInfo.name || character.name,
+        image: getCharacterImage(customCharacterImages[sharedImageKey]),
+        description: roleInfo.description || character.description,
+      };
+    });
+    if (!isFourteenthDoctorSpecial) return manualCharacters;
     const fourteenthDoctor = parseCharacterInfo(customCharacterInfo["Doctor Who: 60th Anniversary Specials"]);
-    return work.manualCharacters.map((character) => ({
+    return manualCharacters.map((character) => ({
       ...character,
       name: "14代目ドクター",
       englishName: "14th Doctor",
@@ -130,9 +149,13 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
   }
 
   const sourceTitle = getSourceTitle(work);
-  const rawParts = sourceTitle === "Nativity 2: Danger in the Manger!"
-    ? (work.character || "").split("/")
-    : [work.character || ""];
+  const rawCharacter = work.character || "";
+  const normalizedRawCharacter = normalizeText(rawCharacter);
+  const hasSpiteloutAndIvar = normalizedRawCharacter.includes("spitelout")
+    && normalizedRawCharacter.includes("ivarthewhitless");
+  const rawParts = sourceTitle === "Nativity 2: Danger in the Manger!" || hasSpiteloutAndIvar
+    ? rawCharacter.split("/")
+    : [rawCharacter];
 
   return rawParts.map((part) => {
     const rawName = part.trim();
@@ -141,10 +164,13 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const isHuyang = isHuyangRole(rawName);
     const isFourteenthDoctor = isFourteenthDoctorRole(rawName) || isFourteenthDoctorSpecial;
     const isArchiveDoctor = isArchiveDoctorRole(rawName);
+    const sharedImageKey = getSharedRoleImageKey(rawName);
     let dictionaryKey = sourceTitle;
     let imageKey = sourceTitle;
 
-    if (isArchiveDoctor) {
+    if (sharedImageKey) {
+      imageKey = sharedImageKey;
+    } else if (isArchiveDoctor) {
       imageKey = "archive doctor";
     } else if (isFourteenthDoctor) {
       dictionaryKey = "Doctor Who: 60th Anniversary Specials";
@@ -167,7 +193,11 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       imageKey = dictionaryKey;
     }
 
-    const parsed = parseCharacterInfo(customCharacterInfo[dictionaryKey] || customCharacterInfo[sourceTitle]);
+    const parsed = parseCharacterInfo(
+      (sharedImageKey ? customRoleInfo[sharedImageKey] : undefined)
+      || customCharacterInfo[dictionaryKey]
+      || customCharacterInfo[sourceTitle],
+    );
     const fallbackName = isArchiveDoctor ? "ドクター（アーカイブ映像）"
       : isFourteenthDoctor ? "14代目ドクター"
       : isSelf ? "本人"

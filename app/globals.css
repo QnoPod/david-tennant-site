@@ -284,6 +284,8 @@ img { display: block; max-width: 100%; }
 .media-card p { margin: 0 0 6px; color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
 .media-card h2 { margin: 0 0 5px; font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.25; }
 .media-card div > span { display: block; overflow: hidden; color: var(--muted); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.work-card__character-lines { display: grid; gap: 2px; color: var(--muted); font-size: 11px; }
+.work-card__character-lines span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .archive-load-more { min-width: 240px; min-height: 50px; display: block; margin: 42px auto 0; padding: 0 24px; border: 1px solid var(--blue); color: var(--blue); background: var(--white); cursor: pointer; font-size: 11px; font-weight: 800; }
 .archive-load-more:hover, .archive-load-more:focus-visible { color: var(--white); background: var(--blue); }
 

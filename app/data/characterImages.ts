@@ -113,6 +113,9 @@ export const customCharacterImages: Record<string, string> = {
   "ハイウェイ・ラット ～嫌われおいはぎネズミ～": "/characters/The Highway Rat.jpg",
   "ファイナル・スペース": "/characters/Lord Commander.jpg",
   "フェルディナンド": "/characters/Angus_Ferdinand.jpg",
+  // 複数作品に登場する同一キャラクターは、作品名ではなく役名キーで共通画像を使います。
+  "Spitelout": "/characters/Spitelout.jpg",
+  "Ivar the Whitless": "/characters/Ivar the Whitless.jpg",
 
 
 

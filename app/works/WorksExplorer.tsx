@@ -121,6 +121,9 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   const card = (work: Work, timeline = false) => {
     const displayTitle = getDisplayTitle(work);
     const originalTitle = getOriginalTitleForDisplay(work);
+    const characters = getWorkCharacters(work);
+    const hasSpiteloutAndIvar = characters.some((character) => normalizeText(character.englishName).includes("spitelout"))
+      && characters.some((character) => normalizeText(character.englishName).includes("ivarthewhitless"));
     const isFavorite = favorites.includes(work.id);
     const isWatched = watched.includes(work.id);
     return <article className={timeline ? "work-timeline-card" : "media-card work-card"} key={`${work.media_type}-${work.id}`}>
@@ -134,7 +137,9 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
         <p>{getWorkDate(work).slice(0, 4) || "—"} · {getMediaLabel(work.media_type)}</p>
         <h2>{displayTitle}</h2>
         {originalTitle && <small>{originalTitle}</small>}
-        <span>{getWorkCharacters(work).map((character) => character.name).join(" / ")}</span>
+        {hasSpiteloutAndIvar
+          ? <div className="work-card__character-lines">{characters.map((character) => <span key={character.englishName}>{character.name}</span>)}</div>
+          : <span>{characters.map((character) => character.name).join(" / ")}</span>}
         <div className="provider-icons" aria-label="日本の定額配信サービス">
           {(work.providers ?? []).map((provider) => provider.logo_path
             ? <img key={provider.provider_id} src={getProviderLogo(provider.logo_path)} alt={provider.provider_name} title={provider.provider_name} loading="lazy" />

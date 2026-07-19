@@ -6,7 +6,7 @@ import { searchDictionary } from "../data/searchDictionary";
 import { yearOverrides } from "../data/yearOverrides";
 import { getWorkDate, getWorkTitle } from "./tmdb";
 import type { Character, EpisodeAppearance, Work, WorkCharacter } from "./types";
-import { getDisplayTitle, getWorkCharacters, isArchiveDoctorRole } from "./workPresentation";
+import { getDisplayTitle, getSharedRoleImageKey, getWorkCharacters, isArchiveDoctorRole } from "./workPresentation";
 
 /** 「役名\n説明文」という既存データを、表示に使いやすい形に分割します。 */
 function parseInfo(raw: string) {
@@ -103,7 +103,9 @@ export function getCharacters(works: Work[] = []): Character[] {
     const isSelf = isSelfRole(parsed.name);
     const isHuyang = isHuyangRole(parsed.name);
     const isArchiveDoctor = isArchiveDoctorRole(parsed.name);
-    const imageKey = isArchiveDoctor ? "archive doctor"
+    const sharedImageKey = getSharedRoleImageKey(parsed.name, workTitle);
+    const imageKey = sharedImageKey ? sharedImageKey
+      : isArchiveDoctor ? "archive doctor"
       : parsed.name.includes("10代目") ? "10th doctor"
       : parsed.name.includes("14代目") ? "Doctor Who: 60th Anniversary Specials"
       : parsed.name.includes("スクルージ") ? "Scrooge McDuck"
@@ -186,6 +188,29 @@ export function getCharacters(works: Work[] = []): Character[] {
     };
   });
 
+  // 作品名ではなく役名で共通管理するキャラクターを、出演作品ごとにCHARACTERSへ追加します。
+  const sharedRoleCharacters: Character[] = workCatalog.flatMap(({ work, characters, appearances }) =>
+    characters.filter((character) => getSharedRoleImageKey(character.name, character.englishName)).map((character, index) => {
+      const appearanceDate = getFirstAppearanceDate(appearances, character, work.character);
+      const referenceDate = appearanceDate || getWorkDate(work);
+      const year = referenceDate.slice(0, 4) || "年不明";
+      return {
+        key: `shared-role-${work.id}-${index}-${normalize(character.englishName)}`,
+        workIds: [work.id],
+        date: referenceDate,
+        workTitle: getWorkTitle(work),
+        displayWorkTitle: getDisplayTitle(work),
+        name: character.name,
+        englishName: character.englishName,
+        description: character.description,
+        image: character.image || "/images/default-character.jpg",
+        year,
+        age: calculateAge(referenceDate, year),
+        attributes: (characterAttributes[character.name] || "").split(/[,、/]/).map((item) => item.trim()).filter(Boolean),
+      };
+    }),
+  );
+
   // manualWorks.tsの役柄も、出演回があればその放送日、なければ作品公開日を使います。
   const manualCharacters: Character[] = works.filter((work) => work.isManual && !work.excludeFromCharacters).flatMap((work) => {
     const appearances = getEpisodeAppearances(work);
@@ -212,7 +237,33 @@ export function getCharacters(works: Work[] = []): Character[] {
   });
 
   const unique = new Map<string, Character>();
-  for (const character of [...dictionaryCharacters, ...manualCharacters]) {
+  for (const character of [...dictionaryCharacters, ...sharedRoleCharacters, ...manualCharacters]) {
+    const isSpitelout = normalize(character.name) === normalize("スピテルアウト")
+      || normalize(character.englishName).includes("spitelout");
+
+    // スピテルアウトはシリーズ各作品の出演データを1件へまとめ、
+    // 初回作品『ヒックとドラゴン』の公開日・作品名を代表値として表示します。
+    if (isSpitelout) {
+      const uniqueKey = "spitelout-how-to-train-your-dragon";
+      const existing = unique.get(uniqueKey);
+      const firstAppearance = !existing || (character.date && character.date < existing.date)
+        ? character
+        : existing;
+      const workIds = [...new Set([...(existing?.workIds ?? []), ...character.workIds])];
+      const firstYear = firstAppearance.date.slice(0, 4) || firstAppearance.year;
+
+      unique.set(uniqueKey, {
+        ...firstAppearance,
+        key: uniqueKey,
+        workIds,
+        workTitle: "How to Train Your Dragon",
+        displayWorkTitle: "ヒックとドラゴン",
+        year: firstYear,
+        age: calculateAge(firstAppearance.date, firstYear),
+      });
+      continue;
+    }
+
     unique.set(`${normalize(character.name)}-${normalize(character.displayWorkTitle)}`, character);
   }
 

@@ -137,11 +137,18 @@ export function buildDataChecks(works: Work[]) {
     for (const work of group) appendDuplicate(`${work.media_type}-${work.id}`, `作品の重複候補：${titles}`);
   }
 
-  // 同じ作品名と役名の組み合わせが複数作品へ紐づく場合も表記揺れ・二重登録候補として通知します。
+  // 原題・公開年・メディア種別・役名がすべて同じ場合だけ、キャラクターの二重登録候補にします。
+  // 邦題が同じシリーズ作品で同じ役を演じていても、別作品なら重複扱いしません。
   const characterGroups = new Map<string, Array<{ work: Work; name: string }>>();
   for (const work of works) {
     for (const character of getWorkCharacters(work)) {
-      const identity = `${normalizeText(getDisplayTitle(work))}|${normalizeText(character.name)}`;
+      const year = (work.release_date || work.first_air_date || "").slice(0, 4);
+      const identity = [
+        work.media_type,
+        normalizeText(getOriginalTitle(work)),
+        year,
+        normalizeText(character.name),
+      ].join("|");
       characterGroups.set(identity, [...(characterGroups.get(identity) ?? []), { work, name: character.name }]);
     }
   }

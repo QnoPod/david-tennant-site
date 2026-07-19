@@ -103,6 +103,8 @@ export const customCharacterImages: Record<string, string> = {
   "The Genius Game": "/characters/The Creator.png",
   "Screening": "/characters/Timothy.png",
   "The Big Night In": "/characters/Mr. Logan.png",
+  "ARK：アニメーションシリーズ": "/characters/Sir Edmund Rockwell.png",
+  "ムーンガール ＆ デビル・ダイナソー": "/characters/Franklin.png",
 
 
 

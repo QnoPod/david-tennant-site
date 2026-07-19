@@ -9,7 +9,10 @@
 - 記事: RSS、公開メタ説明、公開日、掲載元、元ページ
 - 概要: 説明文の先頭3文・最大600文字を使った短い概要
 - 日本語: `DEEPL_API_KEY` がある場合にタイトルと概要を自動翻訳
-- 重複防止: YouTube動画IDまたはURLで既存記事・既存候補と照合
+- 表記統一: 「デイヴィッド・テナント」「グッド・オーメンズ」などの正式表記へ自動補正
+- Shorts除外: タイトルまたは説明欄に `#shorts` / `#short` がある動画は保存しない
+- 公式限定: `discoverySources.ts` の公式YouTubeチャンネル許可リストと完全一致する動画だけを保存
+- 重複防止: YouTube動画ID、正規化URL、原題と公開日の組み合わせで既存記事・既存候補と照合
 
 記事全文は保存しません。YouTubeの字幕を取得できない場合も、動画説明を発言原文として扱いません。
 
@@ -27,6 +30,8 @@ GitHubの `Settings → Secrets and variables → Actions` に登録します。
 `Actions → Sync INTERVIEW candidates → Run workflow` を開き、`mode` に `full-backfill` を選んで実行します。
 
 `full-backfill` が0件の場合は、実行ログの `Discover videos and articles as unpublished candidates` を開いてください。修正版では `YOUTUBE_API_KEY` がGitHub Actionsに未設定なら成功扱いにせず停止し、検索語ごとの件数と候補判定の内訳を表示します。Vercelに同名の変数があってもGitHub Actionsからは参照できないため、GitHub側のActions Secretにも登録が必要です。
+
+`YouTube API failed (429)` は短時間のリクエスト制限、または日次割当の超過です。同期処理は短時間制限ならリクエスト間隔を空け、`Retry-After`または指数バックオフに従って最大5回再試行します。日次割当超過と判定できた場合は無駄な再試行をせず停止します。`full-backfill`は6検索語×最大12ページで最大72回の`search.list`を使うため、同じ日に繰り返し実行しないでください。Google Cloudの割当画面を確認し、超過時は太平洋時間の日次リセット後に再実行します。
 
 - 過去7,300日（約20年）を検索
 - 6種類の検索語を使用

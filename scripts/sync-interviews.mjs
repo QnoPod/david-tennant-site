@@ -7,6 +7,7 @@ import {
   interviewArticleFeeds,
   interviewWorkKeywords,
   interviewYouTubeQueries,
+  officialInterviewYouTubeChannels,
 } from "../app/data/interviews/discoverySources.ts";
 
 const YOUTUBE_API = "https://www.googleapis.com/youtube/v3";
@@ -19,7 +20,14 @@ const IS_FULL_BACKFILL = SYNC_MODE === "full-backfill";
 const LOOKBACK_DAYS = Math.max(1, Number(process.env.INTERVIEW_DISCOVERY_DAYS || 14));
 // 通常同期は1ページ、初回バックフィルは最大12ページにします。6検索語でも100回/日以内に収まる設定です。
 const YOUTUBE_MAX_PAGES = Math.min(12, Math.max(1, Number(process.env.YOUTUBE_MAX_PAGES || 1)));
+const YOUTUBE_REQUEST_INTERVAL_MS = Math.max(0, Number(process.env.YOUTUBE_REQUEST_INTERVAL_MS || 300));
+const YOUTUBE_RETRY_LIMIT = 5;
 const TODAY = new Date().toISOString().slice(0, 10);
+let lastYouTubeRequestAt = 0;
+
+function wait(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
 
 function normalize(value = "") {
   return value.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
@@ -50,6 +58,23 @@ function summarize(value = "") {
 
 function hasJapanese(value = "") {
   return /[ぁ-んァ-ヶ一-龠々]/.test(value);
+}
+
+/** DeepLや取得元による固有名詞の表記ゆれを、サイト内の正式表記へ統一します。 */
+function normalizeJapaneseNotation(value = "") {
+  return value
+    .replace(/デヴィッド/g, "デイヴィッド")
+    .replace(/(?:デビッド|デイビッド)(?:・|\s*)テナント/g, "デイヴィッド・テナント")
+    .replace(/デイヴィッド(?:\s+)テナント/g, "デイヴィッド・テナント")
+    .replace(/グッド(?:・|\s*)オメンズ/g, "グッド・オーメンズ")
+    .replace(/マイケル(?:・|\s*)シーン/g, "マイケル・シーン")
+    .replace(/キャサリン(?:・|\s*)テイト/g, "キャサリン・テイト")
+    .replace(/オリヴィア(?:・|\s*)コールマン/g, "オリヴィア・コールマン");
+}
+
+/** YouTube Shortsとして明示された動画はインタビュー候補へ含めません。 */
+function isYouTubeShort(text = "") {
+  return /#(?:youtube)?shorts?\b/i.test(text);
 }
 
 function slugify(title, suffix) {
@@ -103,6 +128,37 @@ function candidateIdentity(item) {
   return item.videoId ? `youtube:${item.videoId}` : `url:${normalize(item.externalUrl)}`;
 }
 
+function canonicalExternalUrl(value = "") {
+  try {
+    const url = new URL(value);
+    url.hash = "";
+    url.hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+    for (const key of [...url.searchParams.keys()]) {
+      if (/^(?:utm_|fbclid|gclid|si$|feature$|t$)/i.test(key)) url.searchParams.delete(key);
+    }
+    url.pathname = url.pathname.replace(/\/$/, "") || "/";
+    return url.toString();
+  } catch {
+    return value;
+  }
+}
+
+/** 動画ID、正規化URL、原題と公開日の組み合わせで同一インタビューを判定します。 */
+function candidateDuplicateKeys(item) {
+  const keys = [];
+  if (item.videoId) keys.push(`youtube:${item.videoId}`);
+  if (item.externalUrl) keys.push(`url:${normalize(canonicalExternalUrl(item.externalUrl))}`);
+  const title = normalize(item.titleEn || item.title || "");
+  if (title && item.publishedDate) keys.push(`title-date:${title}:${item.publishedDate}`);
+  return keys;
+}
+
+const officialChannelNames = new Set(officialInterviewYouTubeChannels.map((name) => normalize(name)));
+
+function isOfficialYouTubeChannel(channelTitle = "") {
+  return officialChannelNames.has(normalize(channelTitle));
+}
+
 function isRelevant(text) {
   const normalized = text.toLowerCase();
   const mentionsDavid = /david\s+(?:john\s+)?tennant/.test(normalized);
@@ -122,12 +178,54 @@ function isInterviewArticle(text) {
     && /interview|q\s*&\s*a|in conversation|speaks? to|talks? to|conversation with/.test(normalized);
 }
 
+function youtubeErrorDetail(payload, fallback) {
+  const reason = payload?.error?.errors?.[0]?.reason;
+  const message = payload?.error?.message;
+  return [reason, message].filter(Boolean).join(": ") || fallback;
+}
+
 async function youtubeFetch(pathname, params) {
   const url = new URL(`${YOUTUBE_API}${pathname}`);
   Object.entries({ ...params, key: YOUTUBE_API_KEY }).forEach(([key, value]) => url.searchParams.set(key, String(value)));
-  const response = await fetch(url, { headers: { accept: "application/json" } });
-  if (!response.ok) throw new Error(`YouTube API failed (${response.status}): ${pathname}`);
-  return response.json();
+
+  for (let attempt = 0; attempt <= YOUTUBE_RETRY_LIMIT; attempt += 1) {
+    const elapsed = Date.now() - lastYouTubeRequestAt;
+    if (elapsed < YOUTUBE_REQUEST_INTERVAL_MS) await wait(YOUTUBE_REQUEST_INTERVAL_MS - elapsed);
+    lastYouTubeRequestAt = Date.now();
+
+    const response = await fetch(url, { headers: { accept: "application/json" } });
+    const responseText = await response.text();
+    let payload = {};
+    try {
+      payload = responseText ? JSON.parse(responseText) : {};
+    } catch {
+      payload = {};
+    }
+    if (response.ok) return payload;
+
+    const detail = youtubeErrorDetail(payload, responseText.slice(0, 300));
+    const dailyQuotaExhausted = /quotaexceeded|dailylimitexceeded|daily.*limit|daily.*quota/i.test(detail);
+    const retryable = !dailyQuotaExhausted && (response.status === 429 || response.status >= 500);
+    if (!retryable || attempt === YOUTUBE_RETRY_LIMIT) {
+      if (dailyQuotaExhausted) {
+        throw new Error(
+          `YouTube API daily quota was exhausted: ${pathname}: ${detail}. Wait for the Pacific Time daily reset before rerunning full-backfill.`,
+        );
+      }
+      throw new Error(`YouTube API failed (${response.status}): ${pathname}: ${detail}`);
+    }
+
+    const retryAfterSeconds = Number(response.headers.get("retry-after"));
+    const backoffMs = Number.isFinite(retryAfterSeconds) && retryAfterSeconds > 0
+      ? Math.min(retryAfterSeconds * 1_000, 60_000)
+      : Math.min(2 ** attempt * 2_000, 30_000);
+    console.warn(
+      `YouTube API ${response.status} (${detail}). Waiting ${Math.ceil(backoffMs / 1_000)}s before retry ${attempt + 1}/${YOUTUBE_RETRY_LIMIT}.`,
+    );
+    await wait(backoffMs);
+  }
+
+  throw new Error(`YouTube API retry loop ended unexpectedly: ${pathname}`);
 }
 
 async function discoverYouTube() {
@@ -184,11 +282,23 @@ async function discoverYouTube() {
 
   let irrelevantCount = 0;
   let nonPublicCount = 0;
+  let shortsCount = 0;
+  let unofficialChannelCount = 0;
+  const unofficialChannelTitles = new Set();
   const candidates = videos.flatMap((video) => {
     const snippet = video.snippet ?? {};
     const sourceText = `${snippet.title || ""} ${snippet.description || ""}`;
     if (video.status?.privacyStatus !== "public") {
       nonPublicCount += 1;
+      return [];
+    }
+    if (isYouTubeShort(sourceText)) {
+      shortsCount += 1;
+      return [];
+    }
+    if (!isOfficialYouTubeChannel(snippet.channelTitle || "")) {
+      unofficialChannelCount += 1;
+      unofficialChannelTitles.add(snippet.channelTitle || "(channel name unavailable)");
       return [];
     }
     if (!isRelevant(sourceText)) {
@@ -222,8 +332,11 @@ async function discoverYouTube() {
     }];
   });
   console.log(
-    `YouTube details: ${videos.length} loaded, ${candidates.length} candidates, ${irrelevantCount} unrelated, ${nonPublicCount} non-public`,
+    `YouTube details: ${videos.length} loaded, ${candidates.length} candidates, ${shortsCount} Shorts, ${unofficialChannelCount} unofficial channels, ${irrelevantCount} unrelated, ${nonPublicCount} non-public`,
   );
+  if (unofficialChannelTitles.size) {
+    console.log(`Rejected channel names: ${[...unofficialChannelTitles].sort().join(", ")}`);
+  }
   return candidates;
 }
 
@@ -350,8 +463,8 @@ async function applyJapaneseText(candidates) {
     const clean = Object.fromEntries(Object.entries(item).filter(([key]) => key !== "_summaryEn"));
     return {
       ...clean,
-      title: hasJapanese(title) ? title : clean.title,
-      description: hasJapanese(description) ? description : clean.description,
+      title: normalizeJapaneseNotation(hasJapanese(title) ? title : clean.title),
+      description: normalizeJapaneseNotation(hasJapanese(description) ? description : clean.description),
     };
   });
 }
@@ -370,8 +483,30 @@ async function manualIdentities() {
   const source = await fs.readFile(MANUAL_CATALOG_FILE, "utf8");
   const identities = new Set();
   for (const match of source.matchAll(/videoId:\s*"([^"]+)"/g)) identities.add(`youtube:${match[1]}`);
-  for (const match of source.matchAll(/externalUrl:\s*"([^"]+)"/g)) identities.add(`url:${normalize(match[1])}`);
+  for (const match of source.matchAll(/externalUrl:\s*"([^"]+)"/g)) {
+    identities.add(`url:${normalize(canonicalExternalUrl(match[1]))}`);
+  }
+  for (const match of source.matchAll(/titleEn:\s*"((?:\\.|[^"])*)"[\s\S]{0,240}?publishedDate:\s*"([^"]+)"/g)) {
+    identities.add(`title-date:${normalize(match[1].replace(/\\"/g, '"'))}:${match[2]}`);
+  }
   return identities;
+}
+
+function deduplicateCandidates(items) {
+  const seen = new Set();
+  const ordered = [...items].sort((left, right) => {
+    const leftReviewed = Number(left.isPublished || left.reviewStatus === "approved");
+    const rightReviewed = Number(right.isPublished || right.reviewStatus === "approved");
+    return rightReviewed - leftReviewed
+      || right.publishedDate.localeCompare(left.publishedDate)
+      || left.slug.localeCompare(right.slug);
+  });
+  return ordered.filter((item) => {
+    const keys = candidateDuplicateKeys(item);
+    if (keys.some((key) => seen.has(key))) return false;
+    keys.forEach((key) => seen.add(key));
+    return true;
+  });
 }
 
 /** 自動更新値を取り込みつつ、開発者が判断した公開状態と手直しした日本語を維持します。 */
@@ -385,8 +520,10 @@ function mergeCandidate(previous, incoming) {
     isPublished: previous.isPublished ?? false,
     reviewStatus: previous.reviewStatus ?? "pending",
     discoveredAt: previous.discoveredAt || incoming.discoveredAt,
-    title: reviewed && hasJapanese(previous.title) ? previous.title : incoming.title,
-    description: reviewed && hasJapanese(previous.description) ? previous.description : incoming.description,
+    title: normalizeJapaneseNotation(reviewed && hasJapanese(previous.title) ? previous.title : incoming.title),
+    description: normalizeJapaneseNotation(
+      reviewed && hasJapanese(previous.description) ? previous.description : incoming.description,
+    ),
     tagGroups: reviewed ? previous.tagGroups : incoming.tagGroups,
     contentStatus: reviewed ? previous.contentStatus : incoming.contentStatus,
     transcriptSource: reviewed ? previous.transcriptSource : incoming.transcriptSource,
@@ -399,7 +536,9 @@ function renderSource(items) {
 
 async function main() {
   console.log(`INTERVIEW sync mode: ${SYNC_MODE}`);
-  console.log(`Discovery window: ${LOOKBACK_DAYS} days; YouTube pages/query: ${YOUTUBE_MAX_PAGES}`);
+  console.log(
+    `Discovery window: ${LOOKBACK_DAYS} days; YouTube pages/query: ${YOUTUBE_MAX_PAGES}; request interval: ${YOUTUBE_REQUEST_INTERVAL_MS}ms`,
+  );
   const [existing, manual, youtube, articles] = await Promise.all([
     readExistingCandidates(),
     manualIdentities(),
@@ -408,17 +547,30 @@ async function main() {
   ]);
   const discovered = await applyJapaneseText([...youtube, ...articles]);
   const byIdentity = new Map(existing.map((item) => [candidateIdentity(item), item]));
+  const existingDuplicateKeys = new Set(existing.flatMap(candidateDuplicateKeys));
+  const discoveredDuplicateKeys = new Set();
 
   for (const incoming of discovered) {
     const identity = candidateIdentity(incoming);
-    const urlIdentity = `url:${normalize(incoming.externalUrl)}`;
-    if (manual.has(identity) || manual.has(urlIdentity)) continue;
+    const duplicateKeys = candidateDuplicateKeys(incoming);
+    if (duplicateKeys.some((key) => manual.has(key))) continue;
+    const exactExisting = byIdentity.get(identity);
+    if (!exactExisting && duplicateKeys.some((key) => existingDuplicateKeys.has(key))) continue;
+    if (duplicateKeys.some((key) => discoveredDuplicateKeys.has(key))) continue;
     byIdentity.set(identity, mergeCandidate(byIdentity.get(identity), incoming));
+    duplicateKeys.forEach((key) => discoveredDuplicateKeys.add(key));
   }
 
-  const candidates = [...byIdentity.values()].sort((left, right) =>
-    right.publishedDate.localeCompare(left.publishedDate) || left.slug.localeCompare(right.slug),
-  );
+  const candidates = deduplicateCandidates([...byIdentity.values()]
+    // 過去の同期で保存済みのShortsも、次回同期時に候補ファイルから取り除きます。
+    .filter((item) => !isYouTubeShort(`${item.titleEn || ""} ${item.title || ""} ${item.description || ""}`))
+    // 自動候補に以前保存された非公式チャンネルの動画も取り除きます。記事候補は別判定です。
+    .filter((item) => item.mediaType !== "video" || isOfficialYouTubeChannel(item.source))
+    .map((item) => ({
+      ...item,
+      title: normalizeJapaneseNotation(item.title),
+      description: normalizeJapaneseNotation(item.description),
+    })));
   const temporaryFile = `${DATA_FILE}.tmp`;
   await fs.writeFile(temporaryFile, renderSource(candidates), "utf8");
   await fs.rename(temporaryFile, DATA_FILE);

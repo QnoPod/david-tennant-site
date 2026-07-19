@@ -1,6 +1,9 @@
 /** Self、Himself、本人表記で共通利用する説明です。 */
 export const selfCharacterDescription = "デイヴィッド・テナント本人。";
 
+/** Narrator、David Tennant (voice)、ナレーター表記で共通利用する説明です。 */
+export const narratorCharacterDescription = "デイヴィッド・テナントがナレーションを担当";
+
 // キャラクター詳細説明辞書
 export const customCharacterInfo: Record<string, string> = {
 

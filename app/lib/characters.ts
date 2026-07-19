@@ -1,5 +1,5 @@
 import { characterAttributes } from "../data/characterAttributes";
-import { customCharacterInfo, selfCharacterDescription } from "../data/characterDetails";
+import { customCharacterInfo, narratorCharacterDescription, selfCharacterDescription } from "../data/characterDetails";
 import { customCharacterImages } from "../data/characterImages";
 import { episodeOverrides } from "../data/episodeOverrides";
 import { searchDictionary } from "../data/searchDictionary";
@@ -24,7 +24,9 @@ function normalize(value: string) {
 
 /** 英語・日本語のナレーター表記を共通キャラクターとして扱います。 */
 function isNarratorRole(value: string) {
-  return /\bnarrator\b/i.test(value) || value.includes("ナレーター");
+  return /\bnarrator\b/i.test(value)
+    || /^\s*david\s+tennant\s*\(voice\)\s*$/i.test(value)
+    || value.includes("ナレーター");
 }
 
 /** SelfやHimselfを含む表記を共通の本人出演として扱います。 */
@@ -153,7 +155,9 @@ export function getCharacters(works: Work[] = []): Character[] {
       displayWorkTitle,
       name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || "役名未登録",
       englishName,
-      description: isSelf ? selfCharacterDescription : parsed.description || "詳細情報は準備中です。",
+      description: isSelf ? selfCharacterDescription
+        : isNarrator ? narratorCharacterDescription
+        : parsed.description || "詳細情報は準備中です。",
       image: imagePath || "/images/default-character.jpg",
       year,
       age,

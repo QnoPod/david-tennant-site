@@ -1,4 +1,4 @@
-import { customCharacterInfo, selfCharacterDescription } from "../data/characterDetails";
+import { customCharacterInfo, narratorCharacterDescription, selfCharacterDescription } from "../data/characterDetails";
 import { customCharacterImages } from "../data/characterImages";
 import { customOverviews } from "../data/overviews";
 import { searchDictionary } from "../data/searchDictionary";
@@ -54,7 +54,9 @@ function parseCharacterInfo(raw?: string) {
 
 /** Narrator、Narrator (voice)などを同じナレーター役として判定します。 */
 function isNarratorRole(value: string) {
-  return /\bnarrator\b/i.test(value) || value.includes("ナレーター");
+  return /\bnarrator\b/i.test(value)
+    || /^\s*david\s+tennant\s*\(voice\)\s*$/i.test(value)
+    || value.includes("ナレーター");
 }
 
 /** Self、Self - Host、Himselfなどを同じ本人出演として判定します。 */
@@ -132,7 +134,9 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || fallbackName,
       englishName,
       image: getCharacterImage(customCharacterImages[imageKey] || customCharacterImages[sourceTitle]),
-      description: isSelf ? selfCharacterDescription : parsed.description,
+      description: isSelf ? selfCharacterDescription
+        : isNarrator ? narratorCharacterDescription
+        : parsed.description,
     };
   });
 }

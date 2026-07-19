@@ -137,6 +137,8 @@ export function getCharacters(works: Work[] = []): Character[] {
         : isHuyang ? "Huyang"
         : parsed.name.includes("10代目ドクター") ? "10th Doctor"
         : parsed.name.includes("14代目ドクター") ? "14th Doctor"
+        : parsed.name === "エドマンド・ロックウェル卿" ? "Sir Edmund Rockwell"
+        : parsed.name === "フランクリン" ? "Franklin"
         : parsed.name.includes("スクルージ・マクダック") ? "Scrooge McDuck"
         : parsed.name === "ドナルド・ピーターソン" ? "Donald Peterson"
         : parsed.name === "ロデリック・ピーターソン" ? "Roderick Peterson"

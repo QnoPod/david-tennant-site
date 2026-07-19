@@ -12,6 +12,7 @@ const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteCharacters;
 const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
 const INITIAL_VISIBLE_COUNT = 24;
 const INITIAL_ATTRIBUTE_GROUP_COUNT = 4;
+type AnimationFilter = "HIDE" | "ALL" | "ONLY";
 
 // キャラクター詳細はカードを開いたときだけ読み込みます。
 const CharacterDetailModal = dynamic(() => import("./CharacterDetailModal"), { ssr: false });
@@ -22,6 +23,8 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   const [query, setQuery] = useState(initialQuery);
   const [showAttributes, setShowAttributes] = useState(false);
   const [watchStatus, setWatchStatus] = useState("ALL");
+  // 初期画面では実写キャラクターだけを表示します。
+  const [animationFilter, setAnimationFilter] = useState<AnimationFilter>("HIDE");
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [watchedWorks, setWatchedWorks] = useState<number[]>([]);
@@ -50,10 +53,12 @@ export default function CharactersExplorer({ characters }: { characters: Charact
     // 日本語名、英語名、辞書キー、表示用作品名のすべてを検索対象にします。
     const text = normalizeText(`${character.name} ${character.englishName} ${character.workTitle} ${character.displayWorkTitle}`);
     const isWatched = character.workIds.some((id) => watchedWorkIds.has(String(id)));
+    const isAnimationCharacter = character.attributes.includes("声優・アニメ");
     return text.includes(normalizeText(query))
       && (watchStatus === "ALL" || (watchStatus === "WATCHED" ? isWatched : !isWatched))
+      && (animationFilter === "ALL" || (animationFilter === "ONLY" ? isAnimationCharacter : !isAnimationCharacter))
       && (!favoritesOnly || favorites.includes(character.key));
-  }), [characters, favorites, favoritesOnly, query, watchStatus, watchedWorkIds]);
+  }), [animationFilter, characters, favorites, favoritesOnly, query, watchStatus, watchedWorkIds]);
   const attributeGroups = useMemo(() => [...attributeCounts.keys()]
     .map((item) => ({ attribute: item, characters: filtered.filter((character) => character.attributes.includes(item)) }))
     .filter((group) => group.characters.length)
@@ -79,7 +84,7 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   useEffect(() => {
     setVisibleCount(INITIAL_VISIBLE_COUNT);
     setVisibleAttributeGroups(INITIAL_ATTRIBUTE_GROUP_COUNT);
-  }, [favoritesOnly, query, view, watchStatus]);
+  }, [animationFilter, favoritesOnly, query, view, watchStatus]);
 
   const toggleFavorite = (character: Character) => {
     const isFavorite = favorites.includes(character.key);
@@ -143,7 +148,8 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   return (
     <section className="archive-section shell">
       <ArchiveControls className="archive-controls--characters" query={query} onQueryChange={setQuery} view={view} onViewChange={setView} count={filtered.length} showViewControls={false}>
-        <select aria-label="視聴状況" value={watchStatus} onChange={(event) => setWatchStatus(event.target.value)}><option value="ALL">すべての視聴状況</option><option value="WATCHED">視聴済</option><option value="UNWATCHED">未視聴</option></select>
+        <select className="character-watch-filter" aria-label="視聴状況" value={watchStatus} onChange={(event) => setWatchStatus(event.target.value)}><option value="ALL">すべての視聴状況</option><option value="WATCHED">視聴済</option><option value="UNWATCHED">未視聴</option></select>
+        <select className="character-animation-filter" aria-label="アニメキャラクターの表示" value={animationFilter} onChange={(event) => setAnimationFilter(event.target.value as AnimationFilter)}><option value="HIDE">アニメ：表示しない</option><option value="ALL">アニメ：表示する</option><option value="ONLY">アニメだけ表示</option></select>
         <button className={showAttributes ? "is-active" : ""} onClick={() => setShowAttributes((value) => !value)}>{showAttributes ? "属性をOFF" : "属性をON"}</button>
         <div className="character-favorite-controls">
           <button className={favoritesOnly ? "is-active" : ""} onClick={() => setFavoritesOnly((value) => !value)}>{favoritesOnly ? "★ お気に入りのみ表示" : "☆ お気に入りのみ表示"}</button>

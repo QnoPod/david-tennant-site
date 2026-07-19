@@ -260,10 +260,12 @@ img { display: block; max-width: 100%; }
 .archive-controls__actions button:disabled { cursor: default; opacity: .42; }
 .archive-controls__actions .archive-clear-favorites { color: #8d3b36; border-color: rgba(141,59,54,.35); }
 .archive-controls--characters { grid-template-columns: 1fr; align-items: start; }
-.archive-controls--characters .archive-controls__actions { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; gap: 8px; }
-.archive-controls--characters .archive-controls__actions > select { grid-column: 1; width: 100%; }
-.archive-controls--characters .archive-controls__actions > button { grid-column: 2; }
-.character-favorite-controls { grid-column: 3 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.archive-controls--characters .archive-controls__actions { width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: stretch; gap: 8px; }
+.archive-controls--characters .archive-controls__actions > select { width: 100%; }
+.archive-controls--characters .character-watch-filter { grid-column: 1; }
+.archive-controls--characters .character-animation-filter { grid-column: 2; }
+.archive-controls--characters .archive-controls__actions > button { grid-column: 3; }
+.character-favorite-controls { grid-column: 4 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .archive-controls__actions .character-favorite-controls button { min-height: 44px; padding: 0 13px; border: 1px solid var(--line); background: var(--white); cursor: pointer; font-size: 11px; font-weight: 700; }
 .archive-controls__actions .character-favorite-controls button.is-active { color: var(--white); border-color: var(--blue); background: var(--blue); }
 .archive-controls__actions .character-favorite-controls .archive-clear-favorites { color: #8d3b36; border-color: rgba(141,59,54,.35); }

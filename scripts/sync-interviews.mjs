@@ -14,6 +14,8 @@ const DATA_FILE = path.resolve(process.cwd(), "app/data/interviews/autoCandidate
 const MANUAL_CATALOG_FILE = path.resolve(process.cwd(), "app/data/interviews/catalog.ts");
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
+const SYNC_MODE = process.env.INTERVIEW_SYNC_MODE || "daily";
+const IS_FULL_BACKFILL = SYNC_MODE === "full-backfill";
 const LOOKBACK_DAYS = Math.max(1, Number(process.env.INTERVIEW_DISCOVERY_DAYS || 14));
 // 通常同期は1ページ、初回バックフィルは最大12ページにします。6検索語でも100回/日以内に収まる設定です。
 const YOUTUBE_MAX_PAGES = Math.min(12, Math.max(1, Number(process.env.YOUTUBE_MAX_PAGES || 1)));
@@ -103,8 +105,14 @@ function candidateIdentity(item) {
 
 function isRelevant(text) {
   const normalized = text.toLowerCase();
-  return normalized.includes("david tennant")
-    && /interview|talks?|reveals?|explains?|speaks?|chat|q\s*&\s*a|conversation|inside|remembers?/.test(normalized);
+  const mentionsDavid = /david\s+(?:john\s+)?tennant/.test(normalized);
+  if (!mentionsDavid) return false;
+
+  // full-backfillは公開前の候補収集です。検索語自体がインタビュー形式を指定しているため、
+  // 古い動画で説明欄に interview などの語がなくても候補から落としません。
+  if (IS_FULL_BACKFILL) return true;
+
+  return /interview|talks?|reveals?|explains?|speaks?|chat|q\s*&\s*a|conversation|inside|remembers?|answers?|press|podcast/.test(normalized);
 }
 
 /** 出演発表や作品ニュースを除き、インタビュー形式だと判断できる記事だけを候補にします。 */
@@ -124,12 +132,14 @@ async function youtubeFetch(pathname, params) {
 
 async function discoverYouTube() {
   if (!YOUTUBE_API_KEY) {
-    console.warn("YOUTUBE_API_KEY is not set; YouTube discovery was skipped.");
-    return [];
+    throw new Error(
+      "YOUTUBE_API_KEY is not set. Add it to GitHub Settings > Secrets and variables > Actions, then rerun the workflow.",
+    );
   }
 
   const ids = new Set();
   for (const query of interviewYouTubeQueries) {
+    let queryCount = 0;
     let pageToken = "";
     for (let page = 0; page < YOUTUBE_MAX_PAGES; page += 1) {
       const payload = await youtubeFetch("/search", {
@@ -143,12 +153,22 @@ async function discoverYouTube() {
         safeSearch: "moderate",
         ...(pageToken ? { pageToken } : {}),
       });
-      for (const item of payload.items ?? []) if (item.id?.videoId) ids.add(item.id.videoId);
+      for (const item of payload.items ?? []) {
+        if (!item.id?.videoId) continue;
+        ids.add(item.id.videoId);
+        queryCount += 1;
+      }
       pageToken = payload.nextPageToken || "";
       if (!pageToken) break;
     }
+    console.log(`YouTube search: ${query} -> ${queryCount} results`);
   }
-  if (!ids.size) return [];
+  console.log(`YouTube search total: ${ids.size} unique video IDs`);
+  if (!ids.size) {
+    throw new Error(
+      "YouTube API returned no video IDs. Check API restrictions, YouTube Data API v3 activation, and quota.",
+    );
+  }
 
   // videos.listは一度に50IDまでなので、全検索結果を50件ずつ取得します。
   const videos = [];
@@ -162,10 +182,19 @@ async function discoverYouTube() {
     videos.push(...(payload.items ?? []));
   }
 
-  return videos.flatMap((video) => {
+  let irrelevantCount = 0;
+  let nonPublicCount = 0;
+  const candidates = videos.flatMap((video) => {
     const snippet = video.snippet ?? {};
     const sourceText = `${snippet.title || ""} ${snippet.description || ""}`;
-    if (!isRelevant(sourceText) || video.status?.privacyStatus !== "public") return [];
+    if (video.status?.privacyStatus !== "public") {
+      nonPublicCount += 1;
+      return [];
+    }
+    if (!isRelevant(sourceText)) {
+      irrelevantCount += 1;
+      return [];
+    }
     const source = snippet.channelTitle || "YouTube";
     const summaryEn = summarize(snippet.description) || `An interview video titled “${snippet.title}” was published by ${source}.`;
     const publishedDate = isoDate(snippet.publishedAt);
@@ -192,6 +221,10 @@ async function discoverYouTube() {
       _summaryEn: summaryEn,
     }];
   });
+  console.log(
+    `YouTube details: ${videos.length} loaded, ${candidates.length} candidates, ${irrelevantCount} unrelated, ${nonPublicCount} non-public`,
+  );
+  return candidates;
 }
 
 function xmlTag(block, tag) {
@@ -365,6 +398,8 @@ function renderSource(items) {
 }
 
 async function main() {
+  console.log(`INTERVIEW sync mode: ${SYNC_MODE}`);
+  console.log(`Discovery window: ${LOOKBACK_DAYS} days; YouTube pages/query: ${YOUTUBE_MAX_PAGES}`);
   const [existing, manual, youtube, articles] = await Promise.all([
     readExistingCandidates(),
     manualIdentities(),

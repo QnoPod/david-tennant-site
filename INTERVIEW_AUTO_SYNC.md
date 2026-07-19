@@ -26,6 +26,8 @@ GitHubの `Settings → Secrets and variables → Actions` に登録します。
 
 `Actions → Sync INTERVIEW candidates → Run workflow` を開き、`mode` に `full-backfill` を選んで実行します。
 
+`full-backfill` が0件の場合は、実行ログの `Discover videos and articles as unpublished candidates` を開いてください。修正版では `YOUTUBE_API_KEY` がGitHub Actionsに未設定なら成功扱いにせず停止し、検索語ごとの件数と候補判定の内訳を表示します。Vercelに同名の変数があってもGitHub Actionsからは参照できないため、GitHub側のActions Secretにも登録が必要です。
+
 - 過去7,300日（約20年）を検索
 - 6種類の検索語を使用
 - 各検索語を最大12ページ、1ページ50件まで確認

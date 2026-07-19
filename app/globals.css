@@ -154,7 +154,13 @@ img { display: block; max-width: 100%; }
 .updates-list p a:hover { color: var(--blue); text-decoration: underline; }
 
 /* ---------- Upcoming productions ---------- */
-.upcoming-notice { margin-bottom: 28px; }
+.source-notice.upcoming-notice,
+.source-notice.comic-con-notice { grid-template-columns: 1fr; align-items: start; gap: 10px; }
+.source-notice.upcoming-notice { margin-bottom: 28px; }
+.upcoming-notice > span,
+.comic-con-notice > span { width: fit-content; }
+.upcoming-notice > p,
+.comic-con-notice > p { grid-column: 1; }
 .upcoming-summary { display: flex; align-items: baseline; gap: 10px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .upcoming-summary strong { color: var(--gold); font-family: var(--serif); font-size: 42px; font-weight: 500; line-height: 1; }
 .upcoming-summary span { font-size: 13px; font-weight: 800; }

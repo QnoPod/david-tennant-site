@@ -1,4 +1,5 @@
 import type { Work } from "../lib/types";
+import { selfCharacterDescription } from "./characterDetails";
 import { episodeOverrides } from "./episodeOverrides";
 
 /** 本人出演番組をWORKS詳細に表示するための共通データです。CHARACTERSには追加しません。 */
@@ -6,7 +7,7 @@ const selfAppearance = [{
   name: "本人",
   englishName: "Self",
   image: "/characters/self-icon.png",
-  description: "本人として出演。",
+  description: selfCharacterDescription,
 }];
 
 /**

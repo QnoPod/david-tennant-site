@@ -1,3 +1,6 @@
+/** Self、Himself、本人表記で共通利用する説明です。 */
+export const selfCharacterDescription = "デイヴィッド・テナント本人。";
+
 // キャラクター詳細説明辞書
 export const customCharacterInfo: Record<string, string> = {
 

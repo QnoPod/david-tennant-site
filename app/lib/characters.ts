@@ -1,5 +1,5 @@
 import { characterAttributes } from "../data/characterAttributes";
-import { customCharacterInfo } from "../data/characterDetails";
+import { customCharacterInfo, selfCharacterDescription } from "../data/characterDetails";
 import { customCharacterImages } from "../data/characterImages";
 import { episodeOverrides } from "../data/episodeOverrides";
 import { searchDictionary } from "../data/searchDictionary";
@@ -153,7 +153,7 @@ export function getCharacters(works: Work[] = []): Character[] {
       displayWorkTitle,
       name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || "役名未登録",
       englishName,
-      description: parsed.description || "詳細情報は準備中です。",
+      description: isSelf ? selfCharacterDescription : parsed.description || "詳細情報は準備中です。",
       image: imagePath || "/images/default-character.jpg",
       year,
       age,

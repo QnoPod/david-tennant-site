@@ -1,4 +1,4 @@
-import { customCharacterInfo } from "../data/characterDetails";
+import { customCharacterInfo, selfCharacterDescription } from "../data/characterDetails";
 import { customCharacterImages } from "../data/characterImages";
 import { customOverviews } from "../data/overviews";
 import { searchDictionary } from "../data/searchDictionary";
@@ -132,7 +132,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       name: isSelf ? "本人" : isNarrator ? "ナレーター" : isHuyang ? "ヒュイヤン" : parsed.name || fallbackName,
       englishName,
       image: getCharacterImage(customCharacterImages[imageKey] || customCharacterImages[sourceTitle]),
-      description: parsed.description,
+      description: isSelf ? selfCharacterDescription : parsed.description,
     };
   });
 }

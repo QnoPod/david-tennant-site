@@ -75,6 +75,7 @@ function isHuyangRole(value: string) {
  */
 function getCharacterDictionaryKeyByRole(value: string) {
   const normalized = normalizeText(value);
+  if (normalized.includes("crowley") || normalized.includes("クロウリー")) return "グッド・オーメンズ";
   if (normalized.includes("buckdouglas")) return "Fireman Sam: Alien Alert! The Movie";
   if (normalized.includes("igorthedoor") || normalized.includes("ドアのイゴール")) {
     return "ミッキーマウス クラブハウス／ミッキーのモンスターミュージカル";
@@ -231,6 +232,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       : dictionaryKey === "10th Doctor" ? "10th Doctor"
       : dictionaryKey === "Donald Peterson" ? "Donald Peterson"
       : dictionaryKey === "Roderick Peterson" ? "Roderick Peterson"
+      : dictionaryKey === "グッド・オーメンズ" ? "Crowley"
       : isSelf ? "Self"
       : isNarrator ? "Narrator"
       : isHuyang ? "Huyang"

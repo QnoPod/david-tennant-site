@@ -64,6 +64,7 @@ export const customCharacterImages: Record<string, string> = {
   "Recovery": "/characters/Alan Hamilton.jpg",
   "Dramarama": "/characters/Neil McDonald.jpg",
   "Biting the Hands": "/characters/Third Squaddie.jpg",
+  "Third Squaddie": "/characters/Third Squaddie.jpg",
   "The Tales of Para Handy": "/characters/John MacBryde.jpg",
   "Jude": "/characters/Drunk Undergraduate.jpg",
   "Quality Control": "/characters/Gary Innes.jpg",

@@ -298,6 +298,8 @@ export function getCharacters(works: Work[] = []): Character[] {
       || normalize(character.englishName).includes("charlesdarwin");
     const isDangerousBeans = normalize(character.name) === normalize("デンジャラス・ビーンズ")
       || normalize(character.englishName).includes("dangerousbeans");
+    const isThirdSquaddie = normalize(character.name) === normalize("第3の歩兵")
+      || normalize(character.englishName).includes("thirdsquaddie");
 
     // スピテルアウトはシリーズ各作品の出演データを1件へまとめ、
     // 初回作品『ヒックとドラゴン』の公開日・作品名を代表値として表示します。
@@ -333,6 +335,20 @@ export function getCharacters(works: Work[] = []): Character[] {
         "天才ねこモーリスとゆかいな仲間たち",
         "Dangerous Beans",
         "2022",
+      );
+      continue;
+    }
+
+    // Third Squaddieはシリーズ名とエピソード名の両方で登録されていても1件へ統合し、
+    // CHARACTERSでは両方の作品名と初登場年の1988年を表示します。
+    if (isThirdSquaddie) {
+      mergeFirstAppearanceCharacter(
+        "third-squaddie-the-play-on-one-biting-the-hands",
+        character,
+        "The Play on One / Biting the Hands",
+        "The Play on One / Biting the Hands",
+        "Third Squaddie",
+        "1988",
       );
       continue;
     }

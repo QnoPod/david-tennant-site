@@ -155,6 +155,7 @@ export function getSharedRoleImageKey(...values: string[]) {
   if (normalized.includes("ivarthewhitless") || normalized.includes("アイヴァーザウィットレス")) return "Ivar the Whitless";
   if (normalized.includes("charlesdarwin") || normalized.includes("チャールズダーウィン")) return "Charles Darwin";
   if (normalized.includes("dangerousbeans") || normalized.includes("デンジャラスビーンズ")) return "Dangerous Beans";
+  if (normalized.includes("thirdsquaddie") || normalized.includes("第3の歩兵")) return "Third Squaddie";
   return null;
 }
 

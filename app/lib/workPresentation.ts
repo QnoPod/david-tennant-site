@@ -111,6 +111,17 @@ function isFourteenthDoctorRole(value: string) {
   return /^14th doctor$/i.test(normalized) || normalized.includes("14代目ドクター");
 }
 
+/** 10th Doctor、Tenth Doctor、The Doctor (10)を同じ10代目ドクターとして扱います。 */
+function isTenthDoctorRole(value: string) {
+  const normalized = normalizeText(value);
+  return normalized === "10thdoctor"
+    || normalized === "tenthdoctor"
+    || normalized === "the10thdoctor"
+    || normalized === "thetenthdoctor"
+    || normalized === "thedoctor10"
+    || normalized.includes("10代目ドクター");
+}
+
 /**
  * TMDBの日本語タイトル・原題・予備データのどれを使っていても、
  * デイヴィッドが14代目ドクターを演じる2023年の特別編を判定します。
@@ -210,6 +221,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const isNarrator = isNarratorRole(rawName);
     const isSelf = isSelfRole(rawName);
     const isHuyang = isHuyangRole(rawName);
+    const isTenthDoctor = isTenthDoctorRole(rawName);
     const isFourteenthDoctor = isFourteenthDoctorRole(rawName) || isFourteenthDoctorSpecial;
     const isArchiveDoctor = isArchiveDoctorRole(rawName);
     const sharedImageKey = getSharedRoleImageKey(rawName);
@@ -227,7 +239,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     } else if (isFourteenthDoctor) {
       dictionaryKey = "Doctor Who: 60th Anniversary Specials";
       imageKey = "Doctor Who: 60th Anniversary Specials";
-    } else if (rawName === "The Doctor" || rawName === "The Doctor (10)") {
+    } else if (isTenthDoctor || rawName === "The Doctor") {
       dictionaryKey = "10th Doctor";
       imageKey = "10th doctor";
     } else if (isSelf) {
@@ -252,6 +264,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     );
     const fallbackName = isArchiveDoctor ? "ドクター（アーカイブ映像）"
       : isFourteenthDoctor ? "14代目ドクター"
+      : isTenthDoctor ? "10代目ドクター"
       : isSelf ? "本人"
       : isNarrator ? "ナレーター"
       : rawName || "役名未登録";
@@ -269,6 +282,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     return {
       name: isArchiveDoctor ? "ドクター（アーカイブ映像）"
         : isFourteenthDoctor ? "14代目ドクター"
+        : isTenthDoctor ? "10代目ドクター"
         : isSelf ? "本人"
         : isNarrator ? "ナレーター"
         : isHuyang ? "ヒュイヤン"
@@ -278,6 +292,8 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
       description: isSelf ? selfCharacterDescription
         : isNarrator ? narratorCharacterDescription
         : parsed.description,
+      // 既存のCHARACTERS一覧は「10th Doctor」の辞書データを継続利用します。
+      excludeFromCharacters: isTenthDoctor || undefined,
     };
   });
 }

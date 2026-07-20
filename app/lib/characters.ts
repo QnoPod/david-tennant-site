@@ -123,7 +123,9 @@ export function getCharacters(works: Work[] = []): Character[] {
       normalizedWorkTitles.some((title) => entry.titles.includes(title)),
     );
     const characterMatchedEntries = workCatalog.filter((entry) =>
-      entry.characters.some((character) => normalize(character.name) === normalize(parsed.name)),
+      entry.characters.some((character) =>
+        !character.excludeFromCharacters && normalize(character.name) === normalize(parsed.name),
+      ),
     );
     const matchedEntries = titleMatchedEntries.length ? titleMatchedEntries : characterMatchedEntries;
     const matched = matchedEntries[0];

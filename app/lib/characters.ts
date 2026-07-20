@@ -263,6 +263,7 @@ export function getCharacters(works: Work[] = []): Character[] {
     workTitle: string,
     displayWorkTitle: string,
     englishName?: string,
+    representativeYear?: string,
   ) => {
     const existing = unique.get(uniqueKey);
     const timelineKey = (item: Character) => /^\d{4}-\d{2}-\d{2}$/.test(item.date)
@@ -272,17 +273,21 @@ export function getCharacters(works: Work[] = []): Character[] {
       ? character
       : existing;
     const workIds = [...new Set([...(existing?.workIds ?? []), ...character.workIds])];
-    const firstYear = firstAppearance.date.slice(0, 4) || firstAppearance.year;
+    const firstYear = representativeYear || firstAppearance.date.slice(0, 4) || firstAppearance.year;
+    const firstDate = representativeYear && !firstAppearance.date.startsWith(representativeYear)
+      ? representativeYear
+      : firstAppearance.date;
 
     unique.set(uniqueKey, {
       ...firstAppearance,
       key: uniqueKey,
       workIds,
+      date: firstDate,
       workTitle,
       displayWorkTitle,
       englishName: englishName ?? firstAppearance.englishName,
       year: firstYear,
-      age: calculateAge(firstAppearance.date, firstYear),
+      age: calculateAge(firstDate, firstYear),
     });
   };
 
@@ -291,6 +296,8 @@ export function getCharacters(works: Work[] = []): Character[] {
       || normalize(character.englishName).includes("spitelout");
     const isCharlesDarwin = normalize(character.name) === normalize("チャールズ・ダーウィン")
       || normalize(character.englishName).includes("charlesdarwin");
+    const isDangerousBeans = normalize(character.name) === normalize("デンジャラス・ビーンズ")
+      || normalize(character.englishName).includes("dangerousbeans");
 
     // スピテルアウトはシリーズ各作品の出演データを1件へまとめ、
     // 初回作品『ヒックとドラゴン』の公開日・作品名を代表値として表示します。
@@ -312,6 +319,20 @@ export function getCharacters(works: Work[] = []): Character[] {
         "The Pirates! In an Adventure with Scientists!",
         "ザ・パイレーツ！",
         "Charles Darwin",
+      );
+      continue;
+    }
+
+    // デンジャラス・ビーンズは続編を含む各作品の出演データを1件へまとめ、
+    // 初登場作『天才ねこモーリスとゆかいな仲間たち』を代表作として表示します。
+    if (isDangerousBeans) {
+      mergeFirstAppearanceCharacter(
+        "dangerous-beans-the-amazing-maurice",
+        character,
+        "The Amazing Maurice",
+        "天才ねこモーリスとゆかいな仲間たち",
+        "Dangerous Beans",
+        "2022",
       );
       continue;
     }

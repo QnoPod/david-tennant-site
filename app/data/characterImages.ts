@@ -106,6 +106,7 @@ export const customCharacterImages: Record<string, string> = {
   "ARK：アニメーションシリーズ": "/characters/Sir Edmund Rockwell.png",
   "ムーンガール ＆ デビル・ダイナソー": "/characters/Franklin.png",
   "天才ねこモーリスとゆかいな仲間たち": "/characters/Dangerous Beans.jpg",
+  "Dangerous Beans": "/characters/Dangerous Beans.jpg",
   "ヴォクス・マキナの伝説": "/characters/General Kreig.png",
   "ラウド・ハウス・ムービー": "/characters/Angus.jpg",
   "Heart to Heart": "/characters/Heart.jpg",

@@ -310,6 +310,8 @@ img { display: block; max-width: 100%; }
 .data-check-list > article > header { display: flex; justify-content: space-between; gap: 20px; padding: 20px; border-bottom: 1px solid var(--line); }
 .data-check-list header p { margin: 0 0 6px; color: var(--gold); font-size: 9px; font-weight: 900; letter-spacing: .1em; }
 .data-check-list header h2 { margin: 0; font-family: var(--serif); font-size: 23px; font-weight: 600; }
+.data-check-title-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.data-check-title-row a { color: var(--blue); font-size: 10px; font-weight: 800; white-space: nowrap; }
 .data-check-list header small { display: block; margin-top: 4px; color: var(--muted); }
 .data-check-list header > strong { height: fit-content; padding: 6px 9px; color: #8d3b36; border: 1px solid rgba(141,59,54,.3); font-size: 9px; white-space: nowrap; }
 .data-check-list ul { display: grid; margin: 0; padding: 0; list-style: none; }

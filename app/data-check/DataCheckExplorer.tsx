@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { DATA_CHECK_DEFINITIONS, type DataCheckKey } from "../lib/dataCheckDefinitions";
 import type { WorkDataCheck } from "../lib/dataChecks";
@@ -46,7 +47,7 @@ export default function DataCheckExplorer({ checks, totalWorks }: { checks: Work
     <div className="data-check-results"><strong>{filtered.length}</strong><span>件を表示</span></div>
     <div className="data-check-list">
       {filtered.map((work) => <article key={work.key}>
-        <header><div><p>{work.year} · {work.source}</p><h2>{work.title}</h2>{work.originalTitle !== work.title && <small>{work.originalTitle}</small>}</div><strong>{work.issues.length}項目</strong></header>
+        <header><div><p>{work.year} · {work.source}</p><div className="data-check-title-row"><h2>{work.title}</h2><Link href={`/works?q=${encodeURIComponent(work.title)}`}>該当作品を開く →</Link></div>{work.originalTitle !== work.title && <small>{work.originalTitle}</small>}</div><strong>{work.issues.length}項目</strong></header>
         <ul>{work.issues.map((item) => <li key={item.key}><div><b>{item.label}</b><p>{item.detail}</p></div><code>{item.editFile}</code></li>)}</ul>
       </article>)}
       {!filtered.length && <p className="empty-state">条件に一致する不足データはありません。</p>}

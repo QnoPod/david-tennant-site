@@ -35,5 +35,23 @@ export const workImageOverrides: Record<string, Pick<Work, "posterUrl" | "backdr
     "The Muppets Take The O2": {
     posterUrl: "/works/The Muppets Take The O2.jpg",
   },
+    "National Television Awards": {
+    posterUrl: "/works/National Television Awards.png",
+  },
+    "The Jonathan Ross Show": {
+    posterUrl: "/works/The Jonathan Ross Show.jpg",
+  },
+    "My Sarah Jane: A Tribute to Elisabeth Sladen": {
+    posterUrl: "/works/My Sarah Jane A Tribute to Elisabeth Sladen.jpg",
+  },
+    "Lachlan Macquarie: The Father of Australia": {
+    posterUrl: "/works/Lachlan Macquarie The Father of Australia.jpg",
+  },
+    "Doctor Who: Farewell to Matt Smith": {
+    posterUrl: "/works/Doctor Who Farewell to Matt Smith.jpg",
+  },
+    "Doctor Who: Human Nature & The Family of Blood": {
+    posterUrl: "/works/Doctor Who Human Nature & The Family of Blood.jpg",
+  },
   
 };

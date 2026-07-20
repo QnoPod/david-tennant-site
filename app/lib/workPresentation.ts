@@ -69,6 +69,24 @@ function isHuyangRole(value: string) {
   return value.toLowerCase().includes("huyang") || value.includes("ヒュイヤン");
 }
 
+/**
+ * TMDBの英語役名から、手入力したキャラクター説明・画像の作品キーを取得します。
+ * 作品名の表記がTMDBと日本語辞書で異なる場合も、WORKSの詳細へ確実に反映します。
+ */
+function getCharacterDictionaryKeyByRole(value: string) {
+  const normalized = normalizeText(value);
+  if (normalized.includes("buckdouglas")) return "Fireman Sam: Alien Alert! The Movie";
+  if (normalized.includes("igorthedoor") || normalized.includes("ドアのイゴール")) {
+    return "ミッキーマウス クラブハウス／ミッキーのモンスターミュージカル";
+  }
+  if (normalized.includes("tychoreeves") || normalized.includes("tycoreeves")) return "サンダーバード ARE GO";
+  if (normalized.startsWith("wilf")) return "Postman Pat: The Movie";
+  if (normalized.includes("fugitoid")) return "ミュータント タートルズ";
+  if (normalized.startsWith("twigs")) return "Tree Fu Tom";
+  if (normalized.includes("oscarsbrain") || normalized.includes("オスカーの脳")) return "スイチュー! フレンズ";
+  return null;
+}
+
 /** 14th Doctorの英語表記を既存の14代目ドクターへ統一します。 */
 function isFourteenthDoctorRole(value: string) {
   const normalized = value.normalize("NFKC").replace(/\s+/g, " ").trim();
@@ -165,11 +183,15 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const isFourteenthDoctor = isFourteenthDoctorRole(rawName) || isFourteenthDoctorSpecial;
     const isArchiveDoctor = isArchiveDoctorRole(rawName);
     const sharedImageKey = getSharedRoleImageKey(rawName);
+    const roleDictionaryKey = getCharacterDictionaryKeyByRole(rawName);
     let dictionaryKey = sourceTitle;
     let imageKey = sourceTitle;
 
     if (sharedImageKey) {
       imageKey = sharedImageKey;
+    } else if (roleDictionaryKey) {
+      dictionaryKey = roleDictionaryKey;
+      imageKey = roleDictionaryKey;
     } else if (isArchiveDoctor) {
       imageKey = "archive doctor";
     } else if (isFourteenthDoctor) {

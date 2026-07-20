@@ -127,6 +127,9 @@ export const customCharacterImages: Record<string, string> = {
   "スイチュー! フレンズ": "/characters/Oscar's Brain.jpg",
   "パローニ・ファミリー ハロウィーン・スペシャル！": "/characters/Roach Chef.png",
   "サンドマン": "/characters/Don.png",
+  "Bite": "/characters/Alastair Galbraith.jpg",
+  "ザ・シンプソンズ": "/characters/Pa MacWeldon.png",
+  "Love in the 21st Century": "/characters/John_21st.jpg",
 
 
 

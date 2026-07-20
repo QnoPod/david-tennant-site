@@ -98,6 +98,10 @@ function getCharacterDictionaryKeyByRole(value: string, sourceTitle: string) {
     && (normalizedTitle.includes("thesandman") || normalizedTitle.includes("サンドマン"))) {
     return "サンドマン";
   }
+  if ((normalized.includes("pamacweldon") || normalized.includes("パマクウェルドン"))
+    && (normalizedTitle.includes("thesimpsons") || normalizedTitle.includes("ザシンプソンズ"))) {
+    return "ザ・シンプソンズ";
+  }
   return null;
 }
 

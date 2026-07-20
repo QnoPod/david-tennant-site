@@ -162,6 +162,9 @@ export function getCharacters(works: Work[] = []): Character[] {
         : parsed.name === "オスカーの脳" ? "Oscar's Brain"
         : parsed.name === "ゴキブリのシェフ" ? "Roach Chef"
         : parsed.name === "ドン" ? "Don"
+        : parsed.name === "アリスター・ガルブレイス" ? "Alastair Galbraith"
+        : parsed.name === "パ・マクウェルドン" ? "Pa MacWeldon"
+        : parsed.name === "ジョン" && workTitle === "Love in the 21st Century" ? "John"
         : parsed.name.includes("スクルージ・マクダック") ? "Scrooge McDuck"
         : parsed.name === "ドナルド・ピーターソン" ? "Donald Peterson"
         : parsed.name === "ロデリック・ピーターソン" ? "Roderick Peterson"
@@ -193,7 +196,11 @@ export function getCharacters(works: Work[] = []): Character[] {
       image: imagePath || "/images/default-character.jpg",
       year,
       age,
-      attributes: (characterAttributes[parsed.name] || "").split(/[,、/]/).map((item) => item.trim()).filter(Boolean),
+      // 同名の「ジョン」が別作品にもいるため、この作品だけ医師属性を優先します。
+      attributes: (workTitle === "Love in the 21st Century" && parsed.name === "ジョン"
+        ? "医師・医療"
+        : characterAttributes[parsed.name] || "")
+        .split(/[,、/]/).map((item) => item.trim()).filter(Boolean),
     };
   });
 

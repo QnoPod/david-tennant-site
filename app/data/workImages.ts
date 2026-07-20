@@ -32,5 +32,8 @@ export const workImageOverrides: Record<string, Pick<Work, "posterUrl" | "backdr
     "The British Academy Film Awards": {
     posterUrl: "/works/The British Academy Film Awards.jpg",
   },
+    "The Muppets Take The O2": {
+    posterUrl: "/works/The Muppets Take The O2.jpg",
+  },
   
 };

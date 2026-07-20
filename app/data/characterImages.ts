@@ -117,6 +117,14 @@ export const customCharacterImages: Record<string, string> = {
   "Spitelout": "/characters/Spitelout.jpg",
   "Ivar the Whitless": "/characters/Ivar the Whitless.jpg",
 
+  "Fireman Sam: Alien Alert! The Movie": "/characters/Buck Douglas.jpg",
+  "ミッキーマウス クラブハウス／ミッキーのモンスターミュージカル": "/characters/Igor the Door.png",
+  "サンダーバード ARE GO": "/characters/Tyco Reeves.jpg",
+  "Postman Pat: The Movie": "/characters/Wilf.jpg",
+  "ミュータント タートルズ": "/characters/Fugitoid.jpg",
+  "Tree Fu Tom": "/characters/Twigs.jpg",
+  "スイチュー! フレンズ": "/characters/Oscar's Brain.jpg",
+
 
 
   //"": "/characters/",

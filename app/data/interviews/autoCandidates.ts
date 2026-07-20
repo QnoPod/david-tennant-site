@@ -14,7 +14,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "『#Rivals』の主演俳優、デイヴィッド・テナントとナフェッサ・ウィリアムズが、『SNL』の司会者として誰が最適かについて語りました！",
+    "title": "『#Rivals』の主演、デイヴィッド・テナントとナフェッサ・ウィリアムズが、『SNL』の司会に最も適しているのは誰かについて語りました！",
     "titleEn": "#Rivals stars David Tennant and Nafessa Williams talk who would be the best at hosting SNL!",
     "year": "2026",
     "publishedDate": "2026-06-12",
@@ -295,6 +295,87 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-tries-a-deep-fried-mars-bar-v0rqzrjhqw",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが揚げたマーズバーに挑戦 🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "titleEn": "David Tennant Tries a Deep Fried Mars Bar 🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "year": "2026",
+    "publishedDate": "2026-05-21",
+    "source": "LADbible Entertainment",
+    "mediaType": "video",
+    "videoId": "V0RqZrjHQwI",
+    "externalUrl": "https://www.youtube.com/watch?v=V0RqZrjHQwI",
+    "thumbnailUrl": "https://i.ytimg.com/vi/V0RqZrjHQwI/hqdefault.jpg",
+    "duration": "Video · 0:23",
+    "description": "LADbible Entertainmentが、「デイヴィッド・テナントが揚げたマーズバーに挑戦 🏴󠁧󠁢󠁳󠁣󠁴󠁿」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "LADbible Entertainment"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-tries-a-gregg-s-sausage-roll-vs-a-square-sausage-zlq2jtc1ne",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが、グレッグスのソーセージロールと四角いソーセージを比べてみる",
+    "titleEn": "David Tennant Tries a Gregg’s Sausage Roll vs a Square Sausage",
+    "year": "2026",
+    "publishedDate": "2026-05-20",
+    "source": "LADbible Entertainment",
+    "mediaType": "video",
+    "videoId": "zlQ2jTc1Nec",
+    "externalUrl": "https://www.youtube.com/watch?v=zlQ2jTc1Nec",
+    "thumbnailUrl": "https://i.ytimg.com/vi/zlQ2jTc1Nec/hqdefault.jpg",
+    "duration": "Video · 0:50",
+    "description": "LADbible Entertainmentが、「デイヴィッド・テナントがグレッグスのソーセージロールとスクエアソーセージを比較試食」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "LADbible Entertainment"
+      ]
+    }
+  },
+  {
+    "slug": "tunnocks-have-a-word-with-david-tennant-will-you-zyrlczzhsf",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "タノックスさん、デイヴィッド・テナントに一言言ってくれない？ 🤣",
+    "titleEn": "Tunnocks, have a word with David Tennant will you? 🤣",
+    "year": "2026",
+    "publishedDate": "2026-05-20",
+    "source": "LADbible Entertainment",
+    "mediaType": "video",
+    "videoId": "zyRlcZzhSfM",
+    "externalUrl": "https://www.youtube.com/watch?v=zyRlcZzhSfM",
+    "thumbnailUrl": "https://i.ytimg.com/vi/zyRlcZzhSfM/hqdefault.jpg",
+    "duration": "Video · 0:36",
+    "description": "LADbible Entertainmentが、「Tunnocks、デイヴィッド・テナントに一言言ってくれない？ 🤣」というタイトルのインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "LADbible Entertainment"
+      ]
+    }
+  },
+  {
     "slug": "rivals-stars-david-tennant-alex-hassell-on-tony-rupert-s-one-sided-rival-iuhsb1nqbf",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -302,7 +383,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "ドラマ『RIVALS』の主演、デイヴィッド・テナントとアレックス・ハセルが、トニーとルパートの「一方的な」ライバル関係について語る | TV Insider",
+    "title": "ドラマ『RIVALS』の主演、デイヴィッド・テナントとアレックス・ハッセルが、トニーとルパートの「一方的な」ライバル関係について語る | TV Insider",
     "titleEn": "RIVALS stars David Tennant & Alex Hassell on Tony & Rupert's 'one-sided' rivalry | TV Insider",
     "year": "2026",
     "publishedDate": "2026-05-19",
@@ -333,7 +414,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "ドラマ『ライバルズ』の主演俳優、デイヴィッド・テナントとアレックス・ハッセルが、トニーとルパートの片思いのライバル関係について語る。",
+    "title": "ドラマ『ライバルズ』の主演俳優、デイヴィッド・テナントとアレックス・ハセルが、トニーとルパートの片思いのライバル関係について語る。",
     "titleEn": "#Rivals stars David Tennant and Alex Hassell talk Tony and Rupert's one-sided rivalry.",
     "year": "2026",
     "publishedDate": "2026-05-19",
@@ -343,7 +424,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=6WhInSwwJos",
     "thumbnailUrl": "https://i.ytimg.com/vi/6WhInSwwJos/hqdefault.jpg",
     "duration": "Video · 1:26",
-    "description": "TV Insiderが、「『#Rivals』の主演俳優デイヴィッド・テナントとアレックス・ハッセルが、トニーとルパートの片思いのライバル関係について語る」と題したインタビュー動画を公開した。",
+    "description": "TV Insiderが、「『#Rivals』の主演俳優デイヴィッド・テナントとアレックス・ハセルが、トニーとルパートの片思いのライバル関係について語る」と題したインタビュー動画を公開した。",
     "tagGroups": {
       "actors": [
         "Alex Hassell"
@@ -374,7 +455,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=qUlmYty87XM",
     "thumbnailUrl": "https://i.ytimg.com/vi/qUlmYty87XM/hqdefault.jpg",
     "duration": "Video · 10:41",
-    "description": "ジリー・クーパー原作の『ライバルズ』第2シリーズのおかげで、1980年代が再びスクリーンに戻ってきました。今回は前回以上に、酒宴や大喧嘩、そして情事が盛りだくさんです。  放送再開を前に、主演のエミリー・アタック、デイヴィッド・テナント、ダニー・ダイアーが番組に登場します。 放送日：2026年5月15日 『This Morning』を購読して、さらに多くの独占動画をご覧ください：http://bit。",
+    "description": "ジリー・クーパー原作の『ライバルズ』第2シリーズのおかげで、1980年代が再びスクリーンに戻ってきました。今回は前回以上に、酒宴や大喧嘩、そして情事が盛りだくさんです。  放送再開を前に、主演のエミリー・アタック、デイヴィッド・テナント、ダニー・ダイアーが番組に登場します。 放送日：2026年5月15日 さらに独占動画をご覧になりたい方は、「This Morning」を購読してください：http://bit。",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -532,6 +613,33 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "when-timothee-chalamet-kylie-jenner-met-david-tennant-bbc-q72ooaamyo",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "ティモシー・シャラメとカイリー・ジェンナーがデイヴィッド・テナントと出会ったとき… - BBC",
+    "titleEn": "When Timothée Chalamet & Kylie Jenner met David Tennant… - BBC",
+    "year": "2026",
+    "publishedDate": "2026-02-20",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "q72OOAAMyOY",
+    "externalUrl": "https://www.youtube.com/watch?v=q72OOAAMyOY",
+    "thumbnailUrl": "https://i.ytimg.com/vi/q72OOAAMyOY/hqdefault.jpg",
+    "duration": "Video · 0:30",
+    "description": "この瞬間は私のBAFTAビンゴカードには載っていませんでしたが、大いに楽しみですね。  #BAFTA #BAFTAFilmAwards #KylieJenner #TimothéeChalamet 2月22日（日）に開催される2026年BAFTA映画賞の開催を目前に控え、過去の受賞者の中でも特に際立った受賞者たちを振り返ってみよう。  これは、その年に傑出した映画を称える、英国映画界で最大かつ最も華やかな一夜です。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "20-years-on-david-tennant-shares-his-thoughts-on-his-festive-doctorwho-d-esl06e49ws",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -568,7 +676,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "デイヴィッド・テナント＆ラッセル・T・デイヴィス出演のクリスマス・スペシャル20周年特集＋『ザ・ウォー・ビトウィーン』のフィナーレ！",
+    "title": "デイヴィッド・テナント＆ラッセル・T・デイヴィス出演のクリスマス・スペシャル20年史 ＋ 『ザ・ウォー・ビトウィーン』のフィナーレ！",
     "titleEn": "20 Years of Christmas Specials ft. David Tennant & Russell T Davies + The War Between Finale!",
     "year": "2025",
     "publishedDate": "2025-12-18",
@@ -578,7 +686,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=mTS7j0b3uzs",
     "thumbnailUrl": "https://i.ytimg.com/vi/mTS7j0b3uzs/hqdefault.jpg",
     "duration": "Video · 47:10",
-    "description": "『ザ・クリスマス・インベイジョン』放送20周年を記念し、『ザ・ウォー・ビトウィーン・ザ・ランド・アンド・ザ・シー』に関するあらゆる話題を語り合う、このお祭り気分満点の『Whoniverse Show』特別編には、デイヴィッド・テナント、ラッセル・T・デイヴィス、ピート・マクタイグが、司会のティア・コフィとクリステル・ディーに加わります。  🎄 デイヴィッド・テナントが『クリスマス・インベイジョン』放送20周年を祝い、第10代ドクターとして初出演したエピソードの思い出を語ります。  🤫 ラッセル・T・デイヴィスが、過去、現在、そして未来のクリスマス・スペシャルについてすべてを語ります！",
+    "description": "『ザ・クリスマス・インベイジョン』放送20周年を記念し、『ザ・ウォー・ビトウィーン・ザ・ランド・アンド・ザ・シー』について語り尽くす、このお祭り気分満点の『Whoniverse Show』特別編には、デイヴィッド・テナント、ラッセル・T・デイヴィス、ピート・マクタイグが、司会のティア・コフィとクリステル・ディーに加わります。  🎄 デイヴィッド・テナントが『クリスマス・インベイジョン』放送20周年を祝い、第10代ドクターとして初出演したエピソードの思い出を語ります。  🤫 ラッセル・T・デイヴィスが、過去、現在、そして未来のクリスマス・スペシャルについてすべてを語ります！",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -648,6 +756,37 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-brings-a-new-meaning-to-smart-casual-bbc-b273keutvj",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが「スマートカジュアル」に新たな意味をもたらした 🤣 - BBC",
+    "titleEn": "David Tennant brings a new meaning to smart-casual 🤣 - BBC",
+    "year": "2025",
+    "publishedDate": "2025-10-02",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "B273kEutvJU",
+    "externalUrl": "https://www.youtube.com/watch?v=B273kEutvJU",
+    "thumbnailUrl": "https://i.ytimg.com/vi/B273kEutvJU/hqdefault.jpg",
+    "duration": "Video · 0:15",
+    "description": "『STAGED』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機をドラマに変えてしまう、口論の絶えない2人の俳優。  在宅勤務やバーチャル・ハリウッドという環境下で、彼らの脆い自尊心は持ちこたえられるのか？ #コメディ #面白い #デイヴィッド・テナント #マイケル・シーン #懐かしき名場面 BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-on-filming-rivals-season-2-his-surprising-on-set-accident--mlye9qtxe_",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -673,6 +812,37 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
       ],
       "sources": [
         "This Morning"
+      ]
+    }
+  },
+  {
+    "slug": "michael-sheen-s-impression-though-bbc-lhjyp0yuc3",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "でも、マイケル・シーンのモノマネは最高だね 🤣 - BBC",
+    "titleEn": "Michael Sheen’s impression though 🤣 - BBC",
+    "year": "2025",
+    "publishedDate": "2025-09-13",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "lHJYP0yUc34",
+    "externalUrl": "https://www.youtube.com/watch?v=lHJYP0yUc34",
+    "thumbnailUrl": "https://i.ytimg.com/vi/lHJYP0yUc34/hqdefault.jpg",
+    "duration": "Video · 1:49",
+    "description": "『STAGED』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機をドラマに変えてしまう、口論の絶えない2人の俳優。在宅勤務とバーチャル・ハリウッドという環境下で、彼らの脆い自尊心は持ちこたえられるのか？ #デイヴィッド・テナント #マイケル・シーン #コメディ #面白い #懐かしの作品",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
       ]
     }
   },
@@ -704,6 +874,126 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "when-you-re-so-close-to-your-bff-you-know-everything-about-them-bbc-cztnknc5a5",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "親友とすごく仲が良いと、その人のことなら何でも知ってるよね 💩 - BBC",
+    "titleEn": "When you're so close to your BFF you know EVERYTHING about them 💩 - BBC",
+    "year": "2025",
+    "publishedDate": "2025-07-15",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "CzTnkNC5a58",
+    "externalUrl": "https://www.youtube.com/watch?v=CzTnkNC5a58",
+    "thumbnailUrl": "https://i.ytimg.com/vi/CzTnkNC5a58/hqdefault.jpg",
+    "duration": "Video · 0:39",
+    "description": "『Staged』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――口論を繰り返す2人の俳優が、危機をドラマに仕立て上げる。 #Staged #DavidTennant #MichaelSheen #コメディ #面白い #懐かしき名作",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-as-james-bond-bbc-0etfoeanyt",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントがジェームズ・ボンド役に？ - BBC",
+    "titleEn": "DAVID TENNANT AS JAMES BOND? - BBC",
+    "year": "2025",
+    "publishedDate": "2025-07-05",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "0EtFoeAnyTE",
+    "externalUrl": "https://www.youtube.com/watch?v=0EtFoeAnyTE",
+    "thumbnailUrl": "https://i.ytimg.com/vi/0EtFoeAnyTE/hqdefault.jpg",
+    "duration": "Video · 0:19",
+    "description": "『STAGED』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――口論を繰り返す2人の俳優が、危機をドラマに仕立てていく。 #Staged #DavidTennant #MichaelSheen #コメディ #面白い #懐かしさ",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-this-has-real-your-mum-vibes-bbc-25cknwepfc",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナント：「これ、まさに『お前の母さん』って感じだ！」😆 - BBC",
+    "titleEn": "David Tennant: This has real 'your mum' vibes! 😆 - BBC",
+    "year": "2025",
+    "publishedDate": "2025-07-02",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "25cKNwEpFCQ",
+    "externalUrl": "https://www.youtube.com/watch?v=25cKNwEpFCQ",
+    "thumbnailUrl": "https://i.ytimg.com/vi/25cKNwEpFCQ/hqdefault.jpg",
+    "duration": "Video · 0:08",
+    "description": "『STAGED』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――口論を繰り返す2人の俳優が、危機をドラマに仕立てていく。 #Staged #DavidTennant #MichaelSheen #コメディ #面白い #懐かしさ",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-broody-never-bbc-st0mmzszgq",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナント？　陰気？　まさか！ - BBC",
+    "titleEn": "David Tennant? Broody? Never! - BBC",
+    "year": "2025",
+    "publishedDate": "2025-06-24",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "St0mmZsZGq4",
+    "externalUrl": "https://www.youtube.com/watch?v=St0mmZsZGq4",
+    "thumbnailUrl": "https://i.ytimg.com/vi/St0mmZsZGq4/hqdefault.jpg",
+    "duration": "Video · 1:01",
+    "description": "BBCが、「デイヴィッド・テナント？　陰気？　とんでもない！ - BBC」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-professes-his-love-for-the-daleks-bbc-w7h0-__rpd",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -722,6 +1012,35 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "thumbnailUrl": "https://i.ytimg.com/vi/W7h0-__rPdo/hqdefault.jpg",
     "duration": "Video · 0:40",
     "description": "「ただのブリキ缶なんかじゃない！」 #ドクター・フー #アンリーシュド #ウェールズでの20年 #ビリー・パイパー #デイヴィッド・テナント #ダレク デイヴィッド・テナントとビリー・パイパーが、初めてダレクを見た時の思い出を語ります。 BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-on-blink-a-fan-favourite-episode-of-doctor-who-wuldhhp4v6",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが語る『ブリンク』――『ドクター・フー』のファンに人気のエピソード",
+    "titleEn": "David Tennant on 'Blink' - a fan favourite episode of Doctor Who",
+    "year": "2025",
+    "publishedDate": "2025-06-08",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "WuLDHHP4v68",
+    "externalUrl": "https://www.youtube.com/watch?v=WuLDHHP4v68",
+    "thumbnailUrl": "https://i.ytimg.com/vi/WuLDHHP4v68/hqdefault.jpg",
+    "duration": "Video · 0:49",
+    "description": "瞬きしたら見逃しちゃうよ 😂 #ドクター・フー #アンリーシュド #ウェールズでの20年 #ビリー・パイパー #デイヴィッド・テナント #ブリンク #ウィーピング・エンジェルズ #キャリー・マリガン デイヴィッド・テナントが、ドクター役として最も人気のあるエピソードの一つである『ブリンク』の撮影を振り返る。  BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub BBCの番組はiPlayerでいち早く視聴できます 👉 https://bbc.",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -791,6 +1110,35 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "michael-sheen-is-asked-about-his-iconic-kiss-with-david-tennant-bbc-l3suzzr9sy",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "マイケル・シーン、デイヴィッド・テナントとのあの象徴的なキスについて質問される - BBC",
+    "titleEn": "Michael Sheen is asked about his iconic kiss with David Tennant - BBC",
+    "year": "2025",
+    "publishedDate": "2025-05-10",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "l3suZzR9syM",
+    "externalUrl": "https://www.youtube.com/watch?v=l3suZzR9syM",
+    "thumbnailUrl": "https://i.ytimg.com/vi/l3suZzR9syM/hqdefault.jpg",
+    "duration": "Video · 0:32",
+    "description": "なんて質問だ！  #TheAssembly #MichaelSheen #Throwback BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.ly/BBCYouTubeSub BBCの番組はiPlayerでいち早く視聴 👉 https://bbc.",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-talks-tattoos-tv-twists-taking-on-the-masked-singer-lorrai-q3we2yhvxo",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -808,7 +1156,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=q3we2yhVxoc",
     "thumbnailUrl": "https://i.ytimg.com/vi/q3we2yhVxoc/hqdefault.jpg",
     "duration": "Video · 7:44",
-    "description": "デイヴィッド・テナントが『ロレイン』に出演し、英国の最も聡明な頭脳たちがその知力を試される、脳をフル回転させる新テレビクイズ番組『Genius Game』の司会を務めることについて語りました。  また、ドラマ『The Assembly』の撮影についてや、『The Masked Singer』への出演の可能性についても率直に語り、妻への敬意を込めて最近入れた秘密のタトゥーについても明かしています。 続きを見るには今すぐチャンネル登録を！",
+    "description": "デイヴィッド・テナントが『ロレイン』に出演し、英国の最も聡明な頭脳たちがその知力を試される、脳をフル回転させる新テレビクイズ番組『ジーニアス・ゲーム』の司会を務めることについて語りました。  また、ドラマ『The Assembly』の撮影についてや、『The Masked Singer』への出演の可能性についても率直に語り、妻への敬意を込めて最近入れた秘密のタトゥーについても明かしています。 続きを見るには今すぐチャンネル登録を！",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -874,6 +1222,60 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-hits-a-wicked-note-ysjimgv2xe",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが最高にクールな歌声を披露 ♫",
+    "titleEn": "DAVID TENNANT HITS A WICKED NOTE ♫",
+    "year": "2025",
+    "publishedDate": "2025-02-18",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "ySJIMgV2Xew",
+    "externalUrl": "https://www.youtube.com/watch?v=ySJIMgV2Xew",
+    "thumbnailUrl": "https://i.ytimg.com/vi/ySJIMgV2Xew/hqdefault.jpg",
+    "duration": "Video · 0:19",
+    "description": "#BAFTA #DavidTennant #Wicked 本クリップに登場する人物が表明した見解や意見は、あくまでその人物個人のものであり、BAFTAの見解や意見とみなされるべきではありません。  BAFTAを購読する ⏩ https://youtube.com/user/BAFTAonline ⏬ 最新情報をチェック ⏬ Twitter: @BAFTA: https://twitter.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-performs-500-miles-by-the-proclaimers-with-the-help-of-a-f-yur8qytcph",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが、著名なゲストたちの協力を得て、ザ・プロクレイマーズの「500 Miles」を披露… | BAFTA",
+    "titleEn": "David Tennant performs 500 Miles by The Proclaimers with the help of a few famous faces... | BAFTA",
+    "year": "2025",
+    "publishedDate": "2025-02-17",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "yUr8QyTCph8",
+    "externalUrl": "https://www.youtube.com/watch?v=yUr8QyTCph8",
+    "thumbnailUrl": "https://i.ytimg.com/vi/yUr8QyTCph8/hqdefault.jpg",
+    "duration": "Video · 5:38",
+    "description": "デイヴィッド・テナントが、まさに「デイヴィッド・テナントらしい」スタイルで「EE BAFTAフィルム・アワード2025」の幕を開けました。音量を11まで上げてください。BAFTAをチャンネル登録 ⏩ https://youtube。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-reveals-his-stage-name-was-inspired-by-a-famous-pop-star-b-sbo6yaciqv",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -891,7 +1293,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=sBO6yaCIqVo",
     "thumbnailUrl": "https://i.ytimg.com/vi/sBO6yaCIqVo/hqdefault.jpg",
     "duration": "Video · 0:29",
-    "description": "#TheOneShow #iPlayer BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.ly/BBCYouTubeSub BBCの番組はiPlayerでいち早く視聴 👉 https://bbc.in/iPlayer-Home 英国中が話題にしているニュースや、あの有名な緑のソファに登場する世界的なスターたち。",
+    "description": "#TheOneShow #iPlayer BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.ly/BBCYouTubeSub BBCの番組はiPlayerでいち早く視聴 👉 https://bbc.in/iPlayer-Home 英国中を賑わせた話題や、あの有名な緑のソファに登場する世界的なスターたち。",
     "tagGroups": {
       "actors": [],
       "genres": [],
@@ -957,6 +1359,93 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-is-the-vet-detective-bafta-wptkikjkkc",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントこそが「獣医探偵」だ | BAFTA",
+    "titleEn": "David Tennant IS the Vet Detective | BAFTA",
+    "year": "2025",
+    "publishedDate": "2025-02-10",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "WPtkiKJkKck",
+    "externalUrl": "https://www.youtube.com/watch?v=WPtkiKJkKck",
+    "thumbnailUrl": "https://i.ytimg.com/vi/WPtkiKJkKck/hqdefault.jpg",
+    "duration": "Video · 0:56",
+    "description": "#DavidTennant #EEBAFTAs #MichaelSheen BAFTAをフォロー ⏩ https://youtube.com/user/BAFTAonline ⏬ 最新情報をチェック ⏬ Twitter: @BAFTA: https://twitter.com/BAFTA @BAFTAGames: https://twitter.",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-here-to-remind-you-to-check-out-the-nominations-for-the-20-ue6fcp-x5s",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントです。2025年 #EEBAFTAs のノミネート作品をチェックすることをお忘れなく！",
+    "titleEn": "David Tennant here to remind you to check out the nominations for the 2025 #EEBAFTAs!",
+    "year": "2025",
+    "publishedDate": "2025-01-15",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "uE6fcP-x5SI",
+    "externalUrl": "https://www.youtube.com/watch?v=uE6fcP-x5SI",
+    "thumbnailUrl": "https://i.ytimg.com/vi/uE6fcP-x5SI/hqdefault.jpg",
+    "duration": "Video · 0:22",
+    "description": "BAFTAは、「デイヴィッド・テナントが、2025年 #EEBAFTAs のノミネート作品をチェックするよう皆さんに呼びかけます！」と題したインタビュー動画を公開しました。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
+    "slug": "remember-this-moment-from-the-final-send-off-of-staged-k-px0g7wwl",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "『Staged!』の最終回でのこの瞬間を覚えておいてください！",
+    "titleEn": "Remember this moment from the final send-off of Staged!",
+    "year": "2024",
+    "publishedDate": "2024-12-13",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "k-px0G7WWLs",
+    "externalUrl": "https://www.youtube.com/watch?v=k-px0G7WWLs",
+    "thumbnailUrl": "https://i.ytimg.com/vi/k-px0G7WWLs/hqdefault.jpg",
+    "duration": "Video · 1:54",
+    "description": "カメラがまだオンになっていることに気づかないとき🙈 『Staged』の最終回で、デイヴィッド・テナントとマイケル・シーンが本人役として登場し、口論を繰り返しながら危機をドラマに変えていくあの瞬間を覚えていますか。  クリスマス気分を満喫しよう！ #iPlayer で、お祝いの料理、家族向け映画、爆笑コメディなど、多彩なコンテンツを今すぐチェック #Staged #コメディ #ハプニング #デイヴィッド・テナント #マイケル・シーン BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-aidan-turner-and-the-cast-of-rivals-share-their-favourite---egoftokfz",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -989,6 +1478,66 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-and-the-cast-of-rivals-give-their-pitch-for-the-dame-jilly-u_cmyqskoq",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントと『ライバルズ』のキャスト陣が、デイム・ジリー・クーパー原作のドラマ化作品についてアピールする",
+    "titleEn": "David Tennant and the cast of Rivals give their pitch for the Dame Jilly Cooper adaptation",
+    "year": "2024",
+    "publishedDate": "2024-10-18",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "u_CMYqsKOqI",
+    "externalUrl": "https://www.youtube.com/watch?v=u_CMYqsKOqI",
+    "thumbnailUrl": "https://i.ytimg.com/vi/u_CMYqsKOqI/hqdefault.jpg",
+    "duration": "Video · 0:53",
+    "description": "BAFTAは、「デイヴィッド・テナントと『ライバルズ』のキャスト陣が、デイム・ジリー・クーパー原作のドラマ化作品について語る」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Rivals"
+      ],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
+    "slug": "alex-hassell-and-david-tennant-had-a-great-time-being-rivals-qhc8x2cvdo",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "アレックス・ハセルとデイヴィッド・テナントは、#ライバルとして最高の時間を過ごした",
+    "titleEn": "Alex Hassell and David Tennant had a great time being #Rivals",
+    "year": "2024",
+    "publishedDate": "2024-10-09",
+    "source": "TV Insider",
+    "mediaType": "video",
+    "videoId": "qHc8X2Cvdo4",
+    "externalUrl": "https://www.youtube.com/watch?v=qHc8X2Cvdo4",
+    "thumbnailUrl": "https://i.ytimg.com/vi/qHc8X2Cvdo4/hqdefault.jpg",
+    "duration": "Video · 0:36",
+    "description": "TV Insiderが、「アレックス・ハセルとデイヴィッド・テナントが#ライバルとして楽しい時間を過ごした」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [
+        "Alex Hassell"
+      ],
+      "genres": [
+        "Rivals"
+      ],
+      "sources": [
+        "TV Insider"
+      ]
+    }
+  },
+  {
     "slug": "it-was-a-very-well-kept-secret-pt0qixi6rx",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -996,7 +1545,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "「それは非常にうまく守られていた秘密だった」",
+    "title": "「それは非常に厳重に守られていた秘密だった」",
     "titleEn": "“It was a very well-kept secret”",
     "year": "2024",
     "publishedDate": "2024-09-27",
@@ -1047,6 +1596,122 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "poor-poor-david-david-tennant-discusses-his-professional-abandonment-iss-pzbaeynsc1",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "かわいそうな、かわいそうなデイヴィッド 🤣 デイヴィッド・テナントが、仕事における「見捨てられ不安」について語る…",
+    "titleEn": "Poor, poor David 🤣 David Tennant discusses his professional abandonment issues…",
+    "year": "2024",
+    "publishedDate": "2024-09-10",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "PzBAeYnsc1s",
+    "externalUrl": "https://www.youtube.com/watch?v=PzBAeYnsc1s",
+    "thumbnailUrl": "https://i.ytimg.com/vi/PzBAeYnsc1s/hqdefault.jpg",
+    "duration": "Video · 0:31",
+    "description": "#Staged #iPlayer #DavidTennant #Funny BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCをいち早く視聴 👉 https://bbc.in/iPlayer-Home BBCのすべてのテレビチャンネルとS4Cは、BBC iPlayerを通じてライブ配信で視聴できますが、権利上の理由により、一部の番組はオンラインでストリーミングできない場合があります。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "you-can-only-save-one-dr-who-harry-potter-or-twighlight-in-the-comments--yi7xb0ydx8",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "コメント欄で、「ドクター・フー」「ハリー・ポッター」「トワイライト」のうち、救えるのは1つだけ…… - BBC",
+    "titleEn": "You can only save one: Dr Who, Harry Potter or Twighlight in the comments... - BBC",
+    "year": "2024",
+    "publishedDate": "2024-08-08",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "YI7xB0yDx8c",
+    "externalUrl": "https://www.youtube.com/watch?v=YI7xB0yDx8c",
+    "thumbnailUrl": "https://i.ytimg.com/vi/YI7xB0yDx8c/hqdefault.jpg",
+    "duration": "Video · 0:16",
+    "description": "『Staged』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機をドラマに変えてしまう、口論の絶えない2人の俳優。  在宅勤務とバーチャル・ハリウッドという環境の中で、彼らの脆い自尊心は持ちこたえられるのか？  #DavidTennant #Funny #Comedy #MichaelSheen #iPlayer BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "matt-smith-recalls-david-tennant-s-advice-to-him-for-playing-dr-who-clt0rkmgig",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "マット・スミスは、『ドクター・フー』を演じるにあたってデイヴィッド・テナントから受けた助言を振り返っている",
+    "titleEn": "Matt Smith recalls David Tennant's advice to him for playing 'Dr. Who'",
+    "year": "2024",
+    "publishedDate": "2024-07-12",
+    "source": "Variety",
+    "mediaType": "video",
+    "videoId": "CLT0rKmgiGk",
+    "externalUrl": "https://www.youtube.com/watch?v=CLT0rKmgiGk",
+    "thumbnailUrl": "https://i.ytimg.com/vi/CLT0rKmgiGk/hqdefault.jpg",
+    "duration": "Video · 0:57",
+    "description": "『バラエティ』誌が、「マット・スミス、『ドクター・フー』を演じるにあたってデイヴィッド・テナントから受けた助言を振り返る」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "Variety"
+      ]
+    }
+  },
+  {
+    "slug": "russell-t-davies-on-casting-david-tennant-in-casanova-and-doctor-who-zhegqvbgmu",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "『カサノヴァ』と『ドクター・フー』におけるデイヴィッド・テナントのキャスティングについて、ラッセル・T・デイヴィスが語る",
+    "titleEn": "Russell T. Davies on casting David Tennant in Casanova and Doctor Who",
+    "year": "2024",
+    "publishedDate": "2024-06-18",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "zHEGQVbGMUg",
+    "externalUrl": "https://www.youtube.com/watch?v=zHEGQVbGMUg",
+    "thumbnailUrl": "https://i.ytimg.com/vi/zHEGQVbGMUg/hqdefault.jpg",
+    "duration": "Video · 0:56",
+    "description": "BAFTAは、「『カサノヴァ』と『ドクター・フー』におけるデイヴィッド・テナントのキャスティングについて語るラッセル・T・デイヴィス」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
     "slug": "does-matt-smith-know-lines-from-his-most-famous-movies-and-tv-shows-k7_lag8skm",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1076,6 +1741,64 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-offers-tom-hiddleston-the-role-of-a-lifetime-ee-bafta-film-5q_tny6-7z",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントがトム・ヒドルストンに「人生最高の役」をオファー… | EE BAFTA映画賞 2024",
+    "titleEn": "David Tennant offers Tom Hiddleston the role of a lifetime... | EE BAFTA Film Awards 2024",
+    "year": "2024",
+    "publishedDate": "2024-02-18",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "5Q_TnY6-7Zo",
+    "externalUrl": "https://www.youtube.com/watch?v=5Q_TnY6-7Zo",
+    "thumbnailUrl": "https://i.ytimg.com/vi/5Q_TnY6-7Zo/hqdefault.jpg",
+    "duration": "Video · 4:46",
+    "description": "デイヴィッド・テナントは、スタンリー・トゥッチやデイム・ジュディ・デンチといった著名な友人たちに協力を求め、マイケル・シーンの子犬「バーク・ラファロ」の世話を免れようと試みる。  BAFTAを購読する ⏩ https://youtube.com/user/BAFTAonline ⏬ 最新情報をチェック ⏬ Twitter: @BAFTA: https://twitter.",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [],
+      "sources": [
+        "BAFTA"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-s-hilarious-opening-sketch-bafta-film-awards-2024-bbc-30kvurd2o4",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントの超爆笑オープニング・スケッチ 🐶 | 2024年BAFTA映画賞 - BBC",
+    "titleEn": "David Tennant's HILARIOUS Opening Sketch 🐶 | BAFTA Film Awards 2024 - BBC",
+    "year": "2024",
+    "publishedDate": "2024-02-18",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "30KVuRD2o4s",
+    "externalUrl": "https://www.youtube.com/watch?v=30KVuRD2o4s",
+    "thumbnailUrl": "https://i.ytimg.com/vi/30KVuRD2o4s/hqdefault.jpg",
+    "duration": "Video · 5:23",
+    "description": "バーク・ルファロの演技はBAFTA賞にふさわしい！ 🥹🐶 これは、その年に傑出した映画を称える、英国映画界で最大かつ最も華やかな一夜です。 栄えあるBAFTA賞を勝ち取るのは誰でしょうか？",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "the-best-doctor-who-interviews-ever-the-graham-norton-show-lkqdybfgod",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1093,7 +1816,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=LkqdYbfgoDg",
     "thumbnailUrl": "https://i.ytimg.com/vi/LkqdYbfgoDg/hqdefault.jpg",
     "duration": "Video · 18:54",
-    "description": "今週は、第15代ドクターを演じるヌクティ・ガトワが登場！『ドクター・フー』のキャスト陣――デイヴィッド・テナント、マット・スミス、カレン・ギラン、キャサリン・テイト、そしてその他大勢――とのトークをお届けします！  #GrahamNortonShow #GrahamNorton #TheGNShow こちらからフォローしてください：Facebook：https://www.facebook.",
+    "description": "今週は、第15代ドクターを演じるヌクティ・ガトワが登場！『ドクター・フー』のキャスト陣――デイヴィッド・テナント、マット・スミス、カレン・ギラン、キャサリン・テイトをはじめ、その他大勢――とのトークをお届けします！  #GrahamNortonShow #GrahamNorton #TheGNShow こちらからフォローしてください：Facebook：https://www.facebook.",
     "tagGroups": {
       "actors": [
         "Catherine Tate"
@@ -1145,7 +1868,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "第14代ドクターが男女両方の姿に！｜デイヴィッド・テナントからヌクティ・ガトワへ｜The Giggle｜『ドクター・フー』",
+    "title": "第14代ドクターがバイジェネレート！｜デイヴィッド・テナントからヌクティ・ガトワへ｜The Giggle｜『ドクター・フー』",
     "titleEn": "The Fourteenth Doctor Bi-generates! | David Tennant to Ncuti Gatwa | The Giggle | Doctor Who",
     "year": "2023",
     "publishedDate": "2023-12-09",
@@ -1167,6 +1890,66 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-and-catherine-tate-introduce-us-to-the-not-things-of-wild--j3ykqg3u0s",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントとキャサリン・テイトが、『ワイルド・ブルー・ヨンダー』に登場する「ノット・シングス」を紹介してくれます 👀 #DoctorWho",
+    "titleEn": "David Tennant and Catherine Tate introduce us to the Not-Things of 'Wild Blue Yonder' 👀 #DoctorWho",
+    "year": "2023",
+    "publishedDate": "2023-12-05",
+    "source": "Doctor Who",
+    "mediaType": "video",
+    "videoId": "J3Ykqg3U0s0",
+    "externalUrl": "https://www.youtube.com/watch?v=J3Ykqg3U0s0",
+    "thumbnailUrl": "https://i.ytimg.com/vi/J3Ykqg3U0s0/hqdefault.jpg",
+    "duration": "Video · 0:52",
+    "description": "デイヴィッド・テナントとキャサリン・テイトが、『ワイルド・ブルー・ヨンダー』に登場する「ノット・シングス」を紹介してくれます――それとも、その逆なのでしょうか？  👀 #DoctorWho",
+    "tagGroups": {
+      "actors": [
+        "Catherine Tate"
+      ],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "Doctor Who"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-with-giant-hands-send-post-0etim5ecyk",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "巨大な手を持つデイヴィッド・テナント *投稿する* ✋🤚",
+    "titleEn": "David Tennant with Giant Hands *Send Post* ✋🤚",
+    "year": "2023",
+    "publishedDate": "2023-12-02",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "0etim5ecYkE",
+    "externalUrl": "https://www.youtube.com/watch?v=0etim5ecYkE",
+    "thumbnailUrl": "https://i.ytimg.com/vi/0etim5ecYkE/hqdefault.jpg",
+    "duration": "Video · 0:17",
+    "description": "#doctorwho #doctorwhounleashed BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home BBC iPlayerでは、すべてのテレビチャンネルとS4Cをライブで視聴できますが、権利上の理由により、一部の番組はオンラインでストリーミングできない場合があります。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "wild-blue-yonder-the-official-doctor-who-podcast-doctor-who-0xeehn5p1r",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1184,7 +1967,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=0xeeHn5P1rE",
     "thumbnailUrl": "https://i.ytimg.com/vi/0xeeHn5P1rE/hqdefault.jpg",
     "duration": "Video · 27:14",
-    "description": "『ドクター・フー』公式ポッドキャストの最新エピソードでは、クリステル・ディー、タイレル・チャールズ、ジュノ・ドーソンが『ワイルド・ブルー・ヨンダー』について語り合います。  60周年記念スペシャル第2話について、ショーランナーのラッセル・T・デイヴィスによる洞察に満ちたコメントを交えながら、チーム一同が『ワイルド・ブルー・ヨンダー』の世界へと深く潜り込みます！この謎めいたエピソードに隠された数々の秘密や、数々の恐怖シーン、予想外の展開、そしてデイヴィッド・テナントとキャサリン・テイトが悪役を演じたことについて、彼らが語り合います。",
+    "description": "『ドクター・フー』公式ポッドキャストの最新エピソードでは、クリステル・ディー、タイレル・チャールズ、ジュノ・ドーソンが『ワイルド・ブルー・ヨンダー』について語り合います。  60周年記念スペシャル第2話について、ショーランナーのラッセル・T・デイヴィスによる洞察に満ちた割り込みを交えながら、チームは『ワイルド・ブルー・ヨンダー』の世界へと深く潜り込んでいきます！　彼らは、この謎めいたエピソードに隠されたすべての秘密や、数々の恐怖シーン、予想外の展開、そしてデイヴィッド・テナントとキャサリン・テイトが悪役を演じたことについて語り合います。",
     "tagGroups": {
       "actors": [
         "Catherine Tate"
@@ -1194,6 +1977,35 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
       ],
       "sources": [
         "Doctor Who"
+      ]
+    }
+  },
+  {
+    "slug": "which-doctor-is-your-doctor-xvhm88nw4j",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "あなたにとっての「ドクター」は誰ですか？",
+    "titleEn": "Which Doctor is YOUR Doctor?",
+    "year": "2023",
+    "publishedDate": "2023-11-28",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "xVHM88Nw4j8",
+    "externalUrl": "https://www.youtube.com/watch?v=xVHM88Nw4j8",
+    "thumbnailUrl": "https://i.ytimg.com/vi/xVHM88Nw4j8/hqdefault.jpg",
+    "duration": "Video · 0:45",
+    "description": "デイヴィッド・テナントからトム・ベイカーまで、あなたのお気に入りのドクターは誰ですか？  『ドクター・フー』公式ポッドキャスト | @BBCSounds で聴く #BBCSounds #DoctorWho #DavidTennant BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.ly/BBCYouTubeSub BBCの番組はiPlayerでいち早く視聴 👉 https://bbc.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
       ]
     }
   },
@@ -1256,6 +2068,37 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "the-star-beast-the-official-doctor-who-podcast-doctor-who-jvlcddfefj",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "THE STAR BEAST | 『ドクター・フー』公式ポッドキャスト | ドクター・フー",
+    "titleEn": "THE STAR BEAST | The Official Doctor Who Podcast | Doctor Who",
+    "year": "2023",
+    "publishedDate": "2023-11-25",
+    "source": "Doctor Who",
+    "mediaType": "video",
+    "videoId": "jvlCddFeFjQ",
+    "externalUrl": "https://www.youtube.com/watch?v=jvlCddFeFjQ",
+    "thumbnailUrl": "https://i.ytimg.com/vi/jvlCddFeFjQ/hqdefault.jpg",
+    "duration": "Video · 31:26",
+    "description": "『ドクター・フー』公式ポッドキャストの最新エピソードでは、クリステル・ディー、タイレル・チャールズ、ジュノ・ドーソンが『ザ・スター・ビースト』について語り合います。  60周年記念スペシャル第1話への感想を語り合い、ショーランナーのラッセル・T・デイヴィスによる洞察に満ちた割り込みも交えながら、チームはドクター役のデイヴィッド・テナントとドナ・ノーブル役のキャサリン・テイトの待望の復帰、とってもキュートなミープの登場、真新しいTARDISなど、盛りだくさんの話題について語り合います！  #ODWP 『The Official Doctor Who Podcast』は、作家兼コラムニストのジュノ・ドーソン、ポップカルチャー系TikToker、そして映画…による3人でのパネルディスカッションです。",
+    "tagGroups": {
+      "actors": [
+        "Catherine Tate"
+      ],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "Doctor Who"
+      ]
+    }
+  },
+  {
     "slug": "flashbacks-with-david-and-catherine-doctor-who-8a1bmr310d",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1304,7 +2147,36 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=p0XAAPHk18c",
     "thumbnailUrl": "https://i.ytimg.com/vi/p0XAAPHk18c/hqdefault.jpg",
     "duration": "Video · 0:27",
-    "description": "11月25日午後6時30分から、#iPlayer で #DoctorWho をご覧ください。BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.",
+    "description": "11月25日午後6時30分から、#iPlayer で #DoctorWho をご覧ください。BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-was-destined-to-play-the-doctor-ni-fp5xzso",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッドはドクターを演じる運命にあったんだ！🧡",
+    "titleEn": "David was destined to play the Doctor! 🧡",
+    "year": "2023",
+    "publishedDate": "2023-11-23",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "Ni-fp5xZso0",
+    "externalUrl": "https://www.youtube.com/watch?v=Ni-fp5xZso0",
+    "thumbnailUrl": "https://i.ytimg.com/vi/Ni-fp5xZso0/hqdefault.jpg",
+    "duration": "Video · 0:39",
+    "description": "デイヴィッド・テナントが『ドクター・フー』にまつわる幼少期の思い出を振り返る！  『ゾーイのドクター・フー・スペシャル』｜@BBCSounds @bbcradio2 経由の「Zoe Ball and Friends」ポッドキャストでお聴きください #DoctorWho #DoctorWhoDay #BBCRadio2 #BBCSounds #DavidTennant BBCを購読して🔔 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -1347,6 +2219,91 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "go-behind-the-scenes-as-david-tennant-and-the-crew-film-his-half-of-the--zpb-l9t_lr",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントとスタッフたちが、彼の再生シーンの撮影に臨む舞台裏に迫る 🔥 #DoctorWho",
+    "titleEn": "Go behind the scenes as David Tennant and the crew film his half of the regeneration 🔥 #DoctorWho",
+    "year": "2023",
+    "publishedDate": "2023-10-24",
+    "source": "Doctor Who",
+    "mediaType": "video",
+    "videoId": "zpb-L9T_lRw",
+    "externalUrl": "https://www.youtube.com/watch?v=zpb-L9T_lRw",
+    "thumbnailUrl": "https://i.ytimg.com/vi/zpb-L9T_lRw/hqdefault.jpg",
+    "duration": "Video · 0:59",
+    "description": "『ドクター・フー』が、「デイヴィッド・テナントとスタッフによる、再生のシーン（彼のパート）の撮影舞台裏 🔥 #DoctorWho」と題したインタビュー動画を公開した。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "Doctor Who"
+      ]
+    }
+  },
+  {
+    "slug": "maaaan-i-feel-like-a-woman-will-never-forget-david-tennant-s-shania-twai-9augyxl31z",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "「うわぁ、まるで女になったみたい！」『ブレックファスト・ショー』でのデイヴィッド・テナントによるシャナイア・トゥエインのカバーは、一生忘れられない……",
+    "titleEn": "“Maaaan I feel like a woman!” Will never forget David Tennant’s Shania Twain cover on Breakfast...",
+    "year": "2023",
+    "publishedDate": "2023-08-18",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "9augYxL31zo",
+    "externalUrl": "https://www.youtube.com/watch?v=9augYxL31zo",
+    "thumbnailUrl": "https://i.ytimg.com/vi/9augYxL31zo/hqdefault.jpg",
+    "duration": "Video · 0:55",
+    "description": "BBCを購読して🔔通知を受け取る 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home @bbcradio2 #BBCSounds すべてのテレビチャンネルおよびS4Cは、BBC iPlayerを通じてライブ配信されていますが、権利上の理由により、一部の番組はオンラインでストリーミングできない場合があります。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "we-can-t-get-enough-of-this-friendship-theoneshow-iplayer-eyb_mrqc9y",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "この友情には本当に目が離せない😇😈 #TheOneShow #iPlayer",
+    "titleEn": "We can’t get enough of this friendship 😇😈 #TheOneShow #iPlayer",
+    "year": "2023",
+    "publishedDate": "2023-08-09",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "EYb_mrQC9Yc",
+    "externalUrl": "https://www.youtube.com/watch?v=EYb_mrQC9Yc",
+    "thumbnailUrl": "https://i.ytimg.com/vi/EYb_mrQC9Yc/hqdefault.jpg",
+    "duration": "Video · 0:43",
+    "description": "BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home マイケル・シーンとデイヴィッド・テナントが、新シリーズについて語り合いながら、天にも昇るようなユーモアを披露します。",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "michael-sheen-david-tennant-talk-aziraphale-crowley-s-relationship-in-go-j1y85mvx0l",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1378,6 +2335,35 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "he-s-the-doctor-but-will-david-tennant-jump-back-into-the-doctorwho-char-brz7ze9t9p",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "彼は「ドクター」ですが、デイヴィッド・テナントは#ドクター・フーの役柄にすんなりと戻れるのでしょうか？ 👀 🕰️",
+    "titleEn": "He’s “the Doctor” but will David Tennant jump back into the #DoctorWho character easily? 👀 🕰️",
+    "year": "2023",
+    "publishedDate": "2023-07-14",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "BRZ7ze9t9Po",
+    "externalUrl": "https://www.youtube.com/watch?v=BRZ7ze9t9Po",
+    "thumbnailUrl": "https://i.ytimg.com/vi/BRZ7ze9t9Po/hqdefault.jpg",
+    "duration": "Video · 0:28",
+    "description": "BBCを購読して🔔通知を受け取る 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home #TheOneShow #iPlayer BBC iPlayerでは、すべてのテレビチャンネルおよびS4Cをライブで視聴できますが、権利上の理由により、一部の番組はオンラインでストリーミングできない場合があります。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "oh-to-be-inside-david-tennant-s-mind-staged-iplayer-wdsg2-vus0",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1403,6 +2389,192 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
       ],
       "sources": [
         "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-broody-never-staged-iplayer-riml2rzrnp",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナント？　陰気？　まさか！ #Staged #iPlayer",
+    "titleEn": "David Tennant? Broody? Never! #Staged #iPlayer",
+    "year": "2023",
+    "publishedDate": "2023-06-29",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "rIml2rzrNPA",
+    "externalUrl": "https://www.youtube.com/watch?v=rIml2rzrNPA",
+    "thumbnailUrl": "https://i.ytimg.com/vi/rIml2rzrNPA/hqdefault.jpg",
+    "duration": "Video · 1:00",
+    "description": "BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機的な状況をドラマのように大げさに演じ、口論を繰り広げる2人の俳優です。",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "poor-poor-david-staged-iplayer-vys9ryir_j",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "かわいそうな、かわいそうなデイヴィッド 🤣 #Staged #iPlayer",
+    "titleEn": "Poor, poor David 🤣 #Staged #iPlayer",
+    "year": "2023",
+    "publishedDate": "2023-06-23",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "VyS9RYir_Jw",
+    "externalUrl": "https://www.youtube.com/watch?v=VyS9RYir_Jw",
+    "thumbnailUrl": "https://i.ytimg.com/vi/VyS9RYir_Jw/hqdefault.jpg",
+    "duration": "Video · 0:31",
+    "description": "BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機的な状況をドラマのように大げさに演じ、口論を繰り広げる二人の俳優です。",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "where-s-david-tennant-when-you-need-him-queenofoz-iplayer-catherinetate--f6xr09ajen",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "必要な時に限って、デイヴィッド・テナントはどこにいるんだろう？ #QueenOfOz #iPlayer #CatherineTate #DoctorWho",
+    "titleEn": "Where's David Tennant when you need him? #QueenOfOz #iPlayer #CatherineTate #DoctorWho",
+    "year": "2023",
+    "publishedDate": "2023-06-21",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "F6xR09aJeNM",
+    "externalUrl": "https://www.youtube.com/watch?v=F6xR09aJeNM",
+    "thumbnailUrl": "https://i.ytimg.com/vi/F6xR09aJeNM/hqdefault.jpg",
+    "duration": "Video · 0:29",
+    "description": "BBCを購読して🔔通知を受け取る 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home BBC iPlayerでは、すべてのテレビチャンネルおよびS4Cをライブで視聴できますが、権利上の理由により、一部の番組はオンラインでストリーミングできない場合があります。",
+    "tagGroups": {
+      "actors": [
+        "Catherine Tate"
+      ],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "when-you-re-so-close-to-your-bff-you-know-everything-about-them-staged-i-iyqtl4r_qm",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "親友とすごく仲が良いと、その人のことなら何でも知ってるよね 💩 #Staged #iPlayer",
+    "titleEn": "When you're so close to your BFF you know EVERYTHING about them 💩 #Staged #iPlayer",
+    "year": "2023",
+    "publishedDate": "2023-06-18",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "IYQtl4r_Qmo",
+    "externalUrl": "https://www.youtube.com/watch?v=IYQtl4r_Qmo",
+    "thumbnailUrl": "https://i.ytimg.com/vi/IYQtl4r_Qmo/hqdefault.jpg",
+    "duration": "Video · 0:38",
+    "description": "BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機的な状況をドラマのように大げさに演じ、口論を繰り広げる二人の俳優です。",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "this-has-real-your-mum-vibes-staged-iplayer-buyhrvigxu",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "これ、まさに「お前の母さん」って感じ！😆 #Staged #iPlayer",
+    "titleEn": "This has real 'your mum' vibes! 😆 #Staged #iPlayer",
+    "year": "2023",
+    "publishedDate": "2023-06-15",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "BUYhrvIgxuA",
+    "externalUrl": "https://www.youtube.com/watch?v=BUYhrvIgxuA",
+    "thumbnailUrl": "https://i.ytimg.com/vi/BUYhrvIgxuA/hqdefault.jpg",
+    "duration": "Video · 0:07",
+    "description": "BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機的な状況をドラマのように大げさに演じ、口論を繰り広げる二人の俳優です。",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-and-catherine-tate-fight-over-who-has-been-snubbed-more-ba-wrfmal_rvj",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントとキャサリン・テイト、どちらがより冷遇されたかを巡って言い争う | BAFTAテレビ賞 2023",
+    "titleEn": "David Tennant and Catherine Tate fight over who has been snubbed more | BAFTA TV Awards 2023",
+    "year": "2023",
+    "publishedDate": "2023-05-18",
+    "source": "BAFTA",
+    "mediaType": "video",
+    "videoId": "wrfmAl_RVjQ",
+    "externalUrl": "https://www.youtube.com/watch?v=wrfmAl_RVjQ",
+    "thumbnailUrl": "https://i.ytimg.com/vi/wrfmAl_RVjQ/hqdefault.jpg",
+    "duration": "Video · 1:11",
+    "description": "『ドクター・フー』の主演俳優、デイヴィッド・テナントとキャサリン・テイトが、P&Oクルーズと共同でBAFTAテレビ賞の「長編作品賞」の発表を行い、どちらが受賞回数が少ないか――デイヴィッドの場合はノミネート回数が少ないか――を巡って言い争いを繰り広げた。BAFTAをチャンネル登録 ⏩ https://youtube。",
+    "tagGroups": {
+      "actors": [
+        "Catherine Tate"
+      ],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BAFTA"
       ]
     }
   },
@@ -1530,13 +2702,13 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "titleEn": "Interview: David Tennant And Michael Sheen On Staged Series 2",
     "year": "2020",
     "publishedDate": "2020-12-30",
-    "source": "beyondthejoke.co.uk",
+    "source": "Beyond The Joke",
     "mediaType": "article",
     "videoId": null,
     "externalUrl": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9wdGtiR2ZEaTZTcWVsRmZzTW5qZXczdTFxVXMzUmNRYldqTVBlck1QZDJPSnQwUkxCRGc3Z0g0SEVGczZnekVoNk9RNURPbXQyY2hWenBtZVlsV3hYVlRkOHhSNFU2eUlsSU5aTW8wN3ZfaVFwZklz?oc=5&hl=en-US&gl=US&ceid=US:en",
     "thumbnailUrl": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
     "duration": "Article",
-    "description": "インタビュー：デイヴィッド・テナントとマイケル・シーンが語る『Staged』シーズン2 beyondthejoke.co.uk",
+    "description": "インタビュー：デイヴィッド・テナントとマイケル・シーンが語る『Staged』シーズン2『Beyond The Joke』",
     "tagGroups": {
       "actors": [
         "Michael Sheen"
@@ -1545,7 +2717,65 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
         "Staged"
       ],
       "sources": [
-        "beyondthejoke.co.uk"
+        "Beyond The Joke"
+      ]
+    }
+  },
+  {
+    "slug": "the-making-of-des-behind-the-scenes-with-david-tennant-daniel-mays-jason-peiajndlfg",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "『Des』の制作秘話 | デイヴィッド・テナント、ダニエル・メイズ、ジェイソン・ワトキンスによるメイキング | ITV",
+    "titleEn": "The Making Of Des | Behind The Scenes with David Tennant, Daniel Mays & Jason Watkins | ITV",
+    "year": "2020",
+    "publishedDate": "2020-09-18",
+    "source": "ITV",
+    "mediaType": "video",
+    "videoId": "pEiajNDLFGQ",
+    "externalUrl": "https://www.youtube.com/watch?v=pEiajNDLFGQ",
+    "thumbnailUrl": "https://i.ytimg.com/vi/pEiajNDLFGQ/hqdefault.jpg",
+    "duration": "Video · 9:54",
+    "description": "1983年にスコットランドの連続殺人犯デニス・ニルセンが逮捕された事件を基にした3部構成のドラマミニシリーズ『Des』の制作現場を、デイヴィッド・テナント、ダニエル・メイズ、ジェイソン・ワトキンスと共に舞台裏からご紹介します。  ITVの公式YouTubeチャンネルを「いいね！」、「フォロー」、そして「登録」してください：http://bit.ly/2iDD1be 最新情報を逃さないよう、ぜひITVをフォローしてください。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "ITV"
+      ]
+    }
+  },
+  {
+    "slug": "judi-dench-puts-david-tennant-and-michael-sheen-in-their-place-staged-bb-epdcvamt5c",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "ジュディ・デンチがデイヴィッド・テナントとマイケル・シーンをこっぴどく叱る | 『Staged』 - BBC",
+    "titleEn": "Judi Dench puts David Tennant and Michael Sheen in their place | Staged - BBC",
+    "year": "2020",
+    "publishedDate": "2020-07-10",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "EpdCVAmt5C8",
+    "externalUrl": "https://www.youtube.com/watch?v=EpdCVAmt5C8",
+    "thumbnailUrl": "https://i.ytimg.com/vi/EpdCVAmt5C8/hqdefault.jpg",
+    "duration": "Video · 2:58",
+    "description": "BBCを購読して🔔通知を受け取る 👉 https://bit. ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home デイヴィッド・テナントとマイケル・シーン（本人役）は、ウェストエンドでの『作者を探す6人の登場人物』の舞台に出演する予定だった。",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
       ]
     }
   },
@@ -1557,7 +2787,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "transcriptSource": "unavailable",
     "discoveredAt": "2026-07-19",
     "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
-    "title": "ジョディ・ウィテカー＆デイヴィッド・テナント：ドクターたちは固く結束している",
+    "title": "ジョディ・ウィテカー＆デイヴィッド・テナント：ドクターたちは固い絆で結ばれている",
     "titleEn": "Jodie Whittaker & David Tennant: Doctors Stick Together",
     "year": "2020",
     "publishedDate": "2020-06-19",
@@ -1685,7 +2915,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=NURhKVxFvqc",
     "thumbnailUrl": "https://i.ytimg.com/vi/NURhKVxFvqc/hqdefault.jpg",
     "duration": "Video · 20:34",
-    "description": "素晴らしいデイヴィッド・テナントが、ブッシュとリッチーとトークを交わしにやってきました。 彼らは、彼のポッドキャスト、『ドクター・フー』、オリヴィア・コールマン、別のキャリア、テレサ・メイ、公共交通機関での迷惑行為など、さまざまな話題について語り合いました！  ----------------------------------------­­­­­­­­­­---------- ► アブソリュート・ラジオを購読する：http://absrad。",
+    "description": "素晴らしいデイヴィッド・テナントが、ブッシュとリッチーとトークを交わしにやってきました。 彼らは、彼のポッドキャストや『ドクター・フー』、オリヴィア・コールマン、別のキャリア、テレサ・メイ、公共交通機関での迷惑行為など、さまざまな話題について語り合いました！  ----------------------------------------­­­­­­­­­­---------- ► アブソリュート・ラジオを購読する：http://absrad。",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -1780,6 +3010,122 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     }
   },
   {
+    "slug": "david-tennant-plays-snog-marry-kill-matt-smith-peter-capaldi-or-jodie-wh-hqfgz-xaic",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが「キス、結婚、殺す：マット・スミス、ピーター・カパルディ、それともジョディ・ウィテカー？」に挑戦",
+    "titleEn": "David Tennant Plays \"Snog, Marry, Kill: Matt Smith, Peter Capaldi Or Jodie Whittaker?\"",
+    "year": "2018",
+    "publishedDate": "2018-01-21",
+    "source": "Channel 4 Entertainment",
+    "mediaType": "video",
+    "videoId": "HQfGz-XAIC8",
+    "externalUrl": "https://www.youtube.com/watch?v=HQfGz-XAIC8",
+    "thumbnailUrl": "https://i.ytimg.com/vi/HQfGz-XAIC8/hqdefault.jpg",
+    "duration": "Video · 2:51",
+    "description": "『Miranda Does Christmas!』の番組内で、デイヴィッド・テナントは『ドクター・フー』に関する難問を投げかけられます！ All 4でこのエピソードをご覧ください：http://www. channel4.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "Channel 4 Entertainment"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-s-south-african-accent-room-101-series-5-episode-1-preview-khyqbun6zx",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントの南アフリカ訛り - 『ルーム101』：シーズン5 第1話 予告編 - BBC",
+    "titleEn": "David Tennant's South African accent - Room 101: Series 5 Episode 1 Preview - BBC",
+    "year": "2016",
+    "publishedDate": "2016-01-07",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "KhyQbun6zXw",
+    "externalUrl": "https://www.youtube.com/watch?v=KhyQbun6zXw",
+    "thumbnailUrl": "https://i.ytimg.com/vi/KhyQbun6zXw/hqdefault.jpg",
+    "duration": "Video · 1:16",
+    "description": "BBCのチャンネル登録と🔔通知設定はこちら 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home 番組のウェブサイト：http://bbc.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "david-tennant-olivia-colman-s-sexual-tension-the-graham-norton-show-seri-bzq8rc3jc5",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントとオリヴィア・コールマンの間に漂う色気――『ザ・グラハム・ノートン・ショー』：シーズン16 - BBC",
+    "titleEn": "David Tennant & Olivia Colman's sexual tension - The Graham Norton Show: Series 16 - BBC",
+    "year": "2015",
+    "publishedDate": "2015-01-16",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "Bzq8rC3JC5Y",
+    "externalUrl": "https://www.youtube.com/watch?v=Bzq8rC3JC5Y",
+    "thumbnailUrl": "https://i.ytimg.com/vi/Bzq8rC3JC5Y/hqdefault.jpg",
+    "duration": "Video · 1:13",
+    "description": "BBCをチャンネル登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home http://www.",
+    "tagGroups": {
+      "actors": [
+        "Olivia Colman"
+      ],
+      "genres": [
+        "Broadchurch"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "matt-smith-and-david-tennant-behind-the-scenes-of-the-doctor-who-50th-an-2em8lmmtnk",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "マット・スミスとデイヴィッド・テナント、『ドクター・フー』50周年記念スペシャルの舞台裏 - BBC",
+    "titleEn": "Matt Smith and David Tennant Behind the Scenes of the Doctor Who 50th Anniversary Special - BBC",
+    "year": "2013",
+    "publishedDate": "2013-05-18",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "2Em8lmmTNkA",
+    "externalUrl": "https://www.youtube.com/watch?v=2Em8lmmTNkA",
+    "thumbnailUrl": "https://i.ytimg.com/vi/2Em8lmmTNkA/hqdefault.jpg",
+    "duration": "Video · 1:27",
+    "description": "BBCをチャンネル登録して🔔 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCをいち早く視聴 👉 https://bbc.in/iPlayer-Home http://www にアクセスしてください。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-talks-about-peeing-in-his-garden-to-scare-foxes-qyufqvt4-1",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -1857,6 +3203,62 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
       "genres": [],
       "sources": [
         "Absolute Radio"
+      ]
+    }
+  },
+  {
+    "slug": "festive-gifts-day-15-david-tennant-on-the-catherine-tate-show-bbc-studio-cvmu0ydyr8",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "ホリデーギフト！15日目 | 『キャサリン・テイト・ショー』に出演したデイヴィッド・テナント | BBCスタジオ",
+    "titleEn": "Festive Gifts! Day 15 | David Tennant on The Catherine Tate Show | BBC Studios",
+    "year": "2011",
+    "publishedDate": "2011-12-15",
+    "source": "BBC Studios",
+    "mediaType": "video",
+    "videoId": "CVMu0ydyr8U",
+    "externalUrl": "https://www.youtube.com/watch?v=CVMu0ydyr8U",
+    "thumbnailUrl": "https://i.ytimg.com/vi/CVMu0ydyr8U/hqdefault.jpg",
+    "duration": "Video · 3:37",
+    "description": "成人向けユーモアが含まれています。プレゼントをクリックして、今日の動画をご覧ください！ BBC Worldwideからメリークリスマス。クリスマスを目前に控え、ホリデー気分を盛り上げる動画を順次公開しています。",
+    "tagGroups": {
+      "actors": [
+        "Catherine Tate"
+      ],
+      "genres": [],
+      "sources": [
+        "BBC Studios"
+      ]
+    }
+  },
+  {
+    "slug": "billie-piper-on-kissing-david-tennant-and-matt-smith-friday-night-with-j-705brgoy6l",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-20",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "ビリー・パイパー、デイヴィッド・テナントやマット・スミスとのキスについて語る――『フライデー・ナイト・ウィズ・ジョナサン・ロス』――BBC",
+    "titleEn": "Billie Piper on Kissing David Tennant and Matt Smith - Friday Night with Jonathan Ross - BBC",
+    "year": "2010",
+    "publishedDate": "2010-01-22",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "705brgOy6LU",
+    "externalUrl": "https://www.youtube.com/watch?v=705brgOy6LU",
+    "thumbnailUrl": "https://i.ytimg.com/vi/705brgOy6LU/hqdefault.jpg",
+    "duration": "Video · 1:36",
+    "description": "BBCチャンネルを登録して🔔通知を受け取りましょう 👉 https://bit.ly/BBCYouTubeSub iPlayerでBBCの番組をいち早く視聴 👉 https://bbc.in/iPlayer-Home この番組の詳細はこちら：http://www.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
       ]
     }
   }

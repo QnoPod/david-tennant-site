@@ -130,6 +130,7 @@ export function getSharedRoleImageKey(...values: string[]) {
   const normalized = normalizeText(values.join(" "));
   if (normalized.includes("spitelout") || normalized.includes("スピテルアウト")) return "Spitelout";
   if (normalized.includes("ivarthewhitless") || normalized.includes("アイヴァーザウィットレス")) return "Ivar the Whitless";
+  if (normalized.includes("charlesdarwin") || normalized.includes("チャールズダーウィン")) return "Charles Darwin";
   return null;
 }
 

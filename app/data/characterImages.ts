@@ -116,6 +116,7 @@ export const customCharacterImages: Record<string, string> = {
   // 複数作品に登場する同一キャラクターは、作品名ではなく役名キーで共通画像を使います。
   "Spitelout": "/characters/Spitelout.jpg",
   "Ivar the Whitless": "/characters/Ivar the Whitless.jpg",
+  "Charles Darwin": "/characters/Charles Darwin.png",
 
   "Fireman Sam: Alien Alert! The Movie": "/characters/Buck Douglas.jpg",
   "ミッキーマウス クラブハウス／ミッキーのモンスターミュージカル": "/characters/Igor the Door.png",

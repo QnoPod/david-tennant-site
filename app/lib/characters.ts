@@ -244,30 +244,64 @@ export function getCharacters(works: Work[] = []): Character[] {
   });
 
   const unique = new Map<string, Character>();
+
+  /** 同じ人物・役の複数作品を、最初の出演情報を代表値とする1件へ統合します。 */
+  const mergeFirstAppearanceCharacter = (
+    uniqueKey: string,
+    character: Character,
+    workTitle: string,
+    displayWorkTitle: string,
+    englishName?: string,
+  ) => {
+    const existing = unique.get(uniqueKey);
+    const timelineKey = (item: Character) => /^\d{4}-\d{2}-\d{2}$/.test(item.date)
+      ? item.date
+      : /^\d{4}$/.test(item.year) ? `${item.year}-12-31` : "9999-12-31";
+    const firstAppearance = !existing || timelineKey(character) < timelineKey(existing)
+      ? character
+      : existing;
+    const workIds = [...new Set([...(existing?.workIds ?? []), ...character.workIds])];
+    const firstYear = firstAppearance.date.slice(0, 4) || firstAppearance.year;
+
+    unique.set(uniqueKey, {
+      ...firstAppearance,
+      key: uniqueKey,
+      workIds,
+      workTitle,
+      displayWorkTitle,
+      englishName: englishName ?? firstAppearance.englishName,
+      year: firstYear,
+      age: calculateAge(firstAppearance.date, firstYear),
+    });
+  };
+
   for (const character of [...dictionaryCharacters, ...sharedRoleCharacters, ...manualCharacters]) {
     const isSpitelout = normalize(character.name) === normalize("スピテルアウト")
       || normalize(character.englishName).includes("spitelout");
+    const isCharlesDarwin = normalize(character.name) === normalize("チャールズ・ダーウィン")
+      || normalize(character.englishName).includes("charlesdarwin");
 
     // スピテルアウトはシリーズ各作品の出演データを1件へまとめ、
     // 初回作品『ヒックとドラゴン』の公開日・作品名を代表値として表示します。
     if (isSpitelout) {
-      const uniqueKey = "spitelout-how-to-train-your-dragon";
-      const existing = unique.get(uniqueKey);
-      const firstAppearance = !existing || (character.date && character.date < existing.date)
-        ? character
-        : existing;
-      const workIds = [...new Set([...(existing?.workIds ?? []), ...character.workIds])];
-      const firstYear = firstAppearance.date.slice(0, 4) || firstAppearance.year;
+      mergeFirstAppearanceCharacter(
+        "spitelout-how-to-train-your-dragon",
+        character,
+        "How to Train Your Dragon",
+        "ヒックとドラゴン",
+      );
+      continue;
+    }
 
-      unique.set(uniqueKey, {
-        ...firstAppearance,
-        key: uniqueKey,
-        workIds,
-        workTitle: "How to Train Your Dragon",
-        displayWorkTitle: "ヒックとドラゴン",
-        year: firstYear,
-        age: calculateAge(firstAppearance.date, firstYear),
-      });
+    // チャールズ・ダーウィンは関連クレジットを1件へまとめ、初登場年を表示します。
+    if (isCharlesDarwin) {
+      mergeFirstAppearanceCharacter(
+        "charles-darwin-the-pirates",
+        character,
+        "The Pirates! In an Adventure with Scientists!",
+        "ザ・パイレーツ！",
+        "Charles Darwin",
+      );
       continue;
     }
 

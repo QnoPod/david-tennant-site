@@ -53,5 +53,16 @@ export const workImageOverrides: Record<string, Pick<Work, "posterUrl" | "backdr
     "Doctor Who: Human Nature & The Family of Blood": {
     posterUrl: "/works/Doctor Who Human Nature & The Family of Blood.jpg",
   },
-  
+    "Terri McIntyre - Classy Bitch": {
+    posterUrl: "/works/Terri McIntyre - Classy Bitch.jpg",
+  },
+    "Love in the 21st Century": {
+    posterUrl: "/works/Love in the 21st Century.jpg",
+  },
+    "A Mug's Game": {
+    posterUrl: "/works/A Mug's Game.jpg",
+  },
+    "The Wind in the Willows": {
+    posterUrl: "/works/The Wind in the Willows.jpg",
+  },
 };

@@ -2,6 +2,7 @@ import { customCharacterInfo, customRoleInfo, narratorCharacterDescription, self
 import { customCharacterImages } from "../data/characterImages";
 import { customOverviews } from "../data/overviews";
 import { searchDictionary } from "../data/searchDictionary";
+import { getSelfAppearanceDetail } from "../data/selfAppearanceDetails";
 import { videoOverrides } from "../data/videoOverrides";
 import { getWorkTitle } from "./tmdb";
 import type { Work, WorkCharacter } from "./types";
@@ -173,10 +174,31 @@ function getCharacterImage(path?: string) {
  */
 export function getWorkCharacters(work: Work): WorkCharacter[] {
   const isFourteenthDoctorSpecial = isFourteenthDoctorWork(work);
+  const sourceTitle = getSourceTitle(work);
+  const workTitleCandidates = [
+    sourceTitle,
+    getDisplayTitle(work),
+    work.title,
+    work.name,
+    work.original_title,
+    work.original_name,
+  ].filter((title): title is string => Boolean(title));
 
   // 手入力キャラクターにも、複数作品で共通利用する役名別画像を適用します。
   if (work.manualCharacters?.length) {
     const manualCharacters = work.manualCharacters.map((character) => {
+      if (isSelfRole(`${character.name} ${character.englishName}`)) {
+        const detail = getSelfAppearanceDetail(workTitleCandidates, character.englishName || character.name);
+        return {
+          ...character,
+          name: "本人",
+          englishName: "Self",
+          image: getCharacterImage(customCharacterImages.self),
+          // 本人出演は作品別辞書を正本にし、古い短文より詳しい説明を優先します。
+          appearanceNote: detail.appearanceNote,
+          description: detail.description,
+        };
+      }
       const sharedImageKey = getSharedRoleImageKey(character.name, character.englishName);
       if (!sharedImageKey) return character;
       const roleInfo = parseCharacterInfo(customRoleInfo[sharedImageKey]);
@@ -198,7 +220,6 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     }));
   }
 
-  const sourceTitle = getSourceTitle(work);
   const rawCharacter = work.character || "";
   const normalizedRawCharacter = normalizeText(rawCharacter);
   const hasSpiteloutAndIvar = normalizedRawCharacter.includes("spitelout")
@@ -226,6 +247,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const isTenthDoctor = isTenthDoctorRole(rawName);
     const isFourteenthDoctor = isFourteenthDoctorRole(rawName) || isFourteenthDoctorSpecial;
     const isArchiveDoctor = isArchiveDoctorRole(rawName);
+    const selfAppearance = isSelf ? getSelfAppearanceDetail(workTitleCandidates, rawName) : null;
     const sharedImageKey = getSharedRoleImageKey(rawName);
     const roleDictionaryKey = getCharacterDictionaryKeyByRole(rawName, sourceTitle);
     let dictionaryKey = sourceTitle;
@@ -291,7 +313,8 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
         : parsed.name || fallbackName,
       englishName,
       image: getCharacterImage(customCharacterImages[imageKey] || customCharacterImages[sourceTitle]),
-      description: isSelf ? selfCharacterDescription
+      appearanceNote: selfAppearance?.appearanceNote,
+      description: isSelf ? selfAppearance?.description || selfCharacterDescription
         : isNarrator ? narratorCharacterDescription
         : parsed.description,
       // 既存のCHARACTERS一覧は「10th Doctor」の辞書データを継続利用します。

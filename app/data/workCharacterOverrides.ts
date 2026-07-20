@@ -60,7 +60,7 @@ export const workCharacterOverrides: Record<string, WorkCharacterOverride> = {
         name: "本人",
         englishName: "Self",
         image: SELF_IMAGE,
-        appearanceNote: "インタビュ出演",
+        appearanceNote: "インタビュー出演",
         description: "デイヴィッド・テナント本人が、『ドクター・フー』とマット・スミスについて語るインタビュー映像で登場。",
       },
       {
@@ -108,7 +108,7 @@ export const workCharacterOverrides: Record<string, WorkCharacterOverride> = {
       name: "本人",
       englishName: "Self",
       image: SELF_IMAGE,
-      appearanceNote: "インタビュ出演",
+      appearanceNote: "インタビュー出演",
       description: "デイヴィッド・テナント本人が、映像の失われた『ドクター・フー』の過去エピソードについて語る。",
     }],
   },

@@ -69,6 +69,11 @@ function isHuyangRole(value: string) {
   return value.toLowerCase().includes("huyang") || value.includes("ヒュイヤン");
 }
 
+/** 10代目ドクター本人の演技ではなく、劇中写真だけが使われたクレジットを判定します。 */
+function isTenthDoctorPictureRole(value: string) {
+  return normalizeText(value).includes("thedoctor10picture");
+}
+
 /**
  * TMDBの英語役名から、手入力したキャラクター説明・画像の作品キーを取得します。
  * 作品名の表記がTMDBと日本語辞書で異なる場合も、WORKSの詳細へ確実に反映します。
@@ -178,6 +183,17 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
 
   return rawParts.map((part) => {
     const rawName = part.trim();
+    if (isTenthDoctorPictureRole(rawName)) {
+      return {
+        name: "10代目ドクター（写真）",
+        englishName: "The Doctor (10) (picture)",
+        image: getCharacterImage(customCharacterImages["10th doctor"]),
+        appearanceNote: "劇中写真のみ・クレジットなし",
+        description: "リヴァーが所有するドクターの歴代の顔写真の一枚として登場。デイヴィッド・テナントによる新規の演技や台詞はない。",
+        excludeFromCharacters: true,
+      };
+    }
+
     const isNarrator = isNarratorRole(rawName);
     const isSelf = isSelfRole(rawName);
     const isHuyang = isHuyangRole(rawName);

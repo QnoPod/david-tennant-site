@@ -491,6 +491,8 @@ img { display: block; max-width: 100%; }
 .work-characters h4 { margin: 2px 0 7px; font-family: var(--serif); font-size: 21px; }
 .work-characters h4 + small { display: block; margin: -5px 0 8px; color: var(--blue); font-size: 10px; font-weight: 700; }
 .work-characters p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.work-characters .work-character__appearance { margin: 7px 0; color: var(--ink); }
+.work-character__appearance strong { color: var(--gold-dark); }
 
 /* ---------- Shared modal ---------- */
 .modal-backdrop { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 24px; background: rgba(9,9,13,.84); backdrop-filter: blur(8px); }

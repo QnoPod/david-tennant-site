@@ -100,6 +100,10 @@ export type WorkCharacter = {
   englishName: string;
   image: string;
   description: string;
+  /** 写真のみ・声のみなど、通常の演技と区別して表示する出演形態です。 */
+  appearanceNote?: string;
+  /** WORKSには表示する一方、CHARACTERSの役柄一覧には追加しない場合に使用します。 */
+  excludeFromCharacters?: boolean;
   attributes?: string[];
 };
 

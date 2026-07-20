@@ -221,7 +221,7 @@ export function getCharacters(works: Work[] = []): Character[] {
   // manualWorks.tsの役柄も、出演回があればその放送日、なければ作品公開日を使います。
   const manualCharacters: Character[] = works.filter((work) => work.isManual && !work.excludeFromCharacters).flatMap((work) => {
     const appearances = getEpisodeAppearances(work);
-    return getWorkCharacters(work).map((character, index) => {
+    return getWorkCharacters(work).filter((character) => !character.excludeFromCharacters).map((character, index) => {
       const appearanceDate = getFirstAppearanceDate(appearances, character, work.character);
       const referenceDate = appearanceDate || getWorkDate(work);
       const year = referenceDate.slice(0, 4) || "年不明";

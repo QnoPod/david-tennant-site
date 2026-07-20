@@ -1,4 +1,5 @@
 import { manualWorks, workGenreOverrides } from "../data/manualWorks";
+import { workCharacterOverrides } from "../data/workCharacterOverrides";
 import { workImageOverrides } from "../data/workImages";
 import type { Work } from "./types";
 
@@ -44,17 +45,24 @@ function applyImageOverrides(work: Work): Work {
  * 取得直後に補正することで、WORKS・CHARACTERS・検索・年表で同じ役名を使えます。
  */
 function applyCharacterOverrides(work: Work): Work {
-  const titles = [work.title, work.name, work.original_title, work.original_name]
-    .filter((title): title is string => Boolean(title))
+  const sourceTitles = [work.title, work.name, work.original_title, work.original_name]
+    .filter((title): title is string => Boolean(title));
+  const normalizedTitles = sourceTitles
     .map((title) => title.normalize("NFKC").toLowerCase().replace(/[\s・:=\-]/g, ""));
-  const isFourteenthDoctorSpecial = work.id === 241855 || titles.some((title) =>
+  const isFourteenthDoctorSpecial = work.id === 241855 || normalizedTitles.some((title) =>
     title.includes("doctorwho60thanniversaryspecials")
     || title.includes("doctorwhochildreninneedspecial2023")
     || title.includes("ドクターフー60周年スペシャル")
     || title.includes("ドクターフーチルドレンインニードスペシャル2023"),
   );
 
-  return isFourteenthDoctorSpecial ? { ...work, character: "14th Doctor" } : work;
+  if (isFourteenthDoctorSpecial) return { ...work, character: "14th Doctor" };
+
+  const overriddenRole = sourceTitles.map((title) => workCharacterOverrides[title]).find(Boolean);
+
+  return overriddenRole
+    ? { ...work, character: overriddenRole.character, manualCharacters: overriddenRole.characters }
+    : work;
 }
 
 /** TMDB作品と手入力作品を統合し、ジャンル上書き後に公開日の新しい順に並べます。 */

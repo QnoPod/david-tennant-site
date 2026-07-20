@@ -8,7 +8,7 @@ export const yearOverrides: Record<string, string> = {
   "National Theatre Live: Good": "2023",
   "Litvinenko": "2022",
   "Inside Man": "2022",
-  "THE MINOR CHARACTER": "2012",
+  "Playhouse Presents": "2012",
   "HIGH STAKES": "2001",
   "THE ROMANTICS": "2006",
   "THE BILL": "1995",

@@ -91,7 +91,7 @@ export const customCharacterImages: Record<string, string> = {
   "Hang Ups": "/characters/Martin Lamb.jpg",
   "A Mug's Game": "/characters/Gavin.jpg",
   "HOLDING THE BABY": "/characters/Nurse.jpg",
-  "THE MINOR CHARACTER": "/characters/Will.jpg",
+  "Playhouse Presents": "/characters/Will.jpg",
   "THIS IS JINSY": "/characters/Mr Slightlyman.jpg",
   "THE ROMANTICS": "/characters/Jean-Jacques Rousseau.jpg",
   "POSH NOSH": "/characters/Jose-Luis and Piers.jpg",

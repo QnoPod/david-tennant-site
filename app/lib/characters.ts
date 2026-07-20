@@ -160,6 +160,8 @@ export function getCharacters(works: Work[] = []): Character[] {
         : parsed.name === "フュージトイド" ? "Fugitoid"
         : parsed.name === "トゥイッグス" ? "Twigs"
         : parsed.name === "オスカーの脳" ? "Oscar's Brain"
+        : parsed.name === "ゴキブリのシェフ" ? "Roach Chef"
+        : parsed.name === "ドン" ? "Don"
         : parsed.name.includes("スクルージ・マクダック") ? "Scrooge McDuck"
         : parsed.name === "ドナルド・ピーターソン" ? "Donald Peterson"
         : parsed.name === "ロデリック・ピーターソン" ? "Roderick Peterson"

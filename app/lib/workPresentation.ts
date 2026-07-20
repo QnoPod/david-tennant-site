@@ -78,8 +78,9 @@ function isTenthDoctorPictureRole(value: string) {
  * TMDBの英語役名から、手入力したキャラクター説明・画像の作品キーを取得します。
  * 作品名の表記がTMDBと日本語辞書で異なる場合も、WORKSの詳細へ確実に反映します。
  */
-function getCharacterDictionaryKeyByRole(value: string) {
+function getCharacterDictionaryKeyByRole(value: string, sourceTitle: string) {
   const normalized = normalizeText(value);
+  const normalizedTitle = normalizeText(sourceTitle);
   if (normalized.includes("crowley") || normalized.includes("クロウリー")) return "グッド・オーメンズ";
   if (normalized.includes("buckdouglas")) return "Fireman Sam: Alien Alert! The Movie";
   if (normalized.includes("igorthedoor") || normalized.includes("ドアのイゴール")) {
@@ -90,6 +91,13 @@ function getCharacterDictionaryKeyByRole(value: string) {
   if (normalized.includes("fugitoid")) return "ミュータント タートルズ";
   if (normalized.startsWith("twigs")) return "Tree Fu Tom";
   if (normalized.includes("oscarsbrain") || normalized.includes("オスカーの脳")) return "スイチュー! フレンズ";
+  if (normalized.includes("roachchef") || normalized.includes("ゴキブリのシェフ")) {
+    return "パローニ・ファミリー ハロウィーン・スペシャル！";
+  }
+  if (["don", "donvoice", "ドン"].includes(normalized)
+    && (normalizedTitle.includes("thesandman") || normalizedTitle.includes("サンドマン"))) {
+    return "サンドマン";
+  }
   return null;
 }
 
@@ -201,7 +209,7 @@ export function getWorkCharacters(work: Work): WorkCharacter[] {
     const isFourteenthDoctor = isFourteenthDoctorRole(rawName) || isFourteenthDoctorSpecial;
     const isArchiveDoctor = isArchiveDoctorRole(rawName);
     const sharedImageKey = getSharedRoleImageKey(rawName);
-    const roleDictionaryKey = getCharacterDictionaryKeyByRole(rawName);
+    const roleDictionaryKey = getCharacterDictionaryKeyByRole(rawName, sourceTitle);
     let dictionaryKey = sourceTitle;
     let imageKey = sourceTitle;
 

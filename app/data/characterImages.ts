@@ -125,6 +125,8 @@ export const customCharacterImages: Record<string, string> = {
   "ミュータント タートルズ": "/characters/Fugitoid.jpg",
   "Tree Fu Tom": "/characters/Twigs.jpg",
   "スイチュー! フレンズ": "/characters/Oscar's Brain.jpg",
+  "パローニ・ファミリー ハロウィーン・スペシャル！": "/characters/Roach Chef.png",
+  "サンドマン": "/characters/Don.png",
 
 
 

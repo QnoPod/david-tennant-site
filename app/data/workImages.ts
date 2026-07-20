@@ -65,4 +65,10 @@ export const workImageOverrides: Record<string, Pick<Work, "posterUrl" | "backdr
     "The Wind in the Willows": {
     posterUrl: "/works/The Wind in the Willows.jpg",
   },
+    "Standing By": {
+    posterUrl: "/works/standing by.jpg",
+  },
+    "The Neverending Pillow Fort": {
+    posterUrl: "/works/The Neverending Pillow Fort.png",
+  },
 };

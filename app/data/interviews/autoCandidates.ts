@@ -7,6 +7,37 @@ import type { InterviewSummary } from "./types";
  */
 export const autoInterviewCandidates: readonly InterviewSummary[] = [
   {
+    "slug": "michael-sheen-s-impression-though-bbc-tfb06t92fx",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-07-21",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "でも、マイケル・シーンのモノマネは最高だね 🤣 - BBC",
+    "titleEn": "Michael Sheen’s impression though 🤣 - BBC",
+    "year": "2026",
+    "publishedDate": "2026-07-17",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "tFB06T92FXo",
+    "externalUrl": "https://www.youtube.com/watch?v=tFB06T92FXo",
+    "thumbnailUrl": "https://i.ytimg.com/vi/tFB06T92FXo/hqdefault.jpg",
+    "duration": "Video · 1:49",
+    "description": "『Staged』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機をドラマに変えてしまう、口論の絶えない2人の俳優。在宅勤務とバーチャル・ハリウッドという環境の中で、彼らの脆い自尊心は持ちこたえられるのか？  #MichaelSheen #DavidTennant #コメディ #Staged #懐かしの名作",
+    "tagGroups": {
+      "actors": [
+        "Michael Sheen"
+      ],
+      "genres": [
+        "Staged"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "rivals-stars-david-tennant-and-nafessa-williams-talk-who-would-be-the-be-eglfenuti7",
     "isPublished": false,
     "reviewStatus": "pending",

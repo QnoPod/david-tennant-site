@@ -764,13 +764,22 @@ img { display: block; max-width: 100%; }
 .readability-settings__reset { width: 100%; min-height: 42px; margin-top: 6px; border: 1px solid var(--blue); color: var(--blue); background: var(--white); cursor: pointer; font-size: 10px; font-weight: 800; }
 .readability-settings__note { margin: 10px 0 0; color: var(--muted); font-size: 9px; text-align: center; }
 
-html[data-readability-size="small"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-note p, .data-check-list li p) { font-size: 13px !important; }
-html[data-readability-size="large"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-note p, .data-check-list li p) { font-size: 17px !important; }
-html[data-readability-size="xlarge"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-note p, .data-check-list li p) { font-size: 19px !important; }
+/* 全ページの本文要素を共通で対象にします。eyebrowは見出し用ラベルなので除外します。 */
+html[data-readability-size="small"] main :is(p:not(.eyebrow), li, dd, blockquote, figcaption, td, th) { font-size: 13px !important; }
+html[data-readability-size="large"] main :is(p:not(.eyebrow), li, dd, blockquote, figcaption, td, th) { font-size: 17px !important; }
+html[data-readability-size="xlarge"] main :is(p:not(.eyebrow), li, dd, blockquote, figcaption, td, th) { font-size: 19px !important; }
 html[data-readability-size="small"] .translation-grid p { font-size: 16px !important; }
 html[data-readability-size="large"] .translation-grid p { font-size: 22px !important; }
 html[data-readability-size="xlarge"] .translation-grid p { font-size: 24px !important; }
-html[data-readability-spacing="relaxed"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-grid p, .translation-note p, .data-check-list li p) { line-height: 2.15 !important; }
+
+/* WORKSとMY ARCHIVEの本文・補足情報も、読みやすさ設定へ連動させます。 */
+html[data-readability-size="small"] { --readability-page-copy-size: 10px; --readability-card-copy-size: 9px; }
+html[data-readability-size="large"] { --readability-page-copy-size: 15px; --readability-card-copy-size: 12px; }
+html[data-readability-size="xlarge"] { --readability-page-copy-size: 17px; --readability-card-copy-size: 14px; }
+:is(html[data-readability-size="small"], html[data-readability-size="large"], html[data-readability-size="xlarge"]) :is(.archive-summary > p, .my-archive-empty p, .my-archive-note) { font-size: var(--readability-page-copy-size) !important; }
+:is(html[data-readability-size="small"], html[data-readability-size="large"], html[data-readability-size="xlarge"]) :is(.work-card__body > span, .my-archive-item small, .my-archive-item span) { font-size: var(--readability-card-copy-size) !important; }
+html[data-readability-spacing="relaxed"] main :is(p:not(.eyebrow), li, dd, blockquote, figcaption, td, th) { line-height: 2.15 !important; }
+html[data-readability-spacing="relaxed"] :is(.archive-summary > p, .work-card__body > span, .my-archive-item small, .my-archive-item span, .my-archive-empty p, .my-archive-note) { line-height: 2 !important; }
 html[data-readability-contrast="high"] { --ink: #000; --ink-soft: #101010; --paper: #f0f0f0; --white: #fff; --gold: #8a6200; --blue: #002f5f; --muted: #353535; --line: rgba(0,0,0,.42); }
 html[data-readability-contrast="high"] :is(.section--blue, .site-footer, .site-header) { --gold: #ffd86b; }
 html[data-readability-contrast="high"] :is(.section--blue, .site-footer) { color: #fff; }

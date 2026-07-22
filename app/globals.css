@@ -806,6 +806,13 @@ img { display: block; max-width: 100%; }
 .site-footer nav a { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-decoration: none; }
 .site-footer__legal { display: flex; justify-content: space-between; gap: 24px; padding-block: 18px; border-top: 1px solid rgba(255,255,255,.1); }
 .site-footer__legal p { margin: 0; color: rgba(255,255,255,.35); font-size: 9px; }
+.pwa-install { margin-top: 20px; }
+.pwa-install button { min-height: 40px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.28); color: var(--white); background: transparent; cursor: pointer; font-size: 9px; font-weight: 800; letter-spacing: .08em; }
+.pwa-install button:hover, .pwa-install button:focus-visible { border-color: var(--gold); color: var(--gold); }
+.pwa-install p { max-width: 370px; margin: 10px 0 0 !important; color: rgba(255,255,255,.72) !important; font-family: var(--sans) !important; font-size: 10px !important; line-height: 1.7; }
+.offline-page { min-height: 62vh; display: grid; align-content: center; justify-items: start; padding-block: 90px; }
+.offline-page h1 { max-width: 760px; margin: 0; font-family: var(--serif); font-size: clamp(44px, 7vw, 84px); font-weight: 500; line-height: 1; }
+.offline-page > p:not(.eyebrow) { max-width: 620px; margin: 28px 0 0; color: var(--muted); font-size: 14px; }
 
 /* ---------- Global jump controls ---------- */
 .scroll-buttons { position: fixed; right: 18px; bottom: 20px; z-index: 90; display: grid; gap: 7px; }

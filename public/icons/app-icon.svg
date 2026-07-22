@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="88" fill="#111116"/>
+  <rect x="92" y="92" width="328" height="328" rx="8" fill="none" stroke="#c9a65b" stroke-width="10"/>
+  <text x="256" y="310" fill="#c9a65b" font-family="Georgia, 'Times New Roman', serif" font-size="150" text-anchor="middle">DT</text>
+</svg>

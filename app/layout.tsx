@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import ScrollButtons from "./components/ScrollButtons";
@@ -17,9 +17,23 @@ export const metadata: Metadata = {
   },
   description:
     "デイヴィッド・テナントの出演作品、キャラクター、コミコン参加情報、インタビューをまとめた非公式ファンアーカイブ。",
+  applicationName: "David Tennant Archive",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "DT Archive",
+  },
+  formatDetection: { telephone: false },
   other: { "codex-preview": "development" },
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+  },
 };
+
+/** ブラウザ上部とホーム画面起動時の配色をサイトのネイビーに揃えます。 */
+export const viewport: Viewport = { themeColor: "#111116" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

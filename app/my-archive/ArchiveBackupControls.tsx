@@ -15,6 +15,7 @@ type ArchiveBackup = {
   data: {
     favoriteWorks: number[];
     watchedWorks: number[];
+    watchedEpisodes: string[];
     favoriteCharacters: string[];
     favoriteInterviews: string[];
     watchLaterWorks: string[];
@@ -32,6 +33,7 @@ function createBackup(): ArchiveBackup {
     data: {
       favoriteWorks: readArchiveList<number>(ARCHIVE_STORAGE_KEYS.favoriteWorks),
       watchedWorks: readArchiveList<number>(ARCHIVE_STORAGE_KEYS.watchedWorks),
+      watchedEpisodes: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchedEpisodes),
       favoriteCharacters: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteCharacters),
       favoriteInterviews: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteInterviews),
       watchLaterWorks: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterWorks),
@@ -111,6 +113,7 @@ export default function ArchiveBackupControls() {
 
       writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteWorks, uniqueNumbers(parsed.data.favoriteWorks));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.watchedWorks, uniqueNumbers(parsed.data.watchedWorks));
+      writeArchiveList(ARCHIVE_STORAGE_KEYS.watchedEpisodes, uniqueStrings(parsed.data.watchedEpisodes));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteCharacters, uniqueStrings(parsed.data.favoriteCharacters));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteInterviews, uniqueStrings(parsed.data.favoriteInterviews));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterWorks, uniqueStrings(parsed.data.watchLaterWorks));

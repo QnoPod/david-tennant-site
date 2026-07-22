@@ -5,6 +5,7 @@
 export const ARCHIVE_STORAGE_KEYS = {
   favoriteWorks: "favorites",
   watchedWorks: "watchedWorks",
+  watchedEpisodes: "david-archive-watched-episodes",
   favoriteCharacters: "david-archive-favorite-characters",
   favoriteInterviews: "david-archive-favorite-interviews",
   watchLaterWorks: "david-archive-watch-later-works",

@@ -250,6 +250,21 @@ function EpisodeAppearances({ work }: { work: Work }) {
     ? { status: "exact" as const, appearances: work.episodeAppearances, episodeCount: work.episodeAppearances.length }
     : null;
   const [result, setResult] = useState<EpisodeAppearanceResult | null>(manualResult);
+  const [watchedEpisodeKeys, setWatchedEpisodeKeys] = useState<string[]>([]);
+  const progressPrefix = `${getWorkArchiveKey(work.media_type, work.id)}|`;
+  const getEpisodeProgressKey = (episode: EpisodeAppearanceResult["appearances"][number]) =>
+    `${progressPrefix}${episode.seasonNumber}:${episode.episodeNumber}:${episode.airDate || ""}:${normalizeText(episode.title || episode.displayLabel || "")}`;
+
+  useEffect(() => {
+    const sync = () => setWatchedEpisodeKeys(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchedEpisodes));
+    sync();
+    window.addEventListener("storage", sync);
+    window.addEventListener(ARCHIVE_UPDATED_EVENT, sync);
+    return () => {
+      window.removeEventListener("storage", sync);
+      window.removeEventListener(ARCHIVE_UPDATED_EVENT, sync);
+    };
+  }, []);
 
   useEffect(() => {
     if (work.episodeAppearances?.length) {
@@ -277,13 +292,34 @@ function EpisodeAppearances({ work }: { work: Work }) {
 
   // 具体的なシーズン・話数が取得できた作品だけに欄を表示します。
   if (!result?.appearances.length) return null;
+  const episodeKeys = result.appearances.map(getEpisodeProgressKey);
+  const watchedCount = episodeKeys.filter((key) => watchedEpisodeKeys.includes(key)).length;
+  const progress = Math.round((watchedCount / episodeKeys.length) * 100);
+  const toggleEpisode = (key: string) => writeArchiveList(
+    ARCHIVE_STORAGE_KEYS.watchedEpisodes,
+    watchedEpisodeKeys.includes(key) ? watchedEpisodeKeys.filter((item) => item !== key) : [...watchedEpisodeKeys, key],
+  );
+  const toggleAllEpisodes = () => {
+    const otherWorks = watchedEpisodeKeys.filter((key) => !key.startsWith(progressPrefix));
+    writeArchiveList(ARCHIVE_STORAGE_KEYS.watchedEpisodes, watchedCount === episodeKeys.length ? otherWorks : [...otherWorks, ...episodeKeys]);
+  };
+
   return <section className="detail-section episode-appearances">
-    <h3>出演エピソード</h3>
-    <ol>{result.appearances.map((episode) => <li key={`${episode.seasonNumber}-${episode.episodeNumber}`}>
-      <strong>{episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}</strong>
-      {episode.title && <span>「{episode.title}」</span>}
-      {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
-      {episode.character && <small>{episode.character}</small>}
-    </li>)}</ol>
+    <div className="episode-appearances__heading"><h3>出演エピソード</h3><span>{result.appearances.length}件確認済み</span></div>
+    <div className="episode-progress">
+      <div><strong>出演回の視聴進捗</strong><span>{watchedCount} / {episodeKeys.length}話</span><button type="button" onClick={toggleAllEpisodes}>{watchedCount === episodeKeys.length ? "すべて解除" : "すべて視聴済み"}</button></div>
+      <div className="episode-progress__bar" role="progressbar" aria-label="出演回の視聴進捗" aria-valuemin={0} aria-valuemax={episodeKeys.length} aria-valuenow={watchedCount}><span style={{ width: `${progress}%` }} /></div>
+    </div>
+    <ol>{result.appearances.map((episode) => {
+      const progressKey = getEpisodeProgressKey(episode);
+      const isWatched = watchedEpisodeKeys.includes(progressKey);
+      return <li className={isWatched ? "is-watched" : undefined} key={progressKey}>
+        <strong>{episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}</strong>
+        {episode.title && <span>「{episode.title}」</span>}
+        {episode.airDate && <time dateTime={episode.airDate}>{episode.airDate}</time>}
+        <button type="button" aria-pressed={isWatched} aria-label={`${episode.displayLabel || `S${episode.seasonNumber} E${episode.episodeNumber}`}を${isWatched ? "未視聴に戻す" : "視聴済みにする"}`} onClick={() => toggleEpisode(progressKey)}>{isWatched ? "✓ 視聴済み" : "未視聴"}</button>
+        {episode.character && <small>{episode.character}</small>}
+      </li>;
+    })}</ol>
   </section>;
 }

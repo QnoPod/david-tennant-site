@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import { ARCHIVE_STORAGE_KEYS, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { findRelatedInterviews } from "../lib/relatedContent";
+import { recordRecentlyViewed } from "../lib/recentlyViewed";
 import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import { getDisplayTitle, getOriginalTitle, getOriginalTitleForDisplay, getSourceTitle, getWorkCharacters, getWorkOverview, getWorkVideoKey, normalizeText } from "../lib/workPresentation";
@@ -193,6 +194,20 @@ function WorkDetailModal({ work, watched, onToggleWatched, onClose }: { work: Wo
     originalTitle,
     ...characters.flatMap((character) => [character.name, character.englishName]),
   ]) : [];
+
+  // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。
+  useEffect(() => {
+    if (!work) return;
+    recordRecentlyViewed({
+      key: `work-${work.media_type}-${work.id}`,
+      type: "work",
+      title: displayTitle,
+      subtitle: originalTitle !== displayTitle ? originalTitle : undefined,
+      href: `/works?q=${encodeURIComponent(displayTitle)}`,
+      image: getPosterUrl(work.poster_path, work.posterUrl),
+    });
+  }, [displayTitle, originalTitle, work]);
+
   return <Modal open={Boolean(work)} onClose={onClose} label={`${displayTitle}の詳細`}>
     {work && <div className="work-detail">
       {(work.backdrop_path || work.backdropUrl) && <div className="work-detail__backdrop" style={{ backgroundImage: `linear-gradient(to top, var(--white), transparent), url('${getBackdropUrl(work.backdrop_path, work.backdropUrl)}')` }} />}

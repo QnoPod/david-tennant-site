@@ -147,7 +147,7 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   const characterCard = (character: Character, timeline = false) => <article className={timeline ? "work-timeline-card character-timeline-card" : "media-card character-card"} key={character.key}>
     <button className="card-hit" onClick={() => setSelected(character)} aria-label={`${character.name}の詳細`} />
     <div className="character-card__image">
-      <img src={character.image} alt={`${character.name}の画像`} loading="lazy" decoding="async" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} />
+      <img src={character.image} alt={`${character.name}の画像`} width="400" height="400" loading="lazy" decoding="async" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} />
       {!timeline && favoriteButton(character, false)}
     </div>
     <div className="character-card__body">

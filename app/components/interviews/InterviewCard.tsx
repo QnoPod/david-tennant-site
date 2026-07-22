@@ -12,7 +12,7 @@ export default function InterviewCard({ interview, onOpen }: { interview: Interv
     <InterviewBookmarkButton slug={interview.slug} title={interview.title} compact />
     <WatchLaterButton slug={interview.slug} title={interview.title} compact />
     <div className="video-thumb">
-      <img src={interview.thumbnailUrl} alt="" loading="lazy" decoding="async" />
+      <img src={interview.thumbnailUrl} alt="" width="480" height="360" loading="lazy" decoding="async" />
       <span>{isVideo ? "▶" : "記事"}</span>
     </div>
     <div>

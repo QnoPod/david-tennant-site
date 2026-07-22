@@ -6,7 +6,7 @@ import { episodeOverrides } from "./episodeOverrides";
 const selfAppearance = [{
   name: "本人",
   englishName: "Self",
-  image: "/characters/self-icon.png",
+  image: "/characters/self-icon.webp",
   description: selfCharacterDescription,
 }];
 

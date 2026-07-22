@@ -36,7 +36,7 @@ export default async function HomePage() {
           </div>
         </div>
         <div className="hero__portrait" aria-label="デイヴィッド・テナントの写真">
-          <img src="/images/david-tennant.png" alt="笑顔のデイヴィッド・テナント" fetchPriority="high" decoding="async" />
+          <img src="/images/david-tennant-optimized.webp" alt="笑顔のデイヴィッド・テナント" width="1600" height="900" fetchPriority="high" decoding="async" />
           <span className="hero__year">1971 —</span>
         </div>
       </section>

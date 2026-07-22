@@ -146,7 +146,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     return <article className={timeline ? "work-timeline-card" : "media-card work-card"} key={`${work.media_type}-${work.id}`}>
       <button className="card-hit" onClick={() => setSelected(work)} aria-label={`${displayTitle}の詳細`} />
       <div className="work-card__image">
-        <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${displayTitle}のポスター`} loading="lazy" />
+        <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${displayTitle}のポスター`} width="342" height="513" loading="lazy" decoding="async" />
         <button className={`work-status work-status--watched ${isWatched ? "is-active" : ""}`} onClick={() => toggleWatched(work)} aria-label={isWatched ? "視聴済みを解除" : "視聴済みにする"}>✓</button>
         <button className={`work-status work-status--favorite ${isFavorite ? "is-active" : ""}`} onClick={() => toggleFavorite(work)} aria-label={isFavorite ? "お気に入りを解除" : "お気に入りに追加"}>★</button>
         <button className={`work-status work-status--later ${isWatchLater ? "is-active" : ""}`} onClick={() => toggleWatchLater(work)} aria-label={isWatchLater ? "あとで見るから外す" : "あとで見るに追加"} title="あとで見る">◷</button>
@@ -160,7 +160,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
           : <span>{characters.map((character) => character.name).join(" / ")}</span>}
         <div className="provider-icons" aria-label="日本の定額配信サービス">
           {(work.providers ?? []).map((provider) => provider.logo_path
-            ? <img key={provider.provider_id} src={getProviderLogo(provider.logo_path)} alt={provider.provider_name} title={provider.provider_name} loading="lazy" />
+            ? <img key={provider.provider_id} src={getProviderLogo(provider.logo_path)} alt={provider.provider_name} title={provider.provider_name} width="92" height="92" loading="lazy" decoding="async" />
             : <b key={provider.provider_id}>{provider.provider_name}</b>)}
           {!work.providers?.length && <em>日本の定額配信なし</em>}
         </div>
@@ -235,11 +235,11 @@ function WorkDetailModal({ work, watched, watchLater, onToggleWatched, onToggleW
 
       {work.media_type === "tv" && <EpisodeAppearances work={work} />}
 
-      <section className="detail-section"><h3>日本の定額配信サービス</h3>{work.providers?.length ? <div className="provider-detail-list">{work.providers.map((provider) => <div key={provider.provider_id}>{provider.logo_path && <img src={getProviderLogo(provider.logo_path)} alt="" />}<span>{provider.provider_name}</span></div>)}</div> : <p>現在、日本の定額配信サービスは確認できません。</p>}<small>配信状況は変更される場合があります。各サービスの公式情報もご確認ください。</small></section>
+      <section className="detail-section"><h3>日本の定額配信サービス</h3>{work.providers?.length ? <div className="provider-detail-list">{work.providers.map((provider) => <div key={provider.provider_id}>{provider.logo_path && <img src={getProviderLogo(provider.logo_path)} alt="" width="92" height="92" loading="lazy" decoding="async" />}<span>{provider.provider_name}</span></div>)}</div> : <p>現在、日本の定額配信サービスは確認できません。</p>}<small>配信状況は変更される場合があります。各サービスの公式情報もご確認ください。</small></section>
 
       {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} allowFullScreen /></div></section>}
 
-      <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}{character.appearanceNote && <p className="work-character__appearance"><strong>出演形態：</strong>{character.appearanceNote}</p>}<p>{character.description}</p>{!character.excludeFromCharacters && <Link className="text-link" href={`/characters?q=${encodeURIComponent(character.name)}`}>キャラクター詳細を見る →</Link>}</div></article>)}</div></section>
+      <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} width="400" height="400" loading="lazy" decoding="async" onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}{character.appearanceNote && <p className="work-character__appearance"><strong>出演形態：</strong>{character.appearanceNote}</p>}<p>{character.description}</p>{!character.excludeFromCharacters && <Link className="text-link" href={`/characters?q=${encodeURIComponent(character.name)}`}>キャラクター詳細を見る →</Link>}</div></article>)}</div></section>
       <PersonalNoteEditor noteKey={`work-${work.media_type}-${work.id}`} type="work" title={displayTitle} href={`/works?q=${encodeURIComponent(displayTitle)}`} placeholder="作品の感想や視聴時のメモを入力" />
       <RelatedLinks title="関連インタビュー" items={relatedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))} />
     </div>}

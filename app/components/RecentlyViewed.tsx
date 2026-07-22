@@ -27,7 +27,7 @@ export default function RecentlyViewed({ embedded = false }: { embedded?: boolea
   return <section className={`${embedded ? "my-archive-section" : "section shell"} recently-viewed`}>
     <div className="recently-viewed__heading"><div><p className="eyebrow">RECENTLY VIEWED</p><h2>最近見た項目</h2></div><button type="button" onClick={clearRecentlyViewed}>履歴を消去</button></div>
     <div className="recently-viewed__list">{items.slice(0, 6).map((item) => <Link href={item.href} key={item.key}>
-      {item.image ? <img src={item.image} alt="" loading="lazy" decoding="async" /> : <span aria-hidden="true">DT</span>}
+      {item.image ? <img src={item.image} alt="" width="74" height="74" loading="lazy" decoding="async" /> : <span aria-hidden="true">DT</span>}
       <div><p>{typeLabels[item.type]}</p><h3>{item.title}</h3>{item.subtitle && <small>{item.subtitle}</small>}</div>
     </Link>)}</div>
   </section>;

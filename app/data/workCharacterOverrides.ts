@@ -7,7 +7,7 @@ export type WorkCharacterOverride = {
   characters: WorkCharacter[];
 };
 
-const SELF_IMAGE = "/characters/self-icon.png";
+const SELF_IMAGE = "/characters/self-icon.webp";
 const NARRATOR_IMAGE = "/characters/narrator-icon.jpg";
 const TENTH_DOCTOR_IMAGE = "/characters/10thDoctor.jpg";
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllInterviewTags, type InterviewSummary } from "../../data/interviews/types";
 import InterviewBookmarkButton from "./InterviewBookmarkButton";
+import WatchLaterButton from "../WatchLaterButton";
 
 /** 動画と記事で共通利用する、インタビュー一覧カード。 */
 export default function InterviewCard({ interview, onOpen }: { interview: InterviewSummary; onOpen?: () => void }) {
@@ -9,6 +10,7 @@ export default function InterviewCard({ interview, onOpen }: { interview: Interv
   return <article className="interview-card">
     <Link className="interview-card__link" href={`/interviews/${interview.slug}`} aria-label={`${interview.title}を読む`} onClick={onOpen} />
     <InterviewBookmarkButton slug={interview.slug} title={interview.title} compact />
+    <WatchLaterButton slug={interview.slug} title={interview.title} compact />
     <div className="video-thumb">
       <img src={interview.thumbnailUrl} alt="" loading="lazy" decoding="async" />
       <span>{isVideo ? "▶" : "記事"}</span>

@@ -7,7 +7,7 @@ import InterviewCard from "../components/interviews/InterviewCard";
 import RecentlyViewed from "../components/RecentlyViewed";
 import ArchiveBackupControls from "./ArchiveBackupControls";
 import type { InterviewSummary } from "../data/interviews/types";
-import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
+import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, getWorkArchiveKey, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { getMediaLabel, getPosterUrl, getWorkDate } from "../lib/tmdb";
 import type { Character, Work } from "../lib/types";
 import { getDisplayTitle, getSourceTitle } from "../lib/workPresentation";
@@ -24,12 +24,16 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
   const [favoriteWorkIds, setFavoriteWorkIds] = useState<number[]>([]);
   const [favoriteCharacterKeys, setFavoriteCharacterKeys] = useState<string[]>([]);
   const [favoriteInterviewSlugs, setFavoriteInterviewSlugs] = useState<string[]>([]);
+  const [watchLaterWorkKeys, setWatchLaterWorkKeys] = useState<string[]>([]);
+  const [watchLaterInterviewSlugs, setWatchLaterInterviewSlugs] = useState<string[]>([]);
 
   useEffect(() => {
     const sync = () => {
       setFavoriteWorkIds(readArchiveList<number>(ARCHIVE_STORAGE_KEYS.favoriteWorks));
       setFavoriteCharacterKeys(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteCharacters));
       setFavoriteInterviewSlugs(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteInterviews));
+      setWatchLaterWorkKeys(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterWorks));
+      setWatchLaterInterviewSlugs(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterInterviews));
       setReady(true);
     };
     sync();
@@ -54,6 +58,9 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
   const favoriteWorks = uniqueWorks.filter((work) => favoriteWorkIds.map(String).includes(String(work.id)));
   const favoriteCharacters = characters.filter((character) => favoriteCharacterKeys.includes(character.key));
   const favoriteInterviews = interviews.filter((interview) => favoriteInterviewSlugs.includes(interview.slug));
+  const watchLaterWorks = watchLaterWorkKeys.map((key) => uniqueWorks.find((work) => getWorkArchiveKey(work.media_type, work.id) === key)).filter((work): work is Work => Boolean(work));
+  const watchLaterInterviews = watchLaterInterviewSlugs.map((slug) => interviews.find((interview) => interview.slug === slug)).filter((interview): interview is InterviewSummary => Boolean(interview));
+  const watchLaterCount = watchLaterWorks.length + watchLaterInterviews.length;
 
   const remove = (key: string, value: string | number) => {
     const current = readArchiveList<string | number>(key);
@@ -71,8 +78,9 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
   return <section className="my-archive shell">
     <div className="my-archive-summary" aria-label="保存件数">
       <ArchiveCount href="#favorite-works" value={favoriteWorks.length} label="お気に入り作品" />
-      <ArchiveCount href="#favorite-characters" value={favoriteCharacters.length} label="お気に入りキャラクター" />
-      <ArchiveCount href="#favorite-interviews" value={favoriteInterviews.length} label="インタビューのしおり" />
+      <ArchiveCount href="#favorite-characters" value={favoriteCharacters.length} label={<>お気に入り<br />キャラクター</>} />
+      <ArchiveCount href="#favorite-interviews" value={favoriteInterviews.length} label={<>インタビューの<br />しおり</>} />
+      <ArchiveCount href="#watch-later" value={watchLaterCount} label="あとで見る" />
     </div>
 
     <ArchiveBackupControls />
@@ -92,13 +100,25 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
       <div className="interview-grid">{favoriteInterviews.map((interview) => <InterviewCard key={interview.slug} interview={interview} />)}</div>
     </ArchiveSection>
 
+    <section className="my-archive-section" id="watch-later">
+      <div className="section-heading"><div><p className="eyebrow">WATCH LATER</p><h2>あとで見る</h2></div><div className="my-archive-section__actions"><span>{watchLaterCount}件</span><button type="button" disabled={!watchLaterCount} onClick={() => {
+        if (!watchLaterCount || !window.confirm("あとで見るリストをすべて解除しますか？")) return;
+        writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterWorks, []);
+        writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterInterviews, []);
+      }}>すべて解除</button></div></div>
+      {!watchLaterCount ? <div className="my-archive-empty"><p>あとで見る項目はまだありません。</p><Link className="button button--ghost" href="/works">作品を探す</Link></div> : <div className="watch-later-groups">
+        {watchLaterWorks.length > 0 && <section><h3>作品</h3><div className="my-archive-item-grid">{watchLaterWorks.map((work) => <WorkArchiveCard key={`later-${work.media_type}-${work.id}`} work={work} actionLabel="あとで見るから外す" actionSymbol="×" onRemove={() => remove(ARCHIVE_STORAGE_KEYS.watchLaterWorks, getWorkArchiveKey(work.media_type, work.id))} />)}</div></section>}
+        {watchLaterInterviews.length > 0 && <section><h3>インタビュー</h3><div className="interview-grid">{watchLaterInterviews.map((interview) => <InterviewCard key={`later-${interview.slug}`} interview={interview} />)}</div></section>}
+      </div>}
+    </section>
+
     <RecentlyViewed embedded />
 
     <p className="my-archive-note">保存内容はこのブラウザ内に記録されます。別の端末やブラウザには自動で共有されません。</p>
   </section>;
 }
 
-function ArchiveCount({ href, value, label }: { href: string; value: number; label: string }) {
+function ArchiveCount({ href, value, label }: { href: string; value: number; label: ReactNode }) {
   return <a href={href}><strong>{value}</strong><span>{label}</span></a>;
 }
 
@@ -109,7 +129,7 @@ function ArchiveSection({ id, title, eyebrow, count, onClear, empty, emptyHref, 
   </section>;
 }
 
-function WorkArchiveCard({ work, actionLabel, onRemove }: { work: Work; actionLabel: string; onRemove: () => void }) {
+function WorkArchiveCard({ work, actionLabel, actionSymbol = "★", onRemove }: { work: Work; actionLabel: string; actionSymbol?: string; onRemove: () => void }) {
   const title = getDisplayTitle(work);
   const sourceTitle = getSourceTitle(work);
   return <article className="my-archive-item">
@@ -117,6 +137,6 @@ function WorkArchiveCard({ work, actionLabel, onRemove }: { work: Work; actionLa
       <img src={getPosterUrl(work.poster_path, work.posterUrl)} alt={`${title}のポスター`} loading="lazy" decoding="async" />
       <div><p>{getWorkDate(work).slice(0, 4) || "—"} · {getMediaLabel(work.media_type)}</p><h3>{title}</h3>{sourceTitle !== title && <small>{sourceTitle}</small>}<span>{work.character || "役名未登録"}</span></div>
     </Link>
-    <button className="my-archive-favorite" type="button" aria-label={`${title}の${actionLabel}`} title={actionLabel} onClick={onRemove}>★</button>
+    <button className="my-archive-favorite" type="button" aria-label={`${title}の${actionLabel}`} title={actionLabel} onClick={onRemove}>{actionSymbol}</button>
   </article>;
 }

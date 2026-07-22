@@ -17,6 +17,8 @@ type ArchiveBackup = {
     watchedWorks: number[];
     favoriteCharacters: string[];
     favoriteInterviews: string[];
+    watchLaterWorks: string[];
+    watchLaterInterviews: string[];
     recentlyViewed: RecentlyViewedItem[];
   };
 };
@@ -32,6 +34,8 @@ function createBackup(): ArchiveBackup {
       watchedWorks: readArchiveList<number>(ARCHIVE_STORAGE_KEYS.watchedWorks),
       favoriteCharacters: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteCharacters),
       favoriteInterviews: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteInterviews),
+      watchLaterWorks: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterWorks),
+      watchLaterInterviews: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterInterviews),
       recentlyViewed: readRecentlyViewed(),
     },
   };
@@ -109,6 +113,8 @@ export default function ArchiveBackupControls() {
       writeArchiveList(ARCHIVE_STORAGE_KEYS.watchedWorks, uniqueNumbers(parsed.data.watchedWorks));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteCharacters, uniqueStrings(parsed.data.favoriteCharacters));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteInterviews, uniqueStrings(parsed.data.favoriteInterviews));
+      writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterWorks, uniqueStrings(parsed.data.watchLaterWorks));
+      writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterInterviews, uniqueStrings(parsed.data.watchLaterInterviews));
       replaceRecentlyViewed(safeRecentlyViewed(parsed.data.recentlyViewed));
       setMessage("MY ARCHIVEを復元しました。");
     } catch {

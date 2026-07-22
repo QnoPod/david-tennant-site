@@ -390,8 +390,10 @@ img { display: block; max-width: 100%; }
 .work-status { position: absolute; z-index: 3; top: 9px; width: 34px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--white); background: rgba(17,17,22,.72); cursor: pointer; }
 .work-status--watched { left: 9px; }
 .work-status--favorite { right: 9px; }
+.work-status--later { top: auto; right: 9px; bottom: 9px; }
 .work-status--watched.is-active { background: #357db5; }
 .work-status--favorite.is-active { color: var(--ink); background: var(--gold); }
+.work-status--later.is-active { color: var(--white); background: #3f775f; }
 .work-card__body { min-width: 0; flex: 1; display: flex; flex-direction: column; padding: 14px 12px 12px; }
 .work-card__body > p { margin: 0 0 6px; color: var(--gold); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
 .work-card__body h2 { margin: 0 0 3px; font-family: var(--serif); font-size: 18px; font-weight: 600; line-height: 1.25; }
@@ -422,6 +424,9 @@ img { display: block; max-width: 100%; }
 .work-detail > header h2 { max-width: 720px; margin: 0; font-family: var(--serif); font-size: clamp(42px, 7vw, 70px); font-weight: 500; line-height: .98; }
 .detail-watch { margin-top: 16px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); cursor: pointer; font-size: 11px; font-weight: 700; }
 .detail-watch.is-active { color: var(--white); border-color: #357db5; background: #357db5; }
+.work-detail__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.detail-later { margin-top: 16px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); cursor: pointer; font-size: 11px; font-weight: 700; }
+.detail-later.is-active { color: var(--white); border-color: #3f775f; background: #3f775f; }
 .work-detail__facts { display: flex; flex-wrap: wrap; gap: 7px; margin: 28px 0; }
 .work-detail__facts span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 18px; color: var(--muted); font-size: 10px; }
 .detail-section { padding: 28px 0; border-top: 1px solid var(--line); }
@@ -621,6 +626,10 @@ img { display: block; max-width: 100%; }
 .interview-bookmark:hover, .interview-bookmark.is-active { color: var(--blue); border-color: var(--gold); background: #fffaf0; }
 .interview-bookmark.is-active svg { color: var(--gold); fill: var(--gold); }
 .interview-bookmark--compact { position: absolute; top: 12px; right: 12px; z-index: 3; width: 42px; height: 42px; min-height: 0; padding: 0; border-radius: 50%; box-shadow: 0 5px 18px rgba(17,17,22,.18); }
+.watch-later-button { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--line); color: var(--muted); background: var(--white); cursor: pointer; font-size: 10px; font-weight: 800; letter-spacing: .06em; }
+.watch-later-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.watch-later-button:hover, .watch-later-button.is-active { color: #315f4b; border-color: #3f775f; background: #f4faf7; }
+.watch-later-button--compact { position: absolute; top: 62px; right: 12px; z-index: 3; width: 42px; height: 42px; min-height: 0; padding: 0; border-radius: 50%; box-shadow: 0 5px 18px rgba(17,17,22,.18); }
 .video-thumb { min-height: 300px; position: relative; overflow: hidden; background: var(--ink); }
 .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: .75; transition: transform .3s, opacity .3s; }
 .interview-card:hover .video-thumb img { transform: scale(1.03); opacity: .9; }
@@ -643,7 +652,7 @@ img { display: block; max-width: 100%; }
 .interview-detail > header > .interview-detail-title-en { margin: 18px auto 0; color: var(--gold); font-family: var(--serif); font-size: clamp(17px, 2vw, 23px); font-weight: 600; line-height: 1.35; }
 .interview-detail > header > .interview-detail-description { margin: 26px auto; }
 .interview-detail > header .tag-row { justify-content: center; }
-.interview-detail > header > .interview-bookmark { margin: 0 auto 8px; }
+.interview-save-actions { display: flex; justify-content: center; gap: 8px; margin: 0 auto 8px; }
 .video-frame { max-width: 1000px; aspect-ratio: 16/9; margin: 0 auto 90px; background: var(--ink); }
 .video-frame iframe { width: 100%; height: 100%; border: 0; }
 .article-frame { max-width: 1000px; margin: 0 auto 90px; background: var(--paper); }
@@ -651,7 +660,7 @@ img { display: block; max-width: 100%; }
 
 /* ---------- MY ARCHIVE ---------- */
 .my-archive { padding-block: 64px 110px; }
-.my-archive-summary { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: var(--line); gap: 1px; }
+.my-archive-summary { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: var(--line); gap: 1px; }
 .my-archive-summary > a { min-height: 135px; display: grid; align-content: center; padding: 24px; background: var(--paper); text-decoration: none; transition: color .2s, background .2s; }
 .my-archive-summary > a:hover { color: var(--blue); background: var(--blue-light); }
 .my-archive-summary strong { color: var(--blue); font-family: var(--serif); font-size: 46px; font-weight: 400; line-height: 1; }
@@ -685,6 +694,27 @@ img { display: block; max-width: 100%; }
 .my-archive-empty { padding: 36px; text-align: center; background: var(--paper); }
 .my-archive-empty p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
 .my-archive-note { margin: 72px 0 0; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; text-align: center; }
+.watch-later-groups { display: grid; gap: 28px; }
+.watch-later-groups > section > h3 { margin: 0 0 10px; color: var(--gold); font-family: var(--serif); font-size: 17px; font-weight: 600; }
+.watch-later-groups .my-archive-item-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.watch-later-groups .my-archive-item > a { grid-template-columns: 70px minmax(0, 1fr); }
+.watch-later-groups .my-archive-item img { width: 70px; height: 98px; }
+.watch-later-groups .my-archive-item > a > div { padding: 11px; }
+.watch-later-groups .my-archive-item h3 { padding-right: 24px; font-size: 15px; }
+.watch-later-groups .my-archive-item > .my-archive-favorite { right: 5px; top: 5px; width: 28px; height: 28px; font-size: 13px; }
+.watch-later-groups .interview-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.watch-later-groups .video-thumb { min-height: 135px; }
+.watch-later-groups .video-thumb span { width: 42px; height: 42px; font-size: 10px; }
+.watch-later-groups .interview-card > div:last-child { padding: 14px; }
+.watch-later-groups .interview-card h2,
+.watch-later-groups .interview-card h2.interview-title-ja { margin-block: 8px; font-size: 16px; }
+.watch-later-groups .interview-card .interview-title-en { margin-bottom: 8px; font-size: 9px; }
+.watch-later-groups .interview-card-description { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 10px; }
+.watch-later-groups .interview-card .tag-row { display: none; }
+.watch-later-groups .interview-bookmark--compact,
+.watch-later-groups .watch-later-button--compact { right: 7px; width: 32px; height: 32px; }
+.watch-later-groups .interview-bookmark--compact { top: 7px; }
+.watch-later-groups .watch-later-button--compact { top: 44px; }
 .transcript-heading { display: flex; align-items: end; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .transcript-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 500; }
 .transcript-controls { display: grid; grid-template-columns: minmax(240px, 1.5fr) minmax(190px, 1fr) auto auto; gap: 12px; align-items: end; padding: 18px; margin-top: 18px; background: var(--paper); }
@@ -804,8 +834,10 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
   .interview-grid { grid-template-columns: 1fr; }
   .interview-filters { grid-template-columns: 2fr repeat(2, 1fr); }
   .interview-tag-filter { grid-column: auto; }
-  .my-archive-summary { grid-template-columns: repeat(3, 1fr); }
+  .my-archive-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .my-archive-item-grid { grid-template-columns: repeat(2, 1fr); }
+  .watch-later-groups .my-archive-item-grid,
+  .watch-later-groups .interview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .interview-filters > label:nth-of-type(3), .interview-filter-reset { grid-column: auto; }
 }
 
@@ -896,6 +928,7 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
   .work-status { width: 27px; height: 27px; top: 5px; font-size: 11px; }
   .work-status--watched { left: 5px; }
   .work-status--favorite { right: 5px; }
+  .work-status--later { top: auto; right: 5px; bottom: 5px; }
   .work-detail__backdrop { height: 190px; margin: -28px -20px -70px; }
   .work-detail > header h2 { font-size: 40px; }
   .episode-appearances li { grid-template-columns: 62px 1fr; }
@@ -926,7 +959,7 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
   .event-card__date span { font-size: 38px; }
   .interview-card { grid-template-columns: 1fr; }
   .my-archive { padding-block: 42px 78px; }
-  .my-archive-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .my-archive-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .my-archive-summary > a { min-width: 0; min-height: 96px; padding: 10px; text-align: center; }
   .my-archive-summary strong { font-size: 30px; }
   .my-archive-summary span { margin-top: 7px; font-size: 8px; line-height: 1.35; overflow-wrap: anywhere; }
@@ -942,6 +975,15 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
   .my-archive-item-grid { grid-template-columns: 1fr; }
   .my-archive-item > a { grid-template-columns: 92px minmax(0, 1fr); }
   .my-archive-item img { width: 92px; height: 126px; }
+  .watch-later-groups .my-archive-item-grid,
+  .watch-later-groups .interview-grid { grid-template-columns: 1fr; }
+  .watch-later-groups .my-archive-item > a { grid-template-columns: 72px minmax(0, 1fr); }
+  .watch-later-groups .my-archive-item img { width: 72px; height: 98px; }
+  .watch-later-groups .interview-card { display: grid; grid-template-columns: 110px minmax(0, 1fr); }
+  .watch-later-groups .video-thumb { min-height: 132px; }
+  .watch-later-groups .interview-card > div:last-child { min-width: 0; padding: 12px; }
+  .watch-later-groups .interview-bookmark--compact,
+  .watch-later-groups .watch-later-button--compact { left: 72px; right: auto; }
   .interview-filters { position: static; grid-template-columns: 1fr 1fr; }
   .interview-search { grid-column: 1 / -1; }
   .interview-filters > label:last-of-type, .interview-tag-filters, .interview-filter-reset { grid-column: 1 / -1; }

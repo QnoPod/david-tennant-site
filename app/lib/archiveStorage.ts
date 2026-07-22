@@ -7,6 +7,8 @@ export const ARCHIVE_STORAGE_KEYS = {
   watchedWorks: "watchedWorks",
   favoriteCharacters: "david-archive-favorite-characters",
   favoriteInterviews: "david-archive-favorite-interviews",
+  watchLaterWorks: "david-archive-watch-later-works",
+  watchLaterInterviews: "david-archive-watch-later-interviews",
 } as const;
 
 export const ARCHIVE_UPDATED_EVENT = "david-archive-updated";
@@ -27,4 +29,9 @@ export function writeArchiveList<T extends string | number>(key: string, values:
   if (typeof window === "undefined") return;
   window.localStorage.setItem(key, JSON.stringify(values));
   window.dispatchEvent(new CustomEvent(ARCHIVE_UPDATED_EVENT, { detail: { key } }));
+}
+
+/** メディア種別を含め、映画とテレビで同じIDが使われても区別します。 */
+export function getWorkArchiveKey(mediaType: string, id: string | number) {
+  return `${mediaType}:${id}`;
 }

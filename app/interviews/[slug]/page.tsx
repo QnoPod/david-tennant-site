@@ -6,6 +6,7 @@ import InterviewBookmarkButton from "../../components/interviews/InterviewBookma
 import InterviewTranscript from "../../components/interviews/InterviewTranscript";
 import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
 import RelatedLinks from "../../components/RelatedLinks";
+import WatchLaterButton from "../../components/WatchLaterButton";
 import { getPublishedInterviews } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
 import { getAllInterviewTags } from "../../data/interviews/types";
@@ -31,7 +32,7 @@ export default async function InterviewDetailPage({ params }: InterviewPageProps
   return <main id="main-content"><article className="interview-detail shell">
     <RecentlyViewedTracker item={{ key: `interview-${interview.slug}`, type: "interview", title: interview.title, subtitle: interview.source, href: `/interviews/${interview.slug}`, image: interview.thumbnailUrl }} />
     <Link className="back-link" href="/interviews">← インタビュー一覧</Link>
-    <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1 className={interview.titleEn ? "interview-title-ja" : undefined}>{interview.title}</h1>{interview.titleEn && <p className="interview-detail-title-en" lang="en">{interview.titleEn}</p>}<p className="interview-detail-description">{interview.description}</p><InterviewBookmarkButton slug={interview.slug} title={interview.title} /><div className="tag-row">{getAllInterviewTags(interview.tagGroups).map((tag) => <span key={tag}>{tag}</span>)}</div></header>
+    <header><p className="eyebrow">{interview.year} · {interview.source}</p><h1 className={interview.titleEn ? "interview-title-ja" : undefined}>{interview.title}</h1>{interview.titleEn && <p className="interview-detail-title-en" lang="en">{interview.titleEn}</p>}<p className="interview-detail-description">{interview.description}</p><div className="interview-save-actions"><InterviewBookmarkButton slug={interview.slug} title={interview.title} /><WatchLaterButton slug={interview.slug} title={interview.title} /></div><div className="tag-row">{getAllInterviewTags(interview.tagGroups).map((tag) => <span key={tag}>{tag}</span>)}</div></header>
     <InterviewMedia interview={interview} />
     <div className="transcript-heading"><div><p className="eyebrow">{interview.mediaType === "video" ? "TRANSCRIPT & TRANSLATION" : "ARTICLE & TRANSLATION"}</p><h2>英語原文・日本語訳</h2></div><a className="text-link" href={interview.externalUrl} target="_blank" rel="noreferrer">{interview.mediaType === "video" ? "YouTubeで見る" : "掲載記事を読む"} ↗</a></div>
     {interview.transcript.length > 0

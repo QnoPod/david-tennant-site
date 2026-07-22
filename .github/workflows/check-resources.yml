@@ -1,0 +1,46 @@
+name: Check links and images
+
+on:
+  schedule:
+    # 毎週月曜日に、公開元の削除や画像ファイルの不足を再確認します。
+    - cron: "45 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: check-links-and-images
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Check public images, external links and YouTube videos
+        run: npm run check:resources
+
+      - name: Commit only when check results changed
+        shell: bash
+        run: |
+          if git diff --quiet -- app/data/generated/resourceChecks.json; then
+            echo "No resource check changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/data/generated/resourceChecks.json
+          git commit -m "Update link and image check results"
+          git pull --rebase origin main
+          git push origin HEAD:main

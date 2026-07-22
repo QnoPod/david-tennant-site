@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageHero from "../components/PageHero";
 import { autoInterviewCandidates } from "../data/interviews/autoCandidates";
+import resourceChecks from "../data/generated/resourceChecks.json";
 import { buildDataChecks } from "../lib/dataChecks";
 import { getEnrichedWorks } from "../lib/tmdb";
 import DataCheckExplorer from "./DataCheckExplorer";
 import InterviewCandidateChecks from "./InterviewCandidateChecks";
+import ResourceCheckExplorer, { type ResourceCheckData } from "./ResourceCheckExplorer";
 
 export const metadata: Metadata = {
   title: "データチェック",
@@ -25,6 +27,7 @@ export default async function DataCheckPage() {
   return <main id="main-content" className="data-check-page">
     <PageHero eyebrow="DEVELOPMENT ONLY" title="DATA CHECK" description="TMDB取得データと手入力データの不足項目を確認します。" />
     <DataCheckExplorer checks={checks} totalWorks={works.length} />
+    <ResourceCheckExplorer data={resourceChecks as ResourceCheckData} />
     <InterviewCandidateChecks candidates={autoInterviewCandidates} />
   </main>;
 }

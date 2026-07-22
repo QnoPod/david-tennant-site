@@ -12,6 +12,7 @@
     "start": "next start",
     "sync:upcoming": "node --experimental-strip-types scripts/sync-upcoming.mjs",
     "sync:interviews": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/sync-interviews.mjs",
+    "check:resources": "node scripts/check-resources.mjs",
     "build:sites": "bash scripts/build-verified.sh",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "validate:artifact": "bash scripts/validate-artifact.sh",
@@ -19,6 +20,7 @@
     "db:generate": "bash scripts/sites-env.sh -- drizzle-kit generate"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "drizzle-orm": "0.45.2",
     "next": "16.2.6",
     "react": "19.2.6",

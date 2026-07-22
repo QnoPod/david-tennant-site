@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-type ReadingSize = "standard" | "large" | "xlarge";
+type ReadingSize = "small" | "standard" | "large" | "xlarge";
 type LineSpacing = "standard" | "relaxed";
 type Preferences = { size: ReadingSize; lineSpacing: LineSpacing; highContrast: boolean; reduceMotion: boolean };
 
@@ -14,7 +14,7 @@ function readPreferences(): Preferences {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}") as Partial<Preferences>;
     return {
-      size: saved.size === "large" || saved.size === "xlarge" ? saved.size : "standard",
+      size: saved.size === "small" || saved.size === "large" || saved.size === "xlarge" ? saved.size : "standard",
       lineSpacing: saved.lineSpacing === "relaxed" ? "relaxed" : "standard",
       highContrast: saved.highContrast === true,
       reduceMotion: saved.reduceMotion === true,
@@ -67,7 +67,7 @@ export default function ReadabilitySettings() {
     {open && <section id="readability-settings-panel" className="readability-settings__panel" aria-label="読みやすさ設定">
       <header><div><p>READABILITY</p><h2>読みやすさ設定</h2></div><button type="button" onClick={() => setOpen(false)} aria-label="読みやすさ設定を閉じる">×</button></header>
       <fieldset><legend>本文の文字サイズ</legend><div className="readability-settings__choices">
-        {(["standard", "large", "xlarge"] as const).map((size) => <button type="button" className={preferences.size === size ? "is-active" : ""} aria-pressed={preferences.size === size} onClick={() => update("size", size)} key={size}>{size === "standard" ? "標準" : size === "large" ? "大" : "特大"}</button>)}
+        {(["small", "standard", "large", "xlarge"] as const).map((size) => <button type="button" className={preferences.size === size ? "is-active" : ""} aria-pressed={preferences.size === size} onClick={() => update("size", size)} key={size}>{size === "small" ? "小" : size === "standard" ? "標準" : size === "large" ? "大" : "特大"}</button>)}
       </div></fieldset>
       <fieldset><legend>本文の行間</legend><div className="readability-settings__choices readability-settings__choices--two">
         <button type="button" className={preferences.lineSpacing === "standard" ? "is-active" : ""} aria-pressed={preferences.lineSpacing === "standard"} onClick={() => update("lineSpacing", "standard")}>標準</button>

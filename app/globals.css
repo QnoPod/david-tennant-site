@@ -751,7 +751,7 @@ img { display: block; max-width: 100%; }
 .readability-settings__panel > header button { width: 34px; height: 34px; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; font-size: 19px; }
 .readability-settings__panel fieldset { margin: 0 0 18px; padding: 0; border: 0; }
 .readability-settings__panel legend { margin-bottom: 7px; color: var(--muted); font-size: 9px; font-weight: 900; letter-spacing: .08em; }
-.readability-settings__choices { display: grid; grid-template-columns: repeat(3, 1fr); }
+.readability-settings__choices { display: grid; grid-template-columns: repeat(4, 1fr); }
 .readability-settings__choices--two { grid-template-columns: repeat(2, 1fr); }
 .readability-settings__choices button { min-height: 42px; border: 1px solid var(--line); border-right: 0; background: var(--white); cursor: pointer; font-size: 11px; font-weight: 800; }
 .readability-settings__choices button:last-child { border-right: 1px solid var(--line); }
@@ -764,8 +764,10 @@ img { display: block; max-width: 100%; }
 .readability-settings__reset { width: 100%; min-height: 42px; margin-top: 6px; border: 1px solid var(--blue); color: var(--blue); background: var(--white); cursor: pointer; font-size: 10px; font-weight: 800; }
 .readability-settings__note { margin: 10px 0 0; color: var(--muted); font-size: 9px; text-align: center; }
 
+html[data-readability-size="small"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-note p, .data-check-list li p) { font-size: 13px !important; }
 html[data-readability-size="large"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-note p, .data-check-list li p) { font-size: 17px !important; }
 html[data-readability-size="xlarge"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-note p, .data-check-list li p) { font-size: 19px !important; }
+html[data-readability-size="small"] .translation-grid p { font-size: 16px !important; }
 html[data-readability-size="large"] .translation-grid p { font-size: 22px !important; }
 html[data-readability-size="xlarge"] .translation-grid p { font-size: 24px !important; }
 html[data-readability-spacing="relaxed"] :is(.hero__lead, .portal-card > p:not(.eyebrow), .page-hero > p:last-child, .detail-copy, .detail-section > p, .work-characters p, .profile-intro > div > p:not(.eyebrow), .about-grid article > p:not(.eyebrow), .profile-area-grid p, .profile-scholarship > div:last-child > p, .event-card__body > p:not(.eyebrow), .event-card__note, .upcoming-card__overview, .interview-card-description, .interview-detail-description, .translation-grid p, .translation-note p, .data-check-list li p) { line-height: 2.15 !important; }

@@ -12,6 +12,7 @@ import { recordRecentlyViewed } from "../lib/recentlyViewed";
 import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import { getDisplayTitle, getOriginalTitle, getOriginalTitleForDisplay, getSourceTitle, getWorkCharacters, getWorkOverview, getWorkVideoKey, normalizeText } from "../lib/workPresentation";
+import { readWorkRatings, setWorkRating, WORK_RATINGS_EVENT, type WorkRating, type WorkRatings } from "../lib/workRatings";
 import WorkFilters, { type GenreMode, type SortOrder } from "./WorkFilters";
 
 const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteWorks;
@@ -41,6 +42,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [watched, setWatched] = useState<number[]>([]);
   const [watchLater, setWatchLater] = useState<string[]>([]);
+  const [ratings, setRatings] = useState<WorkRatings>({});
   const [selected, setSelected] = useState<Work | null>(null);
 
   // 旧サイトと同じlocalStorageキーを使い、既存のマークを引き継ぎます。
@@ -57,6 +59,18 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
       cancelAnimationFrame(frame);
       window.removeEventListener("storage", sync);
       window.removeEventListener(ARCHIVE_UPDATED_EVENT, sync);
+    };
+  }, []);
+
+  // 星評価は作品IDとメディア種別を組み合わせ、映画とTVで同じIDでも区別します。
+  useEffect(() => {
+    const sync = () => setRatings(readWorkRatings());
+    sync();
+    window.addEventListener("storage", sync);
+    window.addEventListener(WORK_RATINGS_EVENT, sync);
+    return () => {
+      window.removeEventListener("storage", sync);
+      window.removeEventListener(WORK_RATINGS_EVENT, sync);
     };
   }, []);
 
@@ -143,6 +157,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     const isFavorite = favorites.includes(work.id);
     const isWatched = watched.includes(work.id);
     const isWatchLater = watchLater.includes(getWorkArchiveKey(work.media_type, work.id));
+    const rating = ratings[getWorkArchiveKey(work.media_type, work.id)];
     return <article className={timeline ? "work-timeline-card" : "media-card work-card"} key={`${work.media_type}-${work.id}`}>
       <button className="card-hit" onClick={() => setSelected(work)} aria-label={`${displayTitle}の詳細`} />
       <div className="work-card__image">
@@ -153,6 +168,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
       </div>
       <div className="work-card__body">
         <p>{getWorkDate(work).slice(0, 4) || "—"} · {getMediaLabel(work.media_type)}</p>
+        {rating && <span className="work-card__rating" aria-label={`自分の評価 ${rating}点、5点満点`}>★ {rating}/5</span>}
         <h2>{displayTitle}</h2>
         {originalTitle && <small>{originalTitle}</small>}
         {hasSpiteloutAndIvar
@@ -193,13 +209,13 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
         : <div className="work-timeline">{timelineGroups.map(([year, yearWorks]) => <section className="timeline-year-group" key={year}><h2>{year}</h2><div>{yearWorks.map((work) => card(work, true))}</div></section>)}</div>}
       {!filtered.length && <p className="empty-state">条件に一致する作品がありません。</p>}
 
-      <WorkDetailModal work={selected} watched={selected ? watched.includes(selected.id) : false} watchLater={selected ? watchLater.includes(getWorkArchiveKey(selected.media_type, selected.id)) : false} onToggleWatched={() => selected && toggleWatched(selected)} onToggleWatchLater={() => selected && toggleWatchLater(selected)} onClose={() => setSelected(null)} />
+      <WorkDetailModal work={selected} watched={selected ? watched.includes(selected.id) : false} watchLater={selected ? watchLater.includes(getWorkArchiveKey(selected.media_type, selected.id)) : false} rating={selected ? ratings[getWorkArchiveKey(selected.media_type, selected.id)] ?? 0 : 0} onToggleWatched={() => selected && toggleWatched(selected)} onToggleWatchLater={() => selected && toggleWatchLater(selected)} onRate={(rating) => selected && setWorkRating(selected.media_type, selected.id, rating)} onClose={() => setSelected(null)} />
     </section>
   );
 }
 
 /** 作品・配信・予告編・演じたキャラクターを一か所にまとめた詳細画面。 */
-function WorkDetailModal({ work, watched, watchLater, onToggleWatched, onToggleWatchLater, onClose }: { work: Work | null; watched: boolean; watchLater: boolean; onToggleWatched: () => void; onToggleWatchLater: () => void; onClose: () => void }) {
+function WorkDetailModal({ work, watched, watchLater, rating, onToggleWatched, onToggleWatchLater, onRate, onClose }: { work: Work | null; watched: boolean; watchLater: boolean; rating: WorkRating | 0; onToggleWatched: () => void; onToggleWatchLater: () => void; onRate: (rating: number) => void; onClose: () => void }) {
   const characters = work ? getWorkCharacters(work) : [];
   const videoKey = work ? getWorkVideoKey(work) : null;
   const displayTitle = work ? getDisplayTitle(work) : "";
@@ -231,6 +247,8 @@ function WorkDetailModal({ work, watched, watchLater, onToggleWatched, onToggleW
       <header><p className="eyebrow">{getWorkDate(work).slice(0, 4)} · {getMediaLabel(work.media_type)}</p><h2>{displayTitle}</h2>{originalTitleForDisplay && <p className="detail-subtitle">{originalTitleForDisplay}</p>}<div className="work-detail__actions"><button className={`detail-watch ${watched ? "is-active" : ""}`} onClick={onToggleWatched}>{watched ? "✓ 視聴済" : "▷ 未視聴"}</button><button className={`detail-later ${watchLater ? "is-active" : ""}`} onClick={onToggleWatchLater}>{watchLater ? "◷ あとで見るに保存済み" : "◷ あとで見る"}</button></div></header>
       <div className="work-detail__facts">{work.media_type !== "stage" && <span>{work.media_type === "movie" ? (work.runtime ? `${work.runtime}分` : "映画") : `${work.numberOfSeasons ? `全${work.numberOfSeasons}シーズン` : "TV番組"}${work.numberOfEpisodes ? ` · ${work.numberOfEpisodes}話` : ""}${work.episodeRunTime ? ` · 1話約${work.episodeRunTime}分` : ""}`}</span>}{work.genres?.map((genre) => <span key={genre.id}>{genre.name}</span>)}</div>
 
+      <WorkRatingControl title={displayTitle} rating={rating} onRate={onRate} />
+
       <section className="detail-section"><h3>作品あらすじ</h3><p>{getWorkOverview(work)}</p></section>
 
       {work.media_type === "tv" && <EpisodeAppearances work={work} />}
@@ -244,6 +262,18 @@ function WorkDetailModal({ work, watched, watchLater, onToggleWatched, onToggleW
       <RelatedLinks title="関連インタビュー" items={relatedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))} />
     </div>}
   </Modal>;
+}
+
+/** マウス・タッチ・キーボードのどれでも選べる5段階評価。 */
+function WorkRatingControl({ title, rating, onRate }: { title: string; rating: WorkRating | 0; onRate: (rating: number) => void }) {
+  return <section className="work-rating" aria-labelledby="work-rating-title">
+    <div><p className="eyebrow">MY RATING</p><h3 id="work-rating-title">自分の評価</h3><small>このブラウザ内だけに保存されます。</small></div>
+    <div className="work-rating__stars" role="group" aria-label={`${title}の5段階評価`}>
+      {([1, 2, 3, 4, 5] as const).map((value) => <button key={value} type="button" className={value <= rating ? "is-active" : ""} aria-label={`${value}点`} aria-pressed={rating === value} onClick={() => onRate(value)}>★</button>)}
+    </div>
+    <strong>{rating ? `${rating} / 5` : "未評価"}</strong>
+    <button className="work-rating__clear" type="button" disabled={!rating} onClick={() => onRate(0)}>評価を解除</button>
+  </section>;
 }
 
 /** TV作品を選んだ時だけ出演エピソードを取得し、一覧表示の通信量を増やさないようにします。 */

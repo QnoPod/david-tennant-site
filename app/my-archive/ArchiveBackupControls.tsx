@@ -4,6 +4,7 @@ import { useRef, useState, type ChangeEvent } from "react";
 import { ARCHIVE_STORAGE_KEYS, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { readRecentlyViewed, replaceRecentlyViewed, type RecentlyViewedItem } from "../lib/recentlyViewed";
 import { readPersonalNotes, replacePersonalNotes, sanitizePersonalNotes, type PersonalNote } from "../lib/personalNotes";
+import { readWorkRatings, replaceWorkRatings, sanitizeWorkRatings, type WorkRatings } from "../lib/workRatings";
 
 const BACKUP_FORMAT = "david-tennant-my-archive";
 const BACKUP_VERSION = 1;
@@ -22,6 +23,7 @@ type ArchiveBackup = {
     watchLaterWorks: string[];
     watchLaterInterviews: string[];
     personalNotes: PersonalNote[];
+    workRatings: WorkRatings;
     recentlyViewed: RecentlyViewedItem[];
   };
 };
@@ -41,6 +43,7 @@ function createBackup(): ArchiveBackup {
       watchLaterWorks: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterWorks),
       watchLaterInterviews: readArchiveList<string>(ARCHIVE_STORAGE_KEYS.watchLaterInterviews),
       personalNotes: readPersonalNotes(),
+      workRatings: readWorkRatings(),
       recentlyViewed: readRecentlyViewed(),
     },
   };
@@ -122,6 +125,7 @@ export default function ArchiveBackupControls() {
       writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterWorks, uniqueStrings(parsed.data.watchLaterWorks));
       writeArchiveList(ARCHIVE_STORAGE_KEYS.watchLaterInterviews, uniqueStrings(parsed.data.watchLaterInterviews));
       replacePersonalNotes(sanitizePersonalNotes(parsed.data.personalNotes));
+      replaceWorkRatings(sanitizeWorkRatings(parsed.data.workRatings));
       replaceRecentlyViewed(safeRecentlyViewed(parsed.data.recentlyViewed));
       setMessage("MY ARCHIVEを復元しました。");
     } catch {
@@ -130,7 +134,7 @@ export default function ArchiveBackupControls() {
   };
 
   return <section className="archive-backup" aria-labelledby="archive-backup-title">
-    <div><p className="eyebrow">BACKUP &amp; RESTORE</p><h2 id="archive-backup-title">バックアップ・復元</h2><p>お気に入り、視聴状態、しおり、自分用メモ、最近見た項目をファイルに保存できます。</p></div>
+    <div><p className="eyebrow">BACKUP &amp; RESTORE</p><h2 id="archive-backup-title">バックアップ・復元</h2><p>お気に入り、視聴状態、作品評価、しおり、自分用メモ、最近見た項目をファイルに保存できます。</p></div>
     <div className="archive-backup__actions">
       <button type="button" onClick={downloadBackup}>バックアップを保存</button>
       <button type="button" onClick={() => fileInput.current?.click()}>ファイルから復元</button>

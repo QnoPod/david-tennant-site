@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import ScrollButtons from "./components/ScrollButtons";
+import ReadabilitySettings from "./components/ReadabilitySettings";
 import "./globals.css";
 import "./mobile-fixes.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         {children}
         <SiteFooter />
+        <ReadabilitySettings />
         <ScrollButtons />
       </body>
     </html>

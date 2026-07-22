@@ -18,8 +18,8 @@ export const davidTyTennantBestMomentsTranscript = [
     "timestamp": "00:21"
   },
   {
-    "speakerEn": "Interviewer",
-    "speakerJa": "インタビュアー",
+    "speakerEn": "Georgia Tennant",
+    "speakerJa": "ジョージア・テナント",
     "en": "So is he your favourite doctor then?",
     "ja": "じゃあ、彼が一番好きなドクター？",
     "timestamp": "00:24"
@@ -32,8 +32,8 @@ export const davidTyTennantBestMomentsTranscript = [
     "timestamp": "00:26"
   },
   {
-    "speakerEn": "Interviewer",
-    "speakerJa": "インタビュアー",
+    "speakerEn": "Georgia Tennant",
+    "speakerJa": "ジョージア・テナント",
     "en": "Who's your second favourite?",
     "ja": "2番目に好きなのは誰？",
     "timestamp": "00:28"
@@ -46,8 +46,8 @@ export const davidTyTennantBestMomentsTranscript = [
     "timestamp": "00:30"
   },
   {
-    "speakerEn": "Interviewer",
-    "speakerJa": "インタビュアー",
+    "speakerEn": "Georgia Tennant",
+    "speakerJa": "ジョージア・テナント",
     "en": "Who's your third favourite?",
     "ja": "3番目に好きなのは？",
     "timestamp": "00:32"
@@ -60,8 +60,8 @@ export const davidTyTennantBestMomentsTranscript = [
     "timestamp": "00:34"
   },
   {
-    "speakerEn": "David Tennant",
-    "speakerJa": "デイヴィッド・テナント",
+    "speakerEn": "Georgia Tennant",
+    "speakerJa": "ジョージア・テナント",
     "en": "What grandad will be really happy to know that.",
     "ja": "おじいちゃんが知ったら本当に喜ぶだろうね。",
     "timestamp": "00:37"
@@ -95,18 +95,32 @@ export const davidTyTennantBestMomentsTranscript = [
     "timestamp": "00:51"
   },
   {
+    "speakerEn": "Interviewer",
+    "speakerJa": "インタビュアー",
+    "en": "And at the moment you've done so many incredible things. And what's been the highlight the last few years? cause I feel like you've not stopped.",
+    "ja": "今、あなたは本当にたくさんの素晴らしいことを成し遂げていますが、ここ数年での一番のハイライトは何でしょうか？ずっと立ち止まらずに進んできたように感じますが。",
+    "timestamp": "01:04"
+  },
+  {
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
-    "en": "And at the moment you've done so many incredible things. And what's been the highlight the last few years? cause I feel like you've not stopped. I think it's presenting an award with Ty tonight.",
-    "ja": "今、君は本当にたくさんの素晴らしいことを成し遂げているけど、ここ数年での一番のハイライトは何かな？ずっと立ち止まらずに進んできたように感じるけど。僕としては、今夜タイと一緒にプレゼンターを務めることだと思うな。",
-    "timestamp": "01:04"
+    "en": "I think it's presenting an award with Ty tonight.",
+    "ja": "僕としては、今夜タイと一緒にプレゼンターを務めることだと思うな。",
+    "timestamp": "01:11"
+  },
+  {
+    "speakerEn": "David Tennant",
+    "speakerJa": "デイヴィッド・テナント",
+    "en": "Oh forever the highlight!",
+    "ja": "永遠にそれがハイライトだよ！",
+    "timestamp": "01:14"
   },
   {
     "speakerEn": "Ty Tennant",
     "speakerJa": "タイ・テナント",
-    "en": "Oh forever the highlight! Stop it.",
-    "ja": "ああ、永遠にそれがハイライトだよ！やめてよ(笑)。",
-    "timestamp": "01:14"
+    "en": "Stop it.",
+    "ja": "やめてよ(笑)。",
+    "timestamp": "01:16"
   },
   {
     "speakerEn": "Interviewer",

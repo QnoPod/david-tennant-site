@@ -23,7 +23,12 @@ export function readRecentlyViewed(): RecentlyViewedItem[] {
 /** 同じ項目を先頭へ移動し、ブラウザ内には直近12件だけ保存します。 */
 export function recordRecentlyViewed(item: Omit<RecentlyViewedItem, "viewedAt">) {
   const next = [{ ...item, viewedAt: new Date().toISOString() }, ...readRecentlyViewed().filter((current) => current.key !== item.key)].slice(0, 12);
-  localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(next));
+  replaceRecentlyViewed(next);
+}
+
+/** バックアップ復元時にも、通常の閲覧記録と同じ更新通知を送ります。 */
+export function replaceRecentlyViewed(items: RecentlyViewedItem[]) {
+  localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(items.slice(0, 12)));
   window.dispatchEvent(new Event(RECENTLY_VIEWED_EVENT));
 }
 

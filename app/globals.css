@@ -656,6 +656,13 @@ img { display: block; max-width: 100%; }
 .my-archive-summary > a:hover { color: var(--blue); background: var(--blue-light); }
 .my-archive-summary strong { color: var(--blue); font-family: var(--serif); font-size: 46px; font-weight: 400; line-height: 1; }
 .my-archive-summary span { margin-top: 10px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.archive-backup { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px 28px; margin-top: 18px; padding: 22px 24px; border: 1px solid var(--line); background: var(--white); }
+.archive-backup h2 { margin: 3px 0 7px; font-family: var(--serif); font-size: 24px; font-weight: 500; }
+.archive-backup > div:first-child > p:last-child { margin: 0; color: var(--muted); font-size: 11px; }
+.archive-backup__actions { display: flex; gap: 8px; }
+.archive-backup__actions button { min-height: 42px; padding: 8px 14px; border: 1px solid var(--blue); color: var(--blue); background: var(--white); cursor: pointer; font-size: 10px; font-weight: 800; }
+.archive-backup__actions button:first-child { color: var(--white); background: var(--blue); }
+.archive-backup__message { min-height: 1.4em; grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 10px; }
 .my-archive-section { padding-top: 84px; scroll-margin-top: 88px; }
 .my-archive-section .section-heading { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .my-archive-section .section-heading h2,
@@ -923,6 +930,10 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
   .my-archive-summary > a { min-width: 0; min-height: 96px; padding: 10px; text-align: center; }
   .my-archive-summary strong { font-size: 30px; }
   .my-archive-summary span { margin-top: 7px; font-size: 8px; line-height: 1.35; overflow-wrap: anywhere; }
+  .archive-backup { grid-template-columns: 1fr; padding: 18px; }
+  .archive-backup__actions { display: grid; grid-template-columns: 1fr; }
+  .archive-backup__actions button { width: 100%; }
+  .archive-backup__message { grid-column: auto; }
   .my-archive-section { padding-top: 64px; }
   .my-archive-section .section-heading { align-items: end; gap: 10px; }
   .my-archive-section .section-heading h2 { font-size: 20px; }

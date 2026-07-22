@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import InterviewCard from "../components/interviews/InterviewCard";
 import RecentlyViewed from "../components/RecentlyViewed";
+import ArchiveBackupControls from "./ArchiveBackupControls";
 import type { InterviewSummary } from "../data/interviews/types";
 import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { getMediaLabel, getPosterUrl, getWorkDate } from "../lib/tmdb";
@@ -73,6 +74,8 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
       <ArchiveCount href="#favorite-characters" value={favoriteCharacters.length} label="お気に入りキャラクター" />
       <ArchiveCount href="#favorite-interviews" value={favoriteInterviews.length} label="インタビューのしおり" />
     </div>
+
+    <ArchiveBackupControls />
 
     <ArchiveSection id="favorite-works" title="お気に入り作品" eyebrow="FAVORITE WORKS" count={favoriteWorks.length} onClear={() => clearSection(ARCHIVE_STORAGE_KEYS.favoriteWorks, "お気に入り作品")} empty="お気に入りにした作品はまだありません。" emptyHref="/works" emptyLabel="作品を探す">
       <div className="my-archive-item-grid">{favoriteWorks.map((work) => <WorkArchiveCard key={`favorite-${work.media_type}-${work.id}`} work={work} actionLabel="お気に入りを解除" onRemove={() => remove(ARCHIVE_STORAGE_KEYS.favoriteWorks, work.id)} />)}</div>

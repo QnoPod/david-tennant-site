@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import ScrollButtons from "./components/ScrollButtons";
@@ -45,6 +46,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteFooter />
         <ReadabilitySettings />
         <ScrollButtons />
+        {/* Vercel本番環境のページ閲覧数・訪問者数を計測します。 */}
+        <Analytics />
       </body>
     </html>
   );

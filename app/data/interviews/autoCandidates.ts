@@ -24,7 +24,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=tFB06T92FXo",
     "thumbnailUrl": "https://i.ytimg.com/vi/tFB06T92FXo/hqdefault.jpg",
     "duration": "Video · 1:49",
-    "description": "『Staged』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機をドラマに変えてしまう、口論の絶えない2人の俳優。在宅勤務とバーチャル・ハリウッドという環境の中で、彼らの脆い自尊心は持ちこたえられるのか？  #MichaelSheen #DavidTennant #コメディ #Staged #懐かしの名作",
+    "description": "『Staged』：デイヴィッド・テナントとマイケル・シーンが本人役で出演――危機をドラマに変えてしまう、口論の絶えない2人の俳優。在宅勤務とバーチャル・ハリウッドという環境の中で、彼らの脆い自尊心は持ちこたえられるのか？ #MichaelSheen #DavidTennant #コメディ #Staged #懐かしき名場面",
     "tagGroups": {
       "actors": [
         "Michael Sheen"

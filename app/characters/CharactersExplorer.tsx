@@ -14,6 +14,22 @@ const INITIAL_VISIBLE_COUNT = 24;
 const INITIAL_ATTRIBUTE_GROUP_COUNT = 4;
 type AnimationFilter = "HIDE" | "ALL" | "ONLY";
 
+/**
+ * WORKS詳細などから役名付きで遷移した場合、その役がアニメキャラクターなら
+ * 初期フィルターを自動解除し、検索結果が0件になるのを防ぎます。
+ */
+function getInitialAnimationFilter(characters: Character[], query: string): AnimationFilter {
+  const normalizedQuery = normalizeText(query);
+  if (!normalizedQuery) return "HIDE";
+
+  const targetsAnimationCharacter = characters.some((character) =>
+    character.attributes.includes("声優・アニメ")
+    && [character.name, character.englishName]
+      .some((name) => normalizeText(name) === normalizedQuery),
+  );
+  return targetsAnimationCharacter ? "ALL" : "HIDE";
+}
+
 // キャラクター詳細はカードを開いたときだけ読み込みます。
 const CharacterDetailModal = dynamic(() => import("./CharacterDetailModal"), { ssr: false });
 
@@ -23,8 +39,10 @@ export default function CharactersExplorer({ characters }: { characters: Charact
   const [query, setQuery] = useState(initialQuery);
   const [showAttributes, setShowAttributes] = useState(false);
   const [watchStatus, setWatchStatus] = useState("ALL");
-  // 初期画面では実写キャラクターだけを表示します。
-  const [animationFilter, setAnimationFilter] = useState<AnimationFilter>("HIDE");
+  // 通常はアニメを隠し、アニメ役名を指定したリンクから来た場合だけ表示します。
+  const [animationFilter, setAnimationFilter] = useState<AnimationFilter>(() =>
+    getInitialAnimationFilter(characters, initialQuery),
+  );
   const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [watchedWorks, setWatchedWorks] = useState<number[]>([]);

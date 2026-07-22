@@ -725,6 +725,34 @@ img { display: block; max-width: 100%; }
 .watch-later-groups .watch-later-button--compact { right: 7px; width: 32px; height: 32px; }
 .watch-later-groups .interview-bookmark--compact { top: 7px; }
 .watch-later-groups .watch-later-button--compact { top: 44px; }
+.personal-note-editor { margin-top: 46px; padding: 28px; border: 1px solid var(--line); background: var(--paper); }
+.personal-note-editor__heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.personal-note-editor__heading h3 { margin: 3px 0 0; font-family: var(--serif); font-size: 25px; font-weight: 500; }
+.personal-note-editor__heading small { color: var(--muted); font-size: 9px; }
+.personal-note-editor__privacy { margin: 10px 0 16px; color: var(--muted); font-size: 10px; }
+.personal-note-editor textarea { width: 100%; min-height: 150px; display: block; resize: vertical; padding: 16px; border: 1px solid var(--line); border-radius: 0; color: var(--ink); background: var(--white); font: inherit; font-size: 13px; line-height: 1.8; outline: none; }
+.personal-note-editor textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(205,154,58,.12); }
+.personal-note-editor__footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 10px; }
+.personal-note-editor__footer > span { color: var(--muted); font-size: 9px; }
+.personal-note-editor__footer > div { display: flex; gap: 8px; }
+.personal-note-editor__footer button { min-height: 40px; padding: 8px 15px; border: 1px solid var(--blue); color: var(--white); background: var(--blue); cursor: pointer; font-size: 10px; font-weight: 800; }
+.personal-note-editor__footer .personal-note-editor__delete { border-color: rgba(141,59,54,.35); color: #8d3b36; background: var(--white); }
+.personal-note-editor__footer button:disabled { cursor: default; opacity: .4; }
+.personal-note-editor__message { min-height: 1.4em; margin: 7px 0 0; color: var(--gold); font-size: 10px; }
+.personal-notes.my-archive-section { padding-top: 44px; }
+.personal-notes .section-heading { margin-bottom: 9px; padding-bottom: 8px; }
+.personal-notes .section-heading h2 { font-size: clamp(19px, 2vw, 24px); }
+.personal-notes__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+.personal-note-card { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; padding: 8px 9px; border: 1px solid var(--line); background: var(--white); }
+.personal-note-card > div { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+.personal-note-card > div p { margin: 0; color: var(--gold); font-size: 7px; font-weight: 900; letter-spacing: .06em; }
+.personal-note-card > div small { color: var(--muted); font-size: 7px; }
+.personal-note-card h3 { min-width: 0; margin: 1px 0 0; overflow: hidden; font-family: var(--serif); font-size: 14px; font-weight: 600; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.personal-note-card h3 a { text-decoration: none; }
+.personal-note-card__text { grid-column: 1 / -1; overflow: hidden; margin: 1px 0 4px; color: var(--muted); font-size: 9px; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+.personal-note-card footer { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 7px; margin-top: 0; padding-top: 4px; border-top: 1px solid var(--line); }
+.personal-note-card footer a { color: var(--blue); font-size: 8px; font-weight: 800; text-decoration: none; }
+.personal-note-card footer button { padding: 1px 3px; border: 0; color: #8d3b36; background: transparent; cursor: pointer; font-size: 7px; font-weight: 800; }
 .transcript-heading { display: flex; align-items: end; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
 .transcript-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(28px, 3vw, 36px); font-weight: 500; }
 .transcript-controls { display: grid; grid-template-columns: minmax(240px, 1.5fr) minmax(190px, 1fr) auto auto; gap: 12px; align-items: end; padding: 18px; margin-top: 18px; background: var(--paper); }
@@ -997,6 +1025,15 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
   .watch-later-groups .interview-card > div:last-child { min-width: 0; padding: 12px; }
   .watch-later-groups .interview-bookmark--compact,
   .watch-later-groups .watch-later-button--compact { left: 72px; right: auto; }
+  .personal-note-editor { margin-top: 34px; padding: 18px; }
+  .personal-note-editor__heading { align-items: start; flex-direction: column; gap: 7px; }
+  .personal-note-editor__footer { align-items: stretch; flex-direction: column; }
+  .personal-note-editor__footer > div { display: grid; grid-template-columns: 1fr; }
+  .personal-note-editor__footer button { width: 100%; }
+  .personal-notes.my-archive-section { padding-top: 38px; }
+  .personal-notes__grid { grid-template-columns: 1fr; gap: 4px; }
+  .personal-note-card { padding: 7px 8px; }
+  .personal-note-card h3 { font-size: 13px; }
   .interview-filters { position: static; grid-template-columns: 1fr 1fr; }
   .interview-search { grid-column: 1 / -1; }
   .interview-filters > label:last-of-type, .interview-tag-filters, .interview-filter-reset { grid-column: 1 / -1; }

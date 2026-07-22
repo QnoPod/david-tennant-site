@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
 import InterviewCard from "../components/interviews/InterviewCard";
 import RecentlyViewed from "../components/RecentlyViewed";
+import PersonalNotes from "../components/PersonalNotes";
 import ArchiveBackupControls from "./ArchiveBackupControls";
 import type { InterviewSummary } from "../data/interviews/types";
 import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, getWorkArchiveKey, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
@@ -111,6 +112,8 @@ export default function MyArchive({ works, characters, interviews }: MyArchivePr
         {watchLaterInterviews.length > 0 && <section><h3>インタビュー</h3><div className="interview-grid">{watchLaterInterviews.map((interview) => <InterviewCard key={`later-${interview.slug}`} interview={interview} />)}</div></section>}
       </div>}
     </section>
+
+    <PersonalNotes />
 
     <RecentlyViewed embedded />
 

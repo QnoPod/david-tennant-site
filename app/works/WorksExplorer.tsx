@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
+import PersonalNoteEditor from "../components/PersonalNoteEditor";
 import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, getWorkArchiveKey, readArchiveList, writeArchiveList } from "../lib/archiveStorage";
 import { findRelatedInterviews } from "../lib/relatedContent";
 import { recordRecentlyViewed } from "../lib/recentlyViewed";
@@ -239,6 +240,7 @@ function WorkDetailModal({ work, watched, watchLater, onToggleWatched, onToggleW
       {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} allowFullScreen /></div></section>}
 
       <section className="detail-section"><h3>演じたキャラクター</h3><div className="work-characters">{characters.map((character) => <article key={`${character.name}-${character.englishName}`}><img src={character.image} alt={character.name} onError={(event) => { event.currentTarget.src = "/images/default-character.jpg"; }} /><div><h4>{character.name}</h4>{character.englishName && normalizeText(character.englishName) !== normalizeText(character.name) && <small>{character.englishName}</small>}{character.appearanceNote && <p className="work-character__appearance"><strong>出演形態：</strong>{character.appearanceNote}</p>}<p>{character.description}</p>{!character.excludeFromCharacters && <Link className="text-link" href={`/characters?q=${encodeURIComponent(character.name)}`}>キャラクター詳細を見る →</Link>}</div></article>)}</div></section>
+      <PersonalNoteEditor noteKey={`work-${work.media_type}-${work.id}`} type="work" title={displayTitle} href={`/works?q=${encodeURIComponent(displayTitle)}`} placeholder="作品の感想や視聴時のメモを入力" />
       <RelatedLinks title="関連インタビュー" items={relatedInterviews.map((interview) => ({ href: `/interviews/${interview.slug}`, title: interview.title, meta: `${interview.year} · ${interview.source}`, description: interview.titleEn }))} />
     </div>}
   </Modal>;

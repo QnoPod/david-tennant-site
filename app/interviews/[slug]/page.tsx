@@ -6,6 +6,7 @@ import InterviewBookmarkButton from "../../components/interviews/InterviewBookma
 import InterviewTranscript from "../../components/interviews/InterviewTranscript";
 import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
 import RelatedLinks from "../../components/RelatedLinks";
+import PersonalNoteEditor from "../../components/PersonalNoteEditor";
 import WatchLaterButton from "../../components/WatchLaterButton";
 import { getPublishedInterviews } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
@@ -39,6 +40,7 @@ export default async function InterviewDetailPage({ params }: InterviewPageProps
       ? <InterviewTranscript lines={interview.transcript} videoId={interview.videoId} />
       : <aside className="translation-note"><strong>原文・日本語訳は準備中です</strong><p>{interview.contentBasis ?? "掲載元の説明をもとに概要を掲載しています。発言原文を確認できた場合に追記します。"}</p></aside>}
     <aside className="translation-note"><strong>翻訳について</strong><p>読みやすさを優先した日本語訳です。動画の内容や文脈に合わせて、今後注釈を追加する場合があります。</p></aside>
+    <PersonalNoteEditor noteKey={`interview-${interview.slug}`} type="interview" title={interview.title} href={`/interviews/${interview.slug}`} placeholder="印象に残った発言や読み返したい箇所を入力" />
     <RelatedLinks title="関連作品・キャラクター" items={relatedWorkTags.map((workTitle) => ({ href: `/works?q=${encodeURIComponent(workTitle)}`, title: workTitle, meta: "関連作品", description: "作品情報・配信情報を見る", secondaryHref: `/characters?q=${encodeURIComponent(workTitle)}`, secondaryLabel: "キャラクターを見る" }))} />
     <RelatedLinks title="あわせて読みたいインタビュー" items={relatedInterviews.map((item) => ({ href: `/interviews/${item.slug}`, title: item.title, meta: `${item.year} · ${item.source}`, description: item.titleEn }))} />
   </article></main>;

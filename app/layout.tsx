@@ -12,6 +12,7 @@ import "./mobile-fixes.css";
  * ヘッダー、本文、フッターをここで一度だけ定義します。
  */
 export const metadata: Metadata = {
+  metadataBase: new URL("https://david-tennant-site.vercel.app"),
   title: {
     default: "David Tennant Archive",
     template: "%s | David Tennant Archive",
@@ -19,6 +20,28 @@ export const metadata: Metadata = {
   description:
     "デイヴィッド・テナントの出演作品、キャラクター、コミコン参加情報、インタビューをまとめた非公式ファンアーカイブ。",
   applicationName: "David Tennant Archive",
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: "/",
+    siteName: "David Tennant Archive",
+    title: "David Tennant Archive",
+    description:
+      "デイヴィッド・テナントの出演作品、キャラクター、コミコン参加情報、インタビューをまとめた非公式ファンアーカイブ。",
+    images: [{
+      url: "/opengraph-image",
+      width: 1200,
+      height: 630,
+      alt: "David Tennant Archive",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "David Tennant Archive",
+    description:
+      "デイヴィッド・テナントの出演作品、キャラクター、コミコン参加情報、インタビューをまとめた非公式ファンアーカイブ。",
+    images: ["/opengraph-image"],
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,

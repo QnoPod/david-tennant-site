@@ -27,8 +27,6 @@ export default async function HomePage() {
           <p className="hero__lead">
             映像、舞台、声の出演まで。<br />
             デイヴィッド・テナントの非公式ファンサイト。<br />
-            PC表示推奨です。<br />
-            ※※※　現在、試運転中　※※※
           </p>
           <div className="button-row">
             <Link className="button button--primary" href="/works">出演作品を見る</Link>

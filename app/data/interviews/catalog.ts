@@ -620,13 +620,24 @@ export const interviewCatalog: readonly InterviewSummary[] = [
   ...autoInterviewCandidates,
 ];
 
-/** 公開を許可した記事だけを返します。自動取得候補は初期状態では含まれません。 */
+/**
+ * 一般公開するインタビューの上限です。
+ * 過去記事のデータと翻訳本文は削除せず、最新6件だけをサイト全体へ公開します。
+ */
+const PUBLIC_INTERVIEW_LIMIT = 6;
+
+/**
+ * 公開を許可した候補を公開日の新しい順に並べ、そのうち最新6件だけを返します。
+ * この関数を一覧・検索・HOME・年表・詳細ページで共用するため、過去記事への直接アクセスも非公開になります。
+ */
 export function getPublishedInterviews(): readonly InterviewSummary[] {
-  return interviewCatalog.filter((interview) => interview.isPublished !== false && interview.reviewStatus !== "rejected");
+  return interviewCatalog
+    .filter((interview) => interview.isPublished !== false && interview.reviewStatus !== "rejected")
+    .toSorted((a, b) => b.publishedDate.localeCompare(a.publishedDate))
+    .slice(0, PUBLIC_INTERVIEW_LIMIT);
 }
 
 /** 公開年月日の新しい順に並べた公開記事を返します。元データは変更しません。 */
 export function getInterviewsNewestFirst() {
-  return [...getPublishedInterviews()].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+  return getPublishedInterviews();
 }
-

@@ -39,7 +39,7 @@ export default async function InterviewDetailPage({ params }: InterviewPageProps
     {interview.transcript.length > 0
       ? <InterviewTranscript lines={interview.transcript} videoId={interview.videoId} />
       : <aside className="translation-note"><strong>原文・日本語訳は準備中です</strong><p>{interview.contentBasis ?? "掲載元の説明をもとに概要を掲載しています。発言原文を確認できた場合に追記します。"}</p></aside>}
-    <aside className="translation-note"><strong>翻訳について</strong><p>日本語訳は読みやすさを優先した参考訳です。聞き取りや解釈に誤りが含まれる可能性があります。正確な内容は元の動画・記事をご確認ください。必要に応じて訳文や注釈を修正・追加します。</p></aside>
+    <aside className="translation-note"><strong>翻訳について</strong><p>読みやすさを優先した日本語訳です。聞き取りや解釈に誤りが含まれる可能性があります。正確な内容は元の動画・記事をご確認ください。必要に応じて訳文や注釈を修正・追加します。</p></aside>
     <PersonalNoteEditor noteKey={`interview-${interview.slug}`} type="interview" title={interview.title} href={`/interviews/${interview.slug}`} placeholder="印象に残った発言や読み返したい箇所を入力" />
     <RelatedLinks title="関連作品・キャラクター" items={relatedWorkTags.map((workTitle) => ({ href: `/works?q=${encodeURIComponent(workTitle)}`, title: workTitle, meta: "関連作品", description: "作品情報・配信情報を見る", secondaryHref: `/characters?q=${encodeURIComponent(workTitle)}`, secondaryLabel: "キャラクターを見る" }))} />
     <RelatedLinks title="あわせて読みたいインタビュー" items={relatedInterviews.map((item) => ({ href: `/interviews/${item.slug}`, title: item.title, meta: `${item.year} · ${item.source}`, description: item.titleEn }))} />

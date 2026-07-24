@@ -1,25 +1,51 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { InterviewSummary } from "../../data/interviews/types";
-import { ARCHIVE_STORAGE_KEYS, ARCHIVE_UPDATED_EVENT, readArchiveList, writeArchiveList } from "../../lib/archiveStorage";
+import {
+  ARCHIVE_STORAGE_KEYS,
+  ARCHIVE_UPDATED_EVENT,
+  readArchiveList,
+  writeArchiveList,
+} from "../../lib/archiveStorage";
+import {
+  buildSearchUrl,
+  readBooleanParam,
+  readEnumParam,
+  readListParam,
+  sameStringList,
+  setBooleanParam,
+  setListParam,
+  setStringParam,
+} from "../../lib/urlSearchParams";
 import InterviewCard from "./InterviewCard";
 
 const INITIAL_VISIBLE_COUNT = 6;
 const EXPLORER_STATE_KEY = "david-tennant-interviews-explorer-state-v1";
 const TAG_CATEGORIES = ["actors", "genres", "sources"] as const;
 type TagCategory = typeof TAG_CATEGORIES[number];
+type MediaTypeFilter = "all" | "video" | "article";
 
 type SavedExplorerState = {
   restorePending: boolean;
   scrollY: number;
   query: string;
-  mediaType: "all" | "video" | "article";
+  mediaType: MediaTypeFilter;
   year: string;
   favoritesOnly: boolean;
   tagExpanded: boolean;
   selectedTags: Record<TagCategory, string[]>;
   visibleCount: number;
+};
+
+type InterviewUrlState = {
+  query: string;
+  mediaType: MediaTypeFilter;
+  year: string;
+  favoritesOnly: boolean;
+  tagExpanded: boolean;
+  selectedTags: Record<TagCategory, string[]>;
 };
 
 const TAG_CATEGORY_LABELS: Record<TagCategory, string> = {
@@ -29,23 +55,77 @@ const TAG_CATEGORY_LABELS: Record<TagCategory, string> = {
 };
 
 /** WORKSと同じ開閉式フィルターを使う、インタビュー一覧専用の検索・絞り込みUI。 */
-export default function InterviewsExplorer({ interviews }: { interviews: readonly InterviewSummary[] }) {
-  const [query, setQuery] = useState("");
-  const [mediaType, setMediaType] = useState<"all" | "video" | "article">("all");
-  const [year, setYear] = useState("all");
-  const [favoritesOnly, setFavoritesOnly] = useState(false);
+export default function InterviewsExplorer({
+  interviews,
+}: {
+  interviews: readonly InterviewSummary[];
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const searchString = searchParams.toString();
+
+  const initialQuery = searchParams.get("q") ?? "";
+  const initialSelectedTags: Record<TagCategory, string[]> = {
+    actors: readListParam(searchParams, "actor"),
+    genres: readListParam(searchParams, "work"),
+    sources: readListParam(searchParams, "source"),
+  };
+  const hasInitialUrlState = [
+    "q",
+    "type",
+    "year",
+    "favorites",
+    "details",
+    "actor",
+    "work",
+    "source",
+  ].some((key) => searchParams.has(key));
+
+  const [query, setQuery] = useState(initialQuery);
+  const [mediaType, setMediaType] = useState<MediaTypeFilter>(() =>
+    readEnumParam(
+      searchParams,
+      "type",
+      ["all", "video", "article"] as const,
+      "all",
+    ));
+  const [year, setYear] = useState(searchParams.get("year") || "all");
+  const [favoritesOnly, setFavoritesOnly] = useState(() =>
+    readBooleanParam(searchParams, "favorites"));
   const [favoriteSlugs, setFavoriteSlugs] = useState<string[]>([]);
-  const [tagExpanded, setTagExpanded] = useState(false);
-  const [selectedTags, setSelectedTags] = useState<Record<TagCategory, string[]>>({
-    actors: [],
-    genres: [],
-    sources: [],
-  });
+  const [tagExpanded, setTagExpanded] = useState(() =>
+    readBooleanParam(searchParams, "details"));
+  const [selectedTags, setSelectedTags] = useState<
+    Record<TagCategory, string[]>
+  >(initialSelectedTags);
   const [contentMatches, setContentMatches] = useState<string[] | null>(null);
-  const [isSearching, setIsSearching] = useState(false);
+  const [isSearching, setIsSearching] = useState(
+    Boolean(initialQuery.trim()),
+  );
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
-  // 詳細ページから戻った場合だけ、検索条件・表示件数・スクロール位置を一度復元します。
+  const hasInitialUrlStateRef = useRef(hasInitialUrlState);
+  const syncingFromUrl = useRef(false);
+  const stateRef = useRef<InterviewUrlState>({
+    query,
+    mediaType,
+    year,
+    favoritesOnly,
+    tagExpanded,
+    selectedTags,
+  });
+  stateRef.current = {
+    query,
+    mediaType,
+    year,
+    favoritesOnly,
+    tagExpanded,
+    selectedTags,
+  };
+
+  // 詳細ページから戻った場合だけ、表示件数・スクロール位置を一度復元します。
+  // URLに条件がある場合は、URLを検索条件の正本として扱います。
   useEffect(() => {
     let saved: SavedExplorerState | null = null;
     try {
@@ -55,6 +135,7 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
       saved = null;
     }
     if (!saved?.restorePending) return;
+
     const timers = new Set<number>();
     let cancelled = false;
     const schedule = (callback: () => void, delay: number) => {
@@ -65,25 +146,39 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
       timers.add(timer);
     };
 
-    // Effect本体ではなく次のタスクで状態を復元し、不要な連続レンダーを避けます。
     schedule(() => {
       if (!saved) return;
-      setQuery(saved.query || "");
-      setMediaType(["all", "video", "article"].includes(saved.mediaType) ? saved.mediaType : "all");
-      setYear(saved.year || "all");
-      setFavoritesOnly(Boolean(saved.favoritesOnly));
-      setTagExpanded(Boolean(saved.tagExpanded));
-      setSelectedTags({
-        actors: saved.selectedTags?.actors ?? [],
-        genres: saved.selectedTags?.genres ?? [],
-        sources: saved.selectedTags?.sources ?? [],
-      });
-      setVisibleCount(Math.max(INITIAL_VISIBLE_COUNT, saved.visibleCount || INITIAL_VISIBLE_COUNT));
-      if (saved.query?.trim()) setIsSearching(true);
 
-      // 直接INTERVIEWSを開いたときに古い位置へ戻らないよう、復元予約はここで消費します。
+      if (!hasInitialUrlStateRef.current) {
+        setQuery(saved.query || "");
+        setMediaType(
+          ["all", "video", "article"].includes(saved.mediaType)
+            ? saved.mediaType
+            : "all",
+        );
+        setYear(saved.year || "all");
+        setFavoritesOnly(Boolean(saved.favoritesOnly));
+        setTagExpanded(Boolean(saved.tagExpanded));
+        setSelectedTags({
+          actors: saved.selectedTags?.actors ?? [],
+          genres: saved.selectedTags?.genres ?? [],
+          sources: saved.selectedTags?.sources ?? [],
+        });
+        if (saved.query?.trim()) setIsSearching(true);
+      }
+
+      setVisibleCount(
+        Math.max(
+          INITIAL_VISIBLE_COUNT,
+          saved.visibleCount || INITIAL_VISIBLE_COUNT,
+        ),
+      );
+
       try {
-        window.sessionStorage.setItem(EXPLORER_STATE_KEY, JSON.stringify({ ...saved, restorePending: false }));
+        window.sessionStorage.setItem(
+          EXPLORER_STATE_KEY,
+          JSON.stringify({ ...saved, restorePending: false }),
+        );
       } catch {
         // sessionStorageが使えない環境でも一覧表示自体は継続します。
       }
@@ -92,8 +187,10 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
       const restoreScroll = () => {
         window.scrollTo(0, Math.max(0, saved?.scrollY ?? 0));
         attempts += 1;
-        // 検索本文やカードが描画されるまで高さが足りない場合に、短時間だけ再試行します。
-        if (attempts < 30 && Math.abs(window.scrollY - (saved?.scrollY ?? 0)) > 2) schedule(restoreScroll, 100);
+        if (
+          attempts < 30
+          && Math.abs(window.scrollY - (saved?.scrollY ?? 0)) > 2
+        ) schedule(restoreScroll, 100);
       };
       schedule(restoreScroll, 0);
     }, 0);
@@ -107,7 +204,9 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
 
   // 一覧や詳細でしおりを変更した場合も、お気に入り検索へ即時反映します。
   useEffect(() => {
-    const syncFavorites = () => setFavoriteSlugs(readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteInterviews));
+    const syncFavorites = () => setFavoriteSlugs(
+      readArchiveList<string>(ARCHIVE_STORAGE_KEYS.favoriteInterviews),
+    );
     syncFavorites();
     window.addEventListener("storage", syncFavorites);
     window.addEventListener(ARCHIVE_UPDATED_EVENT, syncFavorites);
@@ -117,44 +216,165 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
     };
   }, []);
 
-  const years = useMemo(() => [...new Set(interviews.map((item) => item.year))].sort((a, b) => b.localeCompare(a)), [interviews]);
-  // カタログへタグを追加するだけで、役者・ジャンル・配信元の選択肢へ反映します。
-  const tagOptions = useMemo(() => Object.fromEntries(TAG_CATEGORIES.map((category) => [
-    category,
-    [...new Set(interviews.flatMap((item) => item.tagGroups[category]))].sort((a, b) => a.localeCompare(b)),
-  ])) as Record<TagCategory, string[]>, [interviews]);
+  const years = useMemo(
+    () => [...new Set(interviews.map((item) => item.year))]
+      .sort((a, b) => b.localeCompare(a)),
+    [interviews],
+  );
+
+  const tagOptions = useMemo(
+    () => Object.fromEntries(
+      TAG_CATEGORIES.map((category) => [
+        category,
+        [...new Set(
+          interviews.flatMap((item) => item.tagGroups[category]),
+        )].sort((a, b) => a.localeCompare(b)),
+      ]),
+    ) as Record<TagCategory, string[]>,
+    [interviews],
+  );
+
+  // URLを直接開いた場合や、戻る／進むで変更された条件を画面へ反映します。
+  useEffect(() => {
+    const params = new URLSearchParams(searchString);
+    const next: InterviewUrlState = {
+      query: params.get("q") ?? "",
+      mediaType: readEnumParam(
+        params,
+        "type",
+        ["all", "video", "article"] as const,
+        "all",
+      ),
+      year: params.get("year") || "all",
+      favoritesOnly: readBooleanParam(params, "favorites"),
+      tagExpanded: readBooleanParam(params, "details"),
+      selectedTags: {
+        actors: readListParam(params, "actor"),
+        genres: readListParam(params, "work"),
+        sources: readListParam(params, "source"),
+      },
+    };
+
+    const current = stateRef.current;
+    const changed = next.query !== current.query
+      || next.mediaType !== current.mediaType
+      || next.year !== current.year
+      || next.favoritesOnly !== current.favoritesOnly
+      || next.tagExpanded !== current.tagExpanded
+      || !sameStringList(
+        next.selectedTags.actors,
+        current.selectedTags.actors,
+      )
+      || !sameStringList(
+        next.selectedTags.genres,
+        current.selectedTags.genres,
+      )
+      || !sameStringList(
+        next.selectedTags.sources,
+        current.selectedTags.sources,
+      );
+
+    if (!changed) return;
+
+    syncingFromUrl.current = true;
+    setQuery(next.query);
+    setMediaType(next.mediaType);
+    setYear(next.year);
+    setFavoritesOnly(next.favoritesOnly);
+    setTagExpanded(next.tagExpanded);
+    setSelectedTags(next.selectedTags);
+    setContentMatches(null);
+    setIsSearching(Boolean(next.query.trim()));
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+
+    const frame = window.requestAnimationFrame(() => {
+      syncingFromUrl.current = false;
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [searchString]);
+
+  // 現在の検索条件をURLへ保存します。
+  useEffect(() => {
+    if (syncingFromUrl.current) return;
+
+    const params = new URLSearchParams(searchString);
+    setStringParam(params, "q", query);
+    setStringParam(params, "type", mediaType, "all");
+    setStringParam(params, "year", year, "all");
+    setBooleanParam(params, "favorites", favoritesOnly);
+    setBooleanParam(params, "details", tagExpanded);
+    setListParam(params, "actor", selectedTags.actors);
+    setListParam(params, "work", selectedTags.genres);
+    setListParam(params, "source", selectedTags.sources);
+
+    const nextUrl = buildSearchUrl(pathname, params);
+    const currentUrl = buildSearchUrl(
+      pathname,
+      new URLSearchParams(searchString),
+    );
+    if (nextUrl !== currentUrl) {
+      router.replace(nextUrl, { scroll: false });
+    }
+  }, [
+    favoritesOnly,
+    mediaType,
+    pathname,
+    query,
+    router,
+    searchString,
+    selectedTags,
+    tagExpanded,
+    year,
+  ]);
 
   // 入力が止まってから本文検索APIを呼び、長い翻訳データの常時読み込みを避けます。
   useEffect(() => {
     const needle = query.trim();
     if (!needle) return;
+
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
       try {
-        const response = await fetch(`/api/interviews/search?q=${encodeURIComponent(needle)}`, { signal: controller.signal });
+        const response = await fetch(
+          `/api/interviews/search?q=${encodeURIComponent(needle)}`,
+          { signal: controller.signal },
+        );
         const data = await response.json() as { slugs?: string[] };
         setContentMatches(data.slugs ?? []);
       } catch (error) {
-        if (!(error instanceof DOMException && error.name === "AbortError")) setContentMatches([]);
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          setContentMatches([]);
+        }
       } finally {
         if (!controller.signal.aborted) setIsSearching(false);
       }
     }, 250);
-    return () => { window.clearTimeout(timer); controller.abort(); };
+
+    return () => {
+      window.clearTimeout(timer);
+      controller.abort();
+    };
   }, [query]);
 
   const filtered = useMemo(() => {
     const needle = query.normalize("NFKC").toLowerCase().trim();
+
     return interviews.filter((interview) => {
-      const searchable = [interview.title, interview.titleEn, interview.source, interview.description]
-        .join(" ").normalize("NFKC").toLowerCase();
+      const searchable = [
+        interview.title,
+        interview.titleEn,
+        interview.source,
+        interview.description,
+      ].join(" ").normalize("NFKC").toLowerCase();
       const matchesMetadata = searchable.includes(needle);
-      const matchesTranscript = contentMatches?.includes(interview.slug) ?? false;
+      const matchesTranscript = contentMatches?.includes(interview.slug)
+        ?? false;
       const matchesQuery = !needle || matchesMetadata || matchesTranscript;
-      // WORKSと同じく同じ分類では「いずれか」を許可し、分類どうしは掛け合わせます。
       const matchesTags = TAG_CATEGORIES.every((category) => {
         const selected = selectedTags[category];
-        return !selected.length || selected.some((tag) => interview.tagGroups[category].includes(tag));
+        return !selected.length
+          || selected.some((tag) =>
+            interview.tagGroups[category].includes(tag));
       });
 
       return matchesQuery
@@ -163,17 +383,33 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
         && (mediaType === "all" || interview.mediaType === mediaType)
         && (year === "all" || interview.year === year);
     });
-  }, [contentMatches, favoriteSlugs, favoritesOnly, interviews, mediaType, query, selectedTags, year]);
+  }, [
+    contentMatches,
+    favoriteSlugs,
+    favoritesOnly,
+    interviews,
+    mediaType,
+    query,
+    selectedTags,
+    year,
+  ]);
 
   const updateQuery = (value: string) => {
-    setQuery(value); setContentMatches(null); setIsSearching(Boolean(value.trim()));
+    setQuery(value);
+    setContentMatches(null);
+    setIsSearching(Boolean(value.trim()));
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   const toggleTag = (category: TagCategory, tag: string) => {
     setSelectedTags((current) => {
       const selected = current[category];
-      return { ...current, [category]: selected.includes(tag) ? selected.filter((item) => item !== tag) : [...selected, tag] };
+      return {
+        ...current,
+        [category]: selected.includes(tag)
+          ? selected.filter((item) => item !== tag)
+          : [...selected, tag],
+      };
     });
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -184,13 +420,22 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
   };
 
   const clearFilters = () => {
-    setQuery(""); setMediaType("all"); setYear("all"); setFavoritesOnly(false); setTagExpanded(false);
-    setSelectedTags({ actors: [], genres: [], sources: [] }); setContentMatches(null); setIsSearching(false);
+    setQuery("");
+    setMediaType("all");
+    setYear("all");
+    setFavoritesOnly(false);
+    setTagExpanded(false);
+    setSelectedTags({ actors: [], genres: [], sources: [] });
+    setContentMatches(null);
+    setIsSearching(false);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
 
   const clearAllFavorites = () => {
-    if (!favoriteSlugs.length || !window.confirm("インタビューのしおりをすべて解除しますか？")) return;
+    if (
+      !favoriteSlugs.length
+      || !window.confirm("インタビューのしおりをすべて解除しますか？")
+    ) return;
     writeArchiveList(ARCHIVE_STORAGE_KEYS.favoriteInterviews, []);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   };
@@ -209,40 +454,182 @@ export default function InterviewsExplorer({ interviews }: { interviews: readonl
       visibleCount,
     };
     try {
-      window.sessionStorage.setItem(EXPLORER_STATE_KEY, JSON.stringify(state));
+      window.sessionStorage.setItem(
+        EXPLORER_STATE_KEY,
+        JSON.stringify(state),
+      );
     } catch {
       // 保存できない環境では通常のページ遷移を妨げません。
     }
   };
 
-  return <section className="archive-section shell interview-archive">
-    <div className="work-filters interview-filter-panel" aria-label="インタビューの検索と絞り込み">
-      <div className="work-filters__top"><strong>インタビューを絞り込む</strong><button type="button" onClick={clearFilters}>条件をリセット</button></div>
-      <div className="work-searches interview-searches">
-        <label><span>⌕</span><input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="タイトル・人物・発言内容で検索..." aria-label="タイトル・人物・発言内容で検索" />{query && <button type="button" onClick={() => updateQuery("")} aria-label="検索文字を消す">×</button>}</label>
-      </div>
-      <div className="work-filter-row">
-        <select value={mediaType} onChange={(event) => { setMediaType(event.target.value as typeof mediaType); setVisibleCount(INITIAL_VISIBLE_COUNT); }} aria-label="種類"><option value="all">すべての種類</option><option value="video">動画</option><option value="article">記事</option></select>
-        <select value={year} onChange={(event) => { setYear(event.target.value); setVisibleCount(INITIAL_VISIBLE_COUNT); }} aria-label="公開年"><option value="all">すべての公開年</option>{years.map((item) => <option key={item}>{item}</option>)}</select>
-        <button className={favoritesOnly ? "is-active" : ""} type="button" aria-pressed={favoritesOnly} onClick={() => { setFavoritesOnly((current) => !current); setVisibleCount(INITIAL_VISIBLE_COUNT); }}>🔖 お気に入り</button>
-        <button className="interview-clear-favorites" type="button" disabled={!favoriteSlugs.length} onClick={clearAllFavorites}>お気に入りを一括解除</button>
-      </div>
-      <button className="work-filters__expand" type="button" onClick={() => setTagExpanded((current) => !current)}>{tagExpanded ? "▲ 詳細フィルターを閉じる" : "▼ 役者・関連作品・配信元で絞り込む"}</button>
-      {tagExpanded && <div className="work-filter-details">
-        {TAG_CATEGORIES.map((category) => {
-          const selected = selectedTags[category];
-          return <fieldset key={category}>
-            <legend>{TAG_CATEGORY_LABELS[category]}で絞り込む</legend>
-            <div>{tagOptions[category].map((tag) => <button className={selected.includes(tag) ? "is-active" : ""} type="button" onClick={() => toggleTag(category, tag)} key={tag}>{tag}</button>)}</div>
-            {selected.length > 0 && <button className="clear-link" type="button" onClick={() => clearTagCategory(category)}>選択を全解除</button>}
-          </fieldset>;
-        })}
-      </div>}
-    </div>
+  return (
+    <section className="archive-section shell interview-archive">
+      <div
+        className="work-filters interview-filter-panel"
+        aria-label="インタビューの検索と絞り込み"
+      >
+        <div className="work-filters__top">
+          <strong>インタビューを絞り込む</strong>
+          <button type="button" onClick={clearFilters}>
+            条件をリセット
+          </button>
+        </div>
 
-    <div className="interview-results"><p><span>{filtered.length}</span> INTERVIEWS</p><small>{isSearching ? "発言内容を検索中…" : "公開年月日の新しい順"}</small></div>
-    <div className="interview-grid">{filtered.slice(0, visibleCount).map((interview) => <InterviewCard interview={interview} key={interview.slug} onOpen={saveExplorerState} />)}</div>
-    {!filtered.length && <div className="empty-state"><p>条件に一致するインタビューがありません。</p><button type="button" onClick={clearFilters}>すべて表示する</button></div>}
-    {visibleCount < filtered.length && <button className="interview-load-more" type="button" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE_COUNT)}>さらに表示する</button>}
-  </section>;
+        <div className="work-searches interview-searches">
+          <label>
+            <span>⌕</span>
+            <input
+              value={query}
+              onChange={(event) => updateQuery(event.target.value)}
+              placeholder="タイトル・人物・発言内容で検索..."
+              aria-label="タイトル・人物・発言内容で検索"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => updateQuery("")}
+                aria-label="検索文字を消す"
+              >
+                ×
+              </button>
+            )}
+          </label>
+        </div>
+
+        <div className="work-filter-row">
+          <select
+            value={mediaType}
+            onChange={(event) => {
+              setMediaType(event.target.value as MediaTypeFilter);
+              setVisibleCount(INITIAL_VISIBLE_COUNT);
+            }}
+            aria-label="種類"
+          >
+            <option value="all">すべての種類</option>
+            <option value="video">動画</option>
+            <option value="article">記事</option>
+          </select>
+
+          <select
+            value={year}
+            onChange={(event) => {
+              setYear(event.target.value);
+              setVisibleCount(INITIAL_VISIBLE_COUNT);
+            }}
+            aria-label="公開年"
+          >
+            <option value="all">すべての公開年</option>
+            {years.map((item) => <option key={item}>{item}</option>)}
+          </select>
+
+          <button
+            className={favoritesOnly ? "is-active" : ""}
+            type="button"
+            aria-pressed={favoritesOnly}
+            onClick={() => {
+              setFavoritesOnly((current) => !current);
+              setVisibleCount(INITIAL_VISIBLE_COUNT);
+            }}
+          >
+            🔖 お気に入り
+          </button>
+
+          <button
+            className="interview-clear-favorites"
+            type="button"
+            disabled={!favoriteSlugs.length}
+            onClick={clearAllFavorites}
+          >
+            お気に入りを一括解除
+          </button>
+        </div>
+
+        <button
+          className="work-filters__expand"
+          type="button"
+          onClick={() => setTagExpanded((current) => !current)}
+        >
+          {tagExpanded
+            ? "▲ 詳細フィルターを閉じる"
+            : "▼ 役者・関連作品・配信元で絞り込む"}
+        </button>
+
+        {tagExpanded && (
+          <div className="work-filter-details">
+            {TAG_CATEGORIES.map((category) => {
+              const selected = selectedTags[category];
+              return (
+                <fieldset key={category}>
+                  <legend>
+                    {TAG_CATEGORY_LABELS[category]}で絞り込む
+                  </legend>
+                  <div>
+                    {tagOptions[category].map((tag) => (
+                      <button
+                        className={selected.includes(tag)
+                          ? "is-active"
+                          : ""}
+                        type="button"
+                        onClick={() => toggleTag(category, tag)}
+                        key={tag}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                  {selected.length > 0 && (
+                    <button
+                      className="clear-link"
+                      type="button"
+                      onClick={() => clearTagCategory(category)}
+                    >
+                      選択を全解除
+                    </button>
+                  )}
+                </fieldset>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      <div className="interview-results">
+        <p><span>{filtered.length}</span> INTERVIEWS</p>
+        <small>
+          {isSearching ? "発言内容を検索中…" : "公開年月日の新しい順"}
+        </small>
+      </div>
+
+      <div className="interview-grid">
+        {filtered.slice(0, visibleCount).map((interview) => (
+          <InterviewCard
+            interview={interview}
+            key={interview.slug}
+            onOpen={saveExplorerState}
+          />
+        ))}
+      </div>
+
+      {!filtered.length && (
+        <div className="empty-state">
+          <p>条件に一致するインタビューがありません。</p>
+          <button type="button" onClick={clearFilters}>
+            すべて表示する
+          </button>
+        </div>
+      )}
+
+      {visibleCount < filtered.length && (
+        <button
+          className="interview-load-more"
+          type="button"
+          onClick={() => setVisibleCount((count) =>
+            count + INITIAL_VISIBLE_COUNT)}
+        >
+          さらに表示する
+        </button>
+      )}
+    </section>
+  );
 }

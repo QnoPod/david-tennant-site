@@ -50,6 +50,12 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "name": "TMDB",
         "url": "https://www.themoviedb.org/movie/1736676",
         "summary": "TMDBでは、「The Joy of Sex」が制作中・撮影中の作品として掲載されています。デイヴィッド・テナントの出演情報あり、公開・放送日は未定です。"
+      },
+      {
+        "name": "ScreenRant Movie News",
+        "url": "https://screenrant.com/joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/",
+        "publishedDate": "2026-07-23",
+        "summary": "ScreenRantでは、『The Joy of Sex』の映画化とデイヴィッド・テナントを含むキャスト情報が紹介されています。"
       }
     ],
     "updatedAt": "2026-07-24"
@@ -100,29 +106,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
     "updatedAt": "2026-07-24",
     "lastCheckedAt": "2026-07-24"
-  },
-  {
-    "key": "rss-cxmn9p",
-    "kind": "announcement",
-    "mediaType": "other",
-    "title": "デヴィッド・テナント、54年前に出版され物議を醸したベストセラー小説を原作とする新作ドラマに正式に主演することが決定",
-    "originalTitle": "David Tennant Officially Starring In New Adaptation Based On Scandalous 54-Year-Old Bestselling Novel",
-    "overview": "新たな詳細が明らかになる中、デヴィッド・テナントが、54年前に出版され、物議を醸したベストセラー小説を原作とする新作映画に正式に主演することが決定した。",
-    "publishedDate": "2026-07-23",
-    "status": "unknown",
-    "source": "ScreenRant Movie News",
-    "sourceUrl": "https://screenrant.com/joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/",
-    "confirmed": false,
-    "lastCheckedAt": "2026-07-24",
-    "sources": [
-      {
-        "name": "ScreenRant Movie News",
-        "url": "https://screenrant.com/joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/",
-        "publishedDate": "2026-07-23"
-      }
-    ],
-    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-07-24"
   },
   {
     "key": "official-tenth-doctor-adventures-2027",

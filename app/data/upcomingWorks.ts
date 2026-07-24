@@ -29,6 +29,28 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-17"
   },
   {
+    "key": "tmdb-movie-1736676",
+    "kind": "announcement",
+    "mediaType": "movie",
+    "title": "The Joy of Sex",
+    "originalTitle": "The Joy of Sex",
+    "character": "",
+    "overview": "",
+    "status": "filming",
+    "source": "TMDB",
+    "sourceUrl": "https://www.themoviedb.org/movie/1736676",
+    "confirmed": false,
+    "lastCheckedAt": "2026-07-24",
+    "sources": [
+      {
+        "name": "TMDB",
+        "url": "https://www.themoviedb.org/movie/1736676"
+      }
+    ],
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
+    "updatedAt": "2026-07-24"
+  },
+  {
     "key": "official-neverending-pillow-fort",
     "kind": "work",
     "mediaType": "movie",

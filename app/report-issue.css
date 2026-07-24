@@ -241,6 +241,7 @@
   margin-inline: auto;
   color: #4a4a50;
   line-height: 1.9;
+  text-align: left;
 }
 
 .about-contact__copy > small {
@@ -249,6 +250,7 @@
   margin: 18px auto 0;
   color: var(--muted);
   line-height: 1.8;
+  text-align: left;
 }
 
 .report-issue--contact {

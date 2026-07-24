@@ -23,6 +23,15 @@ const mediaLabels: Record<UpcomingWork["mediaType"], string> = {
   other: "その他",
 };
 
+const OVERVIEW_MIN_LENGTH = 120;
+const OVERVIEW_MAX_LENGTH = 180;
+const overviewClampStyle = {
+  display: "-webkit-box",
+  overflow: "hidden",
+  WebkitBoxOrient: "vertical" as const,
+  WebkitLineClamp: 4,
+};
+
 function formatDate(date?: string) {
   if (!date) return "日程未定";
   const [year, month, day] = date.split("-");
@@ -34,6 +43,44 @@ function formatDate(date?: string) {
 function sourcesFor(work: UpcomingWork): UpcomingSource[] {
   if (work.sources?.length) return work.sources;
   return work.sourceUrl ? [{ name: work.source, url: work.sourceUrl, publishedDate: work.publishedDate }] : [];
+}
+
+/**
+ * 取得元の全文はデータに残したまま、カード表示用だけを3〜4行程度へ短縮します。
+ * 文の途中で切れにくいよう文末を優先し、長い場合だけ180文字以内へ収めます。
+ */
+function summarizeOverview(value?: string) {
+  const normalized = (value || "作品情報は発表され次第追加します。")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (normalized.length <= OVERVIEW_MAX_LENGTH) return normalized;
+
+  const sentences = normalized.match(/[^。！？.!?]+[。！？.!?]?/g) || [normalized];
+  let summary = "";
+  let consumedLength = 0;
+
+  for (const sentence of sentences) {
+    const cleanSentence = sentence.trim();
+    if (!cleanSentence) continue;
+    const candidate = `${summary}${cleanSentence}`;
+
+    if (candidate.length > OVERVIEW_MAX_LENGTH) break;
+    summary = candidate;
+    consumedLength += sentence.length;
+
+    if (summary.length >= OVERVIEW_MIN_LENGTH) break;
+  }
+
+  // 最初の文が長い場合や、1文だけでは短すぎる場合は次の内容を補います。
+  if (summary.length < OVERVIEW_MIN_LENGTH) {
+    const remainder = normalized.slice(consumedLength).trim();
+    const available = OVERVIEW_MAX_LENGTH - summary.length;
+    summary = `${summary}${remainder.slice(0, available)}`;
+  }
+
+  return `${summary.slice(0, OVERVIEW_MAX_LENGTH).replace(/[、,\s]+$/u, "").replace(/[。！？.!?]+$/u, "")}…`;
 }
 
 /** 未公開作品と自動検出した発表候補を、WORKSから分離して表示します。 */
@@ -72,7 +119,9 @@ export default async function UpcomingPage() {
           <h2>{work.title}</h2>
           {work.originalTitle && work.originalTitle !== work.title && <p className="upcoming-card__original">{work.originalTitle}</p>}
           {work.character && <p className="upcoming-card__role"><b>出演役</b>{work.character}</p>}
-          <p className="upcoming-card__overview">{work.overview || "作品情報は発表され次第追加します。"}</p>
+          <p className="upcoming-card__overview" style={overviewClampStyle}>
+            {summarizeOverview(work.overview)}
+          </p>
           <footer>
             <span>{work.confirmed ? "公式発表確認済み" : `${work.source}から自動取得`}</span>
             <time dateTime={work.lastCheckedAt}>確認：{work.lastCheckedAt.replaceAll("-", ".")}</time>
@@ -91,7 +140,7 @@ export default async function UpcomingPage() {
 
       {announcements.length > 0 && <section className="upcoming-announcements" aria-labelledby="announcement-heading">
         <div className="upcoming-section-heading"><p className="eyebrow">REVIEW QUEUE</p><h2 id="announcement-heading">確認待ちの発表</h2></div>
-        
+
         <div className="upcoming-announcement-list">
           {announcements.map((item) => <article key={item.key}>
             <div>

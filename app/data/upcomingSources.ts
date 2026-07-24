@@ -22,7 +22,7 @@ export const upcomingTitleAliasGroups = [
   [
     "The Joy of Sex",
     "Joy of Sex",
-    // ScreenRantの記事見出しには作品名がないため、記事見出しを同じ作品として照合します。
+    // 既に保存された長い記事見出しも、次回の自動更新時に同じ作品へ整理します。
     "David Tennant Officially Starring In New Adaptation Based On Scandalous 54-Year-Old Bestselling Novel",
     "デヴィッド・テナント、54年前に出版され物議を醸したベストセラー小説を原作とする新作ドラマに正式に主演することが決定",
   ],

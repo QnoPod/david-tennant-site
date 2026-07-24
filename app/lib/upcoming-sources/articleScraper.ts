@@ -2,8 +2,8 @@ import type { OfficialPageSource } from "../../data/upcomingSources";
 import type { UpcomingWork } from "../types";
 import {
   decodeHtml,
-  extractProjectTitle,
   inferAnnouncementStatus,
+  inferProjectTitle,
   isRelevantArticleAnnouncement,
   isTentativeAnnouncement,
   recentEnough,
@@ -139,7 +139,12 @@ export async function scrapeOfficialSource(source: OfficialPageSource): Promise<
         if (!title || !recentEnough(article.publishedDate, 550)
           || !isRelevantArticleAnnouncement(title, article.description, article.body)) continue;
         const searchable = `${title} ${article.description} ${article.body.slice(0, 2500)}`;
-        const projectTitle = extractProjectTitle(`${title} ${article.description}`);
+        const projectTitle = inferProjectTitle({
+          title,
+          description: article.description,
+          body: article.body,
+          url,
+        });
         const status = inferAnnouncementStatus(searchable);
         found.push({
           key: stableKey("scraped-article", url), kind: "announcement", mediaType: "other",

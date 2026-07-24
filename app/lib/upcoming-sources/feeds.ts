@@ -4,8 +4,8 @@ import type { UpcomingWork } from "../types";
 import { scrapeOfficialSource } from "./articleScraper";
 import {
   decodeHtml,
-  extractProjectTitle,
   inferAnnouncementStatus,
+  inferProjectTitle,
   isRelevantArticleAnnouncement,
   recentEnough,
   stableKey,
@@ -35,7 +35,9 @@ async function getRssAnnouncements(): Promise<UpcomingWork[]> {
         const publishedDate = rawDate ? new Date(rawDate).toISOString().slice(0, 10) : undefined;
         if (!link || !title || !recentEnough(publishedDate)
           || !isRelevantArticleAnnouncement(title, description, "")) return [];
-        const projectTitle = extractProjectTitle(`${title} ${description}`);
+
+        // 見出しに作品名がなくても、RSS説明文とURLスラッグから作品名を推定します。
+        const projectTitle = inferProjectTitle({ title, description, url: link });
         return [{
           key: stableKey("rss", link),
           kind: "announcement" as const,
@@ -74,7 +76,7 @@ async function getFeedUpcomingUncached() {
 /** 大きな公式ページを閲覧のたびに巡回しないよう、抽出後の軽量な結果だけを1日保存します。 */
 export const getFeedUpcoming = unstable_cache(
   getFeedUpcomingUncached,
-  // v5: 旧キャッシュで記事説明文が作品名として残ったケースを破棄します。
-  ["upcoming-article-monitor-v5"],
+  // v6: 見出しだけでなく説明文・本文・URLから作品名を推定するため、旧キャッシュを破棄します。
+  ["upcoming-article-monitor-v6"],
   { revalidate: UPCOMING_REVALIDATE_SECONDS, tags: ["upcoming-article-monitor"] },
 );

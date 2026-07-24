@@ -1,4 +1,8 @@
-import { announcementKeywords, personKeywords } from "../../data/upcomingSources";
+import {
+  announcementKeywords,
+  personKeywords,
+  upcomingTitleAliasGroups,
+} from "../../data/upcomingSources";
 
 export const UPCOMING_REVALIDATE_SECONDS = 86400;
 
@@ -8,6 +12,32 @@ export function todayIso() {
 
 export function normalize(value = "") {
   return value.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function compact(value = "") {
+  return normalize(value).replace(/[^\p{L}\p{N}]/gu, "");
+}
+
+function canonicalAlias(value?: string) {
+  if (!value) return undefined;
+  const normalizedValue = compact(value);
+  if (!normalizedValue) return undefined;
+
+  const group = upcomingTitleAliasGroups.find((aliases) =>
+    aliases.some((alias) => {
+      const normalizedAlias = compact(alias);
+      return normalizedAlias === normalizedValue
+        || (
+          Math.min(normalizedAlias.length, normalizedValue.length) >= 8
+          && (
+            normalizedAlias.includes(normalizedValue)
+            || normalizedValue.includes(normalizedAlias)
+          )
+        );
+    })
+  );
+
+  return group?.[0] || value;
 }
 
 /** 人名と出演・制作を示す語が両方ある情報だけを候補にします。 */
@@ -75,8 +105,8 @@ export function isRelevantArticleAnnouncement(title: string, description: string
 }
 
 /**
- * 発表見出しから作品名だけを抽出します。抽出できない記事は確認待ちに残し、
- * 記事見出し全体を作品名として扱わないようにします。
+ * 発表文から作品名だけを抽出します。
+ * 記事見出しだけでなく、説明文や本文にも同じ抽出処理を利用できます。
  */
 export function extractProjectTitle(value: string) {
   const text = decodeHtml(value).normalize("NFKC").replace(/\s+/g, " ").trim();
@@ -91,15 +121,84 @@ export function extractProjectTitle(value: string) {
     /^[“"'‘]?(.+?)[”"'’]?\s+(?:casts?|adds?|taps?)\s+David\s+Tennant(?:\s+[–—|]|$)/iu,
     /^David\s+Tennant\s+(?:joins|boards|leads|to\s+star\s+in|stars?\s+in|returns?\s+for)\s+[“"'‘]?(.+?)[”"'’]?(?:\s+(?:as|with|alongside|for)\s+|\s+[–—|]\s+|$)/iu,
     /(?:出演決定|キャスト発表|制作開始|撮影開始|初公開)[^『「]{0,40}[『「]([^』」]{2,100})[』」]/u,
+    // 本文中に「映画『作品名』」「series "Title"」と書かれている場合の補助抽出です。
+    /(?:film|movie|series|drama|adaptation|映画|ドラマ|作品)\s+(?:called|titled|entitled|『|「|[“"'‘])\s*([^”"'’』」。.!?]{2,100})[”"'’』」]?/iu,
   ];
   for (const pattern of patterns) {
     const match = text.match(pattern);
     const base = match?.[1]?.trim();
     if (!base || /^(?:new\s+)?(?:film|movie|series|drama|play|project|show|production)$/i.test(base)) continue;
     const season = match?.[2];
-    return season && !/(?:season|series)\s*\d+/i.test(base) ? `${base} Season ${season}` : base;
+    const title = season && !/(?:season|series)\s*\d+/i.test(base) ? `${base} Season ${season}` : base;
+    return canonicalAlias(title);
   }
   return undefined;
+}
+
+const urlStopWords = new Set([
+  "movie", "film", "tv", "television", "series", "show", "drama", "adaptation",
+  "cast", "casting", "trailer", "release", "date", "first", "look", "news",
+  "exclusive", "official", "starring", "stars", "joins", "david", "tennant",
+]);
+
+function titleCaseWords(words: string[]) {
+  const lowerCaseWords = new Set(["a", "an", "and", "as", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with"]);
+  return words.map((word, index) => {
+    const lower = word.toLowerCase();
+    if (index > 0 && index < words.length - 1 && lowerCaseWords.has(lower)) return lower;
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  }).join(" ");
+}
+
+/**
+ * URLのスラッグから作品名候補を抽出します。
+ * 例: /joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/
+ *     → The Joy of Sex（別名辞書で正規化）
+ */
+export function extractProjectTitleFromUrl(value?: string) {
+  if (!value) return undefined;
+  try {
+    const url = new URL(value);
+    const slug = decodeURIComponent(url.pathname.split("/").filter(Boolean).at(-1) || "")
+      .replace(/\.[a-z0-9]{2,5}$/i, "")
+      .replace(/[_–—]+/g, "-");
+    const words = slug.split("-").map((word) => word.trim()).filter(Boolean);
+    const cutoff = words.findIndex((word) => urlStopWords.has(word.toLowerCase()));
+    const projectWords = (cutoff > 0 ? words.slice(0, cutoff) : words)
+      .filter((word) => !/^\d{4}$/.test(word));
+
+    if (projectWords.length < 2) return undefined;
+    const candidate = titleCaseWords(projectWords);
+    if (compact(candidate).length < 6) return undefined;
+    return canonicalAlias(candidate);
+  } catch {
+    return undefined;
+  }
+}
+
+/**
+ * 見出しだけに依存せず、説明文・本文・URLを順に確認して作品名を推定します。
+ * 推定できない場合はundefinedを返し、確認待ちに残します。
+ */
+export function inferProjectTitle({
+  title,
+  description = "",
+  body = "",
+  url = "",
+}: {
+  title: string;
+  description?: string;
+  body?: string;
+  url?: string;
+}) {
+  const candidates = [
+    extractProjectTitle(title),
+    extractProjectTitle(description),
+    extractProjectTitle(body.slice(0, 5000)),
+    extractProjectTitleFromUrl(url),
+  ].filter(Boolean) as string[];
+
+  return candidates[0];
 }
 
 export function inferAnnouncementStatus(value: string, hasReleaseDate = false) {

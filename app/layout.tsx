@@ -6,6 +6,7 @@ import ScrollButtons from "./components/ScrollButtons";
 import ReadabilitySettings from "./components/ReadabilitySettings";
 import "./globals.css";
 import "./mobile-fixes.css";
+import "./report-issue.css";
 
 /**
  * 全ページ共通のレイアウト。
@@ -51,15 +52,28 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
   other: { "codex-preview": "development" },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
-    apple: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      {
+        url: "/icons/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: [{
+      url: "/icons/icon-192.png",
+      sizes: "192x192",
+      type: "image/png",
+    }],
   },
 };
 
 /** ブラウザ上部とホーム画面起動時の配色をサイトのネイビーに揃えます。 */
 export const viewport: Viewport = { themeColor: "#111116" };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
       <body>

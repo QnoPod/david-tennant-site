@@ -6,6 +6,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
+import ReportIssueButton from "../components/ReportIssueButton";
 import {
   ARCHIVE_STORAGE_KEYS,
   ARCHIVE_UPDATED_EVENT,
@@ -85,14 +86,14 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   const [characterQuery, setCharacterQuery] = useState(
     searchParams.get("character") ?? "",
   );
-  const [availability, setAvailability] = useState(() =>
+  const [availability, setAvailability] = useState<string>(() =>
     readEnumParam(
       searchParams,
       "availability",
       ["ALL", "AVAILABLE", "UNAVAILABLE"] as const,
       "ALL",
     ));
-  const [watchStatus, setWatchStatus] = useState(() =>
+  const [watchStatus, setWatchStatus] = useState<string>(() =>
     readEnumParam(
       searchParams,
       "watch",
@@ -885,6 +886,12 @@ function WorkDetailModal({
               meta: `${interview.year} · ${interview.source}`,
               description: interview.titleEn,
             }))}
+          />
+
+          <ReportIssueButton
+            targetType="作品"
+            targetTitle={displayTitle}
+            targetKey={`${work.media_type}-${work.id}`}
           />
         </div>
       )}

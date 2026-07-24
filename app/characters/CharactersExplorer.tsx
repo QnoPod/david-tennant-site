@@ -80,7 +80,7 @@ export default function CharactersExplorer({
   const [query, setQuery] = useState(initialQuery);
   const [showAttributes, setShowAttributes] = useState(() =>
     readBooleanParam(searchParams, "attributes"));
-  const [watchStatus, setWatchStatus] = useState(() =>
+  const [watchStatus, setWatchStatus] = useState<string>(() =>
     readEnumParam(
       searchParams,
       "watch",

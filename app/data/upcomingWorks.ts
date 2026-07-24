@@ -13,7 +13,7 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "title": "The Amazing Maurice: The Waters of Life",
     "originalTitle": "The Amazing Maurice: The Waters of Life",
     "character": "Dangerous Beans (voice)",
-    "overview": "",
+    "overview": "海賊、吸血鬼、狼男、セイレーンたちが登場するこの物語で、マリシア、キース、そしてクラン・ラッツの一行に、アドミラル・カッツという名の毛のない猫が加わり、伝説の「生命の水」を探す危険な旅へと旅立つ。",
     "status": "filming",
     "source": "TMDB",
     "sourceUrl": "https://www.themoviedb.org/movie/1377495",
@@ -25,8 +25,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17"
+    "updatedAt": "2026-07-24",
+    "lastCheckedAt": "2026-07-24"
   },
   {
     "key": "tmdb-movie-1736676",
@@ -35,7 +35,7 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "title": "The Joy of Sex",
     "originalTitle": "The Joy of Sex",
     "character": "",
-    "overview": "",
+    "overview": "軟体動物の生涯にわたる研究を専門とする英国の科学教授、アレックス・コンフォートは、自分が「戦争に対する解毒剤」を執筆しているのだと考えていた。彼と妻のルース、そしてルースの親友ジェーン――1970年代のロンドン北部、静かな郊外で暮らす型破りな3人組――は、社会の規範に挑み、その共同生活を10年間続けた。 その実験室こそが、マニュアルに記されたレシピや、毛深いヒッピーたちがセックスをしている様子を描いた、一目でそれとわかる手描きのスケッチが生まれた場所だった。この本は官能的であり、ユーモラスであり、かつ健全なもので、一般の人々のためのセックスと愛を再定義し、彼らに初めてセックスを楽しむことを許した。",
     "status": "filming",
     "source": "Deadline",
     "sourceUrl": "https://deadline.com/2026/07/sharon-maguire-directs-colin-firth-julianne-moore-joy-of-sex-1237001551/",
@@ -48,7 +48,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       },
       {
         "name": "TMDB",
-        "url": "https://www.themoviedb.org/movie/1736676"
+        "url": "https://www.themoviedb.org/movie/1736676",
+        "summary": "TMDBでは、「The Joy of Sex」が制作中・撮影中の作品として掲載されています。デイヴィッド・テナントの出演情報あり、公開・放送日は未定です。"
       }
     ],
     "updatedAt": "2026-07-24"
@@ -85,7 +86,7 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "title": "The Wind in the Willows",
     "originalTitle": "The Wind in the Willows",
     "character": "Basil",
-    "overview": "",
+    "overview": "無謀運転の罪で投獄された、やんちゃなトード氏は、愛するトード・ホールが狡猾なイタチたちに脅かされることになり、刑務所から脱走せざるを得なくなった。イタチたちは、トード氏自身が彼らに売却したその牧草地に、ドッグフード工場を建設しようとしているのだ。",
     "status": "planned",
     "source": "TMDB",
     "sourceUrl": "https://www.themoviedb.org/movie/850538",
@@ -97,8 +98,31 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17"
+    "updatedAt": "2026-07-24",
+    "lastCheckedAt": "2026-07-24"
+  },
+  {
+    "key": "rss-cxmn9p",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "デヴィッド・テナント、54年前に出版され物議を醸したベストセラー小説を原作とする新作ドラマに正式に主演することが決定",
+    "originalTitle": "David Tennant Officially Starring In New Adaptation Based On Scandalous 54-Year-Old Bestselling Novel",
+    "overview": "新たな詳細が明らかになる中、デヴィッド・テナントが、54年前に出版され、物議を醸したベストセラー小説を原作とする新作映画に正式に主演することが決定した。",
+    "publishedDate": "2026-07-23",
+    "status": "unknown",
+    "source": "ScreenRant Movie News",
+    "sourceUrl": "https://screenrant.com/joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/",
+    "confirmed": false,
+    "lastCheckedAt": "2026-07-24",
+    "sources": [
+      {
+        "name": "ScreenRant Movie News",
+        "url": "https://screenrant.com/joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/",
+        "publishedDate": "2026-07-23"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-07-24"
   },
   {
     "key": "official-tenth-doctor-adventures-2027",

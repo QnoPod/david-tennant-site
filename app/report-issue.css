@@ -293,6 +293,29 @@
   text-align: left;
 }
 
+
+/*
+ * PC表示では説明文を一文・一行にしつつ、
+ * 文章自体の横幅を基準に中央へ配置します。
+ */
+@media (min-width: 1024px) {
+  .about-contact__copy {
+    max-width: 1200px;
+  }
+
+  .about-contact__copy > p {
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .about-contact__copy > p br {
+    display: none;
+  }
+}
+
 @media (max-width: 760px) {
   /*
    * ABOUTの連絡見出しをスマホでも1行で表示します。

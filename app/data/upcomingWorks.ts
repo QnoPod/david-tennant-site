@@ -30,24 +30,27 @@ export const manualUpcomingWorks: UpcomingWork[] = [
   },
   {
     "key": "tmdb-movie-1736676",
-    "kind": "announcement",
+    "kind": "work",
     "mediaType": "movie",
     "title": "The Joy of Sex",
     "originalTitle": "The Joy of Sex",
     "character": "",
     "overview": "",
     "status": "filming",
-    "source": "TMDB",
-    "sourceUrl": "https://www.themoviedb.org/movie/1736676",
-    "confirmed": false,
+    "source": "Deadline",
+    "sourceUrl": "https://deadline.com/2026/07/sharon-maguire-directs-colin-firth-julianne-moore-joy-of-sex-1237001551/",
+    "confirmed": true,
     "lastCheckedAt": "2026-07-24",
     "sources": [
+      {
+        "name": "Deadline",
+        "url": "https://deadline.com/2026/07/sharon-maguire-directs-colin-firth-julianne-moore-joy-of-sex-1237001551/"
+      },
       {
         "name": "TMDB",
         "url": "https://www.themoviedb.org/movie/1736676"
       }
     ],
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
     "updatedAt": "2026-07-24"
   },
   {

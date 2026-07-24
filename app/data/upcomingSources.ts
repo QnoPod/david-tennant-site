@@ -30,6 +30,10 @@ export const announcementKeywords = [
   "初公開", "公開予定", "放送予定", "予告編",
 ];
 
+/**
+ * RSSを公開しているニュース媒体の監視先です。
+ * ScreenRantは制作元の公式発表サイトではありませんが、独立したニュース取得元として扱います。
+ */
 export const rssSources = [
   {
     name: "BBC Entertainment & Arts",
@@ -37,6 +41,8 @@ export const rssSources = [
   },
   { name: "Deadline", url: "https://deadline.com/feed/" },
   { name: "Variety", url: "https://variety.com/feed/" },
+  { name: "ScreenRant Movie News", url: "https://screenrant.com/feed/movie-news/" },
+  { name: "ScreenRant TV News", url: "https://screenrant.com/feed/tv-news/" },
 ];
 
 export type OfficialPageSource = {

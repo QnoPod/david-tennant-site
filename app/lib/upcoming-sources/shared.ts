@@ -23,14 +23,16 @@ const strongAnnouncementKeywords = [
   "adds", "added", "set to", "will star", "will play", "voice cast", "voiced by", "led by", "reprising",
   "announced", "announcement", "commissioned", "greenlit", "new series", "new film", "production",
   "filming", "shooting", "first look", "first image", "unveils images", "reveals images",
+  // Deadlineなどの、監督名＋複数キャスト＋作品名という見出しにも対応します。
+  "directing", "directs", "pre-sells", "pre-sold",
   "出演", "キャスト", "出演決定", "新作", "新シリーズ", "制作", "撮影", "初公開",
 ];
 
 const nearbyIntentKeywords = [
   "will star", "will play", "set to", "joins", "has joined", "to star", "returns as", "returning as",
   "cast as", "casting", "commissioned", "greenlit", "new series", "new film", "production", "filming",
-  "shooting", "reprising", "first look", "first image", "出演予定", "出演決定", "キャスト",
-  "新作", "新シリーズ", "制作", "撮影", "初公開",
+  "shooting", "reprising", "first look", "first image", "directing", "directs",
+  "出演予定", "出演決定", "キャスト", "新作", "新シリーズ", "制作", "撮影", "初公開",
 ];
 
 const rejectedAnnouncementKeywords = [
@@ -79,6 +81,9 @@ export function isRelevantArticleAnnouncement(title: string, description: string
 export function extractProjectTitle(value: string) {
   const text = decodeHtml(value).normalize("NFKC").replace(/\s+/g, " ").trim();
   const patterns = [
+    // 例: Sharon Maguire Directing ... David Tennant & More In ‘The Joy Of Sex’; ...
+    // 「directing/directs」を必須にして、インタビューなどの "David Tennant in ..." を誤検出しません。
+    /^(?=[^.!?]{0,300}\bDavid\s+Tennant\b)[^.!?]{0,140}\b(?:directing|directs)\b[^.!?]{0,220}\bIn\s+[“"'‘]([^”"'’]{2,100})[”"'’](?:[;:–—|]|$)/iu,
     /David\s+Tennant(?:\s+(?:and|&)\s+[A-Z][\p{L} .'-]+)?\s+in\s+[“"'‘]?([A-Z][\p{L}\p{N} :'!&.-]{1,90}?)[”"'’]?(?:\s+(?:season|series)\s*(\d+))?(?:\s*[–—|]|$)/iu,
     /[“"'‘『「]([^”"'’』」]{2,100})[”"'’』」]\s*(?:season|series|シーズン|シリーズ)\s*([0-9０-９]+)/iu,
     /(?:first[- ]look|first images?|unveils? images?|reveals? images?)[^.!?]{0,120}?\b(?:in|for|from|of)\s+[“"'‘]?([A-Z][\p{L}\p{N} :'!&.-]{1,90}?)(?:[”"'’]?\s*(?:season|series)\s*(\d+))?(?:\s*[–—|]|$)/iu,
@@ -102,7 +107,7 @@ export function inferAnnouncementStatus(value: string, hasReleaseDate = false) {
   if (/(?:post.production|ポストプロダクション)/i.test(text)) return "post-production" as const;
   if (/(?:filming|shooting|production begins|starts production|in production|撮影|制作開始)/i.test(text)) return "filming" as const;
   if (hasReleaseDate || /(?:premieres?|release date|airs? on|公開予定|放送予定)/i.test(text)) return "scheduled" as const;
-  if (/(?:commissioned|greenlit|will star|to star|first look|first image|unveils? images?|reveals? images?|出演決定|制作決定|初公開)/i.test(text)) return "planned" as const;
+  if (/(?:commissioned|greenlit|will star|to star|first look|first image|unveils? images?|reveals? images?|directing|directs|pre[- ]sells?|pre[- ]sold|出演決定|制作決定|初公開)/i.test(text)) return "planned" as const;
   return "unknown" as const;
 }
 

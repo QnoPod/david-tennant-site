@@ -3,6 +3,7 @@ import { upcomingTranslations } from "../data/upcomingTranslations";
 import { upcomingTitleAliasGroups } from "../data/upcomingSources";
 import { searchDictionary } from "../data/searchDictionary";
 import { getSupplementalUpcoming } from "./upcoming-sources";
+import { translateUpcomingOverviews } from "./upcoming-sources/translate";
 import type { UpcomingSource, UpcomingWork, Work } from "./types";
 
 const TMDB_API = "https://api.themoviedb.org/3";
@@ -214,6 +215,31 @@ function buildAutomaticSourceSummary(item: UpcomingWork, sourceName: string) {
   return `${lead}${lead.endsWith("。") ? "" : "。"}${details.join("、")}です。`;
 }
 
+/**
+ * TMDBや記事本文にあらすじがまだ登録されていない場合でも、
+ * タイトル下が空欄にならないよう、取得済みの構造化情報から作品情報を生成します。
+ */
+function addAutomaticOverview(item: UpcomingWork): UpcomingWork {
+  if (item.overview?.trim()) return item;
+
+  const mediaLabel = item.mediaType === "movie"
+    ? "映画"
+    : item.mediaType === "tv"
+      ? "テレビ作品"
+      : "作品";
+  const role = item.character
+    ? `デイヴィッド・テナントは${item.character}役で出演します`
+    : "デイヴィッド・テナントの出演が発表されています";
+  const release = item.releaseDate
+    ? `公開・放送予定は${formatSummaryDate(item.releaseDate)}です`
+    : "公開・放送日は未定です";
+
+  return {
+    ...item,
+    overview: `${role}。${sourceStatusLabels[item.status]}。${release}。`,
+  };
+}
+
 /** 手入力要約を保持し、不足している取得元だけへ自動要約を補います。 */
 function addAutomaticSourceSummaries(item: UpcomingWork): UpcomingWork {
   const sources: UpcomingSource[] = item.sources?.length
@@ -290,9 +316,13 @@ function consolidateCandidates(items: UpcomingWork[]) {
   });
 }
 
-async function fetchTmdbDetail(work: Work, token: string): Promise<TmdbDetail | null> {
+async function fetchTmdbDetail(
+  work: Work,
+  token: string,
+  language = "ja-JP",
+): Promise<TmdbDetail | null> {
   try {
-    const response = await fetch(`${TMDB_API}/${work.media_type}/${work.id}?language=ja-JP`, {
+    const response = await fetch(`${TMDB_API}/${work.media_type}/${work.id}?language=${language}`, {
       headers: { Authorization: `Bearer ${token}`, accept: "application/json" },
       next: { revalidate: 86400 },
     });
@@ -300,6 +330,19 @@ async function fetchTmdbDetail(work: Work, token: string): Promise<TmdbDetail | 
   } catch {
     return null;
   }
+}
+
+/**
+ * 日本語の作品概要が未登録の場合だけ英語版も取得します。
+ * 日本語版の制作状況・公開日は維持し、概要などの空欄だけ英語版で補います。
+ */
+async function fetchTmdbDetailWithOverviewFallback(work: Work, token: string) {
+  const localized = await fetchTmdbDetail(work, token, "ja-JP");
+  if (localized?.overview?.trim()) {
+    return { localized, fallback: null };
+  }
+  const fallback = await fetchTmdbDetail(work, token, "en-US");
+  return { localized, fallback };
 }
 
 /** WORKSから完全未公開作品を除外するため、未来日付または未公開状態のTMDBキーを返します。 */
@@ -360,23 +403,52 @@ async function getTmdbUpcoming(): Promise<UpcomingWork[]> {
     const chunkSize = 20;
     for (let index = 0; index < candidates.length; index += chunkSize) {
       const chunk = candidates.slice(index, index + chunkSize);
-      const rows = await Promise.all(chunk.map(async (work) => ({ work, detail: await fetchTmdbDetail(work, token) })));
-      for (const { work, detail } of rows) {
-        const releaseDate = detail?.release_date || detail?.first_air_date || work.release_date || work.first_air_date || "";
+      const rows = await Promise.all(chunk.map(async (work) => ({
+        work,
+        ...await fetchTmdbDetailWithOverviewFallback(work, token),
+      })));
+      for (const { work, localized, fallback } of rows) {
+        const detail = localized || fallback;
+        const releaseDate = localized?.release_date
+          || localized?.first_air_date
+          || fallback?.release_date
+          || fallback?.first_air_date
+          || work.release_date
+          || work.first_air_date
+          || "";
+        const status = localized?.status || fallback?.status;
         const hasFutureDate = releaseDate > today;
-        if (isCancelledStatus(detail?.status)) continue;
-        if (!hasFutureDate && !isUnreleasedStatus(detail?.status)) continue;
-        const sourceTitle = detail?.title || detail?.name || work.title || work.name || "タイトル未登録";
+        if (isCancelledStatus(status)) continue;
+        if (!hasFutureDate && !isUnreleasedStatus(status)) continue;
+        const sourceTitle = localized?.title
+          || localized?.name
+          || fallback?.title
+          || fallback?.name
+          || work.title
+          || work.name
+          || "タイトル未登録";
         result.push({
           key: `tmdb-${work.media_type}-${work.id}`,
           kind: "work",
           mediaType: work.media_type,
-          title: displayTitle({ ...work, title: detail?.title || work.title, name: detail?.name || work.name }),
-          originalTitle: detail?.original_title || detail?.original_name || work.original_title || work.original_name || sourceTitle,
+          title: displayTitle({
+            ...work,
+            title: localized?.title || fallback?.title || work.title,
+            name: localized?.name || fallback?.name || work.name,
+          }),
+          originalTitle: localized?.original_title
+            || localized?.original_name
+            || fallback?.original_title
+            || fallback?.original_name
+            || work.original_title
+            || work.original_name
+            || sourceTitle,
           character: work.character,
-          overview: detail?.overview || work.overview,
+          overview: localized?.overview?.trim()
+            || fallback?.overview?.trim()
+            || work.overview,
           releaseDate: releaseDate || undefined,
-          status: tmdbStatus(detail?.status, hasFutureDate),
+          status: tmdbStatus(status, hasFutureDate),
           source: "TMDB",
           sourceUrl: `https://www.themoviedb.org/${work.media_type}/${work.id}`,
           confirmed: false,
@@ -443,8 +515,11 @@ export async function getUpcomingWorks(): Promise<UpcomingWork[]> {
     getTvmazeUpcoming(),
     getSupplementalUpcoming(),
   ]);
-  return consolidateCandidates([...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks])
-    .map(localizeUpcoming)
+  const localized = consolidateCandidates([...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks])
+    .map(localizeUpcoming);
+  const translated = await translateUpcomingOverviews(localized);
+  return translated
+    .map(addAutomaticOverview)
     .map(addAutomaticSourceSummaries)
     .sort((a, b) => {
     // 作品は公開予定日が近い順、確認待ちの発表は新着順に並べます。

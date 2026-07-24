@@ -1,5 +1,13 @@
 import type { UpcomingWork } from "../types";
 
+type TranslationField = "title" | "overview";
+
+type TranslationTarget = {
+  itemIndex: number;
+  field: TranslationField;
+  value: string;
+};
+
 function needsJapanese(value = "") {
   return Boolean(value) && /[A-Za-z]/.test(value) && !/[ぁ-んァ-ヶ一-龠]/.test(value);
 }
@@ -19,22 +27,31 @@ async function translateChunk(values: string[], apiKey: string) {
   return values.map((value, index) => data.translations?.[index]?.text?.trim() || value);
 }
 
-/** DeepLキーがある環境だけ、英語の確認待ち見出しと要約を日本語化します。 */
-export async function translateAnnouncements(items: UpcomingWork[]) {
+async function translateFields(items: UpcomingWork[], fields: TranslationField[]) {
   const apiKey = process.env.DEEPL_API_KEY;
   if (!apiKey) return items;
-  const targets: Array<{ itemIndex: number; field: "title" | "overview"; value: string }> = [];
+
+  const targets: TranslationTarget[] = [];
   items.forEach((item, itemIndex) => {
-    if (needsJapanese(item.title)) targets.push({ itemIndex, field: "title", value: item.title.slice(0, 500) });
-    if (needsJapanese(item.overview)) targets.push({ itemIndex, field: "overview", value: item.overview!.slice(0, 1800) });
+    if (fields.includes("title") && needsJapanese(item.title)) {
+      targets.push({ itemIndex, field: "title", value: item.title.slice(0, 500) });
+    }
+    if (fields.includes("overview") && needsJapanese(item.overview)) {
+      targets.push({ itemIndex, field: "overview", value: item.overview!.slice(0, 1800) });
+    }
   });
   if (!targets.length) return items;
+
   const translated: string[] = [];
   for (let index = 0; index < targets.length; index += 40) {
     const chunk = targets.slice(index, index + 40);
-    try { translated.push(...await translateChunk(chunk.map((target) => target.value), apiKey)); }
-    catch { translated.push(...chunk.map((target) => target.value)); }
+    try {
+      translated.push(...await translateChunk(chunk.map((target) => target.value), apiKey));
+    } catch {
+      translated.push(...chunk.map((target) => target.value));
+    }
   }
+
   return items.map((item, itemIndex) => {
     const next = { ...item };
     targets.forEach((target, targetIndex) => {
@@ -42,8 +59,23 @@ export async function translateAnnouncements(items: UpcomingWork[]) {
       if (target.field === "title") {
         next.originalTitle = item.originalTitle || item.title;
         next.title = translated[targetIndex];
-      } else next.overview = translated[targetIndex];
+      } else {
+        next.overview = translated[targetIndex];
+      }
     });
     return next;
   });
+}
+
+/** DeepLキーがある環境だけ、英語の確認待ち見出しと要約を日本語化します。 */
+export async function translateAnnouncements(items: UpcomingWork[]) {
+  return translateFields(items, ["title", "overview"]);
+}
+
+/**
+ * TMDBの日本語あらすじが未登録だった場合などに、
+ * 統合後の英語作品情報だけを日本語化します。作品名は原題のまま維持します。
+ */
+export async function translateUpcomingOverviews(items: UpcomingWork[]) {
+  return translateFields(items, ["overview"]);
 }

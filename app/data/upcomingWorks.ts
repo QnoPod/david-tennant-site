@@ -40,7 +40,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Deadline",
     "sourceUrl": "https://deadline.com/2026/07/sharon-maguire-directs-colin-firth-julianne-moore-joy-of-sex-1237001551/",
     "confirmed": true,
-    "lastCheckedAt": "2026-07-24",
     "sources": [
       {
         "name": "Deadline",
@@ -58,7 +57,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "summary": "ScreenRantでは、『The Joy of Sex』の映画化とデイヴィッド・テナントを含むキャスト情報が紹介されています。"
       }
     ],
-    "updatedAt": "2026-07-24"
+    "updatedAt": "2026-07-24",
+    "lastCheckedAt": "2026-07-24"
   },
   {
     "key": "official-neverending-pillow-fort",

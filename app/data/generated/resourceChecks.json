@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-22T15:42:52.613Z",
-  "mode": "local-only",
+  "updatedAt": "2026-07-27T08:58:45.066Z",
+  "mode": "full",
   "summary": {
-    "total": 563,
-    "ok": 150,
-    "broken": 0,
-    "warning": 0,
-    "unchecked": 413
+    "total": 570,
+    "ok": 505,
+    "broken": 1,
+    "warning": 64,
+    "unchecked": 0
   },
   "items": [
     {
@@ -1898,13 +1898,13 @@
       "references": [
         {
           "file": "app/layout.tsx",
-          "line": 30
+          "line": 56
         }
       ],
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "96966cb94363",
@@ -1913,11 +1913,11 @@
       "references": [
         {
           "file": "app/layout.tsx",
-          "line": 30
+          "line": 58
         },
         {
           "file": "app/layout.tsx",
-          "line": 31
+          "line": 64
         },
         {
           "file": "app/manifest.ts",
@@ -1927,7 +1927,7 @@
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "efe828a33953",
@@ -1966,7 +1966,7 @@
       "references": [
         {
           "file": "app/page.tsx",
-          "line": 39
+          "line": 37
         },
         {
           "file": "app/profile/page.tsx",
@@ -1976,7 +1976,7 @@
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "afa5ca7be7d6",
@@ -1985,11 +1985,11 @@
       "references": [
         {
           "file": "app/characters/CharacterDetailModal.tsx",
-          "line": 33
+          "line": 56
         },
         {
           "file": "app/characters/CharactersExplorer.tsx",
-          "line": 150
+          "line": 389
         },
         {
           "file": "app/my-archive/MyArchive.tsx",
@@ -2001,13 +2001,13 @@
         },
         {
           "file": "app/works/WorksExplorer.tsx",
-          "line": 260
+          "line": 844
         }
       ],
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-07-22T15:42:52.613Z"
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "cb221e70bfac",
@@ -2353,10 +2353,10 @@
           "line": 2949
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "573fdb0c010d",
@@ -2368,10 +2368,10 @@
           "line": 3090
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5809f80649f0",
@@ -2391,10 +2391,10 @@
           "line": 3034
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4e41da3354c3",
@@ -2406,10 +2406,10 @@
           "line": 2773
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "de3192ab2652",
@@ -2473,10 +2473,10 @@
           "line": 3287
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1faeac13bbaa",
@@ -2488,10 +2488,10 @@
           "line": 2918
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "37e91129e568",
@@ -2539,10 +2539,25 @@
           "line": 2355
         }
       ],
-      "status": "unchecked",
+      "status": "ok",
+      "httpStatus": 206,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "2036b5129ff4",
+      "kind": "link",
+      "target": "https://",
+      "references": [
+        {
+          "file": "app/components/ReportIssueButton.tsx",
+          "line": 264
+        }
+      ],
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：Failed to parse URL from https://",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "52584fdc02ef",
@@ -2558,10 +2573,10 @@
           "line": 66
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "32b9681b2061",
@@ -2625,10 +2640,10 @@
           "line": 2630
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7603f2d91a3f",
@@ -2708,10 +2723,10 @@
           "line": 3287
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5201a59bf6e7",
@@ -2731,10 +2746,10 @@
           "line": 1912
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f8066513f227",
@@ -2798,10 +2813,10 @@
           "line": 2800
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3a621d6a7ee9",
@@ -2873,10 +2888,10 @@
           "line": 3287
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f452ad876079",
@@ -2892,10 +2907,10 @@
           "line": 265
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "dcb71cc92713",
@@ -2907,10 +2922,25 @@
           "line": 435
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "da0b1ac87cce",
+      "kind": "link",
+      "target": "https://david-tennant-site.vercel.app",
+      "references": [
+        {
+          "file": "app/layout.tsx",
+          "line": 16
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f0c36ae60b57",
@@ -2926,10 +2956,10 @@
           "line": 237
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "13191439f2ea",
@@ -2938,17 +2968,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 40
+          "line": 72
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 45
+          "line": 77
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "965506fcfad1",
@@ -2957,17 +2987,36 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 152
+          "line": 184
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 157
+          "line": 189
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "40778695e0c8",
+      "kind": "link",
+      "target": "https://deadline.com/2026/07/sharon-maguire-directs-colin-firth-julianne-moore-joy-of-sex-1237001551/",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 41
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 46
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5b7a9db4bb34",
@@ -2976,13 +3025,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 38
+          "line": 49
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0ea6bfd1953a",
@@ -2998,10 +3047,10 @@
           "line": 465
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9ea0fe32faf9",
@@ -3017,10 +3066,10 @@
           "line": 366
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b922bf943508",
@@ -3036,10 +3085,10 @@
           "line": 323
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0b06416f4a7c",
@@ -3048,13 +3097,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 36
+          "line": 47
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f3e678bbb9e0",
@@ -3066,10 +3115,10 @@
           "line": 115
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c1033d900e44",
@@ -3081,10 +3130,10 @@
           "line": 3229
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0cd3f67df6a3",
@@ -3096,10 +3145,10 @@
           "line": 1495
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c363e6418451",
@@ -3111,10 +3160,10 @@
           "line": 954
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ba0d8711b70f",
@@ -3126,10 +3175,10 @@
           "line": 1970
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "febe78b6ff44",
@@ -3141,10 +3190,10 @@
           "line": 286
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "594574f43188",
@@ -3156,10 +3205,10 @@
           "line": 1999
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "899297172e13",
@@ -3171,10 +3220,10 @@
           "line": 343
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b6e83d437394",
@@ -3186,10 +3235,10 @@
           "line": 248
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "28ad14a751dc",
@@ -3201,10 +3250,10 @@
           "line": 2237
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3886f452e536",
@@ -3216,10 +3265,10 @@
           "line": 985
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "befaec09a2f7",
@@ -3231,10 +3280,10 @@
           "line": 3146
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b7cd31a05a8a",
@@ -3246,10 +3295,10 @@
           "line": 1819
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "42759def18c9",
@@ -3261,10 +3310,10 @@
           "line": 362
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0bb31c50ff95",
@@ -3276,10 +3325,10 @@
           "line": 458
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d4fb3374a920",
@@ -3291,10 +3340,10 @@
           "line": 896
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9d45b70a4dac",
@@ -3306,10 +3355,10 @@
           "line": 2628
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0b97940d4335",
@@ -3321,10 +3370,10 @@
           "line": 1790
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ddf2c7f876b5",
@@ -3336,10 +3385,10 @@
           "line": 2916
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b71f3a0c5252",
@@ -3351,10 +3400,10 @@
           "line": 201
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ddf8deaa570b",
@@ -3366,10 +3415,10 @@
           "line": 456
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "430d83d9ab70",
@@ -3381,10 +3430,10 @@
           "line": 3285
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f9771754c775",
@@ -3396,10 +3445,10 @@
           "line": 2885
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d409928eaf79",
@@ -3411,10 +3460,10 @@
           "line": 439
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "51793a623243",
@@ -3426,10 +3475,10 @@
           "line": 2148
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8c446b461226",
@@ -3441,10 +3490,10 @@
           "line": 172
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "df5db1d408b8",
@@ -3456,10 +3505,10 @@
           "line": 143
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7b2e2f449842",
@@ -3471,10 +3520,10 @@
           "line": 2297
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d1894a898c98",
@@ -3486,10 +3535,10 @@
           "line": 805
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7450b511b82d",
@@ -3501,10 +3550,10 @@
           "line": 516
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "098eb428dc41",
@@ -3516,10 +3565,10 @@
           "line": 210
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "35b8756737d9",
@@ -3531,10 +3580,10 @@
           "line": 2384
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e930ce1a4334",
@@ -3546,10 +3595,10 @@
           "line": 2566
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6914ee4134eb",
@@ -3561,10 +3610,10 @@
           "line": 3115
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bc898d57d956",
@@ -3576,10 +3625,10 @@
           "line": 286
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1df143ef19db",
@@ -3591,10 +3640,10 @@
           "line": 1705
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b761b19f4fe0",
@@ -3606,10 +3655,10 @@
           "line": 3256
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ac99fafa0620",
@@ -3621,10 +3670,10 @@
           "line": 546
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6c48c55ec834",
@@ -3636,10 +3685,10 @@
           "line": 923
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bf52f51c334c",
@@ -3651,10 +3700,10 @@
           "line": 532
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "740c94976935",
@@ -3666,10 +3715,10 @@
           "line": 229
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a235fa6ea90e",
@@ -3681,10 +3730,10 @@
           "line": 56
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4b9c2ae464b1",
@@ -3696,10 +3745,10 @@
           "line": 2798
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "23e813c25505",
@@ -3711,10 +3760,10 @@
           "line": 602
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f73af7aa3284",
@@ -3726,10 +3775,10 @@
           "line": 689
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "acc4623b4187",
@@ -3741,10 +3790,10 @@
           "line": 514
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fe282ab4d05b",
@@ -3756,10 +3805,10 @@
           "line": 2324
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "54306c2bb800",
@@ -3771,10 +3820,10 @@
           "line": 2504
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4210156e87e8",
@@ -3786,10 +3835,10 @@
           "line": 631
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6e31a26a8f47",
@@ -3801,10 +3850,10 @@
           "line": 568
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d5add2950f34",
@@ -3816,10 +3865,10 @@
           "line": 420
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "624d289b9822",
@@ -3831,10 +3880,10 @@
           "line": 381
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "031e05eeef86",
@@ -3846,10 +3895,10 @@
           "line": 191
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "64d3a0955614",
@@ -3861,10 +3910,10 @@
           "line": 2088
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c29749acf24e",
@@ -3876,10 +3925,10 @@
           "line": 1616
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f35766b580da",
@@ -3891,10 +3940,10 @@
           "line": 3059
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bb49877c232a",
@@ -3906,10 +3955,10 @@
           "line": 315
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6f3411819da7",
@@ -3921,10 +3970,10 @@
           "line": 425
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8b94fd57a284",
@@ -3936,10 +3985,10 @@
           "line": 2535
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6b68f4cd6c2e",
@@ -3951,10 +4000,10 @@
           "line": 2353
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "feed31a6ed01",
@@ -3966,10 +4015,10 @@
           "line": 1939
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3a7deb902a64",
@@ -3981,10 +4030,10 @@
           "line": 114
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1bf670d1bbfe",
@@ -3996,10 +4045,10 @@
           "line": 39
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "658df5c77cfc",
@@ -4011,10 +4060,10 @@
           "line": 2117
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "079feeec6a8a",
@@ -4026,10 +4075,10 @@
           "line": 575
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "47b9681fac80",
@@ -4041,10 +4090,10 @@
           "line": 2829
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0093e5ab3655",
@@ -4056,10 +4105,10 @@
           "line": 1464
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e8ae20ec52ac",
@@ -4071,10 +4120,10 @@
           "line": 1761
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ffe0992590cf",
@@ -4086,10 +4135,10 @@
           "line": 3088
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d01e1107a534",
@@ -4101,10 +4150,10 @@
           "line": 3032
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4bf683b259ce",
@@ -4116,10 +4165,10 @@
           "line": 1910
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e3754569a34a",
@@ -4131,10 +4180,10 @@
           "line": 153
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f1563f716fb9",
@@ -4146,10 +4195,10 @@
           "line": 1159
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "37adc3643b61",
@@ -4161,10 +4210,10 @@
           "line": 865
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "602559c6929d",
@@ -4176,10 +4225,10 @@
           "line": 400
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "91cea88fa273",
@@ -4191,10 +4240,10 @@
           "line": 1848
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "89441667b1ee",
@@ -4206,10 +4255,10 @@
           "line": 2684
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "709d66ffa734",
@@ -4221,10 +4270,10 @@
           "line": 96
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "32def2b73ab5",
@@ -4236,10 +4285,10 @@
           "line": 836
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c2f8c67f8b4d",
@@ -4251,10 +4300,10 @@
           "line": 58
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a6e6ba3a1161",
@@ -4266,10 +4315,10 @@
           "line": 2711
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a00825f84d8b",
@@ -4281,10 +4330,10 @@
           "line": 718
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5d89de2590d3",
@@ -4296,10 +4345,10 @@
           "line": 2208
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "71052a99c375",
@@ -4311,10 +4360,10 @@
           "line": 2947
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "cc43bf6ff364",
@@ -4326,10 +4375,10 @@
           "line": 1130
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a31145485aa2",
@@ -4341,10 +4390,10 @@
           "line": 267
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a1bca18ec8eb",
@@ -4356,10 +4405,10 @@
           "line": 2179
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b0ed01554d6c",
@@ -4371,10 +4420,10 @@
           "line": 1381
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6f193a00db89",
@@ -4386,10 +4435,10 @@
           "line": 2771
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4d5c5b9858f2",
@@ -4401,10 +4450,10 @@
           "line": 1587
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1ad188d9bb1a",
@@ -4416,10 +4465,10 @@
           "line": 1101
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5f791a38b88a",
@@ -4431,10 +4480,10 @@
           "line": 1645
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c1aa51ce5e7f",
@@ -4446,10 +4495,10 @@
           "line": 1188
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "010a54318d33",
@@ -4461,10 +4510,10 @@
           "line": 662
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e8d5b101d76a",
@@ -4476,10 +4525,10 @@
           "line": 20
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "14c4dd15593c",
@@ -4491,10 +4540,10 @@
           "line": 550
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b3e2f725590d",
@@ -4506,10 +4555,10 @@
           "line": 1556
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d90cbd9ce3b5",
@@ -4521,10 +4570,10 @@
           "line": 487
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "63537e064521",
@@ -4536,10 +4585,10 @@
           "line": 3175
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "52ec99fcebbd",
@@ -4551,10 +4600,10 @@
           "line": 2442
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c03e6adc7ab8",
@@ -4566,10 +4615,10 @@
           "line": 1879
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d2da6cb81461",
@@ -4581,10 +4630,10 @@
           "line": 496
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "20182e0d5f82",
@@ -4596,10 +4645,10 @@
           "line": 2059
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fbdf8ecc9508",
@@ -4611,10 +4660,10 @@
           "line": 324
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c612ec16dbe0",
@@ -4626,10 +4675,10 @@
           "line": 77
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b1f00bc6aa68",
@@ -4641,10 +4690,10 @@
           "line": 477
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "661804b6e2d1",
@@ -4656,10 +4705,10 @@
           "line": 1325
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5b7c7258d964",
@@ -4671,10 +4720,10 @@
           "line": 587
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "aa79873e6519",
@@ -4686,10 +4735,10 @@
           "line": 230
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2af2f08bf00d",
@@ -4701,10 +4750,10 @@
           "line": 1016
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "aa9d04ae3679",
@@ -4716,10 +4765,10 @@
           "line": 25
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "262ad93bcb07",
@@ -4731,10 +4780,10 @@
           "line": 1527
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "32bb759c77bc",
@@ -4746,10 +4795,10 @@
           "line": 747
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7267ba7402a3",
@@ -4761,10 +4810,10 @@
           "line": 776
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b68c522c66cc",
@@ -4776,10 +4825,10 @@
           "line": 1437
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0af929d18324",
@@ -4791,10 +4840,10 @@
           "line": 85
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0b3fd36f3e03",
@@ -4806,10 +4855,10 @@
           "line": 606
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "545edae11ebd",
@@ -4821,10 +4870,10 @@
           "line": 134
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "da8bee89259a",
@@ -4836,10 +4885,10 @@
           "line": 2657
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b4053b72fdc8",
@@ -4851,10 +4900,10 @@
           "line": 305
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "08623e166f64",
@@ -4866,10 +4915,10 @@
           "line": 344
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4c8ee78dd95a",
@@ -4881,10 +4930,10 @@
           "line": 1244
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e1d8ed9a6fb1",
@@ -4896,10 +4945,10 @@
           "line": 2473
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "46ca4f83a9cf",
@@ -4911,10 +4960,10 @@
           "line": 1043
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "72e10a639417",
@@ -4926,10 +4975,10 @@
           "line": 3202
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "dc9204c6b273",
@@ -4941,10 +4990,10 @@
           "line": 2413
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b68c072a77c3",
@@ -4956,10 +5005,10 @@
           "line": 3005
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "82b2cdbc7bd1",
@@ -4971,10 +5020,10 @@
           "line": 1408
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "99aafbe1f71c",
@@ -4986,10 +5035,10 @@
           "line": 2597
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "561e33edab6d",
@@ -5001,10 +5050,10 @@
           "line": 1072
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fe54857d054f",
@@ -5016,10 +5065,10 @@
           "line": 2858
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bf688e10945d",
@@ -5031,10 +5080,10 @@
           "line": 1352
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fa2eebdfaf99",
@@ -5046,10 +5095,10 @@
           "line": 257
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4a155810bb73",
@@ -5061,10 +5110,10 @@
           "line": 2030
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e0f706f3ed48",
@@ -5076,10 +5125,10 @@
           "line": 1674
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "63176390740e",
@@ -5091,10 +5140,10 @@
           "line": 1271
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "076795b9d1ba",
@@ -5106,10 +5155,10 @@
           "line": 1298
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b52588bc2bbf",
@@ -5121,10 +5170,10 @@
           "line": 1732
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6ed4bcda1666",
@@ -5136,10 +5185,10 @@
           "line": 371
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4bd18dcb4bf1",
@@ -5151,10 +5200,10 @@
           "line": 2268
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f2b7f2892cc5",
@@ -5166,10 +5215,10 @@
           "line": 398
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "cda5795ddbe9",
@@ -5189,10 +5238,10 @@
           "line": 2976
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "50bd86b8f159",
@@ -5208,10 +5257,10 @@
           "line": 719
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "85f89404f84a",
@@ -5223,10 +5272,10 @@
           "line": 2739
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "79c566d59997",
@@ -5238,10 +5287,10 @@
           "line": 1216
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9ba7cbf8d393",
@@ -5253,10 +5302,10 @@
           "line": 2975
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5b67f708e6f3",
@@ -5268,10 +5317,10 @@
           "line": 61
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3394c0e71861",
@@ -5280,13 +5329,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 58
+          "line": 71
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1879fdbbd3a7",
@@ -5295,13 +5344,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 203
+          "line": 235
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f6bd6739a18f",
@@ -5310,13 +5359,58 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 60
+          "line": 73
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "4cba24be62c3",
+      "kind": "link",
+      "target": "https://screenrant.com/feed/movie-news/",
+      "references": [
+        {
+          "file": "app/data/upcomingSources.ts",
+          "line": 51
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "7b7032795bc7",
+      "kind": "link",
+      "target": "https://screenrant.com/feed/tv-news/",
+      "references": [
+        {
+          "file": "app/data/upcomingSources.ts",
+          "line": 52
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "ed19b46d4380",
+      "kind": "link",
+      "target": "https://screenrant.com/joy-of-sex-movie-adaptation-colin-firth-david-tennant-casting/",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 55
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fe3a55694e10",
@@ -5328,10 +5422,10 @@
           "line": 491
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ff7b3907d903",
@@ -5351,10 +5445,10 @@
           "line": 1792
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "77bd080954a9",
@@ -5366,10 +5460,10 @@
           "line": 1410
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "391fd1873496",
@@ -5378,13 +5472,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 39
+          "line": 50
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "aecc550aec23",
@@ -5412,10 +5506,10 @@
           "line": 3007
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fa532238203a",
@@ -5427,10 +5521,10 @@
           "line": 421
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bbd39cf76c7d",
@@ -5439,17 +5533,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 109
+          "line": 141
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 114
+          "line": 146
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6b0d91c6215d",
@@ -5458,13 +5552,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 56
+          "line": 69
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c24fe134685a",
@@ -5473,13 +5567,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 62
+          "line": 75
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6c2dc0adb944",
@@ -5495,10 +5589,10 @@
           "line": 522
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "25b79766c756",
@@ -5514,10 +5608,10 @@
           "line": 451
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e6288fe1971f",
@@ -5529,10 +5623,10 @@
           "line": 172
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "763e1e4a1b9b",
@@ -5544,10 +5638,10 @@
           "line": 861
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bd0185e25dfc",
@@ -5559,10 +5653,10 @@
           "line": 859
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d70379cb89f6",
@@ -5578,10 +5672,10 @@
           "line": 833
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "21069300ab71",
@@ -5597,10 +5691,10 @@
           "line": 847
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1ddf224e974e",
@@ -5616,10 +5710,10 @@
           "line": 819
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "79005b248c2a",
@@ -5635,10 +5729,10 @@
           "line": 790
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "511e0bcbdbc6",
@@ -5654,10 +5748,10 @@
           "line": 804
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "971501176570",
@@ -5673,10 +5767,10 @@
           "line": 776
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f3e6c872c3c8",
@@ -5688,10 +5782,10 @@
           "line": 760
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "32ca5f1001f3",
@@ -5707,10 +5801,10 @@
           "line": 748
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bfb6279811a5",
@@ -5722,10 +5816,10 @@
           "line": 674
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7080afc6a338",
@@ -5737,10 +5831,10 @@
           "line": 648
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "75fd22687419",
@@ -5752,10 +5846,10 @@
           "line": 646
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "696820cab440",
@@ -5767,10 +5861,10 @@
           "line": 620
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ce98edb34ace",
@@ -5782,10 +5876,10 @@
           "line": 604
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f4aba1f4fa4a",
@@ -5797,10 +5891,10 @@
           "line": 562
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c32ada4bfa44",
@@ -5812,10 +5906,10 @@
           "line": 576
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "33a38359ca11",
@@ -5824,13 +5918,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 63
+          "line": 76
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0ec9e46f5c51",
@@ -5839,17 +5933,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 89
+          "line": 121
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 94
+          "line": 126
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8f984204690b",
@@ -5865,10 +5959,10 @@
           "line": 194
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "888487429649",
@@ -5900,10 +5994,10 @@
           "line": 2686
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "eacbfeb9be18",
@@ -5915,10 +6009,10 @@
           "line": 34
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "903371992b87",
@@ -5934,10 +6028,10 @@
           "line": 295
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c78cb9edb523",
@@ -5953,10 +6047,10 @@
           "line": 338
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "28f2e27c76b1",
@@ -5968,10 +6062,10 @@
           "line": 618
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a889c136dbbe",
@@ -5987,10 +6081,10 @@
           "line": 409
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "23b0d7165bca",
@@ -6002,10 +6096,10 @@
           "line": 577
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "62da5803b85d",
@@ -6021,10 +6115,10 @@
           "line": 394
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c152f5dd825a",
@@ -6036,10 +6130,10 @@
           "line": 232
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "42a97b34fea0",
@@ -6051,10 +6145,10 @@
           "line": 21
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7409b465baff",
@@ -6063,13 +6157,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 57
+          "line": 70
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4e9a19a8ce02",
@@ -6081,10 +6175,10 @@
           "line": 171
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9fb933f46d17",
@@ -6093,17 +6187,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 173
+          "line": 205
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 178
+          "line": 210
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9439224d072b",
@@ -6112,13 +6206,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 59
+          "line": 72
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2a0feff172bc",
@@ -6130,10 +6224,10 @@
           "line": 38
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "00bae21bd61e",
@@ -6145,10 +6239,10 @@
           "line": 36
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "144b12807bc1",
@@ -6160,10 +6254,10 @@
           "line": 38
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bf101d1fa30a",
@@ -6179,10 +6273,10 @@
           "line": 507
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "89647ebcd2d3",
@@ -6198,10 +6292,10 @@
           "line": 251
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "692025d724b4",
@@ -6213,10 +6307,10 @@
           "line": 493
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "106f1f457622",
@@ -6228,10 +6322,10 @@
           "line": 704
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fbf15f93a34e",
@@ -6243,10 +6337,10 @@
           "line": 423
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "94f955224862",
@@ -6262,10 +6356,10 @@
           "line": 122
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "65b6c16f8b34",
@@ -6281,10 +6375,10 @@
           "line": 550
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "87a6e6fb4d5e",
@@ -6296,10 +6390,10 @@
           "line": 676
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e98f1a9e0a7c",
@@ -6315,10 +6409,10 @@
           "line": 536
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "668d6739c6a8",
@@ -6334,10 +6428,10 @@
           "line": 151
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5540ec49b676",
@@ -6353,10 +6447,10 @@
           "line": 209
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a8e58d4faeac",
@@ -6372,10 +6466,10 @@
           "line": 49
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0bca5c4da8bd",
@@ -6391,10 +6485,10 @@
           "line": 108
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ddfc3767a3b1",
@@ -6410,10 +6504,10 @@
           "line": 179
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "146aec5a817c",
@@ -6425,10 +6519,10 @@
           "line": 352
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "745013684588",
@@ -6444,10 +6538,10 @@
           "line": 309
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e4ec44be57ad",
@@ -6463,10 +6557,10 @@
           "line": 78
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0142d91f8f93",
@@ -6478,10 +6572,10 @@
           "line": 606
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "43430793a329",
@@ -6497,10 +6591,10 @@
           "line": 93
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "34b19146a616",
@@ -6512,10 +6606,10 @@
           "line": 762
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a7c4cc53fdbf",
@@ -6531,10 +6625,10 @@
           "line": 165
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2eea221eabc3",
@@ -6550,10 +6644,10 @@
           "line": 223
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "319f7697fb28",
@@ -6565,10 +6659,10 @@
           "line": 437
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "89d3f4b9e9a2",
@@ -6580,10 +6674,10 @@
           "line": 578
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c4ce3ea203ba",
@@ -6599,10 +6693,10 @@
           "line": 592
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d43e9b64967f",
@@ -6618,10 +6712,10 @@
           "line": 479
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "dff87f94923d",
@@ -6637,10 +6731,10 @@
           "line": 380
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8c74db600a76",
@@ -6652,10 +6746,10 @@
           "line": 564
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b380d2dd3544",
@@ -6671,10 +6765,10 @@
           "line": 662
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b0144440d4d5",
@@ -6686,10 +6780,10 @@
           "line": 733
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "13f1a8b128bb",
@@ -6705,10 +6799,10 @@
           "line": 634
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a70a3aff9252",
@@ -6724,10 +6818,10 @@
           "line": 690
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6962bcadaa71",
@@ -6736,13 +6830,13 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 61
+          "line": 74
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5088d90ee3fc",
@@ -6758,10 +6852,10 @@
           "line": 280
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3a8b8c100977",
@@ -6770,17 +6864,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 195
+          "line": 227
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 199
+          "line": 231
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d5fcfdeee844",
@@ -6796,10 +6890,10 @@
           "line": 24
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a1c659cf722e",
@@ -6808,13 +6902,28 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 49
+          "line": 81
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "8ca67b8ae9e5",
+      "kind": "link",
+      "target": "https://www.themoviedb.org/movie/1736676",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 50
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1da04ffb01fc",
@@ -6823,17 +6932,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 66
+          "line": 98
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 71
+          "line": 103
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d8e6672c9295",
@@ -6849,10 +6958,10 @@
           "line": 137
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9f9ef8e8f9be",
@@ -6861,17 +6970,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 131
+          "line": 163
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 136
+          "line": 168
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5edd4699eb4d",
@@ -6883,10 +6992,10 @@
           "line": 1763
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9d356c658d1c",
@@ -6902,10 +7011,10 @@
           "line": 113
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "38662c83eb10",
@@ -6917,10 +7026,10 @@
           "line": 3228
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f1f80b972e3d",
@@ -6932,10 +7041,10 @@
           "line": 1494
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c0aec7953b9c",
@@ -6947,10 +7056,10 @@
           "line": 953
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d6a891faf5b7",
@@ -6962,10 +7071,10 @@
           "line": 1969
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4f88284e5e3c",
@@ -6977,10 +7086,10 @@
           "line": 285
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6fa0d3e5e708",
@@ -6992,10 +7101,10 @@
           "line": 1998
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bb1527fe62a5",
@@ -7011,10 +7120,10 @@
           "line": 341
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e961faec015c",
@@ -7030,10 +7139,10 @@
           "line": 246
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "030f20f6c4b5",
@@ -7045,10 +7154,10 @@
           "line": 2236
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "17dfe7551baf",
@@ -7060,10 +7169,10 @@
           "line": 984
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3e6c8d01462e",
@@ -7075,10 +7184,10 @@
           "line": 3145
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "be810ab9b8c3",
@@ -7090,10 +7199,10 @@
           "line": 1818
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "61af309dc2b8",
@@ -7109,10 +7218,10 @@
           "line": 360
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f6de290108f1",
@@ -7128,10 +7237,10 @@
           "line": 456
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "03888b10f9a2",
@@ -7143,10 +7252,10 @@
           "line": 895
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "65db2172b64f",
@@ -7158,10 +7267,10 @@
           "line": 2627
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "577cf1c93188",
@@ -7173,10 +7282,10 @@
           "line": 1789
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8f5766acd401",
@@ -7188,10 +7297,10 @@
           "line": 2915
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "965ad7959cae",
@@ -7203,10 +7312,10 @@
           "line": 200
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "19bf3dd2248b",
@@ -7218,10 +7327,10 @@
           "line": 455
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ba8b0aa44661",
@@ -7233,10 +7342,10 @@
           "line": 3284
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7a78ef0ea15c",
@@ -7248,10 +7357,10 @@
           "line": 2884
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4a796635ed2e",
@@ -7267,10 +7376,10 @@
           "line": 437
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2fdabc25b712",
@@ -7282,10 +7391,10 @@
           "line": 2147
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d6908b69043d",
@@ -7297,10 +7406,10 @@
           "line": 171
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ae029b6c4a39",
@@ -7312,10 +7421,10 @@
           "line": 142
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f1341c2758ff",
@@ -7327,10 +7436,10 @@
           "line": 2296
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "eea008344813",
@@ -7342,10 +7451,10 @@
           "line": 804
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7b80fdd5e412",
@@ -7357,10 +7466,10 @@
           "line": 515
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "771c44a59e72",
@@ -7376,10 +7485,10 @@
           "line": 208
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e7e489c5c67c",
@@ -7391,10 +7500,10 @@
           "line": 2383
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "88197b18a73c",
@@ -7406,10 +7515,10 @@
           "line": 2565
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "14f61dc9edac",
@@ -7421,10 +7530,10 @@
           "line": 3114
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "455a196e1453",
@@ -7440,10 +7549,10 @@
           "line": 284
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "038e098d200b",
@@ -7455,10 +7564,10 @@
           "line": 1704
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6643bca6d9c8",
@@ -7470,10 +7579,10 @@
           "line": 3255
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b384b18eef67",
@@ -7485,10 +7594,10 @@
           "line": 545
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2da4b2256543",
@@ -7500,10 +7609,10 @@
           "line": 922
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8cab5fd91ee2",
@@ -7519,10 +7628,10 @@
           "line": 530
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "af88bcdb1446",
@@ -7538,10 +7647,10 @@
           "line": 227
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "13c031a45aef",
@@ -7553,10 +7662,10 @@
           "line": 55
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7c81c189d019",
@@ -7568,10 +7677,10 @@
           "line": 2797
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e58aabe2ede5",
@@ -7583,10 +7692,10 @@
           "line": 601
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "da6922f82bd6",
@@ -7598,10 +7707,10 @@
           "line": 688
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9690a55d4c8e",
@@ -7617,10 +7726,10 @@
           "line": 512
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6be9cb98a209",
@@ -7632,10 +7741,10 @@
           "line": 2323
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "10cd8f577faf",
@@ -7647,10 +7756,10 @@
           "line": 2503
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f712caee8b7f",
@@ -7662,10 +7771,10 @@
           "line": 630
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ee3c8e620385",
@@ -7681,10 +7790,10 @@
           "line": 566
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "65310f43a7c3",
@@ -7700,10 +7809,10 @@
           "line": 418
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e4d67ee327fa",
@@ -7719,10 +7828,10 @@
           "line": 379
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "af8c768fa4b6",
@@ -7738,10 +7847,10 @@
           "line": 189
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "792c8d5562be",
@@ -7753,10 +7862,10 @@
           "line": 2087
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "11c9a970d61d",
@@ -7768,10 +7877,10 @@
           "line": 1615
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "37dbbf83a694",
@@ -7787,10 +7896,10 @@
           "line": 64
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3e8ce469a48f",
@@ -7802,10 +7911,10 @@
           "line": 3058
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "58858b0739e5",
@@ -7817,10 +7926,10 @@
           "line": 314
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b844d2d67fc3",
@@ -7832,10 +7941,10 @@
           "line": 424
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4e4c94220c66",
@@ -7847,10 +7956,10 @@
           "line": 2534
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6cb309037e2b",
@@ -7862,10 +7971,10 @@
           "line": 2352
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a3749816eb1a",
@@ -7877,10 +7986,10 @@
           "line": 1938
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "79502e1ec921",
@@ -7892,10 +8001,10 @@
           "line": 113
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "69b40211c813",
@@ -7911,10 +8020,10 @@
           "line": 37
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7c3b22b158ef",
@@ -7926,10 +8035,10 @@
           "line": 2116
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "db22cdbc0a67",
@@ -7941,10 +8050,10 @@
           "line": 574
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "48164aaf0cc5",
@@ -7956,10 +8065,10 @@
           "line": 2828
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4b8e0fe0ca2e",
@@ -7971,10 +8080,10 @@
           "line": 1463
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c85d39b8221c",
@@ -7986,10 +8095,10 @@
           "line": 1760
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "39011de3b083",
@@ -8001,10 +8110,10 @@
           "line": 3087
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3379f6071215",
@@ -8016,10 +8125,10 @@
           "line": 3031
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "419859d22451",
@@ -8031,10 +8140,10 @@
           "line": 702
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b060b95022ef",
@@ -8046,10 +8155,10 @@
           "line": 1909
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3cd0a649428d",
@@ -8065,10 +8174,10 @@
           "line": 151
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f1a3a47ac514",
@@ -8080,10 +8189,10 @@
           "line": 1158
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "759a480d490f",
@@ -8095,10 +8204,10 @@
           "line": 864
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e3b2a95d6558",
@@ -8114,10 +8223,10 @@
           "line": 398
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1e2a14d236fa",
@@ -8129,10 +8238,10 @@
           "line": 1847
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "00c6d1f29542",
@@ -8144,10 +8253,10 @@
           "line": 2683
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "73a4cbb4df73",
@@ -8163,10 +8272,10 @@
           "line": 94
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "cf42779f979d",
@@ -8178,10 +8287,10 @@
           "line": 835
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "70491ea48f81",
@@ -8197,10 +8306,10 @@
           "line": 56
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ffe13f0039f8",
@@ -8212,10 +8321,10 @@
           "line": 2710
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7c36251a8332",
@@ -8227,10 +8336,10 @@
           "line": 717
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "bdb193028389",
@@ -8242,10 +8351,10 @@
           "line": 2207
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "38ace063c31c",
@@ -8257,10 +8366,10 @@
           "line": 731
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "a98ef3577e47",
@@ -8272,10 +8381,10 @@
           "line": 2946
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "197cc841767d",
@@ -8287,10 +8396,10 @@
           "line": 1129
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "7e30dc8d2fc5",
@@ -8306,10 +8415,10 @@
           "line": 265
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fafb3c3272f9",
@@ -8321,10 +8430,10 @@
           "line": 2178
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "324328caec4f",
@@ -8336,10 +8445,10 @@
           "line": 1380
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "576b2504078f",
@@ -8351,10 +8460,10 @@
           "line": 2770
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2a0b53308f2b",
@@ -8366,10 +8475,10 @@
           "line": 1586
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3d3765cbf237",
@@ -8381,10 +8490,10 @@
           "line": 1100
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "beb42788910b",
@@ -8396,10 +8505,10 @@
           "line": 1644
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fa305ee713f5",
@@ -8411,10 +8520,10 @@
           "line": 1187
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "fa76b9bd9d91",
@@ -8426,10 +8535,10 @@
           "line": 661
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d96020f8c0b1",
@@ -8441,10 +8550,10 @@
           "line": 18
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8f0241bc183e",
@@ -8456,10 +8565,10 @@
           "line": 19
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "01cdad041911",
@@ -8475,10 +8584,10 @@
           "line": 548
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d6c71038421b",
@@ -8490,10 +8599,10 @@
           "line": 1555
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "e2d8c37b9bc6",
@@ -8505,10 +8614,10 @@
           "line": 486
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "923dd4cac507",
@@ -8520,10 +8629,10 @@
           "line": 3174
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1182a7e030eb",
@@ -8535,10 +8644,10 @@
           "line": 2441
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b7b4c93267cd",
@@ -8550,10 +8659,10 @@
           "line": 1878
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5718b7941ddb",
@@ -8569,10 +8678,10 @@
           "line": 494
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "4c32985859e2",
@@ -8584,10 +8693,10 @@
           "line": 2058
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ea5bc154eb7c",
@@ -8603,10 +8712,10 @@
           "line": 322
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "513d9082add7",
@@ -8622,10 +8731,10 @@
           "line": 75
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ead48445bf24",
@@ -8641,10 +8750,10 @@
           "line": 475
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b7d05615808c",
@@ -8656,10 +8765,10 @@
           "line": 1324
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "275e875427aa",
@@ -8675,10 +8784,10 @@
           "line": 585
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b29877d966d6",
@@ -8690,10 +8799,10 @@
           "line": 229
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "75f88baad4db",
@@ -8705,10 +8814,10 @@
           "line": 1015
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "9f4ecbdabaed",
@@ -8720,10 +8829,10 @@
           "line": 24
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "19b9016e57a1",
@@ -8735,10 +8844,10 @@
           "line": 1526
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "be3e605adaaa",
@@ -8750,10 +8859,10 @@
           "line": 746
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "1ff256f54843",
@@ -8765,10 +8874,10 @@
           "line": 775
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ba84da828816",
@@ -8780,10 +8889,10 @@
           "line": 1436
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "611a71af643e",
@@ -8795,10 +8904,10 @@
           "line": 84
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "64359fd5bb90",
@@ -8814,10 +8923,10 @@
           "line": 604
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "60c46fd5359d",
@@ -8833,10 +8942,10 @@
           "line": 132
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "74689960bf9f",
@@ -8848,10 +8957,10 @@
           "line": 2656
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "38d49d1f5fa3",
@@ -8867,10 +8976,10 @@
           "line": 303
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "654bcbc54b8e",
@@ -8882,10 +8991,10 @@
           "line": 343
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5dd80c6de697",
@@ -8897,10 +9006,10 @@
           "line": 1243
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "01f412e77b78",
@@ -8912,10 +9021,10 @@
           "line": 2472
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6f29ac2d78de",
@@ -8927,10 +9036,10 @@
           "line": 1042
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "8ee63bfd8f0c",
@@ -8942,10 +9051,10 @@
           "line": 3201
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2c47f7c906bd",
@@ -8957,10 +9066,10 @@
           "line": 2412
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "be41b3b6ea02",
@@ -8972,10 +9081,10 @@
           "line": 3004
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "0b3cfd337d32",
@@ -8987,10 +9096,10 @@
           "line": 350
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "915e5ce31aa6",
@@ -9002,10 +9111,10 @@
           "line": 1407
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "38c60ccdb11a",
@@ -9017,10 +9126,10 @@
           "line": 2596
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "42feb59ba5cc",
@@ -9032,10 +9141,10 @@
           "line": 1071
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "2cdc033afc85",
@@ -9047,10 +9156,10 @@
           "line": 2857
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "c918adb66dc2",
@@ -9062,10 +9171,10 @@
           "line": 1351
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ace6fc4a478d",
@@ -9077,10 +9186,10 @@
           "line": 256
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "d58ca34f128f",
@@ -9092,10 +9201,10 @@
           "line": 2029
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "89627600ea0d",
@@ -9107,10 +9216,10 @@
           "line": 1673
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "afb9a04956c7",
@@ -9122,10 +9231,10 @@
           "line": 1270
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "65ae7b72ace5",
@@ -9137,10 +9246,10 @@
           "line": 1297
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "6bc31a2cbf3b",
@@ -9156,10 +9265,10 @@
           "line": 876
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "broken",
+      "httpStatus": 404,
+      "message": "リンク先が見つからないか、削除されています。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "5c8a75698e5f",
@@ -9171,10 +9280,10 @@
           "line": 1731
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "3c885f2e0056",
@@ -9186,10 +9295,10 @@
           "line": 370
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "57e9dbbfaf54",
@@ -9201,10 +9310,10 @@
           "line": 2267
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "f404f30973a1",
@@ -9216,10 +9325,10 @@
           "line": 397
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "ce97304e64a5",
@@ -9231,10 +9340,10 @@
           "line": 518
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "b30fe9d4c88f",
@@ -9254,10 +9363,10 @@
           "line": 2599
         }
       ],
-      "status": "unchecked",
+      "status": "warning",
       "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
       "id": "dffed52b3c1c",
@@ -9277,10 +9386,10 @@
           "line": 1792
         }
       ],
-      "status": "unchecked",
-      "httpStatus": null,
-      "message": "ローカル画像だけを検査したため未確認です。",
-      "checkedAt": "2026-07-22T15:42:14.713Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-07-27T08:58:45.066Z"
     }
   ]
 }

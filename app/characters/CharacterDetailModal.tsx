@@ -24,7 +24,7 @@ export default function CharacterDetailModal({
   const modalHref =
     `/characters?detail=${encodeURIComponent(characterSlug)}`;
   const shareHref =
-    `/characters/share/${characterSlug}`;
+    `/characters/share/${characterSlug}?card=2`;
   const relatedInterviews = findRelatedInterviews([
     character.workTitle,
     character.displayWorkTitle,

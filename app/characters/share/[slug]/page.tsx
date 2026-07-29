@@ -55,18 +55,19 @@ export async function generateMetadata({
   const title = character.name;
   const description = summarize(character.description);
   const sharePath = `/characters/share/${canonicalSlug}`;
+  const versionedSharePath = `${sharePath}?card=2`;
   const image =
-    absoluteUrl(`${sharePath}/image`);
+    absoluteUrl(`${sharePath}/image?card=2`);
 
   return {
     title,
     description,
-    alternates: { canonical: sharePath },
+    alternates: { canonical: versionedSharePath },
     robots: { index: false, follow: true },
     openGraph: {
       type: "profile",
       locale: "ja_JP",
-      url: absoluteUrl(sharePath),
+      url: absoluteUrl(versionedSharePath),
       siteName: "David Tennant Archive",
       title,
       description,

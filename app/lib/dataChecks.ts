@@ -68,6 +68,22 @@ export function checkWorkData(work: Work): WorkDataCheck {
   }
   if (missingImages.length) issues.push(issue("image", missingImages.join("、")));
 
+  const backdrop = work.backdropUrl || work.backdrop_path;
+  if (!backdrop) {
+    issues.push(issue(
+      "backdrop",
+      "backdropUrl／backdrop_pathが設定されていません",
+    ));
+  } else if (
+    work.backdropUrl
+    && !localImageExists(work.backdropUrl)
+  ) {
+    issues.push(issue(
+      "backdrop",
+      `設定された背景画像ファイルが見つかりません：${work.backdropUrl}`,
+    ));
+  }
+
   if (!hasJapanese(title)) {
     issues.push(issue("japaneseTitle", `「${originalTitle}」に対応する邦題がありません`));
   }

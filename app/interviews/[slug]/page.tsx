@@ -8,6 +8,7 @@ import RecentlyViewedTracker from "../../components/RecentlyViewedTracker";
 import RelatedLinks from "../../components/RelatedLinks";
 import PersonalNoteEditor from "../../components/PersonalNoteEditor";
 import ReportIssueButton from "../../components/ReportIssueButton";
+import ShareButtons from "../../components/ShareButtons";
 import WatchLaterButton from "../../components/WatchLaterButton";
 import { getPublishedInterviews } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
@@ -17,6 +18,21 @@ import { findRelatedInterviews } from "../../lib/relatedContent";
 type InterviewPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim()
+  || "https://david-tennant-site.vercel.app";
+
+function absoluteUrl(value: string) {
+  return new URL(value, SITE_URL).toString();
+}
+
+function summarize(value: string) {
+  return value
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 180);
+}
 
 export function generateStaticParams() {
   return getPublishedInterviews().map((interview) => ({
@@ -31,7 +47,49 @@ export async function generateMetadata({
   const interview = getPublishedInterviews().find(
     (item) => item.slug === slug,
   );
-  return { title: interview?.title ?? "インタビュー" };
+
+  if (!interview) {
+    return {
+      title: "インタビュー",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const pagePath = `/interviews/${interview.slug}`;
+  const sharePath = `${pagePath}?card=1`;
+  const image =
+    absoluteUrl(`${pagePath}/image?card=1`);
+  const description = summarize(interview.description);
+
+  return {
+    title: interview.title,
+    description,
+    alternates: {
+      canonical: pagePath,
+    },
+    openGraph: {
+      type: "article",
+      locale: "ja_JP",
+      url: absoluteUrl(sharePath),
+      siteName: "David Tennant Archive",
+      title: interview.title,
+      description,
+      publishedTime:
+        `${interview.publishedDate}T00:00:00.000Z`,
+      images: [{
+        url: image,
+        width: 1200,
+        height: 630,
+        alt: `${interview.title}のインタビュー画像`,
+      }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: interview.title,
+      description,
+      images: [image],
+    },
+  };
 }
 
 /** 動画・記事の基本情報と、英語原文、日本語訳を同じ画面で読める詳細ページ。 */
@@ -103,6 +161,12 @@ export default async function InterviewDetailPage({
         </header>
 
         <InterviewMedia interview={interview} />
+
+        <ShareButtons
+          url={`/interviews/${interview.slug}?card=1`}
+          title={interview.title}
+          text={`インタビュー「${interview.title}」`}
+        />
 
         <div className="transcript-heading">
           <div>

@@ -9,6 +9,7 @@ import {
   readArchiveList,
   writeArchiveList,
 } from "../lib/archiveStorage";
+import { findCharacterBySlug, getCharacterSlug } from "../lib/archiveSlugs";
 import type { Character } from "../lib/types";
 import {
   buildSearchUrl,
@@ -101,7 +102,12 @@ export default function CharactersExplorer({
       ["grid", "timeline"] as const,
       "grid",
     ));
-  const [selected, setSelected] = useState<Character | null>(null);
+  const [selected, setSelected] = useState<Character | null>(() => {
+    const detailSlug = searchParams.get("detail") ?? "";
+    return detailSlug
+      ? findCharacterBySlug(characters, detailSlug) ?? null
+      : null;
+  });
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
   const [visibleAttributeGroups, setVisibleAttributeGroups] = useState(
     INITIAL_ATTRIBUTE_GROUP_COUNT,
@@ -124,6 +130,25 @@ export default function CharactersExplorer({
     favoritesOnly,
     view,
   };
+
+  /**
+   * 共有リンク・再読み込み・ブラウザ履歴でdetailが変わった時、
+   * 対応するキャラクターの詳細モーダルを自動で開閉します。
+   */
+  useEffect(() => {
+    const detailSlug =
+      new URLSearchParams(searchString).get("detail") ?? "";
+    const nextSelected = detailSlug
+      ? findCharacterBySlug(characters, detailSlug) ?? null
+      : null;
+
+    setSelected((current) => {
+      const isSame = current && nextSelected
+        ? current.key === nextSelected.key
+        : current === nextSelected;
+      return isSame ? current : nextSelected;
+    });
+  }, [characters, searchString]);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -303,6 +328,28 @@ export default function CharactersExplorer({
     setVisibleAttributeGroups(INITIAL_ATTRIBUTE_GROUP_COUNT);
   }, [animationFilter, favoritesOnly, query, view, watchStatus]);
 
+  /** カードを開いた時、現在の検索条件を残してdetailをURLへ追加します。 */
+  const openCharacterDetail = (character: Character) => {
+    setSelected(character);
+    const params = new URLSearchParams(searchString);
+    params.set("detail", getCharacterSlug(character));
+    router.replace(
+      buildSearchUrl(pathname, params),
+      { scroll: false },
+    );
+  };
+
+  /** モーダルを閉じた時はdetailだけをURLから削除します。 */
+  const closeCharacterDetail = () => {
+    setSelected(null);
+    const params = new URLSearchParams(searchString);
+    params.delete("detail");
+    router.replace(
+      buildSearchUrl(pathname, params),
+      { scroll: false },
+    );
+  };
+
   const toggleFavorite = (character: Character) => {
     const isFavorite = favorites.includes(character.key);
     if (
@@ -374,7 +421,7 @@ export default function CharactersExplorer({
     >
       <button
         className="card-hit"
-        onClick={() => setSelected(character)}
+        onClick={() => openCharacterDetail(character)}
         aria-label={`${character.name}の詳細`}
       />
       <div className="character-card__image">
@@ -587,7 +634,7 @@ export default function CharactersExplorer({
       {selected && (
         <CharacterDetailModal
           character={selected}
-          onClose={() => setSelected(null)}
+          onClose={closeCharacterDetail}
         />
       )}
     </section>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
@@ -21,8 +20,11 @@ export default function CharacterDetailModal({
   character: Character;
   onClose: () => void;
 }) {
-  const detailHref =
-    `/characters/${getCharacterSlug(character)}`;
+  const characterSlug = getCharacterSlug(character);
+  const modalHref =
+    `/characters?detail=${encodeURIComponent(characterSlug)}`;
+  const shareHref =
+    `/characters/share/${characterSlug}`;
   const relatedInterviews = findRelatedInterviews([
     character.workTitle,
     character.displayWorkTitle,
@@ -36,11 +38,11 @@ export default function CharacterDetailModal({
       type: "character",
       title: character.name,
       subtitle: character.displayWorkTitle,
-      href: detailHref,
+      href: modalHref,
       image: character.image,
     });
   }, [
-    detailHref,
+    modalHref,
     character.displayWorkTitle,
     character.image,
     character.key,
@@ -84,22 +86,15 @@ export default function CharacterDetailModal({
         </div>
 
         <ShareButtons
-          url={detailHref}
+          url={shareHref}
           title={character.name}
           text={`デイヴィッド・テナントが演じた「${character.name}」`}
         />
-        <Link
-          className="text-link detail-page-link"
-          href={detailHref}
-        >
-          キャラクターの専用ページを開く →
-        </Link>
-
         <PersonalNoteEditor
           noteKey={`character-${character.key}`}
           type="character"
           title={character.name}
-          href={detailHref}
+          href={modalHref}
           placeholder="キャラクターの感想や覚えておきたいことを入力"
         />
 

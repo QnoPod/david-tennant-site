@@ -19,6 +19,16 @@ type WorkImageRouteProps = {
 export const runtime = "nodejs";
 export const revalidate = 86400;
 
+/**
+ * Node.jsのBufferをWeb標準Responseが確実に受け取れるArrayBufferへコピーします。
+ * TypeScript 5.9ではBuffer<ArrayBufferLike>をBodyInitへ直接渡せません。
+ */
+function toResponseArrayBuffer(bytes: Buffer): ArrayBuffer {
+  const copy = new Uint8Array(bytes.byteLength);
+  copy.set(bytes);
+  return copy.buffer;
+}
+
 function escapeXml(value: string) {
   return value.replace(
     /[&<>"']/g,
@@ -147,10 +157,12 @@ export async function GET(
     });
   }
 
-  return new Response(bytes, {
+  const body = toResponseArrayBuffer(bytes);
+
+  return new Response(body, {
     headers: {
       "Content-Type": "image/webp",
-      "Content-Length": String(bytes.byteLength),
+      "Content-Length": String(body.byteLength),
       "Cache-Control":
         "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",
       "Access-Control-Allow-Origin": "*",

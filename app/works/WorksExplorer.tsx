@@ -8,7 +8,7 @@ import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
 import ReportIssueButton from "../components/ReportIssueButton";
 import ShareButtons from "../components/ShareButtons";
-import { getWorkSlug } from "../lib/archiveSlugs";
+import { findWorkBySlug, getWorkSlug } from "../lib/archiveSlugs";
 import {
   ARCHIVE_STORAGE_KEYS,
   ARCHIVE_UPDATED_EVENT,
@@ -135,7 +135,12 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   const [watched, setWatched] = useState<number[]>([]);
   const [watchLater, setWatchLater] = useState<string[]>([]);
   const [ratings, setRatings] = useState<WorkRatings>({});
-  const [selected, setSelected] = useState<Work | null>(null);
+  const [selected, setSelected] = useState<Work | null>(() => {
+    const detailSlug = searchParams.get("detail") ?? "";
+    return detailSlug
+      ? findWorkBySlug(works, detailSlug) ?? null
+      : null;
+  });
 
   const syncingFromUrl = useRef(false);
   const stateRef = useRef<WorkUrlState>({
@@ -164,6 +169,26 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     genreMode,
     view,
   };
+
+  /**
+   * 共有URL・再読み込み・ブラウザ履歴でdetailが変わった時、
+   * 対応する作品の詳細モーダルを開閉します。
+   */
+  useEffect(() => {
+    const detailSlug =
+      new URLSearchParams(searchString).get("detail") ?? "";
+    const nextSelected = detailSlug
+      ? findWorkBySlug(works, detailSlug) ?? null
+      : null;
+
+    setSelected((current) => {
+      const sameWork = current && nextSelected
+        ? current.media_type === nextSelected.media_type
+          && current.id === nextSelected.id
+        : current === nextSelected;
+      return sameWork ? current : nextSelected;
+    });
+  }, [searchString, works]);
 
   // 旧サイトと同じlocalStorageキーを使い、既存のマークを引き継ぎます。
   useEffect(() => {
@@ -458,6 +483,28 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     );
   };
 
+  /** カード選択時に、現在の検索条件を残したまま詳細URLを付けます。 */
+  const openWorkDetail = (work: Work) => {
+    setSelected(work);
+    const params = new URLSearchParams(searchString);
+    params.set("detail", getWorkSlug(work));
+    router.replace(
+      buildSearchUrl(pathname, params),
+      { scroll: false },
+    );
+  };
+
+  /** モーダルを閉じた時はdetailだけをURLから削除します。 */
+  const closeWorkDetail = () => {
+    setSelected(null);
+    const params = new URLSearchParams(searchString);
+    params.delete("detail");
+    router.replace(
+      buildSearchUrl(pathname, params),
+      { scroll: false },
+    );
+  };
+
   const resetFilters = () => {
     setQuery("");
     setCharacterQuery("");
@@ -493,7 +540,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
       >
         <button
           className="card-hit"
-          onClick={() => setSelected(work)}
+          onClick={() => openWorkDetail(work)}
           aria-label={`${displayTitle}の詳細`}
         />
         <div className="work-card__image">
@@ -662,7 +709,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
             selected.id,
             nextRating,
           )}
-        onClose={() => setSelected(null)}
+        onClose={closeWorkDetail}
       />
     </section>
   );
@@ -707,7 +754,7 @@ function WorkDetailModal({
       ])
     : [];
   const detailHref = work
-    ? `/works/${getWorkSlug(work)}`
+    ? `/works?detail=${encodeURIComponent(getWorkSlug(work))}`
     : "/works";
 
   // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。
@@ -880,13 +927,6 @@ function WorkDetailModal({
             title={displayTitle}
             text={`デイヴィッド・テナント出演作「${displayTitle}」`}
           />
-          <Link
-            className="text-link detail-page-link"
-            href={detailHref}
-          >
-            作品の専用ページを開く →
-          </Link>
-
           <PersonalNoteEditor
             noteKey={`work-${work.media_type}-${work.id}`}
             type="work"

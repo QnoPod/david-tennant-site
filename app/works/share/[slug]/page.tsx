@@ -5,11 +5,7 @@ import {
   findWorkBySlug,
   getWorkSlug,
 } from "../../../lib/archiveSlugs";
-import {
-  getBackdropUrl,
-  getPosterUrl,
-  getWorks,
-} from "../../../lib/tmdb";
+import { getWorks } from "../../../lib/tmdb";
 import {
   getDisplayTitle,
   getWorkOverview,
@@ -59,20 +55,19 @@ export async function generateMetadata({
   const title = getDisplayTitle(work);
   const description = summarize(getWorkOverview(work));
   const sharePath = `/works/share/${canonicalSlug}`;
-  const imageSource =
-    getBackdropUrl(work.backdrop_path, work.backdropUrl)
-    || getPosterUrl(work.poster_path, work.posterUrl);
-  const image = absoluteUrl(imageSource);
+  const versionedSharePath = `${sharePath}?card=2`;
+  const image =
+    absoluteUrl(`${sharePath}/image?card=2`);
 
   return {
     title,
     description,
-    alternates: { canonical: sharePath },
+    alternates: { canonical: versionedSharePath },
     robots: { index: false, follow: true },
     openGraph: {
       type: "website",
       locale: "ja_JP",
-      url: absoluteUrl(sharePath),
+      url: absoluteUrl(versionedSharePath),
       siteName: "David Tennant Archive",
       title,
       description,

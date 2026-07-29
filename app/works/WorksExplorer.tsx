@@ -757,7 +757,7 @@ function WorkDetailModal({
     ? `/works?detail=${encodeURIComponent(getWorkSlug(work))}`
     : "/works";
   const shareHref = work
-    ? `/works/share/${getWorkSlug(work)}`
+    ? `/works/share/${getWorkSlug(work)}?card=2`
     : "/works";
 
   // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。

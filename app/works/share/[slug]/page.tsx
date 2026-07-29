@@ -55,9 +55,9 @@ export async function generateMetadata({
   const title = getDisplayTitle(work);
   const description = summarize(getWorkOverview(work));
   const sharePath = `/works/share/${canonicalSlug}`;
-  const versionedSharePath = `${sharePath}?card=3`;
+  const versionedSharePath = `${sharePath}?card=4`;
   const image =
-    absoluteUrl(`${sharePath}/image?card=3`);
+    absoluteUrl(`${sharePath}/card.jpg?card=4`);
 
   return {
     title,
@@ -73,6 +73,9 @@ export async function generateMetadata({
       description,
       images: [{
         url: image,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
         alt: `${title}の作品画像`,
       }],
     },

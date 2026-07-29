@@ -55,9 +55,9 @@ export async function generateMetadata({
   const title = character.name;
   const description = summarize(character.description);
   const sharePath = `/characters/share/${canonicalSlug}`;
-  const versionedSharePath = `${sharePath}?card=3`;
+  const versionedSharePath = `${sharePath}?card=4`;
   const image =
-    absoluteUrl(`${sharePath}/image?card=3`);
+    absoluteUrl(`${sharePath}/card.jpg?card=4`);
 
   return {
     title,
@@ -73,11 +73,14 @@ export async function generateMetadata({
       description,
       images: [{
         url: image,
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
         alt: `${title}のキャラクター画像`,
       }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
       images: [image],

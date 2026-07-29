@@ -56,9 +56,9 @@ export async function generateMetadata({
   }
 
   const pagePath = `/interviews/${interview.slug}`;
-  const sharePath = `${pagePath}?card=1`;
+  const sharePath = `${pagePath}?card=4`;
   const image =
-    absoluteUrl(`${pagePath}/image?card=1`);
+    absoluteUrl(`${pagePath}/card.jpg?card=4`);
   const description = summarize(interview.description);
 
   return {
@@ -80,6 +80,7 @@ export async function generateMetadata({
         url: image,
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: `${interview.title}のインタビュー画像`,
       }],
     },
@@ -163,7 +164,7 @@ export default async function InterviewDetailPage({
         <InterviewMedia interview={interview} />
 
         <ShareButtons
-          url={`/interviews/${interview.slug}?card=1`}
+          url={`/interviews/${interview.slug}?card=4`}
           title={interview.title}
           text={`インタビュー「${interview.title}」`}
         />

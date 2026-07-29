@@ -7,6 +7,8 @@ import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
 import ReportIssueButton from "../components/ReportIssueButton";
+import ShareButtons from "../components/ShareButtons";
+import { getWorkSlug } from "../lib/archiveSlugs";
 import {
   ARCHIVE_STORAGE_KEYS,
   ARCHIVE_UPDATED_EVENT,
@@ -704,6 +706,9 @@ function WorkDetailModal({
         ]),
       ])
     : [];
+  const detailHref = work
+    ? `/works/${getWorkSlug(work)}`
+    : "/works";
 
   // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。
   useEffect(() => {
@@ -713,10 +718,10 @@ function WorkDetailModal({
       type: "work",
       title: displayTitle,
       subtitle: originalTitle !== displayTitle ? originalTitle : undefined,
-      href: `/works?q=${encodeURIComponent(displayTitle)}`,
+      href: detailHref,
       image: getPosterUrl(work.poster_path, work.posterUrl),
     });
-  }, [displayTitle, originalTitle, work]);
+  }, [detailHref, displayTitle, originalTitle, work]);
 
   return (
     <Modal open={Boolean(work)} onClose={onClose} label={`${displayTitle}の詳細`}>
@@ -870,11 +875,23 @@ function WorkDetailModal({
             </div>
           </section>
 
+          <ShareButtons
+            url={detailHref}
+            title={displayTitle}
+            text={`デイヴィッド・テナント出演作「${displayTitle}」`}
+          />
+          <Link
+            className="text-link detail-page-link"
+            href={detailHref}
+          >
+            作品の専用ページを開く →
+          </Link>
+
           <PersonalNoteEditor
             noteKey={`work-${work.media_type}-${work.id}`}
             type="work"
             title={displayTitle}
-            href={`/works?q=${encodeURIComponent(displayTitle)}`}
+            href={detailHref}
             placeholder="作品の感想や視聴時のメモを入力"
           />
 

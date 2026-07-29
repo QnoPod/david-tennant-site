@@ -7,6 +7,7 @@ import ReadabilitySettings from "./components/ReadabilitySettings";
 import "./globals.css";
 import "./mobile-fixes.css";
 import "./report-issue.css";
+import "./share.css";
 
 /**
  * 全ページ共通のレイアウト。

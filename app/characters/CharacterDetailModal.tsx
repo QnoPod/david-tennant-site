@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
 import ReportIssueButton from "../components/ReportIssueButton";
+import ShareButtons from "../components/ShareButtons";
+import { getCharacterSlug } from "../lib/archiveSlugs";
 import { findRelatedInterviews } from "../lib/relatedContent";
 import { recordRecentlyViewed } from "../lib/recentlyViewed";
 import type { Character } from "../lib/types";
@@ -18,6 +21,8 @@ export default function CharacterDetailModal({
   character: Character;
   onClose: () => void;
 }) {
+  const detailHref =
+    `/characters/${getCharacterSlug(character)}`;
   const relatedInterviews = findRelatedInterviews([
     character.workTitle,
     character.displayWorkTitle,
@@ -31,10 +36,11 @@ export default function CharacterDetailModal({
       type: "character",
       title: character.name,
       subtitle: character.displayWorkTitle,
-      href: `/characters?q=${encodeURIComponent(character.name)}`,
+      href: detailHref,
       image: character.image,
     });
   }, [
+    detailHref,
     character.displayWorkTitle,
     character.image,
     character.key,
@@ -77,11 +83,23 @@ export default function CharacterDetailModal({
           </div>
         </div>
 
+        <ShareButtons
+          url={detailHref}
+          title={character.name}
+          text={`デイヴィッド・テナントが演じた「${character.name}」`}
+        />
+        <Link
+          className="text-link detail-page-link"
+          href={detailHref}
+        >
+          キャラクターの専用ページを開く →
+        </Link>
+
         <PersonalNoteEditor
           noteKey={`character-${character.key}`}
           type="character"
           title={character.name}
-          href={`/characters?q=${encodeURIComponent(character.name)}`}
+          href={detailHref}
           placeholder="キャラクターの感想や覚えておきたいことを入力"
         />
 

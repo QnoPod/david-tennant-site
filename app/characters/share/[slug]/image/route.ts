@@ -1,3 +1,4 @@
+import sharp from "sharp";
 import {
   findCharacterBySlug,
 } from "../../../../lib/archiveSlugs";
@@ -8,83 +9,23 @@ type CharacterImageRouteProps = {
   params: Promise<{ slug: string }>;
 };
 
-type SupportedImageType =
-  | "image/jpeg"
-  | "image/png"
-  | "image/gif"
-  | "image/webp";
-
 export const runtime = "nodejs";
 export const revalidate = 86400;
 
-function startsWith(
-  bytes: Uint8Array,
-  signature: readonly number[],
-) {
-  return signature.every(
-    (value, index) => bytes[index] === value,
+function escapeXml(value: string) {
+  return value.replace(
+    /[&<>"']/g,
+    (character) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&apos;",
+    })[character] || character,
   );
 }
 
-/**
- * レスポンスヘッダーや拡張子ではなく、画像バイト列から実際の形式を判定します。
- * Chromeなどで保存したAVIFが.png/.jpg名になっていても誤判定しません。
- */
-function detectSupportedImageType(
-  buffer: ArrayBuffer,
-): SupportedImageType | null {
-  const bytes = new Uint8Array(buffer);
-
-  if (startsWith(bytes, [0xff, 0xd8, 0xff])) {
-    return "image/jpeg";
-  }
-  if (
-    startsWith(
-      bytes,
-      [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a],
-    )
-  ) {
-    return "image/png";
-  }
-  if (
-    startsWith(bytes, [0x47, 0x49, 0x46, 0x38, 0x37, 0x61])
-    || startsWith(bytes, [0x47, 0x49, 0x46, 0x38, 0x39, 0x61])
-  ) {
-    return "image/gif";
-  }
-  if (
-    startsWith(bytes, [0x52, 0x49, 0x46, 0x46])
-    && String.fromCharCode(
-      ...bytes.slice(8, 12),
-    ) === "WEBP"
-  ) {
-    return "image/webp";
-  }
-
-  return null;
-}
-
-async function readSupportedImage(
-  response: Response,
-) {
-  if (!response.ok) {
-    throw new Error(
-      `Character image request failed: ${response.status}`,
-    );
-  }
-
-  const bytes = await response.arrayBuffer();
-  const contentType = detectSupportedImageType(bytes);
-  if (!contentType) {
-    throw new Error(
-      "Character image format is not supported by X",
-    );
-  }
-
-  return { bytes, contentType };
-}
-
-async function fetchOriginalImage(
+async function fetchSourceImage(
   source: string,
   requestUrl: string,
 ) {
@@ -92,63 +33,85 @@ async function fetchOriginalImage(
   const response = await fetch(imageUrl, {
     next: { revalidate: 86400 },
   });
-  return readSupportedImage(response);
-}
 
-/**
- * AVIFなどXがカード画像として扱えない形式は、
- * Next.jsの画像最適化を使ってWebPへ変換します。
- */
-async function fetchOptimizedImage(
-  source: string,
-  requestUrl: string,
-) {
-  const requestOrigin = new URL(requestUrl).origin;
-  const optimizerUrl = new URL(
-    "/_next/image",
-    requestOrigin,
-  );
-  optimizerUrl.searchParams.set("url", source);
-  optimizerUrl.searchParams.set("w", "1200");
-  optimizerUrl.searchParams.set("q", "82");
-
-  const response = await fetch(optimizerUrl, {
-    headers: {
-      Accept: "image/webp,image/png,image/jpeg",
-    },
-    next: { revalidate: 86400 },
-  });
-  return readSupportedImage(response);
-}
-
-async function resolveCharacterImage(
-  source: string,
-  requestUrl: string,
-) {
-  try {
-    return await fetchOriginalImage(
-      source,
-      requestUrl,
+  if (!response.ok) {
+    throw new Error(
+      `Character image request failed: ${response.status}`,
     );
-  } catch {
-    try {
-      return await fetchOptimizedImage(
-        source,
-        requestUrl,
-      );
-    } catch {
-      return fetchOriginalImage(
-        "/images/default-character.jpg",
-        requestUrl,
-      );
-    }
   }
+
+  return Buffer.from(await response.arrayBuffer());
 }
 
 /**
- * キャラクター画像を短いASCII URLから返します。
- * 拡張子と実データが違う画像も変換し、最終的に必ずX対応形式を返します。
+ * 拡張子やContent-Typeに関係なく、実画像をsharpで読み込み、
+ * Xが確実に扱える正方形WebPへ変換します。
  */
+async function createCharacterWebp(
+  source: string,
+  requestUrl: string,
+) {
+  const input = await fetchSourceImage(source, requestUrl);
+
+  return sharp(input, {
+    failOn: "none",
+    limitInputPixels: 268_402_689,
+  })
+    .rotate()
+    .resize({
+      width: 1200,
+      height: 1200,
+      fit: "cover",
+      position: "centre",
+    })
+    .webp({
+      quality: 84,
+      effort: 4,
+    })
+    .toBuffer();
+}
+
+/**
+ * 元画像自体が欠落・破損している場合だけ使う、
+ * キャラクター固有の代替カードです。
+ */
+async function createCharacterFallback({
+  name,
+  workTitle,
+}: {
+  name: string;
+  workTitle: string;
+}) {
+  const safeName = escapeXml(name || "CHARACTER FILE");
+  const safeWork = escapeXml(workTitle || "DAVID TENNANT ARCHIVE");
+  const svg = `
+    <svg width="1200" height="1200" viewBox="0 0 1200 1200"
+      xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="1200" fill="#111116"/>
+      <rect x="0" y="0" width="1200" height="24" fill="#c59a38"/>
+      <circle cx="990" cy="190" r="250"
+        fill="none" stroke="#c59a38" stroke-width="3" opacity=".35"/>
+      <circle cx="920" cy="1040" r="330"
+        fill="none" stroke="#fffef9" stroke-width="2" opacity=".13"/>
+      <text x="84" y="150" fill="#c59a38"
+        font-family="Arial, sans-serif" font-size="34"
+        font-weight="700" letter-spacing="8">CHARACTER FILE</text>
+      <text x="84" y="505" fill="#fffef9"
+        font-family="Arial, sans-serif" font-size="86"
+        font-weight="700">${safeName}</text>
+      <text x="84" y="590" fill="#d8d4ca"
+        font-family="Arial, sans-serif" font-size="38">${safeWork}</text>
+      <text x="84" y="1080" fill="#fffef9"
+        font-family="Arial, sans-serif" font-size="30"
+        font-weight="700" letter-spacing="5">DAVID TENNANT ARCHIVE</text>
+    </svg>
+  `;
+
+  return sharp(Buffer.from(svg))
+    .webp({ quality: 84, effort: 4 })
+    .toBuffer();
+}
+
 export async function GET(
   request: Request,
   { params }: CharacterImageRouteProps,
@@ -164,25 +127,31 @@ export async function GET(
     return new Response("Not found", { status: 404 });
   }
 
-  const result = await resolveCharacterImage(
-    character.image,
-    request.url,
-  );
+  let bytes: Buffer;
+  try {
+    bytes = await createCharacterWebp(
+      character.image,
+      request.url,
+    );
+  } catch {
+    bytes = await createCharacterFallback({
+      name: character.englishName || character.name,
+      workTitle: character.displayWorkTitle,
+    });
+  }
 
-  return new Response(result.bytes, {
+  return new Response(bytes, {
     headers: {
-      "Content-Type": result.contentType,
-      "Content-Length": String(result.bytes.byteLength),
+      "Content-Type": "image/webp",
+      "Content-Length": String(bytes.byteLength),
       "Cache-Control":
         "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",
       "Access-Control-Allow-Origin": "*",
       "X-Content-Type-Options": "nosniff",
-      Vary: "Accept",
     },
   });
 }
 
-/** Xの事前確認でHEADが使われても、画像形式とキャッシュ情報を返します。 */
 export async function HEAD(
   request: Request,
   context: CharacterImageRouteProps,

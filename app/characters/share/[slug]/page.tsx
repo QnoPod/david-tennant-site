@@ -55,9 +55,9 @@ export async function generateMetadata({
   const title = character.name;
   const description = summarize(character.description);
   const sharePath = `/characters/share/${canonicalSlug}`;
-  const versionedSharePath = `${sharePath}?card=2`;
+  const versionedSharePath = `${sharePath}?card=3`;
   const image =
-    absoluteUrl(`${sharePath}/image?card=2`);
+    absoluteUrl(`${sharePath}/image?card=3`);
 
   return {
     title,

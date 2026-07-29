@@ -1,3 +1,4 @@
+import sharp from "sharp";
 import {
   findWorkBySlug,
 } from "../../../../lib/archiveSlugs";
@@ -6,88 +7,32 @@ import {
   getPosterUrl,
   getWorks,
 } from "../../../../lib/tmdb";
+import {
+  getDisplayTitle,
+  getOriginalTitle,
+} from "../../../../lib/workPresentation";
 
 type WorkImageRouteProps = {
   params: Promise<{ slug: string }>;
 };
 
-type SupportedImageType =
-  | "image/jpeg"
-  | "image/png"
-  | "image/gif"
-  | "image/webp";
-
 export const runtime = "nodejs";
 export const revalidate = 86400;
 
-function startsWith(
-  bytes: Uint8Array,
-  signature: readonly number[],
-) {
-  return signature.every(
-    (value, index) => bytes[index] === value,
+function escapeXml(value: string) {
+  return value.replace(
+    /[&<>"']/g,
+    (character) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&apos;",
+    })[character] || character,
   );
 }
 
-/**
- * 拡張子やContent-Typeではなく、画像のバイト列から実形式を判定します。
- * .jpg/.png名で保存されたAVIFも、X対応画像として誤って返しません。
- */
-function detectSupportedImageType(
-  buffer: ArrayBuffer,
-): SupportedImageType | null {
-  const bytes = new Uint8Array(buffer);
-
-  if (startsWith(bytes, [0xff, 0xd8, 0xff])) {
-    return "image/jpeg";
-  }
-  if (
-    startsWith(
-      bytes,
-      [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a],
-    )
-  ) {
-    return "image/png";
-  }
-  if (
-    startsWith(bytes, [0x47, 0x49, 0x46, 0x38, 0x37, 0x61])
-    || startsWith(bytes, [0x47, 0x49, 0x46, 0x38, 0x39, 0x61])
-  ) {
-    return "image/gif";
-  }
-  if (
-    startsWith(bytes, [0x52, 0x49, 0x46, 0x46])
-    && String.fromCharCode(
-      ...bytes.slice(8, 12),
-    ) === "WEBP"
-  ) {
-    return "image/webp";
-  }
-
-  return null;
-}
-
-async function readSupportedImage(
-  response: Response,
-) {
-  if (!response.ok) {
-    throw new Error(
-      `Work image request failed: ${response.status}`,
-    );
-  }
-
-  const bytes = await response.arrayBuffer();
-  const contentType = detectSupportedImageType(bytes);
-  if (!contentType) {
-    throw new Error(
-      "Work image format is not supported by X",
-    );
-  }
-
-  return { bytes, contentType };
-}
-
-async function fetchOriginalImage(
+async function fetchSourceImage(
   source: string,
   requestUrl: string,
 ) {
@@ -95,62 +40,84 @@ async function fetchOriginalImage(
   const response = await fetch(imageUrl, {
     next: { revalidate: 86400 },
   });
-  return readSupportedImage(response);
-}
 
-/**
- * AVIFなどX非対応の画像は、Next.jsの画像最適化でWebPへ変換します。
- */
-async function fetchOptimizedImage(
-  source: string,
-  requestUrl: string,
-) {
-  const requestOrigin = new URL(requestUrl).origin;
-  const optimizerUrl = new URL(
-    "/_next/image",
-    requestOrigin,
-  );
-  optimizerUrl.searchParams.set("url", source);
-  optimizerUrl.searchParams.set("w", "1200");
-  optimizerUrl.searchParams.set("q", "82");
-
-  const response = await fetch(optimizerUrl, {
-    headers: {
-      Accept: "image/webp,image/png,image/jpeg",
-    },
-    next: { revalidate: 86400 },
-  });
-  return readSupportedImage(response);
-}
-
-async function resolveWorkImage(
-  source: string,
-  requestUrl: string,
-) {
-  try {
-    return await fetchOriginalImage(
-      source,
-      requestUrl,
+  if (!response.ok) {
+    throw new Error(
+      `Work image request failed: ${response.status}`,
     );
-  } catch {
-    try {
-      return await fetchOptimizedImage(
-        source,
-        requestUrl,
-      );
-    } catch {
-      // 最後はサイト共通の1200×630 PNGを返します。
-      return fetchOriginalImage(
-        "/opengraph-image",
-        requestUrl,
-      );
-    }
   }
+
+  return Buffer.from(await response.arrayBuffer());
 }
 
 /**
- * 作品画像を短いASCII URLから返し、最終的に必ずX対応形式へ整えます。
+ * TMDB画像・ローカル画像・拡張子偽装AVIFを、
+ * すべて1200×630のX対応WebPへ統一します。
  */
+async function createWorkWebp(
+  source: string,
+  requestUrl: string,
+) {
+  const input = await fetchSourceImage(source, requestUrl);
+
+  return sharp(input, {
+    failOn: "none",
+    limitInputPixels: 268_402_689,
+  })
+    .rotate()
+    .resize({
+      width: 1200,
+      height: 630,
+      fit: "cover",
+      position: "centre",
+    })
+    .webp({
+      quality: 84,
+      effort: 4,
+    })
+    .toBuffer();
+}
+
+/** 元画像が欠落・破損している場合だけ使う、作品固有の代替カードです。 */
+async function createWorkFallback({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) {
+  const safeTitle = escapeXml(title || "WORK FILE");
+  const safeSubtitle = escapeXml(
+    subtitle || "DAVID TENNANT ARCHIVE",
+  );
+  const svg = `
+    <svg width="1200" height="630" viewBox="0 0 1200 630"
+      xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="630" fill="#111116"/>
+      <rect x="0" y="0" width="1200" height="18" fill="#c59a38"/>
+      <circle cx="1040" cy="100" r="235"
+        fill="none" stroke="#c59a38" stroke-width="3" opacity=".35"/>
+      <circle cx="960" cy="650" r="350"
+        fill="none" stroke="#fffef9" stroke-width="2" opacity=".13"/>
+      <text x="72" y="105" fill="#c59a38"
+        font-family="Arial, sans-serif" font-size="25"
+        font-weight="700" letter-spacing="7">WORK FILE</text>
+      <text x="72" y="305" fill="#fffef9"
+        font-family="Arial, sans-serif" font-size="68"
+        font-weight="700">${safeTitle}</text>
+      <text x="72" y="375" fill="#d8d4ca"
+        font-family="Arial, sans-serif" font-size="30">${safeSubtitle}</text>
+      <text x="72" y="560" fill="#fffef9"
+        font-family="Arial, sans-serif" font-size="24"
+        font-weight="700" letter-spacing="5">DAVID TENNANT ARCHIVE</text>
+    </svg>
+  `;
+
+  return sharp(Buffer.from(svg))
+    .webp({ quality: 84, effort: 4 })
+    .toBuffer();
+}
+
 export async function GET(
   request: Request,
   { params }: WorkImageRouteProps,
@@ -166,25 +133,32 @@ export async function GET(
   const imageSource =
     getBackdropUrl(work.backdrop_path, work.backdropUrl)
     || getPosterUrl(work.poster_path, work.posterUrl);
-  const result = await resolveWorkImage(
-    imageSource,
-    request.url,
-  );
 
-  return new Response(result.bytes, {
+  let bytes: Buffer;
+  try {
+    bytes = await createWorkWebp(
+      imageSource,
+      request.url,
+    );
+  } catch {
+    bytes = await createWorkFallback({
+      title: getOriginalTitle(work) || getDisplayTitle(work),
+      subtitle: getDisplayTitle(work),
+    });
+  }
+
+  return new Response(bytes, {
     headers: {
-      "Content-Type": result.contentType,
-      "Content-Length": String(result.bytes.byteLength),
+      "Content-Type": "image/webp",
+      "Content-Length": String(bytes.byteLength),
       "Cache-Control":
         "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",
       "Access-Control-Allow-Origin": "*",
       "X-Content-Type-Options": "nosniff",
-      Vary: "Accept",
     },
   });
 }
 
-/** XがHEADで画像を確認する場合にも、同じ形式情報を返します。 */
 export async function HEAD(
   request: Request,
   context: WorkImageRouteProps,

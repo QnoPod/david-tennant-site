@@ -171,8 +171,8 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
   };
 
   /**
-   * 共有URL・再読み込み・ブラウザ履歴でdetailが変わった時、
-   * 対応する作品の詳細モーダルを開閉します。
+   * 共有リンク・再読み込み・ブラウザ履歴でdetailが変わった時、
+   * 対応する作品の詳細モーダルを自動で開閉します。
    */
   useEffect(() => {
     const detailSlug =
@@ -182,11 +182,11 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
       : null;
 
     setSelected((current) => {
-      const sameWork = current && nextSelected
+      const isSame = current && nextSelected
         ? current.media_type === nextSelected.media_type
           && current.id === nextSelected.id
         : current === nextSelected;
-      return sameWork ? current : nextSelected;
+      return isSame ? current : nextSelected;
     });
   }, [searchString, works]);
 
@@ -483,7 +483,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     );
   };
 
-  /** カード選択時に、現在の検索条件を残したまま詳細URLを付けます。 */
+  /** カードを開いた時、検索条件を残してdetailだけURLへ追加します。 */
   const openWorkDetail = (work: Work) => {
     setSelected(work);
     const params = new URLSearchParams(searchString);
@@ -753,8 +753,11 @@ function WorkDetailModal({
         ]),
       ])
     : [];
-  const detailHref = work
+  const modalHref = work
     ? `/works?detail=${encodeURIComponent(getWorkSlug(work))}`
+    : "/works";
+  const shareHref = work
+    ? `/works/share/${getWorkSlug(work)}`
     : "/works";
 
   // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。
@@ -765,10 +768,10 @@ function WorkDetailModal({
       type: "work",
       title: displayTitle,
       subtitle: originalTitle !== displayTitle ? originalTitle : undefined,
-      href: detailHref,
+      href: modalHref,
       image: getPosterUrl(work.poster_path, work.posterUrl),
     });
-  }, [detailHref, displayTitle, originalTitle, work]);
+  }, [displayTitle, modalHref, originalTitle, work]);
 
   return (
     <Modal open={Boolean(work)} onClose={onClose} label={`${displayTitle}の詳細`}>
@@ -923,7 +926,7 @@ function WorkDetailModal({
           </section>
 
           <ShareButtons
-            url={detailHref}
+            url={shareHref}
             title={displayTitle}
             text={`デイヴィッド・テナント出演作「${displayTitle}」`}
           />
@@ -931,7 +934,7 @@ function WorkDetailModal({
             noteKey={`work-${work.media_type}-${work.id}`}
             type="work"
             title={displayTitle}
-            href={detailHref}
+            href={modalHref}
             placeholder="作品の感想や視聴時のメモを入力"
           />
 

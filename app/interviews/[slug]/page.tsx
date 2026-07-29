@@ -14,6 +14,7 @@ import { getPublishedInterviews } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
 import { getAllInterviewTags } from "../../data/interviews/types";
 import { findRelatedInterviews } from "../../lib/relatedContent";
+import { getPreparedSocialImagePath } from "../../lib/socialImagePaths";
 
 type InterviewPageProps = {
   params: Promise<{ slug: string }>;
@@ -56,9 +57,15 @@ export async function generateMetadata({
   }
 
   const pagePath = `/interviews/${interview.slug}`;
-  const sharePath = `${pagePath}?card=4`;
-  const image =
-    absoluteUrl(`${pagePath}/card.jpg?card=4`);
+  const sharePath = `${pagePath}?card=5`;
+  const preparedImage = getPreparedSocialImagePath(
+    interview.thumbnailUrl,
+    "interviews",
+  );
+  const image = absoluteUrl(
+    preparedImage
+    || `${pagePath}/image?card=5`,
+  );
   const description = summarize(interview.description);
 
   return {
@@ -80,7 +87,6 @@ export async function generateMetadata({
         url: image,
         width: 1200,
         height: 630,
-        type: "image/jpeg",
         alt: `${interview.title}のインタビュー画像`,
       }],
     },
@@ -164,7 +170,7 @@ export default async function InterviewDetailPage({
         <InterviewMedia interview={interview} />
 
         <ShareButtons
-          url={`/interviews/${interview.slug}?card=4`}
+          url={`/interviews/${interview.slug}?card=5`}
           title={interview.title}
           text={`インタビュー「${interview.title}」`}
         />

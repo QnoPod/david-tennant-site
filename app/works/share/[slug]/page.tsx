@@ -5,7 +5,12 @@ import {
   findWorkBySlug,
   getWorkSlug,
 } from "../../../lib/archiveSlugs";
-import { getWorks } from "../../../lib/tmdb";
+import {
+  getBackdropUrl,
+  getPosterUrl,
+  getWorks,
+} from "../../../lib/tmdb";
+import { getPreparedSocialImagePath } from "../../../lib/socialImagePaths";
 import {
   getDisplayTitle,
   getWorkOverview,
@@ -55,9 +60,24 @@ export async function generateMetadata({
   const title = getDisplayTitle(work);
   const description = summarize(getWorkOverview(work));
   const sharePath = `/works/share/${canonicalSlug}`;
-  const versionedSharePath = `${sharePath}?card=4`;
-  const image =
-    absoluteUrl(`${sharePath}/card.jpg?card=4`);
+  const versionedSharePath = `${sharePath}?card=5`;
+  const imageSource =
+    getBackdropUrl(
+      work.backdrop_path,
+      work.backdropUrl,
+    )
+    || getPosterUrl(
+      work.poster_path,
+      work.posterUrl,
+    );
+  const preparedImage = getPreparedSocialImagePath(
+    imageSource,
+    "works",
+  );
+  const image = absoluteUrl(
+    preparedImage
+    || `${sharePath}/image?card=5`,
+  );
 
   return {
     title,
@@ -75,7 +95,6 @@ export async function generateMetadata({
         url: image,
         width: 1200,
         height: 630,
-        type: "image/jpeg",
         alt: `${title}の作品画像`,
       }],
     },

@@ -64,7 +64,7 @@ async function fetchSourceImage(
  * TMDB画像・ローカル画像・拡張子偽装AVIFを、
  * すべて1200×630のX対応WebPへ統一します。
  */
-async function createWorkWebp(
+async function createWorkJpeg(
   source: string,
   requestUrl: string,
 ) {
@@ -81,9 +81,16 @@ async function createWorkWebp(
       fit: "cover",
       position: "centre",
     })
-    .webp({
-      quality: 84,
-      effort: 4,
+    .flatten({
+      background: {
+        r: 17,
+        g: 17,
+        b: 22,
+      },
+    })
+    .jpeg({
+      quality: 88,
+      progressive: true,
     })
     .toBuffer();
 }
@@ -124,7 +131,10 @@ async function createWorkFallback({
   `;
 
   return sharp(Buffer.from(svg))
-    .webp({ quality: 84, effort: 4 })
+    .jpeg({
+      quality: 88,
+      progressive: true,
+    })
     .toBuffer();
 }
 
@@ -146,7 +156,7 @@ export async function GET(
 
   let bytes: Buffer;
   try {
-    bytes = await createWorkWebp(
+    bytes = await createWorkJpeg(
       imageSource,
       request.url,
     );
@@ -161,7 +171,7 @@ export async function GET(
 
   return new Response(body, {
     headers: {
-      "Content-Type": "image/webp",
+      "Content-Type": "image/jpeg",
       "Content-Length": String(body.byteLength),
       "Cache-Control":
         "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",

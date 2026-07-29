@@ -123,9 +123,16 @@ async function createThumbnailCard(
       fit: "cover",
       position: "centre",
     })
-    .webp({
-      quality: 84,
-      effort: 4,
+    .flatten({
+      background: {
+        r: 17,
+        g: 17,
+        b: 22,
+      },
+    })
+    .jpeg({
+      quality: 88,
+      progressive: true,
     })
     .toBuffer();
 }
@@ -191,7 +198,10 @@ async function createInterviewFallback({
   `;
 
   return sharp(Buffer.from(svg))
-    .webp({ quality: 84, effort: 4 })
+    .jpeg({
+      quality: 88,
+      progressive: true,
+    })
     .toBuffer();
 }
 
@@ -225,7 +235,7 @@ export async function GET(
 
   return new Response(body, {
     headers: {
-      "Content-Type": "image/webp",
+      "Content-Type": "image/jpeg",
       "Content-Length": String(body.byteLength),
       "Cache-Control":
         "public, max-age=86400, s-maxage=604800, stale-while-revalidate=2592000",

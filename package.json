@@ -7,8 +7,9 @@
   },
   "scripts": {
     "install:ci": "bash scripts/install-ci.sh",
-    "dev": "next dev",
-    "build": "next build",
+    "prepare:social": "node scripts/prepare-social-images.mjs",
+    "dev": "npm run prepare:social && next dev",
+    "build": "npm run prepare:social && next build",
     "start": "next start",
     "sync:upcoming": "node --experimental-strip-types scripts/sync-upcoming.mjs",
     "sync:interviews": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/sync-interviews.mjs",

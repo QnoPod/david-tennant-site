@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# generated social-card images
+/public/social/
+
 # misc
 .DS_Store
 *.pem

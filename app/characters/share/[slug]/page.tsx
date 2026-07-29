@@ -6,6 +6,7 @@ import {
   getCharacterSlug,
 } from "../../../lib/archiveSlugs";
 import { getCharacters } from "../../../lib/characters";
+import { getPreparedSocialImagePath } from "../../../lib/socialImagePaths";
 import { getWorks } from "../../../lib/tmdb";
 import ShareCharacterRedirect from "./ShareCharacterRedirect";
 
@@ -55,9 +56,14 @@ export async function generateMetadata({
   const title = character.name;
   const description = summarize(character.description);
   const sharePath = `/characters/share/${canonicalSlug}`;
-  const versionedSharePath = `${sharePath}?card=4`;
-  const image =
-    absoluteUrl(`${sharePath}/card.jpg?card=4`);
+  const versionedSharePath = `${sharePath}?card=5`;
+  const preparedImage = getPreparedSocialImagePath(
+    character.image,
+    "characters",
+  );
+  const image = absoluteUrl(
+    preparedImage || character.image,
+  );
 
   return {
     title,
@@ -73,14 +79,14 @@ export async function generateMetadata({
       description,
       images: [{
         url: image,
-        width: 1200,
-        height: 630,
+        width: 800,
+        height: 800,
         type: "image/jpeg",
         alt: `${title}のキャラクター画像`,
       }],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description,
       images: [image],

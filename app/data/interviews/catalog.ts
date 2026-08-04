@@ -634,6 +634,9 @@ const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
   "david-tennant-evil-character-jessica-jones",
   "michael-sheen-national-treasure-david-tennant",
   "david-tennant-injured-himself-rivals-scene",
+  "david-tennant-emoji-graham-norton",
+  "david-tennant-very-bad-scotsman-letterman",
+  "nta-2015-special-recognition",
 ]);
 
 

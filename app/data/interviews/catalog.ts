@@ -627,14 +627,54 @@ export const interviewCatalog: readonly InterviewSummary[] = [
 const PUBLIC_INTERVIEW_LIMIT = 6;
 
 /**
+ * Latest six interviews are published automatically.
+ * These reviewed interviews are additionally published regardless of date.
+ */
+const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-evil-character-jessica-jones",
+  "michael-sheen-national-treasure-david-tennant",
+  "david-tennant-injured-himself-rivals-scene",
+]);
+
+
+/**
  * 公開を許可した候補を公開日の新しい順に並べ、そのうち最新6件だけを返します。
  * この関数を一覧・検索・HOME・年表・詳細ページで共用するため、過去記事への直接アクセスも非公開になります。
  */
 export function getPublishedInterviews(): readonly InterviewSummary[] {
-  return interviewCatalog
-    .filter((interview) => interview.isPublished !== false && interview.reviewStatus !== "rejected")
-    .toSorted((a, b) => b.publishedDate.localeCompare(a.publishedDate))
-    .slice(0, PUBLIC_INTERVIEW_LIMIT);
+  const publishableInterviews = interviewCatalog
+    .filter(
+      (interview) =>
+        interview.isPublished !== false
+        && interview.reviewStatus !== "rejected",
+    )
+    .toSorted(
+      (a, b) =>
+        b.publishedDate.localeCompare(a.publishedDate),
+    );
+
+  const latestInterviews = publishableInterviews.slice(
+    0,
+    PUBLIC_INTERVIEW_LIMIT,
+  );
+
+  const additionalInterviews = publishableInterviews.filter(
+    (interview) =>
+      ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS.has(
+        interview.slug,
+      ),
+  );
+
+  return [
+    ...new Map(
+      [...latestInterviews, ...additionalInterviews].map(
+        (interview) => [interview.slug, interview] as const,
+      ),
+    ).values(),
+  ].toSorted(
+    (a, b) =>
+      b.publishedDate.localeCompare(a.publishedDate),
+  );
 }
 
 /** 公開年月日の新しい順に並べた公開記事を返します。元データは変更しません。 */

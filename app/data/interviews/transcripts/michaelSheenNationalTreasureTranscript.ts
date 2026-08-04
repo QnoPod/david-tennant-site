@@ -53,7 +53,7 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "6 foot 1, thank you very much!",
-    "ja": "6フィート1インチ(約185cm)だ、どうもな！",
+    "ja": "6フィート1インチ(約185cm)だ、どうも！",
     "timestamp": "01:54"
   },
   {
@@ -151,7 +151,7 @@ export const michaelSheenNationalTreasureTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "Guys, guys, guys. Guys, I thought this was just a joke for the show, come on. Guys! Air holes, there's no air holes! Help!",
-    "ja": "おい、おい、お前ら。なあ、これは番組のただのジョークだと思ってたのによ、冗談だろ。おい！空気穴、空気穴がないぞ！助けてくれ！",
+    "ja": "おい、おい、君たち。なあ、これは番組のただのジョークだと思ってたのによ、冗談だろ。おい！空気穴、空気穴がないぞ！助けてくれ！",
     "timestamp": "04:11"
   }
 ] as const;

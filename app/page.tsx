@@ -44,7 +44,6 @@ export default async function HomePage() {
         <div className="featured-grid">
           {featuredWorks.map((work, index) => (
             <Link className={`feature-card feature-card--${index + 1}`} href={`/works?q=${encodeURIComponent(work.title)}`} key={work.title}>
-              <span className="feature-card__number">0{index + 1}</span>
               <div>
                 <p>{work.year} · {work.medium}</p>
                 <h3>{work.title}</h3>
@@ -60,14 +59,12 @@ export default async function HomePage() {
           <SectionHeading eyebrow="EXPLORE THE ARCHIVE" title={<><span className="mobile-title-break">作品とキャラクター</span><span className="mobile-title-break">から探す</span></>} />
           <div className="portal-grid">
             <Link className="portal-card" href="/works">
-              <span className="portal-card__index">01</span>
               <p className="eyebrow">FILMOGRAPHY</p>
               <h3>出演作品アーカイブ</h3>
               <p>映画・ドラマ・舞台・声の出演を検索。</p>
               <span className="text-link">作品を見る →</span>
             </Link>
             <Link className="portal-card portal-card--dark" href="/characters">
-              <span className="portal-card__index">02</span>
               <p className="eyebrow">CHARACTER FILES</p>
               <h3><span className="mobile-title-break">キャラクター</span><span className="mobile-title-break">アーカイブ</span></h3>
               <p>演じた人物を画像、年代、属性から検索。</p>

@@ -51,7 +51,7 @@ export async function generateMetadata({
   }
 
   const shortPath =
-    `/w/${getWorkShareId(work)}`;
+    `/w/${getWorkShareId(work)}?v=2`;
   const slug = getWorkSlug(work);
   const target =
     `/works?detail=${encodeURIComponent(slug)}`;
@@ -75,7 +75,7 @@ export async function generateMetadata({
     );
   const image = absoluteUrl(
     preparedImage
-    || `/works/share/${slug}/image?card=5`,
+    || `/w/${getWorkShareId(work)}/image?v=2`,
   );
 
   return {
@@ -94,6 +94,7 @@ export async function generateMetadata({
         url: image,
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: `${title}の作品画像`,
       }],
     },

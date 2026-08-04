@@ -13,6 +13,7 @@ import WatchLaterButton from "../../components/WatchLaterButton";
 import { getPublishedInterviews } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
 import { getAllInterviewTags } from "../../data/interviews/types";
+import { getInterviewShareId } from "../../lib/archiveSlugs";
 import { findRelatedInterviews } from "../../lib/relatedContent";
 import { getPreparedSocialImagePath } from "../../lib/socialImagePaths";
 
@@ -57,7 +58,8 @@ export async function generateMetadata({
   }
 
   const pagePath = `/interviews/${interview.slug}`;
-  const sharePath = `${pagePath}?card=5`;
+  const sharePath =
+    `/i/${getInterviewShareId(interview.slug)}`;
   const preparedImage = getPreparedSocialImagePath(
     interview.thumbnailUrl,
     "interviews",
@@ -170,7 +172,7 @@ export default async function InterviewDetailPage({
         <InterviewMedia interview={interview} />
 
         <ShareButtons
-          url={`/interviews/${interview.slug}?card=5`}
+          url={`/i/${getInterviewShareId(interview.slug)}`}
           title={interview.title}
           text={`インタビュー「${interview.title}」`}
         />

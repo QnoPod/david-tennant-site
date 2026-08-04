@@ -6,7 +6,10 @@ import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
 import ReportIssueButton from "../components/ReportIssueButton";
 import ShareButtons from "../components/ShareButtons";
-import { getCharacterSlug } from "../lib/archiveSlugs";
+import {
+  getCharacterShareId,
+  getCharacterSlug,
+} from "../lib/archiveSlugs";
 import { findRelatedInterviews } from "../lib/relatedContent";
 import { recordRecentlyViewed } from "../lib/recentlyViewed";
 import type { Character } from "../lib/types";
@@ -24,7 +27,7 @@ export default function CharacterDetailModal({
   const modalHref =
     `/characters?detail=${encodeURIComponent(characterSlug)}`;
   const shareHref =
-    `/characters/share/${characterSlug}?card=5`;
+    `/c/${getCharacterShareId(character)}`;
   const relatedInterviews = findRelatedInterviews([
     character.workTitle,
     character.displayWorkTitle,

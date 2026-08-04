@@ -8,7 +8,11 @@ import RelatedLinks from "../components/RelatedLinks";
 import PersonalNoteEditor from "../components/PersonalNoteEditor";
 import ReportIssueButton from "../components/ReportIssueButton";
 import ShareButtons from "../components/ShareButtons";
-import { findWorkBySlug, getWorkSlug } from "../lib/archiveSlugs";
+import {
+  findWorkBySlug,
+  getWorkShareId,
+  getWorkSlug,
+} from "../lib/archiveSlugs";
 import {
   ARCHIVE_STORAGE_KEYS,
   ARCHIVE_UPDATED_EVENT,
@@ -757,7 +761,7 @@ function WorkDetailModal({
     ? `/works?detail=${encodeURIComponent(getWorkSlug(work))}`
     : "/works";
   const shareHref = work
-    ? `/works/share/${getWorkSlug(work)}?card=5`
+    ? `/w/${getWorkShareId(work)}`
     : "/works";
 
   // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。

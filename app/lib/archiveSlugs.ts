@@ -34,6 +34,11 @@ export function getWorkSlug(work: Work) {
   return `${work.media_type}-${work.id}-${titleSlug}`;
 }
 
+/** Shared work URLs only need the media type and stable numeric ID. */
+export function getWorkShareId(work: Work) {
+  return `${work.media_type}-${work.id}`;
+}
+
 export function findWorkBySlug(
   works: readonly Work[],
   slug: string,
@@ -61,6 +66,20 @@ export function getCharacterSlug(character: Character) {
     character.englishName || character.name,
   ) || "character";
   return `${nameSlug}-${stableHash(character.key)}`;
+}
+
+/** Shared character URLs use only the stable key hash. */
+export function getCharacterShareId(
+  character: Character,
+) {
+  return stableHash(character.key);
+}
+
+/** Shared interview URLs use a short stable hash of the catalog slug. */
+export function getInterviewShareId(
+  slug: string,
+) {
+  return stableHash(`interview:${slug}`);
 }
 
 export function findCharacterBySlug(

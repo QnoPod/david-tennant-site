@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-03T08:51:26.686Z",
+  "updatedAt": "2026-08-10T06:56:39.749Z",
   "mode": "full",
   "summary": {
     "total": 571,
-    "ok": 506,
-    "broken": 1,
-    "warning": 64,
+    "ok": 499,
+    "broken": 4,
+    "warning": 68,
     "unchecked": 0
   },
   "items": [
@@ -1985,7 +1985,7 @@
       "references": [
         {
           "file": "app/characters/CharacterDetailModal.tsx",
-          "line": 64
+          "line": 67
         },
         {
           "file": "app/characters/CharactersExplorer.tsx",
@@ -2001,13 +2001,13 @@
         },
         {
           "file": "app/works/WorksExplorer.tsx",
-          "line": 899
+          "line": 903
         }
       ],
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "cb221e70bfac",
@@ -2566,6 +2566,10 @@
           "line": 173
         },
         {
+          "file": "app/w/[id]/image/route.ts",
+          "line": 194
+        },
+        {
           "file": "app/works/share/[slug]/card.jpg/route.ts",
           "line": 121
         },
@@ -2577,7 +2581,7 @@
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "2036b5129ff4",
@@ -2968,6 +2972,10 @@
       "target": "https://david-tennant-site.vercel.app",
       "references": [
         {
+          "file": "app/c/[id]/page.tsx",
+          "line": 20
+        },
+        {
           "file": "app/characters/share/[slug]/page.tsx",
           "line": 19
         },
@@ -2976,12 +2984,20 @@
           "line": 13
         },
         {
+          "file": "app/i/[id]/page.tsx",
+          "line": 14
+        },
+        {
           "file": "app/interviews/[slug]/page.tsx",
-          "line": 25
+          "line": 26
         },
         {
           "file": "app/layout.tsx",
           "line": 17
+        },
+        {
+          "file": "app/w/[id]/page.tsx",
+          "line": 27
         },
         {
           "file": "app/works/share/[slug]/page.tsx",
@@ -2991,7 +3007,7 @@
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "f0c36ae60b57",
@@ -4141,10 +4157,10 @@
           "line": 2829
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "broken",
+      "httpStatus": 404,
+      "message": "リンク先が見つからないか、削除されています。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "0093e5ab3655",
@@ -4201,10 +4217,10 @@
           "line": 3032
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "broken",
+      "httpStatus": 404,
+      "message": "リンク先が見つからないか、削除されています。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "4bf683b259ce",
@@ -4711,10 +4727,10 @@
           "line": 324
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "broken",
+      "httpStatus": 404,
+      "message": "リンク先が見つからないか、削除されています。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "c612ec16dbe0",
@@ -5640,10 +5656,10 @@
           "line": 522
         }
       ],
-      "status": "warning",
-      "httpStatus": null,
-      "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "status": "ok",
+      "httpStatus": 202,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "25b79766c756",
@@ -5659,10 +5675,10 @@
           "line": 451
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "e6288fe1971f",
@@ -6181,10 +6197,10 @@
           "line": 232
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "42a97b34fea0",
@@ -6358,10 +6374,10 @@
           "line": 493
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "106f1f457622",
@@ -6373,10 +6389,10 @@
           "line": 704
         }
       ],
-      "status": "warning",
-      "httpStatus": 429,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-03T08:51:26.686Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "fbf15f93a34e",
@@ -8116,10 +8132,10 @@
           "line": 2828
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "4b8e0fe0ca2e",
@@ -8176,10 +8192,10 @@
           "line": 3031
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "419859d22451",
@@ -8763,10 +8779,10 @@
           "line": 322
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-10T06:56:39.749Z"
     },
     {
       "id": "513d9082add7",

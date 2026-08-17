@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-10T06:56:39.749Z",
+  "updatedAt": "2026-08-17T06:05:05.937Z",
   "mode": "full",
   "summary": {
     "total": 571,
-    "ok": 499,
+    "ok": 501,
     "broken": 4,
-    "warning": 68,
+    "warning": 66,
     "unchecked": 0
   },
   "items": [
@@ -5657,9 +5657,9 @@
         }
       ],
       "status": "ok",
-      "httpStatus": 202,
+      "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "checkedAt": "2026-08-17T06:05:05.937Z"
     },
     {
       "id": "25b79766c756",
@@ -5675,10 +5675,10 @@
           "line": 451
         }
       ],
-      "status": "warning",
-      "httpStatus": 403,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-17T06:05:05.937Z"
     },
     {
       "id": "e6288fe1971f",
@@ -6197,10 +6197,10 @@
           "line": 232
         }
       ],
-      "status": "warning",
-      "httpStatus": 429,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-17T06:05:05.937Z"
     },
     {
       "id": "42a97b34fea0",
@@ -6374,10 +6374,10 @@
           "line": 493
         }
       ],
-      "status": "warning",
-      "httpStatus": 429,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-17T06:05:05.937Z"
     },
     {
       "id": "106f1f457622",
@@ -6389,10 +6389,10 @@
           "line": 704
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-17T06:05:05.937Z"
     },
     {
       "id": "fbf15f93a34e",

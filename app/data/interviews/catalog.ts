@@ -637,6 +637,7 @@ const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
   "david-tennant-emoji-graham-norton",
   "david-tennant-very-bad-scotsman-letterman",
   "nta-2015-special-recognition",
+  "david-tennant-red-hair-this-morning",
 ]);
 
 

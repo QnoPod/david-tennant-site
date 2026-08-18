@@ -11,7 +11,9 @@ import { getUpcomingWorks } from "./lib/upcoming";
 /** トップページ。サイト内の各アーカイブへ迷わず移動できる入口です。 */
 export default async function HomePage() {
   const [appearances, works, upcoming] = await Promise.all([getConventionAppearances(), getWorks(), getUpcomingWorks()]);
-  const nextAppearance = appearances[0];
+  const nextAppearance = appearances.find(
+    (appearance) => appearance.status !== "cancelled",
+  );
   const interviews = getInterviewsNewestFirst();
   const latestInterview = interviews[0];
   const siteUpdates = buildAutomaticSiteUpdates({ interviews, upcoming, conventions: appearances });

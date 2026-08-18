@@ -1,23 +1,129 @@
+import autoConventionHistoryData from "../data/autoConventionHistory.json";
 import type { ConventionAppearance } from "./types";
 
 const SOURCE_URL = "https://comiconomicon.com/guest/490/David_Tennant";
+const REVALIDATE_SECONDS = 21600;
+const TODAY = new Date().toISOString().slice(0, 10);
 
 const fallbackAppearances: ConventionAppearance[] = [
-  { name: "Dragon Con", date: "3 - 7 Sep, 2026", venue: "Georgia World Congress Center Atlanta, GA", country: "アメリカ", organizer: "Dragon Con", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.dragoncon.org", sourceUrl: SOURCE_URL, updatedAt: "2026-07-15" },
-  { name: "Lexington Comic & Toy Con - Fall", date: "4 - 6 Sep, 2026", venue: "Lexington Convention Center, Lexington, Kentucky, USA", country: "アメリカ", organizer: "Lexington Comic & Toy Con", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://lexingtoncomiccon.com", sourceUrl: SOURCE_URL, updatedAt: "2026-07-15" },
-  { name: "Comic Con Northern Ireland", date: "19 - 20 Sep, 2026", venue: "Eikon Exhibition Centre, Lisburn, United Kingdom", country: "イギリス（北アイルランド）", organizer: "Monopoly Events", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.comicconnorthernireland.co.uk", sourceUrl: SOURCE_URL, updatedAt: "2026-07-15" },
-  { name: "Comic Con Liverpool - October", date: "10 - 11 Oct, 2026", venue: "Exhibition Centre Liverpool, Liverpool, United Kingdom", country: "イギリス（イングランド）", organizer: "Monopoly Events", status: "announced", statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。", officialUrl: "https://www.comicconventionliverpool.co.uk", sourceUrl: "https://www.rostercon.com/en/event-convention/comic-con-liverpool-october-2026", updatedAt: "2026-07-15" },
+  {
+    name: "Dragon Con",
+    date: "3 - 7 Sep, 2026",
+    venue: "Georgia World Congress Center Atlanta, GA",
+    country: "アメリカ",
+    organizer: "Dragon Con",
+    status: "cancelled",
+    statusNote: "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    officialUrl: "https://www.dragoncon.org",
+    sourceUrl: SOURCE_URL,
+    updatedAt: "2026-08-18",
+  },
+  {
+    name: "Lexington Comic & Toy Con - Fall",
+    date: "4 - 6 Sep, 2026",
+    venue: "Lexington Convention Center, Lexington, Kentucky, USA",
+    country: "アメリカ",
+    organizer: "Lexington Comic & Toy Con",
+    status: "cancelled",
+    statusNote: "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    officialUrl: "https://lexingtoncomiccon.com",
+    sourceUrl: SOURCE_URL,
+    updatedAt: "2026-08-18",
+  },
+  {
+    name: "Comic Con Northern Ireland",
+    date: "19 - 20 Sep, 2026",
+    venue: "Eikon Exhibition Centre, Lisburn, United Kingdom",
+    country: "イギリス（北アイルランド）",
+    organizer: "Monopoly Events",
+    status: "cancelled",
+    statusNote: "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    officialUrl: "https://www.comicconnorthernireland.co.uk",
+    sourceUrl: SOURCE_URL,
+    updatedAt: "2026-08-18",
+  },
+  {
+    name: "Comic Con Liverpool - October",
+    date: "10 - 11 Oct, 2026",
+    venue: "Exhibition Centre Liverpool, Liverpool, United Kingdom",
+    country: "イギリス（イングランド）",
+    organizer: "Monopoly Events",
+    status: "cancelled",
+    statusNote: "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    officialUrl: "https://www.comicconventionliverpool.co.uk",
+    sourceUrl: "https://www.rostercon.com/en/event-convention/comic-con-liverpool-october-2026",
+    updatedAt: "2026-08-18",
+  },
 ];
 
-const fallbackByName = new Map(fallbackAppearances.map((event) => [event.name.toLocaleLowerCase(), event]));
+const automaticHistory =
+  autoConventionHistoryData as ConventionAppearance[];
 
-/** 自動取得できた既知イベントへ、手動確認済みの内容更新日を引き継ぎます。 */
-function applyKnownUpdateDate(event: ConventionAppearance): ConventionAppearance {
-  const known = fallbackByName.get(event.name.toLocaleLowerCase());
-  return known?.updatedAt ? { ...event, updatedAt: known.updatedAt } : event;
+function canonicalEventName(value: string) {
+  const cleaned = value
+    .normalize("NFKC")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (/^comic con liverpool\s*(?:[-–—]|\()\s*october\)?$/i.test(cleaned)) {
+    return "Comic Con Liverpool - October";
+  }
+
+  return cleaned;
 }
 
-/** 自動取得した会場表記から、画面に表示する開催国を補完します。 */
+function normalizeEventName(value: string) {
+  return canonicalEventName(value)
+    .toLocaleLowerCase()
+    .replace(/[()\[\]{}–—-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isValidEventName(value: string) {
+  const normalized = normalizeEventName(value);
+  return Boolean(normalized)
+    && !/^(?:site|website|official site|official website)$/.test(normalized);
+}
+
+function eventKey(event: Pick<ConventionAppearance, "name" | "date">) {
+  return `${normalizeEventName(event.name)}::${event.date}`;
+}
+
+const fallbackByKey = new Map(
+  fallbackAppearances.map((event) => [eventKey(event), event]),
+);
+const historyByKey = new Map(
+  automaticHistory.map((event) => [eventKey(event), event]),
+);
+
+/** 保存済みのキャンセル履歴と手動確認済み状態を、自動取得より優先します。 */
+function applyKnownState(
+  event: ConventionAppearance,
+): ConventionAppearance {
+  const key = eventKey(event);
+  const saved = historyByKey.get(key);
+  if (saved?.status === "cancelled") {
+    return {
+      ...event,
+      ...saved,
+      isAutoFetched: event.isAutoFetched,
+    };
+  }
+
+  const fallback = fallbackByKey.get(key);
+  if (fallback) {
+    return {
+      ...event,
+      ...fallback,
+      detailUrl: event.detailUrl || fallback.detailUrl,
+      isAutoFetched: event.isAutoFetched,
+    };
+  }
+
+  return event;
+}
+
 function inferCountry(venue: string) {
   if (/Lisburn|Belfast|Northern Ireland/i.test(venue)) return "イギリス（北アイルランド）";
   if (/United Kingdom|England|London|Liverpool/i.test(venue)) return "イギリス";
@@ -29,7 +135,6 @@ function inferCountry(venue: string) {
   return "国情報は公式サイトで確認";
 }
 
-/** 自動取得分でも同じ主催のイベントをまとめて検索できるよう、名称から主催ブランドを補完します。 */
 function inferOrganizer(name: string) {
   if (/Comic Con Northern Ireland|Comic Con Liverpool/i.test(name)) return "Monopoly Events";
   if (/Fan Expo|MEGACON/i.test(name)) return "FAN EXPO HQ";
@@ -39,20 +144,118 @@ function inferOrganizer(name: string) {
 }
 
 function decodeHtml(value: string) {
-  return value.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-/**
- * ComiconomiconのDavid Tennantページの「Events」部分だけを抽出します。
- * 取得失敗時は最終確認済みデータを表示し、ページ自体が壊れないようにしています。
- */
+const cancellationPatterns = [
+  /\bcancel(?:led|ed)\b/i,
+  /\bno longer (?:able to )?(?:attend|appear|join)\b/i,
+  /\bwill not (?:be able to )?(?:attend|appear|join)\b/i,
+  /\bwill not be attending\b/i,
+  /\bunable to (?:attend|appear|join)\b/i,
+  /\bcannot (?:attend|appear|join)\b/i,
+  /\bcan't (?:attend|appear|join)\b/i,
+  /\bwithdrawn from\b/i,
+];
+
+/** チケット規約のcancel表記を避けるため、David Tennantの名前の前後だけを判定します。 */
+function hasDavidTennantCancellation(html: string) {
+  const text = decodeHtml(html);
+  const lower = text.toLocaleLowerCase();
+  const needle = "david tennant";
+  let offset = 0;
+
+  while (offset < lower.length) {
+    const index = lower.indexOf(needle, offset);
+    if (index < 0) break;
+
+    const context = lower.slice(
+      Math.max(0, index - 650),
+      Math.min(lower.length, index + needle.length + 650),
+    );
+
+    if (cancellationPatterns.some((pattern) => pattern.test(context))) {
+      return true;
+    }
+    offset = index + needle.length;
+  }
+
+  return false;
+}
+
+async function pageShowsCancellation(url: string) {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "DavidTennantFanArchive/1.0 (+fan archive; read-only)",
+        Accept: "text/html,text/plain;q=0.9,*/*;q=0.1",
+      },
+      next: { revalidate: REVALIDATE_SECONDS },
+      signal: AbortSignal.timeout(6500),
+    });
+    if (!response.ok) return false;
+
+    const contentType = response.headers.get("content-type") ?? "";
+    if (contentType && !/text\/(?:html|plain)/i.test(contentType)) return false;
+    return hasDavidTennantCancellation(await response.text());
+  } catch {
+    return false;
+  }
+}
+
+/** イベント詳細・公式ページを追加確認し、明示的なキャンセルだけを自動反映します。 */
+async function reconcileConventionStatus(
+  rawEvent: ConventionAppearance,
+): Promise<ConventionAppearance> {
+  const event = applyKnownState(rawEvent);
+  if (event.status === "cancelled") return event;
+
+  const urls = [
+    event.detailUrl,
+    event.officialUrl,
+    event.sourceUrl !== SOURCE_URL ? event.sourceUrl : undefined,
+  ].filter((value): value is string => Boolean(value));
+
+  for (const url of [...new Set(urls)]) {
+    if (await pageShowsCancellation(url)) {
+      return {
+        ...event,
+        status: "cancelled",
+        statusNote:
+          "公式／掲載ページでデイヴィッド・テナントの出演キャンセル表記を自動検出しました。",
+        updatedAt: TODAY,
+      };
+    }
+  }
+
+  return event;
+}
+
 function parseAppearances(html: string): ConventionAppearance[] {
   const eventsStart = html.search(/>\s*Events\s*</i);
   const rolesStart = html.search(/>\s*Roles\s*</i);
   if (eventsStart < 0 || rolesStart <= eventsStart) return [];
   const section = html.slice(eventsStart, rolesStart);
-  const eventLinkPattern = /<a[^>]+href=["']([^"']*(?:event|convention)[^"']*)["'][^>]*>([\s\S]*?)<\/a>/gi;
-  const matches = [...section.matchAll(eventLinkPattern)];
+  const eventLinkPattern = /<a[^>]+href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  const matches = [...section.matchAll(eventLinkPattern)].filter((match) => {
+    const name = canonicalEventName(decodeHtml(match[2]));
+    if (!isValidEventName(name)) return false;
+
+    try {
+      const url = new URL(match[1], SOURCE_URL);
+      return /(?:^|\.)comiconomicon\.com$/i.test(url.hostname)
+        && /\/(?:event|convention)\//i.test(url.pathname);
+    } catch {
+      return false;
+    }
+  });
 
   return matches.map<ConventionAppearance>((match, index) => {
     const blockEnd = matches[index + 1]?.index ?? section.length;
@@ -64,38 +267,48 @@ function parseAppearances(html: string): ConventionAppearance[] {
     const venue = afterDate.replace(/show on map.*$/i, "").trim() || "会場情報は公式サイトで確認してください";
     const official = [...block.matchAll(/<a[^>]+href=["']([^"']+)["'][^>]*>\s*site\s*<\/a>/gi)][0]?.[1];
     return {
-      name: decodeHtml(match[2]), date, venue,
+      name: canonicalEventName(decodeHtml(match[2])),
+      date,
+      venue,
       country: inferCountry(venue),
-      organizer: inferOrganizer(decodeHtml(match[2])),
+      organizer: inferOrganizer(canonicalEventName(decodeHtml(match[2]))),
       status: "announced",
       statusNote: "出演発表に基づく参加予定です。開催前に変更される場合があります。",
       officialUrl: official ? new URL(official, SOURCE_URL).toString() : undefined,
-      detailUrl: new URL(match[1], SOURCE_URL).toString(), sourceUrl: SOURCE_URL,
+      detailUrl: new URL(match[1], SOURCE_URL).toString(),
+      sourceUrl: SOURCE_URL,
       isAutoFetched: true,
     };
-  // 件数を制限せず、取得元に掲載されている現在の参加予定をすべて返します。
   }).filter((event) => event.name);
 }
 
 export async function getConventionAppearances(): Promise<ConventionAppearance[]> {
+  let events: ConventionAppearance[];
+
   try {
     const response = await fetch(SOURCE_URL, {
       headers: { "User-Agent": "DavidTennantFanArchive/1.0 (+fan archive; read-only)" },
-      next: { revalidate: 21600 },
+      next: { revalidate: REVALIDATE_SECONDS },
     });
     if (!response.ok) throw new Error("Comiconomicon request failed");
-    const parsed = parseAppearances(await response.text()).map(applyKnownUpdateDate);
-    if (!parsed.length) return fallbackAppearances;
 
-    // 取得元ごとに掲載タイミングが異なるため、確認済みの補完予定も重複なく併合します。
-    const parsedNames = new Set(parsed.map((event) => event.name.toLocaleLowerCase()));
-    return [
-      ...parsed,
-      ...fallbackAppearances.filter((event) => !parsedNames.has(event.name.toLocaleLowerCase())),
-    ];
+    const parsed = parseAppearances(await response.text()).map(applyKnownState);
+    if (!parsed.length) {
+      events = fallbackAppearances.map(applyKnownState);
+    } else {
+      const parsedKeys = new Set(parsed.map(eventKey));
+      events = [
+        ...parsed,
+        ...fallbackAppearances
+          .filter((event) => !parsedKeys.has(eventKey(event)))
+          .map(applyKnownState),
+      ];
+    }
   } catch {
-    return fallbackAppearances;
+    events = fallbackAppearances.map(applyKnownState);
   }
+
+  return Promise.all(events.map(reconcileConventionStatus));
 }
 
 export { SOURCE_URL as COMICONOMICON_SOURCE_URL };

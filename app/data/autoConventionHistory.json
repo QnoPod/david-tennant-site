@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "name": "Lexington Comic & Toy Con - Fall",
+    "date": "4 - 6 Sep, 2026",
+    "venue": "Lexington Convention Center, Lexington, Kentucky, USA",
+    "country": "アメリカ",
+    "organizer": "Lexington Comic & Toy Con",
+    "status": "cancelled",
+    "statusNote": "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    "officialUrl": "https://lexingtoncomiccon.com",
+    "detailUrl": "https://comiconomicon.com/event/42308/Lexington_Comic_Toy_Con_Fall",
+    "sourceUrl": "https://comiconomicon.com/guest/490/David_Tennant",
+    "isAutoFetched": true,
+    "updatedAt": "2026-08-18",
+    "isHistorical": true
+  },
+  {
+    "name": "Dragon Con",
+    "date": "3 - 7 Sep, 2026",
+    "venue": "Georgia World Congress Center Atlanta, GA",
+    "country": "アメリカ",
+    "organizer": "Dragon Con",
+    "status": "cancelled",
+    "statusNote": "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    "officialUrl": "https://www.dragoncon.org",
+    "detailUrl": "https://comiconomicon.com/event/42124/Dragon_Con",
+    "sourceUrl": "https://comiconomicon.com/guest/490/David_Tennant",
+    "isAutoFetched": true,
+    "updatedAt": "2026-08-18",
+    "isHistorical": true
+  },
+  {
+    "name": "Comic Con Northern Ireland",
+    "date": "19 - 20 Sep, 2026",
+    "venue": "Eikon Exhibition Centre, Lisburn, United Kingdom",
+    "country": "イギリス（北アイルランド）",
+    "organizer": "Monopoly Events",
+    "status": "cancelled",
+    "statusNote": "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    "officialUrl": "https://www.comicconnorthernireland.co.uk",
+    "detailUrl": "https://comiconomicon.com/event/42316/Comic_Con_Northern_Ireland",
+    "sourceUrl": "https://comiconomicon.com/guest/490/David_Tennant",
+    "isAutoFetched": true,
+    "updatedAt": "2026-08-18",
+    "isHistorical": true
+  },
+  {
+    "name": "Comic Con Liverpool - October",
+    "date": "10 - 11 Oct, 2026",
+    "venue": "Exhibition Centre Liverpool, Liverpool, United Kingdom",
+    "country": "イギリス（イングランド）",
+    "organizer": "Monopoly Events",
+    "status": "cancelled",
+    "statusNote": "デイヴィッド・テナントの出演キャンセルを確認済みです。",
+    "officialUrl": "https://www.comicconventionliverpool.co.uk",
+    "detailUrl": "https://comiconomicon.com/event/42881/Comic_Con_Liverpool_October_",
+    "sourceUrl": "https://www.rostercon.com/en/event-convention/comic-con-liverpool-october-2026",
+    "isAutoFetched": true,
+    "updatedAt": "2026-08-18",
+    "isHistorical": true
+  }
+]

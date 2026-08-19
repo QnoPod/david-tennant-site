@@ -1,3 +1,13 @@
+/** 日本の定額配信で31日以内に終了予定の配信枠。 */
+export type StreamingExpiration = {
+  providerName: string;
+  serviceId?: string;
+  /** 最終配信日。正確な日付が未発表の場合は省略します。 */
+  expiresOn?: string;
+  /** 配信サービスの作品ページ。 */
+  link?: string;
+};
+
 /** アーカイブ全体で共有するデータ型。 */
 export type Work = {
   id: number;
@@ -15,6 +25,8 @@ export type Work = {
   popularity?: number;
   /** 日本向け定額配信サービス。TMDBのwatch/providersから取得します。 */
   providers?: Array<{ provider_id: number; provider_name: string; logo_path?: string | null }>;
+  /** 日本の定額配信で、まもなく終了予定の配信枠。 */
+  streamingExpirations?: StreamingExpiration[];
   genres?: Array<{ id: number; name: string }>;
   runtime?: number | null;
   numberOfSeasons?: number | null;

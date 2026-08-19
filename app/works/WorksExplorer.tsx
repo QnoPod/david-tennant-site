@@ -64,6 +64,18 @@ const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
 const WATCH_LATER_KEY = ARCHIVE_STORAGE_KEYS.watchLaterWorks;
 type WorkView = "grid" | "timeline";
 
+function formatStreamingExpiryDate(value?: string) {
+  if (!value) return "終了日未定";
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return value;
+  return `${Number(match[2])}/${Number(match[3])}`;
+}
+function getNearestStreamingExpiry(work: Work) {
+  return [...(work.streamingExpirations ?? [])].sort((a, b) =>
+    (a.expiresOn ?? "9999-12-31").localeCompare(b.expiresOn ?? "9999-12-31")
+  )[0];
+}
+
 type WorkUrlState = {
   query: string;
   characterQuery: string;
@@ -96,7 +108,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     readEnumParam(
       searchParams,
       "availability",
-      ["ALL", "AVAILABLE", "UNAVAILABLE"] as const,
+      ["ALL", "AVAILABLE", "UNAVAILABLE", "ENDING_SOON"] as const,
       "ALL",
     ));
   const [watchStatus, setWatchStatus] = useState<string>(() =>
@@ -258,7 +270,7 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
       availability: readEnumParam(
         params,
         "availability",
-        ["ALL", "AVAILABLE", "UNAVAILABLE"] as const,
+        ["ALL", "AVAILABLE", "UNAVAILABLE", "ENDING_SOON"] as const,
         "ALL",
       ),
       watchStatus: readEnumParam(
@@ -392,8 +404,13 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
       const matchesProvider = !selectedProviders.length
         || workProviders.some((provider) =>
           selectedProviders.includes(provider.provider_name));
+      const isEndingSoon = Boolean(work.streamingExpirations?.length);
       const matchesAvailability = availability === "ALL"
-        || (availability === "AVAILABLE" ? hasStreaming : !hasStreaming);
+        || (availability === "AVAILABLE"
+          ? hasStreaming
+          : availability === "ENDING_SOON"
+            ? isEndingSoon
+            : !hasStreaming);
       const matchesGenre = !selectedGenres.length
         || (genreMode === "include"
           ? workGenres.some((genre) => selectedGenres.includes(genre.name))
@@ -583,6 +600,14 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
           <p>
             {getWorkDate(work).slice(0, 4) || "—"} · {getMediaLabel(work.media_type)}
           </p>
+          {work.streamingExpirations?.length ? (
+            <span className="work-card__expiry">
+              配信終了間近
+              {getNearestStreamingExpiry(work)?.expiresOn
+                ? ` · ${formatStreamingExpiryDate(getNearestStreamingExpiry(work)?.expiresOn)}`
+                : ""}
+            </span>
+          ) : null}
           {rating && (
             <span
               className="work-card__rating"
@@ -869,6 +894,20 @@ function WorkDetailModal({
                 </div>
               )
               : <p>現在、日本の定額配信サービスは確認できません。</p>}
+            {work.streamingExpirations?.length ? (
+              <div className="streaming-expiry-list">
+                <h4>まもなく配信終了</h4>
+                {work.streamingExpirations.map((expiry) => (
+                  <div key={[expiry.serviceId, expiry.providerName, expiry.expiresOn ?? "unknown"].join("::")}>
+                    <strong>{expiry.providerName}</strong>
+                    <span>{expiry.expiresOn
+                      ? `${formatStreamingExpiryDate(expiry.expiresOn)} 配信終了予定`
+                      : "まもなく終了（終了日未定）"}</span>
+                    {expiry.link ? <a href={expiry.link} target="_blank" rel="noreferrer">配信ページ ↗</a> : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
             <small>
               配信状況は変更される場合があります。各サービスの公式情報もご確認ください。
             </small>

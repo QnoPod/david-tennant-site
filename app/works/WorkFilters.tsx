@@ -29,7 +29,7 @@ export default function WorkFilters(props: Props) {
       <label><span>👥</span><input value={props.characterQuery} onChange={(event) => props.setCharacterQuery(event.target.value)} placeholder="キャラクター名で検索..." aria-label="キャラクター名で検索" />{props.characterQuery && <button onClick={() => props.setCharacterQuery("")} aria-label="キャラクター検索をクリア">×</button>}</label>
     </div>
     <div className="work-filter-row">
-      <select aria-label="配信状況" value={props.availability} onChange={(event) => props.setAvailability(event.target.value)}><option value="ALL">すべての配信状況</option><option value="AVAILABLE">日本で配信中</option><option value="UNAVAILABLE">配信なし</option></select>
+      <select aria-label="配信状況" value={props.availability} onChange={(event) => props.setAvailability(event.target.value)}><option value="ALL">すべての配信状況</option><option value="AVAILABLE">日本で配信中</option><option value="ENDING_SOON">まもなく配信終了</option><option value="UNAVAILABLE">配信なし</option></select>
       <select aria-label="視聴状況" value={props.watchStatus} onChange={(event) => props.setWatchStatus(event.target.value)}><option value="ALL">すべての視聴状況</option><option value="WATCHED">視聴済</option><option value="UNWATCHED">未視聴</option></select>
       <select aria-label="並び順" value={props.sortOrder} onChange={(event) => props.setSortOrder(event.target.value as SortOrder)}><option value="default">公開順（新しい順）</option><option value="popularity">人気順</option><option value="title">タイトル順（ABC/五十音）</option></select>
       <button className={props.favoritesOnly ? "is-active" : ""} onClick={() => props.setFavoritesOnly(!props.favoritesOnly)}>{props.favoritesOnly ? "★ お気に入りのみ表示" : "☆ お気に入りのみ表示"}</button>

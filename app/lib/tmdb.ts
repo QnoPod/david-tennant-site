@@ -2,6 +2,7 @@ import { manualWorks, workGenreOverrides } from "../data/manualWorks";
 import { workCharacterOverrides } from "../data/workCharacterOverrides";
 import { workImageOverrides } from "../data/workImages";
 import type { Work } from "./types";
+import { applyStreamingExpirations } from "./streamingExpirations";
 
 const TMDB_API = "https://api.themoviedb.org/3";
 const API_HEADERS = (token: string) => ({ Authorization: `Bearer ${token}`, accept: "application/json" });
@@ -143,7 +144,7 @@ function addManualProviders(title: string, providers: Work["providers"] = []) {
 export async function getEnrichedWorks(): Promise<Work[]> {
   const works = await getWorks();
   const token = process.env.TMDB_READ_TOKEN;
-  if (!token) return works;
+  if (!token) return applyStreamingExpirations(works);
 
   const enriched: Work[] = [];
   const chunkSize = 24;
@@ -183,7 +184,7 @@ export async function getEnrichedWorks(): Promise<Work[]> {
     }));
     enriched.push(...results);
   }
-  return enriched;
+  return applyStreamingExpirations(enriched);
 }
 
 export function getWorkTitle(work: Work) {

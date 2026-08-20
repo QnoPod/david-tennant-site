@@ -119,7 +119,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Big Finish",
     "sourceUrl": "https://www.bigfinish.com/news/v/an-uncanny-planet",
     "confirmed": false,
-    "lastCheckedAt": "2026-08-19",
     "sources": [
       {
         "name": "Big Finish",
@@ -128,7 +127,28 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-19"
+    "updatedAt": "2026-08-19",
+    "lastCheckedAt": "2026-08-19"
+  },
+  {
+    "key": "scraped-article-wfxago",
+    "kind": "work",
+    "mediaType": "other",
+    "title": "『ドクター・フー』の今後に関する最新情報",
+    "originalTitle": "An Update on the Future of Doctor Who",
+    "overview": "本日、『ドクター・フー』の今後の展開に関する最新情報をお知らせいたします。",
+    "status": "filming",
+    "source": "Doctor Who Official",
+    "sourceUrl": "https://www.doctorwho.tv/news-and-features/an-update-on-the-future-of-doctor-who",
+    "confirmed": true,
+    "lastCheckedAt": "2026-08-20",
+    "sources": [
+      {
+        "name": "Doctor Who Official",
+        "url": "https://www.doctorwho.tv/news-and-features/an-update-on-the-future-of-doctor-who"
+      }
+    ],
+    "updatedAt": "2026-08-20"
   },
   {
     "key": "official-tenth-doctor-adventures-2027",
@@ -164,7 +184,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Big Finish",
     "sourceUrl": "https://www.bigfinish.com/news/v/free-day-friday",
     "confirmed": true,
-    "lastCheckedAt": "2026-08-19",
     "sources": [
       {
         "name": "Big Finish",
@@ -172,7 +191,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "publishedDate": "2026-08-14"
       }
     ],
-    "updatedAt": "2026-08-19"
+    "updatedAt": "2026-08-19",
+    "lastCheckedAt": "2026-08-19"
   },
   {
     "key": "scraped-article-lfr2xk",
@@ -207,7 +227,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Big Finish",
     "sourceUrl": "https://www.bigfinish.com/news/v/the-master-releases-his-memoirs",
     "confirmed": false,
-    "lastCheckedAt": "2026-08-19",
     "sources": [
       {
         "name": "Big Finish",
@@ -216,7 +235,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-19"
+    "updatedAt": "2026-08-19",
+    "lastCheckedAt": "2026-08-19"
   },
   {
     "key": "scraped-article-xhu35r",
@@ -230,7 +250,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Big Finish",
     "sourceUrl": "https://www.bigfinish.com/news/v/the-return-of-zorro",
     "confirmed": false,
-    "lastCheckedAt": "2026-08-19",
     "sources": [
       {
         "name": "Big Finish",
@@ -239,7 +258,54 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-19"
+    "updatedAt": "2026-08-19",
+    "lastCheckedAt": "2026-08-19"
+  },
+  {
+    "key": "scraped-article-nyk49c",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "第10代ドクターとラニ",
+    "originalTitle": "The Tenth Doctor and Rani",
+    "overview": "デヴィッド・テナントが、2027年8月から隔月でリリースされる全キャスト出演の新たなオーディオ・アドベンチャー12作品に、第10代ドクターとして復帰することが決まった。そのうちの最初の3作品は三部作を構成しており、タイムロードは「友人の友人」であるラニ・チャンドラ（アンジリ・モヒンドラ）とタッグを組む！ 『ドクター・フー』のスピンオフ作品『ザ・サラ・ジェーン・アドベンチャーズ』で初登場したラニは、ジャーナリストとしてのキャリアを独力で切り拓こうとしていた矢先、ある事件に巻き込まれているドクターと出会う――",
+    "publishedDate": "2026-08-18",
+    "status": "unknown",
+    "source": "Big Finish",
+    "sourceUrl": "https://www.bigfinish.com/news/v/the-tenth-doctor-and-rani",
+    "confirmed": false,
+    "lastCheckedAt": "2026-08-20",
+    "sources": [
+      {
+        "name": "Big Finish",
+        "url": "https://www.bigfinish.com/news/v/the-tenth-doctor-and-rani",
+        "publishedDate": "2026-08-18"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-08-20"
+  },
+  {
+    "key": "scraped-article-pcxig",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "第12代ドクター対ダレク・エターナル",
+    "originalTitle": "The Twelfth Doctor Vs the Dalek Eternal",
+    "overview": "オーディオドラマ・ミニシリーズ『第12代ドクターの冒険： 『Run Fast, Be Kind』で、第12代ドクター（ジョン・カルショー）は、宇宙の果てにあるケルサリンの荒野でひと息ついていたところ、新たに知り合った放浪の吟遊詩人アシュローン・ウィルトン（グウィシアン・エヴァンス）と共に、危険な任務に巻き込まれてしまった。 さて、シリーズの第6話にして最終話となる『The Second Death of the Daleks』は、その最初の冒険へと立ち返るが、そこには大きな違いが……",
+    "publishedDate": "2026-08-19",
+    "status": "unknown",
+    "source": "Big Finish",
+    "sourceUrl": "https://www.bigfinish.com/news/v/the-twelfth-doctor-vs-the-dalek-eternal",
+    "confirmed": false,
+    "lastCheckedAt": "2026-08-20",
+    "sources": [
+      {
+        "name": "Big Finish",
+        "url": "https://www.bigfinish.com/news/v/the-twelfth-doctor-vs-the-dalek-eternal",
+        "publishedDate": "2026-08-19"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-08-20"
   },
   {
     "key": "tvmaze-tv-57469",

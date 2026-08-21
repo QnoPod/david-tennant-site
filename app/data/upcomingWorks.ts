@@ -141,14 +141,14 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Doctor Who Official",
     "sourceUrl": "https://www.doctorwho.tv/news-and-features/an-update-on-the-future-of-doctor-who",
     "confirmed": true,
-    "lastCheckedAt": "2026-08-20",
     "sources": [
       {
         "name": "Doctor Who Official",
         "url": "https://www.doctorwho.tv/news-and-features/an-update-on-the-future-of-doctor-who"
       }
     ],
-    "updatedAt": "2026-08-20"
+    "updatedAt": "2026-08-20",
+    "lastCheckedAt": "2026-08-20"
   },
   {
     "key": "official-tenth-doctor-adventures-2027",
@@ -273,7 +273,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Big Finish",
     "sourceUrl": "https://www.bigfinish.com/news/v/the-tenth-doctor-and-rani",
     "confirmed": false,
-    "lastCheckedAt": "2026-08-20",
     "sources": [
       {
         "name": "Big Finish",
@@ -282,7 +281,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-20"
+    "updatedAt": "2026-08-20",
+    "lastCheckedAt": "2026-08-20"
   },
   {
     "key": "scraped-article-pcxig",
@@ -296,7 +296,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Big Finish",
     "sourceUrl": "https://www.bigfinish.com/news/v/the-twelfth-doctor-vs-the-dalek-eternal",
     "confirmed": false,
-    "lastCheckedAt": "2026-08-20",
     "sources": [
       {
         "name": "Big Finish",
@@ -305,7 +304,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-20"
+    "updatedAt": "2026-08-20",
+    "lastCheckedAt": "2026-08-20"
   },
   {
     "key": "tvmaze-tv-57469",

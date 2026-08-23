@@ -50,6 +50,10 @@
   box-shadow: 0 16px 45px rgba(17, 17, 22, .08);
 }
 
+.report-issue__dialog-layer {
+  display: contents;
+}
+
 .report-issue__heading {
   display: flex;
   align-items: start;
@@ -197,6 +201,31 @@
   text-align: left;
 }
 
+/* UPCOMINGからbody直下へ移し、ページのレイアウト計算から完全に分離します。 */
+.report-issue.report-issue__dialog-layer--modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: max(96px, calc(env(safe-area-inset-top) + 84px)) clamp(12px, 3vw, 32px) 20px;
+  border: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(17, 17, 22, .56);
+}
+
+.report-issue__dialog-layer--modal .report-issue__panel {
+  width: min(100%, 680px);
+  max-width: 680px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: clamp(22px, 4vw, 34px);
+}
+
 @media (max-width: 620px) {
   .report-issue {
     margin-top: 28px;
@@ -205,6 +234,14 @@
   .report-issue__panel {
     margin-inline: -4px;
     padding: 19px 15px;
+  }
+
+  .report-issue__dialog-layer--modal .report-issue__panel {
+    padding: 22px 18px;
+  }
+
+  .report-issue--compact .report-issue__heading {
+    gap: 12px;
   }
 
   .report-issue__actions {
@@ -374,4 +411,3 @@
   color: var(--blue);
   font-weight: 900;
 }
-

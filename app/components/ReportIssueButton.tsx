@@ -1,6 +1,13 @@
 "use client";
 
-import { type FormEvent, useId, useState } from "react";
+import {
+  type FormEvent,
+  type ReactNode,
+  useEffect,
+  useId,
+  useState,
+} from "react";
+import { createPortal } from "react-dom";
 
 const correctionCategories = [
   "タイトル・原題",
@@ -39,6 +46,16 @@ type ReportResponse = {
   issueNumber?: number;
   message?: string;
 };
+
+function ReportDialogHost({
+  enabled,
+  children,
+}: {
+  enabled: boolean;
+  children: ReactNode;
+}) {
+  return enabled ? createPortal(children, document.body) : children;
+}
 
 /**
  * GitHubアカウントを持たない閲覧者も、サイト内から報告を送信できます。
@@ -91,6 +108,20 @@ export default function ReportIssueButton({
   const optionalPlaceholder = isContact
     ? "追加してほしい機能や、希望する対応があれば入力してください。"
     : "修正後の文章や正しい情報が分かる場合に入力してください。";
+
+  useEffect(() => {
+    if (!open || !compact) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [compact, open]);
 
   const toggleForm = () => {
     setOpen((current) => {
@@ -185,7 +216,24 @@ export default function ReportIssueButton({
       </button>
 
       {open && (
-        <div className="report-issue__panel" id={panelId}>
+        <ReportDialogHost enabled={compact}>
+          <div
+            className={[
+              "report-issue__dialog-layer",
+              compact
+                ? "report-issue report-issue--compact report-issue__dialog-layer--modal"
+                : "",
+            ].filter(Boolean).join(" ")}
+            onClick={() => compact && setOpen(false)}
+          >
+          <div
+            className="report-issue__panel"
+            id={panelId}
+            role={compact ? "dialog" : undefined}
+            aria-modal={compact ? "true" : undefined}
+            aria-labelledby={`${id}-heading`}
+            onClick={(event) => event.stopPropagation()}
+          >
           <div className="report-issue__heading">
             <div>
               <p className="eyebrow">
@@ -193,7 +241,7 @@ export default function ReportIssueButton({
                   ? "CONTACT THE ARCHIVE"
                   : "REPORT A CORRECTION"}
               </p>
-              <h3>{heading}</h3>
+              <h3 id={`${id}-heading`}>{heading}</h3>
             </div>
             <button
               type="button"
@@ -352,7 +400,9 @@ export default function ReportIssueButton({
               )}
             </div>
           </form>
-        </div>
+          </div>
+          </div>
+        </ReportDialogHost>
       )}
     </section>
   );

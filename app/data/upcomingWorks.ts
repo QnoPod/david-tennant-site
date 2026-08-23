@@ -108,29 +108,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-24"
   },
   {
-    "key": "scraped-article-fbmo1v",
-    "kind": "announcement",
-    "mediaType": "other",
-    "title": "不気味な惑星",
-    "originalTitle": "An Uncanny Planet",
-    "overview": "第9代ドクター（クリストファー・エクルストン）とローズ・タイラー（ビリー・パイパー）は、共に宇宙の果てを探索している。次の冒険であるティモシー・X・アタック作『False Friends』では、TARDISが遭難信号を受信し、それがきっかけで遠く離れた惑星へと向かうことになる。 しかし、そこに到着すると、ドクターとローズはその世界が地球と驚くほど似ていることに気づく……。『False Friends』には、BBC/RTÉのコメディドラマ『The Walsh Sisters』で知られるマイレード・タイアーズがゲスト出演している。",
-    "publishedDate": "2026-08-11",
-    "status": "unknown",
-    "source": "Big Finish",
-    "sourceUrl": "https://www.bigfinish.com/news/v/an-uncanny-planet",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "Big Finish",
-        "url": "https://www.bigfinish.com/news/v/an-uncanny-planet",
-        "publishedDate": "2026-08-11"
-      }
-    ],
-    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-19",
-    "lastCheckedAt": "2026-08-19"
-  },
-  {
     "key": "scraped-article-wfxago",
     "kind": "work",
     "mediaType": "other",
@@ -173,28 +150,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-17"
   },
   {
-    "key": "scraped-article-8rzsgl",
-    "kind": "work",
-    "mediaType": "other",
-    "title": "金曜日はお休み",
-    "originalTitle": "Free Day Friday",
-    "overview": "毎週、「Big Finish For Free!」コレクションから抜粋を1つご紹介していきます。150以上のダウンロード作品が揃っているこのコレクションは、次のお気に入りのシリーズを見つけたい方にぴったりのスタート地点です。 抜粋の紹介に加え、完全版の購入時に25％オフの特典もご用意しています！ もっと聴きたいと思われた場合、物語の全編を購入する際にお得に手に入れることができます。今週ご紹介するタイトルは『ブレイクズ7：戦利品（The Spoils of War）』です。銀河戦争の余波の中、あらゆるものが……",
-    "publishedDate": "2026-08-14",
-    "status": "planned",
-    "source": "Big Finish",
-    "sourceUrl": "https://www.bigfinish.com/news/v/free-day-friday",
-    "confirmed": true,
-    "sources": [
-      {
-        "name": "Big Finish",
-        "url": "https://www.bigfinish.com/news/v/free-day-friday",
-        "publishedDate": "2026-08-14"
-      }
-    ],
-    "updatedAt": "2026-08-19",
-    "lastCheckedAt": "2026-08-19"
-  },
-  {
     "key": "scraped-article-lfr2xk",
     "kind": "announcement",
     "mediaType": "other",
@@ -214,98 +169,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
     "updatedAt": "2026-07-18",
     "lastCheckedAt": "2026-07-18"
-  },
-  {
-    "key": "scraped-article-208u5f",
-    "kind": "announcement",
-    "mediaType": "other",
-    "title": "巨匠が回顧録を出版",
-    "originalTitle": "The Master Releases His Memoirs",
-    "overview": "悪魔的な魅力を持つサー・デレク・ジャコビが声を担当する、「タイム・ウォー」時代のマスターが、今年後半、4つのまったく新しいオーディオ・アドベンチャーで帰ってくる。2025年に発売されたボックスセット『His Greatest Trick』の出来事に続き、マスターは依然として戦争からの逃亡者であり、タイムロードもダレクも彼を殺そうと狙っている。 しかし、そんな状況が、彼がさらなるトラブルを追い求めるのを止めたことなど、かつてあっただろうか？『Deeds Without Name』では、マスターは裕福な退職者たちの精神を脅かすが、やがて彼は死んでしまい、そして……",
-    "publishedDate": "2026-08-17",
-    "status": "unknown",
-    "source": "Big Finish",
-    "sourceUrl": "https://www.bigfinish.com/news/v/the-master-releases-his-memoirs",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "Big Finish",
-        "url": "https://www.bigfinish.com/news/v/the-master-releases-his-memoirs",
-        "publishedDate": "2026-08-17"
-      }
-    ],
-    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-19",
-    "lastCheckedAt": "2026-08-19"
-  },
-  {
-    "key": "scraped-article-xhu35r",
-    "kind": "announcement",
-    "mediaType": "other",
-    "title": "ゾロの帰還",
-    "originalTitle": "The Return of Zorro",
-    "overview": "1919年にジョンストン・マッカリーによって生み出された、豪快な剣士ゾロは、19世紀のカリフォルニアで、腐敗した当局や横暴な悪党たちから人々を守り抜く。 彼は小説、テレビシリーズ、映画など幅広く登場しており、1998年のアントニオ・バンデラス主演作『ゾロの仮面』や、その続編である2005年の『ゾロの伝説』もその例に漏れません。そして今、これら2つの人気映画の物語が、まったく新しいオーディオドラマとして続きます。全6話からなるこの冒険物語『T』では、",
-    "publishedDate": "2026-08-06",
-    "status": "unknown",
-    "source": "Big Finish",
-    "sourceUrl": "https://www.bigfinish.com/news/v/the-return-of-zorro",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "Big Finish",
-        "url": "https://www.bigfinish.com/news/v/the-return-of-zorro",
-        "publishedDate": "2026-08-06"
-      }
-    ],
-    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-19",
-    "lastCheckedAt": "2026-08-19"
-  },
-  {
-    "key": "scraped-article-nyk49c",
-    "kind": "announcement",
-    "mediaType": "other",
-    "title": "第10代ドクターとラニ",
-    "originalTitle": "The Tenth Doctor and Rani",
-    "overview": "デヴィッド・テナントが、2027年8月から隔月でリリースされる全キャスト出演の新たなオーディオ・アドベンチャー12作品に、第10代ドクターとして復帰することが決まった。そのうちの最初の3作品は三部作を構成しており、タイムロードは「友人の友人」であるラニ・チャンドラ（アンジリ・モヒンドラ）とタッグを組む！ 『ドクター・フー』のスピンオフ作品『ザ・サラ・ジェーン・アドベンチャーズ』で初登場したラニは、ジャーナリストとしてのキャリアを独力で切り拓こうとしていた矢先、ある事件に巻き込まれているドクターと出会う――",
-    "publishedDate": "2026-08-18",
-    "status": "unknown",
-    "source": "Big Finish",
-    "sourceUrl": "https://www.bigfinish.com/news/v/the-tenth-doctor-and-rani",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "Big Finish",
-        "url": "https://www.bigfinish.com/news/v/the-tenth-doctor-and-rani",
-        "publishedDate": "2026-08-18"
-      }
-    ],
-    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-20",
-    "lastCheckedAt": "2026-08-20"
-  },
-  {
-    "key": "scraped-article-pcxig",
-    "kind": "announcement",
-    "mediaType": "other",
-    "title": "第12代ドクター対ダレク・エターナル",
-    "originalTitle": "The Twelfth Doctor Vs the Dalek Eternal",
-    "overview": "オーディオドラマ・ミニシリーズ『第12代ドクターの冒険： 『Run Fast, Be Kind』で、第12代ドクター（ジョン・カルショー）は、宇宙の果てにあるケルサリンの荒野でひと息ついていたところ、新たに知り合った放浪の吟遊詩人アシュローン・ウィルトン（グウィシアン・エヴァンス）と共に、危険な任務に巻き込まれてしまった。 さて、シリーズの第6話にして最終話となる『The Second Death of the Daleks』は、その最初の冒険へと立ち返るが、そこには大きな違いが……",
-    "publishedDate": "2026-08-19",
-    "status": "unknown",
-    "source": "Big Finish",
-    "sourceUrl": "https://www.bigfinish.com/news/v/the-twelfth-doctor-vs-the-dalek-eternal",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "Big Finish",
-        "url": "https://www.bigfinish.com/news/v/the-twelfth-doctor-vs-the-dalek-eternal",
-        "publishedDate": "2026-08-19"
-      }
-    ],
-    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-20",
-    "lastCheckedAt": "2026-08-20"
   },
   {
     "key": "tvmaze-tv-57469",

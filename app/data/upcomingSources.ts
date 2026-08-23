@@ -72,7 +72,6 @@ export const officialPageSources: OfficialPageSource[] = [
   { name: "Netflix Tudum", url: "https://www.netflix.com/tudum/topics/news", articlePathPatterns: ["/tudum/articles/", "/tudum/features/"], maxArticles: 12 },
   { name: "Disney+ Press", url: "https://press.disneyplus.com/news", articlePathPatterns: ["/news/"], maxArticles: 12 },
   { name: "Royal Shakespeare Company", url: "https://www.rsc.org.uk/news", articlePathPatterns: ["/news/"], maxArticles: 12 },
-  { name: "Big Finish", url: "https://www.bigfinish.com/news", articlePathPatterns: ["/news/v/"], maxArticles: 14 },
   { name: "Doctor Who Official", url: "https://www.doctorwho.tv/news-and-features", articlePathPatterns: ["/news-and-features/"], maxArticles: 14 },
 ];
 

@@ -160,12 +160,12 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "overview": "デイヴィッド・テナントが10代目ドクター役に復帰する、全15話のフルキャスト・オーディオドラマです。最初の12話は2027年夏から隔月で発売予定です。",
     "releaseDate": "2027",
     "status": "scheduled",
-    "source": "Doctor Who公式 / Big Finish",
+    "source": "Doctor Who公式",
     "sourceUrl": "https://www.doctorwho.tv/news-and-features/the-tenth-doctor-returns-in-a-new-series-of-audio-adventures",
     "confirmed": true,
     "sources": [
       {
-        "name": "Doctor Who公式 / Big Finish",
+        "name": "Doctor Who公式",
         "url": "https://www.doctorwho.tv/news-and-features/the-tenth-doctor-returns-in-a-new-series-of-audio-adventures"
       }
     ],

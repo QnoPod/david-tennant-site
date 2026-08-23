@@ -508,6 +508,16 @@ async function getTvmazeUpcoming(): Promise<UpcomingWork[]> {
   }
 }
 
+function isBigFinishUrl(value?: string) {
+  if (!value) return false;
+  try {
+    const hostname = new URL(value).hostname.toLowerCase();
+    return hostname === "bigfinish.com" || hostname.endsWith(".bigfinish.com");
+  } catch {
+    return false;
+  }
+}
+
 /** 自動取得と手入力を統合し、取得元を横断確認して表示区分を決めます。 */
 export async function getUpcomingWorks(): Promise<UpcomingWork[]> {
   const [tmdb, tvmaze, supplemental] = await Promise.all([
@@ -515,7 +525,12 @@ export async function getUpcomingWorks(): Promise<UpcomingWork[]> {
     getTvmazeUpcoming(),
     getSupplementalUpcoming(),
   ]);
-  const localized = consolidateCandidates([...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks])
+  // Big Finishの記事はUPCOMINGの取得・表示対象にしません。
+  // 過去の自動同期データにURLが残っていても、ここで確実に除外します。
+  const candidates = [...supplemental, ...tvmaze, ...tmdb, ...manualUpcomingWorks]
+    .filter((item) => ![item.sourceUrl, ...(item.sources ?? []).map((source) => source.url)]
+      .some(isBigFinishUrl));
+  const localized = consolidateCandidates(candidates)
     .map(localizeUpcoming);
   const translated = await translateUpcomingOverviews(localized);
   return translated

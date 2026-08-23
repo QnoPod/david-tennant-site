@@ -6,7 +6,7 @@ import Modal from "../components/Modal";
 import RelatedLinks from "../components/RelatedLinks";
 import { findRelatedInterviews } from "../lib/relatedContent";
 import { recordRecentlyViewed } from "../lib/recentlyViewed";
-import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getWorkDate } from "../lib/tmdb";
+import { getBackdropUrl, getMediaLabel, getPosterUrl, getProviderLogo, getProviderWatchUrl, getWorkDate } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
 import {
   getDisplayTitle,
@@ -61,7 +61,7 @@ export default function WorkDetailModal({ work, watched, onToggleWatched, onClos
       <section className="detail-section"><h3>作品あらすじ</h3><p>{getWorkOverview(work)}</p></section>
       {work.media_type === "tv" && <EpisodeAppearances work={work} />}
 
-      <section className="detail-section"><h3>日本の定額配信サービス</h3>{work.providers?.length ? <div className="provider-detail-list">{work.providers.map((provider) => <div key={provider.provider_id}>{provider.logo_path && <img src={getProviderLogo(provider.logo_path)} alt="" loading="lazy" decoding="async" />}<span>{provider.provider_name}</span></div>)}</div> : <p>現在、日本の定額配信サービスは確認できません。</p>}<small>配信状況は変更される場合があります。各サービスの公式情報もご確認ください。</small></section>
+      <section className="detail-section"><h3>日本の定額配信サービス</h3>{work.providers?.length ? <div className="provider-detail-list">{work.providers.map((provider) => <a key={provider.provider_id} href={getProviderWatchUrl(work, provider.provider_name)} target="_blank" rel="noreferrer" aria-label={`${provider.provider_name}で${displayTitle}を見る（新しいタブ）`}>{provider.logo_path && <img src={getProviderLogo(provider.logo_path)} alt="" loading="lazy" decoding="async" />}<span>{provider.provider_name}<small>作品を見る ↗</small></span></a>)}</div> : <p>現在、日本の定額配信サービスは確認できません。</p>}<small>配信状況は変更される場合があります。各サービスの公式情報もご確認ください。</small></section>
 
       {videoKey && <section className="detail-section"><h3>予告編・関連動画</h3><div className="detail-video"><iframe src={`https://www.youtube-nocookie.com/embed/${videoKey}`} title={`${displayTitle} trailer`} loading="lazy" allowFullScreen /></div></section>}
 

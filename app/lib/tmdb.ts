@@ -212,3 +212,38 @@ export function getMediaLabel(type: Work["media_type"]) {
 export function getProviderLogo(path?: string | null) {
   return path ? `https://image.tmdb.org/t/p/w92${path}` : "";
 }
+
+/**
+ * 配信サービスの作品ページ、またはサービス内検索へ移動するURLを返します。
+ * 配信終了情報に公式作品URLがある場合は、そのURLを最優先します。
+ */
+export function getProviderWatchUrl(work: Work, providerName: string) {
+  const normalize = (value: string) => value.normalize("NFKC").toLowerCase().replace(/[\s・+\-]/g, "");
+  const provider = normalize(providerName);
+  const exactLink = work.streamingExpirations?.find((item) => {
+    const expiryProvider = normalize(item.providerName);
+    return item.link && (
+      expiryProvider === provider
+      || (provider.includes("amazonprimevideo") && expiryProvider.includes("primevideo"))
+      || ((provider.includes("bs10") || provider.includes("starchannel"))
+        && (expiryProvider.includes("bs10") || expiryProvider.includes("starchannel")))
+    );
+  })?.link;
+  if (exactLink) return exactLink;
+
+  const title = getWorkTitle(work);
+  const query = encodeURIComponent(title);
+  if (provider.includes("bs10") || provider.includes("starchannel")) return "https://www.primevideo.com/channel/17dda79c-e38b-4960-9174-4f525fe520f5?tr=jp";
+  if (provider.includes("cinefilwowow") || provider.includes("シネフィルwowow")) return "https://www.primevideo.com/channel/be50c0e0-ac2f-430e-ab13-c1e62653a1c4?tr=jp";
+  if (provider.includes("magellantv")) return `https://www.magellantv.com/search?q=${query}`;
+  if (provider.includes("netflix")) return `https://www.netflix.com/search?q=${query}`;
+  if (provider.includes("amazonprimevideo") || provider === "primevideo") return `https://www.amazon.co.jp/gp/video/search?phrase=${query}`;
+  if (provider.includes("disney")) return `https://www.disneyplus.com/ja-jp/browse/search?q=${query}`;
+  if (provider.includes("unext")) return `https://video.unext.jp/freeword?query=${query}`;
+  if (provider.includes("hulu")) return `https://www.hulu.jp/search?q=${query}`;
+  if (provider.includes("appletv")) return `https://tv.apple.com/jp/search?term=${query}`;
+  if (provider.includes("abema")) return `https://abema.tv/search?q=${query}`;
+  if (provider.includes("fod")) return `https://fod.fujitv.co.jp/search/?keyword=${query}`;
+  if (provider.includes("wowow")) return `https://wod.wowow.co.jp/search?searchText=${query}`;
+  return `https://www.justwatch.com/jp/検索?q=${query}`;
+}

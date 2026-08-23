@@ -27,6 +27,7 @@ import {
   getMediaLabel,
   getPosterUrl,
   getProviderLogo,
+  getProviderWatchUrl,
   getWorkDate,
 } from "../lib/tmdb";
 import type { EpisodeAppearanceResult, Work } from "../lib/types";
@@ -628,20 +629,21 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
             )
             : <span>{characters.map((character) => character.name).join(" / ")}</span>}
           <div className="provider-icons" aria-label="日本の定額配信サービス">
-            {(work.providers ?? []).map((provider) => provider.logo_path
-              ? (
-                <img
-                  key={provider.provider_id}
-                  src={getProviderLogo(provider.logo_path)}
-                  alt={provider.provider_name}
-                  title={provider.provider_name}
-                  width="92"
-                  height="92"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )
-              : <b key={provider.provider_id}>{provider.provider_name}</b>)}
+            {(work.providers ?? []).map((provider) => (
+              <a
+                key={provider.provider_id}
+                href={getProviderWatchUrl(work, provider.provider_name)}
+                target="_blank"
+                rel="noreferrer"
+                title={`${provider.provider_name}で${displayTitle}を見る`}
+                aria-label={`${provider.provider_name}で${displayTitle}を見る（新しいタブ）`}
+                onClick={(event) => event.stopPropagation()}
+              >
+                {provider.logo_path
+                  ? <img src={getProviderLogo(provider.logo_path)} alt={provider.provider_name} width="92" height="92" loading="lazy" decoding="async" />
+                  : <b>{provider.provider_name}</b>}
+              </a>
+            ))}
             {!work.providers?.length && <em>日本の定額配信なし</em>}
           </div>
         </div>
@@ -877,7 +879,7 @@ function WorkDetailModal({
               ? (
                 <div className="provider-detail-list">
                   {work.providers.map((provider) => (
-                    <div key={provider.provider_id}>
+                    <a key={provider.provider_id} href={getProviderWatchUrl(work, provider.provider_name)} target="_blank" rel="noreferrer" aria-label={`${provider.provider_name}で${displayTitle}を見る（新しいタブ）`}>
                       {provider.logo_path && (
                         <img
                           src={getProviderLogo(provider.logo_path)}
@@ -888,8 +890,8 @@ function WorkDetailModal({
                           decoding="async"
                         />
                       )}
-                      <span>{provider.provider_name}</span>
-                    </div>
+                      <span>{provider.provider_name}<small>作品を見る ↗</small></span>
+                    </a>
                   ))}
                 </div>
               )

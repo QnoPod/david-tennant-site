@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-17T06:05:05.937Z",
+  "updatedAt": "2026-08-24T06:23:30.005Z",
   "mode": "full",
   "summary": {
-    "total": 571,
-    "ok": 501,
+    "total": 581,
+    "ok": 510,
     "broken": 4,
-    "warning": 66,
+    "warning": 67,
     "unchecked": 0
   },
   "items": [
@@ -1966,7 +1966,7 @@
       "references": [
         {
           "file": "app/page.tsx",
-          "line": 37
+          "line": 39
         },
         {
           "file": "app/profile/page.tsx",
@@ -1976,7 +1976,7 @@
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "afa5ca7be7d6",
@@ -2001,13 +2001,13 @@
         },
         {
           "file": "app/works/WorksExplorer.tsx",
-          "line": 903
+          "line": 944
         }
       ],
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "cb221e70bfac",
@@ -2590,13 +2590,13 @@
       "references": [
         {
           "file": "app/components/ReportIssueButton.tsx",
-          "line": 264
+          "line": 312
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：Failed to parse URL from https://",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "52584fdc02ef",
@@ -2952,6 +2952,89 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "33568f8bc6d9",
+      "kind": "link",
+      "target": "https://comiconomicon.com/event/42124/Dragon_Con",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 26
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "77df3bc1152b",
+      "kind": "link",
+      "target": "https://comiconomicon.com/event/42308/Lexington_Comic_Toy_Con_Fall",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 11
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "808b0c035766",
+      "kind": "link",
+      "target": "https://comiconomicon.com/event/42316/Comic_Con_Northern_Ireland",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 41
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "c78d2f5ca61e",
+      "kind": "link",
+      "target": "https://comiconomicon.com/event/42881/Comic_Con_Liverpool_October_",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 56
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "5da0bf731d46",
+      "kind": "link",
+      "target": "https://comiconomicon.com/guest/490/David_Tennant",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 12
+        },
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 27
+        },
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 42
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
       "id": "dcb71cc92713",
       "kind": "link",
       "target": "https://commons.wikimedia.org/wiki/File:David_Tennant_Photo_Op_GalaxyCon_Raleigh_2019.jpg",
@@ -3054,17 +3137,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 184
+          "line": 204
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 189
+          "line": 209
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "40778695e0c8",
@@ -5288,6 +5371,21 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "f49c24c05f92",
+      "kind": "link",
+      "target": "https://lexingtoncomiccon.com",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 10
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
       "id": "cda5795ddbe9",
       "kind": "link",
       "target": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300",
@@ -5411,13 +5509,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 235
+          "line": 255
         }
       ],
       "status": "warning",
       "httpStatus": 403,
       "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "f6bd6739a18f",
@@ -5600,17 +5698,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 141
+          "line": 161
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 146
+          "line": 166
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "6b0d91c6215d",
@@ -5620,21 +5718,6 @@
         {
           "file": "app/data/upcomingSources.ts",
           "line": 69
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
-    },
-    {
-      "id": "c24fe134685a",
-      "kind": "link",
-      "target": "https://www.bigfinish.com/news",
-      "references": [
-        {
-          "file": "app/data/upcomingSources.ts",
-          "line": 75
         }
       ],
       "status": "ok",
@@ -5660,6 +5743,36 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-08-17T06:05:05.937Z"
+    },
+    {
+      "id": "278ed522b93d",
+      "kind": "link",
+      "target": "https://www.comicconnorthernireland.co.uk",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 40
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "9be421635fcd",
+      "kind": "link",
+      "target": "https://www.comicconventionliverpool.co.uk",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 55
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "25b79766c756",
@@ -5985,13 +6098,32 @@
       "references": [
         {
           "file": "app/data/upcomingSources.ts",
-          "line": 76
+          "line": 75
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "aa3029c398f3",
+      "kind": "link",
+      "target": "https://www.doctorwho.tv/news-and-features/an-update-on-the-future-of-doctor-who",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 119
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 124
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "0ec9e46f5c51",
@@ -6000,17 +6132,32 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 121
+          "line": 141
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 126
+          "line": 146
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "269d4b11f5da",
+      "kind": "link",
+      "target": "https://www.dragoncon.org",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 25
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "8f984204690b",
@@ -6254,17 +6401,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 205
+          "line": 225
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 210
+          "line": 230
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "9439224d072b",
@@ -6374,10 +6521,25 @@
           "line": 493
         }
       ],
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-24T06:23:30.005Z"
+    },
+    {
+      "id": "907ef3de25cd",
+      "kind": "link",
+      "target": "https://www.rostercon.com/en/event-convention/comic-con-liverpool-october-2026",
+      "references": [
+        {
+          "file": "app/data/autoConventionHistory.json",
+          "line": 57
+        }
+      ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-17T06:05:05.937Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "106f1f457622",
@@ -6931,17 +7093,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 227
+          "line": 247
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 231
+          "line": 251
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "d5fcfdeee844",
@@ -7037,17 +7199,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 163
+          "line": 183
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 168
+          "line": 188
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-24T06:23:30.005Z"
     },
     {
       "id": "5edd4699eb4d",

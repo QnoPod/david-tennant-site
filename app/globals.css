@@ -1124,12 +1124,36 @@ html[data-readability-motion="reduced"] *, html[data-readability-motion="reduced
 
 
 /* ---------- WORKS: streaming expiry ---------- */
+.streaming-expiry-overview { margin: 0 0 30px; border: 2px solid #a33b32; background: #fff7f3; box-shadow: 0 14px 38px rgba(119,32,28,.15); }
+.streaming-expiry-overview > header { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 18px 20px; color: #fff; background: #8f2f2b; }
+.streaming-expiry-overview > header p { margin: 0 0 4px; color: #e4b84a; font-size: 9px; font-weight: 900; letter-spacing: .18em; }
+.streaming-expiry-overview > header h2 { margin: 0; font-family: var(--serif); font-size: clamp(25px, 3vw, 36px); font-weight: 600; line-height: 1.1; }
+.streaming-expiry-overview > header span { display: block; margin-top: 7px; color: rgba(255,255,255,.8); font-size: 10px; }
+.streaming-expiry-overview > header button { flex: 0 0 auto; min-height: 40px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.72); color: #fff; background: transparent; cursor: pointer; font-size: 10px; font-weight: 900; }
+.streaming-expiry-overview > header button:hover, .streaming-expiry-overview > header button:focus-visible { color: #70231f; background: #fff; }
+.streaming-expiry-overview__works { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: rgba(163,59,50,.2); }
+.streaming-expiry-overview__works > button { min-width: 0; display: grid; grid-template-columns: 58px minmax(0,1fr) auto; align-items: center; gap: 12px; min-height: 96px; padding: 12px 14px; border: 0; color: var(--ink); background: #fffaf7; cursor: pointer; text-align: left; }
+.streaming-expiry-overview__works > button:hover, .streaming-expiry-overview__works > button:focus-visible { background: #ffede5; outline: 2px solid #a33b32; outline-offset: -2px; }
+.streaming-expiry-overview__works img { width: 58px; height: 82px; object-fit: cover; background: var(--paper); }
+.streaming-expiry-overview__works button > span { min-width: 0; display: grid; gap: 3px; }
+.streaming-expiry-overview__works small { color: #9b342f; font-size: 10px; font-weight: 900; }
+.streaming-expiry-overview__works strong { overflow: hidden; font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+.streaming-expiry-overview__works em { overflow: hidden; color: var(--muted); font-size: 9px; font-style: normal; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.streaming-expiry-overview__works button > b { color: #9b342f; font-size: 18px; }
 .work-card__body > .work-card__expiry { width: fit-content; margin: 0 0 7px; padding: 3px 7px; border: 1px solid rgba(163,74,54,.35); border-radius: 2px; color: #8a3f31; background: #fff3ef; font-size: 9px; font-weight: 900; letter-spacing: .04em; }
-.streaming-expiry-list { margin-top: 18px; padding: 14px; border: 1px solid rgba(163,74,54,.28); background: #fff8f5; }
-.streaming-expiry-list h4 { margin: 0 0 9px; color: #8a3f31; font-family: var(--serif); font-size: 15px; }
+.streaming-expiry-list { margin-top: 18px; padding: 0 16px 14px; border: 2px solid #a33b32; background: #fff7f3; box-shadow: 0 10px 26px rgba(119,32,28,.12); }
+.streaming-expiry-list h4 { margin: 0 -16px 10px; padding: 11px 16px; color: #fff; background: #9b342f; font-family: var(--serif); font-size: 17px; }
+.streaming-expiry-list h4::before { content: "!"; display: inline-grid; width: 20px; height: 20px; margin-right: 8px; place-items: center; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; font-family: var(--sans); font-size: 12px; vertical-align: 2px; }
 .streaming-expiry-list > div { display: grid; grid-template-columns: minmax(130px,.8fr) minmax(160px,1fr) auto; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid rgba(163,74,54,.14); }
 .streaming-expiry-list > div:first-of-type { border-top: 0; }
 .streaming-expiry-list strong { font-size: 11px; }
 .streaming-expiry-list span, .streaming-expiry-list a { font-size: 10px; }
 .streaming-expiry-list span { color: #8a3f31; font-weight: 800; }
-@media (max-width:680px) { .streaming-expiry-list > div { grid-template-columns: 1fr; gap: 3px; } }
+@media (max-width:680px) {
+  .streaming-expiry-overview { margin-bottom: 22px; }
+  .streaming-expiry-overview > header { align-items: stretch; flex-direction: column; gap: 14px; padding: 16px; }
+  .streaming-expiry-overview > header button { width: 100%; }
+  .streaming-expiry-overview__works { display: flex; gap: 1px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x proximity; }
+  .streaming-expiry-overview__works > button { min-width: min(86vw, 330px); scroll-snap-align: start; }
+  .streaming-expiry-list > div { grid-template-columns: 1fr; gap: 3px; }
+}

@@ -246,6 +246,16 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
     return [...map.values()];
   }, [works]);
 
+  const expiringWorks = useMemo(() =>
+    uniqueWorks
+      .filter((work) => work.streamingExpirations?.length)
+      .sort((a, b) =>
+        (getNearestStreamingExpiry(a)?.expiresOn ?? "9999-12-31")
+          .localeCompare(
+            getNearestStreamingExpiry(b)?.expiresOn ?? "9999-12-31",
+          )),
+  [uniqueWorks]);
+
   const providers = useMemo(
     () => [...new Set(
       uniqueWorks.flatMap((work) =>
@@ -653,6 +663,67 @@ export default function WorksExplorer({ works }: { works: Work[] }) {
 
   return (
     <section className="archive-section shell">
+      {expiringWorks.length ? (
+        <section
+          className="streaming-expiry-overview"
+          aria-labelledby="streaming-expiry-overview-title"
+        >
+          <header>
+            <div>
+              <p>STREAMING ALERT</p>
+              <h2 id="streaming-expiry-overview-title">
+                もうすぐ配信終了
+              </h2>
+              <span>見逃す前に、配信終了予定の作品をチェック</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setAvailability("ENDING_SOON")}
+            >
+              {expiringWorks.length}作品だけ表示
+            </button>
+          </header>
+
+          <div className="streaming-expiry-overview__works">
+            {expiringWorks.map((work) => {
+              const nearestExpiry = getNearestStreamingExpiry(work);
+              const serviceNames = [...new Set(
+                (work.streamingExpirations ?? [])
+                  .map((item) => item.providerName),
+              )].join(" / ");
+
+              return (
+                <button
+                  type="button"
+                  key={`${work.media_type}-${work.id}`}
+                  onClick={() => openWorkDetail(work)}
+                  aria-label={`${getDisplayTitle(work)}の配信終了情報を見る`}
+                >
+                  <img
+                    src={getPosterUrl(work.poster_path, work.posterUrl)}
+                    alt=""
+                    width="72"
+                    height="108"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>
+                    <small>
+                      {nearestExpiry?.expiresOn
+                        ? `${formatStreamingExpiryDate(nearestExpiry.expiresOn)}まで`
+                        : "終了日未定"}
+                    </small>
+                    <strong>{getDisplayTitle(work)}</strong>
+                    <em>{serviceNames}</em>
+                  </span>
+                  <b aria-hidden="true">→</b>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      ) : null}
+
       <WorkFilters
         query={query}
         setQuery={setQuery}

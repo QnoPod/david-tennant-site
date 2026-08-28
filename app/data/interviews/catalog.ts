@@ -217,6 +217,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-litvinenko-itv-press-pack-2022",
+    title: "『Litvinenko』プレスパック：デイヴィッド・テナント インタビュー｜ITV",
+    titleEn: "Litvinenko Press Pack: Interview with David Tennant",
+    year: "2022",
+    publishedDate: "2022-12-01",
+    source: "ITV",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.itv.com/presscentre/sites/default/files/itvx_litvinenko_press_pack_december_2022.pdf",
+    thumbnailUrl: "https://www.itv.com/presscentre/presscentre/sites/default/files/styles/half_width/public/screenshot_2022-12-01_at_10.10.14_0.png?itok=P2NG7yNt",
+    duration: "Press Pack · Interview pp. 13–20",
+    description: "ITV公式『Litvinenko』プレスパック。デイヴィッド・テナントがアレクサンドル・リトビネンコ役を演じた作品について、物語を伝える責任、実在人物の再現、病院シーン、役作りや撮影を語るインタビューを収録。",
+    tagGroups: {
+      actors: [],
+      genres: ["Litvinenko"],
+      sources: ["ITV"],
+    },
+  },
+  {
     slug: "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025",
     title: "デイヴィッド・テナント、セックスシーン、Doctor Who、ケミ・ベイドノックとの論争を語る｜The Guardian",
     titleEn: "David Tennant on sex scenes, Doctor Who and his run-in with Kemi Badenoch: ‘The trans debate has become unnecessarily cruel’",
@@ -783,6 +802,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-litvinenko-itv-press-pack-2022",
   "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025",
   "david-tennant-20-questions-whatsonstage-2003",
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016",

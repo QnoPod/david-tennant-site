@@ -34,6 +34,8 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennantDangerousTonyAfterMonicaDeathTranscript")).davidTennantDangerousTonyAfterMonicaDeathTranscript,
   "david-tennant-hamlet-shakespeare-interview-2009": async () =>
     (await import("./transcripts/davidTennantHamletShakespeareInterviewTranscript")).davidTennantHamletShakespeareInterviewTranscript,
+  "david-tennant-kissing-michael-sheen-guardian-2024": async () =>
+    (await import("./transcripts/davidTennantKissingMichaelSheenGuardianTranscript")).davidTennantKissingMichaelSheenGuardianTranscript,
   "david-tennant-litvinenko-itv-press-pack-2022": async () =>
     (await import("./transcripts/davidTennantLitvinenkoItvPressPackTranscript")).davidTennantLitvinenkoItvPressPackTranscript,
   "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025": async () =>

@@ -217,6 +217,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-kissing-michael-sheen-guardian-2024",
+    title: "デイヴィッド・テナント：「マイケル・シーンとのキス？ 平気でした。歯も磨いてたし」｜The Guardian",
+    titleEn: "David Tennant: ‘Kissing Michael Sheen was fine. He’d brushed his teeth’",
+    year: "2024",
+    publishedDate: "2024-02-15",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/culture/2024/feb/15/david-tennant-kissing-michael-sheen-doctor-who-baftas",
+    thumbnailUrl: "https://i.guim.co.uk/img/media/a57f422dbe9a3072f3497ba6074fdc868907e133/0_63_4641_2785/master/4641.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · Reader Q&A",
+    description: "BAFTA映画賞の司会を前に、デイヴィッド・テナントが読者からの質問に回答。マイケル・シーンとの『Good Omens』でのキス、Doctor Who愛、もみあげ、Scrooge McDuck、『Des』のデニス・ニルセン役、父が牧師だった家庭環境までユーモアたっぷりに語る。",
+    tagGroups: {
+      actors: ["Michael Sheen"],
+      genres: ["Good Omens", "Doctor Who", "Broadchurch", "Macbeth", "Des", "Fright Night", "Harry Potter and the Goblet of Fire", "Staged"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-litvinenko-itv-press-pack-2022",
     title: "『Litvinenko』プレスパック：デイヴィッド・テナント インタビュー｜ITV",
     titleEn: "Litvinenko Press Pack: Interview with David Tennant",
@@ -802,6 +821,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-kissing-michael-sheen-guardian-2024",
   "david-tennant-litvinenko-itv-press-pack-2022",
   "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025",
   "david-tennant-20-questions-whatsonstage-2003",

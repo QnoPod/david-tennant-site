@@ -331,6 +331,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-deadwater-fell-channel4-2019",
+    title: "『Deadwater Fell』デイヴィッド・テナント インタビュー：トム・ケンドリック役を語る｜Channel 4",
+    titleEn: "Deadwater Fell: Interview with David Tennant who plays Dr. Tom Kendrick",
+    year: "2019",
+    publishedDate: "2019-12-31",
+    source: "Channel 4",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.channel4.com/press/news/deadwater-fell-interview-david-tennant-who-plays-dr-tom-kendrick",
+    thumbnailUrl: "https://assets-corporate.channel4.com/_flysystem/s3/styles/16_9_ratio_large/s3/2019-12/DEADWATERFELL%20Ep%202%2003072019%200175%202%20%20copy.jpg?h=b8c0c725&itok=A0LWoop_",
+    duration: "Article · Official Q&A",
+    description: "Channel 4公式Q&A。デイヴィッド・テナントが『Deadwater Fell』のトム・ケンドリック役、初の製作総指揮、脚本への惹かれ方、二つの時間軸、スコットランド撮影、Cush Jumboら共演者、作品が観客にもたらす驚きについて語る。",
+    tagGroups: {
+      actors: ["Cush Jumbo", "Anna Madeley", "Matthew McNulty"],
+      genres: ["Deadwater Fell"],
+      sources: ["Channel 4"],
+    },
+  },
+  {
     slug: "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",
     title: "デイヴィッド・テナント：ドクターから刑事、そして“虚無主義的なセックス・アスリート”へ｜Time Out London",
     titleEn: "David Tennant: from Doctor to detective to ‘nihilistic sexual athlete’",
@@ -878,6 +897,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-deadwater-fell-channel4-2019",
   "david-tennant-getting-the-band-back-together-radio-times-2023",
   "david-tennant-privacy-parenting-playing-himself-guardian-2020",
   "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",

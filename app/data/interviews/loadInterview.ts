@@ -46,6 +46,8 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennant20QuestionsWhatsOnStageTranscript")).davidTennant20QuestionsWhatsOnStageTranscript,
   "david-tennant-privacy-parenting-playing-himself-guardian-2020": async () =>
     (await import("./transcripts/davidTennantPrivacyParentingGuardian2020Transcript")).davidTennantPrivacyParentingGuardian2020Transcript,
+  "david-tennant-deadwater-fell-channel4-2019": async () =>
+    (await import("./transcripts/davidTennantDeadwaterFellChannel4Transcript")).davidTennantDeadwaterFellChannel4Transcript,
   "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017": async () =>
     (await import("./transcripts/davidTennantTimeOutLondonDonJuan2017Transcript")).davidTennantTimeOutLondonDonJuan2017Transcript,
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016": async () =>

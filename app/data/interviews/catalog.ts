@@ -638,6 +638,9 @@ const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
   "david-tennant-very-bad-scotsman-letterman",
   "nta-2015-special-recognition",
   "david-tennant-red-hair-this-morning",
+  "david-tennant-rsc-winter-2013",
+  "david-tennant-spills-broadchurch-beans",
+  "david-tennant-olivia-colman-broadchurch-fan-art",
 ]);
 
 

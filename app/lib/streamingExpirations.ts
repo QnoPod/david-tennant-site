@@ -171,6 +171,44 @@ function applyStoredAvailability(work: Work) {
   return providers.length === work.providers.length ? work : { ...work, providers };
 }
 
+
+/**
+ * GitHub Actions が保存した「配信終了予定」を画面表示用データへ戻します。
+ * 外部APIやJustWatchの取得が一時的に失敗しても、前回の自動更新結果から
+ * WORKSの「もうすぐ配信終了」を維持します。
+ */
+function storedExpirationsForWork(work: Work): StreamingExpiration[] {
+  const providerKeys = new Set(
+    (work.providers ?? []).map((provider) => providerStateKey(provider.provider_name)),
+  );
+
+  return [...storedStatesForWork(work).values()]
+    .filter((item) => {
+      if (item.active === false || !isEndingSoon(item.expiresOn)) return false;
+      return !providerKeys.size || providerKeys.has(providerStateKey(item.providerName));
+    })
+    .map((item) => ({
+      providerName: canonicalProviderName(item.providerName),
+      expiresOn: item.expiresOn,
+      link: item.link,
+    }))
+    .sort((a, b) =>
+      (a.expiresOn ?? "9999-12-31").localeCompare(b.expiresOn ?? "9999-12-31")
+      || a.providerName.localeCompare(b.providerName, "ja")
+    );
+}
+
+/** 同じサービス・同じ終了日なら取得元が違っても1件として扱います。 */
+function hasSameExpiration(
+  items: StreamingExpiration[],
+  candidate: StreamingExpiration,
+) {
+  return items.some((current) =>
+    providerStateKey(current.providerName) === providerStateKey(candidate.providerName)
+    && (current.expiresOn ?? "") === (candidate.expiresOn ?? "")
+  );
+}
+
 /** JustWatchの埋め込みキャッシュから、公式リンク付きの定額配信終了予定だけを抽出します。 */
 export function parseDirectExpirations(html: string): StreamingExpiration[] {
   const results: StreamingExpiration[] = [];
@@ -287,8 +325,16 @@ export async function applyStreamingExpirations(works: Work[]): Promise<Work[]> 
         .filter(([, state]) => state.active === false)
         .map(([key]) => key),
     );
-    const items = [...(apiResult.get(String(work.id)) ?? [])]
+    // 自動更新で保存済みの終了予定を最初に復元する。
+    const items = [...storedExpirationsForWork(work)]
       .filter((item) => !inactiveProviders.has(providerStateKey(item.providerName)));
+
+    // ページ表示時にAPIから新しい終了予定が取れた場合は統合する。
+    for (const item of apiResult.get(String(work.id)) ?? []) {
+      if (inactiveProviders.has(providerStateKey(item.providerName))) continue;
+      if (!hasSameExpiration(items, item)) items.push(item);
+    }
+
     const titles = [work.title, work.name, work.original_title, work.original_name]
       .filter((title): title is string => Boolean(title))
       .map(normalizeTitle);
@@ -296,7 +342,7 @@ export async function applyStreamingExpirations(works: Work[]): Promise<Work[]> 
       if (!sourceTitles.some((title) => titles.includes(normalizeTitle(title)))) continue;
       for (const item of directItems) {
         if (inactiveProviders.has(providerStateKey(item.providerName))) continue;
-        if (!items.some((current) => expiryKey(current) === expiryKey(item))) items.push(item);
+        if (!hasSameExpiration(items, item)) items.push(item);
       }
     }
     items.sort((a, b) =>

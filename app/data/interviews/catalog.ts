@@ -293,6 +293,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-privacy-parenting-playing-himself-guardian-2020",
+    title: "「もう昔ほど神経質じゃない」デイヴィッド・テナント、プライバシー、子育て、“自分自身”を演じることを語る｜The Guardian",
+    titleEn: "'We're not squeamish!' David Tennant on privacy, parenting and playing himself",
+    year: "2020",
+    publishedDate: "2020-07-08",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/culture/2020/jul/08/were-not-squeamish-david-tennant-on-privacy-parenting-and-playing-himself",
+    thumbnailUrl: "https://i.guim.co.uk/img/media/fdb03ce68523ff9f2c1306589e311470cfda015d/0_246_4032_2419/master/4032.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · Long interview",
+    description: "『There She Goes』シーズン2と『Staged』を背景に、デイヴィッド・テナントが家族のプライバシー、子育て、障害のある子どもを描く責任、コロナ禍の演劇界、労働党と英国政治、そしてDoctor Whoへの思いを語るロングインタビュー。",
+    tagGroups: {
+      actors: ["Georgia Tennant"],
+      genres: ["There She Goes", "Staged", "Doctor Who", "Broadchurch", "Good"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",
     title: "デイヴィッド・テナント：ドクターから刑事、そして“虚無主義的なセックス・アスリート”へ｜Time Out London",
     titleEn: "David Tennant: from Doctor to detective to ‘nihilistic sexual athlete’",
@@ -840,6 +859,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-privacy-parenting-playing-himself-guardian-2020",
   "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",
   "david-tennant-kissing-michael-sheen-guardian-2024",
   "david-tennant-litvinenko-itv-press-pack-2022",

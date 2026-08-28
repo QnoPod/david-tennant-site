@@ -426,6 +426,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-tennants-extra-guardian-2005",
+    title: "デイヴィッド・テナント：「Tennant’s extra」｜The Guardian",
+    titleEn: "Tennant’s extra",
+    year: "2005",
+    publishedDate: "2005-12-11",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/media/2005/dec/11/bbc.broadcasting",
+    thumbnailUrl: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/12/15/1418657981667/David-Tennant-012.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · Long interview",
+    description: "10代目ドクターとして本格登場する直前のデイヴィッド・テナントに、Stephanie Merrittが取材。Doctor Who、Casanova、Billie Piperとの共演、セックスシンボル扱いへの戸惑い、牧師の家庭で育った宗教観、タブロイドとの距離、私生活を語らない理由、将来の演出志向までを聞く。",
+    tagGroups: {
+      actors: ["Billie Piper", "Russell T Davies", "Christopher Eccleston", "Peter O'Toole", "Sophia Myles"],
+      genres: ["Doctor Who", "Casanova", "Blackpool", "Harry Potter and the Goblet of Fire", "Secret Smile"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-it-just-feels-scary-guardian-2009",
     title: "デイヴィッド・テナント：「ただ怖いんです……ずっと」｜The Guardian",
     titleEn: "David Tennant: It just feels scary… all the time",
@@ -973,6 +992,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-tennants-extra-guardian-2005",
   "david-tennant-it-just-feels-scary-guardian-2009",
   "david-tennant-bedpost-few-notches-guardian-2011",
   "michael-sheen-david-tennant-staged-british-comedy-guide-2020",

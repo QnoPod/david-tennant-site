@@ -198,6 +198,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-king-of-cliffhanger-guardian-2014",
+    title: "デイヴィッド・テナント：“クリフハンガーの王”｜The Guardian",
+    titleEn: "David Tennant: king of the cliffhanger",
+    year: "2014",
+    publishedDate: "2014-12-21",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/tv-and-radio/2014/dec/21/david-tennant-broadchurch-cliffhanger-interview",
+    thumbnailUrl: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/12/15/1418657981667/David-Tennant-012.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article",
+    description: "『Broadchurch』シーズン2を前に、デイヴィッド・テナントが作品の成功と秘密主義、シェイクスピア、舞台への思い、罪悪感、Richard IIとHenry V、そして『The West Wing』への愛を語る。",
+    tagGroups: {
+      actors: ["Olivia Colman", "Georgia Tennant", "Peter Davison", "Bradley Whitford"],
+      genres: ["Broadchurch", "Doctor Who", "Richard II"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "cush-jumbo-david-tennant-macbeth-guardian-2023",
     title: "「学校で読んだけど――大嫌いだった」クシュ・ジャンボ＆デイヴィッド・テナント、『マクベス』を演じることを語る｜The Guardian",
     titleEn: "‘I studied the play in school – I hated it’: Cush Jumbo and David Tennant on playing the Macbeths",
@@ -688,6 +707,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-king-of-cliffhanger-guardian-2014",
   "cush-jumbo-david-tennant-macbeth-guardian-2023",
   "david-tennant-nafessa-rivals-deadly-twist-tv-insider",
   "david-tennant-dangerous-tony-after-monica-death-tv-insider",

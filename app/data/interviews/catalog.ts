@@ -426,6 +426,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-it-just-feels-scary-guardian-2009",
+    title: "デイヴィッド・テナント：「ただ怖いんです……ずっと」｜The Guardian",
+    titleEn: "David Tennant: It just feels scary… all the time",
+    year: "2009",
+    publishedDate: "2009-12-20",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/tv-and-radio/2009/dec/20/david-tennant-best-doctor-who",
+    thumbnailUrl: "https://i.guim.co.uk/img/static/sys-images/Observer/Pix/pictures/2009/12/15/1260896183589/David-Tennant-December-20-005.jpg?crop=none&dpr=1&s=none&width=445",
+    duration: "Article · Long interview",
+    description: "10代目ドクター卒業直前の2009年、The Guardianがデイヴィッド・テナントに長期密着。Doctor Whoを離れる決断、名声への恐怖、Matt Smithへの引き継ぎ、Billie Piperの支え、RSCとHamlet、私生活を守る姿勢、幼少期と俳優としての原点、アメリカ進出の可能性までを追う。",
+    tagGroups: {
+      actors: ["Matt Smith", "Billie Piper", "Patrick Stewart", "Russell T Davies", "Catherine Tate", "Arabella Weir"],
+      genres: ["Doctor Who", "Hamlet", "Blackpool", "Casanova", "Einstein and Eddington", "Glorious 39", "St Trinian's 2"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-bedpost-few-notches-guardian-2011",
     title: "デイヴィッド・テナント：「僕のベッドポストには、本当にほとんど刻み目がない」｜The Guardian",
     titleEn: "David Tennant: 'My bedpost really has very few notches' – interview",
@@ -954,6 +973,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-it-just-feels-scary-guardian-2009",
   "david-tennant-bedpost-few-notches-guardian-2011",
   "michael-sheen-david-tennant-staged-british-comedy-guide-2020",
   "david-tennant-there-she-goes-british-comedy-guide-2018",

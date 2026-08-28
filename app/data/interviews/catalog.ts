@@ -217,6 +217,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-getting-the-band-back-together-radio-times-2023",
+    title: "デイヴィッド・テナント、『Doctor Who』で“バンドを再結成”することを語る｜Radio Times",
+    titleEn: "Doctor Who's David Tennant on \"getting the band back together\"",
+    year: "2023",
+    publishedDate: "2023-11-23",
+    source: "Radio Times",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.radiotimes.com/tv/sci-fi/doctor-who-david-tennant-60th-anniversary-interview/",
+    thumbnailUrl: "https://images.immediate.co.uk/production/volatile/sites/3/2023/11/404254-8a90fc2.jpg?quality=90&resize=980%2C654",
+    duration: "Article · Magazine interview",
+    description: "『Doctor Who』60周年スペシャルを前に、デイヴィッド・テナントがCatherine Tate、Russell T Daviesとの再集結、14代目ドクターとして戻る意味、過去の復帰、Ncuti Gatwaへの引き継ぎ、そしてDoctor Whoが人生を貫いてきたことを語る。",
+    tagGroups: {
+      actors: [],
+      genres: ["Doctor Who"],
+      sources: ["Radio Times"],
+    },
+  },
+  {
     slug: "david-tennant-kissing-michael-sheen-guardian-2024",
     title: "デイヴィッド・テナント：「マイケル・シーンとのキス？ 平気でした。歯も磨いてたし」｜The Guardian",
     titleEn: "David Tennant: ‘Kissing Michael Sheen was fine. He’d brushed his teeth’",
@@ -859,6 +878,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-getting-the-band-back-together-radio-times-2023",
   "david-tennant-privacy-parenting-playing-himself-guardian-2020",
   "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",
   "david-tennant-kissing-michael-sheen-guardian-2024",

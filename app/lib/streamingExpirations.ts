@@ -67,6 +67,10 @@ function formatJapanDate(timestamp?: number) {
     : undefined;
 }
 
+function expiryKey(item: StreamingExpiration) {
+  return [item.serviceId ?? "service", providerStateKey(item.providerName), item.expiresOn ?? "unknown"].join("::");
+}
+
 function normalizeTitle(title: string) {
   return title.normalize("NFKC").toLowerCase().replace(/[\s・:：!！?？'’"“”\-]/g, "");
 }
@@ -94,12 +98,17 @@ function decodeEmbeddedUrl(value: string) {
   return value.replace(/\\u002F/gi, "/").replace(/\\u0026/gi, "&");
 }
 
+/**
+ * 同じ実体の配信サービス名を画面上でも内部状態でも統一します。
+ * Prime Videoの広告あり／なし表記は同一カタログとして1件にまとめます。
+ * Amazon Channel系は別契約なので統合しません。
+ */
 function canonicalProviderName(name: string) {
-  if (/BS10|STAR CHANNEL/i.test(name)) return "BS10プレミアム for Prime Video";
-  if (/U-?NEXT/i.test(name)) return "U-NEXT";
-  if (/Amazon Prime Video with Ads/i.test(name)) return "Amazon Prime Video with Ads";
-  if (/Amazon Prime Video|^Prime Video$/i.test(name)) return "Prime Video";
-  return name;
+  const trimmed = name.trim();
+  if (/BS10|STAR CHANNEL/i.test(trimmed)) return "BS10プレミアム for Prime Video";
+  if (/U-?NEXT/i.test(trimmed)) return "U-NEXT";
+  if (/Amazon Prime Video with Ads|Amazon Prime Video|^Prime Video$/i.test(trimmed)) return "Amazon Prime Video";
+  return trimmed;
 }
 
 function providerStateKey(name: string) {
@@ -107,22 +116,30 @@ function providerStateKey(name: string) {
     .normalize("NFKC")
     .toLowerCase()
     .replace(/[\s・+_\-]/g, "");
-  if (canonical.includes("amazonprimevideowithads")) return "primevideo-ads";
-  if (canonical === "primevideo" || canonical.includes("amazonprimevideo")) return "primevideo";
+  if (canonical === "amazonprimevideo") return "primevideo";
   if (canonical.includes("unext")) return "unext";
   if (canonical.includes("bs10") || canonical.includes("starchannel")) return "bs10-prime-channel";
   return canonical;
 }
 
-/**
- * 同じサービス・同じ終了日の情報は、API / JustWatch / 保存済みデータの
- * 取得元が違っても1件として扱います。
- */
-function expiryKey(item: StreamingExpiration) {
-  return [
-    providerStateKey(item.providerName),
-    item.expiresOn ?? "unknown",
-  ].join("::");
+/** TMDBから同じPrime Videoが複数返ってきても、WORKSには1件だけ表示します。 */
+function normalizeWorkProviders(work: Work): Work {
+  if (!work.providers?.length) return work;
+
+  const seen = new Set<string>();
+  const providers = work.providers.flatMap((provider) => {
+    const providerName = canonicalProviderName(provider.provider_name);
+    const key = providerStateKey(providerName);
+    if (seen.has(key)) return [];
+    seen.add(key);
+    return [{ ...provider, provider_name: providerName }];
+  });
+
+  const changed = providers.length !== work.providers.length
+    || providers.some((provider, index) =>
+      provider.provider_name !== work.providers?.[index]?.provider_name);
+
+  return changed ? { ...work, providers } : work;
 }
 
 function storedStatesForWork(work: Work) {
@@ -130,10 +147,14 @@ function storedStatesForWork(work: Work) {
   const latest = new Map<string, StoredAvailability>();
   for (const item of storedAvailabilityItems) {
     if (normalizeTmdbId(item.tmdbId) !== workId) continue;
-    const key = providerStateKey(item.providerName);
+    const normalizedItem = {
+      ...item,
+      providerName: canonicalProviderName(item.providerName),
+    };
+    const key = providerStateKey(normalizedItem.providerName);
     const current = latest.get(key);
-    if (!current || (item.eventTimestamp ?? 0) >= (current.eventTimestamp ?? 0)) {
-      latest.set(key, item);
+    if (!current || (normalizedItem.eventTimestamp ?? 0) >= (current.eventTimestamp ?? 0)) {
+      latest.set(key, normalizedItem);
     }
   }
   return latest;
@@ -148,32 +169,6 @@ function applyStoredAvailability(work: Work) {
     return state?.active !== false;
   });
   return providers.length === work.providers.length ? work : { ...work, providers };
-}
-
-/**
- * GitHub Actionsが保存した「配信終了予定」を画面表示用データへ戻します。
- * これにより、ページ表示時のJustWatch/API取得が失敗しても、
- * 前回の自動更新で取得できた終了日を「もうすぐ配信終了」に表示できます。
- */
-function storedExpirationsForWork(work: Work): StreamingExpiration[] {
-  const providerKeys = new Set(
-    (work.providers ?? []).map((provider) => providerStateKey(provider.provider_name)),
-  );
-
-  return [...storedStatesForWork(work).values()]
-    .filter((item) => {
-      if (item.active === false || !isEndingSoon(item.expiresOn)) return false;
-      return !providerKeys.size || providerKeys.has(providerStateKey(item.providerName));
-    })
-    .map((item) => ({
-      providerName: canonicalProviderName(item.providerName),
-      expiresOn: item.expiresOn,
-      link: item.link,
-    }))
-    .sort((a, b) =>
-      (a.expiresOn ?? "9999-12-31").localeCompare(b.expiresOn ?? "9999-12-31")
-      || a.providerName.localeCompare(b.providerName, "ja")
-    );
 }
 
 /** JustWatchの埋め込みキャッシュから、公式リンク付きの定額配信終了予定だけを抽出します。 */
@@ -227,7 +222,6 @@ async function fetchJapanExpirations(apiKey: string) {
     url.searchParams.set("country", "jp");
     url.searchParams.set("change_type", "expiring");
     url.searchParams.set("item_type", "show");
-    // catalogsを限定しないことで、日本で利用可能な全サービスとPrime Videoチャンネルを対象にします。
     url.searchParams.set("include_unknown_dates", "true");
     url.searchParams.set("order_direction", "asc");
     if (cursor) url.searchParams.set("cursor", cursor);
@@ -282,24 +276,19 @@ export async function applyStreamingExpirations(works: Work[]): Promise<Work[]> 
   ]);
 
   return works.map((sourceWork) => {
-    if (sourceWork.media_type === "stage" || sourceWork.id <= 0) return sourceWork;
-    const work = applyStoredAvailability(sourceWork);
+    const normalizedSourceWork = normalizeWorkProviders(sourceWork);
+    if (normalizedSourceWork.media_type === "stage" || normalizedSourceWork.id <= 0) {
+      return normalizedSourceWork;
+    }
+
+    const work = applyStoredAvailability(normalizedSourceWork);
     const inactiveProviders = new Set(
       [...storedStatesForWork(work).entries()]
         .filter(([, state]) => state.active === false)
         .map(([key]) => key),
     );
-
-    // GitHub Actionsで保存した終了予定を最初に入れる。
-    // その後、ページ表示時にAPI/JustWatchからより新しい情報が取れれば同じ一覧へ統合する。
-    const items = [...storedExpirationsForWork(work)]
+    const items = [...(apiResult.get(String(work.id)) ?? [])]
       .filter((item) => !inactiveProviders.has(providerStateKey(item.providerName)));
-
-    for (const item of apiResult.get(String(work.id)) ?? []) {
-      if (inactiveProviders.has(providerStateKey(item.providerName))) continue;
-      if (!items.some((current) => expiryKey(current) === expiryKey(item))) items.push(item);
-    }
-
     const titles = [work.title, work.name, work.original_title, work.original_name]
       .filter((title): title is string => Boolean(title))
       .map(normalizeTitle);

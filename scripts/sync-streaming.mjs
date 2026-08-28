@@ -16,8 +16,6 @@ const DIRECT_SOURCES = [
     url: "https://www.justwatch.com/jp/映画/what-we-did-on-our-holiday",
   },
   {
-    // Staged (2020) のTMDB TV ID。
-    // 以前は "0" だったため、自動同期の対象から除外されていました。
     tmdbId: "104674",
     titles: ["Staged", "ステージド"],
     url: "https://www.justwatch.com/jp/テレビ番組/staged",
@@ -52,11 +50,11 @@ function normalizeTmdbId(value) {
 }
 
 function canonicalProviderName(name) {
-  if (/BS10|STAR CHANNEL/i.test(name)) return "BS10プレミアム for Prime Video";
-  if (/U-?NEXT/i.test(name)) return "U-NEXT";
-  if (/Amazon Prime Video with Ads/i.test(name)) return "Amazon Prime Video with Ads";
-  if (/Amazon Prime Video|^Prime Video$/i.test(name)) return "Prime Video";
-  return name.trim();
+  const trimmed = String(name ?? "").trim();
+  if (/BS10|STAR CHANNEL/i.test(trimmed)) return "BS10プレミアム for Prime Video";
+  if (/U-?NEXT/i.test(trimmed)) return "U-NEXT";
+  if (/Amazon Prime Video with Ads|Amazon Prime Video|^Prime Video$/i.test(trimmed)) return "Amazon Prime Video";
+  return trimmed;
 }
 
 function providerKey(name) {
@@ -64,8 +62,7 @@ function providerKey(name) {
     .normalize("NFKC")
     .toLowerCase()
     .replace(/[\s・+_\-]/g, "");
-  if (canonical.includes("amazonprimevideowithads")) return "primevideo-ads";
-  if (canonical === "primevideo" || canonical.includes("amazonprimevideo")) return "primevideo";
+  if (canonical === "amazonprimevideo") return "primevideo";
   if (canonical.includes("unext")) return "unext";
   if (canonical.includes("bs10") || canonical.includes("starchannel")) return "bs10-prime-channel";
   return canonical;
@@ -73,6 +70,14 @@ function providerKey(name) {
 
 function itemKey(item) {
   return `${normalizeTmdbId(item.tmdbId)}::${providerKey(item.providerName)}`;
+}
+
+function normalizeStoredItem(item) {
+  return {
+    ...item,
+    tmdbId: normalizeTmdbId(item.tmdbId),
+    providerName: canonicalProviderName(item.providerName),
+  };
 }
 
 function decodeEmbeddedUrl(value) {
@@ -191,10 +196,11 @@ async function fetchApiChanges(apiKey, changeType) {
 }
 
 function mergeItem(map, incoming) {
-  const key = itemKey(incoming);
+  const normalized = normalizeStoredItem(incoming);
+  const key = itemKey(normalized);
   const current = map.get(key);
-  if (!current || (incoming.eventTimestamp ?? 0) >= (current.eventTimestamp ?? 0)) {
-    map.set(key, { ...current, ...incoming });
+  if (!current || (normalized.eventTimestamp ?? 0) >= (current.eventTimestamp ?? 0)) {
+    map.set(key, { ...current, ...normalized });
   }
 }
 
@@ -213,7 +219,10 @@ function comparable(items) {
 
 async function main() {
   const previous = readPrevious();
-  const map = new Map(previous.items.map((item) => [itemKey(item), item]));
+  const map = new Map();
+
+  // 既存JSON内の Amazon Prime Video / Amazon Prime Video with Ads も起動時に Amazon Prime Video へ統合します。
+  for (const item of previous.items) mergeItem(map, item);
 
   const apiKey = process.env.STREAMING_AVAILABILITY_API_KEY?.trim();
   if (apiKey) {

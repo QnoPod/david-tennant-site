@@ -13,6 +13,7 @@
     "start": "next start",
     "sync:upcoming": "node --experimental-strip-types scripts/sync-upcoming.mjs",
     "sync:interviews": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/sync-interviews.mjs",
+    "sync:streaming": "node scripts/sync-streaming.mjs",
     "check:resources": "node scripts/check-resources.mjs",
     "build:sites": "bash scripts/build-verified.sh",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",

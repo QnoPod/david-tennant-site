@@ -1,0 +1,32 @@
+{
+  "updatedAt": "2026-08-28T00:45:00.000Z",
+  "items": [
+    {
+      "tmdbId": "276843",
+      "providerName": "Amazon Prime Video with Ads",
+      "active": false,
+      "changedOn": "2026-08-25",
+      "eventTimestamp": 1787669999,
+      "expiresOn": "2026-08-25",
+      "source": "justwatch"
+    },
+    {
+      "tmdbId": "276843",
+      "providerName": "Prime Video",
+      "active": false,
+      "changedOn": "2026-08-25",
+      "eventTimestamp": 1787669999,
+      "expiresOn": "2026-08-25",
+      "source": "justwatch"
+    },
+    {
+      "tmdbId": "276843",
+      "providerName": "U-NEXT",
+      "active": false,
+      "changedOn": "2026-08-25",
+      "eventTimestamp": 1787669999,
+      "expiresOn": "2026-08-25",
+      "source": "justwatch"
+    }
+  ]
+}

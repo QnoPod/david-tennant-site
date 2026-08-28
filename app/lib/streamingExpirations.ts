@@ -1,3 +1,4 @@
+import streamingAvailability from "../data/generated/streamingAvailability.json";
 import type { StreamingExpiration, Work } from "./types";
 
 const API_BASE = "https://api.movieofthenight.com/v4";
@@ -39,6 +40,18 @@ type ChangesResponse = {
   hasMore?: boolean;
   nextCursor?: string;
 };
+type StoredAvailability = {
+  tmdbId: string;
+  providerName: string;
+  active: boolean;
+  changedOn?: string;
+  eventTimestamp?: number;
+  expiresOn?: string;
+  link?: string;
+  source?: string;
+};
+
+const storedAvailabilityItems = (streamingAvailability.items ?? []) as StoredAvailability[];
 
 function formatJapanDate(timestamp?: number) {
   if (!timestamp) return undefined;
@@ -62,6 +75,11 @@ function normalizeTitle(title: string) {
   return title.normalize("NFKC").toLowerCase().replace(/[\s・:：!！?？'’"“”\-]/g, "");
 }
 
+function normalizeTmdbId(value?: string | number) {
+  const normalized = String(value ?? "").trim();
+  return normalized.includes("/") ? normalized.split("/").pop() ?? normalized : normalized;
+}
+
 function isEndingSoon(expiresOn?: string) {
   if (!expiresOn) return true;
   const formatter = new Intl.DateTimeFormat("en-CA", {
@@ -83,8 +101,46 @@ function decodeEmbeddedUrl(value: string) {
 function canonicalProviderName(name: string) {
   if (/BS10|STAR CHANNEL/i.test(name)) return "BS10プレミアム for Prime Video";
   if (/U-?NEXT/i.test(name)) return "U-NEXT";
-  if (/Amazon Prime Video/i.test(name)) return "Prime Video";
+  if (/Amazon Prime Video with Ads/i.test(name)) return "Amazon Prime Video with Ads";
+  if (/Amazon Prime Video|^Prime Video$/i.test(name)) return "Prime Video";
   return name;
+}
+
+function providerStateKey(name: string) {
+  const canonical = canonicalProviderName(name)
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\s・+_\-]/g, "");
+  if (canonical.includes("amazonprimevideowithads")) return "primevideo-ads";
+  if (canonical === "primevideo" || canonical.includes("amazonprimevideo")) return "primevideo";
+  if (canonical.includes("unext")) return "unext";
+  if (canonical.includes("bs10") || canonical.includes("starchannel")) return "bs10-prime-channel";
+  return canonical;
+}
+
+function storedStatesForWork(work: Work) {
+  const workId = String(work.id);
+  const latest = new Map<string, StoredAvailability>();
+  for (const item of storedAvailabilityItems) {
+    if (normalizeTmdbId(item.tmdbId) !== workId) continue;
+    const key = providerStateKey(item.providerName);
+    const current = latest.get(key);
+    if (!current || (item.eventTimestamp ?? 0) >= (current.eventTimestamp ?? 0)) {
+      latest.set(key, item);
+    }
+  }
+  return latest;
+}
+
+function applyStoredAvailability(work: Work) {
+  const states = storedStatesForWork(work);
+  if (!states.size || !work.providers?.length) return work;
+
+  const providers = work.providers.filter((provider) => {
+    const state = states.get(providerStateKey(provider.provider_name));
+    return state?.active !== false;
+  });
+  return providers.length === work.providers.length ? work : { ...work, providers };
 }
 
 /** JustWatchの埋め込みキャッシュから、公式リンク付きの定額配信終了予定だけを抽出します。 */
@@ -156,7 +212,7 @@ async function fetchJapanExpirations(apiKey: string) {
       if (change.itemType && change.itemType !== "show") continue;
       if (change.streamingOptionType && !["subscription", "addon"].includes(change.streamingOptionType)) continue;
       const show = change.showId ? data.shows?.[change.showId] : undefined;
-      const tmdbId = show?.tmdbId;
+      const tmdbId = normalizeTmdbId(show?.tmdbId);
       const providerName = canonicalProviderName(
         (change.addon?.name || change.service?.name || "").trim(),
       );
@@ -192,16 +248,23 @@ export async function applyStreamingExpirations(works: Work[]): Promise<Work[]> 
     fetchDirectExpirations(),
   ]);
 
-  return works.map((work) => {
-    if (work.media_type === "stage" || work.id <= 0) return work;
-    // v4のtmdbIdは数値文字列です（旧実装の "movie/123" 形式では一致しません）。
-    const items = [...(apiResult.get(String(work.id)) ?? [])];
+  return works.map((sourceWork) => {
+    if (sourceWork.media_type === "stage" || sourceWork.id <= 0) return sourceWork;
+    const work = applyStoredAvailability(sourceWork);
+    const inactiveProviders = new Set(
+      [...storedStatesForWork(work).entries()]
+        .filter(([, state]) => state.active === false)
+        .map(([key]) => key),
+    );
+    const items = [...(apiResult.get(String(work.id)) ?? [])]
+      .filter((item) => !inactiveProviders.has(providerStateKey(item.providerName)));
     const titles = [work.title, work.name, work.original_title, work.original_name]
       .filter((title): title is string => Boolean(title))
       .map(normalizeTitle);
     for (const [sourceTitles, directItems] of directResult) {
       if (!sourceTitles.some((title) => titles.includes(normalizeTitle(title)))) continue;
       for (const item of directItems) {
+        if (inactiveProviders.has(providerStateKey(item.providerName))) continue;
         if (!items.some((current) => expiryKey(current) === expiryKey(item))) items.push(item);
       }
     }

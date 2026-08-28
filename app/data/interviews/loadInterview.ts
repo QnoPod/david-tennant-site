@@ -32,6 +32,8 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennantNafessaRivalsDeadlyTwistTranscript")).davidTennantNafessaRivalsDeadlyTwistTranscript,
   "david-tennant-dangerous-tony-after-monica-death-tv-insider": async () =>
     (await import("./transcripts/davidTennantDangerousTonyAfterMonicaDeathTranscript")).davidTennantDangerousTonyAfterMonicaDeathTranscript,
+  "cush-jumbo-david-tennant-macbeth-guardian-2023": async () =>
+    (await import("./transcripts/cushJumboDavidTennantMacbethGuardianTranscript")).cushJumboDavidTennantMacbethGuardianTranscript,
   "michael-sheen-david-tennant-one-final-time-lorraine": async () =>
     (await import("./transcripts/michaelSheenLorraineTranscript")).michaelSheenLorraineTranscript,
   "michael-sheen-his-dark-materials-this-morning": async () =>

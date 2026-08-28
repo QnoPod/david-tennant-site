@@ -198,6 +198,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "cush-jumbo-david-tennant-macbeth-guardian-2023",
+    title: "「学校で読んだけど――大嫌いだった」クシュ・ジャンボ＆デイヴィッド・テナント、『マクベス』を演じることを語る｜The Guardian",
+    titleEn: "‘I studied the play in school – I hated it’: Cush Jumbo and David Tennant on playing the Macbeths",
+    year: "2023",
+    publishedDate: "2023-12-03",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/stage/2023/dec/03/macbeth-cush-jumbo-david-tennant-donmar-warehouse-interview",
+    thumbnailUrl: "https://i.guim.co.uk/img/media/9ac03151f30d11c24a5dfad5ac67cd304ba2eeac/0_0_4775_2865/master/4775.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article",
+    description: "ドンマー・ウェアハウス版『マクベス』の開幕を前に、デイヴィッド・テナントとクシュ・ジャンボが、マクベス夫妻の関係、PTSD、喪失、野心、舞台への不安、子育てと俳優業について語る。",
+    tagGroups: {
+      actors: ["Cush Jumbo"],
+      genres: ["Macbeth", "Deadwater Fell", "Hamlet", "Richard II"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "bella-maclean-found-her-fire-in-rivals",
     title: "ベラ・マクリーン、『ライバルズ』を通して自身の情熱を見出す",
     titleEn: "Bella Maclean Found Her Fire in 'Rivals'",
@@ -669,6 +688,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "cush-jumbo-david-tennant-macbeth-guardian-2023",
   "david-tennant-nafessa-rivals-deadly-twist-tv-insider",
   "david-tennant-dangerous-tony-after-monica-death-tv-insider",
   "david-tennant-evil-character-jessica-jones",

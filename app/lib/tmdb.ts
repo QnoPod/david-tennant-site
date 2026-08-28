@@ -125,6 +125,27 @@ export async function getWorks(): Promise<Work[]> {
   }
 }
 
+function canonicalProviderName(name: string) {
+  const trimmed = name.trim();
+  if (/BS10|STAR CHANNEL/i.test(trimmed)) return "BS10プレミアム for Prime Video";
+  if (/U-?NEXT/i.test(trimmed)) return "U-NEXT";
+  if (/Amazon Prime Video with Ads|Amazon Prime Video|^Prime Video$/i.test(trimmed)) return "Amazon Prime Video";
+  if (/^Disney(?:\s*Plus|\+)$/i.test(trimmed)) return "Disney Plus";
+  if (/^Apple TV(?:\s*Plus|\+)$/i.test(trimmed)) return "Apple TV Plus";
+  return trimmed;
+}
+
+function providerKey(name: string) {
+  const normalized = canonicalProviderName(name)
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\s・+_\-]/g, "");
+  if (normalized === "amazonprimevideo") return "amazonprimevideo";
+  if (normalized.includes("unext")) return "unext";
+  if (normalized.includes("bs10") || normalized.includes("starchannel")) return "bs10-prime-channel";
+  return normalized;
+}
+
 /** 旧サイトで手動追加していた日本向け配信サービスを維持します。 */
 function addManualProviders(title: string, providers: Work["providers"] = []) {
   const result = [...providers];
@@ -134,7 +155,14 @@ function addManualProviders(title: string, providers: Work["providers"] = []) {
   if (title === "Good Omens - Season 3: An Ineffable Goodbye") {
     result.push({ provider_id: 119, provider_name: "Amazon Prime Video", logo_path: "/pvske1MyAoymrs5bguRfVqYiM9a.jpg" });
   }
-  return result.filter((provider, index, list) => list.findIndex((item) => item.provider_id === provider.provider_id) === index);
+  const seen = new Set<string>();
+  return result.flatMap((provider) => {
+    const provider_name = canonicalProviderName(provider.provider_name);
+    const key = providerKey(provider_name);
+    if (seen.has(key)) return [];
+    seen.add(key);
+    return [{ ...provider, provider_name }];
+  });
 }
 
 /**
@@ -167,7 +195,9 @@ export async function getEnrichedWorks(): Promise<Work[]> {
           videos?: { results?: Array<{ site?: string; type?: string; key?: string }> };
           "watch/providers"?: { results?: { JP?: { flatrate?: Work["providers"] } } };
         };
-        const providers = detail["watch/providers"]?.results?.JP?.flatrate ?? [];
+        const rawProviders = detail["watch/providers"]?.results?.JP?.flatrate ?? [];
+        const providers = addManualProviders(getWorkTitle(work), rawProviders);
+
         return applyGenreOverrides({
           ...work,
           genres: detail.genres ?? [],
@@ -176,7 +206,7 @@ export async function getEnrichedWorks(): Promise<Work[]> {
           numberOfEpisodes: detail.number_of_episodes ?? null,
           episodeRunTime: detail.episode_run_time?.[0] ?? null,
           videoKey: detail.videos?.results?.find((video) => video.site === "YouTube" && video.type === "Trailer")?.key ?? null,
-          providers: addManualProviders(getWorkTitle(work), providers),
+          providers,
         } satisfies Work);
       } catch {
         return work;
@@ -214,36 +244,29 @@ export function getProviderLogo(path?: string | null) {
 }
 
 /**
- * 配信サービスの作品ページ、またはサービス内検索へ移動するURLを返します。
- * 配信終了情報に公式作品URLがある場合は、そのURLを最優先します。
+ * サブスクアイコンから各サービスの「その作品のページ」へ移動するURLを返します。
+ * 既に終了予定データに公式作品URLがある場合は直接使用し、
+ * それ以外はクリック時だけ /api/provider-link で直リンクを解決します。
  */
 export function getProviderWatchUrl(work: Work, providerName: string) {
-  const normalize = (value: string) => value.normalize("NFKC").toLowerCase().replace(/[\s・+\-]/g, "");
-  const provider = normalize(providerName);
-  const exactLink = work.streamingExpirations?.find((item) => {
-    const expiryProvider = normalize(item.providerName);
-    return item.link && (
-      expiryProvider === provider
-      || (provider.includes("amazonprimevideo") && expiryProvider.includes("primevideo"))
-      || ((provider.includes("bs10") || provider.includes("starchannel"))
-        && (expiryProvider.includes("bs10") || expiryProvider.includes("starchannel")))
-    );
-  })?.link;
-  if (exactLink) return exactLink;
+  const key = providerKey(providerName);
+  const knownLink = work.streamingExpirations?.find((item) =>
+    item.link && providerKey(item.providerName) === key)?.link;
+  if (knownLink) return knownLink;
 
-  const title = getWorkTitle(work);
-  const query = encodeURIComponent(title);
-  if (provider.includes("bs10") || provider.includes("starchannel")) return "https://www.primevideo.com/channel/17dda79c-e38b-4960-9174-4f525fe520f5?tr=jp";
-  if (provider.includes("cinefilwowow") || provider.includes("シネフィルwowow")) return "https://www.primevideo.com/channel/be50c0e0-ac2f-430e-ab13-c1e62653a1c4?tr=jp";
-  if (provider.includes("magellantv")) return `https://www.magellantv.com/search?q=${query}`;
-  if (provider.includes("netflix")) return `https://www.netflix.com/search?q=${query}`;
-  if (provider.includes("amazonprimevideo") || provider === "primevideo") return `https://www.amazon.co.jp/gp/video/search?phrase=${query}`;
-  if (provider.includes("disney")) return `https://www.disneyplus.com/ja-jp/browse/search?q=${query}`;
-  if (provider.includes("unext")) return `https://video.unext.jp/freeword?query=${query}`;
-  if (provider.includes("hulu")) return `https://www.hulu.jp/search?q=${query}`;
-  if (provider.includes("appletv")) return `https://tv.apple.com/jp/search?term=${query}`;
-  if (provider.includes("abema")) return `https://abema.tv/search?q=${query}`;
-  if (provider.includes("fod")) return `https://fod.fujitv.co.jp/search/?keyword=${query}`;
-  if (provider.includes("wowow")) return `https://wod.wowow.co.jp/search?searchText=${query}`;
-  return `https://www.justwatch.com/jp/検索?q=${query}`;
+  const params = new URLSearchParams({
+    mediaType: work.media_type,
+    id: String(work.id),
+    provider: providerName,
+    title: getWorkTitle(work),
+  });
+  const originalTitle = work.original_title || work.original_name;
+  if (originalTitle && originalTitle !== getWorkTitle(work)) {
+    params.set("originalTitle", originalTitle);
+  }
+  const releaseYear = getWorkDate(work).slice(0, 4);
+  if (/^\d{4}$/.test(releaseYear)) {
+    params.set("year", releaseYear);
+  }
+  return `/api/provider-link?${params.toString()}`;
 }

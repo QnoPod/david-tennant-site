@@ -331,6 +331,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-there-she-goes-british-comedy-guide-2018",
+    title: "『There She Goes』デイヴィッド・テナント インタビュー｜British Comedy Guide",
+    titleEn: "There She Goes: David Tennant interview",
+    year: "2018",
+    publishedDate: "2018-10-13",
+    source: "British Comedy Guide",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.comedy.co.uk/tv/there_she_goes/interviews/david_tennant/",
+    thumbnailUrl: "https://cdn.comedy.co.uk/images/library/people/900x450/t/there_she_goes_david_tennant.jpg",
+    duration: "Article · Q&A",
+    description: "『There She Goes』シーズン1のデイヴィッド・テナントQ&A。Shaun Pyeの実体験に基づく脚本の率直さ、Jessica Hynesとの関係、Miley Lockeの演技、サイモンの欠点、政治的正しさ、コメディとドラマのトーン、障害のある家族を描く意義について語る。",
+    tagGroups: {
+      actors: ["Jessica Hynes", "Miley Locke"],
+      genres: ["There She Goes"],
+      sources: ["British Comedy Guide"],
+    },
+  },
+  {
     slug: "david-tennant-deadwater-fell-channel4-2019",
     title: "『Deadwater Fell』デイヴィッド・テナント インタビュー：トム・ケンドリック役を語る｜Channel 4",
     titleEn: "Deadwater Fell: Interview with David Tennant who plays Dr. Tom Kendrick",
@@ -897,6 +916,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-there-she-goes-british-comedy-guide-2018",
   "david-tennant-deadwater-fell-channel4-2019",
   "david-tennant-getting-the-band-back-together-radio-times-2023",
   "david-tennant-privacy-parenting-playing-himself-guardian-2020",

@@ -293,6 +293,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",
+    title: "デイヴィッド・テナント：ドクターから刑事、そして“虚無主義的なセックス・アスリート”へ｜Time Out London",
+    titleEn: "David Tennant: from Doctor to detective to ‘nihilistic sexual athlete’",
+    year: "2017",
+    publishedDate: "2017-04-03",
+    source: "Time Out London",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.timeout.com/london/theatre/david-tennant-from-doctor-to-detective-to-nihilistic-sexual-athlete",
+    thumbnailUrl: "https://media.timeout.com/images/103807800/750/562/image.jpg",
+    duration: "Article · 5 topics",
+    description: "『Don Juan in Soho』上演期のデイヴィッド・テナントが、ドン・ジュアンの罪悪感なき人物像、黒人／女性ドクターの可能性、『Broadchurch』の徹底した秘密主義とシーズン2への評価、そして新たに声を担当するScrooge McDuckについて語る。",
+    tagGroups: {
+      actors: [],
+      genres: ["Don Juan in Soho", "Doctor Who", "Broadchurch", "DuckTales"],
+      sources: ["Time Out London"],
+    },
+  },
+  {
     slug: "david-tennant-shakespeare-new-york-stage-debut-time-out-2016",
     title: "デイヴィッド・テナント、シェイクスピアとニューヨーク舞台デビューを語る｜Time Out",
     titleEn: "David Tennant on Shakespeare and his New York stage debut",
@@ -821,6 +840,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-doctor-detective-nihilistic-sexual-athlete-time-out-2017",
   "david-tennant-kissing-michael-sheen-guardian-2024",
   "david-tennant-litvinenko-itv-press-pack-2022",
   "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025",

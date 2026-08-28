@@ -217,6 +217,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-shakespeare-new-york-stage-debut-time-out-2016",
+    title: "デイヴィッド・テナント、シェイクスピアとニューヨーク舞台デビューを語る｜Time Out",
+    titleEn: "David Tennant on Shakespeare and his New York stage debut",
+    year: "2016",
+    publishedDate: "2016-03-16",
+    source: "Time Out",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.timeout.com/newyork/theater/david-tennant-on-shakespeare-broadchurch-and-his-new-york-stage-debut",
+    thumbnailUrl: "https://cdn2.rsc.org.uk/sitefinity/images/whatson-images/plays/pre-2015/richardii-header-oct15.tmb-img-820.jpg?sfvrsn=c3155921_3",
+    duration: "Article",
+    description: "『Richard II』でニューヨーク舞台デビューを迎えるデイヴィッド・テナントが、リチャード二世の魅力、シェイクスピアの言葉、政治劇としての現代性、観客との関係、そして『Broadchurch』シーズン3について語る。",
+    tagGroups: {
+      actors: [],
+      genres: ["Richard II", "Broadchurch"],
+      sources: ["Time Out"],
+    },
+  },
+  {
     slug: "david-tennant-king-of-cliffhanger-guardian-2014",
     title: "デイヴィッド・テナント：“クリフハンガーの王”｜The Guardian",
     titleEn: "David Tennant: king of the cliffhanger",
@@ -726,6 +745,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-shakespeare-new-york-stage-debut-time-out-2016",
   "david-tennant-hamlet-shakespeare-interview-2009",
   "david-tennant-king-of-cliffhanger-guardian-2014",
   "cush-jumbo-david-tennant-macbeth-guardian-2023",

@@ -217,6 +217,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025",
+    title: "デイヴィッド・テナント、セックスシーン、Doctor Who、ケミ・ベイドノックとの論争を語る｜The Guardian",
+    titleEn: "David Tennant on sex scenes, Doctor Who and his run-in with Kemi Badenoch: ‘The trans debate has become unnecessarily cruel’",
+    year: "2025",
+    publishedDate: "2025-05-10",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/tv-and-radio/2025/may/10/david-tennant-tv-baftas-interview",
+    thumbnailUrl: "https://i.guim.co.uk/img/media/92c604cf4d96a7d9cb974e15dc189d8f40dd1a70/0_0_4893_7336/master/4893.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · BAFTA TV special",
+    description: "BAFTA TV特集でデイヴィッド・テナントが、『Rivals』のトニー・バディンガム、親密シーンの撮影、BAFTAでの政治的ジョーク、ケミ・ベイドノックをめぐる騒動、『The Hack』、Doctor Who復帰説、トランスをめぐる議論について語る。",
+    tagGroups: {
+      actors: ["Michael Sheen", "Ncuti Gatwa", "Jodie Whittaker"],
+      genres: ["Rivals", "Doctor Who", "Des", "Good Omens", "The Hack"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-20-questions-whatsonstage-2003",
     title: "20の質問：デイヴィッド・テナント｜WhatsOnStage",
     titleEn: "20 Questions With… David Tennant",
@@ -250,7 +269,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     description: "『Richard II』でニューヨーク舞台デビューを迎えるデイヴィッド・テナントが、リチャード二世の魅力、シェイクスピアの言葉、政治劇としての現代性、観客との関係、そして『Broadchurch』シーズン3について語る。",
     tagGroups: {
       actors: [],
-      genres: ["Richard II", "Broadchurch"],
+    　genres: ["Richard II", "Broadchurch"],
       sources: ["Time Out"],
     },
   },
@@ -764,6 +783,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-sex-scenes-doctor-who-kemi-badenoch-guardian-2025",
   "david-tennant-20-questions-whatsonstage-2003",
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016",
   "david-tennant-hamlet-shakespeare-interview-2009",

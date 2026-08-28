@@ -198,6 +198,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-hamlet-shakespeare-interview-2009",
+    title: "インタビュー：デイヴィッド・テナント、『ハムレット』を語る｜Shakespeare",
+    titleEn: "Interview: David Tennant on Hamlet",
+    year: "2009",
+    publishedDate: "2009-09-16",
+    source: "Shakespeare",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.tandfonline.com/doi/full/10.1080/17450910903138062",
+    thumbnailUrl: "https://cdn2.rsc.org.uk/sitefinity/images/productions/productions-2009-and-before/hamlet/hamlet-2008/hamlet-_2008_ellie-kurttz-_c_-rsc_hamlet-hamlet271.tmb-img-912.jpg?sfvrsn=6c205621_1",
+    duration: "Article · pp. 292–304",
+    description: "RSCの2008年版『Hamlet』について、デイヴィッド・テナントが出演決定の経緯、稽古、台詞の覚え方、第一四折本を用いた構成、狂気、オフィーリアやガートルードとの関係、現代設定と監視社会まで詳細に語る。",
+    tagGroups: {
+      actors: ["Patrick Stewart", "Mark Rylance", "Mariah Gale", "Penny Downie", "Oliver Ford Davies"],
+      genres: ["Hamlet", "Doctor Who"],
+      sources: ["Shakespeare"],
+    },
+  },
+  {
     slug: "david-tennant-king-of-cliffhanger-guardian-2014",
     title: "デイヴィッド・テナント：“クリフハンガーの王”｜The Guardian",
     titleEn: "David Tennant: king of the cliffhanger",
@@ -707,6 +726,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-hamlet-shakespeare-interview-2009",
   "david-tennant-king-of-cliffhanger-guardian-2014",
   "cush-jumbo-david-tennant-macbeth-guardian-2023",
   "david-tennant-nafessa-rivals-deadly-twist-tv-insider",

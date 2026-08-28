@@ -56,6 +56,20 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennantTimeOutLondonDonJuan2017Transcript")).davidTennantTimeOutLondonDonJuan2017Transcript,
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016": async () =>
     (await import("./transcripts/davidTennantTimeOutRichardIITranscript")).davidTennantTimeOutRichardIITranscript,
+  "david-tennant-the-hack-phone-hacking-guardian-2025": async () =>
+    (await import("./transcripts/davidTennantTheHackGuardian2025Transcript")).davidTennantTheHackGuardian2025Transcript,
+  "david-tennant-des-failure-of-society-big-issue-2020": async () =>
+    (await import("./transcripts/davidTennantDesFailureSocietyBigIssue2020Transcript")).davidTennantDesFailureSocietyBigIssue2020Transcript,
+  "david-tennant-dennis-nilsen-fell-through-cracks-guardian-2020": async () =>
+    (await import("./transcripts/davidTennantDennisNilsenGuardian2020Transcript")).davidTennantDennisNilsenGuardian2020Transcript,
+  "david-tennant-always-be-the-doctor-guardian-2019": async () =>
+    (await import("./transcripts/davidTennantAlwaysDoctorGuardian2019Transcript")).davidTennantAlwaysDoctorGuardian2019Transcript,
+  "david-tennant-organised-religion-moral-compass-guardian-2018": async () =>
+    (await import("./transcripts/davidTennantOrganisedReligionGuardian2018Transcript")).davidTennantOrganisedReligionGuardian2018Transcript,
+  "david-tennant-acting-daft-idea-big-issue-2018": async () =>
+    (await import("./transcripts/davidTennantActingDaftIdeaBigIssue2018Transcript")).davidTennantActingDaftIdeaBigIssue2018Transcript,
+  "will-self-david-tennant-evening-standard-2012": async () =>
+    (await import("./transcripts/willSelfDavidTennantEveningStandard2012Transcript")).willSelfDavidTennantEveningStandard2012Transcript,
   "david-tennant-love-and-anger-guardian-2005": async () =>
     (await import("./transcripts/davidTennantLoveAndAngerGuardian2005Transcript")).davidTennantLoveAndAngerGuardian2005Transcript,
   "david-tennant-tennants-extra-guardian-2005": async () =>

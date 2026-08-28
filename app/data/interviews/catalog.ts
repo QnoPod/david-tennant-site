@@ -212,8 +212,27 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     description: "RSCの2008年版『Hamlet』について、デイヴィッド・テナントが出演決定の経緯、稽古、台詞の覚え方、第一四折本を用いた構成、狂気、オフィーリアやガートルードとの関係、現代設定と監視社会まで詳細に語る。",
     tagGroups: {
       actors: ["Patrick Stewart", "Mark Rylance", "Mariah Gale", "Penny Downie", "Oliver Ford Davies"],
-      genres: ["Hamlet", "Doctor Who"],
+      genres: ["Hamlet", "Love's Labour's Lost", "Doctor Who"],
       sources: ["Shakespeare"],
+    },
+  },
+  {
+    slug: "david-tennant-20-questions-whatsonstage-2003",
+    title: "20の質問：デイヴィッド・テナント｜WhatsOnStage",
+    titleEn: "20 Questions With… David Tennant",
+    year: "2003",
+    publishedDate: "2003-11-17",
+    source: "WhatsOnStage",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.whatsonstage.com/news/20-questions-with-david-tennant_25729/",
+    thumbnailUrl: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/12/15/1418657981667/David-Tennant-012.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · 20 Questions",
+    description: "『The Pillowman』初演期のデイヴィッド・テナントが、俳優としての原点、RSC、好きな劇作家、将来演じたいRichard IIやHamlet、Doctor Whoへの熱烈な愛、芸術家の責任まで幅広く答える2003年のロングQ&A。",
+    tagGroups: {
+      actors: [],
+      genres: ["Doctor Who"],
+      sources: ["WhatsOnStage"],
     },
   },
   {
@@ -745,6 +764,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-20-questions-whatsonstage-2003",
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016",
   "david-tennant-hamlet-shakespeare-interview-2009",
   "david-tennant-king-of-cliffhanger-guardian-2014",

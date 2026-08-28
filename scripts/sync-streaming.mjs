@@ -16,7 +16,9 @@ const DIRECT_SOURCES = [
     url: "https://www.justwatch.com/jp/映画/what-we-did-on-our-holiday",
   },
   {
-    tmdbId: "0",
+    // Staged (2020) のTMDB TV ID。
+    // 以前は "0" だったため、自動同期の対象から除外されていました。
+    tmdbId: "104674",
     titles: ["Staged", "ステージド"],
     url: "https://www.justwatch.com/jp/テレビ番組/staged",
   },
@@ -114,7 +116,6 @@ async function fetchWithTimeout(url, init = {}) {
 async function fetchDirectItems() {
   const results = [];
   for (const source of DIRECT_SOURCES) {
-    if (source.tmdbId === "0") continue;
     try {
       const response = await fetchWithTimeout(source.url, {
         headers: {

@@ -2,6 +2,16 @@
   "updatedAt": "2026-08-28T00:45:00.000Z",
   "items": [
     {
+      "tmdbId": "104674",
+      "providerName": "BS10プレミアム for Prime Video",
+      "active": true,
+      "changedOn": "2026-08-31",
+      "eventTimestamp": 1788188399,
+      "expiresOn": "2026-08-31",
+      "link": "https://www.bs10.jp/premium/drama/staged/1/",
+      "source": "official-provider"
+    },
+    {
       "tmdbId": "276843",
       "providerName": "Amazon Prime Video with Ads",
       "active": false,

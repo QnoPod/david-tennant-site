@@ -67,10 +67,6 @@ function formatJapanDate(timestamp?: number) {
     : undefined;
 }
 
-function expiryKey(item: StreamingExpiration) {
-  return [item.serviceId ?? "service", item.providerName, item.expiresOn ?? "unknown"].join("::");
-}
-
 function normalizeTitle(title: string) {
   return title.normalize("NFKC").toLowerCase().replace(/[\s・:：!！?？'’"“”\-]/g, "");
 }
@@ -118,6 +114,17 @@ function providerStateKey(name: string) {
   return canonical;
 }
 
+/**
+ * 同じサービス・同じ終了日の情報は、API / JustWatch / 保存済みデータの
+ * 取得元が違っても1件として扱います。
+ */
+function expiryKey(item: StreamingExpiration) {
+  return [
+    providerStateKey(item.providerName),
+    item.expiresOn ?? "unknown",
+  ].join("::");
+}
+
 function storedStatesForWork(work: Work) {
   const workId = String(work.id);
   const latest = new Map<string, StoredAvailability>();
@@ -141,6 +148,32 @@ function applyStoredAvailability(work: Work) {
     return state?.active !== false;
   });
   return providers.length === work.providers.length ? work : { ...work, providers };
+}
+
+/**
+ * GitHub Actionsが保存した「配信終了予定」を画面表示用データへ戻します。
+ * これにより、ページ表示時のJustWatch/API取得が失敗しても、
+ * 前回の自動更新で取得できた終了日を「もうすぐ配信終了」に表示できます。
+ */
+function storedExpirationsForWork(work: Work): StreamingExpiration[] {
+  const providerKeys = new Set(
+    (work.providers ?? []).map((provider) => providerStateKey(provider.provider_name)),
+  );
+
+  return [...storedStatesForWork(work).values()]
+    .filter((item) => {
+      if (item.active === false || !isEndingSoon(item.expiresOn)) return false;
+      return !providerKeys.size || providerKeys.has(providerStateKey(item.providerName));
+    })
+    .map((item) => ({
+      providerName: canonicalProviderName(item.providerName),
+      expiresOn: item.expiresOn,
+      link: item.link,
+    }))
+    .sort((a, b) =>
+      (a.expiresOn ?? "9999-12-31").localeCompare(b.expiresOn ?? "9999-12-31")
+      || a.providerName.localeCompare(b.providerName, "ja")
+    );
 }
 
 /** JustWatchの埋め込みキャッシュから、公式リンク付きの定額配信終了予定だけを抽出します。 */
@@ -256,8 +289,17 @@ export async function applyStreamingExpirations(works: Work[]): Promise<Work[]> 
         .filter(([, state]) => state.active === false)
         .map(([key]) => key),
     );
-    const items = [...(apiResult.get(String(work.id)) ?? [])]
+
+    // GitHub Actionsで保存した終了予定を最初に入れる。
+    // その後、ページ表示時にAPI/JustWatchからより新しい情報が取れれば同じ一覧へ統合する。
+    const items = [...storedExpirationsForWork(work)]
       .filter((item) => !inactiveProviders.has(providerStateKey(item.providerName)));
+
+    for (const item of apiResult.get(String(work.id)) ?? []) {
+      if (inactiveProviders.has(providerStateKey(item.providerName))) continue;
+      if (!items.some((current) => expiryKey(current) === expiryKey(item))) items.push(item);
+    }
+
     const titles = [work.title, work.name, work.original_title, work.original_name]
       .filter((title): title is string => Boolean(title))
       .map(normalizeTitle);

@@ -160,6 +160,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-nafessa-rivals-deadly-twist-tv-insider",
+    title: "『ライバルズ』衝撃の死をデイヴィッド・テナント＆ナフェッサ・ウィリアムズが語る｜TV Insider",
+    titleEn: "Inside ‘Rivals’ Deadly Twist With David Tennant & Nafessa Williams",
+    year: "2026",
+    publishedDate: "2026-06-05",
+    source: "TV Insider",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.tvinsider.com/1267884/rivals-season-2-monica-death-david-tennant-nafessa-williams-interview/",
+    thumbnailUrl: "https://www.tvinsider.com/wp-content/uploads/2026/06/david-tennant-nafessa-williams-rivals-cover-portrait-377x570.jpg",
+    duration: "Article",
+    description: "『Rivals』シーズン2第6話の衝撃的な展開を、デイヴィッド・テナントとナフェッサ・ウィリアムズがトニーとキャメロンの心理、原作からの変更、今後の行方とともに語る。",
+    tagGroups: {
+      actors: ["Nafessa Williams"],
+      genres: ["Rivals"],
+      sources: ["TV Insider"],
+    },
+  },
+  {
     slug: "david-tennant-dangerous-tony-after-monica-death-tv-insider",
     title: "デイヴィッド・テナント、モニカの死後“さらに危険”になるトニーを語る｜TV Insider",
     titleEn: "David Tennant Teases a ‘Dangerous’ Tony After Monica’s Death",
@@ -177,7 +196,8 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
       genres: ["Rivals"],
       sources: ["TV Insider"],
     },
-  },  {
+  },
+  {
     slug: "bella-maclean-found-her-fire-in-rivals",
     title: "ベラ・マクリーン、『ライバルズ』を通して自身の情熱を見出す",
     titleEn: "Bella Maclean Found Her Fire in 'Rivals'",
@@ -649,6 +669,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-nafessa-rivals-deadly-twist-tv-insider",
   "david-tennant-dangerous-tony-after-monica-death-tv-insider",
   "david-tennant-evil-character-jessica-jones",
   "michael-sheen-national-treasure-david-tennant",

@@ -660,6 +660,9 @@ const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
   "david-tennant-rsc-winter-2013",
   "david-tennant-spills-broadchurch-beans",
   "david-tennant-olivia-colman-broadchurch-fan-art",
+  "david-tennant-broadchurch-secrets-this-morning",
+  "rivals-tennant-hassell-tv-insider",
+  "jon-hamm-david-tennant-wired-autocomplete",
 ]);
 
 

@@ -47,8 +47,8 @@ export const jonHammDavidWiredTranscript = [
   {
     speakerEn: "Jon Hamm",
     speakerJa: "ジョン・ハム",
-    en: "\"What Jon Hamm...\" \"What is Jon Hamm drama teacher?\"",
-    ja: "「ジョン・ハム 何...」「ジョン・ハムの演劇教師とは？」",
+    en: "\"What Jon Hamm...\" ",
+    ja: "「ジョン・ハム 何...」",
     timestamp: "00:19",
   },
   {

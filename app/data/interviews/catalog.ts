@@ -60,7 +60,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     description: "初めて夢中になった映画、最初の演技やオーディション、キャサリン・テイトとの秘密の撮影など、“映画と演技の初めて”を振り返る。",
     tagGroups: {
       actors: ["Catherine Tate", "Michael Sheen"],
-      genres: ["Doctor Who", "Casanova", "Bright Young Things", "Star Wars"],
+      genres: ["Doctor Who", "Casanova", "Bright Young Things"],
       sources: ["BAFTA"],
     },
   },
@@ -212,7 +212,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     description: "RSCの2008年版『Hamlet』について、デイヴィッド・テナントが出演決定の経緯、稽古、台詞の覚え方、第一四折本を用いた構成、狂気、オフィーリアやガートルードとの関係、現代設定と監視社会まで詳細に語る。",
     tagGroups: {
       actors: ["Patrick Stewart", "Mark Rylance", "Mariah Gale", "Penny Downie", "Oliver Ford Davies"],
-      genres: ["Hamlet", "Love's Labour's Lost", "Doctor Who"],
+      genres: ["Hamlet", "Doctor Who"],
       sources: ["Shakespeare"],
     },
   },
@@ -611,7 +611,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     description: "『Richard II』上演中のデイヴィッド・テナントがGuardian読者の質問にライブ回答。役作り、芸名、舞台前の儀式、批評との距離、Ben Whishaw、将来演じたいシェイクスピア役、演出への興味まで幅広く答える。",
     tagGroups: {
       actors: ["Ben Whishaw", "Gregory Doran"],
-      genres: ["Richard II", "Doctor Who", "Hamlet", "Love's Labour's Lost"],
+      genres: ["Richard II", "Doctor Who", "Hamlet"],
       sources: ["The Guardian"],
     },
   },
@@ -629,7 +629,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Don Juan in Soho』開幕後、デイヴィッド・テナントがドン・ジュアンのままカーテンコールに出る楽しさ、Patrick Marberの言葉、Adrian Scarboroughとの共演、時事ネタを随時取り込む舞台について語る。",
     tagGroups: {
-      actors: ["Adrian Scarborough", "Gawn Grainger", "Patrick Marber"],
+      actors: [],
       genres: ["Don Juan in Soho"],
       sources: ["London Evening Standard"],
     },
@@ -763,7 +763,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     description: "デイヴィッド・テナントが、不安を隠すこと、宗教家庭から受け継いだ道徳観、楽観主義、スコットランド西部の宗派性、12歳の転落事故、妻との仕事、家族にどう記憶されたいかを語る。",
     tagGroups: {
       actors: ["Georgia Tennant"],
-      genres: ["You, Me & Him"],
+      genres: ["You, Me and Him"],
       sources: ["The Guardian"],
     },
   },

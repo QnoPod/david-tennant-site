@@ -331,6 +331,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "michael-sheen-david-tennant-staged-british-comedy-guide-2020",
+    title: "マイケル・シーン＆デイヴィッド・テナント、『Staged』を語る｜British Comedy Guide",
+    titleEn: "Michael Sheen & David Tennant interview",
+    year: "2020",
+    publishedDate: "2020-06-09",
+    source: "British Comedy Guide",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.comedy.co.uk/tv/staged/interviews/michael-sheen-david-tennant/",
+    thumbnailUrl: "https://cdn.comedy.co.uk/images/library/comedies/900x450/s/staged_iconic_b.jpg",
+    duration: "Article · Series 1 Q&A",
+    description: "ロックダウン中に制作された『Staged』シーズン1について、マイケル・シーンとデイヴィッド・テナントが、自分自身の“少し嫌な版”を演じること、即興、Good Omens後の再共演、自宅撮影の技術、家族との撮影、伸びっぱなしの髪、ビデオ通話について語る。",
+    tagGroups: {
+      actors: ["Michael Sheen", "Georgia Tennant", "Anna Lundberg", "Simon Evans"],
+      genres: ["Staged", "Good Omens"],
+      sources: ["British Comedy Guide"],
+    },
+  },
+  {
     slug: "david-tennant-there-she-goes-british-comedy-guide-2018",
     title: "『There She Goes』デイヴィッド・テナント インタビュー｜British Comedy Guide",
     titleEn: "There She Goes: David Tennant interview",
@@ -916,6 +935,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "michael-sheen-david-tennant-staged-british-comedy-guide-2020",
   "david-tennant-there-she-goes-british-comedy-guide-2018",
   "david-tennant-deadwater-fell-channel4-2019",
   "david-tennant-getting-the-band-back-together-radio-times-2023",

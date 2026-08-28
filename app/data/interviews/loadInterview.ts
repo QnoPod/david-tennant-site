@@ -34,6 +34,8 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennantDangerousTonyAfterMonicaDeathTranscript")).davidTennantDangerousTonyAfterMonicaDeathTranscript,
   "david-tennant-hamlet-shakespeare-interview-2009": async () =>
     (await import("./transcripts/davidTennantHamletShakespeareInterviewTranscript")).davidTennantHamletShakespeareInterviewTranscript,
+  "david-tennant-shakespeare-new-york-stage-debut-time-out-2016": async () =>
+    (await import("./transcripts/davidTennantTimeOutRichardIITranscript")).davidTennantTimeOutRichardIITranscript,
   "david-tennant-king-of-cliffhanger-guardian-2014": async () =>
     (await import("./transcripts/davidTennantKingOfCliffhangerGuardianTranscript")).davidTennantKingOfCliffhangerGuardianTranscript,
   "cush-jumbo-david-tennant-macbeth-guardian-2023": async () =>

@@ -160,6 +160,24 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-dangerous-tony-after-monica-death-tv-insider",
+    title: "デイヴィッド・テナント、モニカの死後“さらに危険”になるトニーを語る｜TV Insider",
+    titleEn: "David Tennant Teases a ‘Dangerous’ Tony After Monica’s Death",
+    year: "2026",
+    publishedDate: "2026-06-22",
+    source: "TV Insider",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.tvinsider.com/1271262/rivals-return-tony-grief-monica-dead-season-2-part-2-david-tennant/",
+    thumbnailUrl: "https://www.tvinsider.com/wp-content/uploads/2026/06/rivals-206-tony-1420x798.jpg",
+    duration: "Article",
+    description: "『Rivals』シーズン2後半を前に、デイヴィッド・テナントがモニカを失ったトニーの危うさを語り、製作総指揮ドミニク・トレッドウェル＝コリンズが今後の展開を示唆する。",
+    tagGroups: {
+      actors: [],
+      genres: ["Rivals"],
+      sources: ["TV Insider"],
+    },
+  },  {
     slug: "bella-maclean-found-her-fire-in-rivals",
     title: "ベラ・マクリーン、『ライバルズ』を通して自身の情熱を見出す",
     titleEn: "Bella Maclean Found Her Fire in 'Rivals'",
@@ -631,6 +649,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-dangerous-tony-after-monica-death-tv-insider",
   "david-tennant-evil-character-jessica-jones",
   "michael-sheen-national-treasure-david-tennant",
   "david-tennant-injured-himself-rivals-scene",

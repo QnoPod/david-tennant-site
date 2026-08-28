@@ -426,6 +426,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-bedpost-few-notches-guardian-2011",
+    title: "デイヴィッド・テナント：「僕のベッドポストには、本当にほとんど刻み目がない」｜The Guardian",
+    titleEn: "David Tennant: 'My bedpost really has very few notches' – interview",
+    year: "2011",
+    publishedDate: "2011-08-19",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/culture/2011/aug/19/david-tennant-interview",
+    thumbnailUrl: "https://i.guim.co.uk/img/static/sys-images/Guardian/About/General/2011/8/16/1313494479736/David-Tennant--008.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · Long interview",
+    description: "『Much Ado About Nothing』と『Fright Night』の時期に、デイヴィッド・テナントが俳優を志した原点、Doctor Who、名声と“セックスシンボル”扱いへの戸惑い、長老派的な罪悪感、仕事への姿勢、政治観、Georgia MoffettとPeter Davisonについて語るロングインタビュー。",
+    tagGroups: {
+      actors: ["Catherine Tate", "Georgia Moffett", "Peter Davison", "Arabella Weir"],
+      genres: ["Much Ado About Nothing", "Doctor Who", "Fright Night", "Casanova", "Blackpool", "Einstein and Eddington", "Hamlet"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-king-of-cliffhanger-guardian-2014",
     title: "デイヴィッド・テナント：“クリフハンガーの王”｜The Guardian",
     titleEn: "David Tennant: king of the cliffhanger",
@@ -935,6 +954,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-bedpost-few-notches-guardian-2011",
   "michael-sheen-david-tennant-staged-british-comedy-guide-2020",
   "david-tennant-there-she-goes-british-comedy-guide-2018",
   "david-tennant-deadwater-fell-channel4-2019",

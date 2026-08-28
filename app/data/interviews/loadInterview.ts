@@ -56,6 +56,8 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennantTimeOutLondonDonJuan2017Transcript")).davidTennantTimeOutLondonDonJuan2017Transcript,
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016": async () =>
     (await import("./transcripts/davidTennantTimeOutRichardIITranscript")).davidTennantTimeOutRichardIITranscript,
+  "david-tennant-love-and-anger-guardian-2005": async () =>
+    (await import("./transcripts/davidTennantLoveAndAngerGuardian2005Transcript")).davidTennantLoveAndAngerGuardian2005Transcript,
   "david-tennant-tennants-extra-guardian-2005": async () =>
     (await import("./transcripts/davidTennantTennantsExtraGuardian2005Transcript")).davidTennantTennantsExtraGuardian2005Transcript,
   "david-tennant-it-just-feels-scary-guardian-2009": async () =>

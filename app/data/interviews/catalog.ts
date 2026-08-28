@@ -426,6 +426,25 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     },
   },
   {
+    slug: "david-tennant-love-and-anger-guardian-2005",
+    title: "デイヴィッド・テナント：「Love and anger」｜The Guardian",
+    titleEn: "Love and anger",
+    year: "2005",
+    publishedDate: "2005-01-01",
+    source: "The Guardian",
+    mediaType: "article",
+    videoId: null,
+    externalUrl: "https://www.theguardian.com/stage/2005/jan/01/theatre1",
+    thumbnailUrl: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/12/15/1418657981667/David-Tennant-012.jpg?crop=none&dpr=1&s=none&width=465",
+    duration: "Article · Profile interview",
+    description: "『Blackpool』『Casanova』で注目を集め、『Look Back in Anger』のジミー・ポーター役を控えた33歳のデイヴィッド・テナントをElisabeth Mahoneyが取材。Doctor Whoへの原点、俳優としての幅、Casanova像、舞台復帰、家族、Harry Potter、そして意外なCelebrity Stars in Their Eyes願望までを追う。",
+    tagGroups: {
+      actors: ["Russell T Davies", "Peter Bowker"],
+      genres: ["Blackpool", "Casanova", "Look Back in Anger", "Bright Young Things", "Romeo and Juliet", "He Knew He Was Right", "Lobby Hero", "Harry Potter and the Goblet of Fire", "Doctor Who"],
+      sources: ["The Guardian"],
+    },
+  },
+  {
     slug: "david-tennant-tennants-extra-guardian-2005",
     title: "デイヴィッド・テナント：「Tennant’s extra」｜The Guardian",
     titleEn: "Tennant’s extra",
@@ -992,6 +1011,7 @@ const PUBLIC_INTERVIEW_LIMIT = 6;
  * These reviewed interviews are additionally published regardless of date.
  */
 const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
+  "david-tennant-love-and-anger-guardian-2005",
   "david-tennant-tennants-extra-guardian-2005",
   "david-tennant-it-just-feels-scary-guardian-2009",
   "david-tennant-bedpost-few-notches-guardian-2011",

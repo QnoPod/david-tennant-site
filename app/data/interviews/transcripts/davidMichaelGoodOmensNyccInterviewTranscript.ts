@@ -4,14 +4,14 @@ export const davidMichaelGoodOmensNyccInterviewTranscript = [
     "speakerEn": "David Tennant",
     "speakerJa": "デイヴィッド・テナント",
     "en": "I mean, I feel like you knew each other even before Bright Young Things. Does that sound right? Did you get to know each other reasonably well?",
-    "ja": "『ブライト・ヤング・シングス』の前からお互いを知っていたような気がするんですが。そんな感じでしょうか？ 結構親しくなっていたんですか？",
+    "ja": "『ブライト・ヤング・シングス』の前からお互いを知っていたような気がするんだけど。そんな感じ？ 結構親しくなってたのかな？",
     "timestamp": "00:00"
   },
   {
     "speakerEn": "Michael Sheen",
     "speakerJa": "マイケル・シーン",
-    "en": "Yeah, we, we were both in a film together called Bright Young Things...",
-    "ja": "ええ、私たちは『ブライト・ヤング・シングス』という映画で共演したんです...",
+    "en": "Yeah, we, we were both in a film together called Bright Young Things.",
+    "ja": "あぁ、私たちは『ブライト・ヤング・シングス』という映画で共演した。",
     "timestamp": "00:05"
   },
   {

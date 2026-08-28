@@ -663,6 +663,18 @@ const ADDITIONAL_PUBLISHED_INTERVIEW_SLUGS: ReadonlySet<string> = new Set([
   "david-tennant-broadchurch-secrets-this-morning",
   "rivals-tennant-hassell-tv-insider",
   "jon-hamm-david-tennant-wired-autocomplete",
+  "michael-sheen-david-tennant-one-final-time-lorraine",
+  "michael-sheen-his-dark-materials-this-morning",
+  "david-ty-tennant-best-moments",
+  "david-tennant-film-firsts-bafta",
+  "david-tennant-doctor-who-devilish-demon",
+  "david-michael-good-omens-season-two-prime-video",
+  "michael-sheen-david-tennant-one-show-2020",
+  "david-michael-good-omens-premiere",
+  "david-michael-save-world-this-morning",
+  "jon-hamm-david-tennant-michael-sheen-dueling-hamlets",
+  "david-michael-good-omens-interview-nycc",
+  "good-omens-nycc-2018",
 ]);
 
 

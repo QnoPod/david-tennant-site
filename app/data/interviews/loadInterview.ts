@@ -56,6 +56,32 @@ const transcriptLoaders: Record<string, TranscriptLoader> = {
     (await import("./transcripts/davidTennantTimeOutLondonDonJuan2017Transcript")).davidTennantTimeOutLondonDonJuan2017Transcript,
   "david-tennant-shakespeare-new-york-stage-debut-time-out-2016": async () =>
     (await import("./transcripts/davidTennantTimeOutRichardIITranscript")).davidTennantTimeOutRichardIITranscript,
+  "david-tennant-don-juan-children-whatsonstage-2017": async () =>
+    (await import("./transcripts/davidTennantDonJuanChildrenWhatsOnStage2017Transcript")).davidTennantDonJuanChildrenWhatsOnStage2017Transcript,
+  "david-tennant-deadwater-interrogation-tv-insider-2020": async () =>
+    (await import("./transcripts/davidTennantDeadwaterInterrogationTVInsider2020Transcript")).davidTennantDeadwaterInterrogationTVInsider2020Transcript,
+  "david-tennant-good-omens-bit-of-doctor-tv-insider-2018": async () =>
+    (await import("./transcripts/davidTennantGoodOmensDoctorTVInsider2018Transcript")).davidTennantGoodOmensDoctorTVInsider2018Transcript,
+  "david-tennant-promiscuous-genres-bbc-america-2019": async () =>
+    (await import("./transcripts/davidTennantPromiscuousGenresBBCAmerica2019Transcript")).davidTennantPromiscuousGenresBBCAmerica2019Transcript,
+  "david-tennant-music-doctor-guardian-2006": async () =>
+    (await import("./transcripts/davidTennantMusicGuardian2006Transcript")).davidTennantMusicGuardian2006Transcript,
+  "david-tennant-gracepoint-thewrap-2014": async () =>
+    (await import("./transcripts/davidTennantGracepointTheWrap2014Transcript")).davidTennantGracepointTheWrap2014Transcript,
+  "david-tennant-don-juan-qa-official-london-theatre-2017": async () =>
+    (await import("./transcripts/davidTennantDonJuanOfficialLondonTheatre2017Transcript")).davidTennantDonJuanOfficialLondonTheatre2017Transcript,
+  "there-she-goes-series-2-bcg-2020": async () =>
+    (await import("./transcripts/thereSheGoesSeries2BCG2020Transcript")).thereSheGoesSeries2BCG2020Transcript,
+  "there-she-goes-special-bcg-2023": async () =>
+    (await import("./transcripts/thereSheGoesSpecialBCG2023Transcript")).thereSheGoesSpecialBCG2023Transcript,
+  "david-tennant-guardian-livechat-2013": async () =>
+    (await import("./transcripts/davidTennantGuardianLivechat2013Transcript")).davidTennantGuardianLivechat2013Transcript,
+  "david-tennant-don-juan-curtain-call-standard-2017": async () =>
+    (await import("./transcripts/davidTennantDonJuanCurtainCallStandard2017Transcript")).davidTennantDonJuanCurtainCallStandard2017Transcript,
+  "david-tennant-broadchurch-bard-time-out-2013": async () =>
+    (await import("./transcripts/davidTennantBroadchurchBardTimeOut2013Transcript")).davidTennantBroadchurchBardTimeOut2013Transcript,
+  "david-tennant-getting-personal-guardian-1999": async () =>
+    (await import("./transcripts/davidTennantGettingPersonalGuardian1999Transcript")).davidTennantGettingPersonalGuardian1999Transcript,
   "david-tennant-the-hack-phone-hacking-guardian-2025": async () =>
     (await import("./transcripts/davidTennantTheHackGuardian2025Transcript")).davidTennantTheHackGuardian2025Transcript,
   "david-tennant-des-failure-of-society-big-issue-2020": async () =>

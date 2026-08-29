@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-28T00:45:00.000Z",
+  "updatedAt": "2026-08-29T07:10:39.724Z",
   "items": [
     {
       "tmdbId": "104674",
@@ -13,16 +13,7 @@
     },
     {
       "tmdbId": "276843",
-      "providerName": "Amazon Prime Video with Ads",
-      "active": false,
-      "changedOn": "2026-08-25",
-      "eventTimestamp": 1787669999,
-      "expiresOn": "2026-08-25",
-      "source": "justwatch"
-    },
-    {
-      "tmdbId": "276843",
-      "providerName": "Prime Video",
+      "providerName": "Amazon Prime Video",
       "active": false,
       "changedOn": "2026-08-25",
       "eventTimestamp": 1787669999,

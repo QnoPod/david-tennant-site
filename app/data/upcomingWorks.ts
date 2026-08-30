@@ -150,6 +150,29 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-17"
   },
   {
+    "key": "rss-66yhwr",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "『ドクター・フー』第10代ドクターの冒険 ビッグ・フィニッシュ・エピソード『リターン』",
+    "originalTitle": "Doctor Who the Tenth Doctor Adventures Big Finish Episode Return",
+    "overview": "デヴィッド・テナントは、来年放送される『ドクター・フー』の新エピソードで第10代ドクター役を再演することになっており、その第1話のスケールがどれほど壮大になるかについてほのめかした。",
+    "publishedDate": "2026-08-29",
+    "status": "unknown",
+    "source": "ScreenRant TV News",
+    "sourceUrl": "https://screenrant.com/doctor-who-the-tenth-doctor-adventures-big-finish-episode-return-david-tennant/",
+    "confirmed": false,
+    "lastCheckedAt": "2026-08-30",
+    "sources": [
+      {
+        "name": "ScreenRant TV News",
+        "url": "https://screenrant.com/doctor-who-the-tenth-doctor-adventures-big-finish-episode-return-david-tennant/",
+        "publishedDate": "2026-08-29"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-08-30"
+  },
+  {
     "key": "scraped-article-lfr2xk",
     "kind": "announcement",
     "mediaType": "other",

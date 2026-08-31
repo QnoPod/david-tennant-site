@@ -161,7 +161,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "ScreenRant TV News",
     "sourceUrl": "https://screenrant.com/doctor-who-the-tenth-doctor-adventures-big-finish-episode-return-david-tennant/",
     "confirmed": false,
-    "lastCheckedAt": "2026-08-30",
     "sources": [
       {
         "name": "ScreenRant TV News",
@@ -170,7 +169,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-08-30"
+    "updatedAt": "2026-08-30",
+    "lastCheckedAt": "2026-08-30"
   },
   {
     "key": "scraped-article-lfr2xk",

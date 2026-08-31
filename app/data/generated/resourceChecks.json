@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-08-24T06:23:30.005Z",
+  "updatedAt": "2026-08-31T11:50:26.367Z",
   "mode": "full",
   "summary": {
-    "total": 581,
-    "ok": 510,
+    "total": 646,
+    "ok": 571,
     "broken": 4,
-    "warning": 67,
+    "warning": 71,
     "unchecked": 0
   },
   "items": [
@@ -2001,13 +2001,13 @@
         },
         {
           "file": "app/works/WorksExplorer.tsx",
-          "line": 944
+          "line": 1015
         }
       ],
       "status": "ok",
       "httpStatus": null,
       "message": "画像ファイルを確認しました。",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "cb221e70bfac",
@@ -2618,6 +2618,29 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "1e564bc38c97",
+      "kind": "link",
+      "target": "https://assets-corporate.channel4.com/_flysystem/s3/styles/16_9_ratio_large/s3/2019-12/DEADWATERFELL%20Ep%202%2003072019%200175%202%20%20copy.jpg?h=b8c0c725&itok=A0LWoop_",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 381
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 457
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 495
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "32b9681b2061",
       "kind": "link",
       "target": "https://bbc",
@@ -2933,6 +2956,78 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "5a3676cb4b84",
+      "kind": "link",
+      "target": "https://cdn.comedy.co.uk/images/library/comedies/900x450/s/staged_iconic_b.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 343
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "34396b96c8a3",
+      "kind": "link",
+      "target": "https://cdn.comedy.co.uk/images/library/people/900x450/t/there_she_goes_david_tennant.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 362
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 571
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 590
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "b9d115e84e9a",
+      "kind": "link",
+      "target": "https://cdn2.rsc.org.uk/sitefinity/images/productions/productions-2009-and-before/hamlet/hamlet-2008/hamlet-_2008_ellie-kurttz-_c_-rsc_hamlet-hamlet271.tmb-img-912.jpg?sfvrsn=6c205621_1",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 210
+        }
+      ],
+      "status": "warning",
+      "httpStatus": null,
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "a0f0f455ed14",
+      "kind": "link",
+      "target": "https://cdn2.rsc.org.uk/sitefinity/images/whatson-images/plays/pre-2015/richardii-header-oct15.tmb-img-820.jpg?sfvrsn=c3155921_3",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 419
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 609
+        }
+      ],
+      "status": "warning",
+      "httpStatus": null,
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "f452ad876079",
       "kind": "link",
       "target": "https://comiconomicon.com/event/16977/GalaxyCon_Richmond",
@@ -3137,17 +3232,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 204
+          "line": 227
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 209
+          "line": 232
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "40778695e0c8",
@@ -3254,6 +3349,203 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "088b8d9e9e09",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/84b05d70ac55329ad4f25c5d14556b7a5623bace/0_610_4904_2942/master/4904.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 742
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "2d399fb72d93",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/8d4244a71a54773a6ee3879117f3949099afcd3f/452_529_5548_3329/master/5548.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 723
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "f7fbcdd1cdc4",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/92c604cf4d96a7d9cb974e15dc189d8f40dd1a70/0_0_4893_7336/master/4893.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 286
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "05d90fc635c0",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/9ac03151f30d11c24a5dfad5ac67cd304ba2eeac/0_0_4775_2865/master/4775.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 913
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "15de35d94478",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/a57f422dbe9a3072f3497ba6074fdc868907e133/0_63_4641_2785/master/4641.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 248
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "471b1dde408e",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/b2ea533a7759c9d3de05d8cfc4aecf81d1375d54/48_0_3685_2212/master/3685.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 761
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "a324576ddf6e",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/cffdbcf0a40452e253b9a0faf854af3b0fade5ab/758_241_3705_2964/master/3705.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 685
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "a1d0106270d1",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/media/fdb03ce68523ff9f2c1306589e311470cfda015d/0_246_4032_2419/master/4032.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 324
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "36389ba31356",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/static/sys-images/Guardian/About/General/2011/8/16/1313494479736/David-Tennant--008.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 875
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "c3fe27999f06",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/12/15/1418657981667/David-Tennant-012.jpg?crop=none&dpr=1&s=none&width=465",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 305
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 514
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 533
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 647
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 666
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 799
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 818
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 837
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 894
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "e1074a6ca820",
+      "kind": "link",
+      "target": "https://i.guim.co.uk/img/static/sys-images/Observer/Pix/pictures/2009/12/15/1260896183589/David-Tennant-December-20-005.jpg?crop=none&dpr=1&s=none&width=445",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 856
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "f3e678bbb9e0",
@@ -3367,13 +3659,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 343
+          "line": 1103
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "b6e83d437394",
@@ -3382,13 +3674,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 248
+          "line": 1008
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "28ad14a751dc",
@@ -3457,13 +3749,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 362
+          "line": 1122
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "0bb31c50ff95",
@@ -3472,13 +3764,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 458
+          "line": 1218
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "d4fb3374a920",
@@ -3607,13 +3899,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 439
+          "line": 1199
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "51793a623243",
@@ -3712,13 +4004,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 210
+          "line": 970
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "35b8756737d9",
@@ -3772,13 +4064,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 286
+          "line": 1046
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "1df143ef19db",
@@ -3847,13 +4139,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 532
+          "line": 1292
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "740c94976935",
@@ -3862,13 +4154,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 229
+          "line": 989
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "a235fa6ea90e",
@@ -3937,13 +4229,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 514
+          "line": 1274
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "fe282ab4d05b",
@@ -3997,13 +4289,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 568
+          "line": 1328
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "d5add2950f34",
@@ -4012,13 +4304,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 420
+          "line": 1180
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "624d289b9822",
@@ -4027,13 +4319,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 381
+          "line": 1141
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "031e05eeef86",
@@ -4042,13 +4334,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 191
+          "line": 951
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "64d3a0955614",
@@ -4372,13 +4664,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 400
+          "line": 1160
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "91cea88fa273",
@@ -4537,13 +4829,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 267
+          "line": 1027
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "a1bca18ec8eb",
@@ -4687,13 +4979,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 550
+          "line": 1310
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "b3e2f725590d",
@@ -4777,13 +5069,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 496
+          "line": 1256
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "20182e0d5f82",
@@ -4807,13 +5099,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 324
+          "line": 1084
         }
       ],
       "status": "broken",
       "httpStatus": 404,
       "message": "リンク先が見つからないか、削除されています。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "c612ec16dbe0",
@@ -4837,13 +5129,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 477
+          "line": 1237
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "661804b6e2d1",
@@ -4867,13 +5159,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 587
+          "line": 1347
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "aa79873e6519",
@@ -5002,13 +5294,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 606
+          "line": 1366
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "545edae11ebd",
@@ -5018,12 +5310,16 @@
         {
           "file": "app/data/interviews/catalog.ts",
           "line": 134
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 476
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "da8bee89259a",
@@ -5047,13 +5343,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 305
+          "line": 1065
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "08623e166f64",
@@ -5371,6 +5667,21 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "f0895432e127",
+      "kind": "link",
+      "target": "https://images.immediate.co.uk/production/volatile/sites/3/2023/11/404254-8a90fc2.jpg?quality=90&resize=980%2C654",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 229
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "f49c24c05f92",
       "kind": "link",
       "target": "https://lexingtoncomiccon.com",
@@ -5407,6 +5718,33 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "f5755870b5d0",
+      "kind": "link",
+      "target": "https://media.timeout.com/images/103807800/750/562/image.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 400
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 438
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 552
+        },
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 628
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "50bd86b8f159",
@@ -5488,6 +5826,21 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "a1cf8b6d580d",
+      "kind": "link",
+      "target": "https://officiallondontheatre.com/news/qa-david-tennant-388201/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 551
+        }
+      ],
+      "status": "warning",
+      "httpStatus": 503,
+      "message": "https://officiallondontheatre.com/news/qa-david-tennant-388201/ はHTTP 503を返しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "3394c0e71861",
       "kind": "link",
       "target": "https://press.britbox.com/",
@@ -5509,13 +5862,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 255
+          "line": 278
         }
       ],
       "status": "warning",
       "httpStatus": 403,
       "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "f6bd6739a18f",
@@ -5531,6 +5884,25 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "30246c43bd9c",
+      "kind": "link",
+      "target": "https://screenrant.com/doctor-who-the-tenth-doctor-adventures-big-finish-episode-return-david-tennant/",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 162
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 167
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "4cba24be62c3",
@@ -5646,6 +6018,21 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "aa6cac5afbc8",
+      "kind": "link",
+      "target": "https://watch.amazon.co.jp/detail?gti=amzn1.dv.gti.dfe73ea7-75d8-49f0-96c7-3637a82861d2",
+      "references": [
+        {
+          "file": "app/data/generated/streamingAvailability.json",
+          "line": 11
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "aecc550aec23",
       "kind": "link",
       "target": "https://www",
@@ -5698,17 +6085,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 161
+          "line": 184
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 166
+          "line": 189
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "6b0d91c6215d",
@@ -5724,6 +6111,81 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "cbd09d05ea51",
+      "kind": "link",
+      "target": "https://www.bbcamerica.com/blogs/david-tennant-on-choosing-roles-ive-always-been-quite-promiscuous-with-genres--1013146",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 494
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "2a0144dc4412",
+      "kind": "link",
+      "target": "https://www.bigissue.com/culture/tv/david-tennant-i-told-acting-daft-idea-wont-make-living/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 779
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "fed41517c056",
+      "kind": "link",
+      "target": "https://www.bigissue.com/culture/tv/david-tennant-on-des-this-is-about-a-failure-of-society/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 703
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "685477b5012b",
+      "kind": "link",
+      "target": "https://www.bigissue.com/wp-content/uploads/2018/02/DavidTennant_hero2.jpg?w=1920",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 780
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "5e0eff8da32d",
+      "kind": "link",
+      "target": "https://www.bigissue.com/wp-content/uploads/2020/09/tennant_HERO.jpg?w=1920",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 704
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "6c2dc0adb944",
@@ -5743,6 +6205,81 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-08-17T06:05:05.937Z"
+    },
+    {
+      "id": "8e97e692143d",
+      "kind": "link",
+      "target": "https://www.channel4.com/press/news/deadwater-fell-interview-david-tennant-who-plays-dr-tom-kendrick",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 380
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "4baae3afce6a",
+      "kind": "link",
+      "target": "https://www.comedy.co.uk/tv/staged/interviews/michael-sheen-david-tennant/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 342
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "53cc7f5702f8",
+      "kind": "link",
+      "target": "https://www.comedy.co.uk/tv/there_she_goes/interviews/david_tennant/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 361
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "91f6bcfd38b3",
+      "kind": "link",
+      "target": "https://www.comedy.co.uk/tv/there_she_goes/interviews/series-2-writers-jessica-hynes-davd-tennant/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 570
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "b9b801626623",
+      "kind": "link",
+      "target": "https://www.comedy.co.uk/tv/there_she_goes/interviews/special-2023/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 589
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "278ed522b93d",
@@ -5800,13 +6337,13 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 172
+          "line": 932
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "763e1e4a1b9b",
@@ -6380,19 +6917,49 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "7edfb8290ec8",
+      "kind": "link",
+      "target": "https://www.itv.com/presscentre/presscentre/sites/default/files/styles/half_width/public/screenshot_2022-12-01_at_10.10.14_0.png?itok=P2NG7yNt",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 267
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "fc1b60be602e",
+      "kind": "link",
+      "target": "https://www.itv.com/presscentre/sites/default/files/itvx_litvinenko_press_pack_december_2022.pdf",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 266
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "4e9a19a8ce02",
       "kind": "link",
       "target": "https://www.lofficielusa.com/film-tv/bella-maclean-movies-and-tv-shows-rivals-season-2-release-cast",
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 171
+          "line": 931
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "9fb933f46d17",
@@ -6401,17 +6968,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 225
+          "line": 248
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 230
+          "line": 253
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "9439224d072b",
@@ -6442,6 +7009,21 @@
       "httpStatus": 200,
       "message": "正常に応答しました。",
       "checkedAt": "2026-07-27T08:58:45.066Z"
+    },
+    {
+      "id": "ae62802a5cf1",
+      "kind": "link",
+      "target": "https://www.radiotimes.com/tv/sci-fi/doctor-who-david-tennant-60th-anniversary-interview/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 228
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "00bae21bd61e",
@@ -7068,6 +7650,36 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "8e313410cc42",
+      "kind": "link",
+      "target": "https://www.standard.co.uk/culture/theatre/david-tennant-i-stay-in-character-as-don-juan-for-my-curtain-call-a3501791.html",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 627
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "e99b4374e5e4",
+      "kind": "link",
+      "target": "https://www.standard.co.uk/lifestyle/getting-to-know-you-will-self-and-david-tennant-7621420.html",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 798
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "5088d90ee3fc",
       "kind": "link",
       "target": "https://www.syfy.com/syfy-wire/eccc-2023-david-tennant-guest-panel-announcement",
@@ -7087,23 +7699,278 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "93dd90c2ce40",
+      "kind": "link",
+      "target": "https://www.tandfonline.com/doi/full/10.1080/17450910903138062",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 209
+        }
+      ],
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "3a8b8c100977",
       "kind": "link",
       "target": "https://www.thefutoncritic.com/news/2026/03/17/britbox-announces-additional-casting-start-of-production-for-season-three-of-jimmy-mcgoverns-award-winning-drama-series-time-822310/20260317britbox01/",
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 247
+          "line": 270
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 251
+          "line": 274
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "4772e174d12e",
+      "kind": "link",
+      "target": "https://www.theguardian.com/culture/2011/aug/19/david-tennant-interview",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 874
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "4ad01b2ee926",
+      "kind": "link",
+      "target": "https://www.theguardian.com/culture/2019/feb/10/david-tennant-terry-pratchett-podcast-doctor-who-pc-backlash-interview",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 741
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "77c5d35f11d7",
+      "kind": "link",
+      "target": "https://www.theguardian.com/culture/2020/jul/08/were-not-squeamish-david-tennant-on-privacy-parenting-and-playing-himself",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 323
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "56964f3785cd",
+      "kind": "link",
+      "target": "https://www.theguardian.com/culture/2020/sep/10/david-tennant-dennis-nielsen-itv-des-serial-killer",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 722
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "a75d5f681a14",
+      "kind": "link",
+      "target": "https://www.theguardian.com/culture/2024/feb/15/david-tennant-kissing-michael-sheen-doctor-who-baftas",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 247
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "cc1eb5e8bb01",
+      "kind": "link",
+      "target": "https://www.theguardian.com/lifeandstyle/2018/apr/07/david-tennant-organised-religion-gave-me-a-good-moral-compass",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 760
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "d854b0739918",
+      "kind": "link",
+      "target": "https://www.theguardian.com/media/1999/sep/21/tvandradio.television3",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 665
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "d16ec09ffe96",
+      "kind": "link",
+      "target": "https://www.theguardian.com/media/2005/dec/11/bbc.broadcasting",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 836
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "c61f38601b70",
+      "kind": "link",
+      "target": "https://www.theguardian.com/music/2006/jun/18/34",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 513
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "d5344e948e67",
+      "kind": "link",
+      "target": "https://www.theguardian.com/stage/2005/jan/01/theatre1",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 817
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "7df98239b426",
+      "kind": "link",
+      "target": "https://www.theguardian.com/stage/2013/nov/05/ask-david-tennant-anything-livechat",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 608
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "fdf405be0831",
+      "kind": "link",
+      "target": "https://www.theguardian.com/stage/2023/dec/03/macbeth-cush-jumbo-david-tennant-donmar-warehouse-interview",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 912
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "6bbb62b629b4",
+      "kind": "link",
+      "target": "https://www.theguardian.com/tv-and-radio/2009/dec/20/david-tennant-best-doctor-who",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 855
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "c4e8f7a4aef9",
+      "kind": "link",
+      "target": "https://www.theguardian.com/tv-and-radio/2014/dec/21/david-tennant-broadchurch-cliffhanger-interview",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 893
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "7935aa636999",
+      "kind": "link",
+      "target": "https://www.theguardian.com/tv-and-radio/2025/may/10/david-tennant-tv-baftas-interview",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 285
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "a0e2f72da231",
+      "kind": "link",
+      "target": "https://www.theguardian.com/tv-and-radio/2025/sep/22/we-should-have-been-shouting-about-this-earlier-david-tennant-jack-thorne-the-hack-itv",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 684
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "d5fcfdeee844",
@@ -7193,23 +8060,203 @@
       "checkedAt": "2026-07-27T08:58:45.066Z"
     },
     {
+      "id": "196c424e5119",
+      "kind": "link",
+      "target": "https://www.thewrap.com/david-tennant-talks-differences-between-broadchurch-and-gracepoint-characters/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 532
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "d8d52c5d0967",
+      "kind": "link",
+      "target": "https://www.timeout.com/london/theatre/david-tennant-from-doctor-to-detective-to-nihilistic-sexual-athlete",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 399
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "ab26456621c8",
+      "kind": "link",
+      "target": "https://www.timeout.com/london/tv-and-radio-guide/david-tennant-talks-broadchurch-and-the-bard",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 646
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "8efbf798ce0a",
+      "kind": "link",
+      "target": "https://www.timeout.com/newyork/theater/david-tennant-on-shakespeare-broadchurch-and-his-new-york-stage-debut",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 418
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "65ff54bd0e17",
+      "kind": "link",
+      "target": "https://www.tvinsider.com/1267884/rivals-season-2-monica-death-david-tennant-nafessa-williams-interview/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 171
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "f5e2dec5f065",
+      "kind": "link",
+      "target": "https://www.tvinsider.com/1271262/rivals-return-tony-grief-monica-dead-season-2-part-2-david-tennant/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 190
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "8aafb820db2d",
+      "kind": "link",
+      "target": "https://www.tvinsider.com/722591/david-tennant-doctor-who-good-omens-paleyfest-2018/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 475
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "5bdd09f369a1",
+      "kind": "link",
+      "target": "https://www.tvinsider.com/929447/deadwater-fell-david-tennant-preview-acorn-tv/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 456
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "23b7807babdc",
+      "kind": "link",
+      "target": "https://www.tvinsider.com/wp-content/uploads/2026/06/david-tennant-nafessa-williams-rivals-cover-portrait-377x570.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 172
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "e6d03d375c7c",
+      "kind": "link",
+      "target": "https://www.tvinsider.com/wp-content/uploads/2026/06/rivals-206-tony-1420x798.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 191
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
       "id": "9f9ef8e8f9be",
       "kind": "link",
       "target": "https://www.tvmaze.com/shows/57469/hide",
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 183
+          "line": 206
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 188
+          "line": 211
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-24T06:23:30.005Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "f05cc958d3c3",
+      "kind": "link",
+      "target": "https://www.whatsonstage.com/london-theatre/news/david-tennant-interview-don-juan-in-soho_43165.html/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 437
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
+    },
+    {
+      "id": "ee5b610a8df8",
+      "kind": "link",
+      "target": "https://www.whatsonstage.com/news/20-questions-with-david-tennant_25729/",
+      "references": [
+        {
+          "file": "app/data/interviews/catalog.ts",
+          "line": 304
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "5edd4699eb4d",
@@ -7342,17 +8389,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 342
+          "line": 1102
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 341
+          "line": 1101
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "e961faec015c",
@@ -7361,17 +8408,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 247
+          "line": 1007
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 246
+          "line": 1006
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "030f20f6c4b5",
@@ -7440,17 +8487,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 361
+          "line": 1121
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 360
+          "line": 1120
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "f6de290108f1",
@@ -7459,17 +8506,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 457
+          "line": 1217
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 456
+          "line": 1216
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "03888b10f9a2",
@@ -7598,17 +8645,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 438
+          "line": 1198
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 437
+          "line": 1197
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "2fdabc25b712",
@@ -7707,17 +8754,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 209
+          "line": 969
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 208
+          "line": 968
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "e7e489c5c67c",
@@ -7771,17 +8818,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 285
+          "line": 1045
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 284
+          "line": 1044
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "038e098d200b",
@@ -7850,17 +8897,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 531
+          "line": 1291
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 530
+          "line": 1290
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "af88bcdb1446",
@@ -7869,17 +8916,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 228
+          "line": 988
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 227
+          "line": 987
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "13c031a45aef",
@@ -7948,17 +8995,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 513
+          "line": 1273
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 512
+          "line": 1272
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "6be9cb98a209",
@@ -8012,17 +9059,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 567
+          "line": 1327
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 566
+          "line": 1326
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "65310f43a7c3",
@@ -8031,17 +9078,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 419
+          "line": 1179
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 418
+          "line": 1178
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "e4d67ee327fa",
@@ -8050,17 +9097,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 380
+          "line": 1140
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 379
+          "line": 1139
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "af8c768fa4b6",
@@ -8069,17 +9116,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 190
+          "line": 950
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 189
+          "line": 949
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "792c8d5562be",
@@ -8445,17 +9492,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 399
+          "line": 1159
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 398
+          "line": 1158
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "1e2a14d236fa",
@@ -8637,17 +9684,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 266
+          "line": 1026
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 265
+          "line": 1025
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "fafb3c3272f9",
@@ -8806,17 +9853,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 549
+          "line": 1309
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 548
+          "line": 1308
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "d6c71038421b",
@@ -8900,17 +9947,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 495
+          "line": 1255
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 494
+          "line": 1254
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "4c32985859e2",
@@ -8934,17 +9981,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 323
+          "line": 1083
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 322
+          "line": 1082
         }
       ],
       "status": "warning",
       "httpStatus": 403,
       "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "513d9082add7",
@@ -8972,17 +10019,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 476
+          "line": 1236
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 475
+          "line": 1235
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "b7d05615808c",
@@ -9006,17 +10053,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 586
+          "line": 1346
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 585
+          "line": 1345
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "b29877d966d6",
@@ -9145,17 +10192,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 605
+          "line": 1365
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 604
+          "line": 1364
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "60c46fd5359d",
@@ -9198,17 +10245,17 @@
       "references": [
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 304
+          "line": 1064
         },
         {
           "file": "app/data/interviews/catalog.ts",
-          "line": 303
+          "line": 1063
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-07-27T08:58:45.066Z"
+      "checkedAt": "2026-08-31T11:50:26.367Z"
     },
     {
       "id": "654bcbc54b8e",

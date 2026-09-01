@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-31T05:46:30.741Z",
+  "updatedAt": "2026-09-01T05:19:25.089Z",
   "items": [
     {
       "tmdbId": "104674",
       "providerName": "BS10プレミアム for Prime Video",
-      "active": true,
+      "active": false,
       "changedOn": "2026-08-31",
       "eventTimestamp": 1788188399,
       "expiresOn": "2026-08-31",

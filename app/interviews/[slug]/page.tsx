@@ -186,7 +186,9 @@ export default async function InterviewDetailPage({
           </div>
         </header>
 
-        <InterviewMedia interview={interview} />
+        {interview.mediaType === "video" && (
+          <InterviewMedia interview={interview} />
+        )}
 
         <ShareButtons
           url={`/i/${getInterviewShareId(interview.slug)}`}

@@ -44,6 +44,7 @@ img { display: block; max-width: 100%; }
 .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0; }
 .tag-row span { padding: 5px 10px; border: 1px solid var(--line); border-radius: 20px; color: var(--muted); font-size: 11px; font-weight: 700; }
+.tag-row span.interview-genre-tag { color: var(--white); border-color: var(--blue); background: var(--blue); }
 
 /* ---------- Global header ---------- */
 .site-header { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,.1); color: var(--white); background: rgba(17,17,22,.94); backdrop-filter: blur(16px); }

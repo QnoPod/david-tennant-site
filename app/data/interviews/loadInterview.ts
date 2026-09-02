@@ -178,7 +178,7 @@ export async function searchInterviewSlugs(query: string): Promise<string[]> {
     const loadTranscript = transcriptLoaders[summary.slug];
     const transcript = loadTranscript ? await loadTranscript() : [];
     const searchable = [
-      summary.title, summary.titleEn, summary.source, summary.description, ...getAllInterviewTags(summary.tagGroups),
+      summary.title, summary.titleEn, summary.source, summary.description, ...getAllInterviewTags(summary.tagGroups, summary.tags),
       ...transcript.flatMap((line) => [line.speakerEn, line.speakerJa, line.en, line.ja]),
     ].join(" ").normalize("NFKC").toLowerCase();
     return searchable.includes(needle) ? summary.slug : null;

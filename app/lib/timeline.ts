@@ -1,6 +1,7 @@
 import { careerTimeline } from "../data/content";
 import { episodeOverrides } from "../data/episodeOverrides";
 import { getPublishedInterviews } from "../data/interviews/catalog";
+import { getAllInterviewTags } from "../data/interviews/types";
 import { getDisplayTitle, getOriginalTitle, getWorkCharacters, normalizeText } from "./workPresentation";
 import { getMediaLabel, getWorkDate } from "./tmdb";
 import type { Character, ConventionAppearance, Work } from "./types";
@@ -104,7 +105,7 @@ export function buildTimelineEvents(works: Work[], characters: Character[], conv
     subtitle: `${interview.mediaType === "video" ? "VIDEO" : "ARTICLE"} · ${interview.source}`,
     description: interview.titleEn || interview.description,
     href: `/interviews/${interview.slug}`,
-    searchText: `${interview.title} ${interview.titleEn ?? ""} ${interview.source} ${interview.description} ${interview.tagGroups.genres.join(" ")} ${interview.tagGroups.actors.join(" ")}`,
+    searchText: `${interview.title} ${interview.titleEn ?? ""} ${interview.source} ${interview.description} ${getAllInterviewTags(interview.tagGroups, interview.tags).join(" ")}`,
   }));
 
   const conventionEvents: TimelineEvent[] = conventions.map((event, index) => {

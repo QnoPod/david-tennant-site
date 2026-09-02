@@ -1,13 +1,45 @@
-/** インタビューのタグを、役者・ジャンル・配信元に分けて管理します。 */
+/** インタビューの内容を横断して探すためのジャンルタグです。 */
+export type InterviewGenre =
+  | "作品・役づくり"
+  | "キャリア・演技"
+  | "舞台・演劇"
+  | "人物・私生活"
+  | "共演者・関係性"
+  | "バラエティ・企画"
+  | "イベント・受賞"
+  | "社会・価値観";
+
+/** インタビューのタグを、内容ジャンル・役者・関連作品・配信元に分けて管理します。 */
 export type InterviewTagGroups = {
+  /** 自動取得候補は未分類のまま保存できるよう、省略を許可します。 */
+  categories?: readonly InterviewGenre[];
   actors: readonly string[];
   genres: readonly string[];
   sources: readonly string[];
 };
 
-/** カード表示・本文検索で3分類のタグをまとめて扱うための共通関数です。 */
-export function getAllInterviewTags(tagGroups: InterviewTagGroups): readonly string[] {
-  return [...tagGroups.actors, ...tagGroups.genres, ...tagGroups.sources];
+export type InterviewTagCategory = keyof InterviewTagGroups;
+
+/** 旧データや更新直後のキャッシュに分類情報がなくても、安全に空配列を返します。 */
+export function getInterviewTagGroup(
+  tagGroups: InterviewTagGroups | null | undefined,
+  category: InterviewTagCategory,
+): readonly string[] {
+  return tagGroups?.[category] ?? [];
+}
+
+/** カード表示・本文検索で全分類のタグをまとめて扱うための共通関数です。 */
+export function getAllInterviewTags(
+  tagGroups: InterviewTagGroups | null | undefined,
+  legacyTags: readonly string[] = [],
+): readonly string[] {
+  return [...new Set([
+    ...getInterviewTagGroup(tagGroups, "categories"),
+    ...getInterviewTagGroup(tagGroups, "actors"),
+    ...getInterviewTagGroup(tagGroups, "genres"),
+    ...getInterviewTagGroup(tagGroups, "sources"),
+    ...legacyTags,
+  ])];
 }
 
 /** インタビュー一覧で使う、本文を含まない軽量な基本情報。 */
@@ -39,7 +71,10 @@ export type InterviewSummary = {
   thumbnailUrl: string;
   duration: string;
   description: string;
-  tagGroups: InterviewTagGroups;
+  /** 通常は必須。旧形式のデータが一時的に混在しても画面を止めないため省略を許可します。 */
+  tagGroups?: InterviewTagGroups;
+  /** tagGroups導入前のデータとの表示互換用。新規データでは使用しません。 */
+  tags?: readonly string[];
 };
 
 /** 英語原文と日本語訳を1組にした本文データ。 */

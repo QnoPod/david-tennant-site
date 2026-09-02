@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { InterviewSummary } from "../../data/interviews/types";
+import { getInterviewTagGroup, type InterviewSummary } from "../../data/interviews/types";
 import {
   ARCHIVE_STORAGE_KEYS,
   ARCHIVE_UPDATED_EVENT,
@@ -23,7 +23,8 @@ import InterviewCard from "./InterviewCard";
 
 const INITIAL_VISIBLE_COUNT = 6;
 const EXPLORER_STATE_KEY = "david-tennant-interviews-explorer-state-v1";
-const TAG_CATEGORIES = ["actors", "genres", "sources"] as const;
+const TAG_CATEGORIES = ["categories", "actors", "genres", "sources"] as const;
+const DETAIL_TAG_CATEGORIES = ["actors", "genres", "sources"] as const;
 type TagCategory = typeof TAG_CATEGORIES[number];
 type MediaTypeFilter = "all" | "video" | "article";
 
@@ -49,6 +50,7 @@ type InterviewUrlState = {
 };
 
 const TAG_CATEGORY_LABELS: Record<TagCategory, string> = {
+  categories: "ジャンル",
   actors: "役者",
   genres: "関連作品",
   sources: "配信元",
@@ -67,6 +69,7 @@ export default function InterviewsExplorer({
 
   const initialQuery = searchParams.get("q") ?? "";
   const initialSelectedTags: Record<TagCategory, string[]> = {
+    categories: readListParam(searchParams, "genre"),
     actors: readListParam(searchParams, "actor"),
     genres: readListParam(searchParams, "work"),
     sources: readListParam(searchParams, "source"),
@@ -77,6 +80,7 @@ export default function InterviewsExplorer({
     "year",
     "favorites",
     "details",
+    "genre",
     "actor",
     "work",
     "source",
@@ -160,6 +164,7 @@ export default function InterviewsExplorer({
         setFavoritesOnly(Boolean(saved.favoritesOnly));
         setTagExpanded(Boolean(saved.tagExpanded));
         setSelectedTags({
+          categories: saved.selectedTags?.categories ?? [],
           actors: saved.selectedTags?.actors ?? [],
           genres: saved.selectedTags?.genres ?? [],
           sources: saved.selectedTags?.sources ?? [],
@@ -227,7 +232,8 @@ export default function InterviewsExplorer({
       TAG_CATEGORIES.map((category) => [
         category,
         [...new Set(
-          interviews.flatMap((item) => item.tagGroups[category]),
+          interviews.flatMap((item) =>
+            getInterviewTagGroup(item.tagGroups, category)),
         )].sort((a, b) => a.localeCompare(b)),
       ]),
     ) as Record<TagCategory, string[]>,
@@ -249,6 +255,7 @@ export default function InterviewsExplorer({
       favoritesOnly: readBooleanParam(params, "favorites"),
       tagExpanded: readBooleanParam(params, "details"),
       selectedTags: {
+        categories: readListParam(params, "genre"),
         actors: readListParam(params, "actor"),
         genres: readListParam(params, "work"),
         sources: readListParam(params, "source"),
@@ -261,6 +268,10 @@ export default function InterviewsExplorer({
       || next.year !== current.year
       || next.favoritesOnly !== current.favoritesOnly
       || next.tagExpanded !== current.tagExpanded
+      || !sameStringList(
+        next.selectedTags.categories,
+        current.selectedTags.categories,
+      )
       || !sameStringList(
         next.selectedTags.actors,
         current.selectedTags.actors,
@@ -303,6 +314,7 @@ export default function InterviewsExplorer({
     setStringParam(params, "year", year, "all");
     setBooleanParam(params, "favorites", favoritesOnly);
     setBooleanParam(params, "details", tagExpanded);
+    setListParam(params, "genre", selectedTags.categories);
     setListParam(params, "actor", selectedTags.actors);
     setListParam(params, "work", selectedTags.genres);
     setListParam(params, "source", selectedTags.sources);
@@ -374,7 +386,10 @@ export default function InterviewsExplorer({
         const selected = selectedTags[category];
         return !selected.length
           || selected.some((tag) =>
-            interview.tagGroups[category].includes(tag));
+            getInterviewTagGroup(
+              interview.tagGroups,
+              category,
+            ).includes(tag));
       });
 
       return matchesQuery
@@ -425,7 +440,12 @@ export default function InterviewsExplorer({
     setYear("all");
     setFavoritesOnly(false);
     setTagExpanded(false);
-    setSelectedTags({ actors: [], genres: [], sources: [] });
+    setSelectedTags({
+      categories: [],
+      actors: [],
+      genres: [],
+      sources: [],
+    });
     setContentMatches(null);
     setIsSearching(false);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
@@ -523,6 +543,24 @@ export default function InterviewsExplorer({
             {years.map((item) => <option key={item}>{item}</option>)}
           </select>
 
+          <select
+            value={selectedTags.categories[0] ?? "all"}
+            onChange={(event) => {
+              const value = event.target.value;
+              setSelectedTags((current) => ({
+                ...current,
+                categories: value === "all" ? [] : [value],
+              }));
+              setVisibleCount(INITIAL_VISIBLE_COUNT);
+            }}
+            aria-label="ジャンル"
+          >
+            <option value="all">すべてのジャンル</option>
+            {tagOptions.categories.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
+
           <button
             className={favoritesOnly ? "is-active" : ""}
             type="button"
@@ -557,7 +595,7 @@ export default function InterviewsExplorer({
 
         {tagExpanded && (
           <div className="work-filter-details">
-            {TAG_CATEGORIES.map((category) => {
+            {DETAIL_TAG_CATEGORIES.map((category) => {
               const selected = selectedTags[category];
               return (
                 <fieldset key={category}>

@@ -21,6 +21,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントがスコットランドとイングランドの定番フードを食べ比べ、故郷の味や食文化への思いをユーモアたっぷりに語る。",
     tagGroups: {
+      categories: ["バラエティ・企画", "人物・私生活"],
       actors: [],
       genres: [],
       sources: ["LADbible Entertainment"],
@@ -40,6 +41,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『ライバルズ』の撮影現場、トニー・バディンガムの展開、共演者との打ち上げについてCapital Breakfastで語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Emily Atack", "Danny Dyer", "Alex Hassell", "Katherine Parkinson"],
       genres: ["Rivals", "Doctor Who"],
       sources: ["Capital FM"],
@@ -59,6 +61,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "初めて夢中になった映画、最初の演技やオーディション、キャサリン・テイトとの秘密の撮影など、“映画と演技の初めて”を振り返る。",
     tagGroups: {
+      categories: ["キャリア・演技", "作品・役づくり", "共演者・関係性"],
       actors: ["Catherine Tate", "Michael Sheen"],
       genres: ["Doctor Who", "Casanova", "Bright Young Things"],
       sources: ["BAFTA"],
@@ -78,6 +81,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "マイケル・シーンとデイヴィッド・テナントが、リモート制作された『ステージド』や二人の友情について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Michael Sheen"],
       genres: ["Staged", "Good Omens"],
       sources: ["The One Show - BBC"],
@@ -97,6 +101,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "ジョン・ハムとデイヴィッド・テナントが、インターネットで頻繁に検索される互いの経歴や『グッド・オーメンズ』に関する質問へ答える。",
     tagGroups: {
+      categories: ["バラエティ・企画", "作品・役づくり", "共演者・関係性"],
       actors: ["Jon Hamm"],
       genres: ["Good Omens", "Doctor Who"],
       sources: ["WIRED"],
@@ -116,6 +121,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントとマイケル・シーンが『グッド・オーメンズ』の天使と悪魔、二人の関係、世界の終末を止める物語について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Michael Sheen"],
       genres: ["Good Omens"],
       sources: ["This Morning"],
@@ -135,6 +141,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "NYCCでマイケル・シーンとデイヴィッド・テナントが、初共演の手応え、互いの演技、アジラフェルとクロウリーの関係を語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "イベント・受賞"],
       actors: ["Michael Sheen"],
       genres: ["Good Omens", "Bright Young Things"],
       sources: ["Showbiz Junkies", "NYCC"],
@@ -154,6 +161,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントがスコットランドらしさ、俳優としての仕事、『ドクター・フー』などについてデイヴィッド・レターマンと語る。",
     tagGroups: {
+      categories: ["人物・私生活", "キャリア・演技"],
       actors: ["David Letterman"],
       genres: ["Doctor Who", "Gracepoint"],
       sources: ["Letterman"],
@@ -173,6 +181,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Rivals』シーズン2第6話の衝撃的な展開を、デイヴィッド・テナントとナフェッサ・ウィリアムズがトニーとキャメロンの心理、原作からの変更、今後の行方とともに語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Nafessa Williams"],
       genres: ["Rivals"],
       sources: ["TV Insider"],
@@ -192,6 +201,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Rivals』シーズン2後半を前に、デイヴィッド・テナントがモニカを失ったトニーの危うさを語り、製作総指揮ドミニク・トレッドウェル＝コリンズが今後の展開を示唆する。",
     tagGroups: {
+      categories: ["作品・役づくり"],
       actors: [],
       genres: ["Rivals"],
       sources: ["TV Insider"],
@@ -211,6 +221,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · pp. 292–304",
     description: "RSCの2008年版『Hamlet』について、デイヴィッド・テナントが出演決定の経緯、稽古、台詞の覚え方、第一四折本を用いた構成、狂気、オフィーリアやガートルードとの関係、現代設定と監視社会まで詳細に語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり", "キャリア・演技"],
       actors: ["Patrick Stewart", "Mark Rylance", "Mariah Gale", "Penny Downie", "Oliver Ford Davies"],
       genres: ["Hamlet", "Doctor Who"],
       sources: ["Shakespeare"],
@@ -230,6 +241,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Magazine interview",
     description: "『Doctor Who』60周年スペシャルを前に、デイヴィッド・テナントがCatherine Tate、Russell T Daviesとの再集結、14代目ドクターとして戻る意味、過去の復帰、Ncuti Gatwaへの引き継ぎ、そしてDoctor Whoが人生を貫いてきたことを語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: [],
       genres: ["Doctor Who"],
       sources: ["Radio Times"],
@@ -249,6 +261,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Reader Q&A",
     description: "BAFTA映画賞の司会を前に、デイヴィッド・テナントが読者からの質問に回答。マイケル・シーンとの『Good Omens』でのキス、Doctor Who愛、もみあげ、Scrooge McDuck、『Des』のデニス・ニルセン役、父が牧師だった家庭環境までユーモアたっぷりに語る。",
     tagGroups: {
+      categories: ["バラエティ・企画", "人物・私生活", "作品・役づくり", "共演者・関係性"],
       actors: ["Michael Sheen"],
       genres: ["Good Omens", "Doctor Who", "Broadchurch", "Macbeth", "Des", "Fright Night", "Harry Potter and the Goblet of Fire", "Staged"],
       sources: ["The Guardian"],
@@ -268,6 +281,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Press Pack · Interview pp. 13–20",
     description: "ITV公式『Litvinenko』プレスパック。デイヴィッド・テナントがアレクサンドル・リトビネンコ役を演じた作品について、物語を伝える責任、実在人物の再現、病院シーン、役作りや撮影を語るインタビューを収録。",
     tagGroups: {
+      categories: ["作品・役づくり", "キャリア・演技"],
       actors: [],
       genres: ["Litvinenko"],
       sources: ["ITV"],
@@ -287,6 +301,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · BAFTA TV special",
     description: "BAFTA TV特集でデイヴィッド・テナントが、『Rivals』のトニー・バディンガム、親密シーンの撮影、BAFTAでの政治的ジョーク、ケミ・ベイドノックをめぐる騒動、『The Hack』、Doctor Who復帰説、トランスをめぐる議論について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "社会・価値観", "キャリア・演技"],
       actors: ["Michael Sheen", "Ncuti Gatwa", "Jodie Whittaker"],
       genres: ["Rivals", "Doctor Who", "Des", "Good Omens", "The Hack"],
       sources: ["The Guardian"],
@@ -306,6 +321,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · 20 Questions",
     description: "『The Pillowman』初演期のデイヴィッド・テナントが、俳優としての原点、RSC、好きな劇作家、将来演じたいRichard IIやHamlet、Doctor Whoへの熱烈な愛、芸術家の責任まで幅広く答える2003年のロングQ&A。",
     tagGroups: {
+      categories: ["キャリア・演技", "舞台・演劇", "人物・私生活"],
       actors: [],
       genres: ["Doctor Who"],
       sources: ["WhatsOnStage"],
@@ -325,6 +341,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Long interview",
     description: "『There She Goes』シーズン2と『Staged』を背景に、デイヴィッド・テナントが家族のプライバシー、子育て、障害のある子どもを描く責任、コロナ禍の演劇界、労働党と英国政治、そしてDoctor Whoへの思いを語るロングインタビュー。",
     tagGroups: {
+      categories: ["人物・私生活", "作品・役づくり", "社会・価値観"],
       actors: ["Georgia Tennant"],
       genres: ["There She Goes", "Staged", "Doctor Who", "Broadchurch", "Good"],
       sources: ["The Guardian"],
@@ -344,6 +361,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Series 1 Q&A",
     description: "ロックダウン中に制作された『Staged』シーズン1について、マイケル・シーンとデイヴィッド・テナントが、自分自身の“少し嫌な版”を演じること、即興、Good Omens後の再共演、自宅撮影の技術、家族との撮影、伸びっぱなしの髪、ビデオ通話について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Michael Sheen", "Georgia Tennant", "Anna Lundberg", "Simon Evans"],
       genres: ["Staged", "Good Omens"],
       sources: ["British Comedy Guide"],
@@ -363,6 +381,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Q&A",
     description: "『There She Goes』シーズン1のデイヴィッド・テナントQ&A。Shaun Pyeの実体験に基づく脚本の率直さ、Jessica Hynesとの関係、Miley Lockeの演技、サイモンの欠点、政治的正しさ、コメディとドラマのトーン、障害のある家族を描く意義について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "社会・価値観"],
       actors: ["Jessica Hynes", "Miley Locke"],
       genres: ["There She Goes"],
       sources: ["British Comedy Guide"],
@@ -382,6 +401,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Official Q&A",
     description: "Channel 4公式Q&A。デイヴィッド・テナントが『Deadwater Fell』のトム・ケンドリック役、初の製作総指揮、脚本への惹かれ方、二つの時間軸、スコットランド撮影、Cush Jumboら共演者、作品が観客にもたらす驚きについて語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "キャリア・演技"],
       actors: ["Cush Jumbo", "Anna Madeley", "Matthew McNulty"],
       genres: ["Deadwater Fell"],
       sources: ["Channel 4"],
@@ -401,6 +421,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · 5 topics",
     description: "『Don Juan in Soho』上演期のデイヴィッド・テナントが、ドン・ジュアンの罪悪感なき人物像、黒人／女性ドクターの可能性、『Broadchurch』の徹底した秘密主義とシーズン2への評価、そして新たに声を担当するScrooge McDuckについて語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり"],
       actors: [],
       genres: ["Don Juan in Soho", "Doctor Who", "Broadchurch", "DuckTales"],
       sources: ["Time Out London"],
@@ -420,6 +441,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Richard II』でニューヨーク舞台デビューを迎えるデイヴィッド・テナントが、リチャード二世の魅力、シェイクスピアの言葉、政治劇としての現代性、観客との関係、そして『Broadchurch』シーズン3について語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり"],
       actors: [],
     　genres: ["Richard II", "Broadchurch"],
       sources: ["Time Out"],
@@ -439,6 +461,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Q&A",
     description: "『Don Juan in Soho』の開幕を前に、デイヴィッド・テナントが罪悪感のないドン・ジュアンを演じる快感、Patrick Marberによる現代化、Adrian Scarboroughとの共演、次のDoctorへの助言、Broadchurch後の予定を語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり", "共演者・関係性"],
       actors: ["Adrian Scarborough","Peter Capaldi"],
       genres: ["Don Juan in Soho", "Doctor Who"],
       sources: ["WhatsOnStage"],
@@ -458,6 +481,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Q&A",
     description: "『Deadwater Fell』でトム・ケンドリックを演じるデイヴィッド・テナントが、結末を知った時の驚き、尋問シーンの芝居としての面白さ、南アフリカで撮影中だった『Around the World in 80 Days』について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "キャリア・演技"],
       actors: ["Anna Madeley"],
       genres: ["Deadwater Fell", "Broadchurch", "Around the World in 80 Days"],
       sources: ["TV Insider"],
@@ -477,6 +501,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · PaleyFest Q&A",
     description: "PaleyFest 2018で、デイヴィッド・テナントがDoctor Whoへの幼少期からの愛、Jodie Whittakerへの助言、Good Omensのクロウリーの衣装、Michael Sheenとの化学反応、Doctor Whoとのクロスオーバーを語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "イベント・受賞"],
       actors: ["Jodie Whittaker", "Michael Sheen", "Chris Chibnall"],
       genres: ["Good Omens", "Doctor Who"],
       sources: ["TV Insider"],
@@ -496,6 +521,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Deadwater Fell』期のデイヴィッド・テナントが、ジャンルや役柄を戦略的に選ばず、複雑で捉えにくい人物と良い脚本に惹かれること、幅広い作品を選ぶ理由を語る。",
     tagGroups: {
+      categories: ["キャリア・演技", "作品・役づくり"],
       actors: [],
       genres: ["Deadwater Fell", "Good Omens", "Doctor Who", "Jessica Jones"],
       sources: ["BBC America"],
@@ -515,6 +541,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Music Doctor",
     description: "Doctor Who絶頂期のデイヴィッド・テナントが、Beverley Cravenという意外な愛聴盤からThe Proclaimers、Housemartins、Morrissey、R&Bへの苦手意識まで、音楽の好みを赤裸々に語る。",
     tagGroups: {
+      categories: ["人物・私生活"],
       actors: ["Jo Whiley", "Matt Lucas"],
       genres: ["Doctor Who"],
       sources: ["The Guardian"],
@@ -534,6 +561,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · TCA 2014",
     description: "Fox版『Gracepoint』のTCAパネルで、デイヴィッド・テナントがAlec HardyとEmmett Carverの違い、同じ物語を別作品として演じる感覚、良い脚本に惹かれて再び参加した理由を語る。",
     tagGroups: {
+      categories: ["作品・役づくり"],
       actors: [],
       genres: ["Gracepoint", "Broadchurch"],
       sources: ["TheWrap"],
@@ -553,6 +581,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Q&A",
     description: "『Don Juan in Soho』の稽古中、デイヴィッド・テナントがドン・ジュアンの反社会的で自由な人物像、現代社会との響き合い、Patrick Marberの演出、Adrian ScarboroughやGawn Graingerとの共演を語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり"],
       actors: [],
       genres: ["Don Juan in Soho"],
       sources: ["Official London Theatre"],
@@ -572,6 +601,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Cast & writers Q&A",
     description: "『There She Goes』シーズン2について、Shaun PyeとSarah Crawford、David Tennant、Jessica Hynesが、実体験に根ざした脚本、家族の変化、ユーモアと痛み、Gregor FisherやMiley Lockeとの共演を語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "社会・価値観"],
       actors: ["Jessica Hynes", "Miley Locke", "Gregor Fisher"],
       genres: ["There She Goes"],
       sources: ["British Comedy Guide"],
@@ -591,6 +621,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Cast & writers Q&A",
     description: "一話限りの『There She Goes』スペシャルについて、David Tennant、Jessica Hynes、Miley Locke、Edan Hayhurst、Shaun PyeとSarah Crawfordが、Rosieの診断、家族の成長、再会、作品の率直さを語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "社会・価値観"],
       actors: ["Jessica Hynes", "Miley Locke", "Edan Hayhurst"],
       genres: ["There She Goes"],
       sources: ["British Comedy Guide"],
@@ -610,6 +641,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Livechat on 6 Nov 2013",
     description: "『Richard II』上演中のデイヴィッド・テナントがGuardian読者の質問にライブ回答。役作り、芸名、舞台前の儀式、批評との距離、Ben Whishaw、将来演じたいシェイクスピア役、演出への興味まで幅広く答える。",
     tagGroups: {
+      categories: ["舞台・演劇", "キャリア・演技", "バラエティ・企画"],
       actors: ["Ben Whishaw", "Gregory Doran"],
       genres: ["Richard II", "Doctor Who", "Hamlet"],
       sources: ["The Guardian"],
@@ -629,6 +661,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Don Juan in Soho』開幕後、デイヴィッド・テナントがドン・ジュアンのままカーテンコールに出る楽しさ、Patrick Marberの言葉、Adrian Scarboroughとの共演、時事ネタを随時取り込む舞台について語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり"],
       actors: [],
       genres: ["Don Juan in Soho"],
       sources: ["London Evening Standard"],
@@ -648,6 +681,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Long interview",
     description: "『Broadchurch』放送開始直前のデイヴィッド・テナントが、Alec Hardy、Doctor Who後の名声とプライバシー、俳優としての選択、映画と舞台、芸術予算削減への怒り、RSC『Richard II』への挑戦を語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "舞台・演劇", "キャリア・演技", "人物・私生活"],
       actors: ["Olivia Colman", "Jodie Whittaker", "Andrew Buchan", "Georgia Tennant", "Gregory Doran"],
       genres: ["Broadchurch", "Doctor Who", "Richard II", "Hamlet"],
       sources: ["Time Out London"],
@@ -667,6 +701,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Q&A",
     description: "1999年の短いQ&A。芸名David Tennantの由来、年齢、孤独欄広告ならどう自己紹介するか、共演者、酷評で泣いた経験、広告したいもの／したくないもの、幸せを感じる場所まで答える。",
     tagGroups: {
+      categories: ["人物・私生活", "キャリア・演技"],
       actors: ["Anne-Marie Duff"],
       genres: ["LA Without a Map"],
       sources: ["The Guardian"],
@@ -686,6 +721,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · The Hack",
     description: "『The Hack』でGuardian記者ニック・デイヴィスを演じるデイヴィッド・テナントと脚本家ジャック・ソーンが、News of the Worldの電話盗聴事件、報道・警察・政治の関係、Leveson Inquiry、報道への信頼と事実をめぐる現在の危機について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "社会・価値観", "共演者・関係性"],
       actors: ["Robert Carlyle", "Toby Jones"],
       genres: ["The Hack"],
       sources: ["The Guardian"],
@@ -705,6 +741,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · originally 31 Aug 2020",
     description: "『Des』でデニス・ニルセンを演じるデイヴィッド・テナントが、加害者を美化せず被害者を記憶すること、ホームレスや貧困と社会のセーフティネット、パンデミック下の文化産業、これから必要な「最大限の優しさ」について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "社会・価値観"],
       actors: [],
       genres: ["Des"],
       sources: ["The Big Issue"],
@@ -724,6 +761,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Des",
     description: "デイヴィッド・テナント、脚本家ルーク・ニール、監督ルイス・アーノルドが『Des』を語る。ニルセン本人ではなく被害者と社会に焦点を当て、なぜ長年犯罪が見過ごされたのか、真実の再現とtrue crimeの倫理を掘り下げる。",
     tagGroups: {
+      categories: ["作品・役づくり", "社会・価値観", "共演者・関係性"],
       actors: ["Daniel Mays", "Jason Watkins"],
       genres: ["Des"],
       sources: ["The Guardian"],
@@ -743,6 +781,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Q&A",
     description: "自身のポッドキャスト開始、Brexit、Jodie Whittakerへの助言、『Doctor Who』の包摂性、『Camping』、Neil Tennantから借りた芸名、『Good Omens』とMichael Sheenまで、デイヴィッド・テナントがMichael Hoganの質問に答える。",
     tagGroups: {
+      categories: ["作品・役づくり", "人物・私生活", "社会・価値観", "共演者・関係性"],
       actors: ["Jodie Whittaker", "Michael Sheen"],
       genres: ["Doctor Who", "Good Omens"],
       sources: ["The Guardian"],
@@ -762,6 +801,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · This Much I Know",
     description: "デイヴィッド・テナントが、不安を隠すこと、宗教家庭から受け継いだ道徳観、楽観主義、スコットランド西部の宗派性、12歳の転落事故、妻との仕事、家族にどう記憶されたいかを語る。",
     tagGroups: {
+      categories: ["人物・私生活", "社会・価値観"],
       actors: ["Georgia Tennant"],
       genres: ["You, Me and Him"],
       sources: ["The Guardian"],
@@ -781,6 +821,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Letter To My Younger Self",
     description: "デイヴィッド・テナントが16歳の自分へ語りかける形で、思春期、両親の影響、Doctor Whoへの憧れ、若い頃の服装、俳優になる不安、有名になる怖さ、そして両親を失った後に残る思いを振り返る。",
     tagGroups: {
+      categories: ["キャリア・演技", "人物・私生活"],
       actors: [],
       genres: ["Doctor Who"],
       sources: ["The Big Issue"],
@@ -800,6 +841,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Joint interview",
     description: "『The Minor Character』をきっかけに、ウィル・セルフとデイヴィッド・テナントが初めてじっくり対談。演技と言葉、ディナーパーティー、SFとアウトサイダー性、創作への影響、拒絶や批評への恐れ、Lolitaの妄想企画まで自由に語り合う。",
     tagGroups: {
+      categories: ["キャリア・演技", "人物・私生活", "共演者・関係性"],
       actors: ["Will Self"],
       genres: ["The Minor Character"],
       sources: ["London Evening Standard"],
@@ -819,6 +861,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Profile interview",
     description: "『Blackpool』『Casanova』で注目を集め、『Look Back in Anger』のジミー・ポーター役を控えた33歳のデイヴィッド・テナントをElisabeth Mahoneyが取材。Doctor Whoへの原点、俳優としての幅、Casanova像、舞台復帰、家族、Harry Potter、そして意外なCelebrity Stars in Their Eyes願望までを追う。",
     tagGroups: {
+      categories: ["キャリア・演技", "作品・役づくり", "舞台・演劇", "人物・私生活"],
       actors: ["Russell T Davies", "Peter Bowker"],
       genres: ["Blackpool", "Casanova", "Look Back in Anger", "Bright Young Things", "Romeo and Juliet", "He Knew He Was Right", "Lobby Hero", "Harry Potter and the Goblet of Fire", "Doctor Who"],
       sources: ["The Guardian"],
@@ -838,6 +881,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Long interview",
     description: "10代目ドクターとして本格登場する直前のデイヴィッド・テナントに、Stephanie Merrittが取材。Doctor Who、Casanova、Billie Piperとの共演、セックスシンボル扱いへの戸惑い、牧師の家庭で育った宗教観、タブロイドとの距離、私生活を語らない理由、将来の演出志向までを聞く。",
     tagGroups: {
+      categories: ["キャリア・演技", "作品・役づくり", "人物・私生活", "共演者・関係性"],
       actors: ["Billie Piper", "Russell T Davies", "Christopher Eccleston", "Peter O'Toole", "Sophia Myles"],
       genres: ["Doctor Who", "Casanova", "Blackpool", "Harry Potter and the Goblet of Fire", "Secret Smile"],
       sources: ["The Guardian"],
@@ -857,6 +901,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Long interview",
     description: "10代目ドクター卒業直前の2009年、The Guardianがデイヴィッド・テナントに長期密着。Doctor Whoを離れる決断、名声への恐怖、Matt Smithへの引き継ぎ、Billie Piperの支え、RSCとHamlet、私生活を守る姿勢、幼少期と俳優としての原点、アメリカ進出の可能性までを追う。",
     tagGroups: {
+      categories: ["キャリア・演技", "作品・役づくり", "舞台・演劇", "人物・私生活"],
       actors: ["Matt Smith", "Billie Piper", "Patrick Stewart", "Russell T Davies", "Catherine Tate", "Arabella Weir"],
       genres: ["Doctor Who", "Hamlet", "Blackpool", "Casanova", "Einstein and Eddington", "Glorious 39", "St Trinian's 2"],
       sources: ["The Guardian"],
@@ -876,6 +921,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article · Long interview",
     description: "『Much Ado About Nothing』と『Fright Night』の時期に、デイヴィッド・テナントが俳優を志した原点、Doctor Who、名声と“セックスシンボル”扱いへの戸惑い、長老派的な罪悪感、仕事への姿勢、政治観、Georgia MoffettとPeter Davisonについて語るロングインタビュー。",
     tagGroups: {
+      categories: ["人物・私生活", "キャリア・演技", "舞台・演劇", "作品・役づくり"],
       actors: ["Catherine Tate", "Georgia Moffett", "Peter Davison", "Arabella Weir"],
       genres: ["Much Ado About Nothing", "Doctor Who", "Fright Night", "Casanova", "Blackpool", "Einstein and Eddington", "Hamlet"],
       sources: ["The Guardian"],
@@ -895,6 +941,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Broadchurch』シーズン2を前に、デイヴィッド・テナントが作品の成功と秘密主義、シェイクスピア、舞台への思い、罪悪感、Richard IIとHenry V、そして『The West Wing』への愛を語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "舞台・演劇", "人物・私生活"],
       actors: ["Olivia Colman", "Georgia Tennant", "Peter Davison", "Bradley Whitford"],
       genres: ["Broadchurch", "Doctor Who", "Richard II"],
       sources: ["The Guardian"],
@@ -914,6 +961,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "ドンマー・ウェアハウス版『マクベス』の開幕を前に、デイヴィッド・テナントとクシュ・ジャンボが、マクベス夫妻の関係、PTSD、喪失、野心、舞台への不安、子育てと俳優業について語る。",
     tagGroups: {
+      categories: ["舞台・演劇", "作品・役づくり", "共演者・関係性", "人物・私生活"],
       actors: ["Cush Jumbo"],
       genres: ["Macbeth", "Deadwater Fell", "Hamlet", "Richard II"],
       sources: ["The Guardian"],
@@ -933,6 +981,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Article",
     description: "『Rivals』でタギーを演じるベラ・マクリーンが、撮影現場の熱量と共演者デイヴィッド・テナントの勤勉さや明るさを語る。",
     tagGroups: {
+      categories: ["共演者・関係性", "作品・役づくり"],
       actors: ["Bella Maclean"],
       genres: ["Rivals"],
       sources: ["L'OFFICIEL USA"],
@@ -952,6 +1001,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video · 3:58〜",
     description: "マイケル・シーンが『Good Omens』での共演を経て、デイヴィッド・テナントとの信頼関係について語る。",
     tagGroups: {
+      categories: ["共演者・関係性", "作品・役づくり"],
       actors: ["Michael Sheen"],
       genres: ["Good Omens"],
       sources: ["Lorraine"],
@@ -971,6 +1021,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video · 7:54〜",
     description: "マイケル・シーンが、友人デイヴィッド・テナントとの次の共演の可能性について語る。",
     tagGroups: {
+      categories: ["共演者・関係性"],
       actors: ["Michael Sheen"],
       genres: [],
       sources: ["This Morning"],
@@ -990,6 +1041,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "キャリアを振り返りながら、『ジェシカ・ジョーンズ』のキルグレイヴ、『ドクター・フー』、『グッド・オーメンズ』、『ステージド』、『ブロードチャーチ』について語るBAFTAのインタビュー。",
     tagGroups: {
+      categories: ["キャリア・演技", "作品・役づくり"],
       actors: [],
       genres: ["Jessica Jones","Doctor Who","Good Omens","Staged","Takin' Over the Asylum","Broadchurch"],
       sources: ["BAFTA"],
@@ -1009,6 +1061,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『Rivals』の撮影中のエピソードや役作りについて、アレックス・ハッセルらと語るインタビュー。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Alex Hassell"],
       genres: ["Rivals"],
       sources: ["Heart"],
@@ -1028,6 +1081,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『Rivals』のデイヴィッド・テナントとアレックス・ハッセルが、トニーとルパートの対立と二人の関係性を語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性"],
       actors: ["Alex Hassell"],
       genres: ["Rivals"],
       sources: ["TV Insider"],
@@ -1047,6 +1101,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『グッド・オーメンズ』ついて語るインタビュー。",
     tagGroups: {
+      categories: ["作品・役づくり"],
       actors: [],
       genres: ["Good Omens"],
       sources: ["This Morning"],
@@ -1066,6 +1121,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "グラハム・ノートンとのトークで、絵文字やメッセージ文化にまつわるユーモラスなエピソードを披露する。",
     tagGroups: {
+      categories: ["バラエティ・企画", "人物・私生活"],
       actors: ["Michael Sheen","Graham Norton","Chris Hemsworth"],
       genres: [],
       sources: ["The Graham Norton Show - BBC"],
@@ -1085,6 +1141,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "ジェームズ・コーデンとエリザベス・バンクスを交え、家族や子どもについて楽しく語るトーク。",
     tagGroups: {
+      categories: ["人物・私生活", "バラエティ・企画"],
       actors: ["Georgia Tennant","James Corden"],
       genres: [],
       sources: ["The Late Late Show with James Corden"],
@@ -1104,6 +1161,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "映画『You, Me and Him』の出演や、赤い髪の理由について語るインタビュー。",
     tagGroups: {
+      categories: ["作品・役づくり", "人物・私生活"],
       actors: [],
       genres: ["You, Me and Him","Good Omens"],
       sources: ["This Morning"],
@@ -1123,6 +1181,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "恐怖心やインポスター症候群、舞台で頭の中に響く「悪魔の声」、経験を重ねることで得た向き合い方をデイヴィッドが語る。",
     tagGroups: {
+      categories: ["キャリア・演技", "舞台・演劇", "人物・私生活"],
       actors: [],
       genres: ["Romeo and Juliet"],
       sources: ["Off Camera with Sam Jones"],
@@ -1142,6 +1201,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "ロイヤル・シェイクスピア・カンパニーへの復帰と、シェイクスピア作品への思いを語るインタビュー。",
     tagGroups: {
+      categories: ["舞台・演劇", "キャリア・演技"],
       actors: [],
       genres: ["Richard II"],
       sources: ["Royal Shakespeare Company"],
@@ -1161,6 +1221,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントへの特別表彰を知らせるサプライズ映像。",
     tagGroups: {
+      categories: ["イベント・受賞", "キャリア・演技", "共演者・関係性"],
       actors: ["Billie Piper","Richard Wilson","Stephen Fry","Olivia Colman","Catherine Tate","Russell T Davies","Rev. Dr. Alexander McDonald"],
       genres: ["Broadchurch","Casanova","Doctor Who"],
       sources: ["National Television Awards"],
@@ -1181,6 +1242,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『The Last Leg』で、番組が“国宝”デイヴィッド・テナントを売りに出し、マイケル・シーンが最高額で落札するコメディー企画。",
     tagGroups: {
+      categories: ["バラエティ・企画", "共演者・関係性"],
       actors: ["Michael Sheen"],
       genres: [],
       sources: ["The Last Leg"],
@@ -1200,6 +1262,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『グッド・オーメンズ』プレミアで、デイヴィッド・テナントとマイケル・シーンがクロウリーとアジラフェル、二人の共演について語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "イベント・受賞"],
       actors: ["Michael Sheen"],
       genres: ["Good Omens"],
       sources: ["YouTube"],
@@ -1219,6 +1282,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "ジョン・ハムをオフィーリア役に、デイヴィッド・テナントとマイケル・シーンが交代でハムレットを演じる特別インタビュー。",
     tagGroups: {
+      categories: ["バラエティ・企画", "舞台・演劇", "共演者・関係性"],
       actors: ["Jon Hamm","Michael Sheen"],
       genres: ["Good Omens"],
       sources: ["Vulture"],
@@ -1238,6 +1302,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "NYCC 2018のパネルで、デイヴィッド・テナント、マイケル・シーン、ジョン・ハムらが『グッド・オーメンズ』の世界と役作りを語る。",
     tagGroups: {
+      categories: ["作品・役づくり", "共演者・関係性", "イベント・受賞"],
       actors: ["Michael Sheen","Jon Hamm"],
       genres: ["Good Omens"],
       sources: ["NYCC 2018"],
@@ -1257,6 +1322,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントがCriterion Closetでお気に入りの映画を選び、映画と演劇への思いを語る。",
     tagGroups: { 
+     categories: ["人物・私生活", "キャリア・演技"],
      actors: [], 
      genres: [], 
      sources: ["The Criterion Collection"] },
@@ -1275,6 +1341,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントと息子タイ・テナントの共演・インタビュー場面を集めた映像。",
     tagGroups: {
+       categories: ["共演者・関係性", "人物・私生活", "バラエティ・企画"],
        actors: ["Ty Tennant"],
        genres: ["Good Omens", "Doctor Who","Around the World in 80 Days"],
        sources: ["YouTube"] },
@@ -1293,6 +1360,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『グッド・オーメンズ』シーズン2について、デイヴィッド・テナントとマイケル・シーンが役と関係性を語るPrime Videoのインタビュー。",
     tagGroups: {
+       categories: ["作品・役づくり", "共演者・関係性"],
        actors: ["Michael Sheen"],
        genres: ["Good Omens"], 
        sources: ["Prime Video"] },
@@ -1311,6 +1379,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『ブロードチャーチ』の秘密保持、ドクター・フー、舞台『Don Juan in Soho』などについて語るThis Morningのインタビュー。",
     tagGroups: {
+       categories: ["作品・役づくり", "舞台・演劇"],
        actors: [], 
        genres: ["Broadchurch", "Doctor Who", "Don Juan in Soho"], 
        sources: ["This Morning"] },
@@ -1329,6 +1398,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "『ライバルズ』への出演、子どもの頃から憧れた『ドクター・フー』、家族が本人だと信じた『マスクド・シンガー』の思い出を語る。",
     tagGroups: {
+      categories: ["人物・私生活", "作品・役づくり", "バラエティ・企画"],
       actors: [],
       genres: ["Rivals", "Doctor Who"],
       sources: ["The Kelly Clarkson Show"],
@@ -1348,6 +1418,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "デイヴィッド・テナントとオリヴィア・コールマンが、ハーディとミラーを描いた『ブロードチャーチ』のファンアートを見る。",
     tagGroups: {
+      categories: ["バラエティ・企画", "共演者・関係性", "作品・役づくり"],
       actors: ["Olivia Colman"],
       genres: ["Broadchurch"],
       sources: ["The Graham Norton Show - BBC"],
@@ -1367,6 +1438,7 @@ const manualInterviewCatalog: readonly InterviewSummary[] = [
     duration: "Video",
     description: "シーズン2の事件、ハーディの暮らし、ウェストベイをはじめとする撮影地についてクリスチャン・オコンネルと語る。",
     tagGroups: {
+      categories: ["作品・役づくり"],
       actors: [],
       genres: ["Broadchurch"],
       sources: ["Absolute Radio"],

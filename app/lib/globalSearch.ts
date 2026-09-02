@@ -1,4 +1,4 @@
-import type { InterviewSummary } from "../data/interviews/types";
+import { getAllInterviewTags, type InterviewSummary } from "../data/interviews/types";
 import type { Character, ConventionAppearance, UpcomingWork, Work } from "./types";
 import { getMediaLabel, getWorkDate } from "./tmdb";
 import { getDisplayTitle, getOriginalTitle, getWorkCharacters, getWorkOverview } from "./workPresentation";
@@ -66,7 +66,7 @@ export function buildGlobalSearchItems({
     meta: `${interview.publishedDate.replaceAll("-", ".")} · ${interview.source}`,
     description: interview.description,
     href: `/interviews/${interview.slug}`,
-    searchText: [interview.title, interview.titleEn, interview.source, interview.description, ...interview.tagGroups.actors, ...interview.tagGroups.genres, ...interview.tagGroups.sources].filter(Boolean).join(" "),
+    searchText: [interview.title, interview.titleEn, interview.source, interview.description, ...getAllInterviewTags(interview.tagGroups, interview.tags)].filter(Boolean).join(" "),
   }));
 
   const conventionItems = conventions.map((event, index) => ({

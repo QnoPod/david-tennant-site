@@ -12,7 +12,7 @@ import ShareButtons from "../../components/ShareButtons";
 import WatchLaterButton from "../../components/WatchLaterButton";
 import { getPublishedInterviews } from "../../data/interviews/catalog";
 import { getInterviewBySlug } from "../../data/interviews/loadInterview";
-import { getAllInterviewTags } from "../../data/interviews/types";
+import { getAllInterviewTags, getInterviewTagGroup } from "../../data/interviews/types";
 import { getInterviewShareId } from "../../lib/archiveSlugs";
 import { findRelatedInterviews } from "../../lib/relatedContent";
 import { getPreparedSocialImagePath } from "../../lib/socialImagePaths";
@@ -109,7 +109,14 @@ export default async function InterviewDetailPage({
   const interview = await getInterviewBySlug(slug);
   if (!interview) notFound();
 
-  const relatedWorkTags = interview.tagGroups.genres;
+  const relatedWorkTags = getInterviewTagGroup(
+    interview.tagGroups,
+    "genres",
+  );
+  const genreTags = getInterviewTagGroup(
+    interview.tagGroups,
+    "categories",
+  );
   const relatedInterviews = findRelatedInterviews(
     relatedWorkTags,
     interview.slug,
@@ -163,8 +170,18 @@ export default async function InterviewDetailPage({
             />
           </div>
           <div className="tag-row">
-            {getAllInterviewTags(interview.tagGroups).map((tag) => (
-              <span key={tag}>{tag}</span>
+            {getAllInterviewTags(
+              interview.tagGroups,
+              interview.tags,
+            ).map((tag) => (
+              <span
+                className={genreTags.includes(tag)
+                  ? "interview-genre-tag"
+                  : undefined}
+                key={tag}
+              >
+                {tag}
+              </span>
             ))}
           </div>
         </header>

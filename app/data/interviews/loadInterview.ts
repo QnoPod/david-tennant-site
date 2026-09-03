@@ -8,6 +8,8 @@ type TranscriptLoader = () => Promise<readonly TranscriptLine[]>;
  * インタビューを追加したら、catalog.ts とこの対応表へ同じslugを追加してください。
  */
 const transcriptLoaders: Record<string, TranscriptLoader> = {
+  "the-assembly-b-sides-danny-dyer-reptile-2026": async () =>
+    (await import("./transcripts/theAssemblyBSidesDannyDyerTranscript")).theAssemblyBSidesDannyDyerTranscript,
   "david-tennant-masked-singer-daughter-kelly-clarkson": async () =>
     (await import("./transcripts/davidTennantMaskedSingerRevealTranscript")).davidTennantMaskedSingerRevealTranscript,
   "david-tennant-snack-wars-scotland-england": async () =>

@@ -8,6 +8,26 @@ import { autoInterviewCandidates } from "./autoCandidates";
  */
 const manualInterviewCatalog: readonly InterviewSummary[] = [
   {
+    slug: "the-assembly-b-sides-danny-dyer-reptile-2026",
+    title: "ダニー・ダイア、ドナルド・トランプはレプティリアンかもしれないと語る｜The Assembly B-Sides",
+    titleEn: "DANNY DYER Thinks Donald Trump Might Be a Reptile! | The Assembly B-Sides",
+    year: "2026",
+    publishedDate: "2026-09-01",
+    source: "The Assembly B-Sides",
+    mediaType: "video",
+    videoId: "8Jgcf6BsnAw",
+    externalUrl: "https://www.youtube.com/watch?v=8Jgcf6BsnAw",
+    thumbnailUrl: "https://i.ytimg.com/vi/8Jgcf6BsnAw/hqdefault.jpg",
+    duration: "Video",
+    description: "ダニー・ダイア、デイヴィッド・テナント、マイケル・シーンらが視聴者からの質問に答える『The Assembly』のB-Sides。デイヴィッドは小学生時代の失恋、マイケル・シーンとの友情、『グッド・オーメンズ』のキスシーンとインティマシー・コーディネーターについて語る。",
+    tagGroups: {
+      categories: ["バラエティ・企画", "人物・私生活", "共演者・関係性", "作品・役づくり"],
+      actors: ["Michael Sheen", "Danny Dyer", "Jade Thirlwall", "Gary Lineker"],
+      genres: ["Good Omens"],
+      sources: ["The Assembly B-Sides"],
+    },
+  },
+  {
     slug: "david-tennant-snack-wars-scotland-england",
     title: "デイヴィッド・テナント、スコットランド対イングランドの食べ物を食べ比べ｜Snack Wars",
     titleEn: "David Tennant Tries Scottish vs English Food | Snack Wars",

@@ -20,7 +20,7 @@ export const theAssemblyBSidesDannyDyerTranscript = [
     speakerEn: "David Tennant",
     speakerJa: "デイヴィッド・テナント",
     en: "Do you know what, at primary school, I got cheated on. I won't mention names, that would be unfair. But it still hurts now.",
-    ja: "そうだな、小学生の頃に浮気されたことがあるよ。名前は言わないけどね。それはさすがにフェアじゃないから。でも、今でも傷ついてるよ。",
+    ja: "そうだな、小学生の頃に浮気されたことがあるよ。名前は言わないけどね。それはさすがにフェアじゃないから。でも、今でも傷ついてる。",
     timestamp: "00:27",
   },
   {
@@ -69,7 +69,7 @@ export const theAssemblyBSidesDannyDyerTranscript = [
     speakerEn: "Michael Sheen",
     speakerJa: "マイケル・シーン",
     en: "So when I was in school, people used to call me Sheeny, really, because my surname is Sheen.",
-    ja: "学生時代は、みんな僕のことをシーニーって呼んでたんだ。僕の苗字がシーンだからね。",
+    ja: "学生時代は、みんな私のことをシーニーって呼んでたんだ。私の苗字がシーンだからね。",
     timestamp: "01:08",
   },
   {
@@ -195,7 +195,7 @@ export const theAssemblyBSidesDannyDyerTranscript = [
     speakerEn: "Michael Sheen",
     speakerJa: "マイケル・シーン",
     en: "I mean, that's all it is, is a fallout. It's one long fallout. Actually, it was our opening night of the play a couple of nights ago, and David's filming at the moment, so we haven't got to see each other very much. And he sent me a video wishing me good luck, and it was such a lovely video, and it made me cry a little bit because it was so lovely. So no, we weren't falling out then. So we're not always falling out. Never.",
-    ja: "まあ、私たちの関係なんて全部が喧嘩みたいなものだからね。ずーっと続くひとつの長い喧嘩だよ。実は、数日前に私の舞台の初日があったんだけど、デイヴィッドは今撮影中で、お互いにあまり会えていないんだ。それで、彼が「幸運を祈るよ」ってビデオメッセージを送ってくれたんだけど、それが本当に素敵なビデオでね。すごく素敵だったから、少し泣いてしまった。だから、その時は喧嘩してなかったね。つまり、私たちも四六時中喧嘩してるわけじゃない。一度もね。",
+    ja: "まあ、私たちの関係なんて全部が喧嘩みたいなものだからね。ずーっと続くひとつの長い喧嘩だよ。実は、数日前に私の舞台の初日があったんだけど、デイヴィッドは今撮影中で、お互いにあまり会えていないんだ。それで、彼が「幸運を祈るよ」ってビデオメッセージを送ってくれたんだけど、それが本当に素敵なビデオでね。すごく素敵だったから、少し泣いてしまった。だから、その時は喧嘩してなかった。つまり、私たちも四六時中喧嘩してるわけじゃない。一度もね。",
     timestamp: "06:02",
   },
   {

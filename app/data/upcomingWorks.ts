@@ -217,6 +217,29 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-18"
   },
   {
+    "key": "rss-u05trn",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "『フォー・シーズンズ』シーズン3の撮影開始がNetflixにより正式に発表された",
+    "originalTitle": "The Four Seasons Season 3 Filming Start Confirmed Netflix",
+    "overview": "シーズン2の最終回で初登場した、デヴィッド・テナント主演のこのNetflixシリーズは、新たな画像を通じてシーズン3の制作が開始されたことを明らかにした。",
+    "publishedDate": "2026-09-23",
+    "status": "filming",
+    "source": "ScreenRant TV News",
+    "sourceUrl": "https://screenrant.com/the-four-seasons-season-3-filming-start-confirmed-netflix/",
+    "confirmed": false,
+    "lastCheckedAt": "2026-09-24",
+    "sources": [
+      {
+        "name": "ScreenRant TV News",
+        "url": "https://screenrant.com/the-four-seasons-season-3-filming-start-confirmed-netflix/",
+        "publishedDate": "2026-09-23"
+      }
+    ],
+    "reviewReason": "ScreenRant TV Newsの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
+    "updatedAt": "2026-09-24"
+  },
+  {
     "key": "tvmaze-tv-57469",
     "kind": "announcement",
     "mediaType": "tv",

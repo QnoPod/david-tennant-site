@@ -30,6 +30,29 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-09-14"
   },
   {
+    "key": "tmdb-movie-1770183",
+    "kind": "announcement",
+    "mediaType": "movie",
+    "title": "Doctor Who: The Satan Pit",
+    "originalTitle": "Doctor Who: The Satan Pit",
+    "character": "The Doctor",
+    "overview": "ドクターとローズと共に、ブラックホールの軌道を回る惑星に位置する人里離れた前哨基地「サンクチュアリ・ベース6」へと旅立ちましょう。地底で太古の力が目覚めると、乗組員たちは「時間そのものよりも古い」悪との戦いに巻き込まれてしまいます。",
+    "releaseDate": "2026-11-23",
+    "status": "post-production",
+    "source": "TMDB",
+    "sourceUrl": "https://www.themoviedb.org/movie/1770183",
+    "confirmed": false,
+    "lastCheckedAt": "2026-09-25",
+    "sources": [
+      {
+        "name": "TMDB",
+        "url": "https://www.themoviedb.org/movie/1770183"
+      }
+    ],
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
+    "updatedAt": "2026-09-25"
+  },
+  {
     "key": "tmdb-movie-1377495",
     "kind": "announcement",
     "mediaType": "movie",
@@ -228,7 +251,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "ScreenRant TV News",
     "sourceUrl": "https://screenrant.com/the-four-seasons-season-3-filming-start-confirmed-netflix/",
     "confirmed": false,
-    "lastCheckedAt": "2026-09-24",
     "sources": [
       {
         "name": "ScreenRant TV News",
@@ -237,7 +259,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "ScreenRant TV Newsの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-09-24"
+    "updatedAt": "2026-09-24",
+    "lastCheckedAt": "2026-09-24"
   },
   {
     "key": "tvmaze-tv-57469",

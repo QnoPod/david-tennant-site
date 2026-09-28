@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-09-21T11:06:36.401Z",
+  "updatedAt": "2026-09-28T11:59:46.018Z",
   "mode": "full",
   "summary": {
-    "total": 650,
-    "ok": 579,
-    "broken": 2,
-    "warning": 69,
+    "total": 651,
+    "ok": 582,
+    "broken": 1,
+    "warning": 68,
     "unchecked": 0
   },
   "items": [
@@ -3182,10 +3182,10 @@
           "line": 26
         }
       ],
-      "status": "warning",
-      "httpStatus": null,
-      "message": "確認がタイムアウトしました。ブラウザで確認してください。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "f0c36ae60b57",
@@ -3213,17 +3213,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 95
+          "line": 118
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 100
+          "line": 123
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "965506fcfad1",
@@ -3232,17 +3232,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 250
+          "line": 296
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 255
+          "line": 301
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "40778695e0c8",
@@ -3251,17 +3251,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 64
+          "line": 87
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 69
+          "line": 92
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "5b7a9db4bb34",
@@ -4547,10 +4547,10 @@
           "line": 2829
         }
       ],
-      "status": "broken",
-      "httpStatus": 404,
-      "message": "リンク先が見つからないか、削除されています。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "0093e5ab3655",
@@ -5892,13 +5892,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 301
+          "line": 347
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "f6bd6739a18f",
@@ -5922,17 +5922,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 185
+          "line": 208
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 190
+          "line": 213
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "4cba24be62c3",
@@ -5971,13 +5971,32 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 78
+          "line": 101
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
+    },
+    {
+      "id": "e7df4bf0fbe7",
+      "kind": "link",
+      "target": "https://screenrant.com/the-four-seasons-season-3-filming-start-confirmed-netflix/",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 252
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 257
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "fe3a55694e10",
@@ -6115,17 +6134,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 207
+          "line": 230
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 212
+          "line": 235
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "6b0d91c6215d",
@@ -6232,9 +6251,9 @@
         }
       ],
       "status": "ok",
-      "httpStatus": 200,
+      "httpStatus": 202,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-08-17T06:05:05.937Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "8e97e692143d",
@@ -6680,17 +6699,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 142
+          "line": 165
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 147
+          "line": 170
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "0ec9e46f5c51",
@@ -6699,17 +6718,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 164
+          "line": 187
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 169
+          "line": 192
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "269d4b11f5da",
@@ -6911,10 +6930,10 @@
           "line": 232
         }
       ],
-      "status": "warning",
-      "httpStatus": 429,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "42a97b34fea0",
@@ -6998,17 +7017,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 271
+          "line": 317
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 276
+          "line": 322
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "9439224d072b",
@@ -7133,10 +7152,10 @@
           "line": 493
         }
       ],
-      "status": "warning",
-      "httpStatus": 429,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "907ef3de25cd",
@@ -7148,10 +7167,10 @@
           "line": 57
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "status": "warning",
+      "httpStatus": 429,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "106f1f457622",
@@ -7750,17 +7769,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 293
+          "line": 339
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 297
+          "line": 343
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "4772e174d12e",
@@ -8009,17 +8028,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 42
+          "line": 65
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 47
+          "line": 70
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "a1c659cf722e",
@@ -8028,13 +8047,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 104
+          "line": 127
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "8ca67b8ae9e5",
@@ -8043,13 +8062,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 73
+          "line": 96
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "a6a8f80b3879",
@@ -8063,12 +8082,20 @@
         {
           "file": "app/data/upcomingWorks.ts",
           "line": 25
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 43
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 48
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "1da04ffb01fc",
@@ -8077,17 +8104,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 121
+          "line": 144
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 126
+          "line": 149
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "d8e6672c9295",
@@ -8265,17 +8292,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 229
+          "line": 275
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 234
+          "line": 280
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-09-14T10:59:09.452Z"
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "f05cc958d3c3",
@@ -8287,10 +8314,10 @@
           "line": 479
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "ee5b610a8df8",
@@ -8302,10 +8329,10 @@
           "line": 339
         }
       ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-09-21T11:06:36.401Z"
+      "status": "warning",
+      "httpStatus": 403,
+      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "5edd4699eb4d",
@@ -9409,10 +9436,10 @@
           "line": 2828
         }
       ],
-      "status": "warning",
-      "httpStatus": 403,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-08-10T06:56:39.749Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-09-28T11:59:46.018Z"
     },
     {
       "id": "4b8e0fe0ca2e",

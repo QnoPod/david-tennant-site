@@ -240,6 +240,29 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-18"
   },
   {
+    "key": "rss-h780us",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "『ライバルズ』シーズン2 第2部",
+    "originalTitle": "Rivals Season 2 Part 2",
+    "overview": "ディズニーのR指定ドラマシリーズが復活し、デヴィッド・テナントが自身の帝国を守るために奮闘する姿が描かれる。同作は今年後半、シーズン2の第2部として放送される予定だ。",
+    "publishedDate": "2026-09-29",
+    "status": "unknown",
+    "source": "ScreenRant TV News",
+    "sourceUrl": "https://screenrant.com/rivals-season-2-part-2-trailer-david-tennant/",
+    "confirmed": false,
+    "lastCheckedAt": "2026-09-30",
+    "sources": [
+      {
+        "name": "ScreenRant TV News",
+        "url": "https://screenrant.com/rivals-season-2-part-2-trailer-david-tennant/",
+        "publishedDate": "2026-09-29"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-09-30"
+  },
+  {
     "key": "rss-u05trn",
     "kind": "announcement",
     "mediaType": "other",

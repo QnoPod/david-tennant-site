@@ -371,32 +371,5 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "reviewReason": "デイヴィッド・テナントの出演、または出演継続を示す正式発表を確認できていないため。",
     "updatedAt": "2026-07-17",
     "lastCheckedAt": "2026-07-17"
-  },
-  {
-    "key": "official-time-series-3",
-    "kind": "work",
-    "mediaType": "tv",
-    "title": "TIME シリーズ3",
-    "originalTitle": "Time",
-    "character": "刑務官ベイリー（Prison Officer Bailey）",
-    "overview": "少年院を舞台に、収容される若者と、その更生や安全に責任を負う職員たちを描く全3話のドラマです。",
-    "status": "filming",
-    "source": "BritBox / BBC発表",
-    "sourceUrl": "https://www.thefutoncritic.com/news/2026/03/17/britbox-announces-additional-casting-start-of-production-for-season-three-of-jimmy-mcgoverns-award-winning-drama-series-time-822310/20260317britbox01/",
-    "sources": [
-      {
-        "name": "BritBox / BBC発表",
-        "url": "https://www.thefutoncritic.com/news/2026/03/17/britbox-announces-additional-casting-start-of-production-for-season-three-of-jimmy-mcgoverns-award-winning-drama-series-time-822310/20260317britbox01/"
-      },
-      {
-        "name": "BritBox：『タイム』シーズン3 初公開画像",
-        "url": "https://press.britbox.com/post/britbox-reveals-first-look-at-david-tennant-and-siobhan-finneran",
-        "publishedDate": "2026-07-17",
-        "summary": "BritBox：『タイム』シーズン3 初公開画像では、「TIME シリーズ3」の初公開画像または最新ビジュアルが紹介されています。デイヴィッド・テナントの出演役は刑務官ベイリー（Prison Officer Bailey）、公開・放送日は未定です。"
-      }
-    ],
-    "confirmed": true,
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17"
   }
 ];

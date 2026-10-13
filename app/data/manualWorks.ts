@@ -13,7 +13,8 @@ const selfAppearance = [{
 /**
  * TMDBで取得できない映画・TV・舞台作品を手入力するファイルです。
  * この配列へ追加すると、WORKSとCHARACTERSの両ページへ自動的に反映されます。
- * idはTMDBと重複しない負の整数を使用してください。
+ * 通常はTMDBと重複しない負の整数を使用してください。
+ * 既存のTMDB作品を特定シーズンの出演情報で置き換える場合は、そのTMDB IDを指定できます。
  */
 export const manualWorks: Work[] = [
   {
@@ -28,6 +29,52 @@ export const manualWorks: Work[] = [
     posterUrl: "/works/Don Juan in SOHO.webp",
     backdropUrl: "/works/Don Juan in SOHO_2.jpg",
     providers: [],
+  },
+
+{
+  id: 126116,
+  isManual: true,
+  media_type: "tv",
+  name: "Time",
+  original_name: "Time",
+  manualTitle: "TIME シリーズ3",
+  first_air_date: "2026-10-11",
+  character: "Bobby Bailey",
+  overview: "ジミー・マクガヴァーンによる英国の刑務所ドラマ『Time』第3シリーズ。舞台は少年院。服役する少年たちの過酷な現実と、彼らを支える職員の葛藤を描く。刑務官ボビー・ベイリーは施設内で起きた悲劇の真相に関わる秘密を抱え、良心と同僚への忠誠の間で揺れる。2026年10月11日からBBC Oneで放送された全3話。",
+  posterUrl: "ここをTMDBと同じポスターURLにする",
+  providers: [],
+  numberOfEpisodes: 3,
+  episodeRunTime: 60,
+  manualCharacters: [{
+    name: "ボビー・ベイリー",
+    englishName: "Bobby Bailey",
+    image: "/characters/Bobby Bailey.jpg",
+    description: "少年院で長年働くベテランの刑務官で、施設の管理職を務める。現場の慣習を重視する一方、新たに赴任したチャプレンのマリー＝ルイーズとは少年たちへの接し方をめぐって対立する。私生活でも問題を抱えるなか、施設内の悲劇について人に言えない事実を知り、同僚を守るか、真実を打ち明けるかという選択に追い込まれる。",
+  }],
+  episodeAppearances: [
+    { seasonNumber: 3, episodeNumber: 1, title: "Episode 1", airDate: "2026-10-11", character: "Bobby Bailey" },
+    { seasonNumber: 3, episodeNumber: 2, title: "Episode 2", airDate: "2026-10-12", character: "Bobby Bailey" },
+    { seasonNumber: 3, episodeNumber: 3, title: "Episode 3", airDate: "2026-10-18", character: "Bobby Bailey" },
+  ],
+  updatedAt: "2026-10-13",
+  
+},
+
+  // TIME シリーズ3（2026年）：2021年開始のシリーズ本体とは出演年度を区別。
+  // 正のIDはTMDBのシリーズID。ポスターと日本の配信情報はTMDBから取得。
+  {
+    id: 126116,
+    isManual: true,
+    media_type: "tv",
+    name: "Time",
+    original_name: "Time",
+    manualTitle: "TIME シリーズ3",
+    first_air_date: "2026-10-11",
+    character: "Bobby Bailey",
+    numberOfEpisodes: 3,
+    episodeRunTime: 60,
+    episodeAppearances: episodeOverrides["Time"],
+    updatedAt: "2026-10-13",
   },
 
   // TMDBの出演クレジットにない場合だけ補う、本人出演のトーク・バラエティ番組です。
@@ -127,6 +174,7 @@ export const manualWorks: Work[] = [
  */
 export const workGenreOverrides: Record<string, string[]> = {
   "Don Juan in Soho": ["舞台","コメディ"],
+  "Time": ["ドラマ"],
   "Macbeth": ["舞台"],
   "National Theatre Live: Good": ["舞台"],
   "Have I Got News for You": ["バラエティ"],

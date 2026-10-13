@@ -179,7 +179,7 @@ export async function getEnrichedWorks(): Promise<Work[]> {
   for (let index = 0; index < works.length; index += chunkSize) {
     const chunk = works.slice(index, index + chunkSize);
     const results = await Promise.all(chunk.map(async (work) => {
-      if (work.isManual) return work;
+      if (work.isManual && work.id < 0) return work;
       try {
         const response = await fetch(
           `${TMDB_API}/${work.media_type}/${work.id}?language=ja-JP&append_to_response=videos,watch/providers`,
@@ -187,6 +187,8 @@ export async function getEnrichedWorks(): Promise<Work[]> {
         );
         if (!response.ok) return work;
         const detail = await response.json() as {
+          poster_path?: string | null;
+          backdrop_path?: string | null;
           genres?: Work["genres"];
           runtime?: number;
           number_of_seasons?: number;
@@ -200,11 +202,13 @@ export async function getEnrichedWorks(): Promise<Work[]> {
 
         return applyGenreOverrides({
           ...work,
+          poster_path: detail.poster_path ?? work.poster_path ?? null,
+          backdrop_path: detail.backdrop_path ?? work.backdrop_path ?? null,
           genres: detail.genres ?? [],
           runtime: detail.runtime ?? null,
-          numberOfSeasons: detail.number_of_seasons ?? null,
-          numberOfEpisodes: detail.number_of_episodes ?? null,
-          episodeRunTime: detail.episode_run_time?.[0] ?? null,
+          numberOfSeasons: work.isManual ? (work.numberOfSeasons ?? null) : (detail.number_of_seasons ?? null),
+          numberOfEpisodes: work.isManual ? (work.numberOfEpisodes ?? null) : (detail.number_of_episodes ?? null),
+          episodeRunTime: work.isManual ? (work.episodeRunTime ?? null) : (detail.episode_run_time?.[0] ?? null),
           videoKey: detail.videos?.results?.find((video) => video.site === "YouTube" && video.type === "Trailer")?.key ?? null,
           providers,
         } satisfies Work);

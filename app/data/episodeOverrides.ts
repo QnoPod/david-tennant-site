@@ -8,6 +8,11 @@ import type { EpisodeAppearance } from "../lib/types";
  * キーには原題を使い、作品詳細ではTMDBの日本語名と原題の両方を照合します。
  */
 export const episodeOverrides: Record<string, EpisodeAppearance[]> = {
+  "Time": [
+    { seasonNumber: 3, episodeNumber: 1, title: "Episode 1", airDate: "2026-10-11", character: "Bobby Bailey" },
+    { seasonNumber: 3, episodeNumber: 2, title: "Episode 2", airDate: "2026-10-12", character: "Bobby Bailey" },
+    { seasonNumber: 3, episodeNumber: 3, title: "Episode 3", airDate: "2026-10-18", character: "Bobby Bailey" },
+  ],
   "Dramarama": [{ seasonNumber: 6, episodeNumber: 13, title: "The Secret of Croftmore", originalTitle: "The Secret of Croftmore", airDate: "1988-08-08", character: "Neil McDonald" }],
   "The Play on One": [{ seasonNumber: 2, episodeNumber: 8, title: "Biting the Hands", originalTitle: "Biting the Hands", airDate: "1989-04-11", character: "Third Squaddie" }],
   "Strathblair": [{ seasonNumber: 1, episodeNumber: 2, title: "Family Affairs", originalTitle: "Family Affairs", airDate: "1992-05-10", character: "Archie the Hiker" }],

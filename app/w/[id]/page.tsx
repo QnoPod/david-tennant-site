@@ -13,6 +13,7 @@ import {
   getPosterUrl,
   getWorks,
 } from "../../lib/tmdb";
+import type { Work } from "../../lib/types";
 import {
   getDisplayTitle,
   getWorkOverview,
@@ -27,6 +28,14 @@ const SITE_URL =
   || "https://david-tennant-site.vercel.app";
 
 const loadWorks = cache(getWorks);
+const TIME_SHARE_ALIAS = "time-s3";
+
+function findSharedWork(works: Work[], id: string) {
+  if (id === TIME_SHARE_ALIAS) {
+    return works.find((work) => work.media_type === "tv" && work.id === 126116) ?? null;
+  }
+  return findWorkBySlug(works, id);
+}
 
 function absoluteUrl(value: string) {
   return new URL(value, SITE_URL).toString();
@@ -41,7 +50,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const { id } = await params;
   const works = await loadWorks();
-  const work = findWorkBySlug(works, id);
+  const work = findSharedWork(works, id);
 
   if (!work) {
     return {
@@ -51,7 +60,7 @@ export async function generateMetadata({
   }
 
   const shortPath = work.media_type === "tv" && work.id === 126116
-    ? "/w/tv-126116-time-series-3"
+    ? `/w/${TIME_SHARE_ALIAS}`
     : `/w/${getWorkShareId(work)}?v=2`;
   const slug = getWorkSlug(work);
   const target =
@@ -80,9 +89,9 @@ export async function generateMetadata({
   );
 
 
-  // TIMEはTMDBの横長画像を専用ルートで生成します。古い共通画像へ戻しません。
+  // TIMEだけ新しい、自然な共有URLと専用TMDB画像ルートを使います。
   const timeSocialImage = work.media_type === "tv" && work.id === 126116
-    ? absoluteUrl("/w/tv-126116-time-series-3/image")
+    ? absoluteUrl(`/w/${TIME_SHARE_ALIAS}/image`)
     : image;
 
   return {
@@ -119,7 +128,7 @@ export default async function Page({
 }: Props) {
   const { id } = await params;
   const works = await loadWorks();
-  const work = findWorkBySlug(works, id);
+  const work = findSharedWork(works, id);
   if (!work) notFound();
 
   const target =

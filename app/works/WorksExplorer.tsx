@@ -860,7 +860,7 @@ function WorkDetailModal({
     : "/works";
   const shareHref = work
     ? (work.media_type === "tv" && work.id === 126116
-      ? "/w/tv-126116-time-series-3"
+      ? "/w/time-s3"
       : `/w/${getWorkShareId(work)}?v=2`)
     : "/works";
 

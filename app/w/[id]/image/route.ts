@@ -5,7 +5,6 @@ import {
 import {
   getBackdropUrl,
   getPosterUrl,
-  getWorkWithTMDBArtwork,
   getWorks,
 } from "../../../lib/tmdb";
 import {
@@ -19,6 +18,7 @@ type Props = {
 
 export const runtime = "nodejs";
 export const revalidate = 86400;
+const TIME_SHARE_ALIAS = "time-s3";
 
 function toResponseArrayBuffer(
   bytes: Buffer,
@@ -242,10 +242,12 @@ export async function GET(
 ) {
   const { id } = await params;
   const works = await getWorks();
-  const work = findWorkBySlug(
-    works,
-    id,
-  );
+  const work = id === TIME_SHARE_ALIAS
+    ? (works.find((item) => item.media_type === "tv" && item.id === 126116) ?? null)
+    : findWorkBySlug(
+      works,
+      id,
+    );
 
   if (!work) {
     return new Response(
@@ -254,39 +256,75 @@ export async function GET(
     );
   }
 
-  // 通常のWORKS詳細と同じTMDB作品詳細から、TIMEの横長画像を取得します。
-  // 他の作品の共有処理は従来どおりです。
-  const isTimeShare = work.media_type === "tv" && work.id === 126116;
-  const displayWork = isTimeShare
-    ? await getWorkWithTMDBArtwork(work)
-    : work;
-  const backdrop = getBackdropUrl(
-    displayWork.backdrop_path,
-    displayWork.backdropUrl,
-  );
-  const poster = isTimeShare && !displayWork.poster_path && !displayWork.posterUrl
-    ? ""
-    : getPosterUrl(displayWork.poster_path, displayWork.posterUrl);
+  const backdrop =
+    getBackdropUrl(
+      work.backdrop_path,
+      work.backdropUrl,
+    );
+  const poster =
+    getPosterUrl(
+      work.poster_path,
+      work.posterUrl,
+    );
 
-  // 代替アイコン /images/default-character.jpg は画像候補に含めません。
-  const imageSources = [backdrop, poster].filter(Boolean);
-  let bytes: Buffer | undefined;
-  for (const imageSource of imageSources) {
-    try {
-      bytes = await createImageCard(imageSource, request.url);
-      break;
-    } catch (error) {
-      console.error("作品共有画像を取得できませんでした", work.id, imageSource, error);
+  // WORKS詳細と同じTMDB作品詳細APIから、TIMEのbackdrop_pathを取得します。
+  const isTimeShare = work.media_type === "tv" && work.id === 126116;
+  let timeBackdrop = "";
+  if (isTimeShare) {
+    const token = process.env.TMDB_READ_TOKEN;
+    if (token) {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/tv/${work.id}?language=ja-JP`,
+          {
+            headers: { Authorization: `Bearer ${token}`, accept: "application/json" },
+            next: { revalidate: 86400 },
+          },
+        );
+        if (response.ok) {
+          const details = await response.json() as { backdrop_path?: string | null };
+          if (details.backdrop_path) {
+            timeBackdrop = `https://image.tmdb.org/t/p/w1280${details.backdrop_path}`;
+          }
+        } else {
+          console.error("TIME共有画像: TMDB応答", response.status);
+        }
+      } catch (error) {
+        console.error("TIME共有画像: TMDB通信失敗", error);
+      }
+    } else {
+      console.error("TIME共有画像: ProductionのTMDB_READ_TOKENがありません");
     }
   }
+  const timePrimaryImage = isTimeShare
+    ? (timeBackdrop || backdrop || "/characters/Bobby Bailey.jpg")
+    : backdrop || poster;
+  const timeFallbackImage = isTimeShare
+    ? "/characters/Bobby Bailey.jpg"
+    : poster;
 
-  // TMDBにアクセスできない場合は明示的な作品カードを生成します。
-  // デフォルトの人物アイコンを共有画像にすることはありません。
-  if (!bytes) {
-    bytes = await createFallback({
-      title: getOriginalTitle(work) || getDisplayTitle(work),
-      subtitle: getDisplayTitle(work),
-    });
+
+  let bytes: Buffer;
+
+  try {
+    bytes = await createImageCard(
+      timePrimaryImage,
+      request.url,
+    );
+  } catch {
+    try {
+      bytes = await createImageCard(
+        timeFallbackImage,
+        request.url,
+      );
+    } catch {
+      bytes = await createFallback({
+        title:
+          getOriginalTitle(work)
+          || getDisplayTitle(work),
+        subtitle: getDisplayTitle(work),
+      });
+    }
   }
 
   const body =

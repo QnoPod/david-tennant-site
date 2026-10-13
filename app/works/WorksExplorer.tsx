@@ -849,10 +849,6 @@ function WorkDetailModal({
         displayTitle,
         getSourceTitle(work),
         originalTitle,
-        ...characters.flatMap((character) => [
-          character.name,
-          character.englishName,
-        ]),
       ])
     : [];
   const modalHref = work

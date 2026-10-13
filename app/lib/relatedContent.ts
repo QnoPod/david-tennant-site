@@ -13,6 +13,10 @@ function expandWorkTitleTerms(terms: readonly (string | undefined)[]) {
     if (!term) continue;
     const normalized = normalizeText(term);
     expanded.add(normalized);
+    if (normalized === normalizeText("TIME シリーズ3")) {
+      expanded.add(normalizeText("Time Series 3"));
+      expanded.add(normalizeText("Time Season 3"));
+    }
     const japaneseTitle = searchDictionary[normalized];
     if (japaneseTitle) expanded.add(normalizeText(japaneseTitle));
     for (const [originalTitle, translatedTitle] of Object.entries(searchDictionary)) {
@@ -23,32 +27,25 @@ function expandWorkTitleTerms(terms: readonly (string | undefined)[]) {
 }
 
 /**
- * 作品名・役名とインタビューの「関連作品」タグを照合します。
- * 完全一致したタグを最優先し、見出し・紹介文での一致は補助的に使用します。
+ * 関連インタビューは、関連作品タグ（tagGroups.genres）との完全一致のみで判定します。
+ * 見出し・本文・媒体名の文字列一致は使用しません。
+ * 邦題・原題は expandWorkTitleTerms で正規化・照合します。
  */
-export function findRelatedInterviews(terms: readonly (string | undefined)[], excludeSlug?: string, limit = 4): RelatedInterview[] {
-  const needles = expandWorkTitleTerms(terms);
-  if (!needles.length) return [];
+export function findRelatedInterviews(
+  terms: readonly (string | undefined)[],
+  excludeSlug?: string,
+  limit = 4,
+): RelatedInterview[] {
+  const needles = new Set(expandWorkTitleTerms(terms));
+  if (!needles.size) return [];
 
   return getPublishedInterviews()
     .filter((interview) => interview.slug !== excludeSlug)
-    .map((interview) => {
-      const relatedWorkTags = getInterviewTagGroup(
-        interview.tagGroups,
-        "genres",
-      ).map(normalizeText);
-      const summaryText = normalizeText(`${interview.title} ${interview.titleEn ?? ""} ${interview.description}`);
-      const score = needles.reduce((total, needle) => {
-        if (relatedWorkTags.includes(needle)) return total + 10;
-        if (relatedWorkTags.some((tag) => tag.includes(needle) || needle.includes(tag))) return total + 5;
-        return summaryText.includes(needle) ? total + 1 : total;
-      }, 0);
-      return { interview, score };
-    })
-    .filter((item) => item.score > 0)
-    .sort((a, b) => b.score - a.score || b.interview.publishedDate.localeCompare(a.interview.publishedDate))
+    .filter((interview) => getInterviewTagGroup(interview.tagGroups, "genres")
+      .some((tag) => needles.has(normalizeText(tag))))
+    .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate))
     .slice(0, limit)
-    .map(({ interview }) => ({
+    .map((interview) => ({
       slug: interview.slug,
       title: interview.title,
       titleEn: interview.titleEn,

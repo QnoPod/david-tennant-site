@@ -17,6 +17,21 @@ const selfAppearance = [{
  * 既存のTMDB作品を特定シーズンの出演情報で置き換える場合は、そのTMDB IDを指定できます。
  */
 export const manualWorks: Work[] = [
+  // TMDBの出演クレジットにない場合のみ表示する予備データ。
+  // 役名・画像・説明は workCharacterOverrides.ts から取得します。
+  {
+    id: -1201,
+    isManual: true,
+    addOnlyIfMissing: true,
+    media_type: "tv",
+    name: "The Genius Game",
+    original_name: "Genius Game",
+    first_air_date: "2025-04-30",
+    character: "The Creator",
+    numberOfEpisodes: 8,
+    episodeRunTime: 53,
+    providers: [],
+  },
   {
     id: -1001,
     isManual: true,

@@ -1,4 +1,6 @@
 import type { WorkCharacter } from "../lib/types";
+import { customCharacterInfo } from "./characterDetails";
+import { customCharacterImages } from "./characterImages";
 
 export type WorkCharacterOverride = {
   /** 作品一覧の検索にも使う英語の共通役名。 */
@@ -10,6 +12,20 @@ export type WorkCharacterOverride = {
 const SELF_IMAGE = "/characters/self-icon.webp";
 const NARRATOR_IMAGE = "/characters/narrator-icon.jpg";
 const TENTH_DOCTOR_IMAGE = "/characters/10thDoctor.jpg";
+
+/** 番組の案内役 "The Creator" を、CHARACTERSと同じ辞書データで表示します。 */
+const [geniusCreatorName, ...geniusCreatorDescription] =
+  (customCharacterInfo["The Genius Game"] ?? "クリエイター\n詳細情報は準備中です。").split("\n");
+const geniusCreatorAppearance: WorkCharacterOverride = {
+  character: "The Creator",
+  characters: [{
+    name: geniusCreatorName || "クリエイター",
+    englishName: "The Creator",
+    image: customCharacterImages["The Genius Game"] || "/images/default-character.jpg",
+    description: geniusCreatorDescription.join("\n") || "詳細情報は準備中です。",
+    appearanceNote: "番組の司会・進行役",
+  }],
+};
 
 /** WORKS詳細だけに表示する10代目ドクターの作品別説明を作ります。 */
 function tenthDoctorAppearance(appearanceNote: string, description: string): WorkCharacterOverride {
@@ -32,6 +48,9 @@ function tenthDoctorAppearance(appearanceNote: string, description: string): Wor
  * 作品詳細で「本人」だけでなく、実際の出演形態も確認できるようにします。
  */
 export const workCharacterOverrides: Record<string, WorkCharacterOverride> = {
+  // TMDB側の表記揺れに対応し、WORKSカードにも「クリエイター」を表示する。
+  "The Genius Game": geniusCreatorAppearance,
+  "Genius Game": geniusCreatorAppearance,
   "Doctor Who: Dreamland": tenthDoctorAppearance(
     "アニメーション（声）",
     "1958年のアメリカを訪れた10代目ドクターが、ロズウェル事件とエイリアンの陰謀に巻き込まれる。デイヴィッド・テナントはアニメーションの10代目ドクターの声を担当。",

@@ -269,11 +269,29 @@ async function main() {
     active.push(preserveChangeDate(merged, previous));
   }
 
-  active.sort((left, right) => identity(left).localeCompare(identity(right), "en"));
+  // 自動取得したタイトルが変わっても、同じ取得元IDを重複保存しない。
+  const uniqueByKey = new Map();
+  for (const item of active) {
+    const previous = uniqueByKey.get(item.key);
+    if (!previous) {
+      uniqueByKey.set(item.key, item);
+      continue;
+    }
+    const previousDate = previous.updatedAt || previous.lastCheckedAt || "";
+    const incomingDate = item.updatedAt || item.lastCheckedAt || "";
+    const latest = incomingDate >= previousDate ? item : previous;
+    uniqueByKey.set(item.key, {
+      ...latest,
+      confirmed: Boolean(previous.confirmed || item.confirmed),
+      sources: mergeSources(previous, item),
+    });
+  }
+  const uniqueActive = [...uniqueByKey.values()];
+  uniqueActive.sort((left, right) => identity(left).localeCompare(identity(right), "en"));
   const temporaryFile = `${DATA_FILE}.tmp`;
-  await fs.writeFile(temporaryFile, renderSource(active), "utf8");
+  await fs.writeFile(temporaryFile, renderSource(uniqueActive), "utf8");
   await fs.rename(temporaryFile, DATA_FILE);
-  console.log(`Saved ${active.length} UPCOMING records.`);
+  console.log(`Saved ${uniqueActive.length} UPCOMING records.`);
 }
 
 await main();

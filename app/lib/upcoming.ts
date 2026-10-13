@@ -291,7 +291,9 @@ function buildReviewReason({
 function consolidateCandidates(items: UpcomingWork[]) {
   const groups: UpcomingWork[][] = [];
   for (const item of items.filter(isActiveUpcoming)) {
-    const group = groups.find((entries) => entries.some((entry) => sameProject(entry, item)));
+    // TMDBなどの同一IDを最優先。タイトルの変更で別カードに分裂させない。
+    const group = groups.find((entries) => entries.some((entry) => entry.key === item.key))
+      ?? groups.find((entries) => entries.some((entry) => sameProject(entry, item)));
     if (group) group.push(item);
     else groups.push([item]);
   }

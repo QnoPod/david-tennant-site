@@ -10,52 +10,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "key": "tmdb-movie-1770183",
     "kind": "announcement",
     "mediaType": "movie",
-    "title": "Doctor Who Day: The Impossible Planet & The Satan Pit",
-    "originalTitle": "Doctor Who Day: The Impossible Planet & The Satan Pit",
-    "character": "The Doctor",
-    "overview": "デイヴィッド・テナントはThe Doctor役で出演します。ポストプロダクション中の作品として掲載されています。公開・放送予定は2026年11月23日です。",
-    "releaseDate": "2026-11-23",
-    "status": "post-production",
-    "source": "TMDB",
-    "sourceUrl": "https://www.themoviedb.org/movie/1770183",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "TMDB",
-        "url": "https://www.themoviedb.org/movie/1770183"
-      }
-    ],
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-09-14",
-    "lastCheckedAt": "2026-09-14"
-  },
-  {
-    "key": "tmdb-movie-1770183",
-    "kind": "announcement",
-    "mediaType": "movie",
-    "title": "Doctor Who: The Satan Pit",
-    "originalTitle": "Doctor Who: The Satan Pit",
-    "character": "The Doctor",
-    "overview": "ドクターとローズと共に、ブラックホールの軌道を回る惑星に位置する人里離れた前哨基地「サンクチュアリ・ベース6」へと旅立ちましょう。地底で太古の力が目覚めると、乗組員たちは「時間そのものよりも古い」悪との戦いに巻き込まれてしまいます。",
-    "releaseDate": "2026-11-23",
-    "status": "post-production",
-    "source": "TMDB",
-    "sourceUrl": "https://www.themoviedb.org/movie/1770183",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "TMDB",
-        "url": "https://www.themoviedb.org/movie/1770183"
-      }
-    ],
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-09-25",
-    "lastCheckedAt": "2026-09-25"
-  },
-  {
-    "key": "tmdb-movie-1770183",
-    "kind": "announcement",
-    "mediaType": "movie",
     "title": "Doctor Who: The Satan Pit - Extended Movie Cut",
     "originalTitle": "Doctor Who: The Satan Pit - Extended Movie Cut",
     "character": "The Doctor",

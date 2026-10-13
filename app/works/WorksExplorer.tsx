@@ -859,7 +859,9 @@ function WorkDetailModal({
     ? `/works?detail=${encodeURIComponent(getWorkSlug(work))}`
     : "/works";
   const shareHref = work
-    ? `/w/${getWorkShareId(work)}?v=2`
+    ? (work.media_type === "tv" && work.id === 126116
+      ? "/w/tv-126116-time-series-3"
+      : `/w/${getWorkShareId(work)}?v=2`)
     : "/works";
 
   // 実際に表示した作品詳細を、MY ARCHIVEの「最近見た項目」へ保存します。

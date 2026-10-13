@@ -50,8 +50,9 @@ export async function generateMetadata({
     };
   }
 
-  const shortPath =
-    `/w/${getWorkShareId(work)}?v=2`;
+  const shortPath = work.media_type === "tv" && work.id === 126116
+    ? "/w/tv-126116-time-series-3"
+    : `/w/${getWorkShareId(work)}?v=2`;
   const slug = getWorkSlug(work);
   const target =
     `/works?detail=${encodeURIComponent(slug)}`;
@@ -78,6 +79,12 @@ export async function generateMetadata({
     || `/w/${getWorkShareId(work)}/image?v=2`,
   );
 
+
+  // TIMEはTMDBの横長画像を専用ルートで生成します。古い共通画像へ戻しません。
+  const timeSocialImage = work.media_type === "tv" && work.id === 126116
+    ? absoluteUrl("/w/tv-126116-time-series-3/image")
+    : image;
+
   return {
     title,
     description,
@@ -91,7 +98,7 @@ export async function generateMetadata({
       title,
       description,
       images: [{
-        url: image,
+        url: timeSocialImage,
         width: 1200,
         height: 630,
         type: "image/jpeg",
@@ -102,7 +109,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [timeSocialImage],
     },
   };
 }

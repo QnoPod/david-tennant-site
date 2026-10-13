@@ -221,6 +221,44 @@ export async function getEnrichedWorks(): Promise<Work[]> {
   return applyStreamingExpirations(enriched);
 }
 
+/**
+ * 共有用の1作品だけ、WORKS詳細と同じTMDB作品詳細APIから画像を取得します。
+ * 手入力作品が人物出演クレジットを上書きしても、作品画像が欠けないようにします。
+ */
+export async function getWorkWithTMDBArtwork(work: Work): Promise<Work> {
+  if (work.id < 0 || !["tv", "movie"].includes(work.media_type)) return work;
+
+  const token = process.env.TMDB_READ_TOKEN;
+  if (!token) {
+    console.error("作品共有画像: TMDB_READ_TOKEN が本番環境に設定されていません", work.id);
+    return work;
+  }
+
+  try {
+    const response = await fetch(
+      `${TMDB_API}/${work.media_type}/${work.id}?language=ja-JP`,
+      { headers: API_HEADERS(token), next: { revalidate: 86400 } },
+    );
+    if (!response.ok) {
+      console.error("作品共有画像: TMDBエラー", work.id, response.status);
+      return work;
+    }
+
+    const detail = await response.json() as {
+      backdrop_path?: string | null;
+      poster_path?: string | null;
+    };
+    return {
+      ...work,
+      backdrop_path: detail.backdrop_path ?? work.backdrop_path ?? null,
+      poster_path: detail.poster_path ?? work.poster_path ?? null,
+    };
+  } catch (error) {
+    console.error("作品共有画像: TMDB通信エラー", work.id, error);
+    return work;
+  }
+}
+
 export function getWorkTitle(work: Work) {
   return work.title || work.name || work.original_title || work.original_name || "タイトル未登録";
 }

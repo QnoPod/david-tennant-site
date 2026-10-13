@@ -31,35 +31,6 @@ export const manualWorks: Work[] = [
     providers: [],
   },
 
-{
-  id: 126116,
-  isManual: true,
-  media_type: "tv",
-  name: "Time",
-  original_name: "Time",
-  manualTitle: "TIME シリーズ3",
-  first_air_date: "2026-10-11",
-  character: "Bobby Bailey",
-  overview: "ジミー・マクガヴァーンによる英国の刑務所ドラマ『Time』第3シリーズ。舞台は少年院。服役する少年たちの過酷な現実と、彼らを支える職員の葛藤を描く。刑務官ボビー・ベイリーは施設内で起きた悲劇の真相に関わる秘密を抱え、良心と同僚への忠誠の間で揺れる。2026年10月11日からBBC Oneで放送された全3話。",
-  posterUrl: "ここをTMDBと同じポスターURLにする",
-  providers: [],
-  numberOfEpisodes: 3,
-  episodeRunTime: 60,
-  manualCharacters: [{
-    name: "ボビー・ベイリー",
-    englishName: "Bobby Bailey",
-    image: "/characters/Bobby Bailey.jpg",
-    description: "少年院で長年働くベテランの刑務官で、施設の管理職を務める。現場の慣習を重視する一方、新たに赴任したチャプレンのマリー＝ルイーズとは少年たちへの接し方をめぐって対立する。私生活でも問題を抱えるなか、施設内の悲劇について人に言えない事実を知り、同僚を守るか、真実を打ち明けるかという選択に追い込まれる。",
-  }],
-  episodeAppearances: [
-    { seasonNumber: 3, episodeNumber: 1, title: "Episode 1", airDate: "2026-10-11", character: "Bobby Bailey" },
-    { seasonNumber: 3, episodeNumber: 2, title: "Episode 2", airDate: "2026-10-12", character: "Bobby Bailey" },
-    { seasonNumber: 3, episodeNumber: 3, title: "Episode 3", airDate: "2026-10-18", character: "Bobby Bailey" },
-  ],
-  updatedAt: "2026-10-13",
-  
-},
-
   // TIME シリーズ3（2026年）：2021年開始のシリーズ本体とは出演年度を区別。
   // 正のIDはTMDBのシリーズID。ポスターと日本の配信情報はTMDBから取得。
   {

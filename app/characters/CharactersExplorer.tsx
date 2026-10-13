@@ -24,6 +24,14 @@ const FAVORITES_KEY = ARCHIVE_STORAGE_KEYS.favoriteCharacters;
 const WATCHED_KEY = ARCHIVE_STORAGE_KEYS.watchedWorks;
 const INITIAL_VISIBLE_COUNT = 24;
 const INITIAL_ATTRIBUTE_GROUP_COUNT = 4;
+
+/** 「警察・探偵」と「刑務官」は属性別一覧だけで同じグループにまとめます。 */
+const LAW_ENFORCEMENT_GROUP = "警察・探偵・刑務官";
+function getAttributeGroup(attribute: string) {
+  return attribute === "警察・探偵" || attribute === "刑務官"
+    ? LAW_ENFORCEMENT_GROUP
+    : attribute;
+}
 type AnimationFilter = "HIDE" | "ALL" | "ONLY";
 type CharacterView = "grid" | "timeline";
 
@@ -246,7 +254,7 @@ export default function CharactersExplorer({
   const attributeCounts = useMemo(() => {
     const counts = new Map<string, number>();
     for (const character of characters) {
-      for (const item of new Set(character.attributes)) {
+      for (const item of new Set(character.attributes.map(getAttributeGroup))) {
         counts.set(item, (counts.get(item) ?? 0) + 1);
       }
     }
@@ -289,7 +297,8 @@ export default function CharactersExplorer({
       .map((item) => ({
         attribute: item,
         characters: filtered.filter((character) =>
-          character.attributes.includes(item)),
+          character.attributes.some((attribute) =>
+            getAttributeGroup(attribute) === item)),
       }))
       .filter((group) => group.characters.length)
       .sort((a, b) => {
@@ -378,9 +387,10 @@ export default function CharactersExplorer({
 
   /** カードの属性を押すとカテゴリ表示をONにし、該当する属性枠まで移動します。 */
   const goToAttribute = (item: string) => {
+    const groupName = getAttributeGroup(item);
     setShowAttributes(true);
     const targetIndex = attributeGroups.findIndex(
-      (group) => group.attribute === item,
+      (group) => group.attribute === groupName,
     );
     if (targetIndex >= 0) {
       setVisibleAttributeGroups((count) =>
@@ -389,7 +399,7 @@ export default function CharactersExplorer({
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(() => {
         document
-          .getElementById(attributeSectionId(item))
+          .getElementById(attributeSectionId(groupName))
           ?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });

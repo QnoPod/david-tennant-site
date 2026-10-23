@@ -7,6 +7,33 @@ import type { InterviewSummary } from "./types";
  */
 export const autoInterviewCandidates: readonly InterviewSummary[] = [
   {
+    "slug": "david-tennant-talks-about-his-character-in-time-s3-5zjfsahnrx",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-10-23",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが『タイム』シーズン3での自身の役について語る",
+    "titleEn": "David Tennant talks about his character in Time S3",
+    "year": "2026",
+    "publishedDate": "2026-10-22",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "5zjfsaHnrxU",
+    "externalUrl": "https://www.youtube.com/watch?v=5zjfsaHnrxU",
+    "thumbnailUrl": "https://i.ytimg.com/vi/5zjfsaHnrxU/hqdefault.jpg",
+    "duration": "Video · 1:19",
+    "description": "俳優のデイヴィッド・テナントが、新シリーズ『タイム』に登場する自身の演じるキャラクター「ボビー・ベイリー」について語る。 #TimeBBC #DavidTennant #Drama ある悲劇が少年院を揺るがし、受刑者と職員の両方が直面しているプレッシャーが浮き彫りになる。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "michael-sheen-s-impression-though-bbc-tfb06t92fx",
     "isPublished": false,
     "reviewStatus": "pending",

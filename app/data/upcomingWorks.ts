@@ -151,6 +151,28 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-08-20"
   },
   {
+    "key": "youtube-w1ufru",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "David Tennant talks about his character in Time S3",
+    "overview": "俳優のデヴィッド・テナントが、新シリーズ『タイム』に登場する自身の演じるキャラクター「ボビー・ベイリー」について語っています。#TimeBBC #DavidTennant #Drama A ...",
+    "publishedDate": "2026-10-22",
+    "status": "unknown",
+    "source": "YouTube · BBC",
+    "sourceUrl": "https://www.youtube.com/watch?v=5zjfsaHnrxU",
+    "confirmed": false,
+    "lastCheckedAt": "2026-10-23",
+    "sources": [
+      {
+        "name": "YouTube · BBC",
+        "url": "https://www.youtube.com/watch?v=5zjfsaHnrxU",
+        "publishedDate": "2026-10-22"
+      }
+    ],
+    "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
+    "updatedAt": "2026-10-23"
+  },
+  {
     "key": "official-tenth-doctor-adventures-2027",
     "kind": "work",
     "mediaType": "other",

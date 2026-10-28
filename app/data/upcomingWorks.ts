@@ -285,6 +285,29 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-09-24"
   },
   {
+    "key": "tmdb-tv-336392",
+    "kind": "announcement",
+    "mediaType": "tv",
+    "title": "Ages of Ice",
+    "originalTitle": "Ages of Ice",
+    "character": "Self (voice)",
+    "overview": "『Ages of Ice』は、地球の最も寒冷な地域で、探検と人類の挑戦の限界に挑む科学者たちの姿を追った作品です。",
+    "releaseDate": "2026-11-03",
+    "status": "scheduled",
+    "source": "TMDB",
+    "sourceUrl": "https://www.themoviedb.org/tv/336392",
+    "confirmed": false,
+    "lastCheckedAt": "2026-10-28",
+    "sources": [
+      {
+        "name": "TMDB",
+        "url": "https://www.themoviedb.org/tv/336392"
+      }
+    ],
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
+    "updatedAt": "2026-10-28"
+  },
+  {
     "key": "tvmaze-tv-57469",
     "kind": "announcement",
     "mediaType": "tv",

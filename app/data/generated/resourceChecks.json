@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-10-26T11:32:42.568Z",
+  "updatedAt": "2026-11-02T13:51:02.578Z",
   "mode": "full",
   "summary": {
-    "total": 653,
-    "ok": 587,
+    "total": 654,
+    "ok": 588,
     "broken": 1,
     "warning": 65,
     "unchecked": 0
@@ -3259,17 +3259,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 318
+          "line": 341
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 323
+          "line": 346
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-26T11:32:42.568Z"
+      "checkedAt": "2026-11-02T13:51:02.578Z"
     },
     {
       "id": "40778695e0c8",
@@ -6297,9 +6297,9 @@
         }
       ],
       "status": "ok",
-      "httpStatus": 200,
+      "httpStatus": 202,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-02T13:51:02.578Z"
     },
     {
       "id": "8e97e692143d",
@@ -7063,17 +7063,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 339
+          "line": 362
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 344
+          "line": 367
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-26T11:32:42.568Z"
+      "checkedAt": "2026-11-02T13:51:02.578Z"
     },
     {
       "id": "9439224d072b",
@@ -8136,6 +8136,25 @@
       "checkedAt": "2026-10-19T11:16:08.287Z"
     },
     {
+      "id": "3bfd70078430",
+      "kind": "link",
+      "target": "https://www.themoviedb.org/tv/336392",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 298
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 303
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-02T13:51:02.578Z"
+    },
+    {
       "id": "d8e6672c9295",
       "kind": "link",
       "target": "https://www.thepopverse.com/tv-david-tennant-good-omens-doctor-who-mcm-may-2025-panel-video-vod-on-demand-ondemand",
@@ -8311,17 +8330,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 297
+          "line": 320
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 302
+          "line": 325
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-26T11:32:42.568Z"
+      "checkedAt": "2026-11-02T13:51:02.578Z"
     },
     {
       "id": "f05cc958d3c3",

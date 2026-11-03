@@ -285,27 +285,26 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-09-24"
   },
   {
-    "key": "tmdb-tv-336392",
+    "key": "youtube-jh0sja",
     "kind": "announcement",
-    "mediaType": "tv",
-    "title": "Ages of Ice",
-    "originalTitle": "Ages of Ice",
-    "character": "Self (voice)",
-    "overview": "『Ages of Ice』は、地球の最も寒冷な地域で、探検と人類の挑戦の限界に挑む科学者たちの姿を追った作品です。",
-    "releaseDate": "2026-11-03",
-    "status": "scheduled",
-    "source": "TMDB",
-    "sourceUrl": "https://www.themoviedb.org/tv/336392",
+    "mediaType": "other",
+    "title": "Young cast of Time S3 interview each other - BBC",
+    "overview": "『タイム』の若手キャストたちが、デヴィッド・テナントやシボーン・フィネランと共演した感想を語っています。#TimeBBC #DavidTennant ...",
+    "publishedDate": "2026-11-03",
+    "status": "unknown",
+    "source": "YouTube · BBC",
+    "sourceUrl": "https://www.youtube.com/watch?v=fnSBrSZR9c0",
     "confirmed": false,
+    "lastCheckedAt": "2026-11-03",
     "sources": [
       {
-        "name": "TMDB",
-        "url": "https://www.themoviedb.org/tv/336392"
+        "name": "YouTube · BBC",
+        "url": "https://www.youtube.com/watch?v=fnSBrSZR9c0",
+        "publishedDate": "2026-11-03"
       }
     ],
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-10-28",
-    "lastCheckedAt": "2026-10-28"
+    "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
+    "updatedAt": "2026-11-03"
   },
   {
     "key": "tvmaze-tv-57469",

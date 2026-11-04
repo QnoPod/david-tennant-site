@@ -295,7 +295,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "YouTube · BBC",
     "sourceUrl": "https://www.youtube.com/watch?v=fnSBrSZR9c0",
     "confirmed": false,
-    "lastCheckedAt": "2026-11-03",
     "sources": [
       {
         "name": "YouTube · BBC",
@@ -304,7 +303,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
-    "updatedAt": "2026-11-03"
+    "updatedAt": "2026-11-03",
+    "lastCheckedAt": "2026-11-03"
   },
   {
     "key": "tvmaze-tv-57469",

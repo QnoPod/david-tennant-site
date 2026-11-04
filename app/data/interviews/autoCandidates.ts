@@ -7,6 +7,60 @@ import type { InterviewSummary } from "./types";
  */
 export const autoInterviewCandidates: readonly InterviewSummary[] = [
   {
+    "slug": "david-tennant-talks-about-the-young-cast-of-time-s3-bbc-fdiikwooto",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-11-04",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントが『タイム』シーズン3の若手キャストについて語る - BBC",
+    "titleEn": "David Tennant talks about the young cast of Time S3 - BBC",
+    "year": "2026",
+    "publishedDate": "2026-11-04",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "fdIikWooTOY",
+    "externalUrl": "https://www.youtube.com/watch?v=fdIikWooTOY",
+    "thumbnailUrl": "https://i.ytimg.com/vi/fdIikWooTOY/hqdefault.jpg",
+    "duration": "Video · 0:49",
+    "description": "「みんなとても献身的で、生き生きとしている。」 #TimeBBC #DavidTennant #Drama ある悲劇が少年刑務所を揺るがし、受刑者と職員の双方が直面するプレッシャーが浮き彫りになる。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "young-cast-of-time-s3-interview-each-other-bbc-fnsbrszr9c",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-11-04",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "『タイム』シーズン3の若手キャストたちが互いにインタビュー - BBC",
+    "titleEn": "Young cast of Time S3 interview each other - BBC",
+    "year": "2026",
+    "publishedDate": "2026-11-03",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "fnSBrSZR9c0",
+    "externalUrl": "https://www.youtube.com/watch?v=fnSBrSZR9c0",
+    "thumbnailUrl": "https://i.ytimg.com/vi/fnSBrSZR9c0/hqdefault.jpg",
+    "duration": "Video · 1:00",
+    "description": "『タイム』の若手キャストたちが、デイヴィッド・テナントやシボーン・フィネランと共演した感想を語っている。 #TimeBBC #DavidTennant #Drama ある悲劇が少年院を揺るがし、受刑者と職員の両方が直面しているプレッシャーが浮き彫りになる。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
+    "tagGroups": {
+      "actors": [],
+      "genres": [],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-talks-about-his-character-in-time-s3-5zjfsahnrx",
     "isPublished": false,
     "reviewStatus": "pending",

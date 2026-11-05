@@ -173,6 +173,28 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-10-23"
   },
   {
+    "key": "youtube-ovtcus",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "David Tennant talks about the young cast of Time S3 - BBC",
+    "overview": "「みんなとても熱心で、生き生きとしている。」 #TimeBBC #DavidTennant #Drama ある悲劇が少年院を揺るがす……",
+    "publishedDate": "2026-11-04",
+    "status": "unknown",
+    "source": "YouTube · BBC",
+    "sourceUrl": "https://www.youtube.com/watch?v=fdIikWooTOY",
+    "confirmed": false,
+    "lastCheckedAt": "2026-11-05",
+    "sources": [
+      {
+        "name": "YouTube · BBC",
+        "url": "https://www.youtube.com/watch?v=fdIikWooTOY",
+        "publishedDate": "2026-11-04"
+      }
+    ],
+    "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
+    "updatedAt": "2026-11-05"
+  },
+  {
     "key": "official-tenth-doctor-adventures-2027",
     "kind": "work",
     "mediaType": "other",

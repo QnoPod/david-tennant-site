@@ -240,6 +240,28 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-08-30"
   },
   {
+    "key": "youtube-z8vc84",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "From stage to &#39;Rivals&#39; | National Theatre at Home",
+    "overview": "『ライバルズ』のキャストが、名だたる演劇作品の役柄で舞台に立つ姿をご覧ください。デヴィッド・テナントからエイダン・ターナーまで、ナショナル・シアターの魅力を発見してください……",
+    "publishedDate": "2026-11-10",
+    "status": "unknown",
+    "source": "YouTube · National Theatre",
+    "sourceUrl": "https://www.youtube.com/watch?v=_h-j83cVgZc",
+    "confirmed": false,
+    "lastCheckedAt": "2026-11-11",
+    "sources": [
+      {
+        "name": "YouTube · National Theatre",
+        "url": "https://www.youtube.com/watch?v=_h-j83cVgZc",
+        "publishedDate": "2026-11-10"
+      }
+    ],
+    "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
+    "updatedAt": "2026-11-11"
+  },
+  {
     "key": "scraped-article-lfr2xk",
     "kind": "announcement",
     "mediaType": "other",

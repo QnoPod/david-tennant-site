@@ -131,6 +131,28 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-07-24"
   },
   {
+    "key": "youtube-blsz1t",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "&#39;Rivals&#39; actors on stage #NationalTheatreatHome",
+    "overview": "ドラマ『ライバルズ』のキャストたちが、名だたる演劇作品の役柄で舞台に登場しました。デヴィッド・テナントからエイダン・ターナーまで、ナショナル・シアターの…",
+    "publishedDate": "2026-11-11",
+    "status": "unknown",
+    "source": "YouTube · National Theatre",
+    "sourceUrl": "https://www.youtube.com/watch?v=Tn5WW3nsriE",
+    "confirmed": false,
+    "lastCheckedAt": "2026-11-12",
+    "sources": [
+      {
+        "name": "YouTube · National Theatre",
+        "url": "https://www.youtube.com/watch?v=Tn5WW3nsriE",
+        "publishedDate": "2026-11-11"
+      }
+    ],
+    "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
+    "updatedAt": "2026-11-12"
+  },
+  {
     "key": "scraped-article-wfxago",
     "kind": "work",
     "mediaType": "other",
@@ -250,7 +272,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "YouTube · National Theatre",
     "sourceUrl": "https://www.youtube.com/watch?v=_h-j83cVgZc",
     "confirmed": false,
-    "lastCheckedAt": "2026-11-11",
     "sources": [
       {
         "name": "YouTube · National Theatre",
@@ -259,7 +280,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
-    "updatedAt": "2026-11-11"
+    "updatedAt": "2026-11-11",
+    "lastCheckedAt": "2026-11-11"
   },
   {
     "key": "scraped-article-lfr2xk",

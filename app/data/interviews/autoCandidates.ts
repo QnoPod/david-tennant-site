@@ -24,7 +24,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=fdIikWooTOY",
     "thumbnailUrl": "https://i.ytimg.com/vi/fdIikWooTOY/hqdefault.jpg",
     "duration": "Video · 0:49",
-    "description": "「みんなとても献身的で、生き生きとしている。」 #TimeBBC #DavidTennant #Drama ある悲劇が少年刑務所を揺るがし、受刑者と職員の両方が直面しているプレッシャーが浮き彫りになる。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
+    "description": "「みんなとても献身的で、生き生きとしている。」 #TimeBBC #DavidTennant #Drama ある悲劇が少年刑務所を揺るがし、受刑者と職員の双方が直面するプレッシャーが浮き彫りになる。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
     "tagGroups": {
       "actors": [],
       "genres": [],

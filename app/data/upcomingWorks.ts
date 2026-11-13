@@ -141,7 +141,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "YouTube · National Theatre",
     "sourceUrl": "https://www.youtube.com/watch?v=Tn5WW3nsriE",
     "confirmed": false,
-    "lastCheckedAt": "2026-11-12",
     "sources": [
       {
         "name": "YouTube · National Theatre",
@@ -150,7 +149,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "作品名を特定できる公式情報がまだ確認できていないため。",
-    "updatedAt": "2026-11-12"
+    "updatedAt": "2026-11-12",
+    "lastCheckedAt": "2026-11-12"
   },
   {
     "key": "scraped-article-wfxago",

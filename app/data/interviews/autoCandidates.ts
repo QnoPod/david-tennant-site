@@ -7,6 +7,35 @@ import type { InterviewSummary } from "./types";
  */
 export const autoInterviewCandidates: readonly InterviewSummary[] = [
   {
+    "slug": "david-tennant-can-t-escape-doctor-who-the-graham-norton-show-pq65rtvtxr",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-11-15",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナント、『ドクター・フー』から抜け出せない | 『ザ・グラハム・ノートン・ショー』",
+    "titleEn": "David Tennant Can't Escape 'Doctor Who' | The Graham Norton Show",
+    "year": "2026",
+    "publishedDate": "2026-11-13",
+    "source": "The Graham Norton Show",
+    "mediaType": "video",
+    "videoId": "pQ65RTVtXRI",
+    "externalUrl": "https://www.youtube.com/watch?v=pQ65RTVtXRI",
+    "thumbnailUrl": "https://i.ytimg.com/vi/pQ65RTVtXRI/hqdefault.jpg",
+    "duration": "Video · 3:24",
+    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと会いました。 #GrahamNortonShow #GrahamNorton #TheGNShow こちらをフォローしてください：Facebook：https://www.facebook.",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who"
+      ],
+      "sources": [
+        "The Graham Norton Show"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-talks-about-the-young-cast-of-time-s3-bbc-fdiikwooto",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -24,7 +53,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=fdIikWooTOY",
     "thumbnailUrl": "https://i.ytimg.com/vi/fdIikWooTOY/hqdefault.jpg",
     "duration": "Video · 0:49",
-    "description": "「みんなとても献身的で、生き生きとしている。」 #TimeBBC #DavidTennant #Drama ある悲劇が少年刑務所を揺るがし、受刑者と職員の両方が直面しているプレッシャーが露呈する。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
+    "description": "「みんなとても献身的で、生き生きとしている。」 #TimeBBC #DavidTennant #Drama ある悲劇が少年刑務所を揺るがし、受刑者と職員の双方が直面するプレッシャーが浮き彫りになる。  チャプレンのマリー＝ルイーズ（#SiobhanFinneran）が信仰の危機に直面する中、彼女はベテランの看守ベイリー（#DavidTennant）と対立する。ベイリーは、実際に何が起きたのかという真実を隠しているのかもしれない。",
     "tagGroups": {
       "actors": [],
       "genres": [],

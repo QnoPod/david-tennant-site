@@ -408,11 +408,19 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "sources": [
       {
         "name": "Deadline",
-        "url": "https://deadline.com/2026/06/only-murders-in-the-building-david-tennant-nicola-coughlan-1236955027/"
+        "url": "https://deadline.com/2026/06/only-murders-in-the-building-david-tennant-nicola-coughlan-1236955027/",
+        "publishedDate": "2026-11-15"
+      },
+      {
+        "name": "ScreenRant TV News",
+        "url": "https://screenrant.com/only-murders-in-the-building-season-6-david-tennant-cameo-explained/",
+        "publishedDate": "2026-11-15",
+        "summary": "ScreenRant TV Newsでは、「マーダーズ・イン・ビルディング シーズン6」が制作中・撮影中の作品として掲載されています。デイヴィッド・テナントの出演情報あり、公開・放送日は未定です。"
       }
     ],
-    "updatedAt": "2026-07-17",
-    "lastCheckedAt": "2026-07-17"
+    "updatedAt": "2026-11-16",
+    "lastCheckedAt": "2026-11-16",
+    "publishedDate": "2026-11-15"
   },
   {
     "key": "official-four-seasons-season-3",

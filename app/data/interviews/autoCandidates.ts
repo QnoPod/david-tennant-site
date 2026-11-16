@@ -7,6 +7,65 @@ import type { InterviewSummary } from "./types";
  */
 export const autoInterviewCandidates: readonly InterviewSummary[] = [
   {
+    "slug": "david-tennant-can-t-escape-doctor-who-the-graham-norton-show-bbc-ddpyuajbsi",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-11-16",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "デイヴィッド・テナントは『ドクター・フー』から逃れられない | 『ザ・グラハム・ノートン・ショー』 - BBC",
+    "titleEn": "David Tennant can't escape 'Doctor Who' | The Graham Norton Show - BBC",
+    "year": "2026",
+    "publishedDate": "2026-11-16",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "DDPyuAjBSic",
+    "externalUrl": "https://www.youtube.com/watch?v=DDPyuAjBSic",
+    "thumbnailUrl": "https://i.ytimg.com/vi/DDPyuAjBSic/hqdefault.jpg",
+    "duration": "Video · 3:24",
+    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと対面しました #TheGrahamNortonShow #DavidTennant #DoctorWho グラハムのソファには、受賞歴のある『ウィキッド』のスター、シンシア・エリヴォ（ヒット舞台劇『プリマ・ファシー』の映画版に出演）や、 ドラマ『タイム』の主演デイヴィッド・テナントは、新作ドラマ『ライバルズ』の新シーズンについて語ります。また、アカデミー賞に3度ノミネートされたローラ・リニーは、感動的な英国ロマンティック・ドラマ『オンワーズ・アンド・サイドウェイズ』に出演。さらに、人気コメディアンのロブ・ブライドンは、シットコム『ビルズ・インクルーデッド』でシットコム界に復帰します。  音楽はノア・カハンが担当し、最新アルバムのタイトル曲『The Great Divide』を披露します。チャンネル登録して…",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Doctor Who",
+        "Rivals"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "slug": "comedy-clash-catherine-tate-vs-david-tennant-the-graham-norton-show-jreps0ay8k",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-11-16",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "コメディ対決：キャサリン・テイト 対 デイヴィッド・テナント | 『ザ・グラハム・ノートン・ショー』",
+    "titleEn": "Comedy Clash: Catherine Tate vs David Tennant | The Graham Norton Show",
+    "year": "2026",
+    "publishedDate": "2026-11-15",
+    "source": "The Graham Norton Show",
+    "mediaType": "video",
+    "videoId": "jReps0aY8Kw",
+    "externalUrl": "https://www.youtube.com/watch?v=jReps0aY8Kw",
+    "thumbnailUrl": "https://i.ytimg.com/vi/jReps0aY8Kw/hqdefault.jpg",
+    "duration": "Video · 1:15:18",
+    "description": "コメディ界の巨匠対決！  🎭⚔️ #キャサリン・テイト 対 #デイヴィッド・テナント、究極のコメディ対決！  私たちのソファで一番面白いのは誰？",
+    "tagGroups": {
+      "actors": [
+        "Catherine Tate"
+      ],
+      "genres": [],
+      "sources": [
+        "The Graham Norton Show"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-can-t-escape-doctor-who-the-graham-norton-show-pq65rtvtxr",
     "isPublished": false,
     "reviewStatus": "pending",

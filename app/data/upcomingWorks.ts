@@ -418,9 +418,9 @@ export const manualUpcomingWorks: UpcomingWork[] = [
         "summary": "ScreenRant TV Newsでは、「マーダーズ・イン・ビルディング シーズン6」が制作中・撮影中の作品として掲載されています。デイヴィッド・テナントの出演情報あり、公開・放送日は未定です。"
       }
     ],
+    "publishedDate": "2026-11-15",
     "updatedAt": "2026-11-16",
-    "lastCheckedAt": "2026-11-16",
-    "publishedDate": "2026-11-15"
+    "lastCheckedAt": "2026-11-16"
   },
   {
     "key": "official-four-seasons-season-3",

@@ -24,7 +24,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=DDPyuAjBSic",
     "thumbnailUrl": "https://i.ytimg.com/vi/DDPyuAjBSic/hqdefault.jpg",
     "duration": "Video · 3:24",
-    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと対面しました #TheGrahamNortonShow #DavidTennant #DoctorWho グラハムのソファには、受賞歴のある『ウィキッド』のスター、シンシア・エリヴォ（ヒット舞台劇『プリマ・ファシー』の映画版に出演）や、 ドラマ『タイム』の主演デイヴィッド・テナントは、新作ドラマ『ライバルズ』の新シーズンについて語ります。また、アカデミー賞に3度ノミネートされたローラ・リニーは、感動的な英国ロマンティック・ドラマ『オンワーズ・アンド・サイドウェイズ』に出演。さらに、人気コメディアンのロブ・ブライドンは、シットコム『ビルズ・インクルーデッド』でシットコムの世界に復帰します。  音楽はノア・カハンが担当し、最新アルバムのタイトル曲『The Great Divide』を披露します。チャンネル登録して…",
+    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと対面しました #TheGrahamNortonShow #DavidTennant #DoctorWho グラハムのソファには、受賞歴のある『ウィキッド』のスター、シンシア・エリヴォ（ヒット舞台劇『プリマ・ファシー』の映画版に出演）や、 ドラマ『タイム』の主演デイヴィッド・テナントは、新作ドラマ『ライバルズ』の新シーズンについて語ります。また、アカデミー賞に3度ノミネートされたローラ・リニーは、感動的な英国ロマンティック・ドラマ『オンワーズ・アンド・サイドウェイズ』に出演。さらに、人気コメディアンのロブ・ブライドンは、シットコム『ビルズ・インクルーデッド』でシットコムの世界に復帰します。  音楽はノア・カハンが担当し、最新アルバムのタイトル曲『ザ・グレート・ディバイド』を披露します。チャンネル登録して…",
     "tagGroups": {
       "actors": [],
       "genres": [
@@ -83,7 +83,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=pQ65RTVtXRI",
     "thumbnailUrl": "https://i.ytimg.com/vi/pQ65RTVtXRI/hqdefault.jpg",
     "duration": "Video · 3:24",
-    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと会いました。 #GrahamNortonShow #GrahamNorton #TheGNShow こちらからフォローしてください：Facebook：https://www.facebook.",
+    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと会いました。 #GrahamNortonShow #GrahamNorton #TheGNShow こちらをフォローしてください：Facebook：https://www.facebook.",
     "tagGroups": {
       "actors": [],
       "genres": [

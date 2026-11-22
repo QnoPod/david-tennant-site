@@ -7,6 +7,35 @@ import type { InterviewSummary } from "./types";
  */
 export const autoInterviewCandidates: readonly InterviewSummary[] = [
   {
+    "slug": "laura-linney-hated-working-alone-bbc-xgvuq2khpp",
+    "isPublished": false,
+    "reviewStatus": "pending",
+    "contentStatus": "review-needed",
+    "transcriptSource": "unavailable",
+    "discoveredAt": "2026-11-22",
+    "contentBasis": "YouTubeの動画説明欄に基づく自動概要です。発言原文は未取得です。",
+    "title": "ローラ・リニーは一人で仕事をするのが大嫌いだった - BBC",
+    "titleEn": "Laura Linney hated working alone - BBC",
+    "year": "2026",
+    "publishedDate": "2026-11-17",
+    "source": "BBC",
+    "mediaType": "video",
+    "videoId": "XgvUQ2KHpPU",
+    "externalUrl": "https://www.youtube.com/watch?v=XgvUQ2KHpPU",
+    "thumbnailUrl": "https://i.ytimg.com/vi/XgvUQ2KHpPU/hqdefault.jpg",
+    "duration": "Video · 0:57",
+    "description": "ローラ・リニーは、一人芝居の舞台に出演するのは楽しめなかったと語っている #TheGrahamNortonShow #LauraLinney グラハムのソファには、受賞歴のある『ウィキッド』のスター、シンシア・エリヴォ（ヒット舞台劇『プリマ・ファシエ』の映画版に出演）と、 『タイム』誌のスター、デイヴィッド・テナントはドラマ『ライバルズ』の新シーズンについて語ります。また、アカデミー賞に3度ノミネートされたローラ・リニーは、感動的な英国の恋愛ドラマ『オンワーズ・アンド・サイドウェイズ』に出演しています。さらに、人気コメディアンのロブ・ブライドンは、シットコム『ビルズ・インクルーデッド』でシットコム界に復帰しました。  音楽はノア・カハンが担当し、最新アルバムのタイトル曲『The Great Divide』を披露します。BBCを購読して🔔通知を受け取る 👉 https…",
+    "tagGroups": {
+      "actors": [],
+      "genres": [
+        "Rivals"
+      ],
+      "sources": [
+        "BBC"
+      ]
+    }
+  },
+  {
     "slug": "david-tennant-can-t-escape-doctor-who-the-graham-norton-show-bbc-ddpyuajbsi",
     "isPublished": false,
     "reviewStatus": "pending",
@@ -54,7 +83,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=jReps0aY8Kw",
     "thumbnailUrl": "https://i.ytimg.com/vi/jReps0aY8Kw/hqdefault.jpg",
     "duration": "Video · 1:15:18",
-    "description": "コメディ界の巨匠対決！  🎭⚔️ #キャサリン・テイト 対 #デイヴィッド・テナント、究極のコメディ対決！  私たちのソファで一番面白いのは誰？",
+    "description": "コメディ界の巨星対決！  🎭⚔️ #キャサリン・テイト 対 #デイヴィッド・テナント、究極のコメディ対決！  私たちのソファで一番面白いのは誰？",
     "tagGroups": {
       "actors": [
         "Catherine Tate"
@@ -83,7 +112,7 @@ export const autoInterviewCandidates: readonly InterviewSummary[] = [
     "externalUrl": "https://www.youtube.com/watch?v=pQ65RTVtXRI",
     "thumbnailUrl": "https://i.ytimg.com/vi/pQ65RTVtXRI/hqdefault.jpg",
     "duration": "Video · 3:24",
-    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと会いました。 #GrahamNortonShow #GrahamNorton #TheGNShow こちらからフォローしてください：Facebook：https://www.facebook.",
+    "description": "デイヴィッド・テナントがニューヨーク州北部にある『ドクター・フー』をテーマにしたレストランを訪れ、オーナーと会いました。 #GrahamNortonShow #GrahamNorton #TheGNShow こちらをフォローしてください：Facebook：https://www.facebook.",
     "tagGroups": {
       "actors": [],
       "genres": [

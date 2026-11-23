@@ -1,11 +1,11 @@
 {
-  "updatedAt": "2026-11-16T14:00:11.986Z",
+  "updatedAt": "2026-11-23T16:29:34.897Z",
   "mode": "full",
   "summary": {
-    "total": 666,
-    "ok": 598,
+    "total": 669,
+    "ok": 602,
     "broken": 1,
-    "warning": 67,
+    "warning": 66,
     "unchecked": 0
   },
   "items": [
@@ -2373,17 +2373,17 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3056
+          "line": 3114
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3118
+          "line": 3176
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "573fdb0c010d",
@@ -2392,13 +2392,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3259
+          "line": 3317
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5809f80649f0",
@@ -2407,21 +2407,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 658
+          "line": 716
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 802
+          "line": 860
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3203
+          "line": 3261
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4e41da3354c3",
@@ -2430,13 +2430,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2942
+          "line": 3000
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "de3192ab2652",
@@ -2445,14 +2445,6 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 227
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 256
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
           "line": 285
         },
         {
@@ -2469,7 +2461,11 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 428
+          "line": 401
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 430
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -2477,33 +2473,37 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 596
+          "line": 544
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2524
+          "line": 654
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3230
+          "line": 2582
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3286
+          "line": 3288
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3317
+          "line": 3344
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3456
+          "line": 3375
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3514
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "1faeac13bbaa",
@@ -2512,27 +2512,19 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3087
+          "line": 3145
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "37e91129e568",
       "kind": "link",
       "target": "http://www.tvinsider.com",
       "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 227
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 256
-        },
         {
           "file": "app/data/interviews/autoCandidates.ts",
           "line": 285
@@ -2551,7 +2543,11 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 428
+          "line": 401
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 430
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -2559,17 +2555,21 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 596
+          "line": 544
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2524
+          "line": 654
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2582
         }
       ],
       "status": "ok",
       "httpStatus": 206,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8f7c42a23b78",
@@ -2674,188 +2674,23 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 860
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
           "line": 918
         },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1243
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1301
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1330
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1758
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1787
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2050
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2081
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2201
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2319
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2350
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2379
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2799
-        }
-      ],
-      "status": "warning",
-      "httpStatus": null,
-      "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "7603f2d91a3f",
-      "kind": "link",
-      "target": "https://bbc.in/iPlayer-Home",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1496
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1816
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2141
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2468
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2495
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2555
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2584
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2613
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2644
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2675
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2706
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2737
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2828
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2969
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3259
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3286
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3317
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3456
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "5201a59bf6e7",
-      "kind": "link",
-      "target": "https://bbc.in/SubscribeToDoctorWho",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 918
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1301
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2081
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "f8066513f227",
-      "kind": "link",
-      "target": "https://bit",
-      "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
           "line": 976
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1214
+          "line": 1301
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1635
+          "line": 1359
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1388
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -2867,11 +2702,19 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2141
+          "line": 2108
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2379
+          "line": 2139
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2259
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2377
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -2879,33 +2722,190 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2468
+          "line": 2437
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2555
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2584
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2675
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2828
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2969
+          "line": 2857
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "7603f2d91a3f",
+      "kind": "link",
+      "target": "https://bbc.in/iPlayer-Home",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1554
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1874
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2199
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2526
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2553
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2613
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2642
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2671
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2702
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2733
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2764
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2795
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2886
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3027
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3317
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3344
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3375
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3514
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "5201a59bf6e7",
+      "kind": "link",
+      "target": "https://bbc.in/SubscribeToDoctorWho",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 976
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1359
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2139
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "f8066513f227",
+      "kind": "link",
+      "target": "https://bit",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1034
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1272
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1693
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1874
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1903
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2199
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2437
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2466
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2526
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2613
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2642
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2733
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 2886
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3027
+        }
+      ],
+      "status": "warning",
+      "httpStatus": null,
+      "message": "自動確認できませんでした：fetch failed",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3a621d6a7ee9",
@@ -2914,59 +2914,51 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1243
+          "line": 1301
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1330
+          "line": 1388
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1496
+          "line": 1554
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1758
+          "line": 1816
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1787
+          "line": 1845
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2201
+          "line": 2259
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2350
+          "line": 2408
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2495
+          "line": 2553
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2613
+          "line": 2671
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2644
+          "line": 2702
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2706
+          "line": 2764
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2737
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3259
-        },
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3286
+          "line": 2795
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -2974,13 +2966,21 @@
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3456
+          "line": 3344
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3375
+        },
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 3514
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5a3676cb4b84",
@@ -3240,17 +3240,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 95
+          "line": 72
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 100
+          "line": 77
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "965506fcfad1",
@@ -3259,17 +3259,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 406
+          "line": 383
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 411
+          "line": 388
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "40778695e0c8",
@@ -3278,17 +3278,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 64
+          "line": 41
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 69
+          "line": 46
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5b7a9db4bb34",
@@ -3575,6 +3575,21 @@
       "checkedAt": "2026-09-07T10:44:24.206Z"
     },
     {
+      "id": "75a71c0e00db",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/_tx1WKXhRk4/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 54
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
       "id": "f3e678bbb9e0",
       "kind": "link",
       "target": "https://i.ytimg.com/vi/_wP5fNffgE4/hqdefault.jpg",
@@ -3596,13 +3611,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3398
+          "line": 3456
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0cd3f67df6a3",
@@ -3611,13 +3626,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1664
+          "line": 1722
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c363e6418451",
@@ -3626,13 +3641,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1123
+          "line": 1181
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ba0d8711b70f",
@@ -3641,13 +3656,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2139
+          "line": 2197
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "febe78b6ff44",
@@ -3656,13 +3671,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 455
+          "line": 513
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "594574f43188",
@@ -3671,13 +3686,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2168
+          "line": 2226
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "899297172e13",
@@ -3716,13 +3731,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2406
+          "line": 2464
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3886f452e536",
@@ -3731,13 +3746,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1154
+          "line": 1212
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "befaec09a2f7",
@@ -3746,13 +3761,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3315
+          "line": 3373
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b7cd31a05a8a",
@@ -3761,13 +3776,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1988
+          "line": 2046
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "42759def18c9",
@@ -3806,13 +3821,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1065
+          "line": 1123
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "9d45b70a4dac",
@@ -3821,13 +3836,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2797
+          "line": 2855
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0b97940d4335",
@@ -3836,13 +3851,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1959
+          "line": 2017
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ddf2c7f876b5",
@@ -3851,13 +3866,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3085
+          "line": 3143
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4f3abc09d753",
@@ -3866,13 +3881,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 167
+          "line": 225
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b71f3a0c5252",
@@ -3881,13 +3896,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 370
+          "line": 428
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ddf8deaa570b",
@@ -3896,13 +3911,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 625
+          "line": 683
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "430d83d9ab70",
@@ -3911,13 +3926,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3454
+          "line": 3512
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f9771754c775",
@@ -3926,13 +3941,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3054
+          "line": 3112
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d409928eaf79",
@@ -3956,13 +3971,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2317
+          "line": 2375
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8c446b461226",
@@ -3971,13 +3986,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 341
+          "line": 399
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "df5db1d408b8",
@@ -3986,13 +4001,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 312
+          "line": 370
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c8e1e41f9904",
@@ -4016,13 +4031,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2466
+          "line": 2524
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d1894a898c98",
@@ -4031,13 +4046,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 974
+          "line": 1032
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7450b511b82d",
@@ -4046,13 +4061,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 685
+          "line": 743
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "098eb428dc41",
@@ -4076,13 +4091,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2553
+          "line": 2611
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e930ce1a4334",
@@ -4091,13 +4106,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2735
+          "line": 2793
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6914ee4134eb",
@@ -4106,13 +4121,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3284
+          "line": 3342
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "bc898d57d956",
@@ -4136,13 +4151,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1874
+          "line": 1932
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b761b19f4fe0",
@@ -4151,13 +4166,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3425
+          "line": 3483
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ac99fafa0620",
@@ -4166,13 +4181,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 715
+          "line": 773
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6c48c55ec834",
@@ -4181,13 +4196,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1092
+          "line": 1150
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b4b4bd81eaa9",
@@ -4196,13 +4211,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 25
+          "line": 83
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "bf52f51c334c",
@@ -4241,13 +4256,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 225
+          "line": 283
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4b9c2ae464b1",
@@ -4256,13 +4271,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2967
+          "line": 3025
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "23e813c25505",
@@ -4271,13 +4286,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 771
+          "line": 829
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f73af7aa3284",
@@ -4286,13 +4301,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 858
+          "line": 916
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "acc4623b4187",
@@ -4316,13 +4331,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2493
+          "line": 2551
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "54306c2bb800",
@@ -4331,13 +4346,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2673
+          "line": 2731
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4210156e87e8",
@@ -4346,13 +4361,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 800
+          "line": 858
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "24d52c21b3b9",
@@ -4361,13 +4376,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 113
+          "line": 171
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6e31a26a8f47",
@@ -4391,13 +4406,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 140
+          "line": 198
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d5add2950f34",
@@ -4451,13 +4466,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2257
+          "line": 2315
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c29749acf24e",
@@ -4466,13 +4481,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1785
+          "line": 1843
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f35766b580da",
@@ -4481,13 +4496,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3228
+          "line": 3286
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "bb49877c232a",
@@ -4496,13 +4511,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 484
+          "line": 542
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6f3411819da7",
@@ -4511,13 +4526,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 594
+          "line": 652
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8b94fd57a284",
@@ -4526,13 +4541,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2704
+          "line": 2762
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6b68f4cd6c2e",
@@ -4541,13 +4556,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2522
+          "line": 2580
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "feed31a6ed01",
@@ -4556,13 +4571,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2108
+          "line": 2166
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3a7deb902a64",
@@ -4571,13 +4586,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 283
+          "line": 341
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "1bf670d1bbfe",
@@ -4601,13 +4616,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 55
+          "line": 113
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "658df5c77cfc",
@@ -4616,13 +4631,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2286
+          "line": 2344
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "079feeec6a8a",
@@ -4631,13 +4646,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 744
+          "line": 802
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "47b9681fac80",
@@ -4646,13 +4661,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2998
+          "line": 3056
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0093e5ab3655",
@@ -4661,13 +4676,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1633
+          "line": 1691
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e8ae20ec52ac",
@@ -4676,13 +4691,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1930
+          "line": 1988
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ffe0992590cf",
@@ -4691,13 +4706,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3257
+          "line": 3315
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d01e1107a534",
@@ -4706,13 +4721,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3201
+          "line": 3259
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4bf683b259ce",
@@ -4721,13 +4736,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2079
+          "line": 2137
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e3754569a34a",
@@ -4751,13 +4766,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1328
+          "line": 1386
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "37adc3643b61",
@@ -4766,13 +4781,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1034
+          "line": 1092
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "602559c6929d",
@@ -4796,13 +4811,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2017
+          "line": 2075
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "89441667b1ee",
@@ -4811,13 +4826,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2853
+          "line": 2911
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "709d66ffa734",
@@ -4841,13 +4856,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1005
+          "line": 1063
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c2f8c67f8b4d",
@@ -4871,13 +4886,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2880
+          "line": 2938
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "a00825f84d8b",
@@ -4886,13 +4901,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 887
+          "line": 945
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5d89de2590d3",
@@ -4901,13 +4916,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2377
+          "line": 2435
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "71052a99c375",
@@ -4916,13 +4931,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3116
+          "line": 3174
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "cc43bf6ff364",
@@ -4931,13 +4946,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1299
+          "line": 1357
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "a31145485aa2",
@@ -4961,13 +4976,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2348
+          "line": 2406
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b0ed01554d6c",
@@ -4976,13 +4991,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1550
+          "line": 1608
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6f193a00db89",
@@ -4991,13 +5006,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2940
+          "line": 2998
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "edea1946ba6d",
@@ -5006,48 +5021,18 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 84
+          "line": 142
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4d5c5b9858f2",
       "kind": "link",
       "target": "https://i.ytimg.com/vi/PT0qiXI6rxM/hqdefault.jpg",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1756
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "1ad188d9bb1a",
-      "kind": "link",
-      "target": "https://i.ytimg.com/vi/Pv-WmzzWiBA/hqdefault.jpg",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1270
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "5f791a38b88a",
-      "kind": "link",
-      "target": "https://i.ytimg.com/vi/PzBAeYnsc1s/hqdefault.jpg",
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -5057,7 +5042,37 @@
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "1ad188d9bb1a",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/Pv-WmzzWiBA/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1328
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "5f791a38b88a",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/PzBAeYnsc1s/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1872
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c1aa51ce5e7f",
@@ -5066,13 +5081,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1357
+          "line": 1415
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "010a54318d33",
@@ -5081,13 +5096,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 831
+          "line": 889
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e8d5b101d76a",
@@ -5126,13 +5141,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1725
+          "line": 1783
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d90cbd9ce3b5",
@@ -5141,13 +5156,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 656
+          "line": 714
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "63537e064521",
@@ -5156,13 +5171,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3344
+          "line": 3402
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "52ec99fcebbd",
@@ -5171,13 +5186,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2611
+          "line": 2669
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c03e6adc7ab8",
@@ -5186,13 +5201,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2048
+          "line": 2106
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d2da6cb81461",
@@ -5216,13 +5231,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2228
+          "line": 2286
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fbdf8ecc9508",
@@ -5276,13 +5291,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1494
+          "line": 1552
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5b7c7258d964",
@@ -5306,13 +5321,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 399
+          "line": 457
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2af2f08bf00d",
@@ -5321,13 +5336,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1185
+          "line": 1243
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "aa9d04ae3679",
@@ -5336,13 +5351,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 194
+          "line": 252
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "262ad93bcb07",
@@ -5351,13 +5366,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1696
+          "line": 1754
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "32bb759c77bc",
@@ -5366,13 +5381,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 916
+          "line": 974
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7267ba7402a3",
@@ -5381,13 +5396,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 945
+          "line": 1003
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b68c522c66cc",
@@ -5396,13 +5411,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1606
+          "line": 1664
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0af929d18324",
@@ -5411,13 +5426,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 254
+          "line": 312
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0b3fd36f3e03",
@@ -5460,13 +5475,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2826
+          "line": 2884
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b4053b72fdc8",
@@ -5490,13 +5505,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 513
+          "line": 571
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4c8ee78dd95a",
@@ -5505,13 +5520,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1413
+          "line": 1471
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e1d8ed9a6fb1",
@@ -5520,13 +5535,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2642
+          "line": 2700
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "46ca4f83a9cf",
@@ -5535,13 +5550,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1212
+          "line": 1270
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "72e10a639417",
@@ -5550,13 +5565,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3371
+          "line": 3429
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "dc9204c6b273",
@@ -5565,13 +5580,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2582
+          "line": 2640
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b68c072a77c3",
@@ -5580,13 +5595,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3174
+          "line": 3232
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "82b2cdbc7bd1",
@@ -5595,13 +5610,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1577
+          "line": 1635
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "99aafbe1f71c",
@@ -5610,13 +5625,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2766
+          "line": 2824
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "561e33edab6d",
@@ -5625,13 +5640,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1241
+          "line": 1299
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fe54857d054f",
@@ -5640,13 +5655,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3027
+          "line": 3085
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "bf688e10945d",
@@ -5655,13 +5670,28 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1521
+          "line": 1579
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "1bce9384abb3",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/XgvUQ2KHpPU/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 25
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fa2eebdfaf99",
@@ -5670,13 +5700,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 426
+          "line": 484
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4a155810bb73",
@@ -5685,63 +5715,18 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2199
+          "line": 2257
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e0f706f3ed48",
       "kind": "link",
       "target": "https://i.ytimg.com/vi/YI7xB0yDx8c/hqdefault.jpg",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1843
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "63176390740e",
-      "kind": "link",
-      "target": "https://i.ytimg.com/vi/ySJIMgV2Xew/hqdefault.jpg",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1440
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "076795b9d1ba",
-      "kind": "link",
-      "target": "https://i.ytimg.com/vi/yUr8QyTCph8/hqdefault.jpg",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1467
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "b52588bc2bbf",
-      "kind": "link",
-      "target": "https://i.ytimg.com/vi/zHEGQVbGMUg/hqdefault.jpg",
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -5751,7 +5736,52 @@
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "63176390740e",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/ySJIMgV2Xew/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1498
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "076795b9d1ba",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/yUr8QyTCph8/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1525
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "b52588bc2bbf",
+      "kind": "link",
+      "target": "https://i.ytimg.com/vi/zHEGQVbGMUg/hqdefault.jpg",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1959
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6ed4bcda1666",
@@ -5760,13 +5790,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 540
+          "line": 598
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4bd18dcb4bf1",
@@ -5775,13 +5805,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2437
+          "line": 2495
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f2b7f2892cc5",
@@ -5790,13 +5820,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 567
+          "line": 625
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f0895432e127",
@@ -5850,21 +5880,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1386
+          "line": 1444
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2909
+          "line": 2967
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3145
+          "line": 3203
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f5755870b5d0",
@@ -5919,13 +5949,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2908
+          "line": 2966
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "79c566d59997",
@@ -5934,13 +5964,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1385
+          "line": 1443
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "9ba7cbf8d393",
@@ -5949,13 +5979,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3144
+          "line": 3202
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5b67f708e6f3",
@@ -6024,17 +6054,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 251
+          "line": 228
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 256
+          "line": 233
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4cba24be62c3",
@@ -6073,13 +6103,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 78
+          "line": 55
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2dfd07adc580",
@@ -6088,18 +6118,37 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 416
+          "line": 393
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f88b3b059b46",
       "kind": "link",
       "target": "https://screenrant.com/rivals-season-2-part-2-trailer-david-tennant/",
+      "references": [
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 294
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 299
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "e7df4bf0fbe7",
+      "kind": "link",
+      "target": "https://screenrant.com/the-four-seasons-season-3-filming-start-confirmed-netflix/",
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
@@ -6113,26 +6162,7 @@
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "e7df4bf0fbe7",
-      "kind": "link",
-      "target": "https://screenrant.com/the-four-seasons-season-3-filming-start-confirmed-netflix/",
-      "references": [
-        {
-          "file": "app/data/upcomingWorks.ts",
-          "line": 340
-        },
-        {
-          "file": "app/data/upcomingWorks.ts",
-          "line": 345
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fe3a55694e10",
@@ -6156,21 +6186,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1442
+          "line": 1500
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1579
+          "line": 1637
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1961
+          "line": 2019
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "77bd080954a9",
@@ -6179,13 +6209,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1579
+          "line": 1637
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "391fd1873496",
@@ -6224,29 +6254,29 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 401
+          "line": 459
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 746
+          "line": 804
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2882
+          "line": 2940
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3029
+          "line": 3087
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3176
+          "line": 3234
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fa532238203a",
@@ -6270,17 +6300,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 295
+          "line": 272
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 300
+          "line": 277
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6b0d91c6215d",
@@ -6835,17 +6865,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 164
+          "line": 141
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 169
+          "line": 146
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0ec9e46f5c51",
@@ -6854,17 +6884,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 230
+          "line": 207
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 235
+          "line": 212
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "269d4b11f5da",
@@ -6907,37 +6937,37 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 86
+          "line": 144
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 717
+          "line": 775
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 773
+          "line": 831
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1523
+          "line": 1581
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2019
+          "line": 2077
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2259
+          "line": 2317
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2855
+          "line": 2913
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "eacbfeb9be18",
@@ -7033,13 +7063,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 746
+          "line": 804
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "62da5803b85d",
@@ -7067,13 +7097,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 401
+          "line": 459
         }
       ],
-      "status": "warning",
-      "httpStatus": 429,
-      "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "42a97b34fea0",
@@ -7157,17 +7187,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 435
+          "line": 412
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 440
+          "line": 417
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "9439224d072b",
@@ -8149,17 +8179,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 42
+          "line": 19
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 47
+          "line": 24
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "a1c659cf722e",
@@ -8168,13 +8198,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 104
+          "line": 81
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8ca67b8ae9e5",
@@ -8183,32 +8213,13 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 73
+          "line": 50
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
-    },
-    {
-      "id": "a6a8f80b3879",
-      "kind": "link",
-      "target": "https://www.themoviedb.org/movie/1770183",
-      "references": [
-        {
-          "file": "app/data/upcomingWorks.ts",
-          "line": 20
-        },
-        {
-          "file": "app/data/upcomingWorks.ts",
-          "line": 25
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "1da04ffb01fc",
@@ -8217,17 +8228,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 121
+          "line": 98
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 126
+          "line": 103
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-10-19T11:16:08.287Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d8e6672c9295",
@@ -8405,17 +8416,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 385
+          "line": 362
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 390
+          "line": 367
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f05cc958d3c3",
@@ -8454,13 +8465,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1932
+          "line": 1990
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "a593cb3c838e",
@@ -8469,17 +8480,32 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 273
+          "line": 250
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 278
+          "line": 255
         }
       ],
       "status": "warning",
       "httpStatus": 401,
       "message": "アクセス制限により自動確認できません。ブラウザで確認してください。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "69af362cbeef",
+      "kind": "video",
+      "target": "https://www.youtube.com/watch?v=_tx1WKXhRk4",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 53
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "9d356c658d1c",
@@ -8507,13 +8533,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3397
+          "line": 3455
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f1f80b972e3d",
@@ -8522,13 +8548,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1663
+          "line": 1721
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c0aec7953b9c",
@@ -8537,13 +8563,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1122
+          "line": 1180
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d6a891faf5b7",
@@ -8552,13 +8578,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2138
+          "line": 2196
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4f88284e5e3c",
@@ -8567,13 +8593,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 454
+          "line": 512
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6fa0d3e5e708",
@@ -8582,13 +8608,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2167
+          "line": 2225
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "bb1527fe62a5",
@@ -8635,13 +8661,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2405
+          "line": 2463
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "17dfe7551baf",
@@ -8650,13 +8676,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1153
+          "line": 1211
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3e6c8d01462e",
@@ -8665,13 +8691,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3314
+          "line": 3372
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "be810ab9b8c3",
@@ -8680,13 +8706,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1987
+          "line": 2045
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "61af309dc2b8",
@@ -8733,13 +8759,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1064
+          "line": 1122
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "65db2172b64f",
@@ -8748,13 +8774,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2796
+          "line": 2854
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "577cf1c93188",
@@ -8763,13 +8789,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1958
+          "line": 2016
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8f5766acd401",
@@ -8778,13 +8804,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3084
+          "line": 3142
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "12e51fd90698",
@@ -8793,21 +8819,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
+          "line": 224
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
+          "line": 161
+        },
+        {
+          "file": "app/data/upcomingWorks.ts",
           "line": 166
-        },
-        {
-          "file": "app/data/upcomingWorks.ts",
-          "line": 184
-        },
-        {
-          "file": "app/data/upcomingWorks.ts",
-          "line": 189
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "965ad7959cae",
@@ -8816,13 +8842,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 369
+          "line": 427
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "19bf3dd2248b",
@@ -8831,13 +8857,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 624
+          "line": 682
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ba8b0aa44661",
@@ -8846,13 +8872,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3453
+          "line": 3511
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7a78ef0ea15c",
@@ -8861,13 +8887,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3053
+          "line": 3111
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4a796635ed2e",
@@ -8895,13 +8921,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2316
+          "line": 2374
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d6908b69043d",
@@ -8910,13 +8936,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 340
+          "line": 398
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ae029b6c4a39",
@@ -8925,13 +8951,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 311
+          "line": 369
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2bb360d506dc",
@@ -8959,13 +8985,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2465
+          "line": 2523
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "eea008344813",
@@ -8974,13 +9000,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 973
+          "line": 1031
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7b80fdd5e412",
@@ -8989,13 +9015,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 684
+          "line": 742
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "771c44a59e72",
@@ -9023,13 +9049,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2552
+          "line": 2610
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "88197b18a73c",
@@ -9038,13 +9064,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2734
+          "line": 2792
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "14f61dc9edac",
@@ -9053,13 +9079,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3283
+          "line": 3341
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "455a196e1453",
@@ -9087,13 +9113,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1873
+          "line": 1931
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6643bca6d9c8",
@@ -9102,13 +9128,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3424
+          "line": 3482
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b384b18eef67",
@@ -9117,13 +9143,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 714
+          "line": 772
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2da4b2256543",
@@ -9132,13 +9158,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1091
+          "line": 1149
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7d545b805bee",
@@ -9147,13 +9173,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 24
+          "line": 82
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8cab5fd91ee2",
@@ -9200,13 +9226,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 224
+          "line": 282
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7c81c189d019",
@@ -9215,13 +9241,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2966
+          "line": 3024
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e58aabe2ede5",
@@ -9230,13 +9256,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 770
+          "line": 828
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "da6922f82bd6",
@@ -9245,13 +9271,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 857
+          "line": 915
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "9690a55d4c8e",
@@ -9279,13 +9305,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2492
+          "line": 2550
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "10cd8f577faf",
@@ -9294,13 +9320,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2672
+          "line": 2730
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f712caee8b7f",
@@ -9309,13 +9335,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 799
+          "line": 857
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7049f526908b",
@@ -9324,21 +9350,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 112
+          "line": 170
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 206
+          "line": 183
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 211
+          "line": 188
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ee3c8e620385",
@@ -9366,21 +9392,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 139
+          "line": 197
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 362
+          "line": 339
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 367
+          "line": 344
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "65310f43a7c3",
@@ -9446,13 +9472,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2256
+          "line": 2314
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "11c9a970d61d",
@@ -9461,13 +9487,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1784
+          "line": 1842
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "37dbbf83a694",
@@ -9495,13 +9521,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3227
+          "line": 3285
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "58858b0739e5",
@@ -9510,13 +9536,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 483
+          "line": 541
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b844d2d67fc3",
@@ -9525,13 +9551,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 593
+          "line": 651
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4e4c94220c66",
@@ -9540,13 +9566,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2703
+          "line": 2761
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6cb309037e2b",
@@ -9555,13 +9581,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2521
+          "line": 2579
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "a3749816eb1a",
@@ -9570,13 +9596,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2107
+          "line": 2165
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "79502e1ec921",
@@ -9585,13 +9611,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 282
+          "line": 340
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "69b40211c813",
@@ -9619,13 +9645,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 54
+          "line": 112
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7c3b22b158ef",
@@ -9634,13 +9660,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2285
+          "line": 2343
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "db22cdbc0a67",
@@ -9649,13 +9675,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 743
+          "line": 801
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "48164aaf0cc5",
@@ -9664,13 +9690,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2997
+          "line": 3055
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "4b8e0fe0ca2e",
@@ -9679,13 +9705,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1632
+          "line": 1690
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c85d39b8221c",
@@ -9694,13 +9720,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1929
+          "line": 1987
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "39011de3b083",
@@ -9709,13 +9735,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3256
+          "line": 3314
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3379f6071215",
@@ -9724,13 +9750,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3200
+          "line": 3258
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "419859d22451",
@@ -9754,13 +9780,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2078
+          "line": 2136
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3cd0a649428d",
@@ -9788,13 +9814,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1327
+          "line": 1385
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "759a480d490f",
@@ -9803,13 +9829,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1033
+          "line": 1091
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e3b2a95d6558",
@@ -9837,13 +9863,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2016
+          "line": 2074
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "00c6d1f29542",
@@ -9852,13 +9878,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2852
+          "line": 2910
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "73a4cbb4df73",
@@ -9886,13 +9912,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1004
+          "line": 1062
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "70491ea48f81",
@@ -9920,13 +9946,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2879
+          "line": 2937
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7c36251a8332",
@@ -9935,13 +9961,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 886
+          "line": 944
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "bdb193028389",
@@ -9950,13 +9976,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2376
+          "line": 2434
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "38ace063c31c",
@@ -9980,13 +10006,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3115
+          "line": 3173
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "197cc841767d",
@@ -9995,13 +10021,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1298
+          "line": 1356
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "7e30dc8d2fc5",
@@ -10029,13 +10055,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2347
+          "line": 2405
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "324328caec4f",
@@ -10044,13 +10070,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1549
+          "line": 1607
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "576b2504078f",
@@ -10059,13 +10085,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2939
+          "line": 2997
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "228db1698732",
@@ -10074,48 +10100,18 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 83
+          "line": 141
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2a0b53308f2b",
       "kind": "video",
       "target": "https://www.youtube.com/watch?v=PT0qiXI6rxM",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1755
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "3d3765cbf237",
-      "kind": "video",
-      "target": "https://www.youtube.com/watch?v=Pv-WmzzWiBA",
-      "references": [
-        {
-          "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1269
-        }
-      ],
-      "status": "ok",
-      "httpStatus": 200,
-      "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
-    },
-    {
-      "id": "beb42788910b",
-      "kind": "video",
-      "target": "https://www.youtube.com/watch?v=PzBAeYnsc1s",
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
@@ -10125,7 +10121,37 @@
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "3d3765cbf237",
+      "kind": "video",
+      "target": "https://www.youtube.com/watch?v=Pv-WmzzWiBA",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1327
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "beb42788910b",
+      "kind": "video",
+      "target": "https://www.youtube.com/watch?v=PzBAeYnsc1s",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 1871
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fa305ee713f5",
@@ -10134,13 +10160,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1356
+          "line": 1414
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "fa76b9bd9d91",
@@ -10149,13 +10175,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 830
+          "line": 888
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d96020f8c0b1",
@@ -10213,13 +10239,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1724
+          "line": 1782
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "e2d8c37b9bc6",
@@ -10228,13 +10254,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 655
+          "line": 713
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "923dd4cac507",
@@ -10243,13 +10269,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3343
+          "line": 3401
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "1182a7e030eb",
@@ -10258,13 +10284,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2610
+          "line": 2668
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b7b4c93267cd",
@@ -10273,13 +10299,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2047
+          "line": 2105
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5718b7941ddb",
@@ -10307,13 +10333,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2227
+          "line": 2285
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ea5bc154eb7c",
@@ -10379,13 +10405,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1493
+          "line": 1551
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "275e875427aa",
@@ -10413,13 +10439,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 398
+          "line": 456
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "75f88baad4db",
@@ -10428,13 +10454,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1184
+          "line": 1242
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "9f4ecbdabaed",
@@ -10443,13 +10469,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 193
+          "line": 251
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0cc359b4b49c",
@@ -10458,17 +10484,17 @@
       "references": [
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 142
+          "line": 119
         },
         {
           "file": "app/data/upcomingWorks.ts",
-          "line": 147
+          "line": 124
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "19b9016e57a1",
@@ -10477,13 +10503,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1695
+          "line": 1753
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "be3e605adaaa",
@@ -10492,13 +10518,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 915
+          "line": 973
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "1ff256f54843",
@@ -10507,13 +10533,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 944
+          "line": 1002
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ba84da828816",
@@ -10522,13 +10548,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1605
+          "line": 1663
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "611a71af643e",
@@ -10537,13 +10563,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 253
+          "line": 311
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "64359fd5bb90",
@@ -10590,13 +10616,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2825
+          "line": 2883
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "38d49d1f5fa3",
@@ -10624,13 +10650,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 512
+          "line": 570
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "5dd80c6de697",
@@ -10639,13 +10665,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1412
+          "line": 1470
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "01f412e77b78",
@@ -10654,13 +10680,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2641
+          "line": 2699
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6f29ac2d78de",
@@ -10669,13 +10695,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1211
+          "line": 1269
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "8ee63bfd8f0c",
@@ -10684,13 +10710,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3370
+          "line": 3428
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2c47f7c906bd",
@@ -10699,13 +10725,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2581
+          "line": 2639
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "be41b3b6ea02",
@@ -10714,13 +10740,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3173
+          "line": 3231
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "0b3cfd337d32",
@@ -10744,13 +10770,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1576
+          "line": 1634
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "38c60ccdb11a",
@@ -10759,13 +10785,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2765
+          "line": 2823
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "42feb59ba5cc",
@@ -10774,13 +10800,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1240
+          "line": 1298
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "2cdc033afc85",
@@ -10789,13 +10815,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 3026
+          "line": 3084
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "c918adb66dc2",
@@ -10804,13 +10830,28 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1520
+          "line": 1578
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
+    },
+    {
+      "id": "87a0b521f3d1",
+      "kind": "video",
+      "target": "https://www.youtube.com/watch?v=XgvUQ2KHpPU",
+      "references": [
+        {
+          "file": "app/data/interviews/autoCandidates.ts",
+          "line": 24
+        }
+      ],
+      "status": "ok",
+      "httpStatus": 200,
+      "message": "正常に応答しました。",
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ace6fc4a478d",
@@ -10819,13 +10860,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 425
+          "line": 483
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "d58ca34f128f",
@@ -10834,13 +10875,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2198
+          "line": 2256
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "89627600ea0d",
@@ -10849,13 +10890,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1842
+          "line": 1900
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "afb9a04956c7",
@@ -10864,13 +10905,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1439
+          "line": 1497
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "65ae7b72ace5",
@@ -10879,13 +10920,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1466
+          "line": 1524
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "6bc31a2cbf3b",
@@ -10913,13 +10954,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1900
+          "line": 1958
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "3c885f2e0056",
@@ -10928,13 +10969,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 539
+          "line": 597
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "57e9dbbfaf54",
@@ -10943,13 +10984,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2436
+          "line": 2494
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "f404f30973a1",
@@ -10958,13 +10999,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 566
+          "line": 624
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "ce97304e64a5",
@@ -10973,13 +11014,13 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 687
+          "line": 745
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "b30fe9d4c88f",
@@ -10988,21 +11029,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1469
+          "line": 1527
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1666
+          "line": 1724
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 2768
+          "line": 2826
         }
       ],
       "status": "warning",
       "httpStatus": null,
       "message": "自動確認できませんでした：fetch failed",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     },
     {
       "id": "dffed52b3c1c",
@@ -11011,21 +11052,21 @@
       "references": [
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1442
+          "line": 1500
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1579
+          "line": 1637
         },
         {
           "file": "app/data/interviews/autoCandidates.ts",
-          "line": 1961
+          "line": 2019
         }
       ],
       "status": "ok",
       "httpStatus": 200,
       "message": "正常に応答しました。",
-      "checkedAt": "2026-11-16T14:00:11.986Z"
+      "checkedAt": "2026-11-23T16:29:34.897Z"
     }
   ]
 }

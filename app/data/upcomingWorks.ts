@@ -7,29 +7,6 @@ import type { UpcomingWork } from "../lib/types";
  */
 export const manualUpcomingWorks: UpcomingWork[] = [
   {
-    "key": "tmdb-movie-1770183",
-    "kind": "announcement",
-    "mediaType": "movie",
-    "title": "Doctor Who: The Satan Pit - Extended Movie Cut",
-    "originalTitle": "Doctor Who: The Satan Pit - Extended Movie Cut",
-    "character": "The Doctor",
-    "overview": "ドクターとローズと共に、ブラックホールの軌道を回る惑星に位置する辺境の前哨基地「サンクチュアリ・ベース6」へと旅立ちましょう。地底で古代の力が目覚めたとき、乗組員たちは「時間そのものよりも古い」悪との戦いに巻き込まれてしまいます。",
-    "releaseDate": "2026-11-23",
-    "status": "post-production",
-    "source": "TMDB",
-    "sourceUrl": "https://www.themoviedb.org/movie/1770183",
-    "confirmed": false,
-    "sources": [
-      {
-        "name": "TMDB",
-        "url": "https://www.themoviedb.org/movie/1770183"
-      }
-    ],
-    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-10-03",
-    "lastCheckedAt": "2026-10-03"
-  },
-  {
     "key": "tmdb-movie-1377495",
     "kind": "announcement",
     "mediaType": "movie",

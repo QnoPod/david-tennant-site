@@ -130,6 +130,29 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "lastCheckedAt": "2026-11-12"
   },
   {
+    "key": "rss-ew4kfg",
+    "kind": "announcement",
+    "mediaType": "other",
+    "title": "『四季』",
+    "originalTitle": "&#8216;The Four Seasons&#8217;",
+    "overview": "【独占】『ザ・フォー・シーズンズ』のラストに登場したデヴィッド・テナントのカメオ出演 シーズン2のフィナーレでのデヴィッド・テナントのカメオ出演は、アン（ケリー・ケニー＝シルバー）がシーズン序盤に思い描いていた架空の彼氏への単なるユーモラスなオマージュにとどまらず――それ以上の意味を持っていた。 あのクリフハンガーの後、テナントのシーズン3への復帰が予想されていたが、『Deadline』が明らかにしたところによると、[……]",
+    "publishedDate": "2026-11-24",
+    "status": "unknown",
+    "source": "Deadline",
+    "sourceUrl": "https://deadline.com/2026/11/david-tennant-the-four-seasons-series-regular-gianpiero-s3-1237232014/",
+    "confirmed": false,
+    "lastCheckedAt": "2026-11-24",
+    "sources": [
+      {
+        "name": "Deadline",
+        "url": "https://deadline.com/2026/11/david-tennant-the-four-seasons-series-regular-gianpiero-s3-1237232014/",
+        "publishedDate": "2026-11-24"
+      }
+    ],
+    "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
+    "updatedAt": "2026-11-24"
+  },
+  {
     "key": "scraped-article-wfxago",
     "kind": "work",
     "mediaType": "other",

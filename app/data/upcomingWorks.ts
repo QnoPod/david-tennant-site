@@ -141,7 +141,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "Deadline",
     "sourceUrl": "https://deadline.com/2026/11/david-tennant-the-four-seasons-series-regular-gianpiero-s3-1237232014/",
     "confirmed": false,
-    "lastCheckedAt": "2026-11-24",
     "sources": [
       {
         "name": "Deadline",
@@ -150,7 +149,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "出演情報と、制作中・公開予定であることを同時に確認できる根拠が不足しているため。",
-    "updatedAt": "2026-11-24"
+    "updatedAt": "2026-11-24",
+    "lastCheckedAt": "2026-11-24"
   },
   {
     "key": "scraped-article-wfxago",

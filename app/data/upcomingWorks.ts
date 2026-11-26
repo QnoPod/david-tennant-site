@@ -7,6 +7,29 @@ import type { UpcomingWork } from "../lib/types";
  */
 export const manualUpcomingWorks: UpcomingWork[] = [
   {
+    "key": "tmdb-movie-1846158",
+    "kind": "announcement",
+    "mediaType": "movie",
+    "title": "Carry On",
+    "originalTitle": "Carry On",
+    "character": "The Mage",
+    "overview": "デイヴィッド・テナントはThe Mage役で出演します。制作予定として掲載されています。公開・放送予定は2028年11月17日です。",
+    "releaseDate": "2028-11-17",
+    "status": "planned",
+    "source": "TMDB",
+    "sourceUrl": "https://www.themoviedb.org/movie/1846158",
+    "confirmed": false,
+    "lastCheckedAt": "2026-11-26",
+    "sources": [
+      {
+        "name": "TMDB",
+        "url": "https://www.themoviedb.org/movie/1846158"
+      }
+    ],
+    "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
+    "updatedAt": "2026-11-26"
+  },
+  {
     "key": "tmdb-movie-1377495",
     "kind": "announcement",
     "mediaType": "movie",

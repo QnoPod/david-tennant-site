@@ -19,7 +19,6 @@ export const manualUpcomingWorks: UpcomingWork[] = [
     "source": "TMDB",
     "sourceUrl": "https://www.themoviedb.org/movie/1846158",
     "confirmed": false,
-    "lastCheckedAt": "2026-11-26",
     "sources": [
       {
         "name": "TMDB",
@@ -27,7 +26,8 @@ export const manualUpcomingWorks: UpcomingWork[] = [
       }
     ],
     "reviewReason": "TMDBの1取得元のみで、公式発表または別の独立した取得元による裏付けを確認できていないため。",
-    "updatedAt": "2026-11-26"
+    "updatedAt": "2026-11-26",
+    "lastCheckedAt": "2026-11-26"
   },
   {
     "key": "tmdb-movie-1377495",
